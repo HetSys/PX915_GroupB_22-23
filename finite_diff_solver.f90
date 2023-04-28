@@ -2,6 +2,7 @@
 !gfortran finite_diff_solver.f90 -llapack -o finite_diff_solver
 PROGRAM MAIN 
     USE ISO_FORTRAN_ENV
+    USE nc_output
     IMPLICIT NONE
     INTEGER, PARAMETER :: n=2500 !node number
     INTEGER :: info, i, tstep
@@ -81,5 +82,6 @@ PROGRAM MAIN
         !print*, i, cstorage(i,:)
     END DO
     CLOSE(9)
+    CALL output_cstorage(cstorage, n, tsteps, "cstorage.nc")
 
 END PROGRAM

@@ -1,0 +1,24 @@
+#!/bin/bash
+
+#List here all the f90 files to compile, separated by spaces
+#THERE MUST NOT be spaces around '=' in bash
+myprogramfiles="nc_output.f90 finite_diff_solver.f90"
+#Name of compiled file
+outfile="finite_diff_solver"
+
+#Name of compiler
+fc=gfortran
+#Use nf-config to grab the compile and link flags. Backticks run command and grab output
+fflags=`nf-config --fflags`
+flibs=`nf-config --flibs`
+
+#Actual compile line. Other flags etc can be added
+
+$fc -std=f2008 $fflags $myprogramfiles $flibs -lnetcdf -llapack -o $outfile || { echo 'Compilation failed.' ; exit 1; }
+
+#run line
+./$outfile
+
+#plot
+
+#python3 plotter.py
