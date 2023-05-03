@@ -1,17 +1,18 @@
 !NOTE - COMPILE THIS PROGRAM WITH THE FOLLOWING LINE
-!gfortran finite_diff_solver.f90 -llapack -o finite_diff_solver
+!gfortran read_inputs.f90 nc_output.f90 finite_diff_solver.f90 -llapack -o finite_diff_solver
 PROGRAM MAIN
     USE ISO_FORTRAN_ENV
+    USE read_inputs
     USE nc_output
     IMPLICIT NONE
     INTEGER, PARAMETER :: n=2500 !node number
     INTEGER :: info, i, tstep
     INTEGER, DIMENSION(n) :: ipiv
-    INTEGER, PARAMETER :: tsteps = 100
+    INTEGER :: tsteps ! user input
     REAL(REAL64), DIMENSION(n,n) :: A !solver matrix
     REAL(REAL64), DIMENSION(n,n) :: A_copy !copy of solver matrix
     REAL(REAL64), DIMENSION(n) :: c,b !c vector for solving 
-    REAL(REAL64), DIMENSION(n,tsteps) :: cstorage
+    REAL(REAL64), DIMENSION(:,:), ALLOCATABLE :: cstorage
     REAL(REAL64) :: c0 !initial c value
     REAL(REAL64) :: dt !finite diff t
     REAL(REAL64) :: deltar !dist between nodes (finite diff r)
@@ -19,22 +20,35 @@ PROGRAM MAIN
     REAL(REAL64) :: R !total width of block
     REAL(REAL64) :: k !D*dt/(dr**2)
     REAL(REAL64) :: ireal !real version of i for loop
-    REAL(REAL64), DIMENSION(tsteps) :: iapp, Z !applied current, in general a function of t
-    REAL(REAL64) :: a_small, F, L !constants
-    R  = 5.22_REAL64*(10.0_REAL64**(-6))
+    REAL(REAL64), DIMENSION(:), ALLOCATABLE :: iapp, Z !applied current, in general a function of t
+    REAL(REAL64) :: a_small, L !constants
+    REAL(REAL64), PARAMETER :: F = 96485_REAL64 !Faraday constant
+    CHARACTER(len=54) :: filename
+    TYPE(UI) :: user_inputs ! Type defined in read_inputs, to return user inputs
+
+
+    ! Read in user inputs
+    filename = read_command_line()
+    user_inputs = read_user_inputs(filename) ! returns type containing user inputs
+
+    tsteps = user_inputs%tsteps
+    dt = user_inputs%dt
+    c0 = user_inputs%c0
+    D = user_inputs%D
+    R = user_inputs%R
+    a_small = user_inputs%a_small
+    L = user_inputs%L
+    iapp = user_inputs%iapp !array allocated in read_user_inputs function
+
+    ALLOCATE(cstorage(n, tsteps))
+    ALLOCATE(Z(tsteps))
+    
     deltar = R/(REAL(n,kind=REAL64)-1.0_REAL64)
-    dt = 0.1_REAL64 !set similar to delta r for now
-    D = (3.3_REAL64*(10.0_REAL64**(-13)))
     k = -D/(2.0_REAL64*(deltar**2)) !k is just a shortcut holding -D/(2(dr^2))
     
-    c0 = 0.0_REAL64
     c = c0 !set c to initial state
     b = 0.0_REAL64
-    a_small = 382183.9_REAL64
-    F = 96485_REAL64
-    L = (75.6_REAL64)*(10.0_REAL64**(-6))
-    iapp(1:tsteps/2) = 0.73_REAL64*(10.0_REAL64**(-3))
-    iapp(tsteps/2:tsteps) = -0.73_REAL64*(10.0_REAL64**(-3))
+    
     Z = (-iapp)/(a_small*F*L*D)
     cstorage(:,1) = c0 !set first entry in storage vector to initial concentration
 
@@ -101,6 +115,10 @@ PROGRAM MAIN
     CLOSE(9)
     CALL output_cstorage(cstorage, n, tsteps, "cstorage.nc")
 
+    DEALLOCATE(cstorage)
+    DEALLOCATE(iapp)
+    DEALLOCATE(Z)
+    
 END PROGRAM
 
 

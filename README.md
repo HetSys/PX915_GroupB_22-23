@@ -9,3 +9,5 @@ The GitHub repository that group B of cohort 4 is using for their project. Proje
      - building
      - built soon
      - don't worry
+
+Run line: ```python3 user_input.py```

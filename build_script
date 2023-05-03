@@ -2,7 +2,7 @@
 
 #List here all the f90 files to compile, separated by spaces
 #THERE MUST NOT be spaces around '=' in bash
-myprogramfiles="nc_output.f90 finite_diff_solver.f90"
+myprogramfiles="read_inputs.f90 nc_output.f90 finite_diff_solver.f90"
 #Name of compiled file
 outfile="finite_diff_solver"
 
@@ -14,10 +14,10 @@ flibs=`nf-config --flibs`
 
 #Actual compile line. Other flags etc can be added
 
-$fc -std=f2008 $fflags $myprogramfiles $flibs -lnetcdf -llapack -o $outfile || { echo 'Compilation failed.' ; exit 1; }
+$fc -std=f2008 $fflags $myprogramfiles $flibs -lnetcdf -llapack -o $outfile || { echo 'Compilation failed.' ; return 1; }
 
 #run line
-./$outfile
+python3 user_input.py
 
 #plot
 
