@@ -10,7 +10,8 @@ filename = 'user_input'
 ###### Set values ######
 
 # Number of timesteps, integer, greater than 0
-tsteps = 50# Timestep size (s), real, greater than 0
+tsteps = 50
+# Timestep size (s), real, greater than 0
 dt = 0.1
 # Initial concentration (mol m**-3), real, positive
 c0 = 0.0
