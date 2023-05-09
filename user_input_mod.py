@@ -2,6 +2,30 @@ import subprocess
 import shlex
 import numpy as np
 
+### CURRENT FILE READ ###
+def iapp_read_csv(filename):
+
+    # Read in csv file
+    with open(filename, 'r') as iapp_file:
+        iapp_all = iapp_file.read()
+    iapp_file.close()
+
+    # Parse file into array of lines
+    iapp_lines = iapp_all.split("\n")
+    nlines = len(iapp_lines) -1
+
+    # Parse each line at comma
+    iapp_arr = np.zeros(nlines)
+    for i in range(nlines):
+        line = i+1
+        iapp_arr[i] = iapp_lines[line].split(",")[1]
+    
+    tsteps = nlines
+    iapp_label = 'From file: ' + filename
+
+    return iapp_arr, iapp_label, tsteps
+    
+    
 
 ### CURRENT SET UP ###
 def iapp_constant_setup(tsteps, iapp):
@@ -64,21 +88,52 @@ def iapp_step_setup(tsteps, iapp_steps):
 
 
 ### DEFAULT VALUES
-def set_defaults():
+def set_defaults_pos():
+    # Default constants taken from Chen et al. 2020, https://doi.org/10.1149/1945-7111/ab9050
+
     # Number of timesteps, integer, greater than 0
     tsteps = 100
     # Timestep size (s), real, greater than 0
     dt = 0.1
+
     # Initial concentration (mol m**-3), real, positive
     c0 = 0.0
     # Diffusion coefficient (m**2 s**-1), real
-    D = 3.3e-13
+    D = 4.0e-15
+    # Width of block (m), real, greater than 0
+    R = 5.86e-6
+    # Particle surface area per unit volume (m**-1), real, greater than 0
+    e_act = 0.665
+    a = 3*e_act/R
+    # Electrode thickness (m), real, greater than 0
+    L = 75.6e-6
+
+    ### Applied current (A m**2), real array of length tsteps
+    ### Constant current
+    iapp_const = 0.73*10**(-3)
+    iapp, iapp_label = iapp_constant_setup(tsteps, iapp_const)
+
+    return tsteps, dt, c0, D, R, a, L, iapp, iapp_label
+
+def set_defaults_neg():
+    # Default constants taken from Chen et al. 2020, https://doi.org/10.1149/1945-7111/ab9050
+
+    # Number of timesteps, integer, greater than 0
+    tsteps = 100
+    # Timestep size (s), real, greater than 0
+    dt = 0.1
+
+    # Initial concentration (mol m**-3), real, positive
+    c0 = 0.0
+    # Diffusion coefficient (m**2 s**-1), real
+    D = 3.3e-14
     # Width of block (m), real, greater than 0
     R = 5.22e-6
     # Particle surface area per unit volume (m**-1), real, greater than 0
-    a = 3.821839e5
+    e_act = 0.75
+    a = 3*e_act/R
     # Electrode thickness (m), real, greater than 0
-    L = 75.6e-6
+    L = 85.2e-6
 
     ### Applied current (A m**2), real array of length tsteps
     ### Constant current
