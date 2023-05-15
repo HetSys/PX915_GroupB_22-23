@@ -1,11 +1,91 @@
-fc ?= gfortran
+fc := gfortran
 fstd := -std=f2008
 fflags ?= -O3
+ldfflags := `nf-config --fflags`
+ldfflibs := `nf-config --flibs`
 war ?= -Wall -Wextra
-execd : fortran_solver_exe.out
-	./fortran_solver_exe.out
-fortran_solver_exe.out : fortran_solver.f90
-	$(fc) $(fstd) $(fflags) fortran_solver.f90 -llapack -o $@ $(war)
+finite_diff_solver : finite_diff_solver.o nc_output.mod read_inputs.mod
+	$(fc) $(fstd) $(fflags) $(ldfflags) read_inputs.o nc_output.o finite_diff_solver.o $(ldfflibs) -llapack -lnetcdf -o $@ $(war)
+
+finite_diff_solver.o : finite_diff_solver.f90 nc_output.mod read_inputs.mod
+	$(fc) $(fstd) $(fflags) -c finite_diff_solver.f90
+
+nc_output.mod : nc_output.f90
+	$(fc) $(fstd) $(ldfflags) -c nc_output.f90 -lnetcdf $(ldfflibs)
+	
+read_inputs.mod : read_inputs.f90
+	$(fc) $(fstd) $(fflags) -c read_inputs.f90
+
+clean :
+	rm *.o *.mod ./finite_diff_solver
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#finite_diff_solver.out : finite_diff_solver.f90 nc_output.mod read_inputs.mod
+#nc_output.mod : nc_output.f90
+#read_inputs.mod : read_inputs.f90
+#finite_diff_solver.f90 : nc_output.mod read_inputs.mod
+
+#finite_diff_solver.out : finite_diff_solver.f90 nc_output.mod read_inputs.mod
+#	$(fc) $(fstd) $(flags) finite_diff_solver.f90 -llapack -lnetcdf nc_output.mod read_inputs.mod -o $@ $(war)
+#nc_output.mod : nc_output.f90
+#	$(fc) $(fstd) $(ldfflags) nc_output.f90 -lnetcdf $(ldfflibs)
+#read_inputs.mod : read_inputs.f90
+#	$(fc) $(fstd) $(flags) read_inputs.f90
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#execd : fortran_solver_exe.out
+#	./fortran_solver_exe.out
+#fortran_solver_exe.out : fortran_solver.f90
+#	$(fc) $(fstd) $(fflags) fortran_solver.f90 -llapack -o $@ $(war)
 
 #py := python3
 
