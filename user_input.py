@@ -6,7 +6,7 @@ import sys
 # sys.stdout = open('test.txt', 'w')
 
 '''! 2. Set filename of output file containing user input parameters.
-@var string filename: Name of output file. Do not enter a file extension. Max characters = 50.
+@var string output_filename: Name of output file. Do not enter a file extension. Max characters = 50.
 '''
 output_filename = 'user_input'
 
