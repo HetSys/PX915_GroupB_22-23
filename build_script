@@ -14,11 +14,12 @@ flibs=`nf-config --flibs`
 
 #Actual compile line. Other flags etc can be added
 
-$fc -std=f2008 $fflags $myprogramfiles $flibs -lnetcdf -llapack -o $outfile || { echo 'Compilation failed.' ; return 1; }
-
+#$fc -std=f2008 $fflags $myprogramfiles $flibs -lnetcdf -llapack -o $outfile || { echo 'Compilation failed.' ; return 1; }
+make
 #run line
 python3 user_input.py
 
 #plot
 
-#python3 plotter.py
+#clean (option)
+#make clean
