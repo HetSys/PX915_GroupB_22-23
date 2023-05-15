@@ -35,13 +35,13 @@ intervaltime  = 10
 #radius of sphere
 R  = 5.22e-6
 
-#number of nodes (hardcoded in out of laziness)
+#number of nodes
 nodenum = 2500
 
 #node step
-dr = R/nodenum
+dr = R/(nodenum-1)
 
-#time step number (hardcoded in out of laziness)
+#time step number
 tsteps = 101
 
 #build time axis
@@ -53,8 +53,6 @@ for i,rowf in enumerate(f2):
     row = np.array(rowf.split())
     vals[i,:] = row
 vals[:,0] = vals[:,0]*dr
-
-
 
 
 #make plot of final state and save figure for reference
@@ -102,13 +100,11 @@ ani = FuncAnimation(fig, update, interval=intervaltime, frames=time_axis,blit=Tr
 
 
 
-
 plt.show()
 
 
 
 ################  Voltage and Concentration Plot ##################
-
 
 #### Constants ####
 F = 96485 #C/mol
@@ -229,8 +225,4 @@ ax2 = ax.twinx()
 ax2.set_ylabel('Applied Current', color = 'r')
 ax2.plot(time_store,i_app_data, color='r')
 plt.show()
-    
-    
-
-
 
