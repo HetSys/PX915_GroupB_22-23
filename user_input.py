@@ -6,9 +6,9 @@ import sys
 # sys.stdout = open('test.txt', 'w')
 
 '''! 2. Set filename of output file containing user input parameters.
-@var string output_filename: Name of output file. Do not enter a file extension. Max characters = 50.
+@var string solver_input_filename: Name of file produced by code, containing paramaters. Do not enter a file extension. Max characters = 50.
 '''
-output_filename = 'user_input'
+solver_input_filename = 'user_input'
 
 
 '''! 3. Set input parameters. 
@@ -49,14 +49,14 @@ iapp, iapp_label, tsteps = UI.iapp_read_csv(iapp_filename)
 If setting manually, tsteps must be validated before iapp is set up to ensure than iapp has a valid length.
 '''
 # Check parameters and output filename are valid
-UI.verify_params(output_filename, tsteps, dt, c0, D, R, a, L)
+UI.verify_params(solver_input_filename, tsteps, dt, c0, D, R, a, L)
 
 #Check applied current is valid 
 UI.verify_iapp(iapp, iapp_label, tsteps)
 
 
 '''! 5. Write parameters to file.'''
-UI.write_to_file(output_filename, tsteps, dt, c0, D, R, a, L, iapp, iapp_label)
+UI.write_to_file(solver_input_filename, tsteps, dt, c0, D, R, a, L, iapp, iapp_label)
 
 '''! 6. Call fortran solver.'''
-UI.call_solver(output_filename)
+UI.call_solver(solver_input_filename)
