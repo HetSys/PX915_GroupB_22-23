@@ -366,28 +366,6 @@ def call_solver(filename):
         exit()
     return
 
-### CALL PLOTTER ###
-def call_plotter():
-    '''!@brief Execution of plotting script.
-    @details plotter for the SPM output file(s) is called using the subprocess package.
-    Errors from execution are read in and further execution prevented if necessary.
-    '''
-    
-    '''! 3. Call plotter.'''
-    command_plotter = shlex.split('python3 plotter.py')    
-    process_plotter = subprocess.run(command_plotter, stdout=subprocess.PIPE, universal_newlines=True)
-    return_plotter = process_plotter.returncode
-    # Print plotter output to command line
-    if (process_plotter.stdout):
-        print(process_plotter.stdout) 
-    # Check for errors in execution
-    if (return_plotter==0):
-        print('Plotting code executed successfully.')
-    else:
-        print('Error executing plotting code, process terminated.')
-        exit()
-
-    return
 
 
 ### INITIALISE A FULL GITT TEST IN PARALLEL ####
