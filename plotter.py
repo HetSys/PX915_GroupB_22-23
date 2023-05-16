@@ -4,6 +4,16 @@ from matplotlib.animation import FuncAnimation
 import netCDF4 as NC
 #Written so user can specify if is positive or negative electrode
 
+#Read in Concs from netcdf
+dat=NC.Dataset("cstorage.nc", "r", format ="NETCDF")
+cstore = dat.variables['cstorage'][:]
+
+
+#Read in Constants
+tsteps=dat.variables['tsteps'][0] #number of timesteps
+nodenum=dat.variables['node_num'][0] #number of nodes 
+R=dat.variables['R'][0] #radius of sphere
+
 
 electrode = 'positive'
 timestep = 1 #s
@@ -22,9 +32,6 @@ for i in range(no_timesteps):
     time_store.append(i*timestep)
 time_store = np.array(time_store)
 
-#Read in Concs from netcdf
-dat=NC.Dataset("cstorage.nc", "r", format ="NETCDF")
-cstore = dat.variables['cstorage'][:]
 
 #open output file
 #f2 = open('output.txt','r')
@@ -32,18 +39,13 @@ cstore = dat.variables['cstorage'][:]
 #time between frames in animation
 intervaltime  = 10
 
-#radius of sphere
-R  = 5.22e-6
-
-#number of nodes (hardcoded in out of laziness)
-nodenum = 2500
 
 #node step
 dr = R/(nodenum-1)
 
 #time step number
 
-tsteps = no_timesteps +1
+tsteps +=1
 
 
 #build time axis
@@ -58,7 +60,6 @@ vals = np.zeros([nodenum,tsteps])
 
 dat=NC.Dataset("cstorage.nc", "r", format ="NETCDF")    #Read in Concentration data
 cstore = np.array(dat.variables['cstorage'][:])
-shep = np.shape(cstore)
 nodenum = 2500
 
 vals = np.zeros([nodenum,tsteps])
@@ -217,9 +218,9 @@ volt_store[0] = volt_store[1] - (volt_store[2]-volt_store[1])       ############
 fig, ax = plt.subplots()
 ax.plot(time_store,volt_store, color = 'b')
 ax.set_ylabel('Voltage', color ='b')
-ax.set_title('Voltage and Applied Current Over Time')
+ax.set_title('Voltage and Applied Current Over Time (Volts)')
 ax2 = ax.twinx()
-ax2.set_ylabel('Applied Current', color = 'r')
+ax2.set_ylabel('Applied Current (Amps)', color = 'r')
 ax2.plot(time_store,i_app_data, color='r')
 plt.show()
     
