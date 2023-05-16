@@ -1,52 +1,78 @@
+'''!@package user_input_mod
+@brief Package containing functions to set up user input parameters and execute the solver.
+@details Options are provided to automatically generate applied current iapp as constant and step functions, and to read iapp from a csv file.
+Options are provided to set default values of parameters from Chen et al. 2020, https://doi.org/10.1149/1945-7111/ab9050.
+Additional functions validate the types and values of input parameters, write the user input txt file, and execute the solver.
+'''
+
 import subprocess
 import shlex
 import numpy as np
 
-### CURRENT FILE READ ###
+### CURRENT SET UP ###
 def iapp_read_csv(filename):
+    '''!@brief Reads applied current iapp from a csv file provided by user, 'filename'.
+    @param[in] filename: Name of csv file containing iapp as Time, Current.
+    @result iapp_arr: Array containing applied current.
+    @result iapp_label: String containing description of iapp.
+    @result tsteps: Number of timesteps, found from length of iapp array.
+    '''
 
-    # Read in csv file
+    '''! 1. Read in csv file.'''
     with open(filename, 'r') as iapp_file:
         iapp_all = iapp_file.read()
     iapp_file.close()
 
-    # Parse file into array of lines
+    '''! 2. Parse file into array of lines.'''
     iapp_lines = iapp_all.split("\n")
     nlines = len(iapp_lines) -1
 
-    # Parse each line at comma
+    '''! 3. Parse each line at comma.'''
     iapp_arr = np.zeros(nlines)
     for i in range(nlines):
         line = i+1
         iapp_arr[i] = iapp_lines[line].split(",")[1]
     
+    '''! 4. Define tsteps and iapp_label.'''
     tsteps = nlines
-    iapp_label = 'From file: ' + filename
+    iapp_label = 'file = ' + filename
 
     return iapp_arr, iapp_label, tsteps
     
-    
-
-### CURRENT SET UP ###
 def iapp_constant_setup(tsteps, iapp):
-    # Verify current value is a float
+    '''!@brief Set up applied current iapp as constant valued array of length tsteps.
+    @param[in] tsteps: Number of timesteps, length of array iapp.
+    @param[in] iapp: Constant value of iapp.
+    @result iapp_arr: Array containing applied current.
+    @result iapp_label: String containing description of iapp.
+    '''
+
+    '''! 1. Verify current iapp is a float.'''
     if (type(iapp)!=float):
         print('Constant applied current must be a float/real value.')
         exit()
 
-    # Set up array
+    '''! 2. Set up array. '''
     iapp_label = 'Constant, ' + str(iapp)
     iapp_arr = np.ones(tsteps) *  iapp
+
     return iapp_arr, iapp_label
 
-
 def iapp_step_setup(tsteps, iapp_steps):
+    '''!@brief Set up applied current iapp as stepped array of length tsteps.
+    @param[in] tsteps: Number of timesteps, length of array iapp.
+    @param[in] iapp_steps: 2D Array containing heights of steps and timesteps where step occurs, starting timestep 0. Timesteps must be integers.
+    @result iapp_arr: Array containing applied current.
+    @result iapp_label: String containing description of iapp.
+    '''
+
+    '''! 1. Set up label and initialise array.'''
     iapp_label = 'Step function, ' + str(iapp_steps)
 
     iapp_arr = np.ones(tsteps)
     nsteps = len(iapp_steps)
 
-    # Verify timesteps are integers, and current are floats
+    '''! 2. Verify timesteps are integers, and current are floats.'''
     problem_timesteps = []
     timestep_err = False
     problem_vals = []
@@ -67,13 +93,13 @@ def iapp_step_setup(tsteps, iapp_steps):
     if (val_err or timestep_err):
         exit()
 
-    # Verify first timestep is 0
+    '''! 3. Verify first timestep is 0.'''
     if (iapp_steps[0][1]!=0):
-    	print('Initial applied current must be at timestep 0.')
-    	exit()
+        print('Initial applied current must be at timestep 0.')
+        exit()
         
 
-    # Set up array
+    '''! 4. Set up array.'''
     for i in range(nsteps):
         start = iapp_steps[i][1]
         if (i == nsteps-1):
@@ -87,9 +113,13 @@ def iapp_step_setup(tsteps, iapp_steps):
 
 
 
-### DEFAULT VALUES
+### DEFAULT PARAMETERS ###
 def set_defaults_pos():
-    # Default constants taken from Chen et al. 2020, https://doi.org/10.1149/1945-7111/ab9050
+    '''!@brief Returns default parameters for a positive electrode
+    @details Parameter values are taken from Chen et al. 2020, https://doi.org/10.1149/1945-7111/ab9050. 
+    Simulation is set up to run for 100 timesteps of size dt=0.1s.
+    Applied current is set up as a constant current of value 0.73mA.
+    '''
 
     # Number of timesteps, integer, greater than 0
     tsteps = 100
@@ -108,15 +138,18 @@ def set_defaults_pos():
     # Electrode thickness (m), real, greater than 0
     L = 75.6e-6
 
-    ### Applied current (A m**2), real array of length tsteps
-    ### Constant current
+    ### Constant applied current (A m**2), real array of length tsteps
     iapp_const = 0.73*10**(-3)
     iapp, iapp_label = iapp_constant_setup(tsteps, iapp_const)
 
     return tsteps, dt, c0, D, R, a, L, iapp, iapp_label
 
 def set_defaults_neg():
-    # Default constants taken from Chen et al. 2020, https://doi.org/10.1149/1945-7111/ab9050
+    '''!@brief Returns default parameters for a negative electrode
+    @details Parameter values are taken from Chen et al. 2020, https://doi.org/10.1149/1945-7111/ab9050. 
+    Simulation is set up to run for 100 timesteps of size dt=0.1s.
+    Applied current is set up as a constant current of value 0.73mA.
+    '''
 
     # Number of timesteps, integer, greater than 0
     tsteps = 100
@@ -143,10 +176,23 @@ def set_defaults_neg():
     return tsteps, dt, c0, D, R, a, L, iapp, iapp_label
 
 
+
 ### PARAMETER VERIFICATION ###
 def verify_params(filename, tsteps, dt, c0, D, R, a, L):
+    '''!@brief Verifies types and values of input parameters.
+    @details Verifies that parameters output filename, tsteps, dt, c0, D, R, a, and L have the correct type and valid values. 
+    If any are found to be invalid, an error is printed and the execution stopped.
+    @param[in] filename: Output filename, string, must have less than 50 chars. No file extension required.
+    @param[in] tsteps: Number of timesteps, integer > 0.
+    @param[in] dt: Timestep size, float > 0.
+    @param[in] c0: Initial concentration, float >= 0.
+    @param[in] D: Diffusion constant, float.
+    @param[in] R: Width of block, float > 0.
+    @param[in] a: Particle surface area per unit volume, float >= 0.
+    @param[in] L: Electrode thickness, float >= 0.
+    '''
 
-    # set var_error to True is any errors occur
+    # Set var_error to True is any errors occur
     var_error = False
 
     # filename
@@ -210,14 +256,21 @@ def verify_params(filename, tsteps, dt, c0, D, R, a, L):
         print('Electrode thickness, L, must have a positive, non zero value.')
         var_error = True
 
-
-    # if any errors have occured, stop script
+    # If any errors have occured, stop script.
     if (var_error==True):
         exit()
 
+    return
 
-### APPLIED CURRENT VERIFICATION ###
 def verify_iapp(iapp, iapp_label, tsteps):
+    '''!@brief Verifies types and values of applied current array and label.
+    @details Verifies that parameters output iapp and iapp_label have the correct types, valid values, and correct lengths.
+    If any are found to be invalid, an error is printed and the execution stopped.
+    @param[in] iapp: Applied current, 1D array of floats of length tsteps.
+    @param[in] iapp_label: Label of applied current, string.
+    @param[in] tsteps: Number of timesteps, to check iapp has correct length.
+    '''
+
     # set var_error to True is any errors occur
     var_error = False
 
@@ -239,14 +292,24 @@ def verify_iapp(iapp, iapp_label, tsteps):
     if (var_error==True):
         exit()
 
+    return
+
+
 
 ### WRITE TO FILE ###
 def write_to_file(filename, tsteps, dt, c0, D, R, a, L, iapp, iapp_label):
+    '''!@brief Function writes user inputs to txt file.
+    @details Writes user inputs to txt file named 'filename'. 
+    Parameters are output in format 'parameter = value'.
+    tsteps, dt, c0, D, R, a, L are output to top of file, followed by an asterix line (***).
+    iapp_label follows the asterix line, with iapp array following, written one element per line.
+    '''
 
-    # Set file name
+
+    '''! 1. Set file name.'''
     filename = filename + '.txt'
 
-    # Make strings to write to file
+    '''! 2. Make list of strings to write to file.'''
     parameters = []
     parameters.append('tsteps = ' + str(tsteps) + '\n')
     parameters.append('dt = ' + str(dt) + '\n')
@@ -258,29 +321,37 @@ def write_to_file(filename, tsteps, dt, c0, D, R, a, L, iapp, iapp_label):
 
     parameters.append('******************\n')
 
-    parameters.append('iapp = ' + iapp_label)
+    parameters.append('iapp: ' + iapp_label)
     for i in range(len(iapp)):
         parameters.append('\n')
         parameters.append(str(iapp[i]))
 
-    # Write to file
+    '''! 3. Write to file.'''
     with open(filename, 'w') as user_input:
         user_input.writelines(parameters)
     user_input.close()
 
+    return
 
 
 
 ### CALL SOLVER ###
 def call_solver(filename):
+    '''!@brief Execution of SPM solver and plotting script.
+    @details SPM solver and plotting scripts are called using the subprocess package.
+    The filename of the user input file is passed to the solver as a command line argument.
+    Errors from execution are read in and further execution prevented if necessary.
+    @param[in] filename: Name of user input file, no file extension.
+    '''
 
-    #### Set file name
+    '''! 1. Set up solver call line, including file name.'''
     filename = filename + '.txt'
     solver_call_line = './finite_diff_solver' + ' filename=' + filename
 
     print('User input successful, calling solver...')
 
-    #### Call solver 
+
+    '''! 2. Call solver.'''
     command_solver = shlex.split(solver_call_line)
     process_solver = subprocess.run(command_solver, stdout=subprocess.PIPE, universal_newlines=True)
     return_solver = process_solver.returncode
@@ -294,7 +365,8 @@ def call_solver(filename):
         print('Error executing solver, process terminated.')
         exit()
 
-    #### Call plotter
+
+    '''! 3. Call plotter.'''
     command_plotter = shlex.split('python3 plotter.py')    
     process_plotter = subprocess.run(command_plotter, stdout=subprocess.PIPE, universal_newlines=True)
     return_plotter = process_plotter.returncode
@@ -308,3 +380,4 @@ def call_solver(filename):
         print('Error executing plotting code, process terminated.')
         exit()
 
+    return
