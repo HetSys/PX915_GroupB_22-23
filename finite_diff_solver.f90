@@ -20,7 +20,7 @@ PROGRAM MAIN
     REAL(REAL64) :: R !total width of block
     REAL(REAL64) :: k !D*dt/(dr**2)
     REAL(REAL64) :: ireal !real version of i for loop
-    REAL(REAL64), DIMENSION(:), ALLOCATABLE :: iapp, Z !applied current, in general a function of t
+    REAL(REAL64), DIMENSION(:), ALLOCATABLE :: iapp, Z, time_axis !applied current, in general a function of t, time_axis
     REAL(REAL64) :: a_small, L !constants
     REAL(REAL64), PARAMETER :: F = 96485_REAL64 !Faraday constant
     CHARACTER(len=54) :: filename, output_name
@@ -46,7 +46,12 @@ PROGRAM MAIN
 
     ALLOCATE(cstorage(n, tsteps))
     ALLOCATE(Z(tsteps))
-    
+
+    !allocate time axis
+    ALLOCATE(time_axis(tsteps))
+    !first state is at t=0
+    time_axis(1) = 0.0_REAL64
+
     deltar = R/(REAL(n,kind=REAL64)-1.0_REAL64)
     k = -D/(2.0_REAL64*(deltar**2)) !k is just a shortcut holding -D/(2(dr^2))
     
@@ -107,6 +112,7 @@ PROGRAM MAIN
         !END IF
         !add solution to storage vector
         cstorage(:,tstep+1) = c
+        time_axis(tstep+1) = dt*tstep
     END DO
     
 
@@ -117,7 +123,7 @@ PROGRAM MAIN
         !print*, i, cstorage(i,:)
     END DO
     CLOSE(9)
-    CALL output_cstorage(cstorage, n, tsteps, R, output_name)
+    CALL output_cstorage(cstorage, n, tsteps, R,time_axis, output_name)
 
     DEALLOCATE(cstorage)
     DEALLOCATE(iapp)
