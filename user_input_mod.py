@@ -118,7 +118,7 @@ def set_defaults_pos():
     '''!@brief Returns default parameters for a positive electrode
     @details Parameter values are taken from Chen et al. 2020, https://doi.org/10.1149/1945-7111/ab9050. 
     Simulation is set up to run for 100 timesteps of size dt=0.1s.
-    Applied current density is set up as a constant current density of value 0.73mA.
+    Applied current density is set up as a constant current density of value 0.73mA m^2.
     '''
     # Label of positive electrode
     electrode_charge = "p"
@@ -150,7 +150,7 @@ def set_defaults_neg():
     '''!@brief Returns default parameters for a negative electrode
     @details Parameter values are taken from Chen et al. 2020, https://doi.org/10.1149/1945-7111/ab9050. 
     Simulation is set up to run for 100 timesteps of size dt=0.1s.
-    Applied current density is set up as a constant current density of value 0.73mA.
+    Applied current density is set up as a constant current density of value 0.73mA m^2.
     '''
     # Label of negative electrode
     electrode_charge = "n"
@@ -206,6 +206,14 @@ def verify_params(filename, tsteps, dt, c0, D, R, a, L, electrode_charge):
         var_error = True
     if (len(filename)>50):
         print('Filename must have less than 50 characters.')
+        var_error = True
+    # check file is not a checkpoint file, and does not have a file extension
+    file_extension = filename.split(".")
+    if (len(file_extension)>1 and file_extension[-1]=="nc"):
+        print("Checkpoint file entered as name for user generated parameter file. Please enter a name without the extension '.nc'.")
+        var_error = True
+    elif (len(file_extension)>1 and file_extension[-1]=="txt"):
+        print("File extension not required for user generated parameter file. Please enter a name without the extension '.txt'.")
         var_error = True
 
     # tsteps
@@ -348,22 +356,43 @@ def write_to_file(filename, tsteps, dt, c0, D, R, a, L, iapp, iapp_label, electr
 
 
 ### CALL SOLVER ###
-def call_solver(filename):
+def call_solver(filename, checkpoint):
     '''!@brief Execution of SPM solver and plotting script.
     @details SPM solver and plotting scripts are called using the subprocess package.
     The filename of the user input file is passed to the solver as a command line argument.
     Errors from execution are read in and further execution prevented if necessary.
-    @param[in] filename: Name of user input file, no file extension.
+    @param[in] filename: Name of file containing desired input, either a checkpoint file or user input file with no file extension.
+    @param[in] checkpoint: Boolean indicating if a checkpoint file is used.
     '''
 
-    '''! 1. Set up solver call line, including file name.'''
-    filename = filename + '.txt'
+    '''! 1. Validate checkpoint file or user input file name.'''
+    # If using checkpoint, check input file is a netcdf file w/extension '.nc'
+    file_extension = filename.split(".")
+    if (checkpoint):
+        if (len(file_extension)<2):
+            # Check .nc file entered
+            print("Invalid checkpoint file. Please enter a file with a '.nc' extension.")
+            exit()
+        elif (file_extension[-1]!='nc'):
+            # Check .nc file entered
+            print("Invalid checkpoint file. Please enter a file with a '.nc' extension.")
+            exit()
+        # elif (not os.path.isfile(filename)):
+        #     # Check .nc file exists
+        #     print("Checkpoint file not found:", filename)
+        #     exit()
+        else:
+            print("Checkpoint file passed as input file, calling solver...")
+
+    else:
+        filename = filename + '.txt'
+        print("User input file generated, calling solver...")
+
+    '''! 2. Set up solver call line.'''
     solver_call_line = './finite_diff_solver' + ' filename=' + filename
 
-    print('User input successful, calling solver...')
 
-
-    '''! 2. Call solver.'''
+    '''! 3. Call solver.'''
     command_solver = shlex.split(solver_call_line)
     process_solver = subprocess.run(command_solver, stdout=subprocess.PIPE, universal_newlines=True)
     return_solver = process_solver.returncode
@@ -378,18 +407,18 @@ def call_solver(filename):
         exit()
 
 
-    '''! 3. Call plotter.'''
-    command_plotter = shlex.split('python3 plotter.py')    
-    process_plotter = subprocess.run(command_plotter, stdout=subprocess.PIPE, universal_newlines=True)
-    return_plotter = process_plotter.returncode
-    # Print plotter output to command line
-    if (process_plotter.stdout):
-        print(process_plotter.stdout) 
-    # Check for errors in execution
-    if (return_plotter==0):
-        print('Plotting code executed successfully.')
-    else:
-        print('Error executing plotting code, process terminated.')
-        exit()
+    # '''! 4. Call plotter.'''
+    # command_plotter = shlex.split('python3 plotter.py')    
+    # process_plotter = subprocess.run(command_plotter, stdout=subprocess.PIPE, universal_newlines=True)
+    # return_plotter = process_plotter.returncode
+    # # Print plotter output to command line
+    # if (process_plotter.stdout):
+    #     print(process_plotter.stdout) 
+    # # Check for errors in execution
+    # if (return_plotter==0):
+    #     print('Plotting code executed successfully.')
+    # else:
+    #     print('Error executing plotting code, process terminated.')
+    #     exit()
 
     return

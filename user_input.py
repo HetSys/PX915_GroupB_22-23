@@ -5,10 +5,14 @@ import sys
 '''! 1. Option to output stdout (command line output) to file. Uncomment to use option.'''
 # sys.stdout = open('test.txt', 'w')
 
-'''! 2. Set filename of output file containing user input parameters.
+'''! 2. Select input file: checkpoint file or user input parameters.
+Filename of desired checkpoint file or name to output file containing user input parameters.
+@var boolean checkpoint: Select checkpoint file for input, rather than user input parameters.
 @var string solver_input_filename: Name of file produced by code, containing paramaters. Do not enter a file extension. Max characters = 50.
 '''
+checkpoint = False
 solver_input_filename = 'user_input'
+#solver_input_filename = 'test.nc'
 
 
 '''! 3. Set input parameters. 
@@ -41,23 +45,24 @@ iapp_steps: 2D array of step values and timesteps where step occurs, starting ti
 tsteps, dt, c0, D, R, a, L, iapp, iapp_label, electrode_charge = UI.set_defaults_pos()
 
 # Read in applied current density from csv file
-iapp_filename = 'WLTP_m10.csv'
-iapp, iapp_label, tsteps = UI.iapp_read_csv(iapp_filename)
+# iapp_filename = 'WLTP_m10.csv'
+# iapp, iapp_label, tsteps = UI.iapp_read_csv(iapp_filename)
 
 ######### END SET VALUES #########
 
-'''! 4. Check parameters and filename are valid.
-If setting manually, tsteps must be validated before iapp is set up to ensure than iapp has a valid length.
-'''
-# Check parameters and output filename are valid
-UI.verify_params(solver_input_filename, tsteps, dt, c0, D, R, a, L, electrode_charge)
+'''! 4. Check for checkpointing or user defined input parameters.'''
+if (not checkpoint):
+    '''! 4.1. Check parameters and filename are valid.
+    If setting manually, tsteps must be validated before iapp is set up to ensure than iapp has a valid length.
+    '''
+    # Check parameters and output filename are valid
+    UI.verify_params(solver_input_filename, tsteps, dt, c0, D, R, a, L, electrode_charge)
 
-#Check applied current density is valid 
-UI.verify_iapp(iapp, iapp_label, tsteps)
+    #Check applied current is valid 
+    UI.verify_iapp(iapp, iapp_label, tsteps)
 
+    '''! 4.2. Write parameters to file.'''
+    UI.write_to_file(solver_input_filename, tsteps, dt, c0, D, R, a, L, iapp, iapp_label, electrode_charge)
 
-'''! 5. Write parameters to file.'''
-UI.write_to_file(solver_input_filename, tsteps, dt, c0, D, R, a, L, iapp, iapp_label, electrode_charge)
-
-'''! 6. Call fortran solver.'''
-UI.call_solver(solver_input_filename)
+'''! 5. Call fortran solver.'''
+UI.call_solver(solver_input_filename, checkpoint)

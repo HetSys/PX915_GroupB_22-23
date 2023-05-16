@@ -29,7 +29,8 @@ PROGRAM MAIN
 
     ! Read in user inputs
     filename = read_command_line()
-    user_inputs = read_user_inputs(filename) ! returns type containing user inputs
+    ! Retrieve user inputs
+    user_inputs = set_inputs(filename) ! returns type containing user inputs
 
     tsteps = user_inputs%tsteps
     dt = user_inputs%dt
