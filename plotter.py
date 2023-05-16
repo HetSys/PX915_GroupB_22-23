@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.animation import FuncAnimation
+import netCDF4 as NC
 #Written so user can specify if is positive or negative electrode
 
 
@@ -21,9 +22,12 @@ for i in range(no_timesteps):
     time_store.append(i*timestep)
 time_store = np.array(time_store)
 
+#Read in Concs from netcdf
+dat=NC.Dataset("cstorage.nc", "r", format ="NETCDF")
+cstore = dat.variables['cstorage'][:]
 
 #open output file
-f2 = open('output.txt','r')
+#f2 = open('output.txt','r')
 
 #time between frames in animation
 intervaltime  = 10
@@ -39,19 +43,28 @@ dr = R/(nodenum-1)
 
 #time step number
 
-tsteps = no_timesteps+1
+tsteps = no_timesteps +1
 
 
 #build time axis
 time_axis = [i for i in range(1,tsteps)]
 vals = np.zeros([nodenum,tsteps])
 
-#extract data from file
-for i,rowf in enumerate(f2):
-    row = np.array(rowf.split())
-    vals[i,:] = row
-vals[:,0] = vals[:,0]*dr
+##extract data from file
+#for i,rowf in enumerate(f2):
+#    row = np.array(rowf.split())
+#    vals[i,:] = row
+#vals[:,0] = vals[:,0]*dr
 
+dat=NC.Dataset("cstorage.nc", "r", format ="NETCDF")    #Read in Concentration data
+cstore = np.array(dat.variables['cstorage'][:])
+shep = np.shape(cstore)
+nodenum = 2500
+
+vals = np.zeros([nodenum,tsteps])
+for i in range(nodenum):
+    vals[i,1:] = cstore[:,i]
+    vals[i,0] = i*dr
 
 #make plot of final state and save figure for reference
 plt.plot(vals[:,0],vals[:,-1])
