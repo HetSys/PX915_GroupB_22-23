@@ -20,8 +20,9 @@ Input parameters: tsteps, dt, c0, D, R, a, L, iapp, iapp_label
 @var float R: Width of block (m), float > 0.
 @var float a: Particle surface area per unit volume (m**-1), float >= 0.
 @var float L: Electrode thickness(m), float >= 0.
-@var 1D array (len=tsteps), float iapp: Applied current (A m**2), 1D array of floats of length tsteps.
-@var string iapp_label: Label of applied current, string.
+@var 1D array (len=tsteps), float iapp: Applied current density (A m**2), 1D array of floats of length tsteps.
+@var string iapp_label: Label of applied current density, string.
+@var string electrode_charge: Label of electrode charge as positive or negative.
 
 Options:
 - Use default parameters by calling UI.set_defaults_pos() for a positive electrode, or UI.set_defaults_neg() for a negative electrode.
@@ -29,17 +30,17 @@ Options:
 Options for iapp:
 - Use default values.
 - Read values from a csv file 'iapp_filename' using: iapp, iapp_label, tsteps = UI.iapp_read_csv(iapp_filename).
-- Set up a constant current of value 'iapp_const' using: iapp, iapp_label = UI.iapp_constant_setup(tsteps, iapp_const).
-- Set up a stepped current from a 2D array of values and timesteps 'iapp_steps' using: iapp, iapp_label = UI.iapp_step_setup(tsteps, iapp_steps).
+- Set up a constant current density of value 'iapp_const' using: iapp, iapp_label = UI.iapp_constant_setup(tsteps, iapp_const).
+- Set up a stepped current density from a 2D array of values and timesteps 'iapp_steps' using: iapp, iapp_label = UI.iapp_step_setup(tsteps, iapp_steps). 
 iapp_steps: 2D array of step values and timesteps where step occurs, starting timestep 0. Timesteps must be integers.
 - Manually set values. iapp must be an array of floats with length tsteps.
 '''
 ######### SET VALUES #########
 
 # Import default values
-tsteps, dt, c0, D, R, a, L, iapp, iapp_label = UI.set_defaults_pos()
+tsteps, dt, c0, D, R, a, L, iapp, iapp_label, electrode_charge = UI.set_defaults_pos()
 
-# Read in applied current from csv file
+# Read in applied current density from csv file
 iapp_filename = 'WLTP_m10.csv'
 iapp, iapp_label, tsteps = UI.iapp_read_csv(iapp_filename)
 
@@ -49,14 +50,14 @@ iapp, iapp_label, tsteps = UI.iapp_read_csv(iapp_filename)
 If setting manually, tsteps must be validated before iapp is set up to ensure than iapp has a valid length.
 '''
 # Check parameters and output filename are valid
-UI.verify_params(solver_input_filename, tsteps, dt, c0, D, R, a, L)
+UI.verify_params(solver_input_filename, tsteps, dt, c0, D, R, a, L, electrode_charge)
 
-#Check applied current is valid 
+#Check applied current density is valid 
 UI.verify_iapp(iapp, iapp_label, tsteps)
 
 
 '''! 5. Write parameters to file.'''
-UI.write_to_file(solver_input_filename, tsteps, dt, c0, D, R, a, L, iapp, iapp_label)
+UI.write_to_file(solver_input_filename, tsteps, dt, c0, D, R, a, L, iapp, iapp_label, electrode_charge)
 
 '''! 6. Call fortran solver.'''
 UI.call_solver(solver_input_filename)

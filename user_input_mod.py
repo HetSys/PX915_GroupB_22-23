@@ -1,6 +1,6 @@
 '''!@package user_input_mod
 @brief Package containing functions to set up user input parameters and execute the solver.
-@details Options are provided to automatically generate applied current iapp as constant and step functions, and to read iapp from a csv file.
+@details Options are provided to automatically generate applied current density iapp as constant and step functions, and to read iapp from a csv file.
 Options are provided to set default values of parameters from Chen et al. 2020, https://doi.org/10.1149/1945-7111/ab9050.
 Additional functions validate the types and values of input parameters, write the user input txt file, and execute the solver.
 '''
@@ -9,11 +9,11 @@ import subprocess
 import shlex
 import numpy as np
 
-### CURRENT SET UP ###
+### CURRENT DENSITY SET UP ###
 def iapp_read_csv(filename):
-    '''!@brief Reads applied current iapp from a csv file provided by user, 'filename'.
-    @param[in] filename: Name of csv file containing iapp as Time, Current.
-    @result iapp_arr: Array containing applied current.
+    '''!@brief Reads applied current density iapp from a csv file provided by user, 'filename'.
+    @param[in] filename: Name of csv file containing iapp as Time, Current density.
+    @result iapp_arr: Array containing applied current density.
     @result iapp_label: String containing description of iapp.
     @result tsteps: Number of timesteps, found from length of iapp array.
     '''
@@ -40,16 +40,16 @@ def iapp_read_csv(filename):
     return iapp_arr, iapp_label, tsteps
     
 def iapp_constant_setup(tsteps, iapp):
-    '''!@brief Set up applied current iapp as constant valued array of length tsteps.
+    '''!@brief Set up applied current density iapp as constant valued array of length tsteps.
     @param[in] tsteps: Number of timesteps, length of array iapp.
     @param[in] iapp: Constant value of iapp.
-    @result iapp_arr: Array containing applied current.
+    @result iapp_arr: Array containing applied current density.
     @result iapp_label: String containing description of iapp.
     '''
 
-    '''! 1. Verify current iapp is a float.'''
+    '''! 1. Verify current density iapp is a float.'''
     if (type(iapp)!=float):
-        print('Constant applied current must be a float/real value.')
+        print('Constant applied current density must be a float/real value.')
         exit()
 
     '''! 2. Set up array. '''
@@ -59,10 +59,10 @@ def iapp_constant_setup(tsteps, iapp):
     return iapp_arr, iapp_label
 
 def iapp_step_setup(tsteps, iapp_steps):
-    '''!@brief Set up applied current iapp as stepped array of length tsteps.
+    '''!@brief Set up applied current density iapp as stepped array of length tsteps.
     @param[in] tsteps: Number of timesteps, length of array iapp.
     @param[in] iapp_steps: 2D Array containing heights of steps and timesteps where step occurs, starting timestep 0. Timesteps must be integers.
-    @result iapp_arr: Array containing applied current.
+    @result iapp_arr: Array containing applied current density.
     @result iapp_label: String containing description of iapp.
     '''
 
@@ -72,7 +72,7 @@ def iapp_step_setup(tsteps, iapp_steps):
     iapp_arr = np.ones(tsteps)
     nsteps = len(iapp_steps)
 
-    '''! 2. Verify timesteps are integers, and current are floats.'''
+    '''! 2. Verify timesteps are integers, and current density are floats.'''
     problem_timesteps = []
     timestep_err = False
     problem_vals = []
@@ -87,15 +87,15 @@ def iapp_step_setup(tsteps, iapp_steps):
             val_err = True
 
     if (timestep_err):
-        print('Timesteps for current step function must be integers. Problems occur at steps: ', problem_timesteps)
+        print('Timesteps for current density step function must be integers. Problems occur at steps: ', problem_timesteps)
     if (val_err):
-        print('Applied currents in step function must be float/real values. Problems occur at steps: ', problem_vals)
+        print('Applied current densities in step function must be float/real values. Problems occur at steps: ', problem_vals)
     if (val_err or timestep_err):
         exit()
 
     '''! 3. Verify first timestep is 0.'''
     if (iapp_steps[0][1]!=0):
-        print('Initial applied current must be at timestep 0.')
+        print('Initial applied current density must be at timestep 0.')
         exit()
         
 
@@ -118,8 +118,10 @@ def set_defaults_pos():
     '''!@brief Returns default parameters for a positive electrode
     @details Parameter values are taken from Chen et al. 2020, https://doi.org/10.1149/1945-7111/ab9050. 
     Simulation is set up to run for 100 timesteps of size dt=0.1s.
-    Applied current is set up as a constant current of value 0.73mA.
+    Applied current density is set up as a constant current density of value 0.73mA.
     '''
+    # Label of positive electrode
+    electrode_charge = "p"
 
     # Number of timesteps, integer, greater than 0
     tsteps = 100
@@ -138,18 +140,20 @@ def set_defaults_pos():
     # Electrode thickness (m), real, greater than 0
     L = 75.6e-6
 
-    ### Constant applied current (A m**2), real array of length tsteps
+    ### Constant applied current density (A m**2), real array of length tsteps
     iapp_const = 0.73*10**(-3)
     iapp, iapp_label = iapp_constant_setup(tsteps, iapp_const)
 
-    return tsteps, dt, c0, D, R, a, L, iapp, iapp_label
+    return tsteps, dt, c0, D, R, a, L, iapp, iapp_label, electrode_charge
 
 def set_defaults_neg():
     '''!@brief Returns default parameters for a negative electrode
     @details Parameter values are taken from Chen et al. 2020, https://doi.org/10.1149/1945-7111/ab9050. 
     Simulation is set up to run for 100 timesteps of size dt=0.1s.
-    Applied current is set up as a constant current of value 0.73mA.
+    Applied current density is set up as a constant current density of value 0.73mA.
     '''
+    # Label of negative electrode
+    electrode_charge = "n"
 
     # Number of timesteps, integer, greater than 0
     tsteps = 100
@@ -168,17 +172,17 @@ def set_defaults_neg():
     # Electrode thickness (m), real, greater than 0
     L = 85.2e-6
 
-    ### Applied current (A m**2), real array of length tsteps
-    ### Constant current
+    ### Applied current density (A m**2), real array of length tsteps
+    ### Constant current density
     iapp_const = 0.73*10**(-3)
     iapp, iapp_label = iapp_constant_setup(tsteps, iapp_const)
 
-    return tsteps, dt, c0, D, R, a, L, iapp, iapp_label
+    return tsteps, dt, c0, D, R, a, L, iapp, iapp_label, electrode_charge
 
 
 
 ### PARAMETER VERIFICATION ###
-def verify_params(filename, tsteps, dt, c0, D, R, a, L):
+def verify_params(filename, tsteps, dt, c0, D, R, a, L, electrode_charge):
     '''!@brief Verifies types and values of input parameters.
     @details Verifies that parameters output filename, tsteps, dt, c0, D, R, a, and L have the correct type and valid values. 
     If any are found to be invalid, an error is printed and the execution stopped.
@@ -190,6 +194,7 @@ def verify_params(filename, tsteps, dt, c0, D, R, a, L):
     @param[in] R: Width of block, float > 0.
     @param[in] a: Particle surface area per unit volume, float >= 0.
     @param[in] L: Electrode thickness, float >= 0.
+    @param[in] electrode_charge: Label of charge of electrode, string, 'p' for positive or 'n' for negative.
     '''
 
     # Set var_error to True is any errors occur
@@ -256,6 +261,12 @@ def verify_params(filename, tsteps, dt, c0, D, R, a, L):
         print('Electrode thickness, L, must have a positive, non zero value.')
         var_error = True
 
+    # electrode_charge
+    if (not(electrode_charge=='p' or electrode_charge=='n')):
+        print('Electrode charge must be "p" for positive or "n" for negative.')
+        var_error = True
+
+
     # If any errors have occured, stop script.
     if (var_error==True):
         exit()
@@ -263,11 +274,11 @@ def verify_params(filename, tsteps, dt, c0, D, R, a, L):
     return
 
 def verify_iapp(iapp, iapp_label, tsteps):
-    '''!@brief Verifies types and values of applied current array and label.
+    '''!@brief Verifies types and values of applied current density array and label.
     @details Verifies that parameters output iapp and iapp_label have the correct types, valid values, and correct lengths.
     If any are found to be invalid, an error is printed and the execution stopped.
-    @param[in] iapp: Applied current, 1D array of floats of length tsteps.
-    @param[in] iapp_label: Label of applied current, string.
+    @param[in] iapp: Applied current density, 1D array of floats of length tsteps.
+    @param[in] iapp_label: Label of applied current density, string.
     @param[in] tsteps: Number of timesteps, to check iapp has correct length.
     '''
 
@@ -277,15 +288,15 @@ def verify_iapp(iapp, iapp_label, tsteps):
     # iapp
     iapp_type = [(type(iapp[i].item())!=float) for i in range(len(iapp))]
     if (any(iapp_type)):
-        print('Applied current, iapp, must be an array of float/real values.')
+        print('Applied current density, iapp, must be an array of float/real values.')
         var_error = True
     if (len(iapp)!=tsteps):
-        print('Applied current, iapp, must be an array of length tsteps.')
+        print('Applied current density, iapp, must be an array of length tsteps.')
         var_error = True
 
     # iapp_label
     if (type(iapp_label)!=str):
-        print('Label for applied current function, iapp_label, must be a string.')
+        print('Label for applied current density function, iapp_label, must be a string.')
         var_error = True
 
     # if any errors have occured, stop script
@@ -297,11 +308,11 @@ def verify_iapp(iapp, iapp_label, tsteps):
 
 
 ### WRITE TO FILE ###
-def write_to_file(filename, tsteps, dt, c0, D, R, a, L, iapp, iapp_label):
+def write_to_file(filename, tsteps, dt, c0, D, R, a, L, iapp, iapp_label, electrode_charge):
     '''!@brief Function writes user inputs to txt file.
     @details Writes user inputs to txt file named 'filename'. 
     Parameters are output in format 'parameter = value'.
-    tsteps, dt, c0, D, R, a, L are output to top of file, followed by an asterix line (***).
+    tsteps, dt, c0, D, R, a, L, electrode_charge are output to top of file, followed by an asterix line (***).
     iapp_label follows the asterix line, with iapp array following, written one element per line.
     '''
 
@@ -318,6 +329,7 @@ def write_to_file(filename, tsteps, dt, c0, D, R, a, L, iapp, iapp_label):
     parameters.append('R = ' + str(R) + '\n')
     parameters.append('a = ' + str(a) + '\n')
     parameters.append('L = ' + str(L) + '\n')
+    parameters.append('electrode_charge = ' + electrode_charge + '\n')
 
     parameters.append('******************\n')
 
