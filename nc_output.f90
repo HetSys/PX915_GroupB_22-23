@@ -48,7 +48,7 @@ MODULE nc_output
     
     ! Close the file
     CALL check(status = nf90_close(ncid))
-    PRINT *, "*** SUCCESS writing example file output.nc! "
+    PRINT *, "*** SUCCESS writing file, "//filename
   END SUBROUTINE output_cstorage
 
 END MODULE nc_output

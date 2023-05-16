@@ -6,7 +6,7 @@ PROGRAM MAIN
     USE nc_output
     IMPLICIT NONE
     INTEGER, PARAMETER :: n=2500 !node number
-    INTEGER :: info, i, tstep
+    INTEGER :: info, i, tstep, filename_length
     INTEGER, DIMENSION(n) :: ipiv
     INTEGER :: tsteps ! user input
     REAL(REAL64), DIMENSION(n,n) :: A !solver matrix
@@ -23,7 +23,7 @@ PROGRAM MAIN
     REAL(REAL64), DIMENSION(:), ALLOCATABLE :: iapp, Z !applied current, in general a function of t
     REAL(REAL64) :: a_small, L !constants
     REAL(REAL64), PARAMETER :: F = 96485_REAL64 !Faraday constant
-    CHARACTER(len=54) :: filename
+    CHARACTER(len=54) :: filename, output_name
     TYPE(UI) :: user_inputs ! Type defined in read_inputs, to return user inputs
 
 
@@ -31,6 +31,10 @@ PROGRAM MAIN
     filename = read_command_line()
     user_inputs = read_user_inputs(filename) ! returns type containing user inputs
 
+    !generate name of output file
+    filename_length = LEN_TRIM(filename)
+    output_name = filename(1:filename_length-4)//'_output.nc'
+    PRINT*, output_name
     tsteps = user_inputs%tsteps
     dt = user_inputs%dt
     c0 = user_inputs%c0
@@ -113,7 +117,7 @@ PROGRAM MAIN
         !print*, i, cstorage(i,:)
     END DO
     CLOSE(9)
-    CALL output_cstorage(cstorage, n, tsteps, R, "cstorage.nc")
+    CALL output_cstorage(cstorage, n, tsteps, R, output_name)
 
     DEALLOCATE(cstorage)
     DEALLOCATE(iapp)
