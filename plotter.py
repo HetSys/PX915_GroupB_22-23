@@ -74,7 +74,7 @@ def animated_conc_plot(intervaltime,dr,tsteps,nodenum,cstore,SaveFinalState=Fals
     #Plot initial graphs for animation
     ax1.set_xlabel('Distance from Sphere Centre (m)')
     ax1.set_ylabel('Concentration Profile in sphere')
-    ax1.set_ylim(np.min(vals),-np.min(vals))
+    ax1.set_ylim([np.min(vals[:,1:]),np.max(vals[:,1:])+1])
     graph, = ax1.plot(vals[:,0],vals[:,1])
 
     #Create a list which holds both the things we wish to animate
