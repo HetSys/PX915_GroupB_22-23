@@ -1,6 +1,7 @@
 '''! @brief Set up user inputs to SPM solver and execute solver.'''
 
 import user_input_mod as UI
+import plotter
 import sys
 '''! 1. Option to output stdout (command line output) to file. Uncomment to use option.'''
 # sys.stdout = open('test.txt', 'w')
@@ -45,8 +46,8 @@ iapp_steps: 2D array of step values and timesteps where step occurs, starting ti
 tsteps, dt, c0, D, R, a, L, iapp, iapp_label, electrode_charge = UI.set_defaults_pos()
 
 # Read in applied current density from csv file
-# iapp_filename = 'WLTP_m10.csv'
-# iapp, iapp_label, tsteps = UI.iapp_read_csv(iapp_filename)
+iapp_filename = 'WLTP_m10.csv'
+iapp, iapp_label, tsteps = UI.iapp_read_csv(iapp_filename)
 
 ######### END SET VALUES #########
 
@@ -66,3 +67,7 @@ if (not checkpoint):
 
 '''! 5. Call fortran solver.'''
 UI.call_solver(solver_input_filename, checkpoint)
+
+'''! 6. Call plotter.'''
+plotter.gen_plots(solver_input_filename)
+
