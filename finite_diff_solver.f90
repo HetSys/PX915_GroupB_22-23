@@ -34,7 +34,6 @@ PROGRAM MAIN
     !generate name of output file
     filename_length = LEN_TRIM(filename)
     output_name = filename(1:filename_length-4)//'_output.nc'
-    PRINT*, output_name
     tsteps = user_inputs%tsteps
     dt = user_inputs%dt
     c0 = user_inputs%c0

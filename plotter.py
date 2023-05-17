@@ -20,7 +20,17 @@ def read_output_file(filename,step_num=None):
     time_axis = dat.variables['time_axis'][:]
     #compute interval between nodes
     dr = R/(nodenum-1)
-    return cstore,tsteps,nodenum,R,time_axis,dr
+    #parse electrode charge
+    electrode_read = dat.variables['electrode_charge'][0] #electrode charge
+    electrode_temp = np.ma.getdata(electrode_read)
+    electrode_temp = electrode_temp.tolist()
+    electrode_temp = electrode_temp.decode('UTF-8')
+    if (electrode_temp=='p'):
+        electrode = 'positive'
+    if (electrode_temp=='n'):
+        electrode = 'negative'
+    
+    return cstore,tsteps,nodenum,R,time_axis,dr,electrode
 
 
 
@@ -33,7 +43,7 @@ def read_input_current(filename,step_num=None):
         lines = iapp_vals.readlines()
         i_app_data = []
         for i, current in enumerate(lines):
-            if i >=9:
+            if i >=10:
                 i_app_data.append(current.strip())
 
     i_app_data = np.array(i_app_data, dtype = float)
@@ -230,9 +240,9 @@ def plot_GITT_result(filename,start_times,electrode):
     #call the plotter
     voltage_current_plot(electrode,full_cstore,full_time_axis,full_iapp_vals,total_tsteps)
 
-def gen_plots(filename,electrode,animation_interval_time=10):
+def gen_plots(filename,animation_interval_time=10):
     #generate all the plots that would previously have been generated from calling the plotting script
-    cstore,tsteps,nodenum,R,time_axis,dr = read_output_file(filename)
+    cstore,tsteps,nodenum,R,time_axis,dr,electrode = read_output_file(filename)
     i_app_data = read_input_current(filename)
     voltage_current_plot(electrode,cstore,time_axis,i_app_data,tsteps)
     animated_conc_plot(animation_interval_time,dr,tsteps,nodenum,cstore,SaveFinalState=True)
