@@ -118,7 +118,7 @@ def set_defaults_pos():
     '''!@brief Returns default parameters for a positive electrode
     @details Parameter values are taken from Chen et al. 2020, https://doi.org/10.1149/1945-7111/ab9050. 
     Simulation is set up to run for 100 timesteps of size dt=0.1s.
-    Applied current density is set up as a constant current density of value 0.73mA.
+    Applied current density is set up as a constant current density of value 0.73mA m^2.
     '''
     # Label of positive electrode
     electrode_charge = "p"
@@ -150,7 +150,7 @@ def set_defaults_neg():
     '''!@brief Returns default parameters for a negative electrode
     @details Parameter values are taken from Chen et al. 2020, https://doi.org/10.1149/1945-7111/ab9050. 
     Simulation is set up to run for 100 timesteps of size dt=0.1s.
-    Applied current density is set up as a constant current density of value 0.73mA.
+    Applied current density is set up as a constant current density of value 0.73mA m^2.
     '''
     # Label of negative electrode
     electrode_charge = "n"
