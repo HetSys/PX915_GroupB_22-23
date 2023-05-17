@@ -349,8 +349,8 @@ def write_to_file(filename, tsteps, dt, c0, D, R, a, L, iapp, iapp_label, electr
 
 ### CALL SOLVER ###
 def call_solver(filename):
-    '''!@brief Execution of SPM solver and plotting script.
-    @details SPM solver and plotting scripts are called using the subprocess package.
+    '''!@brief Execution of SPM solver.
+    @details SPM solver is called using the subprocess package.
     The filename of the user input file is passed to the solver as a command line argument.
     Errors from execution are read in and further execution prevented if necessary.
     @param[in] filename: Name of user input file, no file extension.
@@ -376,20 +376,80 @@ def call_solver(filename):
     else:
         print('Error executing solver, process terminated.')
         exit()
-
-
-    '''! 3. Call plotter.'''
-    command_plotter = shlex.split('python3 plotter.py')    
-    process_plotter = subprocess.run(command_plotter, stdout=subprocess.PIPE, universal_newlines=True)
-    return_plotter = process_plotter.returncode
-    # Print plotter output to command line
-    if (process_plotter.stdout):
-        print(process_plotter.stdout) 
-    # Check for errors in execution
-    if (return_plotter==0):
-        print('Plotting code executed successfully.')
-    else:
-        print('Error executing plotting code, process terminated.')
-        exit()
-
     return
+
+
+
+### INITIALISE A FULL GITT TEST IN PARALLEL ####
+def GITT(filename,nprocs,currents,start_times,run_times,wait_times,params):
+    '''!@brief Execution of SPM solver in parallel to run a GITT test over nprocs cores.
+    @details Execution of SPM solver in parallel to run a test experiment on a battery
+    in the style of a galvanostatic intermittent titration technique (GITT), as described in 
+    W. Weppner and R. A. Huggins 1977 J. Electrochem. Soc. 124 1569. Due to the equilibration time between each current
+    step applied in this technique, it is possible to pre-compute the initial constant concentration in each of the single
+    particles in the model by considering the amount of lithium removed in each current step.
+    Errors from execution are read in and further execution prevented if necessary.
+    @param[in] filename: Name of user input file, no file extension. Note that a version of this file is created for 
+    each current step applied in the GITT test.
+    @param[in] nprocs: Number of processors to parallelise the current steps over. Note that the most processors
+    that can be parallelised over is = the number of current steps applied in the GITT test.
+    @param[in] currents: a vector containing the values of current to apply at each current step, floats, must have the same length as
+    start_times, run_times, wait_times.
+    @param[in] start_times: a vector containing the start times of each current step, floats, must have the same length as
+    currents, run_times, wait_times.
+    @param[in] run_times: a vector containing the run time of each current step, floats, must have the same length as 
+    start_times, currents, wait_times.
+    @param[in] wait_times: a vector containing the run time of each current step, floats, must have the same length as 
+    currents, start_times, run-times.
+    @param[in] params: A vector containing the parameters for the simulation: [dt, c0, D, R, a, L]
+        @param[in] dt: Timestep size, float > 0.
+        @param[in] c0: Initial concentration, float >= 0.
+        @param[in] D: Diffusion constant, float.
+        @param[in] R: Width of block, float > 0.
+        @param[in] a: Particle surface area per unit volume, float >= 0.
+        @param[in] L: Electrode thickness, float >= 0.
+    '''
+    #first, generate the arrays for initial concentration
+    F = 96485.3321 #faraday constant
+    #unpack params
+    [dt, c0, D, R, a, L] = params
+
+    #array of initial concentrations, using the fact that
+    # C(T=t) = C0 + ((i_app*t)/(F*L))
+    # where i_app is the current into the battery (positive, current flows in, negative, current flows out). 
+
+    initial_concs = [c0 - (currents[i]*np.sum(run_times[0:i]))/(F*L) for i in range(len(start_times))]
+    
+    #make list of current arrays
+    #make an input file for the solver to read from for each batch of the solver
+    #also build the commands to be run
+
+    current_list = []
+    cmnds = []
+    total_tsteps = 0
+    for i in range(len(currents)):
+        fname = f'{filename}{i}'
+        tsteps = (int(run_times[i]/dt)) + (int(wait_times[i]/dt))
+        total_tsteps+=tsteps
+        current_list.append(np.concatenate(([currents[i] for j in range(int(run_times[i]/dt))],[0.0 for j in range(int(wait_times[i]/dt))])))
+        iapp_label = str(i)
+        write_to_file(fname,tsteps, dt, initial_concs[i], D, R, a, L, current_list[i], iapp_label)
+        #### Set file name
+        running_name = fname + '.txt'
+        solver_call_line = './finite_diff_solver' + ' filename=' + running_name
+        cmnds.append(solver_call_line)
+
+
+    ##### For visualisation, write a user_input.txt file which holds the full current vector for the simulation
+    #print(dt,current_list)
+    current_arr = np.array(current_list).flatten()
+    write_to_file('user_input',total_tsteps,dt,c0,D,R,a,L,current_arr,'full_current_array')
+
+    #now, we just need to launch a seperate instance of the solver for each process with each initial concentration and runtime
+    #code from: https://stackoverflow.com/questions/30686295/how-do-i-run-multiple-subprocesses-in-parallel-and-wait-for-them-to-finish-in-py
+    for j in range(max(int(len(cmnds)/nprocs), 1)):
+        #launch processes, distributing evenly between processors
+        procs = [subprocess.Popen(i, shell=True) for i in cmnds[j*nprocs: min((j+1)*nprocs, len(cmnds))]]
+        for p in procs:
+            #wait to ensure all done
+            p.wait()
