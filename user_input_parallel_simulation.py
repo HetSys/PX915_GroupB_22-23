@@ -42,7 +42,7 @@ tsteps, dt, c0, D, R, a, L, iapp, iapp_label = UI.set_defaults_pos()
 ###### Set values ######
 
 c0 = 30000.0
-dt = 0.1
+dt = 1.0
 ###### Check parameters are valid ######
 UI.verify_params(output_filename, tsteps, dt, c0, D, R, a, L)
 
@@ -56,10 +56,10 @@ nprocs = 5
 nsteps = 5
 
 # Set up the currents, start times, run times and wait times for each step
-currents = [10.0 for i in range(nsteps)]
-start_times = [120.0*i for i in range(nsteps)]
-run_times = [40.0 for i in range(nsteps)]
-wait_times = [80.0 for i in range(nsteps)]
+currents = [20.0 for i in range(nsteps)]
+start_times = [21750.0*i for i in range(nsteps)]
+run_times = [150.0 for i in range(nsteps)]
+wait_times = [21600.0 for i in range(nsteps)]
 
 # Build the vector of parameters that the function accepts
 params = [dt, c0, D, R, a, L]
