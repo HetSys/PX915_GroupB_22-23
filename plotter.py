@@ -13,6 +13,7 @@ def read_output_file(filename,step_num=None):
     dat=NC.Dataset(filename, "r", format ="NETCDF")
     cstore = dat.variables['cstorage'][:]
 
+
     #Read in Constants
     tsteps=dat.variables['tsteps'][0] #number of timesteps
     nodenum=dat.variables['node_num'][0] #number of nodes 
@@ -20,7 +21,6 @@ def read_output_file(filename,step_num=None):
     time_axis = dat.variables['time_axis'][:]
     #compute interval between nodes
     dr = R/(nodenum-1)
-    #parse electrode charge
     electrode_read = dat.variables['electrode_charge'][0] #electrode charge
     electrode_temp = np.ma.getdata(electrode_read)
     electrode_temp = electrode_temp.tolist()
@@ -29,7 +29,7 @@ def read_output_file(filename,step_num=None):
         electrode = 'positive'
     if (electrode_temp=='n'):
         electrode = 'negative'
-    
+
     return cstore,tsteps,nodenum,R,time_axis,dr,electrode
 
 
@@ -50,7 +50,8 @@ def read_input_current(filename,step_num=None):
     return i_app_data
 
 
-def animated_conc_plot(intervaltime,dr,tsteps,nodenum,cstore,SaveFinalState=False):
+def animated_conc_plot(intervaltime,dr,tsteps,nodenum,cstore,time_axis,SaveFinalState=False):
+    #plt.rcParams["text.usetex"] = True
 
     #time between frames in animation
     intervaltime  = 10
@@ -73,7 +74,7 @@ def animated_conc_plot(intervaltime,dr,tsteps,nodenum,cstore,SaveFinalState=Fals
         #make plot of final state and save figure for reference
         plt.plot(vals[:,0],vals[:,-1])
         plt.xlabel('Distance from Sphere Centre (m)')
-        plt.ylabel('Concentration (molm^-3)')
+        plt.ylabel('Concentration (molm$^-3$)')
         plt.title('Concentration Profile at End of Simulation')
         plt.savefig('final_state.png')
 
@@ -83,12 +84,15 @@ def animated_conc_plot(intervaltime,dr,tsteps,nodenum,cstore,SaveFinalState=Fals
     xdata, ydata = [], []
     #Plot initial graphs for animation
     ax1.set_xlabel('Distance from Sphere Centre (m)')
-    ax1.set_ylabel('Concentration Profile in sphere')
+    ax1.set_ylabel('Concentration of Lithium (molm$^-3$)')
     ax1.set_ylim(np.min(vals),-np.min(vals))
     graph, = ax1.plot(vals[:,0],vals[:,1])
 
     #Create a list which holds both the things we wish to animate
     graphlines = [graph]
+
+    r_time_axis = [round(i,2) for i in time_axis]
+    timestep_list = [str(i) for i in r_time_axis]   #Create list of strings of timestep times.
 
     def update(t):
         #Define an update function for the animation. This is what is called each frame
@@ -98,6 +102,7 @@ def animated_conc_plot(intervaltime,dr,tsteps,nodenum,cstore,SaveFinalState=Fals
         #Function takes as an input argument the timestep it is being called at.
         #Set the data of each element of graphlines to the corresponding value of t passed to the function
         graphlines[0].set_data(vals[:,0],vals[:,t])
+        ax1.set_title('Concentration Profile, Time : ' + timestep_list[t-1]+'s')
         #graphlines[1].set_title('Concentration profile at t='+str(t))
         return graphlines
 
@@ -107,7 +112,9 @@ def animated_conc_plot(intervaltime,dr,tsteps,nodenum,cstore,SaveFinalState=Fals
 
 
 
+
 def voltage_current_plot(electrode,cstore,time_axis,i_app_data,no_timesteps):
+    #plt.rcParams["text.usetex"] = True
 ################  Voltage and Concentration Plot ##################
 
     #### Constants ####
@@ -120,8 +127,8 @@ def voltage_current_plot(electrode,cstore,time_axis,i_app_data,no_timesteps):
     K_pos = 3.42E-6 #Am^-2(m^3mol^-1)^1.5
     K_neg = 6.48E-7 #Am^-2(m^3mol^-1)^1.5
 
-    cmax_neg_sim = 33133 #moldm^-3 # m #Surely this should be molm^-3 to be consistent with the concentration units up to this point?
-    cmax_pos_sim = 63104 #moldm^-3 # m
+    cmax_neg_sim = 33133 #molm^-3 # m 
+    cmax_pos_sim = 63104 #molm^-3 # m
 
     L_pos = 75.6E-6 #m
     L_neg = 85.2E-6 #m
@@ -147,11 +154,11 @@ def voltage_current_plot(electrode,cstore,time_axis,i_app_data,no_timesteps):
     #Requires numpy library for sqrt
     def j_function(c_R):
         #print(c_R)
-        if c_R<0.0:
-            print('Error, concentration should never be less than 0')
-            raise ValueError
+        #if c_R<0.0:
+            #print('Error, concentration should never be less than 0')
+            #raise ValueError
         ratio = (c_R / c_max)
-        return F * K * np.sqrt((ratio * (1 - ratio)))
+        return F * K * np.sqrt(np.abs(ratio * (1 - ratio)))
 
     #Inputs
     #Concentration at edge of sphere - c_R
@@ -203,15 +210,15 @@ def voltage_current_plot(electrode,cstore,time_axis,i_app_data,no_timesteps):
             volt_store.append(0)            #use to prevent division by zero
         else:
             volt_store.append(voltage_function(u_temp,i_app_temp,j_temp))
-    volt_store[0] = volt_store[1] - (volt_store[2]-volt_store[1])       ######################CHECK: Assume linear trend around zero!!! Avoids singularity/math error where j_temp == 0.
+    volt_store[0] = volt_store[1] - (volt_store[2]-volt_store[1])       #Assume linear trend around zero!!! Avoids singularity/math error where j_temp == 0.
     fig, axs = plt.subplots(2,1,sharex=True)
     axs[0].plot(time_axis,volt_store, color = 'b',label='Voltage')
     axs[0].set_ylabel('Voltage (V)', color ='b')
     axs[0].set_title('Voltage and Applied Current Over Time')
 
-    axs[1].set_ylabel('Applied Current Density (A/m^2)', color = 'r')
+    axs[1].set_ylabel(r'Applied Current Density (A/m$^2$)', color = 'r')
     axs[1].plot(time_axis,i_app_data,'r--',label='current')
-    axs[1].set_xlabel('Time(s)')
+    axs[1].set_xlabel('Time (s)')
     plt.savefig('Voltage Current Plot')
         
 
@@ -245,7 +252,7 @@ def gen_plots(filename,animation_interval_time=10):
     cstore,tsteps,nodenum,R,time_axis,dr,electrode = read_output_file(filename)
     i_app_data = read_input_current(filename)
     voltage_current_plot(electrode,cstore,time_axis,i_app_data,tsteps)
-    animated_conc_plot(animation_interval_time,dr,tsteps,nodenum,cstore,SaveFinalState=True)
+    animated_conc_plot(animation_interval_time,dr,tsteps,nodenum,cstore,time_axis,SaveFinalState=True)
 
 
 
