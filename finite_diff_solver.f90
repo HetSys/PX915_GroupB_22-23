@@ -123,7 +123,9 @@ PROGRAM MAIN
         !print*, i, cstorage(i,:)
     END DO
     CLOSE(9)
-    CALL output_cstorage(cstorage, n, tsteps, R,time_axis, output_name)
+
+    CALL output_cstorage(cstorage, n, tsteps, R, time_axis, user_inputs%electrode_charge, output_name)
+
 
     DEALLOCATE(cstorage)
     DEALLOCATE(iapp)
