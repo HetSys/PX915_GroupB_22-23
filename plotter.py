@@ -177,23 +177,28 @@ def voltage_current_plot(electrode,cstore,time_axis,i_app_data,no_timesteps):
     
     #structure of cstore: each row represents a single timestep, each column a single node
     edge_conc_vals = cstore[:,-1]    #want the values of the edge node for all timesteps
-
+    #print('e conc vals,', edge_conc_vals)
 
     volt_store = []
 
     for i in range(no_timesteps):
         i_app_temp = i_app_data[i]
-        c_temp = edge_conc_vals[i]        
+        #print('iapp',i_app_temp)
+        c_temp = edge_conc_vals[i]      
+        #print('c_temp',c_temp)  
         j_temp = j_function(c_temp)
+        #print('jtemp',j_temp)
         if electrode.lower() == 'positive' or electrode == 'cathode':
             u_temp = U_function_pos(c_temp)
         else:
             u_temp = U_function_neg(c_temp)
+        #print('u_temp', u_temp)
         if j_temp == 0:
             volt_store.append(0)            #use to prevent division by zero
         else:
             volt_store.append(voltage_function(u_temp,i_app_temp,j_temp))
-    volt_store[0] = volt_store[1] - (volt_store[2]-volt_store[1])       ######################CHECK: Assume linear trend around zero!!! Avoids singularity/math error where j_temp == 0.
+        #print('voltage',volt_store[i])
+    #volt_store[0] = volt_store[1] - (volt_store[2]-volt_store[1])       ######################CHECK: Assume linear trend around zero!!! Avoids singularity/math error where j_temp == 0.
     fig, axs = plt.subplots(2,1,sharex=True)
     axs[0].plot(time_axis,volt_store, color = 'b',label='Voltage')
     axs[0].set_ylabel('Voltage (V)', color ='b')

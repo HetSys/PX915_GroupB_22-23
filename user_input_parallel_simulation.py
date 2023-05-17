@@ -41,8 +41,8 @@ tsteps, dt, c0, D, R, a, L, iapp, iapp_label = UI.set_defaults_pos()
 
 ###### Set values ######
 
-c0 = 30.0
-dt = 0.01
+c0 = 30000.0
+dt = 0.1
 ###### Check parameters are valid ######
 UI.verify_params(output_filename, tsteps, dt, c0, D, R, a, L)
 
@@ -56,10 +56,10 @@ nprocs = 5
 nsteps = 5
 
 # Set up the currents, start times, run times and wait times for each step
-currents = [2.0 for i in range(nsteps)]
-start_times = [1.5*i for i in range(nsteps)]
-run_times = [1.0 for i in range(nsteps)]
-wait_times = [0.5 for i in range(nsteps)]
+currents = [10.0 for i in range(nsteps)]
+start_times = [120.0*i for i in range(nsteps)]
+run_times = [40.0 for i in range(nsteps)]
+wait_times = [80.0 for i in range(nsteps)]
 
 # Build the vector of parameters that the function accepts
 params = [dt, c0, D, R, a, L]
@@ -71,6 +71,6 @@ UI.GITT(output_filename,nprocs,currents,start_times,run_times,wait_times,params)
 plotter.plot_GITT_result(output_filename,start_times,electrode)
 
 ##### also call the standalone plotting function with a single file
-plotter.gen_plots(output_filename+'0',electrode)
+#plotter.gen_plots(output_filename+'0',electrode)
 
 
