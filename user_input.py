@@ -63,6 +63,5 @@ UI.write_to_file(solver_input_filename, tsteps, dt, c0, D, R, a, L, iapp, iapp_l
 '''! 6. Call fortran solver.'''
 UI.call_solver(solver_input_filename)
 
-electrode = 'positive'
 '''! 7. Call plotter.'''
-plotter.gen_plots(solver_input_filename,electrode)
+plotter.gen_plots(solver_input_filename)
