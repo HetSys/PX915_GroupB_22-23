@@ -176,10 +176,10 @@ def voltage_current_plot(electrode,cstore,time_axis,i_app_data,tsteps):
     #Notes
     #Requires numpy library for sqrt
     def j_function(c_R):
-        #print(c_R)
-        #if c_R<0.0:
-            #print('Error, concentration should never be less than 0')
-            #raise ValueError
+        print(c_R)
+        if c_R<0.0:
+            print('Error, concentration should never be less than 0')
+            raise ValueError
         ratio = (c_R / c_max)
         return F * K * np.sqrt(np.abs(ratio * (1 - ratio)))
 
