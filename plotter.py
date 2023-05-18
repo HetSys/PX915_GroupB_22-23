@@ -254,7 +254,7 @@ def voltage_current_plot(electrode,cstore,time_axis,i_app_data,tsteps):
         
 
        
-def plot_GITT_result(filename,start_times,electrode):
+def plot_GITT_result(filename,start_times,electrode,Animation=False,SaveFinalState=False,SparsifyAnimation=True,animation_interval_time=10):
 
 
     running_tot_start_time = 0.0
@@ -274,9 +274,14 @@ def plot_GITT_result(filename,start_times,electrode):
             full_iapp_vals = np.concatenate((full_iapp_vals,i_app_data))
             
         total_tsteps += tsteps
-
+        
     #call the plotter
     voltage_current_plot(electrode,full_cstore,full_time_axis,full_iapp_vals,total_tsteps)
+
+    if Animation:
+        #call the animator
+        animated_conc_plot(animation_interval_time,dr,total_tsteps,nodenum,full_cstore,full_time_axis,SaveFinalState=SaveFinalState,SparsifyAnimation=SparsifyAnimation)
+
 '''!@package gen_plots: Causes plots corresponding to voltage_current_plot and animated_conc_plot to be generated.'''
 def gen_plots(filename,animation_interval_time=10,SaveFinalState=True,SparsifyAnimation=False):
     #generate all the plots that would previously have been generated from calling the plotting script

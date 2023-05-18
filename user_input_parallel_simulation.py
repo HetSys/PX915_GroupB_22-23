@@ -68,9 +68,9 @@ params = [dt, c0, D, R, a, L,electrode_charge]
 UI.GITT(output_filename,nprocs,currents,start_times,run_times,wait_times,params)
 
 ###### Call the plotting function which plots the results of the GITT test with nstep steps
-plotter.plot_GITT_result(output_filename,start_times,electrode)
+plotter.plot_GITT_result(output_filename,start_times,electrode,Animation=True,SparsifyAnimation=True)
 
 ##### also call the standalone plotting function with a single file
-plotter.gen_plots(output_filename+'0',electrode,SparsifyAnimation=True)
+#plotter.gen_plots(output_filename+'0',electrode,SparsifyAnimation=True)
 
 
