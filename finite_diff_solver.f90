@@ -5,7 +5,7 @@ PROGRAM MAIN
     USE read_inputs
     USE nc_output
     IMPLICIT NONE
-    INTEGER, PARAMETER :: n=2500 !node number
+    INTEGER, PARAMETER :: n=1000 !node number
     INTEGER :: info, i, tstep, filename_length
     INTEGER, DIMENSION(n) :: ipiv
     INTEGER :: tsteps ! user input

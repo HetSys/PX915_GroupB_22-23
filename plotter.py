@@ -68,7 +68,11 @@ timestep it is being called at.'''
 def animated_conc_plot(intervaltime,dr,tsteps,nodenum,cstore,time_axis,SaveFinalState=False):
     intervaltime  = 10
 
-    time_step_axis = [i for i in range(1,tsteps)]
+    #build time step axis
+    if SparsifyAnimation:
+        time_step_axis = [i*10 for i in range(1,int(tsteps/10))]
+    else:
+        time_step_axis = [i for i in range(1,tsteps)]
     vals = np.zeros([nodenum,tsteps+1])
 
     #place the c storage values in to the values matrix.
@@ -94,7 +98,7 @@ def animated_conc_plot(intervaltime,dr,tsteps,nodenum,cstore,time_axis,SaveFinal
     #Plot initial graphs for animation
     ax1.set_xlabel('Distance from Sphere Centre (m)')
     ax1.set_ylabel('Concentration of Lithium (molm$^-3$)')
-    ax1.set_ylim(np.min(vals),-np.min(vals))
+    ax1.set_ylim([np.min(vals[:,1:]),np.max(vals[:,1:])+1])
     graph, = ax1.plot(vals[:,0],vals[:,1])
 
     #Create a list which holds both the things we wish to animate
@@ -223,17 +227,22 @@ def voltage_current_plot(electrode,cstore,time_axis,i_app_data,tsteps):
     more realistic value is calculated by assuming a linear trend exists between the first three calculated voltages.'''
     for i in range(tsteps):
         i_app_temp = i_app_data[i]
-        c_temp = edge_conc_vals[i]        
+        #print('iapp',i_app_temp)
+        c_temp = edge_conc_vals[i]      
+        #print('c_temp',c_temp)  
         j_temp = j_function(c_temp)
+        #print('jtemp',j_temp)
         if electrode.lower() == 'positive' or electrode == 'cathode':
             u_temp = U_function_pos(c_temp)
         else:
             u_temp = U_function_neg(c_temp)
+        #print('u_temp', u_temp)
         if j_temp == 0:
             volt_store.append(0)            #use to prevent division by zero
         else:
             volt_store.append(voltage_function(u_temp,i_app_temp,j_temp))
-    volt_store[0] = volt_store[1] - (volt_store[2]-volt_store[1])       #Assume linear trend around zero!!! Avoids singularity/math error where j_temp == 0.
+        #print('voltage',volt_store[i])
+    #volt_store[0] = volt_store[1] - (volt_store[2]-volt_store[1])       ######################CHECK: Assume linear trend around zero!!! Avoids singularity/math error where j_temp == 0.
     fig, axs = plt.subplots(2,1,sharex=True)
     axs[0].plot(time_axis,volt_store, color = 'b',label='Voltage')
     axs[0].set_ylabel('Voltage (V)', color ='b')
@@ -270,12 +279,12 @@ def plot_GITT_result(filename,start_times,electrode):
     #call the plotter
     voltage_current_plot(electrode,full_cstore,full_time_axis,full_iapp_vals,total_tsteps)
 '''!@package gen_plots: Causes plots corresponding to voltage_current_plot and animated_conc_plot to be generated.'''
-def gen_plots(filename,animation_interval_time=10):
+def gen_plots(filename,animation_interval_time=10,SaveFinalState=True,SparsifyAnimation=False):
     #generate all the plots that would previously have been generated from calling the plotting script
     cstore,tsteps,nodenum,R,time_axis,dr,electrode = read_output_file(filename)
     i_app_data = read_input_current(filename)
     voltage_current_plot(electrode,cstore,time_axis,i_app_data,tsteps)
-    animated_conc_plot(animation_interval_time,dr,tsteps,nodenum,cstore,time_axis,SaveFinalState=True)
+    animated_conc_plot(animation_interval_time,dr,tsteps,nodenum,cstore,time_axis,SaveFinalState=SaveFinalState,SparsifyAnimation=SparsifyAnimation)
 
 
 
