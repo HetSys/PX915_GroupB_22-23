@@ -117,7 +117,7 @@ def iapp_step_setup(tsteps, iapp_steps):
 def set_defaults_pos():
     '''!@brief Returns default parameters for a positive electrode
     @details Parameter values are taken from Chen et al. 2020, https://doi.org/10.1149/1945-7111/ab9050. 
-    Simulation is set up to run for 100 timesteps of size dt=0.1s.
+    Simulation is set up to run for 100 timesteps of size dt=0.1s, with n=1000 spatial nodes.
     Applied current density is set up as a constant current density of value 0.73mA m^2.
     '''
     # Label of positive electrode
@@ -127,6 +127,9 @@ def set_defaults_pos():
     tsteps = 100
     # Timestep size (s), real, greater than 0
     dt = 0.1
+
+    # Number of spatial nodes, integer, 100=<n=<4000
+    n=1000
 
     # Initial concentration (mol m**-3), real, positive
     c0 = 0.0
@@ -144,12 +147,12 @@ def set_defaults_pos():
     iapp_const = 0.73*10**(-3)
     iapp, iapp_label = iapp_constant_setup(tsteps, iapp_const)
 
-    return tsteps, dt, c0, D, R, a, L, iapp, iapp_label, electrode_charge
+    return tsteps, dt, n, c0, D, R, a, L, iapp, iapp_label, electrode_charge
 
 def set_defaults_neg():
     '''!@brief Returns default parameters for a negative electrode
     @details Parameter values are taken from Chen et al. 2020, https://doi.org/10.1149/1945-7111/ab9050. 
-    Simulation is set up to run for 100 timesteps of size dt=0.1s.
+    Simulation is set up to run for 100 timesteps of size dt=0.1s, with n=1000 spatial nodes.
     Applied current density is set up as a constant current density of value 0.73mA m^2.
     '''
     # Label of negative electrode
@@ -159,6 +162,9 @@ def set_defaults_neg():
     tsteps = 100
     # Timestep size (s), real, greater than 0
     dt = 0.1
+
+    # Number of spatial nodes, integer, 100=<n=<4000
+    n=1000
 
     # Initial concentration (mol m**-3), real, positive
     c0 = 1000.0
@@ -177,18 +183,19 @@ def set_defaults_neg():
     iapp_const = 0.73*10**(-3)
     iapp, iapp_label = iapp_constant_setup(tsteps, iapp_const)
 
-    return tsteps, dt, c0, D, R, a, L, iapp, iapp_label, electrode_charge
+    return tsteps, dt, n, c0, D, R, a, L, iapp, iapp_label, electrode_charge
 
 
 
 ### PARAMETER VERIFICATION ###
-def verify_params(filename, tsteps, dt, c0, D, R, a, L, electrode_charge):
+def verify_params(filename, tsteps, dt, n, c0, D, R, a, L, electrode_charge):
     '''!@brief Verifies types and values of input parameters.
     @details Verifies that parameters output filename, tsteps, dt, c0, D, R, a, and L have the correct type and valid values. 
     If any are found to be invalid, an error is printed and the execution stopped.
     @param[in] filename: Output filename, string, must have less than 50 chars. No file extension required.
     @param[in] tsteps: Number of timesteps, integer > 0.
     @param[in] dt: Timestep size, float > 0.
+    @param[in] n: Number of spatial nodes, integer, 100 =< n =< 4000.
     @param[in] c0: Initial concentration, float >= 0.
     @param[in] D: Diffusion constant, float.
     @param[in] R: Width of block, float > 0.
@@ -222,6 +229,14 @@ def verify_params(filename, tsteps, dt, c0, D, R, a, L, electrode_charge):
         var_error = True
     if(dt<=0):
         print('Size of timestep, dt, must have a positive, non zero value.')
+        var_error = True
+    
+    # n
+    if (type(n)!=int):
+        print('Number of spatial nodes, n, must be an integer.')
+        var_error = True
+    if (n<100 or n>4000):
+        print('Number of spatial nodes, n, must have a value between 100 and 4000.')
         var_error = True
 
     # c0
@@ -308,7 +323,7 @@ def verify_iapp(iapp, iapp_label, tsteps):
 
 
 ### WRITE TO FILE ###
-def write_to_file(filename, tsteps, dt, c0, D, R, a, L, iapp, iapp_label, electrode_charge):
+def write_to_file(filename, tsteps, dt, n, c0, D, R, a, L, iapp, iapp_label, electrode_charge):
     '''!@brief Function writes user inputs to txt file.
     @details Writes user inputs to txt file named 'filename'. 
     Parameters are output in format 'parameter = value'.
@@ -324,6 +339,7 @@ def write_to_file(filename, tsteps, dt, c0, D, R, a, L, iapp, iapp_label, electr
     parameters = []
     parameters.append('tsteps = ' + str(tsteps) + '\n')
     parameters.append('dt = ' + str(dt) + '\n')
+    parameters.append('n = ' + str(n) + '\n')
     parameters.append('c0 = ' + str(c0) + '\n')
     parameters.append('D = ' + str(D) + '\n')
     parameters.append('R = ' + str(R) + '\n')
