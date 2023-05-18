@@ -6,7 +6,7 @@ PROGRAM MAIN
     USE nc_output
     USE checkpointing
     IMPLICIT NONE
-    INTEGER, PARAMETER :: n=2500 !node number
+    INTEGER, PARAMETER :: n=1000 !node number
     INTEGER :: info, i, tstep, filename_length
     INTEGER, DIMENSION(n) :: ipiv
     INTEGER :: tsteps ! user input
