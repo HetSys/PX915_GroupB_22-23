@@ -37,14 +37,14 @@ electrode = 'positive'
 
 ###### Import default values from https://doi.org/10.1149/1945-7111/ab9050
 # Use UI.set_defaults_pos() for positive electrode and ..._neg() for negative electrode 
-tsteps, dt, c0, D, R, a, L, iapp, iapp_label = UI.set_defaults_pos()
+tsteps, dt, c0, D, R, a, L, iapp, iapp_label, electrode_charge = UI.set_defaults_pos()
 
 ###### Set values ######
 
 c0 = 30000.0
-dt = 0.2
+dt = 1.0
 ###### Check parameters are valid ######
-UI.verify_params(output_filename, tsteps, dt, c0, D, R, a, L)
+UI.verify_params(output_filename, tsteps, dt, c0, D, R, a, L, electrode_charge)
 
 
 ###### Manually set up applied current and parallelisation ######
@@ -62,7 +62,7 @@ run_times = [150.0 for i in range(nsteps)]
 wait_times = [2000.0 for i in range(nsteps)]
 
 # Build the vector of parameters that the function accepts
-params = [dt, c0, D, R, a, L]
+params = [dt, c0, D, R, a, L,electrode_charge]
 
 ###### Call the function to perform the parallel solve
 UI.GITT(output_filename,nprocs,currents,start_times,run_times,wait_times,params)

@@ -65,7 +65,7 @@ The first column contains the positions, and subsequent columns contain the conc
 '''!@package update: Define an update function for the animation. This is what is called each frame to update the graph. As blitting is set to on (it has to be to use 
 reasonable computing power). This function needs to return a single array containing the objects to animate with new data set. Function takes as an input argument the 
 timestep it is being called at.'''
-def animated_conc_plot(intervaltime,dr,tsteps,nodenum,cstore,time_axis,SaveFinalState=False):
+def animated_conc_plot(intervaltime,dr,tsteps,nodenum,cstore,time_axis,SaveFinalState=False,SparsifyAnimation=False):
     intervaltime  = 10
 
     #build time step axis
@@ -180,7 +180,6 @@ def voltage_current_plot(electrode,cstore,time_axis,i_app_data,tsteps):
     #Notes
     #Requires numpy library for sqrt
     def j_function(c_R):
-        print(c_R)
         if c_R<0.0:
             print('Error, concentration should never be less than 0')
             raise ValueError
@@ -262,7 +261,7 @@ def plot_GITT_result(filename,start_times,electrode):
     total_tsteps = 0
     #build the full dataset from the deconstructed files
     for i,start_time in enumerate(start_times):
-        cstore,tsteps,nodenum,R,time_axis,dr = read_output_file(filename,step_num=i)
+        cstore,tsteps,nodenum,R,time_axis,dr,electrode = read_output_file(filename,step_num=i)
         i_app_data = read_input_current(filename,step_num=i)
         time_axis = time_axis + start_time
         if i == 0:

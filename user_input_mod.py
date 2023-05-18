@@ -412,7 +412,7 @@ def GITT(filename,nprocs,currents,start_times,run_times,wait_times,params):
     #first, generate the arrays for initial concentration
     F = 96485.3321 #faraday constant
     #unpack params
-    [dt, c0, D, R, a, L] = params
+    [dt, c0, D, R, a, L,electrode_charge] = params
     #volume fraction of active material
     e_act = (a*R)/3
     #array of initial concentrations, using the fact that
@@ -434,17 +434,11 @@ def GITT(filename,nprocs,currents,start_times,run_times,wait_times,params):
         total_tsteps+=tsteps
         current_list.append(np.concatenate(([currents[i] for j in range(int(run_times[i]/dt))],[0.0 for j in range(int(wait_times[i]/dt))])))
         iapp_label = str(i)
-        write_to_file(fname,tsteps, dt, initial_concs[i], D, R, a, L, current_list[i], iapp_label)
+        write_to_file(fname,tsteps, dt, initial_concs[i], D, R, a, L, current_list[i], iapp_label,electrode_charge)
         #### Set file name
         running_name = fname + '.txt'
         solver_call_line = './finite_diff_solver' + ' filename=' + running_name
         cmnds.append(solver_call_line)
-
-
-    ##### For visualisation, write a user_input.txt file which holds the full current vector for the simulation
-    #print(dt,current_list)
-    current_arr = np.array(current_list).flatten()
-    write_to_file('user_input',total_tsteps,dt,c0,D,R,a,L,current_arr,'full_current_array')
 
     #now, we just need to launch a seperate instance of the solver for each process with each initial concentration and runtime
     #code from: https://stackoverflow.com/questions/30686295/how-do-i-run-multiple-subprocesses-in-parallel-and-wait-for-them-to-finish-in-py
