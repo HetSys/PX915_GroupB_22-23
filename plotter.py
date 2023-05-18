@@ -4,26 +4,42 @@ from matplotlib.animation import FuncAnimation
 import netCDF4 as NC
 #Written so user can specify if is positive or negative electrode
 
-
+'''!@package read_output_file: Reads in some data from user input and solver output using NetCDF'''
+'''!@var 2D array of floats cstore: Contains concentrations of Lithium over discretized time and space points.'''
+'''!@var int tsteps: Number of timesteps'''
+'''!@var int nodenum: Number of discrete spatial points'''
+'''!@var float R: radius of sphere in model (m).'''
+'''!@var 1D list of floats time_axis: Times associated with each timestep (s).'''
+'''!@var float dr: Space between the discrete spatial points (m).'''
+'''!@var str electrode: 'positive' or 'negative' - determines the nature of the electrode in this half SPM setup.'''
 def read_output_file(filename,step_num=None):
     #Read in Concs from netcdf
     if step_num is not None:
         filename = filename+str(step_num)
     filename = filename + '_output.nc'
+    '''!Read in NetCDF output file'''
     dat=NC.Dataset(filename, "r", format ="NETCDF")
     cstore = dat.variables['cstorage'][:]
-
-    #Read in Constants
-    tsteps=dat.variables['tsteps'][0] #number of timesteps
-    nodenum=dat.variables['node_num'][0] #number of nodes 
-    R=dat.variables['R'][0] #radius of sphere
+    '''!Read in Constants'''
+    tsteps=dat.variables['tsteps'][0] 
+    nodenum=dat.variables['node_num'][0] 
+    R=dat.variables['R'][0] 
     time_axis = dat.variables['time_axis'][:]
-    #compute interval between nodes
     dr = R/(nodenum-1)
-    return cstore,tsteps,nodenum,R,time_axis,dr
+    electrode_read = dat.variables['electrode_charge'][0] 
+    electrode_temp = np.ma.getdata(electrode_read)
+    electrode_temp = electrode_temp.tolist()
+    electrode_temp = electrode_temp.decode('UTF-8')
+    if (electrode_temp=='p'):
+        electrode = 'positive'
+    if (electrode_temp=='n'):
+        electrode = 'negative'
+
+    return cstore,tsteps,nodenum,R,time_axis,dr,electrode
 
 
-
+'''!@package read_input_current: Reads in applied current data'''
+'''!@var 1D array of floats i_app_data: Array containing applied current density (A/m^2) at all discrete time points.'''
 def read_input_current(filename,step_num=None):
     if step_num is not None:
         filename = filename+str(step_num)
@@ -33,16 +49,23 @@ def read_input_current(filename,step_num=None):
         lines = iapp_vals.readlines()
         i_app_data = []
         for i, current in enumerate(lines):
-            if i >=9:
+            if i >=10:
                 i_app_data.append(current.strip())
 
     i_app_data = np.array(i_app_data, dtype = float)
     return i_app_data
 
-
-def animated_conc_plot(intervaltime,dr,tsteps,nodenum,cstore,SaveFinalState=False,SparsifyAnimation=False):
-
-    #time between frames in animation
+'''!@package animated_conc_plot: Saves animation (concentration_animation.gif) displaying the evolution of lithium concentration over time, across the sphere.
+If passed arg 'SaveFinalState=True', saves image (final_state.png) of plot showing Lithium concentration across the sphere at the final timestep.'''
+'''!@var int intervaltime: Time between frames in animation (ms).'''
+'''!@var list time_step_axis: A list of consecutive numbers from 1-(tsteps-1) - used to specify the number of iterable frames to be rendered in the animation.'''
+'''!@var 2D array of floats vals: Contains both positions of nodes (m) and Lithium concentrations (molm^-3) at these spatial points at the specified points in time.
+The first column contains the positions, and subsequent columns contain the concentrations at these spatial points at specific points in time.'''
+'''!@var list of strings timestep_list: list containing strings of numbers representing the time of subsequent timesteps rounded to 1 d.p. - used to evolve time in title.'''
+'''!@package update: Define an update function for the animation. This is what is called each frame to update the graph. As blitting is set to on (it has to be to use 
+reasonable computing power). This function needs to return a single array containing the objects to animate with new data set. Function takes as an input argument the 
+timestep it is being called at.'''
+def animated_conc_plot(intervaltime,dr,tsteps,nodenum,cstore,time_axis,SaveFinalState=False):
     intervaltime  = 10
 
     #build time step axis
@@ -52,7 +75,6 @@ def animated_conc_plot(intervaltime,dr,tsteps,nodenum,cstore,SaveFinalState=Fals
         time_step_axis = [i for i in range(1,tsteps)]
     vals = np.zeros([nodenum,tsteps+1])
 
-
     #place the c storage values in to the values matrix.
     for i in range(nodenum):
         vals[i,1:] = cstore[:,i]
@@ -60,13 +82,12 @@ def animated_conc_plot(intervaltime,dr,tsteps,nodenum,cstore,SaveFinalState=Fals
         #structure of cstore: each row represents a single timestep, each column a single node
         #structure of vals: each column is a single timestep, each row is a single node
 
-
     if SaveFinalState:
         plt.figure()
         #make plot of final state and save figure for reference
         plt.plot(vals[:,0],vals[:,-1])
         plt.xlabel('Distance from Sphere Centre (m)')
-        plt.ylabel('Concentration (molm^-3)')
+        plt.ylabel('Concentration (molm$^-3$)')
         plt.title('Concentration Profile at End of Simulation')
         plt.savefig('final_state.png')
 
@@ -76,21 +97,20 @@ def animated_conc_plot(intervaltime,dr,tsteps,nodenum,cstore,SaveFinalState=Fals
     xdata, ydata = [], []
     #Plot initial graphs for animation
     ax1.set_xlabel('Distance from Sphere Centre (m)')
-    ax1.set_ylabel('Concentration Profile in sphere')
+    ax1.set_ylabel('Concentration of Lithium (molm$^-3$)')
     ax1.set_ylim([np.min(vals[:,1:]),np.max(vals[:,1:])+1])
     graph, = ax1.plot(vals[:,0],vals[:,1])
 
     #Create a list which holds both the things we wish to animate
     graphlines = [graph]
 
-    def update(t):
-        #Define an update function for the animation. This is what is called each frame
-        #to update the graph. As blitting is set to on (it has to be to use reasonable computing power)
-        #This function needs to return a single array containing the objects to animate with new data set.
+    r_time_axis = [round(i,2) for i in time_axis]
+    timestep_list = [str(i) for i in r_time_axis]   #Create list of strings of timestep times.
 
-        #Function takes as an input argument the timestep it is being called at.
+    def update(t):
         #Set the data of each element of graphlines to the corresponding value of t passed to the function
         graphlines[0].set_data(vals[:,0],vals[:,t])
+        ax1.set_title('Concentration Profile, Time : ' + timestep_list[t-1]+'s')
         #graphlines[1].set_title('Concentration profile at t='+str(t))
         return graphlines
 
@@ -100,25 +120,46 @@ def animated_conc_plot(intervaltime,dr,tsteps,nodenum,cstore,SaveFinalState=Fals
 
 
 
-def voltage_current_plot(electrode,cstore,time_axis,i_app_data,no_timesteps):
+'''!@package voltage_current_plot: Calculates voltages at all time points, and saves plots of both concentration of Lithium at the
+outer edge of the sphere and voltage over time. This function has different settings determined by the value of electrode.'''
+'''!@var float F: Faraday constant (C/mol).'''
+'''!@var float R_g: Ideal gas constant (JK^-1mol^-1).'''
+'''!@var float T: Standard conditions for temperature (T).'''
+'''!@var float a: Surface area of particles (cm^2).'''
+'''!@var float K_pos: Reaction rate at positive electrodes (Am^-2(m^3mol^-1)^1.5).'''
+'''!@var float K_neg: Reaction rate at negative electrodes Am^-2(m^3mol^-1)^1.5.'''
+'''!@var float cmax_pos_sim: Positive electrode maximum concentration (molm^-3).'''
+'''!@var float cmax_neg_sim: Negative electrode maximum concentration (molm^-3).'''
+'''!@var float L_pos: Positive electrode thickness (m)'''
+'''!@var float L_neg: Negative electrode thickness (m)'''
+'''!@package j_function: Calculates a quantity that feeds into our voltage calculation for each temporal point.
+Takes c_R as an argument, which corresponds to the Lithium concentration (molm^-3) at the sphere edge at the specific time.'''
+'''!@package U_function_pos: OCV curve for positive electrode. Takes c_r as argument'''
+'''!@package U_function_neg: OCV curve for negative electrode. Takes c_r as argument'''
+'''!@package voltage_function: Calculates the voltage of the system at specific time points. Takes outputs of j_function (jay) and 
+U_function_pos/(neg) (U), as well as applied current (i_app) at that time as arguments.'''
+'''!@var 1D array edge_conc_vals: Contains the Lithium concentration at the edge of the sphere for all time steps.'''
+'''!@var list volt_store: contains voltages calculated for sequential timesteps.'''
+def voltage_current_plot(electrode,cstore,time_axis,i_app_data,tsteps):
+
 ################  Voltage and Concentration Plot ##################
 
     #### Constants ####
     F = 96485 #C/mol
     R_g =  8.314 # J K-1 mol-1
     T = 298.15 # K
-    a = 5.28E-6 #cm^-2 NEEDS TO BE SPECIFIED/READ IN
+    a = 5.28E-6 #cm^2 
 
     # Set Input Parameterts for j
     K_pos = 3.42E-6 #Am^-2(m^3mol^-1)^1.5
     K_neg = 6.48E-7 #Am^-2(m^3mol^-1)^1.5
 
-    cmax_neg_sim = 33133 #moldm^-3 # m #Surely this should be molm^-3 to be consistent with the concentration units up to this point?
-    cmax_pos_sim = 63104 #moldm^-3 # m
+    cmax_pos_sim = 63104.00 #molm^-3 # m
+    cmax_neg_sim = 33133.00 #molm^-3 # m 
 
     L_pos = 75.6E-6 #m
     L_neg = 85.2E-6 #m
-
+    '''!Set Parameters depending on electrode variable.'''
     if electrode.lower() == 'positive' or electrode == 'cathode':   #set constants based on pos or neg electrode setup
         c_max = cmax_pos_sim
         K = K_pos
@@ -139,12 +180,12 @@ def voltage_current_plot(electrode,cstore,time_axis,i_app_data,no_timesteps):
     #Notes
     #Requires numpy library for sqrt
     def j_function(c_R):
-        #print(c_R)
+        print(c_R)
         if c_R<0.0:
             print('Error, concentration should never be less than 0')
             raise ValueError
         ratio = (c_R / c_max)
-        return F * K * np.sqrt((ratio * (1 - ratio)))
+        return F * K * np.sqrt(np.abs(ratio * (1 - ratio)))
 
     #Inputs
     #Concentration at edge of sphere - c_R
@@ -180,11 +221,11 @@ def voltage_current_plot(electrode,cstore,time_axis,i_app_data,no_timesteps):
     
     #structure of cstore: each row represents a single timestep, each column a single node
     edge_conc_vals = cstore[:,-1]    #want the values of the edge node for all timesteps
-    #print('e conc vals,', edge_conc_vals)
-
     volt_store = []
-
-    for i in range(no_timesteps):
+    '''!At time = 0s, it is possible for the output of j_function to be zero if Lithium concentration at sphere edge is zero. This results in an error as V_function
+    involves division by the output of j_function. To avoid this, if the value of j_function is equal to zero, the value of voltage is initially set to zero, then a
+    more realistic value is calculated by assuming a linear trend exists between the first three calculated voltages.'''
+    for i in range(tsteps):
         i_app_temp = i_app_data[i]
         #print('iapp',i_app_temp)
         c_temp = edge_conc_vals[i]      
@@ -207,9 +248,9 @@ def voltage_current_plot(electrode,cstore,time_axis,i_app_data,no_timesteps):
     axs[0].set_ylabel('Voltage (V)', color ='b')
     axs[0].set_title('Voltage and Applied Current Over Time')
 
-    axs[1].set_ylabel('Applied Current Density (A/m^2)', color = 'r')
+    axs[1].set_ylabel(r'Applied Current Density (A/m$^2$)', color = 'r')
     axs[1].plot(time_axis,i_app_data,'r--',label='current')
-    axs[1].set_xlabel('Time(s)')
+    axs[1].set_xlabel('Time (s)')
     plt.savefig('Voltage Current Plot')
         
 
@@ -237,13 +278,13 @@ def plot_GITT_result(filename,start_times,electrode):
 
     #call the plotter
     voltage_current_plot(electrode,full_cstore,full_time_axis,full_iapp_vals,total_tsteps)
-
-def gen_plots(filename,electrode,animation_interval_time=10,SaveFinalState=True,SparsifyAnimation=False):
+'''!@package gen_plots: Causes plots corresponding to voltage_current_plot and animated_conc_plot to be generated.'''
+def gen_plots(filename,animation_interval_time=10,SaveFinalState=True,SparsifyAnimation=False):
     #generate all the plots that would previously have been generated from calling the plotting script
-    cstore,tsteps,nodenum,R,time_axis,dr = read_output_file(filename)
+    cstore,tsteps,nodenum,R,time_axis,dr,electrode = read_output_file(filename)
     i_app_data = read_input_current(filename)
     voltage_current_plot(electrode,cstore,time_axis,i_app_data,tsteps)
-    animated_conc_plot(animation_interval_time,dr,tsteps,nodenum,cstore,SaveFinalState=SaveFinalState,SparsifyAnimation=SparsifyAnimation)
+    animated_conc_plot(animation_interval_time,dr,tsteps,nodenum,cstore,time_axis,SaveFinalState=SaveFinalState,SparsifyAnimation=SparsifyAnimation)
 
 
 

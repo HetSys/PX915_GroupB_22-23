@@ -34,7 +34,6 @@ PROGRAM MAIN
     !generate name of output file
     filename_length = LEN_TRIM(filename)
     output_name = filename(1:filename_length-4)//'_output.nc'
-    PRINT*, output_name
     tsteps = user_inputs%tsteps
     dt = user_inputs%dt
     c0 = user_inputs%c0
@@ -123,7 +122,9 @@ PROGRAM MAIN
         !print*, i, cstorage(i,:)
     END DO
     CLOSE(9)
-    CALL output_cstorage(cstorage, n, tsteps, R,time_axis, output_name)
+
+    CALL output_cstorage(cstorage, n, tsteps, R, time_axis, user_inputs%electrode_charge, output_name)
+
 
     DEALLOCATE(cstorage)
     DEALLOCATE(iapp)
