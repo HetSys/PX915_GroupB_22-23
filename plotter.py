@@ -39,7 +39,7 @@ def read_output_file(filename,step_num=None):
 
 
 '''!@package read_input_current: Reads in applied current data'''
-'''!@var 1D array of floats i_app_data: Array containing applied current at all discret time points.'''
+'''!@var 1D array of floats i_app_data: Array containing applied current density (A/m^2) at all discrete time points.'''
 def read_input_current(filename,step_num=None):
     if step_num is not None:
         filename = filename+str(step_num)
