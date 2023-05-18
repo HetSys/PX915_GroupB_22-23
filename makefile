@@ -1,20 +1,30 @@
-fc := gfortran
-fstd := -std=f2008
+# on scrtp desktops for ifort, run the following:
+# module purge; module load intel/2017.4.196-GCC-6.4.0-2.28  impi/2017.3.196 imkl/2017.3.196 
+# module load netCDF-Fortran/4.4.4
+
+
+# Flags requird if compiling with Intel MKL
+iflags= -DMKL
+# Libraries required if compiling with Intel MKL
+ildflibs=-Wl,--start-group ${MKLROOT}/lib/intel64/libmkl_intel_lp64.a ${MKLROOT}/lib/intel64/libmkl_intel_thread.a ${MKLROOT}/lib/intel64/libmkl_core.a -Wl,--end-group -liomp5 -lpthread -lm -ldl
+
+gfc := gfortran
+ifc := ifort
 fflags ?= -O3
 ldfflags := `nf-config --fflags`
 ldfflibs := `nf-config --flibs`
-war ?= -Wall -Wextra
+extra ?= 
 finite_diff_solver : finite_diff_solver.o nc_output.mod read_inputs.mod
-	$(fc) $(fstd) $(fflags) $(ldfflags) read_inputs.o nc_output.o finite_diff_solver.o $(ldfflibs) -llapack -lnetcdf -o $@ $(war)
+	$(ifc) $(fflags) $(ldfflags) $(iflags) read_inputs.o nc_output.o finite_diff_solver.o $(ldfflibs) $(ildflibs) -lnetcdf -o $@ $(extra)
 
 finite_diff_solver.o : finite_diff_solver.f90 nc_output.mod read_inputs.mod
-	$(fc) $(fstd) $(fflags) -c finite_diff_solver.f90
+	$(ifc) $(fflags) -c finite_diff_solver.f90
 
 nc_output.mod : nc_output.f90
-	$(fc) $(fstd) $(ldfflags) -c nc_output.f90 -lnetcdf $(ldfflibs)
+	$(ifc) $(ldfflags) -c nc_output.f90 -lnetcdf $(ldfflibs)
 	
 read_inputs.mod : read_inputs.f90
-	$(fc) $(fstd) $(fflags) -c read_inputs.f90
+	$(ifc) $(fflags) -c read_inputs.f90
 
 clean :
 	rm *.o *.mod ./finite_diff_solver
