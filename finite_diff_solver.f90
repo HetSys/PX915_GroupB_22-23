@@ -6,13 +6,13 @@ PROGRAM MAIN
     USE nc_output
     USE checkpointing
     IMPLICIT NONE
-    INTEGER, PARAMETER :: n=1000 !node number
+    INTEGER :: n !node number
     INTEGER :: info, i, tstep, filename_length
-    INTEGER, DIMENSION(n) :: ipiv
+    INTEGER, DIMENSION(:), ALLOCATABLE :: ipiv
     INTEGER :: tsteps ! user input
-    REAL(REAL64), DIMENSION(n,n) :: A !solver matrix
-    REAL(REAL64), DIMENSION(n,n) :: A_copy !copy of solver matrix
-    REAL(REAL64), DIMENSION(n) :: c,b !c vector for solving 
+    REAL(REAL64), DIMENSION(:,:), ALLOCATABLE :: A !solver matrix
+    REAL(REAL64), DIMENSION(:,:), ALLOCATABLE :: A_copy !copy of solver matrix
+    REAL(REAL64), DIMENSION(:), ALLOCATABLE :: c,b !c vector for solving 
     REAL(REAL64), DIMENSION(:,:), ALLOCATABLE :: cstorage
     REAL(REAL64) :: c0 !initial c value
     REAL(REAL64) :: dt !finite diff t
@@ -24,32 +24,24 @@ PROGRAM MAIN
     REAL(REAL64), DIMENSION(:), ALLOCATABLE :: iapp, Z, time_axis !applied current, in general a function of t, time_axis
     REAL(REAL64) :: a_small, L !constants
     REAL(REAL64), PARAMETER :: F = 96485_REAL64 !Faraday constant
-    CHARACTER(len=54) :: filename, output_name
-    TYPE(UI) :: user_inputs ! Type defined in read_inputs, to return user inputs
     CHARACTER(len=1) :: electrode_charge
-
+    CHARACTER(len=54) :: filename, output_name
 
     ! Read in user inputs
     filename = read_command_line()
-    ! Retrieve user inputs
-    user_inputs = set_inputs(filename) ! returns type containing user inputs
-
+    CALL read_user_inputs(filename, tsteps, dt, n, c0, D, R, a_small, L, iapp, electrode_charge)
     !generate name of output file
     filename_length = LEN_TRIM(filename)
     output_name = filename(1:filename_length-4)//'_output.nc'
-    tsteps = user_inputs%tsteps
-    dt = user_inputs%dt
-    c0 = user_inputs%c0
-    D = user_inputs%D
-    R = user_inputs%R
-    a_small = user_inputs%a_small
-    L = user_inputs%L
-    iapp = user_inputs%iapp !array allocated in read_user_inputs function
-    electrode_charge = user_inputs%electrode_charge
 
+    ALLOCATE(ipiv(n))
+    ALLOCATE(A(n,n))
+    ALLOCATE(A_copy(n,n))
+    ALLOCATE(b(n))
+    ALLOCATE(c(n))
     ALLOCATE(cstorage(n, tsteps))
     ALLOCATE(Z(tsteps))
-
+    
     !allocate time axis
     ALLOCATE(time_axis(tsteps))
     !first state is at t=0
@@ -133,10 +125,15 @@ PROGRAM MAIN
 
     CALL output_cstorage(cstorage, n, tsteps, R, time_axis, electrode_charge, output_name)
 
-
+    DEALLOCATE(A)
+    DEALLOCATE(A_copy)
+    DEALLOCATE(b)
+    DEALLOCATE(c)
+    DEALLOCATE(ipiv)
     DEALLOCATE(cstorage)
     DEALLOCATE(iapp)
     DEALLOCATE(Z)
+    DEALLOCATE(time_axis)
     
 END PROGRAM
 

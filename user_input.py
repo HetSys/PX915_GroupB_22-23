@@ -20,6 +20,7 @@ solver_input_filename = 'user_input'
 Input parameters: tsteps, dt, c0, D, R, a, L, iapp, iapp_label
 @var integer tsteps: Number of timesteps, integer, > 0. Do not change if read iapp from file.
 @var float dt: Timestep size (s), float > 0.
+@var integer n: Number of spatial nodes, integer, 100 =< n =< 4000.
 @var float c0: Initial concentration (mol m**-3), float >= 0.
 @var float D: Diffusion constant (m**2 s**-1), float.
 @var float R: Width of block (m), float > 0.
@@ -43,7 +44,7 @@ iapp_steps: 2D array of step values and timesteps where step occurs, starting ti
 ######### SET VALUES #########
 
 # Import default values
-tsteps, dt, c0, D, R, a, L, iapp, iapp_label, electrode_charge = UI.set_defaults_pos()
+tsteps, dt, n, c0, D, R, a, L, iapp, iapp_label, electrode_charge = UI.set_defaults_pos()
 
 # Read in applied current density from csv file
 iapp_filename = 'WLTP_m10.csv'
@@ -57,7 +58,7 @@ if (not checkpoint):
     If setting manually, tsteps must be validated before iapp is set up to ensure than iapp has a valid length.
     '''
     # Check parameters and output filename are valid
-    UI.verify_params(solver_input_filename, tsteps, dt, c0, D, R, a, L, electrode_charge)
+    UI.verify_params(solver_input_filename, tsteps, dt, n, c0, D, R, a, L, electrode_charge)
 
     #Check applied current is valid 
     UI.verify_iapp(iapp, iapp_label, tsteps)
