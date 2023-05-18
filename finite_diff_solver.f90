@@ -5,13 +5,13 @@ PROGRAM MAIN
     USE read_inputs
     USE nc_output
     IMPLICIT NONE
-    INTEGER, PARAMETER :: n=1000 !node number
+    INTEGER :: n !node number
     INTEGER :: info, i, tstep, filename_length
-    INTEGER, DIMENSION(n) :: ipiv
+    INTEGER, DIMENSION(:), ALLOCATABLE :: ipiv
     INTEGER :: tsteps ! user input
-    REAL(REAL64), DIMENSION(n,n) :: A !solver matrix
-    REAL(REAL64), DIMENSION(n,n) :: A_copy !copy of solver matrix
-    REAL(REAL64), DIMENSION(n) :: c,b !c vector for solving 
+    REAL(REAL64), DIMENSION(:,:), ALLOCATABLE :: A !solver matrix
+    REAL(REAL64), DIMENSION(:,:), ALLOCATABLE :: A_copy !copy of solver matrix
+    REAL(REAL64), DIMENSION(:), ALLOCATABLE :: c,b !c vector for solving 
     REAL(REAL64), DIMENSION(:,:), ALLOCATABLE :: cstorage
     REAL(REAL64) :: c0 !initial c value
     REAL(REAL64) :: dt !finite diff t
@@ -29,15 +29,19 @@ PROGRAM MAIN
 
     ! Read in user inputs
     filename = read_command_line()
-    CALL read_user_inputs(filename, tsteps, dt, c0, D, R, a_small, L, iapp, electrode_charge) ! returns type containing user inputs
-
+    CALL read_user_inputs(filename, tsteps, dt, n, c0, D, R, a_small, L, iapp, electrode_charge)
     !generate name of output file
     filename_length = LEN_TRIM(filename)
     output_name = filename(1:filename_length-4)//'_output.nc'
 
+    ALLOCATE(ipiv(n))
+    ALLOCATE(A(n,n))
+    ALLOCATE(A_copy(n,n))
+    ALLOCATE(b(n))
+    ALLOCATE(c(n))
     ALLOCATE(cstorage(n, tsteps))
     ALLOCATE(Z(tsteps))
-
+    
     !allocate time axis
     ALLOCATE(time_axis(tsteps))
     !first state is at t=0
@@ -117,10 +121,15 @@ PROGRAM MAIN
 
     CALL output_cstorage(cstorage, n, tsteps, R, time_axis, electrode_charge, output_name)
 
-
+    DEALLOCATE(A)
+    DEALLOCATE(A_copy)
+    DEALLOCATE(b)
+    DEALLOCATE(c)
+    DEALLOCATE(ipiv)
     DEALLOCATE(cstorage)
     DEALLOCATE(iapp)
     DEALLOCATE(Z)
+    DEALLOCATE(time_axis)
     
 END PROGRAM
 

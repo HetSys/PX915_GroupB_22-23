@@ -73,12 +73,13 @@
 
         !> @brief Subroutine reads user inputs from txt file.
         !! @details Subroutine reads txt file 'filename', parsing and returning input parameters.
-        !! Txt file should contain parameters tsteps, dt, c0, D, R, a, L, and electrode_charge, in format 'parameter = value'.
+        !! Txt file should contain parameters tsteps, dt, n, c0, D, R, a, L, and electrode_charge, in format 'parameter = value'.
         !! These parameters can be listed in any order above a line of asterixes ***.
         !! Below the asterix line should be iapp, with a label line followed by an array printed one element per line.
         !! @param[in] filename: Name of user input file.
         !! @param[out] tsteps: Number of timesteps
         !! @param[out] dt: Time step size
+        !! @param[out] n: Number of spatial nodes
         !! @param[out] c0: Initial concentration
         !! @param[out] D: Diffusion constant
         !! @param[out] R: Total width of block
@@ -86,7 +87,7 @@
         !! @param[out] L: Electrode thickness
         !! @param[out] iapp: Applied current density
         !! @param[out] electrode_charge: Electrode charge
-        SUBROUTINE read_user_inputs(filename, tsteps, dt, c0, D, R, a_small, L, iapp, electrode_charge)
+        SUBROUTINE read_user_inputs(filename, tsteps, dt, n, c0, D, R, a_small, L, iapp, electrode_charge)
 
             !> @var integer tsteps
             !! Number of timesteps (dimensionless)
@@ -94,6 +95,9 @@
             !> @var real dt
             !! Time step size (s)
             REAL(REAL64), INTENT(OUT) :: dt
+            !> @var integer n
+            !! Number of spatial nodes (dimensionless)
+            INTEGER, INTENT(OUT) :: n
             !> @var real c0
             !! Initial concentration (mol m^-3)
             REAL(REAL64), INTENT(OUT) :: c0
@@ -126,8 +130,8 @@
             INTEGER, PARAMETER :: file_id = 1
 
             !> @var integer parameter
-            !! Expected number of parameters to read in: tsteps, dt, c0, D, R, a, L, and electrode_charge
-            INTEGER, PARAMETER :: n_params_expected = 8
+            !! Expected number of parameters to read in: tsteps, dt, n, c0, D, R, a, L, and electrode_charge
+            INTEGER, PARAMETER :: n_params_expected = 9
             !> @var integer n_params
             !! Counts number of parameters read in, initialised to 1.
             INTEGER :: n_params = 1
@@ -147,7 +151,6 @@
             !! Error checking string to ensure each parameter is read in.
             CHARACTER (len=n_params_expected) :: param_read ! 
 
-            !CHARACTER(len=30), DIMENSION(n_params_expected+2) :: user_input_vars ! Array of strings read from file, to be parsed
             !> @var character len=30 read_temp
             !! String to hold read in line before parsing.
             CHARACTER(len=30) :: read_temp
@@ -222,6 +225,16 @@
                         END IF
                         param_read = '2'//param_read
 
+                    CASE('n')
+                        READ(val,*, iostat=ios, err=1) n
+                        IF (n<100 .OR. n>4000) THEN
+                            PRINT*, "Invalid parameter: Number of spatial nodes, &
+                            &n, must have a value between 100 and 4000."
+                            invalid_param = .TRUE.
+                        END IF
+                        param_read = '3'//param_read
+
+
                     CASE('c0')
                         READ(val,*, iostat=ios, err=1) c0
                         IF (c0<0) THEN
@@ -229,12 +242,12 @@
                             &c0, must have a positive value."
                             invalid_param = .TRUE.
                         END IF
-                        param_read = '3'//param_read
+                        param_read = '4'//param_read
 
                     CASE('D')
                         READ(val,*, iostat=ios, err=1) D
                         ! No validation required
-                        param_read = '4'//param_read
+                        param_read = '5'//param_read
 
                     CASE('R')
                         READ(val,*, iostat=ios, err=1) R
@@ -243,7 +256,7 @@
                             &R, must have a positive, non zero value."
                             invalid_param = .TRUE.
                         END IF
-                        param_read = '5'//param_read
+                        param_read = '6'//param_read
 
                     CASE('a')
                         READ(val,*, iostat=ios, err=1) a_small
@@ -252,7 +265,7 @@
                             &per unit volume, a, must have a positive, non zero value."
                             invalid_param = .TRUE.
                         END IF
-                        param_read = '6'//param_read
+                        param_read = '7'//param_read
 
                     CASE('L')
                         READ(val,*, iostat=ios, err=1) L
@@ -261,7 +274,7 @@
                             &L, must have a positive, non zero value."
                             invalid_param = .TRUE.
                         END IF
-                        param_read = '7'//param_read
+                        param_read = '8'//param_read
 
                     CASE('electrode_charge')
                         READ(val,*, iostat=ios, err=1) electrode_charge
@@ -270,14 +283,14 @@
                             &electrode_charge, must have value 'p' for positive or 'n' for negative."
                             invalid_param = .TRUE.
                         END IF
-                        param_read = '8'//param_read
+                        param_read = '9'//param_read
 
                     CASE('*')
                         asterix = .TRUE.
                     
                     CASE DEFAULT
                         PRINT*, "Unexpected parameter encountered in input file, line",n_params, ", ", filename
-                        PRINT*, "Please ensure only parameters tsteps, dt, c0, D, R, a, L,&
+                        PRINT*, "Please ensure only parameters tsteps, dt, n, c0, D, R, a, L,&
                         & and electrode_charge are specified above ************."
                         STOP 2
 
@@ -291,7 +304,8 @@
             DO i = 1, n_params_expected
                 WRITE(read_temp,*) i
                 IF (SCAN(param_read, read_temp) == 0) THEN
-                    PRINT*, "Parameter missing. Please ensure input file contains tsteps, dt, c0, D, R, a, L, and electrode_charge."
+                    PRINT*, "Parameter missing. Please ensure input file contains &
+                    &tsteps, dt, n, c0, D, R, a, L, and electrode_charge."
                     invalid_param = .TRUE.
                 END IF
             END DO
@@ -325,7 +339,6 @@
                 STOP 5
             END IF
 
-
         END SUBROUTINE
 
 
@@ -354,6 +367,8 @@
                     PRINT*, "Number of timesteps, tsteps, must be an integer."
                 CASE('dt')
                     PRINT*, "Size of timestep, dt, must be a float/real value."
+                CASE('n')
+                    PRINT*, 'Number of spatial nodes, n, must be an integer.'
                 CASE('c0')
                     PRINT*, "Initial concentration, c0, must be a float/real value."
                 CASE('D')
