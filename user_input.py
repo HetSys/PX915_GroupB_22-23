@@ -64,7 +64,7 @@ if (not checkpoint):
     UI.verify_iapp(iapp, iapp_label, tsteps)
 
     '''! 4.2. Write parameters to file.'''
-    UI.write_to_file(solver_input_filename, tsteps, dt, c0, D, R, a, L, iapp, iapp_label, electrode_charge)
+    UI.write_to_file(solver_input_filename, tsteps, dt, n, c0, D, R, a, L, iapp, iapp_label, electrode_charge)
 
 '''! 5. Call fortran solver.'''
 UI.call_solver(solver_input_filename, checkpoint)
