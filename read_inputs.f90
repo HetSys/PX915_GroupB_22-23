@@ -34,6 +34,9 @@
             !! Applied current (A m^-2)
             !! Will be length tsteps
             REAL(REAL64), DIMENSION(:), ALLOCATABLE :: iapp
+            !> @var chararacter len=1 electrode_charge
+            !! Label of electrode charge, 'p'=positive, 'n'=negative
+            CHARACTER(len=1) :: electrode_charge
         END TYPE
 
         CONTAINS
@@ -103,16 +106,16 @@
 
         !> @brief Function reads user inputs from file.
         !! @details Function reads txt file 'filename', parsing and returning input parameters.
-        !! Txt file should contain parameters tsteps, dt, c0, D, R, a, and L, in format 'parameter = value'.
+        !! Txt file should contain parameters tsteps, dt, c0, D, R, a, L, and electrode_charge, in format 'parameter = value'.
         !! These parameters can be listed in any order above a line of asterixes ***.
         !! Below the asterix line should be iapp, with a label line followed by an array printed one element per line.
         !! @param[in] filename: Name of user input file.
-        !! @result read_user_inputs: Type UI containing all user inputs.
-        FUNCTION read_user_inputs(filename)
+        !! @result input_params: Type UI containing all user inputs.
+        FUNCTION read_user_inputs(filename) RESULT(input_params)
 
-            !> @var type(UI) read_user_inputs
+            !> @var type(UI) input_params
             !! Result of function containing all inputs for return to solver.
-            TYPE(UI) :: read_user_inputs
+            TYPE(UI) :: input_params
             !> @var character len=* filename
             !! Name of user input file.
             CHARACTER(len=*), INTENT(IN) :: filename
@@ -121,8 +124,8 @@
             INTEGER, PARAMETER :: file_id = 1
 
             !> @var integer parameter
-            !! Expected number of parameters to read in: tsteps, dt, c0, D, R, a, and L
-            INTEGER, PARAMETER :: n_params_expected = 7
+            !! Expected number of parameters to read in: tsteps, dt, c0, D, R, a, L, and electrode_charge
+            INTEGER, PARAMETER :: n_params_expected = 8
             !> @var integer n_params
             !! Counts number of parameters read in, initialised to 1.
             INTEGER :: n_params = 1
@@ -200,8 +203,8 @@
                 SELECT CASE(name)
 
                     CASE('tsteps')
-                        READ(val,*, iostat=ios, err=1) read_user_inputs%tsteps
-                        IF (read_user_inputs%tsteps<1) THEN
+                        READ(val,*, iostat=ios, err=1) input_params%tsteps
+                        IF (input_params%tsteps<1) THEN
                             PRINT*, "Invalid parameter: Number of timesteps, &
                             &tsteps, must greater than zero."
                             invalid_param = .TRUE.
@@ -209,8 +212,8 @@
                         param_read = '1'//param_read
 
                     CASE('dt')
-                        READ(val,*, iostat=ios, err=1) read_user_inputs%dt
-                        IF (read_user_inputs%dt<=0) THEN
+                        READ(val,*, iostat=ios, err=1) input_params%dt
+                        IF (input_params%dt<=0) THEN
                             PRINT*, "Invalid parameter: Size of timestep, &
                             &dt, must have a positive, non zero value."
                             invalid_param = .TRUE.
@@ -218,8 +221,8 @@
                         param_read = '2'//param_read
 
                     CASE('c0')
-                        READ(val,*, iostat=ios, err=1) read_user_inputs%c0
-                        IF (read_user_inputs%c0<0) THEN
+                        READ(val,*, iostat=ios, err=1) input_params%c0
+                        IF (input_params%c0<0) THEN
                             PRINT*, "Invalid parameter: Initial concentration, &
                             &c0, must have a positive value."
                             invalid_param = .TRUE.
@@ -227,13 +230,13 @@
                         param_read = '3'//param_read
 
                     CASE('D')
-                        READ(val,*, iostat=ios, err=1) read_user_inputs%D
+                        READ(val,*, iostat=ios, err=1) input_params%D
                         ! No validation required
                         param_read = '4'//param_read
 
                     CASE('R')
-                        READ(val,*, iostat=ios, err=1) read_user_inputs%R
-                        IF (read_user_inputs%R<=0) THEN
+                        READ(val,*, iostat=ios, err=1) input_params%R
+                        IF (input_params%R<=0) THEN
                             PRINT*, "Invalid parameter: Width of block, &
                             &R, must have a positive, non zero value."
                             invalid_param = .TRUE.
@@ -241,8 +244,8 @@
                         param_read = '5'//param_read
 
                     CASE('a')
-                        READ(val,*, iostat=ios, err=1) read_user_inputs%a_small
-                        IF (read_user_inputs%a_small<=0) THEN
+                        READ(val,*, iostat=ios, err=1) input_params%a_small
+                        IF (input_params%a_small<=0) THEN
                             PRINT*, "Invalid parameter: Particle surface area &
                             &per unit volume, a, must have a positive, non zero value."
                             invalid_param = .TRUE.
@@ -250,20 +253,30 @@
                         param_read = '6'//param_read
 
                     CASE('L')
-                        READ(val,*, iostat=ios, err=1) read_user_inputs%L
-                        IF (read_user_inputs%L<=0) THEN
+                        READ(val,*, iostat=ios, err=1) input_params%L
+                        IF (input_params%L<=0) THEN
                             PRINT*, "Invalid parameter: Electrode thickness, &
                             &L, must have a positive, non zero value."
                             invalid_param = .TRUE.
                         END IF
                         param_read = '7'//param_read
 
+                    CASE('electrode_charge')
+                        READ(val,*, iostat=ios, err=1) input_params%electrode_charge
+                        IF (.NOT.(input_params%electrode_charge=='n' .OR. input_params%electrode_charge=='p')) THEN
+                            PRINT*, "Invalid parameter: Electrode charge label, &
+                            &electrode_charge, must have value 'p' for positive or 'n' for negative."
+                            invalid_param = .TRUE.
+                        END IF
+                        param_read = '8'//param_read
+
                     CASE('*')
                         asterix = .TRUE.
                     
                     CASE DEFAULT
                         PRINT*, "Unexpected parameter encountered in input file, line",n_params, ", ", filename
-                        PRINT*, "Please ensure only parameters tsteps, dt, c0, D, R, a, and L are specified above ************."
+                        PRINT*, "Please ensure only parameters tsteps, dt, c0, D, R, a, L,&
+                        & and electrode_charge are specified above ************."
                         STOP 2
 
                 END SELECT
@@ -276,7 +289,7 @@
             DO i = 1, n_params_expected
                 WRITE(read_temp,*) i
                 IF (SCAN(param_read, read_temp) == 0) THEN
-                    PRINT*, "Parameter missing. Please ensure input file contains tsteps, dt, c0, D, R, a, and L."
+                    PRINT*, "Parameter missing. Please ensure input file contains tsteps, dt, c0, D, R, a, L, and electrode_charge."
                     invalid_param = .TRUE.
                 END IF
             END DO
@@ -289,7 +302,7 @@
             READ(file_id, '(A)', iostat=ios) read_temp
 
             !> 7. Read in iapp array.
-            ALLOCATE(read_user_inputs%iapp(read_user_inputs%tsteps))
+            ALLOCATE(input_params%iapp(input_params%tsteps))
             i = 1
             name = "iapp"
             !> 7.1. Initiate and label error process if iapp has incorrect type.
@@ -297,16 +310,16 @@
             
             !> 7.2. Loop through tsteps lines of file, reading into array iapp.
             DO
-                READ(file_id, *, iostat=ios, err=2) read_user_inputs%iapp(i)
+                READ(file_id, *, iostat=ios, err=2) input_params%iapp(i)
                 i = i+1
-                IF (i>read_user_inputs%tsteps) EXIT
+                IF (i>input_params%tsteps) EXIT
             END DO
             
             !> 8. Check no lines missed in file; is iapp in file longer than tsteps?
             !! If read is successful then iapp is too long in file. Prints error and stops execution.
             READ(file_id, '(A)', iostat=ios) read_temp
             IF (ios==0) THEN
-                PRINT*, "Applied current, iapp, is too long; it must be an array of length tsteps,", read_user_inputs%tsteps
+                PRINT*, "Applied current, iapp, is too long; it must be an array of length tsteps,", input_params%tsteps
                 STOP 5
             END IF
 
@@ -351,6 +364,8 @@
                     PRINT*, "Electrode thickness, L, must be a float/real value."
                 CASE('iapp')
                     PRINT*, "Applied current, iapp, must be an array of float/real values of length tsteps."
+                CASE('electrode_charge')
+                    PRINT*, "Label of electrode charge, electrode_charge, must be a string of len=1."
 
             END SELECT
 
