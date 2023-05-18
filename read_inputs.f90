@@ -71,7 +71,6 @@
         END FUNCTION read_command_line
 
 
-        !!!ACTION
         !> @brief Subroutine reads user inputs from txt file.
         !! @details Subroutine reads txt file 'filename', parsing and returning input parameters.
         !! Txt file should contain parameters tsteps, dt, c0, D, R, a, L, and electrode_charge, in format 'parameter = value'.
