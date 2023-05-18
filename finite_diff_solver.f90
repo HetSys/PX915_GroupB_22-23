@@ -23,25 +23,17 @@ PROGRAM MAIN
     REAL(REAL64), DIMENSION(:), ALLOCATABLE :: iapp, Z, time_axis !applied current, in general a function of t, time_axis
     REAL(REAL64) :: a_small, L !constants
     REAL(REAL64), PARAMETER :: F = 96485_REAL64 !Faraday constant
+    CHARACTER(len=1) :: electrode_charge
     CHARACTER(len=54) :: filename, output_name
-    TYPE(UI) :: user_inputs ! Type defined in read_inputs, to return user inputs
 
 
     ! Read in user inputs
     filename = read_command_line()
-    user_inputs = read_user_inputs(filename) ! returns type containing user inputs
+    CALL read_user_inputs(filename, tsteps, dt, c0, D, R, a_small, L, iapp, electrode_charge) ! returns type containing user inputs
 
     !generate name of output file
     filename_length = LEN_TRIM(filename)
     output_name = filename(1:filename_length-4)//'_output.nc'
-    tsteps = user_inputs%tsteps
-    dt = user_inputs%dt
-    c0 = user_inputs%c0
-    D = user_inputs%D
-    R = user_inputs%R
-    a_small = user_inputs%a_small
-    L = user_inputs%L
-    iapp = user_inputs%iapp !array allocated in read_user_inputs function
 
     ALLOCATE(cstorage(n, tsteps))
     ALLOCATE(Z(tsteps))
@@ -123,7 +115,7 @@ PROGRAM MAIN
     END DO
     CLOSE(9)
 
-    CALL output_cstorage(cstorage, n, tsteps, R, time_axis, user_inputs%electrode_charge, output_name)
+    CALL output_cstorage(cstorage, n, tsteps, R, time_axis, electrode_charge, output_name)
 
 
     DEALLOCATE(cstorage)
