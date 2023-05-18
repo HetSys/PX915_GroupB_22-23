@@ -161,7 +161,7 @@ def set_defaults_neg():
     dt = 0.1
 
     # Initial concentration (mol m**-3), real, positive
-    c0 = 0.0
+    c0 = 1000.0
     # Diffusion coefficient (m**2 s**-1), real
     D = 3.3e-14
     # Width of block (m), real, greater than 0
