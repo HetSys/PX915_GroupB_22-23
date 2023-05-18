@@ -4,6 +4,7 @@ PROGRAM MAIN
     USE ISO_FORTRAN_ENV
     USE read_inputs
     USE nc_output
+    USE checkpointing
     IMPLICIT NONE
     INTEGER, PARAMETER :: n=2500 !node number
     INTEGER :: info, i, tstep, filename_length
@@ -25,6 +26,7 @@ PROGRAM MAIN
     REAL(REAL64), PARAMETER :: F = 96485_REAL64 !Faraday constant
     CHARACTER(len=54) :: filename, output_name
     TYPE(UI) :: user_inputs ! Type defined in read_inputs, to return user inputs
+    CHARACTER(len=1) :: electrode_charge
 
 
     ! Read in user inputs
@@ -43,6 +45,7 @@ PROGRAM MAIN
     a_small = user_inputs%a_small
     L = user_inputs%L
     iapp = user_inputs%iapp !array allocated in read_user_inputs function
+    electrode_charge = user_inputs%electrode_charge
 
     ALLOCATE(cstorage(n, tsteps))
     ALLOCATE(Z(tsteps))
@@ -113,7 +116,11 @@ PROGRAM MAIN
         !add solution to storage vector
         cstorage(:,tstep+1) = c
         time_axis(tstep+1) = dt*tstep
+
+        CALL write_checkpoint(tstep, tsteps, c, n, A, dt, R, D, Z, electrode_charge, filename, 15)
+        
     END DO
+    
     
 
     !write to output file
@@ -124,7 +131,7 @@ PROGRAM MAIN
     END DO
     CLOSE(9)
 
-    CALL output_cstorage(cstorage, n, tsteps, R, time_axis, user_inputs%electrode_charge, output_name)
+    CALL output_cstorage(cstorage, n, tsteps, R, time_axis, electrode_charge, output_name)
 
 
     DEALLOCATE(cstorage)

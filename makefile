@@ -4,10 +4,10 @@ fflags ?= -O3
 ldfflags := `nf-config --fflags`
 ldfflibs := `nf-config --flibs`
 war ?= -Wall -Wextra
-finite_diff_solver : finite_diff_solver.o nc_output.mod read_inputs.mod
-	$(fc) $(fstd) $(fflags) $(ldfflags) read_inputs.o nc_output.o finite_diff_solver.o $(ldfflibs) -llapack -lnetcdf -o $@ $(war)
+finite_diff_solver : finite_diff_solver.o nc_output.mod read_inputs.mod checkpointing.mod
+	$(fc) $(fstd) $(fflags) $(ldfflags) read_inputs.o nc_output.o checkpointing.o finite_diff_solver.o $(ldfflibs) -llapack -lnetcdf -o $@ $(war)
 
-finite_diff_solver.o : finite_diff_solver.f90 nc_output.mod read_inputs.mod
+finite_diff_solver.o : finite_diff_solver.f90 nc_output.mod read_inputs.mod checkpointing.mod
 	$(fc) $(fstd) $(fflags) -c finite_diff_solver.f90
 
 nc_output.mod : nc_output.f90
@@ -15,6 +15,9 @@ nc_output.mod : nc_output.f90
 	
 read_inputs.mod : read_inputs.f90
 	$(fc) $(fstd) $(fflags) -c read_inputs.f90
+
+checkpointing.mod : checkpointing.f90 nc_output.mod read_inputs.mod
+	$(fc) $(fstd) $(ldfflags) -c checkpointing.f90 -lnetcdf $(ldfflibs)
 
 clean :
 	rm *.o *.mod ./finite_diff_solver

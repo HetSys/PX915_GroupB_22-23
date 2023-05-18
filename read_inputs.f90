@@ -375,56 +375,5 @@
 
 
 
-        FUNCTION set_inputs(filename) RESULT(input_params)
-
-            !> @var type(UI) input_params
-            !! Result of function containing all inputs for return to solver.
-            TYPE(UI) :: input_params
-            !> @var character len=* filename
-            !! Name of input file.
-            CHARACTER(len=*), INTENT(IN) :: filename
-            !> @var character len=5 file_extension
-            !! Parsed file extension to choose checkpoint file or user input parameters
-            CHARACTER(len=5) :: file_extension
-            !> @var integer parse_idx
-            !! Index of parser in string
-            INTEGER :: parse_idx
-
-            !> 1. Find index of '.' in filename to identify file extension
-            parse_idx = INDEX(filename, ".") +1
-            file_extension = filename(parse_idx:)
-            
-            !> 2. Choose input reader based on file extension.
-            SELECT CASE(file_extension)
-
-                CASE("txt")
-                    input_params = read_user_inputs(filename)
-
-                CASE("nc")
-                    PRINT*, "Checkpoint reader called. This is a test."
-                    STOP 6
-                    !inputs_params = ! NEW FUNCTION
-
-                CASE DEFAULT
-                    PRINT*, "Invalid file type passed to SPM solver."
-                    PRINT*, "Please pass a 'txt' file of user input parameters or a 'nc' checkpoint file."
-                    STOP 6
-
-            END SELECT
-
-        END FUNCTION set_inputs
-
-
-
-        ! FUNCTION read_checkpoint_input(filename) RESULT(input_params)
-        !     !> @var type(UI) input_params
-        !     !! Result of function containing all inputs for return to solver.
-        !     TYPE(UI) :: input_params
-        !     !> @var character len=* filename
-        !     !! Name of checkpoint file.
-        !     CHARACTER(len=*), INTENT(IN) :: filename
-
-        ! END FUNCTION read_checkpoint_input
-
 
     END MODULE read_inputs
