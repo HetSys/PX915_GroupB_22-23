@@ -160,14 +160,17 @@ def voltage_current_plot(electrode,cstore,time_axis,i_app_data,tsteps):
     L_pos = 75.6E-6 #m
     L_neg = 85.2E-6 #m
     '''!Set Parameters depending on electrode variable.'''
-    if electrode.lower() == 'positive' or electrode == 'cathode':   #set constants based on pos or neg electrode setup
+    if electrode == 'p':   #set constants based on pos or neg electrode setup
         c_max = cmax_pos_sim
         K = K_pos
         L = L_pos
-    else:
+    elif electrode == 'n':
         c_max = cmax_neg_sim
         K = K_neg
         L = L_neg
+    else:
+        print('Electrode type not recognised!')
+        raise ValueError
 
 
     #This is the j(c) function from our model, used to calculate the voltage
@@ -231,10 +234,13 @@ def voltage_current_plot(electrode,cstore,time_axis,i_app_data,tsteps):
         #print('c_temp',c_temp)  
         j_temp = j_function(c_temp)
         #print('jtemp',j_temp)
-        if electrode.lower() == 'positive' or electrode == 'cathode':
+        if electrode == 'p':
             u_temp = U_function_pos(c_temp)
-        else:
+        elif electrode == 'n':
             u_temp = U_function_neg(c_temp)
+        else:
+            print('Electrode charge not recognised!')
+            raise ValueError
         #print('u_temp', u_temp)
         if j_temp == 0:
             volt_store.append(0)            #use to prevent division by zero
@@ -254,7 +260,7 @@ def voltage_current_plot(electrode,cstore,time_axis,i_app_data,tsteps):
         
 
        
-def plot_GITT_result(filename,start_times,electrode,Animation=False,SaveFinalState=False,SparsifyAnimation=True,animation_interval_time=10):
+def plot_GITT_result(filename,start_times,Animation=False,SaveFinalState=False,SparsifyAnimation=True,animation_interval_time=10):
 
 
     running_tot_start_time = 0.0
