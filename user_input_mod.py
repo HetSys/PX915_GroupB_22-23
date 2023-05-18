@@ -401,12 +401,13 @@ def GITT(filename,nprocs,currents,start_times,run_times,wait_times,params):
     F = 96485.3321 #faraday constant
     #unpack params
     [dt, c0, D, R, a, L] = params
-
+    #volume fraction of active material
+    e_act = (a*R)/3
     #array of initial concentrations, using the fact that
     # C(T=t) = C0 + ((i_app*t)/(F*L))
     # where i_app is the current into the battery (positive, current flows in, negative, current flows out). 
 
-    initial_concs = [c0 - (currents[i]*np.sum(run_times[0:i]))/(F*L) for i in range(len(start_times))]
+    initial_concs = [c0 - (currents[i]*np.sum(run_times[0:i]))/(F*e_act*L) for i in range(len(start_times))]
     
     #make list of current arrays
     #make an input file for the solver to read from for each batch of the solver

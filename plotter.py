@@ -40,13 +40,16 @@ def read_input_current(filename,step_num=None):
     return i_app_data
 
 
-def animated_conc_plot(intervaltime,dr,tsteps,nodenum,cstore,SaveFinalState=False):
+def animated_conc_plot(intervaltime,dr,tsteps,nodenum,cstore,SaveFinalState=False,SparsifyAnimation=False):
 
     #time between frames in animation
     intervaltime  = 10
 
     #build time step axis
-    time_step_axis = [i for i in range(1,tsteps)]
+    if SparsifyAnimation:
+        time_step_axis = [i*10 for i in range(1,int(tsteps/10))]
+    else:
+        time_step_axis = [i for i in range(1,tsteps)]
     vals = np.zeros([nodenum,tsteps+1])
 
 
@@ -235,12 +238,12 @@ def plot_GITT_result(filename,start_times,electrode):
     #call the plotter
     voltage_current_plot(electrode,full_cstore,full_time_axis,full_iapp_vals,total_tsteps)
 
-def gen_plots(filename,electrode,animation_interval_time=10):
+def gen_plots(filename,electrode,animation_interval_time=10,SaveFinalState=True,SparsifyAnimation=False):
     #generate all the plots that would previously have been generated from calling the plotting script
     cstore,tsteps,nodenum,R,time_axis,dr = read_output_file(filename)
     i_app_data = read_input_current(filename)
     voltage_current_plot(electrode,cstore,time_axis,i_app_data,tsteps)
-    animated_conc_plot(animation_interval_time,dr,tsteps,nodenum,cstore,SaveFinalState=True)
+    animated_conc_plot(animation_interval_time,dr,tsteps,nodenum,cstore,SaveFinalState=SaveFinalState,SparsifyAnimation=SparsifyAnimation)
 
 
 
