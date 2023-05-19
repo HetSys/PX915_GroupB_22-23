@@ -68,10 +68,10 @@ params_pos = [dt, c0_pos, D_pos, R_pos, a_pos, L_pos, electrode_charge_pos]
 params_neg = [dt, c0_neg, D_neg, R_neg, a_neg, L_neg, electrode_charge_neg]
 
 ###### Call the function to perform the full battery parallel solve
-UI.GITT_full_cell(output_filename_positive,output_filename_negative,nprocs,currents,start_times,run_times,wait_times,params_pos,params_neg)
+#UI.GITT_full_cell(output_filename_positive,output_filename_negative,nprocs,currents,start_times,run_times,wait_times,params_pos,params_neg)
 
 ###### Call the plotting function which plots the results of the GITT test with nstep steps
-plotter.plot_GITT_result(output_filename_positive,start_times,Animation=True,SparsifyAnimation=True)
+plotter.full_battery_GITT_plots(output_filename_positive,output_filename_negative,start_times,a_pos,a_neg,SparsifyAnimation=True,animation_interval_time=10)
 
 ##### also call the standalone plotting function with a single file
 #plotter.gen_plots(output_filename+'0',electrode,SparsifyAnimation=True)

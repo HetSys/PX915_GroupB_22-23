@@ -159,12 +159,13 @@ def voltage_current_plot(electrode,cstore,time_axis,i_app_data,tsteps):
 
     L_pos = 75.6E-6 #m
     L_neg = 85.2E-6 #m
+    
     '''!Set Parameters depending on electrode variable.'''
-    if electrode == 'p':   #set constants based on pos or neg electrode setup
+    if electrode == 'positive':   #set constants based on pos or neg electrode setup
         c_max = cmax_pos_sim
         K = K_pos
         L = L_pos
-    elif electrode == 'n':
+    elif electrode == 'negative':
         c_max = cmax_neg_sim
         K = K_neg
         L = L_neg
@@ -234,9 +235,9 @@ def voltage_current_plot(electrode,cstore,time_axis,i_app_data,tsteps):
         #print('c_temp',c_temp)  
         j_temp = j_function(c_temp)
         #print('jtemp',j_temp)
-        if electrode == 'p':
+        if electrode == 'positive':
             u_temp = U_function_pos(c_temp)
-        elif electrode == 'n':
+        elif electrode == 'negative':
             u_temp = U_function_neg(c_temp)
         else:
             print('Electrode charge not recognised!')
@@ -282,6 +283,7 @@ def plot_GITT_result(filename,start_times,Animation=False,SaveFinalState=False,S
         total_tsteps += tsteps
         
     #call the plotter
+    print('electrode', electrode)
     voltage_current_plot(electrode,full_cstore,full_time_axis,full_iapp_vals,total_tsteps)
 
     if Animation:
@@ -297,4 +299,221 @@ def gen_plots(filename,animation_interval_time=10,SaveFinalState=True,SparsifyAn
     animated_conc_plot(animation_interval_time,dr,tsteps,nodenum,cstore,time_axis,SaveFinalState=SaveFinalState,SparsifyAnimation=SparsifyAnimation)
 
 
+def full_battery_GITT_plots(filename_positive,filename_negative,start_times,a_pos,a_neg,SparsifyAnimation=True,animation_interval_time=10):
+    #build the full dataset from the deconstructed files
+    total_tsteps=0
+    for i,start_time in enumerate(start_times):
+        cstore_pos,tsteps,nodenum,R_pos,time_axis,dr,electrode_pos = read_output_file(filename_positive,step_num=i)
+        cstore_neg,tsteps,nodenum,R_neg,time_axis,dr,electrode_neg = read_output_file(filename_negative,step_num=i)
+        i_app_data_pos = read_input_current(filename_positive,step_num=i)
+        i_app_data_neg = read_input_current(filename_negative,step_num=i) #the current we apply to the cell is seen from the anode perspective
+        time_axis = time_axis + start_time
+        if i == 0:
+            full_cstore_pos = cstore_pos
+            full_cstore_neg = cstore_neg
+            full_time_axis = time_axis
+            full_iapp_vals_pos = i_app_data_pos
+            full_iapp_vals_neg = i_app_data_neg
+        if i != 0:
+            full_cstore_pos = np.concatenate((full_cstore_pos,cstore_pos),axis=0)
+            full_cstore_neg = np.concatenate((full_cstore_neg,cstore_neg),axis=0)
+            full_time_axis = np.concatenate((full_time_axis,time_axis))
+            full_iapp_vals_pos = np.concatenate((full_iapp_vals_pos,i_app_data_pos))
+            full_iapp_vals_neg = np.concatenate((full_iapp_vals_neg,i_app_data_neg))
+            
+        total_tsteps += tsteps
+    
+    
+    #first find full cell voltage:
+    #### Constants ####
+    F = 96485 #C/mol
+    R_g =  8.314 # J K-1 mol-1
+    T = 298.15 # K
 
+
+    #This is the j(c) function from our model, used to calculate the voltage
+    #Inputs
+    #Concentration at edge of sphere - c_R
+    #c_max constant - c_max
+    #Constants - F, K
+    #Outputs
+    #j(c) for voltage calculation
+    #Notes
+    #Requires numpy library for sqrt
+    def j_function(c_R,c_max,K):
+        if c_R<0.0:
+            print('Error, concentration should never be less than 0')
+            raise ValueError
+        ratio = (c_R / c_max)
+        return F * K * np.sqrt(np.abs(ratio * (1 - ratio)))
+
+    #Inputs
+    #Concentration at edge of sphere - c_R
+
+
+    def U_function_pos(c_R):
+        x = c_R/cmax_pos_sim
+        u = (-0.8090*x) + 4.4875 - (0.0428*np.tanh(18.5138*(x - 0.5542))) - (17.7326*np.tanh(15.7890*(x-0.3117))) + (17.5842*np.tanh(15.9308*(x - 0.3120)))  #positive electrode U
+        return u
+
+    def U_function_neg(c_R):
+        x = c_R/cmax_neg_sim
+        u = (1.9793*np.exp(-39.3631*x)) + 0.2482 - (0.0909*np.tanh(29.8538*(x-0.1234))) - (0.04478*np.tanh(14.9159*(x-0.2769))) - (0.0205*np.tanh(30.4444*(x-0.6103)))  #negative electrode U
+        return u
+
+
+    #This is the V(t) voltage function from our model
+    #Inputs
+    #Time - t
+    #Concentration at edge of sphere - c_R
+    #c_max constant - c_max
+    #Constants - F, K, R_g, T, a, L
+    #Outputs
+    #V(t) voltage as a function of time
+    #Notes
+    #Requires custom j_function.
+    #Requires numpy for arcsinh function
+    #Requires custom i_app(t) function
+    def voltage_function(U,i_app,jay,L,a):
+        v = U - ((2*R_g*T)/(F))*np.arcsinh((i_app)/(a*L*jay))
+        return v
+    
+
+    def gen_half_cell_voltage(edge_conc_vals,i_app_data,electrode):
+        '''!At time = 0s, it is possible for the output of j_function to be zero if Lithium concentration at sphere edge is zero. This results in an error as V_function
+        involves division by the output of j_function.'''
+        if electrode=='positive':
+            c_max = cmax_pos_sim
+            K = K_pos
+            a = a_pos
+            L = L_pos
+        elif electrode=='negative':
+            c_max = cmax_neg_sim
+            K = K_neg
+            a = a_neg
+            L = L_neg
+        else:
+            print('Electrode not recognised!')
+            raise ValueError
+        volt_store = []
+        for i in range(total_tsteps):
+            i_app_temp = i_app_data[i]
+            #print('iapp',i_app_temp)
+            c_temp = edge_conc_vals[i]      
+            #print('c_temp',c_temp)  
+            j_temp = j_function(c_temp,c_max,K)
+            #print('jtemp',j_temp)
+            if electrode == 'positive':
+                u_temp = U_function_pos(c_temp)
+            elif electrode == 'negative':
+                u_temp = U_function_neg(c_temp)
+            else:
+                print('Electrode charge not recognised!')
+                raise ValueError
+            #print('u_temp', u_temp)
+            if j_temp == 0:
+                volt_store.append(0)            #use to prevent division by zero
+            else:
+                volt_store.append(voltage_function(u_temp,i_app_temp,j_temp,L,a))
+        return np.array(volt_store)
+
+    # Set Input Parameters for j
+    K_pos = 3.42E-6 #Am^-2(m^3mol^-1)^1.5
+    K_neg = 6.48E-7 #Am^-2(m^3mol^-1)^1.5
+
+    cmax_pos_sim = 63104.00 #molm^-3 # m
+    cmax_neg_sim = 33133.00 #molm^-3 # m 
+
+    L_pos = 75.6E-6 #m
+    L_neg = 85.2E-6 #m
+
+    #structure of cstore: each row represents a single timestep, each column a single node
+    edge_conc_vals_pos = full_cstore_pos[:,-1]    #want the values of the edge node for all timesteps
+    edge_conc_vals_neg = full_cstore_neg[:,-1]
+    pos_voltage = gen_half_cell_voltage(edge_conc_vals_pos,full_iapp_vals_pos,electrode_pos)
+    neg_voltage = gen_half_cell_voltage(edge_conc_vals_neg,full_iapp_vals_neg,electrode_neg)
+
+    #get full voltage and current
+    full_voltage = pos_voltage-neg_voltage
+    full_current = full_iapp_vals_neg
+
+    print(len(full_time_axis))
+    print(len(full_voltage))
+
+
+
+    #################generate animation###################
+    tsteps = total_tsteps
+    #build time step axis
+    if SparsifyAnimation:
+        time_step_axis = [i*50 for i in range(1,int(tsteps/50))]
+    else:
+        time_step_axis = [i for i in range(1,tsteps)]
+    vals_pos = np.zeros([nodenum,tsteps+1])
+    vals_neg = np.zeros([nodenum,tsteps+1])
+
+    #place the c storage values in to the values matrix.
+    for i in range(nodenum):
+        vals_pos[i,1:] = full_cstore_pos[:,i]
+        vals_pos[i,0] = i*dr
+        vals_neg[i,1:] = full_cstore_neg[:,i]
+        vals_neg[i,0] = i*dr
+        #structure of cstore: each row represents a single timestep, each column a single node
+        #structure of vals: each column is a single timestep, each row is a single node
+
+        
+    #generate figure with animation
+    fig, axs = plt.subplots(2,2,figsize=(10, 8))
+    font = 12
+    plt.rcParams.update({'font.size': font})#
+    plt.subplots_adjust(bottom=0.3)
+    #plot first frame of animation
+    axs[1,0].plot(full_time_axis,full_voltage, color = 'b',label='Voltage')
+    axs[1,0].set_ylabel('Full Cell Voltage (V)', color ='b',fontsize=font)
+    axs[1,0].set_title('Voltage(V)',fontsize=font)
+    axs[1,0].set_xlabel('Time (s)',fontsize=font)
+    pointV, = axs[1,0].plot(full_time_axis[0],full_voltage[0],'ro')
+    axs[1,1].set_ylabel(r'Applied Current Density (A/m$^2$)', color = 'r',fontsize=font)
+    axs[1,1].plot(full_time_axis,full_current,'r--',label='current')
+    axs[1,1].set_title(r'Applied Current Density (A/m$^2$)',fontsize=font)
+    axs[1,1].set_xlabel('Time (s)',fontsize=font)
+    pointI, = axs[1,1].plot(full_time_axis[0],full_current[0],'ro')
+
+    #Plot initial graphs for positive electrode
+    axs[0,0].set_xlabel('Distance from Sphere Centre (m)',fontsize=font)
+    axs[0,0].set_ylabel('Concentration of Lithium (molm$^-3$)',fontsize=font)
+    axs[0,0].set_ylim([np.min(vals_pos[:,1:]),np.max(vals_pos[:,1:])+1])
+    graphPos, = axs[0,0].plot(vals_pos[:,0],vals_pos[:,1])
+
+    #Plot initial graphs for 
+    axs[0,1].set_xlabel('Distance from Sphere Centre (m)',fontsize=font)
+    axs[0,1].set_ylabel('Concentration of Lithium (molm$^-3$)',fontsize=font)
+    axs[0,1].set_ylim([np.min(vals_neg[:,1:]),np.max(vals_neg[:,1:])+1])
+    graphNeg, = axs[0,1].plot(vals_neg[:,0],vals_neg[:,1])
+
+    #Create a list which holds both the things we wish to animate
+    graphlines = [pointV,pointI,graphPos,graphNeg]
+
+    r_time_axis = [round(i,2) for i in full_time_axis]
+    timestep_list = [str(i) for i in r_time_axis]   #Create list of strings of timestep times.
+
+    axs[0,0].set_title('Cathode Profile',fontsize=font)
+    axs[0,1].set_title('Anode Profile',fontsize=font)
+
+    fig.suptitle('Full cell charging GITT test, Time : ' + timestep_list[0]+'s',fontsize=font)
+
+    plt.tight_layout()
+    def update(t):
+        #Set the data of each element of graphlines to the corresponding value of t passed to the function
+        graphlines[0].set_data(t,full_voltage[t])
+        graphlines[1].set_data(t,full_current[t])
+        graphlines[2].set_data(vals_pos[:,0],vals_pos[:,t])
+        graphlines[3].set_data(vals_neg[:,0],vals_neg[:,t])
+        fig.suptitle('Full cell charging GITT test, Time : ' + timestep_list[t-1]+'s',fontsize=font)
+        #graphlines[1].set_title('Concentration profile at t='+str(t))
+        return graphlines
+
+
+    ani = FuncAnimation(fig, update, interval=animation_interval_time, frames=time_step_axis,blit=True)#plt.xlim([990,1000])
+    	
+    ani.save(filename = 'concentration_animation.gif', writer = 'pillow', fps = 30) 
