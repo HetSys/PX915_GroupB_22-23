@@ -49,7 +49,7 @@ def read_input_current(filename,step_num=None):
         lines = iapp_vals.readlines()
         i_app_data = []
         for i, current in enumerate(lines):
-            if i >=10:
+            if i >=11:
                 i_app_data.append(current.strip())
 
     i_app_data = np.array(i_app_data, dtype = float)
