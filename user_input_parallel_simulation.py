@@ -37,14 +37,21 @@ electrode = 'positive'
 
 ###### Import default values from https://doi.org/10.1149/1945-7111/ab9050
 # Use UI.set_defaults_pos() for positive electrode and ..._neg() for negative electrode 
-tsteps, dt, c0, D, R, a, L, iapp, iapp_label, electrode_charge = UI.set_defaults_neg()
+tsteps, dt, n, c0, D, R, a, L, iapp, iapp_label, electrode_charge = UI.set_defaults_neg()
 
 ###### Set values ######
 
 c0 = 30000.0
 dt = 1.0
+# Additional values important for visualisation
+K_pos = 3.42E-6 #Am^-2(m^3mol^-1)^1.5
+K_neg = 6.48E-7 #Am^-2(m^3mol^-1)^1.5
+
+cmax_pos_sim = 63104.00 #molm^-3 # m
+cmax_neg_sim = 33133.00 #molm^-3 # m 
+
 ###### Check parameters are valid ######
-UI.verify_params(output_filename, tsteps, dt, c0, D, R, a, L, electrode_charge)
+UI.verify_params(output_filename, tsteps, dt, n, c0, D, R, a, L, electrode_charge)
 
 
 ###### Manually set up applied current and parallelisation ######
@@ -65,10 +72,14 @@ wait_times = [2000.0 for i in range(nsteps)]
 params = [dt, c0, D, R, a, L,electrode_charge]
 
 ###### Call the function to perform the parallel solve
-UI.GITT_half_cell(output_filename,nprocs,currents,start_times,run_times,wait_times,params)
+UI.GITT_half_cell(output_filename,nprocs,currents,start_times,run_times,wait_times,n,params)
+
+
+# Build the vector of parameters that the plotter accepts
+plot_params_neg = [K_neg,a,cmax_neg_sim,L]
 
 ###### Call the plotting function which plots the results of the GITT test with nstep steps
-plotter.plot_GITT_result(output_filename,start_times,electrode,Animation=True,SparsifyAnimation=True)
+plotter.plot_halfcell_GITT_result(output_filename,start_times,electrode,neg_params=plot_params_neg,Animation=True,SparsifyAnimation=True)
 
 ##### also call the standalone plotting function with a single file
 #plotter.gen_plots(output_filename+'0',electrode,SparsifyAnimation=True)

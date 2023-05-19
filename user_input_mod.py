@@ -132,7 +132,7 @@ def set_defaults_pos():
     n=1000
 
     # Initial concentration (mol m**-3), real, positive
-    c0 = 0.0
+    c0 = 1000.0
     # Diffusion coefficient (m**2 s**-1), real
     D = 4.0e-15
     # Width of block (m), real, greater than 0
@@ -421,7 +421,7 @@ def get_GITT_initial_concs(currents,run_times, c0, R, a, L, electrode_charge):
 
 
 ### INITIALISE A FULL GITT TEST IN PARALLEL ####
-def GITT_half_cell(filename,nprocs,currents,start_times,run_times,wait_times,params):
+def GITT_half_cell(filename,nprocs,currents,start_times,run_times,wait_times,n,params):
     '''!@brief Execution of SPM solver in parallel to run a GITT test over nprocs cores.
     @details Execution of SPM solver in parallel to run a test experiment on a battery
     in the style of a galvanostatic intermittent titration technique (GITT), as described in 
@@ -466,7 +466,7 @@ def GITT_half_cell(filename,nprocs,currents,start_times,run_times,wait_times,par
         tsteps = (int(run_times[i]/dt)) + (int(wait_times[i]/dt))
         current_list.append(np.concatenate(([currents[i] for j in range(int(run_times[i]/dt))],[0.0 for j in range(int(wait_times[i]/dt))])))
         iapp_label = str(i)
-        write_to_file(fname,tsteps, dt, initial_concs[i], D, R, a, L, current_list[i], iapp_label,electrode_charge)
+        write_to_file(fname,tsteps, dt,n, initial_concs[i], D, R, a, L, current_list[i], iapp_label,electrode_charge)
         #### Set file name
         running_name = fname + '.txt'
         solver_call_line = './finite_diff_solver' + ' filename=' + running_name
@@ -481,7 +481,7 @@ def GITT_half_cell(filename,nprocs,currents,start_times,run_times,wait_times,par
             #wait to ensure all done
             p.wait()
 
-def GITT_full_cell(filename_positive,filename_negative,nprocs,currents,start_times,run_times,wait_times,params_pos,params_neg):
+def GITT_full_cell(filename_positive,filename_negative,nprocs,currents,start_times,run_times,wait_times,n,params_pos,params_neg):
     #first, generate the arrays for initial concentration
     #unpack params
     [dt, c0_pos, D_pos, R_pos, a_pos, L_pos, electrode_charge_pos] = params_pos
@@ -503,8 +503,8 @@ def GITT_full_cell(filename_positive,filename_negative,nprocs,currents,start_tim
         tsteps = (int(run_times[i]/dt)) + (int(wait_times[i]/dt))
         current_list.append(np.concatenate(([currents[i] for j in range(int(run_times[i]/dt))],[0.0 for j in range(int(wait_times[i]/dt))])))
         iapp_label = str(i)
-        write_to_file(fname_pos,tsteps, dt, initial_concs_pos[i], D_pos, R_pos, a_pos, L_pos, current_list[i], iapp_label,electrode_charge_pos)
-        write_to_file(fname_neg,tsteps, dt, initial_concs_neg[i], D_neg, R_neg, a_neg, L_neg, current_list[i], iapp_label,electrode_charge_neg)
+        write_to_file(fname_pos,tsteps, dt, n, initial_concs_pos[i], D_pos, R_pos, a_pos, L_pos, current_list[i], iapp_label,electrode_charge_pos)
+        write_to_file(fname_neg,tsteps, dt, n, initial_concs_neg[i], D_neg, R_neg, a_neg, L_neg, current_list[i], iapp_label,electrode_charge_neg)
         #### Set file name
         running_name_pos = fname_pos + '.txt'
         running_name_neg = fname_neg + '.txt'

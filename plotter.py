@@ -120,211 +120,37 @@ def animated_conc_plot(intervaltime,dr,tsteps,nodenum,cstore,time_axis,SaveFinal
 
 
 
-'''!@package voltage_current_plot: Calculates voltages at all time points, and saves plots of both concentration of Lithium at the
-outer edge of the sphere and voltage over time. This function has different settings determined by the value of electrode.'''
-'''!@var float F: Faraday constant (C/mol).'''
-'''!@var float R_g: Ideal gas constant (JK^-1mol^-1).'''
-'''!@var float T: Standard conditions for temperature (T).'''
-'''!@var float a: Surface area of particles (cm^2).'''
-'''!@var float K_pos: Reaction rate at positive electrodes (Am^-2(m^3mol^-1)^1.5).'''
-'''!@var float K_neg: Reaction rate at negative electrodes Am^-2(m^3mol^-1)^1.5.'''
-'''!@var float cmax_pos_sim: Positive electrode maximum concentration (molm^-3).'''
-'''!@var float cmax_neg_sim: Negative electrode maximum concentration (molm^-3).'''
-'''!@var float L_pos: Positive electrode thickness (m)'''
-'''!@var float L_neg: Negative electrode thickness (m)'''
-'''!@package j_function: Calculates a quantity that feeds into our voltage calculation for each temporal point.
-Takes c_R as an argument, which corresponds to the Lithium concentration (molm^-3) at the sphere edge at the specific time.'''
-'''!@package U_function_pos: OCV curve for positive electrode. Takes c_r as argument'''
-'''!@package U_function_neg: OCV curve for negative electrode. Takes c_r as argument'''
-'''!@package voltage_function: Calculates the voltage of the system at specific time points. Takes outputs of j_function (jay) and 
-U_function_pos/(neg) (U), as well as applied current (i_app) at that time as arguments.'''
-'''!@var 1D array edge_conc_vals: Contains the Lithium concentration at the edge of the sphere for all time steps.'''
-'''!@var list volt_store: contains voltages calculated for sequential timesteps.'''
-def voltage_current_plot(electrode,cstore,time_axis,i_app_data,tsteps):
 
-################  Voltage and Concentration Plot ##################
 
-    #### Constants ####
-    F = 96485 #C/mol
-    R_g =  8.314 # J K-1 mol-1
-    T = 298.15 # K
-    a = 5.28E-6 #cm^2 
+#DEFINE VOLTAGE FUNCTIONS:
+def gen_half_cell_voltage(edge_conc_vals,i_app_data,electrode,tsteps,pos_params=None,neg_params=None):
 
-    # Set Input Parameterts for j
-    K_pos = 3.42E-6 #Am^-2(m^3mol^-1)^1.5
-    K_neg = 6.48E-7 #Am^-2(m^3mol^-1)^1.5
+    #pos and neg params have form [K,a,cmax,L]
+    ################  Voltage and Concentration Plot ##################
 
-    cmax_pos_sim = 63104.00 #molm^-3 # m
-    cmax_neg_sim = 33133.00 #molm^-3 # m 
-
-    L_pos = 75.6E-6 #m
-    L_neg = 85.2E-6 #m
-    
-    '''!Set Parameters depending on electrode variable.'''
-    if electrode == 'positive':   #set constants based on pos or neg electrode setup
-        c_max = cmax_pos_sim
-        K = K_pos
-        L = L_pos
-    elif electrode == 'negative':
-        c_max = cmax_neg_sim
-        K = K_neg
-        L = L_neg
+    if pos_params is not None:
+        [K_pos,a_pos,cmax_pos_sim,L_pos] = pos_params
     else:
-        print('Electrode type not recognised!')
-        raise ValueError
-
-
-    #This is the j(c) function from our model, used to calculate the voltage
-    #Inputs
-    #Concentration at edge of sphere - c_R
-    #c_max constant - c_max
-    #Constants - F, K
-    #Outputs
-    #j(c) for voltage calculation
-    #Notes
-    #Requires numpy library for sqrt
-    def j_function(c_R):
-        if c_R<0.0:
-            print('Error, concentration should never be less than 0')
-            raise ValueError
-        ratio = (c_R / c_max)
-        return F * K * np.sqrt(np.abs(ratio * (1 - ratio)))
-
-    #Inputs
-    #Concentration at edge of sphere - c_R
-
-
-    def U_function_pos(c_R):
-        x = c_R/c_max
-        u = (-0.8090*x) + 4.4875 - (0.0428*np.tanh(18.5138*(x - 0.5542))) - (17.7326*np.tanh(15.7890*(x-0.3117))) + (17.5842*np.tanh(15.9308*(x - 0.3120)))  #positive electrode U
-        return u
-
-    def U_function_neg(c_R):
-        x = c_R/c_max
-        u = (1.9793*np.exp(-39.3631*x)) + 0.2482 - (0.0909*np.tanh(29.8538*(x-0.1234))) - (0.04478*np.tanh(14.9159*(x-0.2769))) - (0.0205*np.tanh(30.4444*(x-0.6103)))  #negative electrode U
-        return u
-
-
-    #This is the V(t) voltage function from our model
-    #Inputs
-    #Time - t
-    #Concentration at edge of sphere - c_R
-    #c_max constant - c_max
-    #Constants - F, K, R_g, T, a, L
-    #Outputs
-    #V(t) voltage as a function of time
-    #Notes
-    #Requires custom j_function.
-    #Requires numpy for arcsinh function
-    #Requires custom i_app(t) function
-    def voltage_function(U,i_app,jay):
-        v = U - ((2*R_g*T)/(F))*np.arcsinh((i_app)/(a*L*jay))
-        return v
-
+        #these won't be used, can assign them as 0
+        K_pos = 0.0
+        a_pos = 0.0
+        cmax_pos_sim = 0.0
+        L_pos = 0.0
     
-    #structure of cstore: each row represents a single timestep, each column a single node
-    edge_conc_vals = cstore[:,-1]    #want the values of the edge node for all timesteps
-    volt_store = []
+
+    if neg_params is not None:
+        [K_neg,a_neg,cmax_neg_sim,L_neg] = neg_params
+    else:
+        #these won't be used, can assign them as 0
+        K_neg = 0.0
+        a_neg = 0.0
+        cmax_neg_sim = 0.0
+        L_neg = 0.0
+    
+    
     '''!At time = 0s, it is possible for the output of j_function to be zero if Lithium concentration at sphere edge is zero. This results in an error as V_function
-    involves division by the output of j_function. To avoid this, if the value of j_function is equal to zero, the value of voltage is initially set to zero, then a
-    more realistic value is calculated by assuming a linear trend exists between the first three calculated voltages.'''
-    for i in range(tsteps):
-        i_app_temp = i_app_data[i]
-        #print('iapp',i_app_temp)
-        c_temp = edge_conc_vals[i]      
-        #print('c_temp',c_temp)  
-        j_temp = j_function(c_temp)
-        #print('jtemp',j_temp)
-        if electrode == 'positive':
-            u_temp = U_function_pos(c_temp)
-        elif electrode == 'negative':
-            u_temp = U_function_neg(c_temp)
-        else:
-            print('Electrode charge not recognised!')
-            raise ValueError
-        #print('u_temp', u_temp)
-        if j_temp == 0:
-            volt_store.append(0)            #use to prevent division by zero
-        else:
-            volt_store.append(voltage_function(u_temp,i_app_temp,j_temp))
-        #print('voltage',volt_store[i])
-    #volt_store[0] = volt_store[1] - (volt_store[2]-volt_store[1])       ######################CHECK: Assume linear trend around zero!!! Avoids singularity/math error where j_temp == 0.
-    fig, axs = plt.subplots(2,1,sharex=True)
-    axs[0].plot(time_axis,volt_store, color = 'b',label='Voltage')
-    axs[0].set_ylabel('Voltage (V)', color ='b')
-    axs[0].set_title('Voltage and Applied Current Over Time')
+    involves division by the output of j_function.'''
 
-    axs[1].set_ylabel(r'Applied Current Density (A/m$^2$)', color = 'r')
-    axs[1].plot(time_axis,i_app_data,'r--',label='current')
-    axs[1].set_xlabel('Time (s)')
-    plt.savefig('Voltage Current Plot')
-        
-
-       
-def plot_GITT_result(filename,start_times,Animation=False,SaveFinalState=False,SparsifyAnimation=True,animation_interval_time=10):
-
-
-    running_tot_start_time = 0.0
-    total_tsteps = 0
-    #build the full dataset from the deconstructed files
-    for i,start_time in enumerate(start_times):
-        cstore,tsteps,nodenum,R,time_axis,dr,electrode = read_output_file(filename,step_num=i)
-        i_app_data = read_input_current(filename,step_num=i)
-        time_axis = time_axis + start_time
-        if i == 0:
-            full_cstore = cstore
-            full_time_axis = time_axis
-            full_iapp_vals = i_app_data
-        if i != 0:
-            full_cstore = np.concatenate((full_cstore,cstore),axis=0)
-            full_time_axis = np.concatenate((full_time_axis,time_axis))
-            full_iapp_vals = np.concatenate((full_iapp_vals,i_app_data))
-            
-        total_tsteps += tsteps
-        
-    #call the plotter
-    print('electrode', electrode)
-    voltage_current_plot(electrode,full_cstore,full_time_axis,full_iapp_vals,total_tsteps)
-
-    if Animation:
-        #call the animator
-        animated_conc_plot(animation_interval_time,dr,total_tsteps,nodenum,full_cstore,full_time_axis,SaveFinalState=SaveFinalState,SparsifyAnimation=SparsifyAnimation)
-
-'''!@package gen_plots: Causes plots corresponding to voltage_current_plot and animated_conc_plot to be generated.'''
-def gen_plots(filename,animation_interval_time=10,SaveFinalState=True,SparsifyAnimation=False):
-    #generate all the plots that would previously have been generated from calling the plotting script
-    cstore,tsteps,nodenum,R,time_axis,dr,electrode = read_output_file(filename)
-    i_app_data = read_input_current(filename)
-    voltage_current_plot(electrode,cstore,time_axis,i_app_data,tsteps)
-    animated_conc_plot(animation_interval_time,dr,tsteps,nodenum,cstore,time_axis,SaveFinalState=SaveFinalState,SparsifyAnimation=SparsifyAnimation)
-
-
-def full_battery_GITT_plots(filename_positive,filename_negative,start_times,a_pos,a_neg,SparsifyAnimation=True,animation_interval_time=10):
-    #build the full dataset from the deconstructed files
-    total_tsteps=0
-    for i,start_time in enumerate(start_times):
-        cstore_pos,tsteps,nodenum,R_pos,time_axis,dr,electrode_pos = read_output_file(filename_positive,step_num=i)
-        cstore_neg,tsteps,nodenum,R_neg,time_axis,dr,electrode_neg = read_output_file(filename_negative,step_num=i)
-        i_app_data_pos = read_input_current(filename_positive,step_num=i)
-        i_app_data_neg = read_input_current(filename_negative,step_num=i) #the current we apply to the cell is seen from the anode perspective
-        time_axis = time_axis + start_time
-        if i == 0:
-            full_cstore_pos = cstore_pos
-            full_cstore_neg = cstore_neg
-            full_time_axis = time_axis
-            full_iapp_vals_pos = i_app_data_pos
-            full_iapp_vals_neg = i_app_data_neg
-        if i != 0:
-            full_cstore_pos = np.concatenate((full_cstore_pos,cstore_pos),axis=0)
-            full_cstore_neg = np.concatenate((full_cstore_neg,cstore_neg),axis=0)
-            full_time_axis = np.concatenate((full_time_axis,time_axis))
-            full_iapp_vals_pos = np.concatenate((full_iapp_vals_pos,i_app_data_pos))
-            full_iapp_vals_neg = np.concatenate((full_iapp_vals_neg,i_app_data_neg))
-            
-        total_tsteps += tsteps
-    
-    
-    #first find full cell voltage:
     #### Constants ####
     F = 96485 #C/mol
     R_g =  8.314 # J K-1 mol-1
@@ -377,68 +203,159 @@ def full_battery_GITT_plots(filename_positive,filename_negative,start_times,a_po
     def voltage_function(U,i_app,jay,L,a):
         v = U - ((2*R_g*T)/(F))*np.arcsinh((i_app)/(a*L*jay))
         return v
+            
+    if electrode=='positive':
+        c_max = cmax_pos_sim
+        K = K_pos
+        a = a_pos
+        L = L_pos
+    elif electrode=='negative':
+        c_max = cmax_neg_sim
+        K = K_neg
+        a = a_neg
+        L = L_neg
+    else:
+        print('Electrode not recognised!')
+        raise ValueError
     
 
-    def gen_half_cell_voltage(edge_conc_vals,i_app_data,electrode):
-        '''!At time = 0s, it is possible for the output of j_function to be zero if Lithium concentration at sphere edge is zero. This results in an error as V_function
-        involves division by the output of j_function.'''
-        if electrode=='positive':
-            c_max = cmax_pos_sim
-            K = K_pos
-            a = a_pos
-            L = L_pos
-        elif electrode=='negative':
-            c_max = cmax_neg_sim
-            K = K_neg
-            a = a_neg
-            L = L_neg
+    volt_store = []
+
+    for i in range(tsteps):
+        i_app_temp = i_app_data[i]
+        #print('iapp',i_app_temp)
+        c_temp = edge_conc_vals[i]      
+        #print('c_temp',c_temp)  
+        j_temp = j_function(c_temp,c_max,K)
+        #print('jtemp',j_temp)
+        if electrode == 'positive':
+            u_temp = U_function_pos(c_temp)
+        elif electrode == 'negative':
+            u_temp = U_function_neg(c_temp)
         else:
-            print('Electrode not recognised!')
+            print('Electrode charge not recognised!')
             raise ValueError
-        volt_store = []
-        for i in range(total_tsteps):
-            i_app_temp = i_app_data[i]
-            #print('iapp',i_app_temp)
-            c_temp = edge_conc_vals[i]      
-            #print('c_temp',c_temp)  
-            j_temp = j_function(c_temp,c_max,K)
-            #print('jtemp',j_temp)
-            if electrode == 'positive':
-                u_temp = U_function_pos(c_temp)
-            elif electrode == 'negative':
-                u_temp = U_function_neg(c_temp)
-            else:
-                print('Electrode charge not recognised!')
-                raise ValueError
-            #print('u_temp', u_temp)
-            if j_temp == 0:
-                volt_store.append(0)            #use to prevent division by zero
-            else:
-                volt_store.append(voltage_function(u_temp,i_app_temp,j_temp,L,a))
-        return np.array(volt_store)
+        #print('u_temp', u_temp)
+        if j_temp == 0:
+            volt_store.append(0)            #use to prevent division by zero
+        else:
+            volt_store.append(voltage_function(u_temp,i_app_temp,j_temp,L,a))
 
-    # Set Input Parameters for j
-    K_pos = 3.42E-6 #Am^-2(m^3mol^-1)^1.5
-    K_neg = 6.48E-7 #Am^-2(m^3mol^-1)^1.5
+    return np.array(volt_store)
 
-    cmax_pos_sim = 63104.00 #molm^-3 # m
-    cmax_neg_sim = 33133.00 #molm^-3 # m 
+'''!@package voltage_current_plot: Calculates voltages at all time points, and saves plots of both concentration of Lithium at the
+outer edge of the sphere and voltage over time. This function has different settings determined by the value of electrode.'''
+'''!@var float F: Faraday constant (C/mol).'''
+'''!@var float R_g: Ideal gas constant (JK^-1mol^-1).'''
+'''!@var float T: Standard conditions for temperature (T).'''
+'''!@var float a: Surface area of particles (cm^2).'''
+'''!@var float K_pos: Reaction rate at positive electrodes (Am^-2(m^3mol^-1)^1.5).'''
+'''!@var float K_neg: Reaction rate at negative electrodes Am^-2(m^3mol^-1)^1.5.'''
+'''!@var float cmax_pos_sim: Positive electrode maximum concentration (molm^-3).'''
+'''!@var float cmax_neg_sim: Negative electrode maximum concentration (molm^-3).'''
+'''!@var float L_pos: Positive electrode thickness (m)'''
+'''!@var float L_neg: Negative electrode thickness (m)'''
+'''!@package j_function: Calculates a quantity that feeds into our voltage calculation for each temporal point.
+Takes c_R as an argument, which corresponds to the Lithium concentration (molm^-3) at the sphere edge at the specific time.'''
+'''!@package U_function_pos: OCV curve for positive electrode. Takes c_r as argument'''
+'''!@package U_function_neg: OCV curve for negative electrode. Takes c_r as argument'''
+'''!@package voltage_function: Calculates the voltage of the system at specific time points. Takes outputs of j_function (jay) and 
+U_function_pos/(neg) (U), as well as applied current (i_app) at that time as arguments.'''
+'''!@var 1D array edge_conc_vals: Contains the Lithium concentration at the edge of the sphere for all time steps.'''
+'''!@var list volt_store: contains voltages calculated for sequential timesteps.'''
+def voltage_current_plot(electrode,cstore,time_axis,i_app_data,tsteps,pos_params=None,neg_params=None):
 
-    L_pos = 75.6E-6 #m
-    L_neg = 85.2E-6 #m
+    #structure of cstore: each row represents a single timestep, each column a single node
+    edge_conc_vals = cstore[:,-1]    #want the values of the edge node for all timesteps
+    
+    volt_store = gen_half_cell_voltage(edge_conc_vals,i_app_data,electrode,tsteps,pos_params=pos_params,neg_params=neg_params)
+    
+    fig, axs = plt.subplots(2,1,sharex=True)
+    axs[0].plot(time_axis,volt_store, color = 'b',label='Voltage')
+    axs[0].set_ylabel('Voltage (V)', color ='b')
+    axs[0].set_title('Voltage and Applied Current Over Time')
+
+    axs[1].set_ylabel(r'Applied Current Density (A/m$^2$)', color = 'r')
+    axs[1].plot(time_axis,i_app_data,'r--',label='current')
+    axs[1].set_xlabel('Time (s)')
+    plt.savefig('Voltage Current Plot')
+        
+
+       
+def plot_halfcell_GITT_result(filename,start_times,electrode,pos_params=None,neg_params=None,Animation=False,SaveFinalState=False,SparsifyAnimation=True,animation_interval_time=10):
+
+
+    running_tot_start_time = 0.0
+    total_tsteps = 0
+    #build the full dataset from the deconstructed files
+    for i,start_time in enumerate(start_times):
+        cstore,tsteps,nodenum,R,time_axis,dr,electrode = read_output_file(filename,step_num=i)
+        i_app_data = read_input_current(filename,step_num=i)
+        time_axis = time_axis + start_time
+        if i == 0:
+            full_cstore = cstore
+            full_time_axis = time_axis
+            full_iapp_vals = i_app_data
+        if i != 0:
+            full_cstore = np.concatenate((full_cstore,cstore),axis=0)
+            full_time_axis = np.concatenate((full_time_axis,time_axis))
+            full_iapp_vals = np.concatenate((full_iapp_vals,i_app_data))
+            
+        total_tsteps += tsteps
+        
+    #call the plotter
+    voltage_current_plot(electrode,full_cstore,full_time_axis,full_iapp_vals,total_tsteps,pos_params=pos_params,neg_params=neg_params)
+
+    if Animation:
+        #call the animator
+        animated_conc_plot(animation_interval_time,dr,total_tsteps,nodenum,full_cstore,full_time_axis,SaveFinalState=SaveFinalState,SparsifyAnimation=SparsifyAnimation)
+
+'''!@package gen_plots: Causes plots corresponding to voltage_current_plot and animated_conc_plot to be generated.'''
+def gen_plots(filename,pos_params=None,neg_params=None,animation_interval_time=10,SaveFinalState=True,SparsifyAnimation=False):
+    #generate all the plots that would previously have been generated from calling the plotting script
+    cstore,tsteps,nodenum,R,time_axis,dr,electrode = read_output_file(filename)
+    i_app_data = read_input_current(filename)
+    voltage_current_plot(electrode,cstore,time_axis,i_app_data,tsteps,pos_params=pos_params,neg_params=neg_params)
+    animated_conc_plot(animation_interval_time,dr,tsteps,nodenum,cstore,time_axis,SaveFinalState=SaveFinalState,SparsifyAnimation=SparsifyAnimation)
+
+
+def full_battery_GITT_plots(filename_positive,filename_negative,start_times,pos_params=None,neg_params=None,SparsifyAnimation=True,animation_interval_time=10):
+    #build the full dataset from the deconstructed files
+    total_tsteps=0
+    for i,start_time in enumerate(start_times):
+        cstore_pos,tsteps,nodenum,R_pos,time_axis,dr,electrode_pos = read_output_file(filename_positive,step_num=i)
+        cstore_neg,tsteps,nodenum,R_neg,time_axis,dr,electrode_neg = read_output_file(filename_negative,step_num=i)
+        i_app_data_pos = read_input_current(filename_positive,step_num=i)
+        i_app_data_neg = read_input_current(filename_negative,step_num=i) #the current we apply to the cell is seen from the anode perspective
+        time_axis = time_axis + start_time
+        if i == 0:
+            full_cstore_pos = cstore_pos
+            full_cstore_neg = cstore_neg
+            full_time_axis = time_axis
+            full_iapp_vals_pos = i_app_data_pos
+            full_iapp_vals_neg = i_app_data_neg
+        if i != 0:
+            full_cstore_pos = np.concatenate((full_cstore_pos,cstore_pos),axis=0)
+            full_cstore_neg = np.concatenate((full_cstore_neg,cstore_neg),axis=0)
+            full_time_axis = np.concatenate((full_time_axis,time_axis))
+            full_iapp_vals_pos = np.concatenate((full_iapp_vals_pos,i_app_data_pos))
+            full_iapp_vals_neg = np.concatenate((full_iapp_vals_neg,i_app_data_neg))
+            
+        total_tsteps += tsteps
+    
+
 
     #structure of cstore: each row represents a single timestep, each column a single node
     edge_conc_vals_pos = full_cstore_pos[:,-1]    #want the values of the edge node for all timesteps
     edge_conc_vals_neg = full_cstore_neg[:,-1]
-    pos_voltage = gen_half_cell_voltage(edge_conc_vals_pos,full_iapp_vals_pos,electrode_pos)
-    neg_voltage = gen_half_cell_voltage(edge_conc_vals_neg,full_iapp_vals_neg,electrode_neg)
+
+    pos_voltage = gen_half_cell_voltage(edge_conc_vals_pos,full_iapp_vals_pos,electrode_pos,total_tsteps,pos_params=pos_params,neg_params=neg_params)
+    neg_voltage = gen_half_cell_voltage(edge_conc_vals_neg,full_iapp_vals_neg,electrode_neg,total_tsteps,pos_params=pos_params,neg_params=neg_params)
 
     #get full voltage and current
     full_voltage = pos_voltage-neg_voltage
     full_current = full_iapp_vals_neg
 
-    print(len(full_time_axis))
-    print(len(full_voltage))
 
 
 
