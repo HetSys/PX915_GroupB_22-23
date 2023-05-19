@@ -49,12 +49,12 @@
                 DO i = 1, num_args
                     CALL get_command_argument(1, arg)
                     parse_idx = INDEX(arg, '=')
-                    READ(arg(1:parse_idx-1),*) name
-                    READ(arg(parse_idx+1:len(arg)),*) val
+                    READ(arg(1:parse_idx-1),'(A)') name
+                    READ(arg(parse_idx+1:len(arg)),'(A)') val
                     
                     SELECT CASE(name)
                         CASE('filename')
-                            READ(val,*) filename
+                            READ(val,'(A)') filename
                         CASE DEFAULT
                             PRINT*, "Command line argument not recognised: ", name
                             STOP 10
