@@ -25,22 +25,46 @@ PROGRAM MAIN
     REAL(REAL64) :: a_small, L !constants
     REAL(REAL64), PARAMETER :: F = 96485_REAL64 !Faraday constant
     CHARACTER(len=1) :: electrode_charge
-    CHARACTER(len=54) :: filename, output_name
+    CHARACTER(len=104) :: filename, output_name
+    CHARACTER(len=5) :: file_extension
+    INTEGER :: parse_idx, file_ext, tstep_init
+    CHARACTER(len=1), PARAMETER :: parser = "."
 
-    ! Read in user inputs
+    !> Read in user inputs
     filename = read_command_line()
-    CALL read_user_inputs(filename, tsteps, dt, n, c0, D, R, a_small, L, iapp, electrode_charge)
+    !> 1. Find index of '.' in filename to identify file extension
+    parse_idx = INDEX(filename, parser) +1
+    file_extension = filename(parse_idx:)
+    
+    !> 2. Choose input reader based on file extension.
+    SELECT CASE(file_extension)
+
+        CASE("txt")
+            CALL read_user_inputs(filename, tsteps, dt, n, c0, D, R, a_small, L, iapp, electrode_charge)
+            ALLOCATE(c(n))
+            ALLOCATE(A(n,n))
+            ALLOCATE(Z(tsteps))
+
+        CASE("nc")
+            CALL read_checkpoint(filename, tstep_init, tsteps, n, c, A, dt, R, D, Z, electrode_charge)
+
+        CASE DEFAULT
+            PRINT*, "Invalid file type passed to SPM solver."
+            PRINT*, "Please pass a 'txt' file of user input parameters or a 'nc' checkpoint file."
+            STOP 6
+
+        END SELECT
+    
+    
     !generate name of output file
     filename_length = LEN_TRIM(filename)
-    output_name = filename(1:filename_length-4)//'_output.nc'
+    file_ext = INDEX(filename, '.')
+    output_name = filename(1:file_ext-1)//'_output.nc'
 
     ALLOCATE(ipiv(n))
-    ALLOCATE(A(n,n))
     ALLOCATE(A_copy(n,n))
     ALLOCATE(b(n))
-    ALLOCATE(c(n))
     ALLOCATE(cstorage(n, tsteps))
-    ALLOCATE(Z(tsteps))
     
     !allocate time axis
     ALLOCATE(time_axis(tsteps))
@@ -50,33 +74,38 @@ PROGRAM MAIN
     deltar = R/(REAL(n,kind=REAL64)-1.0_REAL64)
     k = -D/(2.0_REAL64*(deltar**2)) !k is just a shortcut holding -D/(2(dr^2))
     
-    c = c0 !set c to initial state
     b = 0.0_REAL64
     
-    Z = (-iapp)/(a_small*F*L*D)
-    cstorage(:,1) = c0 !set first entry in storage vector to initial concentration
+    IF (file_extension=='txt') THEN 
+        tstep_init = 1
+        c = c0 !set c to initial state
+        Z = (-iapp)/(a_small*F*L*D)
+        cstorage(:,1) = c0 !set first entry in storage vector to initial concentration
 
-    !build A matrix for solver (constant over time)
-    A = 0.0_REAL64
-    !boundary condition
-    !centre of sphere (left edge)
-    A(1,1) = 1.0_REAL64 - 2.0_REAL64*k*dt
-    A(1,2) = 2.0_REAL64*k*dt
-    !Interior
-    DO i = 2,n-1 !iterate through matrix, building each component 
-        ireal = real(i-1,kind=REAL64) !(i-1) instead of i, due to r_1 = 0.0 (indexing from 1)
-        A(i,i-1) = k*dt*(1.0_REAL64 - (1.0_REAL64/ireal))
-        A(i,i) = 1.0_REAL64 - (2.0_REAL64*k*dt)
-        A(i,i+1) = k*dt*(1.0_REAL64 + (1.0_REAL64/ireal))
-    END DO
-    !boundary condition
-    !edge of sphere (right edge)
-    A(n,n-1) = 2.0_REAL64*k*dt
-    A(n,n) = (1.0_REAL64) + ((D/(deltar**2))*dt)
+        !build A matrix for solver (constant over time)
+        A = 0.0_REAL64
+        !boundary condition
+        !centre of sphere (left edge)
+        A(1,1) = 1.0_REAL64 - 2.0_REAL64*k*dt
+        A(1,2) = 2.0_REAL64*k*dt
+        !Interior
+        DO i = 2,n-1 !iterate through matrix, building each component 
+            ireal = real(i-1,kind=REAL64) !(i-1) instead of i, due to r_1 = 0.0 (indexing from 1)
+            A(i,i-1) = k*dt*(1.0_REAL64 - (1.0_REAL64/ireal))
+            A(i,i) = 1.0_REAL64 - (2.0_REAL64*k*dt)
+            A(i,i+1) = k*dt*(1.0_REAL64 + (1.0_REAL64/ireal))
+        END DO
+        !boundary condition
+        !edge of sphere (right edge)
+        A(n,n-1) = 2.0_REAL64*k*dt
+        A(n,n) = (1.0_REAL64) + ((D/(deltar**2))*dt)
     !print*, 'a',A
-    A_copy = A
+    
+    END IF
 
-    DO tstep = 1,(tsteps-1) !we have the first state (j=1), and each loop finds the j+1th state, so we go to tsteps-1.
+    A_copy = A    
+
+    DO tstep = tstep_init,(tsteps-1) !we have the first state (j=1), and each loop finds the j+1th state, so we go to tsteps-1.
         !build solver
         !boundary condition
         !centre of sphere (left edge)
@@ -131,9 +160,9 @@ PROGRAM MAIN
     DEALLOCATE(c)
     DEALLOCATE(ipiv)
     DEALLOCATE(cstorage)
-    DEALLOCATE(iapp)
     DEALLOCATE(Z)
     DEALLOCATE(time_axis)
+    IF (file_extension=='txt') DEALLOCATE(iapp)
     
 END PROGRAM
 

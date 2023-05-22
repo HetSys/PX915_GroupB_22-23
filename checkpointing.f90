@@ -29,12 +29,12 @@ MODULE checkpointing
         INTEGER :: freq ! desired frequency of checkpoints
         INTEGER :: freq_remainder
         ! Execution variables
-        CHARACTER(len=*), INTENT(IN) :: filename
+        CHARACTER(len=*), INTENT(INOUT) :: filename
         CHARACTER(len=60) :: dir, checkpoint_name
         CHARACTER(len=120) :: filepath
         INTEGER :: ncid, dimid_n, dimid_nxn(2), dimid_tsteps, dimids_parameter(1), status
         INTEGER :: varid_tstep, varid_tsteps, varid_c, varid_n, varid_A, varid_dt, varid_R, varid_D, varid_Z, varid_EC
-        INTEGER :: filename_length
+        INTEGER :: filename_length, file_ext, file_test
         CHARACTER(len=10) :: tstep_str
 
         tstep = tstep_in + 1
@@ -53,14 +53,21 @@ MODULE checkpointing
 
             ! Make directory to store checkpoints
             filename_length = LEN_TRIM(filename)
-            dir = "checkpoints_"//filename(1:filename_length-4)//"/"
+            file_test = INDEX(filename, '/')
+            DO WHILE (file_test/=0)
+                filename = filename(file_test+1:)
+                file_test = INDEX(filename, '/')
+            END DO
+
+            file_ext = INDEX(filename, '.')
+            dir = "checkpoints_"//filename(1:file_ext-1)//"/"
             CALL execute_command_line("mkdir -p "//dir)
 
             ! Set filepath
             WRITE(tstep_str, '(I0)') tstep
             ! tstep_str = TRIM(ADJUSTL(tstep_str))
             ! print*, len(tstep_str), len(trim(adjustl(tstep_str)))
-            checkpoint_name = filename(1:filename_length-4)//"_tstep_"//TRIM(ADJUSTL(tstep_str))//".nc"
+            checkpoint_name = filename(1:file_ext-1)//"_tstep_"//TRIM(ADJUSTL(tstep_str))//".nc"
             filepath = TRIM(ADJUSTL(dir))//TRIM(ADJUSTL(checkpoint_name))
             
 
@@ -112,13 +119,79 @@ MODULE checkpointing
     END SUBROUTINE write_checkpoint
 
 
+    SUBROUTINE read_checkpoint(filename, tstep, tsteps, n, c, A, dt, R, D, Z, electrode_charge)
 
-    !! OUT OF DATE: REQUIRES EDIT
-    ! FUNCTION set_inputs(filename) RESULT(input_params)
+        SAVE
+        !> @var character len=* filename
+        !! Name of input file.
+        CHARACTER(len=*), INTENT(IN) :: filename
 
-    !     !> @var type(UI) input_params
-    !     !! Result of function containing all inputs for return to solver.
-    !     TYPE(UI) :: input_params
+        ! Variables to read
+        INTEGER, INTENT(OUT) :: tstep ! Last timestep
+        INTEGER, INTENT(OUT) :: tsteps ! Total timesteps
+        INTEGER, INTENT(OUT) :: n 
+        REAL(REAL64), DIMENSION(:), ALLOCATABLE, INTENT(OUT) :: c ! Conc at last timestep
+        REAL(REAL64), DIMENSION(:,:), ALLOCATABLE, INTENT(OUT) :: A
+        REAL(REAL64), INTENT(OUT) :: dt
+        REAL(REAL64), INTENT(OUT) :: R
+        REAL(REAL64), INTENT(OUT) :: D
+        REAL(REAL64), DIMENSION(:), ALLOCATABLE, INTENT(OUT) :: Z
+        CHARACTER(len=*), INTENT(OUT) :: electrode_charge
+
+        ! Execution variables
+        INTEGER :: ncid, varid
+
+        ! Open NetCDF file
+        CALL check(nf90_open(filename, nf90_nowrite, ncid))
+
+        ! Read tstep
+        CALL check(nf90_inq_varid(ncid,'tstep',varid))
+        CALL check(nf90_get_var(ncid, varid, tstep))
+        
+        ! Read tsteps
+        CALL check(nf90_inq_varid(ncid,'tsteps',varid))
+        CALL check(nf90_get_var(ncid, varid, tsteps))
+
+        ! Read n
+        CALL check(nf90_inq_varid(ncid,'node_num',varid))
+        CALL check(nf90_get_var(ncid, varid, n))
+
+        ! Read arrays
+        ALLOCATE(c(n))
+        ALLOCATE(A(n,n))
+        ALLOCATE(Z(tsteps))
+        ! Read c
+        CALL check(nf90_inq_varid(ncid,'c',varid))
+        CALL check(nf90_get_var(ncid, varid, c))
+
+        ! Read parameters
+        ! Read dt
+        CALL check(nf90_inq_varid(ncid,'dt',varid))
+        CALL check(nf90_get_var(ncid, varid, dt))
+
+        ! Read n
+        CALL check(nf90_inq_varid(ncid,'R',varid))
+        CALL check(nf90_get_var(ncid, varid, R))
+
+        ! Read D
+        CALL check(nf90_inq_varid(ncid,'D',varid))
+        CALL check(nf90_get_var(ncid, varid, D))
+
+        ! Read electrode_charge
+        CALL check(nf90_inq_varid(ncid,'electrode_charge',varid))
+        CALL check(nf90_get_var(ncid, varid, electrode_charge))
+
+
+        ! Close the file
+        CALL check(status = nf90_close(ncid))
+        ! PRINT *, "Success reading checkpoint file, "//filename
+
+    END SUBROUTINE read_checkpoint
+
+
+
+    ! FUNCTION set_inputs(filename)
+
     !     !> @var character len=* filename
     !     !! Name of input file.
     !     CHARACTER(len=*), INTENT(IN) :: filename

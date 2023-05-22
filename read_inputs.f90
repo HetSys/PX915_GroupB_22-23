@@ -28,16 +28,16 @@
             INTEGER :: parse_idx
             !> @var character len=60 arg
             !! String to contain command line read in.
-            CHARACTER(len=60) :: arg
+            CHARACTER(len=164) :: arg
             !> @var character len=60 name
             !! String to contain name of argument after parsing.
             CHARACTER(len=60) :: name
             !> @var character len=60 val
             !! String to contain value of argument after parsing.
-            CHARACTER(len=60) :: val
+            CHARACTER(len=104) :: val
             !> @var character len=54 filename
             !! Name of file containing user inputs. Result of function.
-            CHARACTER(len=54) :: filename 
+            CHARACTER(len=104) :: filename 
 
 
             num_args = COMMAND_ARGUMENT_COUNT()
@@ -49,12 +49,12 @@
                 DO i = 1, num_args
                     CALL get_command_argument(1, arg)
                     parse_idx = INDEX(arg, '=')
-                    READ(arg(1:parse_idx-1),*) name
-                    READ(arg(parse_idx+1:len(arg)),*) val
+                    READ(arg(1:parse_idx-1),'(A)') name
+                    READ(arg(parse_idx+1:len(arg)),'(A)') val
                     
                     SELECT CASE(name)
                         CASE('filename')
-                            READ(val,*) filename
+                            READ(val,'(A)') filename
                         CASE DEFAULT
                             PRINT*, "Command line argument not recognised: ", name
                             STOP 10

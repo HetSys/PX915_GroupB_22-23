@@ -405,7 +405,7 @@ def call_solver(filename, checkpoint):
         print("User input file generated, calling solver...")
 
     '''! 2. Set up solver call line.'''
-    solver_call_line = './finite_diff_solver' + ' filename=' + filename
+    solver_call_line = './finite_diff_solver' + ' filename="' + filename + '"'
 
 
     '''! 3. Call solver.'''

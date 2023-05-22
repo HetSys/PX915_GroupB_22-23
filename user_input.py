@@ -11,9 +11,9 @@ Filename of desired checkpoint file or name to output file containing user input
 @var boolean checkpoint: Select checkpoint file for input, rather than user input parameters.
 @var string solver_input_filename: Name of file produced by code, containing paramaters. Do not enter a file extension. Max characters = 50.
 '''
-checkpoint = False
-solver_input_filename = 'user_input'
-#solver_input_filename = 'test.nc'
+checkpoint = True
+#solver_input_filename = 'user_input'
+solver_input_filename = 'checkpoints_user_input/user_input_tstep_90.nc'
 
 
 '''! 3. Set input parameters. 
@@ -47,8 +47,8 @@ iapp_steps: 2D array of step values and timesteps where step occurs, starting ti
 tsteps, dt, n, c0, D, R, a, L, iapp, iapp_label, electrode_charge = UI.set_defaults_pos()
 
 # Read in applied current density from csv file
-iapp_filename = 'WLTP_m10.csv'
-iapp, iapp_label, tsteps = UI.iapp_read_csv(iapp_filename)
+# iapp_filename = 'WLTP_m10.csv'
+# iapp, iapp_label, tsteps = UI.iapp_read_csv(iapp_filename)
 
 ######### END SET VALUES #########
 
