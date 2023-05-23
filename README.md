@@ -12,8 +12,8 @@ Prior to installing the program or accessing the tutorial, you will need to ensu
 - impi/2017.3.196 imkl/2017.3.196
 - imkl/2017.3.196
 - netCDF-Fortran/4.4.4
-- GCC/11.2.0
-- Python/3.9.6
+- GCC/10.2.0
+- Python/3.8.6
 - numpy
 - netCDF4
 - matplotlib
@@ -21,7 +21,7 @@ Prior to installing the program or accessing the tutorial, you will need to ensu
 For an scrtp managed system the following procedure will ensure correct dependendcies are installed:
 
 ```bash
-module purge; module load intel/2017.4.196-GCC-6.4.0-2.28  impi/2017.3.196 imkl/2017.3.196 netCDF-Fortran/4.4.4 GCC/11.2.0 Python/3.9.6
+module purge; module load intel/2017.4.196-GCC-6.4.0-2.28  impi/2017.3.196 imkl/2017.3.196 netCDF-Fortran/4.4.4 GCC/10.2.0 Python/3.8.6
 pip3 install numpy netCDF4 Matplotlib
 ```
 
