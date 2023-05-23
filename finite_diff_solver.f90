@@ -10,11 +10,11 @@ PROGRAM MAIN
     INTEGER :: info, i, tstep, filename_length
     INTEGER, DIMENSION(:), ALLOCATABLE :: ipiv
     INTEGER :: tsteps ! user input
+    INTEGER :: tstep_init ! initial timestep
     REAL(REAL64), DIMENSION(:,:), ALLOCATABLE :: A !solver matrix
     REAL(REAL64), DIMENSION(:,:), ALLOCATABLE :: A_copy !copy of solver matrix
     REAL(REAL64), DIMENSION(:), ALLOCATABLE :: c,b !c vector for solving 
     REAL(REAL64), DIMENSION(:,:), ALLOCATABLE :: cstorage
-    REAL(REAL64) :: c0 !initial c value
     REAL(REAL64) :: dt !finite diff t
     REAL(REAL64) :: deltar !dist between nodes (finite diff r)
     REAL(REAL64) :: D !diffusion coef
@@ -27,44 +27,23 @@ PROGRAM MAIN
     CHARACTER(len=1) :: electrode_charge
     CHARACTER(len=104) :: filename, output_name
     CHARACTER(len=5) :: file_extension
-    INTEGER :: parse_idx, file_ext, tstep_init
-    CHARACTER(len=1), PARAMETER :: parser = "."
+    INTEGER :: file_ext
 
-    !> Read in user inputs
+    ! Read user inputs
     filename = read_command_line()
-    !> 1. Find index of '.' in filename to identify file extension
-    parse_idx = INDEX(filename, parser) +1
-    file_extension = filename(parse_idx:)
-    
-    !> 2. Choose input reader based on file extension.
-    SELECT CASE(file_extension)
-
-        CASE("txt")
-            CALL read_user_inputs(filename, tsteps, dt, n, c0, D, R, a_small, L, iapp, electrode_charge)
-            ALLOCATE(c(n))
-            ALLOCATE(A(n,n))
-            ALLOCATE(Z(tsteps))
-
-        CASE("nc")
-            CALL read_checkpoint(filename, tstep_init, tsteps, n, c, A, dt, R, D, Z, electrode_charge)
-
-        CASE DEFAULT
-            PRINT*, "Invalid file type passed to SPM solver."
-            PRINT*, "Please pass a 'txt' file of user input parameters or a 'nc' checkpoint file."
-            STOP 6
-
-        END SELECT
-    
+    CALL set_inputs(filename, tstep_init, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge)
     
     !generate name of output file
     filename_length = LEN_TRIM(filename)
     file_ext = INDEX(filename, '.')
     output_name = filename(1:file_ext-1)//'_output.nc'
 
+    ALLOCATE(A(n,n))
     ALLOCATE(ipiv(n))
     ALLOCATE(A_copy(n,n))
     ALLOCATE(b(n))
     ALLOCATE(cstorage(n, tsteps))
+    ALLOCATE(Z(tsteps))
     
     !allocate time axis
     ALLOCATE(time_axis(tsteps))
@@ -76,31 +55,28 @@ PROGRAM MAIN
     
     b = 0.0_REAL64
     
-    IF (file_extension=='txt') THEN 
-        tstep_init = 1
-        c = c0 !set c to initial state
-        Z = (-iapp)/(a_small*F*L*D)
-        cstorage(:,1) = c0 !set first entry in storage vector to initial concentration
-        !build A matrix for solver (constant over time)
-        A = 0.0_REAL64
-        !boundary condition
-        !centre of sphere (left edge)
-        A(1,1) = 1.0_REAL64 - 2.0_REAL64*k*dt
-        A(1,2) = 2.0_REAL64*k*dt
-        !Interior
-        DO i = 2,n-1 !iterate through matrix, building each component 
-            ireal = real(i-1,kind=REAL64) !(i-1) instead of i, due to r_1 = 0.0 (indexing from 1)
-            A(i,i-1) = k*dt*(1.0_REAL64 - (1.0_REAL64/ireal))
-            A(i,i) = 1.0_REAL64 - (2.0_REAL64*k*dt)
-            A(i,i+1) = k*dt*(1.0_REAL64 + (1.0_REAL64/ireal))
-        END DO
-        !boundary condition
-        !edge of sphere (right edge)
-        A(n,n-1) = 2.0_REAL64*k*dt
-        A(n,n) = (1.0_REAL64) + ((D/(deltar**2))*dt)
+        
+    Z = (-iapp)/(a_small*F*L*D)
+    cstorage(:,tstep_init) = c !set first entry in storage vector to initial concentration
+    !build A matrix for solver (constant over time)
+    A = 0.0_REAL64
+    !boundary condition
+    !centre of sphere (left edge)
+    A(1,1) = 1.0_REAL64 - 2.0_REAL64*k*dt
+    A(1,2) = 2.0_REAL64*k*dt
+    !Interior
+    DO i = 2,n-1 !iterate through matrix, building each component 
+        ireal = real(i-1,kind=REAL64) !(i-1) instead of i, due to r_1 = 0.0 (indexing from 1)
+        A(i,i-1) = k*dt*(1.0_REAL64 - (1.0_REAL64/ireal))
+        A(i,i) = 1.0_REAL64 - (2.0_REAL64*k*dt)
+        A(i,i+1) = k*dt*(1.0_REAL64 + (1.0_REAL64/ireal))
+    END DO
+    !boundary condition
+    !edge of sphere (right edge)
+    A(n,n-1) = 2.0_REAL64*k*dt
+    A(n,n) = (1.0_REAL64) + ((D/(deltar**2))*dt)
     !print*, 'a',A
     
-    END IF
 
     A_copy = A    
 
@@ -136,8 +112,8 @@ PROGRAM MAIN
         !add solution to storage vector
         cstorage(:,tstep+1) = c
         time_axis(tstep+1) = dt*tstep
-
-        CALL write_checkpoint(tstep, tsteps, c, n, A, dt, R, D, Z, electrode_charge, filename, 15)
+        
+        CALL write_checkpoint(tstep, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, filename, 20)
         
     END DO
     
