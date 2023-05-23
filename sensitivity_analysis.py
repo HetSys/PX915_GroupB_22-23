@@ -262,7 +262,10 @@ def in_out_easy_peasy(parameter_np_array):
     edge_conc_vals = cstore[:,-1]    #want the values of the edge node for all timesteps
     current_fname = 'user_input'
     i_app_data = read_input_current(current_fname) #What is filename?
-    volt_store = gen_half_cell_voltage(edge_conc_vals,i_app_data,electrode,tsteps,pos_params=None,neg_params=None)
+    #pos and neg params have form [K,a,cmax,L]
+    posparams = [K_pos,parameters[3],cmax_pos_sim,parameters[4]]
+    negparams = [K_neg,parameters[3],cmax_neg_sim,parameters[4]]
+    volt_store = gen_half_cell_voltage(edge_conc_vals,i_app_data,electrode,tsteps,pos_params=posparams,neg_params=negparams)
     #What is QOI?
     return volt_store[-1]
 
@@ -381,10 +384,18 @@ def Uncert_Prop():
     c0 = st.norm(1000.0, 25.0)
     D = st.norm(4.0e-15, 0.5e-15)
     R = st.norm(5.86e-6,1.0e-6)
-    e_act = 0.665
+    #e_act = 0.665
     #a = 3*e_act/R
-    a = st.norm(3.0*e_act/5.86e-6,0.1)
+    a = st.norm(3.0*0.665/5.86e-6,1.0e5)
     L = st.norm(75.6e-6,5.0e-6)
+    
+    #c0 = st.norm(1000.0, 1.0e-16)
+    #D = st.norm(4.0e-15, 1.0e-16)
+    #R = st.norm(5.86e-6,1.0e-16)
+    #e_act = 0.665
+    #a = st.norm(3.0*e_act/5.86e-6,1.0e-16)
+    #L = st.norm(75.6e-6,1.0e-16)
+    
     variables = [c0, D, R, a, L]
     variable_names = ['c0', 'D', 'R', 'a', 'L']
     
