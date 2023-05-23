@@ -16,7 +16,14 @@ def read_output_file(filename,step_num=None):
     #Read in Concs from netcdf
     if step_num is not None:
         filename = filename+str(step_num)
+    
+    '''!Parse filename'''
+    filename_temp = filename.split('.') # Remove file extension
+    filename = filename_temp[0]
+    filename_temp = filename.split('/') # Remove directories
+    filename = filename_temp[-1]
     filename = filename + '_output.nc'
+    
     '''!Read in NetCDF output file'''
     dat=NC.Dataset(filename, "r", format ="NETCDF")
     cstore = dat.variables['cstorage'][:]
@@ -43,16 +50,25 @@ def read_output_file(filename,step_num=None):
 def read_input_current(filename,step_num=None):
     if step_num is not None:
         filename = filename+str(step_num)
-    filename = filename + '.txt'
 
-    with open(filename, 'r') as iapp_vals:
-        lines = iapp_vals.readlines()
-        i_app_data = []
-        for i, current in enumerate(lines):
-            if i >=11:
-                i_app_data.append(current.strip())
+    checkpointing = len(filename.split('.'))
 
-    i_app_data = np.array(i_app_data, dtype = float)
+    if (checkpointing==1):
+        filename = filename + '.txt'
+
+        with open(filename, 'r') as iapp_vals:
+            lines = iapp_vals.readlines()
+            i_app_data = []
+            for i, current in enumerate(lines):
+                if i >=11:
+                    i_app_data.append(current.strip())
+
+        i_app_data = np.array(i_app_data, dtype = float)
+
+    else:
+        dat=NC.Dataset(filename, "r", format ="NETCDF")
+        i_app_data=dat.variables['iapp'][:]
+
     return i_app_data
 
 '''!@package animated_conc_plot: Saves animation (concentration_animation.gif) displaying the evolution of lithium concentration over time, across the sphere.

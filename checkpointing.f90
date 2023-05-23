@@ -67,8 +67,6 @@ MODULE checkpointing
 
             ! Set filepath
             WRITE(tstep_str, '(I0)') tstep
-            ! tstep_str = TRIM(ADJUSTL(tstep_str))
-            ! print*, len(tstep_str), len(trim(adjustl(tstep_str)))
             checkpoint_name = filename(1:file_ext-1)//"_tstep_"//TRIM(ADJUSTL(tstep_str))//".nc"
             filepath = TRIM(ADJUSTL(dir))//TRIM(ADJUSTL(checkpoint_name))
             

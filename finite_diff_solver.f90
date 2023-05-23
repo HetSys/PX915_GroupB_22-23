@@ -27,7 +27,7 @@ PROGRAM MAIN
     CHARACTER(len=1) :: electrode_charge
     CHARACTER(len=104) :: filename, output_name
     CHARACTER(len=5) :: file_extension
-    INTEGER :: file_ext
+    INTEGER :: file_ext, file_test
 
     ! Read user inputs
     filename = read_command_line()
@@ -35,8 +35,13 @@ PROGRAM MAIN
     
     !generate name of output file
     filename_length = LEN_TRIM(filename)
-    file_ext = INDEX(filename, '.')
-    output_name = filename(1:file_ext-1)//'_output.nc'
+    file_test = INDEX(filename, '/') ! find '/' to remove preceeding directories
+    DO WHILE (file_test/=0)
+        filename = filename(file_test+1:)
+        file_test = INDEX(filename, '/')
+    END DO
+    file_ext = INDEX(filename, '.') ! find '.' to remove file extension
+    output_name = TRIM(ADJUSTL(filename(1:file_ext-1)))//'_output.nc'
 
     ALLOCATE(A(n,n))
     ALLOCATE(ipiv(n))
