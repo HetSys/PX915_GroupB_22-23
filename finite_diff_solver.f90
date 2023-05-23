@@ -81,7 +81,6 @@ PROGRAM MAIN
         c = c0 !set c to initial state
         Z = (-iapp)/(a_small*F*L*D)
         cstorage(:,1) = c0 !set first entry in storage vector to initial concentration
-
         !build A matrix for solver (constant over time)
         A = 0.0_REAL64
         !boundary condition

@@ -132,7 +132,7 @@ def set_defaults_pos():
     n=1000
 
     # Initial concentration (mol m**-3), real, positive
-    c0 = 0.0
+    c0 = 1000.0
     # Diffusion coefficient (m**2 s**-1), real
     D = 4.0e-15
     # Width of block (m), real, greater than 0
@@ -339,7 +339,14 @@ def write_to_file(filename, tsteps, dt, n, c0, D, R, a, L, iapp, iapp_label, ele
     iapp_label follows the asterix line, with iapp array following, written one element per line.
     '''
 
-
+    # The solver and plotting equations are built to work for the anode (negative electrode), that is 
+    # losing concentration is a NEGATIVE current (discharging)
+    # gaining concentration is a POSIITIVE current (charging). 
+    # Hence, if the electrode is positive, we need to flip the sign on the current that we save to the file,
+    # as it sees the reverse of what would be applied to the negative electrode
+    if electrode_charge == 'p':
+        iapp = -iapp
+    
     '''! 1. Set file name.'''
     filename = filename + '.txt'
 
@@ -426,8 +433,25 @@ def call_solver(filename, checkpoint):
 
 
 
+def get_GITT_initial_concs(currents,run_times, c0, R, a, L, electrode_charge):
+    F = 96485.3321 #faraday constant
+    #volume fraction of active material
+    e_act = (a*R)/3
+
+    #array of initial concentrations, using the fact that
+    # C(T=t) = C0 + ((i_app*t)/(F*e_act*L))
+
+    # if the electrode charge is positive, then a negative current corresponds
+    # to gaining concentration, and so concentration should rise. 
+    # We correct for this by flipping the sign here.
+    currents = np.array(currents)
+    if electrode_charge == 'p':
+        currents = -currents
+    return [c0 + (currents[i]*np.sum(run_times[0:i]))/(F*e_act*L) for i in range(len(currents))]
+
+
 ### INITIALISE A FULL GITT TEST IN PARALLEL ####
-def GITT(filename,nprocs,currents,start_times,run_times,wait_times,params):
+def GITT_half_cell(filename,nprocs,currents,start_times,run_times,wait_times,n,params):
     '''!@brief Execution of SPM solver in parallel to run a GITT test over nprocs cores.
     @details Execution of SPM solver in parallel to run a test experiment on a battery
     in the style of a galvanostatic intermittent titration technique (GITT), as described in 
@@ -456,16 +480,10 @@ def GITT(filename,nprocs,currents,start_times,run_times,wait_times,params):
         @param[in] L: Electrode thickness, float >= 0.
     '''
     #first, generate the arrays for initial concentration
-    F = 96485.3321 #faraday constant
     #unpack params
-    [dt, c0, D, R, a, L] = params
-    #volume fraction of active material
-    e_act = (a*R)/3
-    #array of initial concentrations, using the fact that
-    # C(T=t) = C0 + ((i_app*t)/(F*L))
-    # where i_app is the current into the battery (positive, current flows in, negative, current flows out). 
+    [dt, c0, D, R, a, L,electrode_charge] = params
 
-    initial_concs = [c0 - (currents[i]*np.sum(run_times[0:i]))/(F*e_act*L) for i in range(len(start_times))]
+    initial_concs = get_GITT_initial_concs(currents,run_times, c0, R, a, L, electrode_charge)
     
     #make list of current arrays
     #make an input file for the solver to read from for each batch of the solver
@@ -473,24 +491,58 @@ def GITT(filename,nprocs,currents,start_times,run_times,wait_times,params):
 
     current_list = []
     cmnds = []
-    total_tsteps = 0
     for i in range(len(currents)):
         fname = f'{filename}{i}'
         tsteps = (int(run_times[i]/dt)) + (int(wait_times[i]/dt))
-        total_tsteps+=tsteps
         current_list.append(np.concatenate(([currents[i] for j in range(int(run_times[i]/dt))],[0.0 for j in range(int(wait_times[i]/dt))])))
         iapp_label = str(i)
-        write_to_file(fname,tsteps, dt, initial_concs[i], D, R, a, L, current_list[i], iapp_label)
+        write_to_file(fname,tsteps, dt,n, initial_concs[i], D, R, a, L, current_list[i], iapp_label,electrode_charge)
         #### Set file name
         running_name = fname + '.txt'
         solver_call_line = './finite_diff_solver' + ' filename=' + running_name
         cmnds.append(solver_call_line)
 
+    #now, we just need to launch a seperate instance of the solver for each process with each initial concentration and runtime
+    #code from: https://stackoverflow.com/questions/30686295/how-do-i-run-multiple-subprocesses-in-parallel-and-wait-for-them-to-finish-in-py
+    for j in range(max(int(len(cmnds)/nprocs), 1)):
+        #launch processes, distributing evenly between processors
+        procs = [subprocess.Popen(i, shell=True) for i in cmnds[j*nprocs: min((j+1)*nprocs, len(cmnds))]]
+        for p in procs:
+            #wait to ensure all done
+            p.wait()
 
-    ##### For visualisation, write a user_input.txt file which holds the full current vector for the simulation
-    #print(dt,current_list)
-    current_arr = np.array(current_list).flatten()
-    write_to_file('user_input',total_tsteps,dt,c0,D,R,a,L,current_arr,'full_current_array')
+def GITT_full_cell(filename_positive,filename_negative,nprocs,currents,start_times,run_times,wait_times,n,params_pos,params_neg):
+    #first, generate the arrays for initial concentration
+    #unpack params
+    [dt, c0_pos, D_pos, R_pos, a_pos, L_pos, electrode_charge_pos] = params_pos
+    [dt, c0_neg, D_neg, R_neg, a_neg, L_neg, electrode_charge_neg] = params_neg
+
+    initial_concs_pos = get_GITT_initial_concs(currents,run_times, c0_pos, R_pos, a_pos, L_pos, electrode_charge_pos)
+    initial_concs_neg = get_GITT_initial_concs(currents,run_times, c0_neg, R_neg, a_neg, L_neg, electrode_charge_neg)
+
+    
+    #make list of current arrays
+    #make an input file for the solver to read from for each batch of the solver
+    #also build the commands to be run
+
+    current_list = []
+    cmnds = []
+    for i in range(len(currents)):
+        fname_pos = f'{filename_positive}{i}'
+        fname_neg = f'{filename_negative}{i}'
+        tsteps = (int(run_times[i]/dt)) + (int(wait_times[i]/dt))
+        current_list.append(np.concatenate(([currents[i] for j in range(int(run_times[i]/dt))],[0.0 for j in range(int(wait_times[i]/dt))])))
+        iapp_label = str(i)
+        write_to_file(fname_pos,tsteps, dt, n, initial_concs_pos[i], D_pos, R_pos, a_pos, L_pos, current_list[i], iapp_label,electrode_charge_pos)
+        write_to_file(fname_neg,tsteps, dt, n, initial_concs_neg[i], D_neg, R_neg, a_neg, L_neg, current_list[i], iapp_label,electrode_charge_neg)
+        #### Set file name
+        running_name_pos = fname_pos + '.txt'
+        running_name_neg = fname_neg + '.txt'
+        solver_call_line_pos = './finite_diff_solver' + ' filename=' + running_name_pos
+        solver_call_line_neg = './finite_diff_solver' + ' filename=' + running_name_neg
+        cmnds.append(solver_call_line_pos)
+        cmnds.append(solver_call_line_neg)
+
 
     #now, we just need to launch a seperate instance of the solver for each process with each initial concentration and runtime
     #code from: https://stackoverflow.com/questions/30686295/how-do-i-run-multiple-subprocesses-in-parallel-and-wait-for-them-to-finish-in-py
