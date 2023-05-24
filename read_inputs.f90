@@ -70,6 +70,46 @@
 
         END FUNCTION read_command_line
 
+        SUBROUTINE read_command_line_further(filename_txt, filename_nc)
+            IMPLICIT NONE
+        
+            CHARACTER(len=104), INTENT(OUT) :: filename_txt, filename_nc
+            INTEGER :: num_args, i, parse_idx
+            CHARACTER(len=164) :: arg
+            CHARACTER(len=60) :: name
+            CHARACTER(len=104) :: val
+        
+            num_args = COMMAND_ARGUMENT_COUNT()
+            IF (num_args > 0) THEN
+                DO i = 1, num_args
+                    CALL get_command_argument(i, arg)
+                    parse_idx = INDEX(arg, '=')
+                    READ(arg(1:parse_idx-1), '(A)') name
+                    READ(arg(parse_idx+1:LEN(arg)), '(A)') val
+        
+                    SELECT CASE (name)
+                        CASE ('filename_txt')
+                            READ(val, '(A)') filename_txt
+                        CASE ('filename_nc')
+                            READ(val, '(A)') filename_nc
+                        CASE DEFAULT
+                            PRINT*, "Command line argument not recognised: ", name
+                            STOP 10
+                    END SELECT
+                END DO
+        
+                IF (num_args < 2) THEN
+                    PRINT*, "Only one file specified. The second file will be read from default location."
+                    ! Set default value for filename_nc
+                    filename_nc = "default.nc"
+                END IF
+            ELSE
+                PRINT*, "No command line arguments found. Please ensure that at least one file is specified."
+                STOP 10
+            END IF
+        END SUBROUTINE read_command_line_further        
+              
+
 
         !> @brief Subroutine reads user inputs from txt file.
         !! @details Subroutine reads txt file 'filename', parsing and returning input parameters.

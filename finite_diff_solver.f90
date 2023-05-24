@@ -32,10 +32,12 @@ PROGRAM MAIN
     ! Read in user inputs
     !filename = read_command_line()
     CALL read_command_line_further(filename_txt, filename_nc)
-    print*, filename_txt, filename_nc
+    IF (filename_nc=='default.nc') then
+        CALL set_inputs(filename_txt, tstep_init, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage)
+    ELSE
+        CALL set_inputs_further(filename_txt,filename_nc, tstep_init, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage)
+    END IF
     filename=filename_txt
-    CALL set_inputs(filename, tstep_init, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage)
-    
     !generate name of output file as 'filename_output.nc'
     !trim to remove preceeding directories and file extensions
     filename_length = LEN_TRIM(filename)
@@ -64,7 +66,7 @@ PROGRAM MAIN
     b = 0.0_REAL64
     
     Z = (-iapp)/(a_small*F*L*D)
-    !cstorage(:,tstep_init) = c !set first entry in storage vector to initial concentration
+    cstorage(:,tstep_init) = c !set first entry in storage vector to initial concentration
     !build A matrix for solver (constant over time)
     A = 0.0_REAL64
     !boundary condition
@@ -116,22 +118,25 @@ PROGRAM MAIN
         !END IF
         !add solution to storage vector
         cstorage(:,tstep+1) = c
-        time_axis(tstep+1) = dt*tstep
+        !time_axis(tstep+1) = dt*tstep
         
         CALL write_checkpoint(tstep, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage, filename, 20)
         
     END DO
     
 
-    !write to output file
-    OPEN(9,file='output.txt',form='formatted')
-    DO i = 1,n
-        write (9,*) i, cstorage(i,:)
-        !print*, i, cstorage(i,:)
+    DO tstep = 1,(tsteps-1)
+        time_axis(tstep+1) = dt*tstep
     END DO
-    CLOSE(9)
+    !write to output file
+    !OPEN(9,file='output.txt',form='formatted')
+    !DO i = 1,n
+        !write (9,*) i, cstorage(i,:)
+        !print*, i, cstorage(i,:)
+    !END DO
+    !CLOSE(9)
 
-    CALL output_cstorage(cstorage, n, tsteps, R, time_axis, electrode_charge, output_name)
+    CALL output_cstorage(cstorage, n, tsteps, R, time_axis, electrode_charge, tstep, dt, c, D, a_small, L, iapp, output_name)
 
     DEALLOCATE(A)
     DEALLOCATE(A_copy)

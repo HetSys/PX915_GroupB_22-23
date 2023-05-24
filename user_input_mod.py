@@ -146,7 +146,7 @@ def set_defaults_pos():
     electrode_charge = "p"
 
     # Number of timesteps, integer, greater than 0
-    tsteps = 100
+    tsteps = 200
     # Timestep size (s), real, greater than 0
     dt = 0.1
 
@@ -510,6 +510,63 @@ def call_solver(filename, checkpoint):
 
     # 2. Set up solver call line.
     solver_call_line = './finite_diff_solver' + ' filename_txt="' + filename + '"'
+
+
+    # 3. Call solver
+    command_solver = shlex.split(solver_call_line)
+    process_solver = subprocess.run(command_solver, stdout=subprocess.PIPE, universal_newlines=True)
+    return_solver = process_solver.returncode
+    # Print solver output to command line
+    if (process_solver.stdout): 
+        print(process_solver.stdout) 
+    # Check for errors in execution
+    if (return_solver==0):
+        print('Solver executed successfully, plotting output...')
+    else:
+        print('Error executing solver, process terminated.')
+        exit()
+
+    return
+
+def call_solver_further(solver_input_filename_txt,solver_input_filename_nc):
+    '''!@brief Executes the SPM solver.
+
+    @details Calls the SPM solver using the subprocess package.
+    The filename of the user input file is passed to the solver as a command line argument.
+    Errors from the execution are read in and further execution prevented if necessary.
+    @param[in] filename: The name of the file containing the desired input, either a checkpoint file or user input file. No file extension is required.
+    @param[in] checkpoint: Boolean indicating if a checkpoint file is used.
+
+    The function works by:
+    1. Validating whether the input file is a checkpoint file or user input file name.
+    2. Setting up the solver call line, including the file name.
+    3. Calling the solver.
+    '''
+
+    # 1. Validate checkpoint file or user input file name.
+    # If using checkpoint, check input file is a netcdf file with extension '.nc'
+    file_extension = solver_input_filename_nc.split(".")
+    if (len(file_extension)<2):
+        # Check filename has an extension.
+        print("Invalid checkpoint file. Please enter a file with a '.nc' extension.")
+        exit()
+    elif (file_extension[-1]!='nc'):
+        # Check extension of file name is 'nc'.
+        print("Invalid checkpoint file. Please enter a file with a '.nc' extension.")
+        exit()
+    elif (not os.path.isfile(solver_input_filename_nc)):
+        # Check .nc file exists
+        print("Checkpoint file not found:", solver_input_filename_nc)
+        exit()
+    else:
+        print("Checkpoint file passed as input file, calling solver...")
+
+    filename_txt = solver_input_filename_txt + '.txt'
+    print("User input file generated, calling solver...")
+
+    # 2. Set up solver call line.
+    solver_call_line = './finite_diff_solver' + ' filename_txt="' + filename_txt + '" '+'filename_nc="' + solver_input_filename_nc + '"'
+    print(solver_call_line)
 
 
     # 3. Call solver
