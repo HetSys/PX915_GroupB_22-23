@@ -1,64 +1,72 @@
-'''! @brief Set up user inputs to SPM solver and execute solver.'''
+'''! 
+@brief Sets up the user inputs and executes the solver.
+@details This file contains all input parameters for the solver and can be changed by the user. 
+This file and all tunebale parameters are broken down in full detail in the user tutorial (see Tutorial.ipynb).
+
+The following options can be controlled by editing this file:
+- Outputting stdout to a file.
+- Changing the name of this user input file.
+- Set the values for the following input parameters:
+    - tsteps
+    - dt
+    - c0
+    - D
+    - R
+    - a
+    - L
+    - iapp
+    - iapp_label
+
+- These parameters can either take default values or be entered manually.
+- For iapp there are additional options for setting constant or stepwise current and reading in values from a csv file. 
+
+The user does not need to edit anything past #END SET INPUT PARAMETER VALUES
+ 
+The rest of the file calls various functions to:
+- Check that the filename and parameters are valid
+- Write the parameters to the file
+- Call the solver and plotter.
+'''
 
 import user_input_mod as UI
 import plotter
 import sys
-'''! 1. Option to output stdout (command line output) to file. Uncomment to use option.'''
+
+# The stdout (command line output) can be output to a file. Uncomment the line below to use this option.
 # sys.stdout = open('test.txt', 'w')
 
-'''! 2. Set filename of output file containing user input parameters.
-@var string solver_input_filename: Name of file produced by code, containing paramaters. Do not enter a file extension. Max characters = 50.
-'''
+# Change the name of this of this file containing the user input parameters.
 solver_input_filename = 'user_input'
 
 
-'''! 3. Set input parameters. 
-Input parameters: tsteps, dt, c0, D, R, a, L, iapp, iapp_label
-@var integer tsteps: Number of timesteps, integer, > 0. Do not change if read iapp from file.
-@var float dt: Timestep size (s), float > 0.
-@var integer n: Number of spatial nodes, integer, 100 =< n =< 4000.
-@var float c0: Initial concentration (mol m**-3), float >= 0.
-@var float D: Diffusion constant (m**2 s**-1), float.
-@var float R: Width of block (m), float > 0.
-@var float a: Particle surface area per unit volume (m**-1), float >= 0.
-@var float L: Electrode thickness(m), float >= 0.
-@var 1D array (len=tsteps), float iapp: Applied current density (A m**2), 1D array of floats of length tsteps.
-@var string iapp_label: Label of applied current density, string.
-@var string electrode_charge: Label of electrode charge as positive or negative.
-
-Options:
-- Use default parameters by calling UI.set_defaults_pos() for a positive electrode, or UI.set_defaults_neg() for a negative electrode.
-- Manually set values.
-Options for iapp:
-- Use default values.
-- Read values from a csv file 'iapp_filename' using: iapp, iapp_label, tsteps = UI.iapp_read_csv(iapp_filename).
-- Set up a constant current density of value 'iapp_const' using: iapp, iapp_label = UI.iapp_constant_setup(tsteps, iapp_const).
-- Set up a stepped current density from a 2D array of values and timesteps 'iapp_steps' using: iapp, iapp_label = UI.iapp_step_setup(tsteps, iapp_steps). 
-iapp_steps: 2D array of step values and timesteps where step occurs, starting timestep 0. Timesteps must be integers.
-- Manually set values. iapp must be an array of floats with length tsteps.
-'''
 ######### SET VALUES #########
+
 
 # Import default values
 tsteps, dt, n, c0, D, R, a, L, iapp, iapp_label, electrode_charge = UI.set_defaults_pos()
 
-# Additional values important for visualisation
-K_pos = 3.42E-6 #Am^-2(m^3mol^-1)^1.5
-K_neg = 6.48E-7 #Am^-2(m^3mol^-1)^1.5
-
-cmax_pos_sim = 63104.00 #molm^-3 # m
-cmax_neg_sim = 33133.00 #molm^-3 # m 
-
 
 # Read in applied current density from csv file
+
+'''!@private iapp_filename'''
 iapp_filename = 'WLTP_m10.csv'
 iapp, iapp_label, tsteps = UI.iapp_read_csv(iapp_filename)
 
+
+# Additional values important for visualisation
+
+K_pos = 3.42E-6   #  Am^-2(m^3mol^-1)^1.5
+K_neg = 6.48E-7   #  Am^-2(m^3mol^-1)^1.5
+
+cmax_pos_sim = 63104.00   #  molm^-3 # m
+cmax_neg_sim = 33133.00   #  molm^-3 # m 
+
+
 ######### END SET VALUES #########
 
-'''! 4. Check parameters and filename are valid.
-If setting manually, tsteps must be validated before iapp is set up to ensure than iapp has a valid length.
-'''
+#Check parameters and filename are valid.
+#If set manually, tsteps must be validated before iapp is set up to ensure iapp has valid length.
+
 # Check parameters and output filename are valid
 UI.verify_params(solver_input_filename, tsteps, dt, n, c0, D, R, a, L, electrode_charge)
 
@@ -66,15 +74,15 @@ UI.verify_params(solver_input_filename, tsteps, dt, n, c0, D, R, a, L, electrode
 UI.verify_iapp(iapp, iapp_label, tsteps)
 
 
-'''! 5. Write parameters to file.'''
+# Write parameters to file
 UI.write_to_file(solver_input_filename, tsteps, dt, n, c0, D, R, a, L, iapp, iapp_label, electrode_charge)
 
-'''! 6. Call fortran solver.'''
+# Call fortran solver
 UI.call_solver(solver_input_filename)
+
 
 # Build the vector of parameters that the plotter accepts
 plot_params_pos = [K_pos,a,cmax_pos_sim,L]
 
-
-'''! 7. Call plotter.'''
+# Call plotter 
 plotter.gen_plots(solver_input_filename,pos_params=plot_params_pos)
