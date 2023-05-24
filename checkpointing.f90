@@ -295,7 +295,102 @@ MODULE checkpointing
 
     END SUBROUTINE set_inputs
 
-    
+    SUBROUTINE set_inputs_further(filename_txt,filename_nc, tstep_init, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage)
+
+        !> @var character len=* filename
+        !! Name of input file.
+        CHARACTER(len=*), INTENT(IN) :: filename_txt,filename_nc
+        !> @var character len=5 file_extension
+        !! Parsed file extension to choose checkpoint file or user input parameters
+        CHARACTER(len=5) :: file_extension
+        !> @var integer parse_idx
+        !! Index of parser in string
+        INTEGER :: parse_idx
+
+        ! Parameters
+        !> @var integer tstep_init
+        !! Timestep of checkpoint file
+        INTEGER, INTENT(OUT) :: tstep_init
+        !> @var integer tsteps
+        !! Number of timesteps (dimensionless)
+        INTEGER, INTENT(OUT) :: tsteps
+        !> @var real dt
+        !! Time step size (s)
+        REAL(REAL64), INTENT(OUT) :: dt
+        !> @var integer n
+        !! Number of spatial nodes (dimensionless)
+        INTEGER, INTENT(OUT) :: n
+        !> @var allocatable real array c
+        !! Initial concentration (mol m^-3)
+        REAL(REAL64), DIMENSION(:), ALLOCATABLE, INTENT(OUT) :: c ! Conc at timestep of checkpoint tstep_init
+        !> @var real c0
+        !! Initial concentration (mol m^-3)
+        REAL(REAL64) :: c0
+        !> @var real D
+        !! Diffusion coefficient (m^2 s^-1)
+        REAL(REAL64), INTENT(OUT) :: D
+        !> @var real R
+        !! Total width of block (m)
+        REAL(REAL64), INTENT(OUT) :: R 
+        !> @var real a_small
+        !! Particle surface area per unit volume (m^-1), Constant in r=R boundary condit
+        REAL(REAL64), INTENT(OUT) :: a_small
+        !> @var real L
+        !! Electrode thickness (m), Constant in r=R boundary condit
+        REAL(REAL64), INTENT(OUT) :: L
+        !> @var allocatable real array iapp
+        !! Applied current density (A m^-2)
+        !! Will be length tsteps
+        REAL(REAL64), DIMENSION(:), ALLOCATABLE, INTENT(OUT) :: iapp
+        !> @var chararacter len=1 electrode_charge
+        !! Label of electrode charge, 'p'=positive, 'n'=negative
+        CHARACTER(len=1), INTENT(OUT) :: electrode_charge
+
+        REAL(REAL64), DIMENSION(:, :), ALLOCATABLE, INTENT(OUT) :: cstorage
+        INTEGER :: tsteps_o
+        REAL(REAL64), DIMENSION(:), ALLOCATABLE :: iapp_o
+        REAL(REAL64), DIMENSION(:, :), ALLOCATABLE :: cstorage_o
+        !! won't use
+
+
+        !> 1. Find index of '.' in filename to identify file extension
+        parse_idx = INDEX(filename_txt, ".") +1
+        file_extension = filename_txt(parse_idx:)
+        
+        !> 2. Choose input reader based on file extension.
+        SELECT CASE(file_extension)
+
+            CASE("txt")
+                CALL read_user_inputs(filename_txt, tsteps, dt, n, c0, D, R, a_small, L, iapp, electrode_charge)
+                ALLOCATE(cstorage(n,tsteps))              
+
+            CASE DEFAULT
+                PRINT*, "Invalid file type passed to SPM solver."
+                PRINT*, "Please pass a 'txt' file of user input parameters or a 'nc' checkpoint file."
+                STOP 6
+
+        END SELECT
+
+                !> 1. Find index of '.' in filename to identify file extension
+        parse_idx = INDEX(filename_nc, ".") +1
+        file_extension = filename_nc(parse_idx:)
+        
+        !> 2. Choose input reader based on file extension.
+        SELECT CASE(file_extension)                
+
+            CASE("nc")
+                CALL read_checkpoint(filename_nc, tstep_init, tsteps_o, dt, n, c, D, R, a_small, L, iapp_o, electrode_charge, cstorage_o)
+                cstorage(:,1:tsteps_o)=cstorage_o
+
+            CASE DEFAULT
+                PRINT*, "Invalid file type passed to SPM solver."
+                PRINT*, "Please pass a 'txt' file of user input parameters or a 'nc' checkpoint file."
+                STOP 6
+
+        END SELECT
+
+
+    END SUBROUTINE set_inputs_further
         
 
 END MODULE checkpointing

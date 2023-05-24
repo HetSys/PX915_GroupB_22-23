@@ -25,14 +25,19 @@ PROGRAM MAIN
     REAL(REAL64) :: a_small, L !constants
     REAL(REAL64), PARAMETER :: F = 96485_REAL64 !Faraday constant
     CHARACTER(len=1) :: electrode_charge
-    CHARACTER(len=104) :: filename, output_name
+    CHARACTER(len=104) :: filename_txt, filename_nc, filename, output_name
     CHARACTER(len=5) :: file_extension
     INTEGER :: file_ext, file_test
 
     ! Read in user inputs
-    filename = read_command_line()
-    CALL set_inputs(filename, tstep_init, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage)
-    
+    !filename = read_command_line()
+    CALL read_command_line_further(filename_txt, filename_nc)
+    IF (filename_nc=='default.nc') then
+        CALL set_inputs(filename_txt, tstep_init, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage)
+    ELSE
+        CALL set_inputs_further(filename_txt,filename_nc, tstep_init, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage)
+    END IF
+    filename=filename_txt
     !generate name of output file as 'filename_output.nc'
     !trim to remove preceeding directories and file extensions
     filename_length = LEN_TRIM(filename)
@@ -61,7 +66,7 @@ PROGRAM MAIN
     b = 0.0_REAL64
     
     Z = (-iapp)/(a_small*F*L*D)
-    !cstorage(:,tstep_init) = c !set first entry in storage vector to initial concentration
+    cstorage(:,tstep_init) = c !set first entry in storage vector to initial concentration
     !build A matrix for solver (constant over time)
     A = 0.0_REAL64
     !boundary condition
@@ -80,6 +85,7 @@ PROGRAM MAIN
     A(n,n-1) = 2.0_REAL64*k*dt
     A(n,n) = (1.0_REAL64) + ((D/(deltar**2))*dt)
     A_copy = A    
+    A_copy = A
 
     DO tstep = tstep_init,(tsteps-1) !we have the first state (j=1), and each loop finds the j+1th state, so we go to tsteps-1.
         !build solver
@@ -118,18 +124,19 @@ PROGRAM MAIN
         
     END DO
     
-    DO tstep=1,(tsteps-1)
-      time_axis(tstep+1) = dt*tstep
+
+    DO tstep = 1,(tsteps-1)
+        time_axis(tstep+1) = dt*tstep
     END DO
     !write to output file
-    OPEN(9,file='output.txt',form='formatted')
-    DO i = 1,n
-        write (9,*) i, cstorage(i,:)
+    !OPEN(9,file='output.txt',form='formatted')
+    !DO i = 1,n
+        !write (9,*) i, cstorage(i,:)
         !print*, i, cstorage(i,:)
-    END DO
-    CLOSE(9)
+    !END DO
+    !CLOSE(9)
 
-    CALL output_cstorage(cstorage, n, tsteps, R, time_axis, electrode_charge, output_name)
+    CALL output_cstorage(cstorage, n, tsteps, R, time_axis, electrode_charge, tstep, dt, c, D, a_small, L, iapp, output_name)
 
     DEALLOCATE(A)
     DEALLOCATE(A_copy)
