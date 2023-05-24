@@ -1,3 +1,9 @@
+'''! @brief Functions allowing the visualization of data generated using solver outputs. Plots are saved locally.
+@details Allowed plots include:
+- an animation of lithium concentrations as a function of time and space
+- a plot showing the concentration of lithium at the sphere edge and the voltage at all timesteps.
+
+'''
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.animation import FuncAnimation
@@ -56,13 +62,14 @@ def read_input_current(filename,step_num=None):
     return i_app_data
 
 '''!@package animated_conc_plot: Saves animation (concentration_animation.gif) displaying the evolution of lithium concentration over time, across the sphere.
-If passed arg 'SaveFinalState=True', saves image (final_state.png) of plot showing Lithium concentration across the sphere at the final timestep.'''
-'''!@var int intervaltime: Time between frames in animation (ms).'''
-'''!@var list time_step_axis: A list of consecutive numbers from 1-(tsteps-1) - used to specify the number of iterable frames to be rendered in the animation.'''
-'''!@var 2D array of floats vals: Contains both positions of nodes (m) and Lithium concentrations (molm^-3) at these spatial points at the specified points in time.
-The first column contains the positions, and subsequent columns contain the concentrations at these spatial points at specific points in time.'''
-'''!@var list of strings timestep_list: list containing strings of numbers representing the time of subsequent timesteps rounded to 1 d.p. - used to evolve time in title.'''
-'''!@package update: Define an update function for the animation. This is what is called each frame to update the graph. As blitting is set to on (it has to be to use 
+If passed arg 'SaveFinalState=True', saves image (final_state.png) of plot showing Lithium concentration across the sphere at the final timestep.
+@var int intervaltime: Time between frames in animation (ms).
+@var list time_step_axis: A list of consecutive numbers from 1-(tsteps-1) - used to specify the number of iterable frames to be rendered in the animation.
+@var 2D array of floats vals: Contains both positions of nodes (m) and Lithium concentrations (molm^-3) at these spatial points at the specified points in time.
+The first column contains the positions, and subsequent columns contain the concentrations at these spatial points at specific points in time.
+@var list of strings timestep_list: list containing strings of numbers representing the time of subsequent timesteps rounded to 1 d.p. - used to evolve time in title.
+@var float c_max: Maximum concentration at electrode.
+@package update: Define an update function for the animation. This is what is called each frame to update the graph. As blitting is set to on (it has to be to use 
 reasonable computing power). This function needs to return a single array containing the objects to animate with new data set. Function takes as an input argument the 
 timestep it is being called at.'''
 def animated_conc_plot(intervaltime,dr,tsteps,nodenum,cstore,time_axis,SaveFinalState=False,SparsifyAnimation=False):
