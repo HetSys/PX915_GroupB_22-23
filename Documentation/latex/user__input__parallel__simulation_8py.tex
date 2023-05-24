@@ -1,0 +1,43 @@
+\hypertarget{user__input__parallel__simulation_8py}{\section{/home/chem/msuvnj/\-P\-X915\-\_\-\-Group\-B\-\_\-22-\/23/user\-\_\-input\-\_\-parallel\-\_\-simulation.py File Reference}
+\label{user__input__parallel__simulation_8py}\index{/home/chem/msuvnj/\-P\-X915\-\_\-\-Group\-B\-\_\-22-\/23/user\-\_\-input\-\_\-parallel\-\_\-simulation.\-py@{/home/chem/msuvnj/\-P\-X915\-\_\-\-Group\-B\-\_\-22-\/23/user\-\_\-input\-\_\-parallel\-\_\-simulation.\-py}}
+}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceuser__input__parallel__simulation}{user\-\_\-input\-\_\-parallel\-\_\-simulation}
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+string \hyperlink{namespaceuser__input__parallel__simulation_ac0647ad8713153cc6b448750dbeb1b15}{output\-\_\-filename} = 'current\-\_\-step'
+\begin{DoxyCompactList}\small\item\em Uncomment to print stdout to file sys.\-stdout = open('test.\-txt', 'w') \end{DoxyCompactList}\item 
+string \hyperlink{namespaceuser__input__parallel__simulation_a6d9f4e281307eca8be6bad984ed9786d}{electrode} = 'positive'
+\item 
+float \hyperlink{namespaceuser__input__parallel__simulation_aa3407022b348cd058d9808eed482ab4a}{c0} = 30000.\-0
+\begin{DoxyCompactList}\small\item\em Import default values from \href{https://doi.org/10.1149/1945-7111/ab9050}{\tt https\-://doi.\-org/10.\-1149/1945-\/7111/ab9050} Use \hyperlink{namespaceuser__input__mod_acef497295190e3914f7cd93da2708856}{U\-I.\-set\-\_\-defaults\-\_\-pos()} for positive electrode and ...\-\_\-neg() for negative electrode. \end{DoxyCompactList}\item 
+float \hyperlink{namespaceuser__input__parallel__simulation_a778e38aa889751afffa2dea6b803e67a}{dt} = 1.\-0
+\item 
+float \hyperlink{namespaceuser__input__parallel__simulation_ab1a8ebec490ba1301f818bd1c5f1f3fa}{K\-\_\-pos} = 3.\-42\-E-\/6
+\item 
+float \hyperlink{namespaceuser__input__parallel__simulation_a64d0c5854299798787675bc91586023c}{K\-\_\-neg} = 6.\-48\-E-\/7
+\item 
+float \hyperlink{namespaceuser__input__parallel__simulation_aa5b015cc7d0bda453c6163023448db72}{cmax\-\_\-pos\-\_\-sim} = 63104.\-00
+\item 
+float \hyperlink{namespaceuser__input__parallel__simulation_ab7633a5e9c70aabfe6992e4fe521a1f9}{cmax\-\_\-neg\-\_\-sim} = 33133.\-00
+\item 
+int \hyperlink{namespaceuser__input__parallel__simulation_ad7c4c17cf720ee538e27c02ab356ed6b}{nprocs} = 5
+\begin{DoxyCompactList}\small\item\em Check parameters are valid \#\#\#\#\#\#. \end{DoxyCompactList}\item 
+int \hyperlink{namespaceuser__input__parallel__simulation_aa2414080b021dbb9b56eeaeedec0ffa2}{nsteps} = 5
+\item 
+list \hyperlink{namespaceuser__input__parallel__simulation_a216022bdba987f127b6cc081ee78e2bd}{currents} = \mbox{[}20.\-0 for i in range(nsteps)\mbox{]}
+\item 
+list \hyperlink{namespaceuser__input__parallel__simulation_a377a515511d37e8c7ac5501847d6485d}{start\-\_\-times} = \mbox{[}2150.\-0$\ast$i for i in range(nsteps)\mbox{]}
+\item 
+list \hyperlink{namespaceuser__input__parallel__simulation_a5a6deb885420d2b81e210e580767b1c1}{run\-\_\-times} = \mbox{[}150.\-0 for i in range(nsteps)\mbox{]}
+\item 
+list \hyperlink{namespaceuser__input__parallel__simulation_ae584b229c7b1ea3d8330e6038884ffd3}{wait\-\_\-times} = \mbox{[}2000.\-0 for i in range(nsteps)\mbox{]}
+\item 
+list \hyperlink{namespaceuser__input__parallel__simulation_ad4a342a882e80fb0b1b0a80df4b9321b}{params} = \mbox{[}dt, c0, D, R, a, L,electrode\-\_\-charge\mbox{]}
+\item 
+list \hyperlink{namespaceuser__input__parallel__simulation_a0861e0e85d9d6139e0cc3cc1cc4fa692}{plot\-\_\-params\-\_\-neg} = \mbox{[}K\-\_\-neg,a,cmax\-\_\-neg\-\_\-sim,L\mbox{]}
+\begin{DoxyCompactList}\small\item\em Call the function to perform the parallel solve. \end{DoxyCompactList}\end{DoxyCompactItemize}

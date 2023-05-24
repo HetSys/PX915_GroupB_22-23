@@ -1,0 +1,42 @@
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:20: warning: documented symbol `function read_command_line' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:23: warning: documented symbol `integer num_args' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:26: warning: documented symbol `integer i' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:29: warning: documented symbol `integer parse_idx' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:32: warning: documented symbol `character' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:35: warning: documented symbol `character' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:38: warning: documented symbol `character' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:92: warning: documented symbol `subroutine read_user_inputs' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:95: warning: documented symbol `integer tsteps' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:98: warning: documented symbol `real' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:101: warning: documented symbol `integer n' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:104: warning: documented symbol `real' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:107: warning: documented symbol `real' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:110: warning: documented symbol `real' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:113: warning: documented symbol `real' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:116: warning: documented symbol `real' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:120: warning: documented symbol `real' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:125: warning: documented symbol `character' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:128: warning: documented symbol `character' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:132: warning: documented symbol `integer file_id' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:135: warning: documented symbol `integer n_params_expected' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:138: warning: documented symbol `integer n_params' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:141: warning: documented symbol `integer i' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:144: warning: documented symbol `integer ios' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:147: warning: documented symbol `logical asterix' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:150: warning: documented symbol `logical invalid_param' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:154: warning: documented symbol `character' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:157: warning: documented symbol `character' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:160: warning: documented symbol `character' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:163: warning: documented symbol `integer parse_idx' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:166: warning: documented symbol `character' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:354: warning: documented symbol `subroutine invalid_param_type' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:357: warning: documented symbol `character' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/user_input.py:24: warning: explicit link request to 'END' could not be resolved
+/home/chem/msuvnj/PX915_GroupB_22-23/user_input_mod.py:425: warning: argument 'dt' of command @param is not found in the argument list of user_input_mod::GITT_half_cell(filename,nprocs,currents,start_times,run_times,wait_times,n,params)
+/home/chem/msuvnj/PX915_GroupB_22-23/user_input_mod.py:425: warning: argument 'c0' of command @param is not found in the argument list of user_input_mod::GITT_half_cell(filename,nprocs,currents,start_times,run_times,wait_times,n,params)
+/home/chem/msuvnj/PX915_GroupB_22-23/user_input_mod.py:425: warning: argument 'D' of command @param is not found in the argument list of user_input_mod::GITT_half_cell(filename,nprocs,currents,start_times,run_times,wait_times,n,params)
+/home/chem/msuvnj/PX915_GroupB_22-23/user_input_mod.py:425: warning: argument 'R' of command @param is not found in the argument list of user_input_mod::GITT_half_cell(filename,nprocs,currents,start_times,run_times,wait_times,n,params)
+/home/chem/msuvnj/PX915_GroupB_22-23/user_input_mod.py:425: warning: argument 'a' of command @param is not found in the argument list of user_input_mod::GITT_half_cell(filename,nprocs,currents,start_times,run_times,wait_times,n,params)
+/home/chem/msuvnj/PX915_GroupB_22-23/user_input_mod.py:425: warning: argument 'L' of command @param is not found in the argument list of user_input_mod::GITT_half_cell(filename,nprocs,currents,start_times,run_times,wait_times,n,params)
+/home/chem/msuvnj/PX915_GroupB_22-23/user_input_mod.py:425: warning: The following parameters of user_input_mod.GITT_half_cell(filename,nprocs,currents,start_times,run_times,wait_times,n,params) are not documented:
+  parameter 'n'
