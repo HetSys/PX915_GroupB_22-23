@@ -1,0 +1,55 @@
+A half single particle model by Group B for the 2023 P\-X915 group project.
+
+S\-P\-A\-M\-S models the charging and discharging of a lithium ion battery using a Crank-\/\-Nicolson semi-\/implicit finite difference scheme to obtain the concentration of lithium in a sphere, {\bfseries c}(i$_{\mbox{app}}$ , {\bfseries r}), at each time step.
+
+\subsection*{Dependencies}
+
+Prior to installing the program or accessing the tutorial, you will need to ensure you have the following installed\-:
+
+
+\begin{DoxyItemize}
+\item intel/2017.\-4.\-196-\/\-G\-C\-C-\/6.\-4.\-0-\/2.\-28
+\item impi/2017.\-3.\-196 imkl/2017.\-3.\-196
+\item imkl/2017.\-3.\-196
+\item net\-C\-D\-F-\/\-Fortran/4.\-4.\-4
+\item G\-C\-C/10.\-2.\-0
+\item Python/3.\-8.\-6
+\item numpy
+\item net\-C\-D\-F4
+\item matplotlib
+\end{DoxyItemize}
+
+For an scrtp managed system the following procedure will ensure correct dependendcies are installed\-:
+
+```bash module purge; module load intel/2017.\-4.\-196-\/\-G\-C\-C-\/6.\-4.\-0-\/2.\-28 impi/2017.\-3.\-196 imkl/2017.\-3.\-196 net\-C\-D\-F-\/\-Fortran/4.\-4.\-4 G\-C\-C/10.\-2.\-0 Python/3.\-8.\-6 pip3 install numpy net\-C\-D\-F4 Matplotlib ```
+
+\subsection*{Installation}
+
+To install S\-P\-A\-M\-S, navigate to the directory in your file system where you would like to download it, and use the following command\-: ```bash git clone \href{https://github.com/HetSys/PX915_GroupB_22-23}{\tt https\-://github.\-com/\-Het\-Sys/\-P\-X915\-\_\-\-Group\-B\-\_\-22-\/23} ```
+
+\subsection*{Program Features}
+
+Very short summary of what program can do...
+
+\subsection*{Running the program}
+
+Run line\-: {\ttfamily python3 \hyperlink{user__input_8py}{user\-\_\-input.\-py}}
+
+\subsection*{Accessing the user documentation}
+
+A full tutorial for basic usage of the program is provided in Jupyter notebook format.
+\begin{DoxyItemize}
+\item The notebook can been found in the Documentation folder (called 'Tutorial.\-ipynb)
+\item The notebook can be viewed here in github as a markdown file.
+\item Alternatively, the notebook can be loaded from the terminal by navigating to the Documentation directory and using the command\-: ```bash nohup jupyter notebook Tutorial.\-ipynb ```
+\end{DoxyItemize}
+
+\subsection*{Developer documentation}
+
+Developer documentation is available at \href{https://hetsys.github.io/PX915_GroupB_22-23/}{\tt https\-://hetsys.\-github.\-io/\-P\-X915\-\_\-\-Group\-B\-\_\-22-\/23/}.
+
+ ` \subsection*{Contributors}
+
+Fraser Birks, Laura Cairns, Sebastian Dooley, Arielle Fitkin, Jake Eller, and Yu Lei
+
+Het\-Sys C\-D\-T, University of Warwick 

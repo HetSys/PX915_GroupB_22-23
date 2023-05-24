@@ -1,0 +1,195 @@
+\hypertarget{namespacesensitivity__analysis}{\section{sensitivity\-\_\-analysis Namespace Reference}
+\label{namespacesensitivity__analysis}\index{sensitivity\-\_\-analysis@{sensitivity\-\_\-analysis}}
+}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespacesensitivity__analysis_abd9d4178caf8223b3e14f69ced11c7a4}{in\-\_\-out\-\_\-easy\-\_\-peasy}
+\item 
+def \hyperlink{namespacesensitivity__analysis_ac9b02f9b013b469537ee70ac8bbeffdb}{sensitivity\-\_\-analysis}
+\item 
+def \hyperlink{namespacesensitivity__analysis_aa89e4ea8c55579ee653b3c636d3ae27b}{first\-\_\-order\-\_\-sensitivities}
+\item 
+def \hyperlink{namespacesensitivity__analysis_a77cd6a629e8dbbe24ff9dc0c96d7c9ce}{second\-\_\-order\-\_\-sensitivities}
+\item 
+def \hyperlink{namespacesensitivity__analysis_aba2a46a57ce75c604746086079d33e20}{plot\-\_\-sensitivities}
+\item 
+def \hyperlink{namespacesensitivity__analysis_a8705d10a323431360a5db5ff5d1a2eb3}{Uncert\-\_\-\-Prop}
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+string \hyperlink{namespacesensitivity__analysis_a92a75cd7aa57960ca65957a1baa06d77}{solver\-\_\-input\-\_\-filename} = 'user\-\_\-input'
+\item 
+float \hyperlink{namespacesensitivity__analysis_ab1a8ebec490ba1301f818bd1c5f1f3fa}{K\-\_\-pos} = 3.\-42\-E-\/6
+\begin{DoxyCompactList}\small\item\em S\-E\-T M\-E\-A\-N V\-A\-L\-U\-E\-S \#\#\#\#\#\#\#\#\#. \end{DoxyCompactList}\item 
+float \hyperlink{namespacesensitivity__analysis_a64d0c5854299798787675bc91586023c}{K\-\_\-neg} = 6.\-48\-E-\/7
+\item 
+float \hyperlink{namespacesensitivity__analysis_aa5b015cc7d0bda453c6163023448db72}{cmax\-\_\-pos\-\_\-sim} = 63104.\-00
+\item 
+float \hyperlink{namespacesensitivity__analysis_ab7633a5e9c70aabfe6992e4fe521a1f9}{cmax\-\_\-neg\-\_\-sim} = 33133.\-00
+\item 
+string \hyperlink{namespacesensitivity__analysis_af0a721bf4042ba266855bd73da684844}{iapp\-\_\-filename} = 'W\-L\-T\-P\-\_\-m10.\-csv'
+\item 
+list \hyperlink{namespacesensitivity__analysis_af973d7a362a975c2c180328006f497d3}{initial\-\_\-params} = \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em E\-N\-D M\-E\-A\-N S\-E\-T V\-A\-L\-U\-E\-S \#\#\#\#\#\#\#\#\#. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespacesensitivity__analysis_a86a476e68e0e599be4ea6b1ccb088d46}{param\-\_\-arr} = np.\-array(\hyperlink{namespacesensitivity__analysis_af973d7a362a975c2c180328006f497d3}{initial\-\_\-params})
+\item 
+tuple \hyperlink{namespacesensitivity__analysis_aa3b49cc44c40ee657d289412379593e5}{sensitivity\-\_\-result} = \hyperlink{namespacesensitivity__analysis_ac9b02f9b013b469537ee70ac8bbeffdb}{sensitivity\-\_\-analysis}(\hyperlink{namespacesensitivity__analysis_a86a476e68e0e599be4ea6b1ccb088d46}{param\-\_\-arr})
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{namespacesensitivity__analysis_aa89e4ea8c55579ee653b3c636d3ae27b}{\index{sensitivity\-\_\-analysis@{sensitivity\-\_\-analysis}!first\-\_\-order\-\_\-sensitivities@{first\-\_\-order\-\_\-sensitivities}}
+\index{first\-\_\-order\-\_\-sensitivities@{first\-\_\-order\-\_\-sensitivities}!sensitivity_analysis@{sensitivity\-\_\-analysis}}
+\subsubsection[{first\-\_\-order\-\_\-sensitivities}]{\setlength{\rightskip}{0pt plus 5cm}def sensitivity\-\_\-analysis.\-first\-\_\-order\-\_\-sensitivities (
+\begin{DoxyParamCaption}
+\item[{}]{Q, }
+\item[{}]{variables, }
+\item[{}]{Q0, }
+\item[{}]{eps = {\ttfamily 1e-\/6}}
+\end{DoxyParamCaption}
+)}}\label{namespacesensitivity__analysis_aa89e4ea8c55579ee653b3c636d3ae27b}
+
+
+Definition at line 282 of file sensitivity\-\_\-analysis.\-py.
+
+\hypertarget{namespacesensitivity__analysis_abd9d4178caf8223b3e14f69ced11c7a4}{\index{sensitivity\-\_\-analysis@{sensitivity\-\_\-analysis}!in\-\_\-out\-\_\-easy\-\_\-peasy@{in\-\_\-out\-\_\-easy\-\_\-peasy}}
+\index{in\-\_\-out\-\_\-easy\-\_\-peasy@{in\-\_\-out\-\_\-easy\-\_\-peasy}!sensitivity_analysis@{sensitivity\-\_\-analysis}}
+\subsubsection[{in\-\_\-out\-\_\-easy\-\_\-peasy}]{\setlength{\rightskip}{0pt plus 5cm}def sensitivity\-\_\-analysis.\-in\-\_\-out\-\_\-easy\-\_\-peasy (
+\begin{DoxyParamCaption}
+\item[{}]{parameter\-\_\-np\-\_\-array}
+\end{DoxyParamCaption}
+)}}\label{namespacesensitivity__analysis_abd9d4178caf8223b3e14f69ced11c7a4}
+
+
+Definition at line 53 of file sensitivity\-\_\-analysis.\-py.
+
+\hypertarget{namespacesensitivity__analysis_aba2a46a57ce75c604746086079d33e20}{\index{sensitivity\-\_\-analysis@{sensitivity\-\_\-analysis}!plot\-\_\-sensitivities@{plot\-\_\-sensitivities}}
+\index{plot\-\_\-sensitivities@{plot\-\_\-sensitivities}!sensitivity_analysis@{sensitivity\-\_\-analysis}}
+\subsubsection[{plot\-\_\-sensitivities}]{\setlength{\rightskip}{0pt plus 5cm}def sensitivity\-\_\-analysis.\-plot\-\_\-sensitivities (
+\begin{DoxyParamCaption}
+\item[{}]{f, }
+\item[{}]{variables, }
+\item[{}]{variable\-\_\-names, }
+\item[{}]{Q0 = {\ttfamily None}, }
+\item[{}]{d\-Q\-\_\-dx = {\ttfamily None}, }
+\item[{}]{d2\-Q\-\_\-dx2 = {\ttfamily None}, }
+\item[{}]{second\-\_\-order = {\ttfamily False}, }
+\item[{}]{logscale = {\ttfamily False}}
+\end{DoxyParamCaption}
+)}}\label{namespacesensitivity__analysis_aba2a46a57ce75c604746086079d33e20}
+
+
+Definition at line 341 of file sensitivity\-\_\-analysis.\-py.
+
+\hypertarget{namespacesensitivity__analysis_a77cd6a629e8dbbe24ff9dc0c96d7c9ce}{\index{sensitivity\-\_\-analysis@{sensitivity\-\_\-analysis}!second\-\_\-order\-\_\-sensitivities@{second\-\_\-order\-\_\-sensitivities}}
+\index{second\-\_\-order\-\_\-sensitivities@{second\-\_\-order\-\_\-sensitivities}!sensitivity_analysis@{sensitivity\-\_\-analysis}}
+\subsubsection[{second\-\_\-order\-\_\-sensitivities}]{\setlength{\rightskip}{0pt plus 5cm}def sensitivity\-\_\-analysis.\-second\-\_\-order\-\_\-sensitivities (
+\begin{DoxyParamCaption}
+\item[{}]{Q, }
+\item[{}]{variables, }
+\item[{}]{Q0, }
+\item[{}]{eps = {\ttfamily 1e-\/4}}
+\end{DoxyParamCaption}
+)}}\label{namespacesensitivity__analysis_a77cd6a629e8dbbe24ff9dc0c96d7c9ce}
+
+
+Definition at line 292 of file sensitivity\-\_\-analysis.\-py.
+
+\hypertarget{namespacesensitivity__analysis_ac9b02f9b013b469537ee70ac8bbeffdb}{\index{sensitivity\-\_\-analysis@{sensitivity\-\_\-analysis}!sensitivity\-\_\-analysis@{sensitivity\-\_\-analysis}}
+\index{sensitivity\-\_\-analysis@{sensitivity\-\_\-analysis}!sensitivity_analysis@{sensitivity\-\_\-analysis}}
+\subsubsection[{sensitivity\-\_\-analysis}]{\setlength{\rightskip}{0pt plus 5cm}def sensitivity\-\_\-analysis.\-sensitivity\-\_\-analysis (
+\begin{DoxyParamCaption}
+\item[{}]{params}
+\end{DoxyParamCaption}
+)}}\label{namespacesensitivity__analysis_ac9b02f9b013b469537ee70ac8bbeffdb}
+
+
+Definition at line 270 of file sensitivity\-\_\-analysis.\-py.
+
+\hypertarget{namespacesensitivity__analysis_a8705d10a323431360a5db5ff5d1a2eb3}{\index{sensitivity\-\_\-analysis@{sensitivity\-\_\-analysis}!Uncert\-\_\-\-Prop@{Uncert\-\_\-\-Prop}}
+\index{Uncert\-\_\-\-Prop@{Uncert\-\_\-\-Prop}!sensitivity_analysis@{sensitivity\-\_\-analysis}}
+\subsubsection[{Uncert\-\_\-\-Prop}]{\setlength{\rightskip}{0pt plus 5cm}def sensitivity\-\_\-analysis.\-Uncert\-\_\-\-Prop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{namespacesensitivity__analysis_a8705d10a323431360a5db5ff5d1a2eb3}
+
+
+Definition at line 378 of file sensitivity\-\_\-analysis.\-py.
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{namespacesensitivity__analysis_ab7633a5e9c70aabfe6992e4fe521a1f9}{\index{sensitivity\-\_\-analysis@{sensitivity\-\_\-analysis}!cmax\-\_\-neg\-\_\-sim@{cmax\-\_\-neg\-\_\-sim}}
+\index{cmax\-\_\-neg\-\_\-sim@{cmax\-\_\-neg\-\_\-sim}!sensitivity_analysis@{sensitivity\-\_\-analysis}}
+\subsubsection[{cmax\-\_\-neg\-\_\-sim}]{\setlength{\rightskip}{0pt plus 5cm}float cmax\-\_\-neg\-\_\-sim = 33133.\-00}}\label{namespacesensitivity__analysis_ab7633a5e9c70aabfe6992e4fe521a1f9}
+
+
+Definition at line 415 of file sensitivity\-\_\-analysis.\-py.
+
+\hypertarget{namespacesensitivity__analysis_aa5b015cc7d0bda453c6163023448db72}{\index{sensitivity\-\_\-analysis@{sensitivity\-\_\-analysis}!cmax\-\_\-pos\-\_\-sim@{cmax\-\_\-pos\-\_\-sim}}
+\index{cmax\-\_\-pos\-\_\-sim@{cmax\-\_\-pos\-\_\-sim}!sensitivity_analysis@{sensitivity\-\_\-analysis}}
+\subsubsection[{cmax\-\_\-pos\-\_\-sim}]{\setlength{\rightskip}{0pt plus 5cm}float cmax\-\_\-pos\-\_\-sim = 63104.\-00}}\label{namespacesensitivity__analysis_aa5b015cc7d0bda453c6163023448db72}
+
+
+Definition at line 414 of file sensitivity\-\_\-analysis.\-py.
+
+\hypertarget{namespacesensitivity__analysis_af0a721bf4042ba266855bd73da684844}{\index{sensitivity\-\_\-analysis@{sensitivity\-\_\-analysis}!iapp\-\_\-filename@{iapp\-\_\-filename}}
+\index{iapp\-\_\-filename@{iapp\-\_\-filename}!sensitivity_analysis@{sensitivity\-\_\-analysis}}
+\subsubsection[{iapp\-\_\-filename}]{\setlength{\rightskip}{0pt plus 5cm}string iapp\-\_\-filename = 'W\-L\-T\-P\-\_\-m10.\-csv'}}\label{namespacesensitivity__analysis_af0a721bf4042ba266855bd73da684844}
+
+
+Definition at line 418 of file sensitivity\-\_\-analysis.\-py.
+
+\hypertarget{namespacesensitivity__analysis_af973d7a362a975c2c180328006f497d3}{\index{sensitivity\-\_\-analysis@{sensitivity\-\_\-analysis}!initial\-\_\-params@{initial\-\_\-params}}
+\index{initial\-\_\-params@{initial\-\_\-params}!sensitivity_analysis@{sensitivity\-\_\-analysis}}
+\subsubsection[{initial\-\_\-params}]{\setlength{\rightskip}{0pt plus 5cm}list initial\-\_\-params = \mbox{[}$\,$\mbox{]}}}\label{namespacesensitivity__analysis_af973d7a362a975c2c180328006f497d3}
+
+
+E\-N\-D M\-E\-A\-N S\-E\-T V\-A\-L\-U\-E\-S \#\#\#\#\#\#\#\#\#. 
+
+
+
+Definition at line 424 of file sensitivity\-\_\-analysis.\-py.
+
+\hypertarget{namespacesensitivity__analysis_a64d0c5854299798787675bc91586023c}{\index{sensitivity\-\_\-analysis@{sensitivity\-\_\-analysis}!K\-\_\-neg@{K\-\_\-neg}}
+\index{K\-\_\-neg@{K\-\_\-neg}!sensitivity_analysis@{sensitivity\-\_\-analysis}}
+\subsubsection[{K\-\_\-neg}]{\setlength{\rightskip}{0pt plus 5cm}float K\-\_\-neg = 6.\-48\-E-\/7}}\label{namespacesensitivity__analysis_a64d0c5854299798787675bc91586023c}
+
+
+Definition at line 412 of file sensitivity\-\_\-analysis.\-py.
+
+\hypertarget{namespacesensitivity__analysis_ab1a8ebec490ba1301f818bd1c5f1f3fa}{\index{sensitivity\-\_\-analysis@{sensitivity\-\_\-analysis}!K\-\_\-pos@{K\-\_\-pos}}
+\index{K\-\_\-pos@{K\-\_\-pos}!sensitivity_analysis@{sensitivity\-\_\-analysis}}
+\subsubsection[{K\-\_\-pos}]{\setlength{\rightskip}{0pt plus 5cm}float K\-\_\-pos = 3.\-42\-E-\/6}}\label{namespacesensitivity__analysis_ab1a8ebec490ba1301f818bd1c5f1f3fa}
+
+
+S\-E\-T M\-E\-A\-N V\-A\-L\-U\-E\-S \#\#\#\#\#\#\#\#\#. 
+
+
+
+Definition at line 411 of file sensitivity\-\_\-analysis.\-py.
+
+\hypertarget{namespacesensitivity__analysis_a86a476e68e0e599be4ea6b1ccb088d46}{\index{sensitivity\-\_\-analysis@{sensitivity\-\_\-analysis}!param\-\_\-arr@{param\-\_\-arr}}
+\index{param\-\_\-arr@{param\-\_\-arr}!sensitivity_analysis@{sensitivity\-\_\-analysis}}
+\subsubsection[{param\-\_\-arr}]{\setlength{\rightskip}{0pt plus 5cm}tuple param\-\_\-arr = np.\-array({\bf initial\-\_\-params})}}\label{namespacesensitivity__analysis_a86a476e68e0e599be4ea6b1ccb088d46}
+
+
+Definition at line 436 of file sensitivity\-\_\-analysis.\-py.
+
+\hypertarget{namespacesensitivity__analysis_aa3b49cc44c40ee657d289412379593e5}{\index{sensitivity\-\_\-analysis@{sensitivity\-\_\-analysis}!sensitivity\-\_\-result@{sensitivity\-\_\-result}}
+\index{sensitivity\-\_\-result@{sensitivity\-\_\-result}!sensitivity_analysis@{sensitivity\-\_\-analysis}}
+\subsubsection[{sensitivity\-\_\-result}]{\setlength{\rightskip}{0pt plus 5cm}tuple sensitivity\-\_\-result = {\bf sensitivity\-\_\-analysis}({\bf param\-\_\-arr})}}\label{namespacesensitivity__analysis_aa3b49cc44c40ee657d289412379593e5}
+
+
+Definition at line 438 of file sensitivity\-\_\-analysis.\-py.
+
+\hypertarget{namespacesensitivity__analysis_a92a75cd7aa57960ca65957a1baa06d77}{\index{sensitivity\-\_\-analysis@{sensitivity\-\_\-analysis}!solver\-\_\-input\-\_\-filename@{solver\-\_\-input\-\_\-filename}}
+\index{solver\-\_\-input\-\_\-filename@{solver\-\_\-input\-\_\-filename}!sensitivity_analysis@{sensitivity\-\_\-analysis}}
+\subsubsection[{solver\-\_\-input\-\_\-filename}]{\setlength{\rightskip}{0pt plus 5cm}string solver\-\_\-input\-\_\-filename = 'user\-\_\-input'}}\label{namespacesensitivity__analysis_a92a75cd7aa57960ca65957a1baa06d77}
+
+
+Definition at line 403 of file sensitivity\-\_\-analysis.\-py.
+

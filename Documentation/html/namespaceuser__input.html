@@ -47,7 +47,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="namespaces.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Types&#160;List</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -93,7 +95,7 @@ $(document).ready(function(){initNavTree('namespaceuser__input.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -110,21 +112,86 @@ $(document).ready(function(){initNavTree('namespaceuser__input.html','');});
 </div><!--header-->
 <div class="contents">
 
-<p>Set up user inputs to SPM solver and execute solver.  
+<p>Sets up the user inputs and executes the solver.  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a3f0eac40d15827c89da9b17cc74564dc"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceuser__input.html#a3f0eac40d15827c89da9b17cc74564dc">solver_input_filename</a> = 'user_input'</td></tr>
-<tr class="memdesc:a3f0eac40d15827c89da9b17cc74564dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set filename of output file containing user input parameters.  <a href="#a3f0eac40d15827c89da9b17cc74564dc">More...</a><br/></td></tr>
-<tr class="separator:a3f0eac40d15827c89da9b17cc74564dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92a75cd7aa57960ca65957a1baa06d77"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceuser__input.html#a92a75cd7aa57960ca65957a1baa06d77">solver_input_filename</a> = 'user_input'</td></tr>
+<tr class="separator:a92a75cd7aa57960ca65957a1baa06d77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0a721bf4042ba266855bd73da684844"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceuser__input.html#af0a721bf4042ba266855bd73da684844">iapp_filename</a> = 'WLTP_m10.csv'</td></tr>
 <tr class="memdesc:af0a721bf4042ba266855bd73da684844"><td class="mdescLeft">&#160;</td><td class="mdescRight">SET VALUES #########.  <a href="#af0a721bf4042ba266855bd73da684844">More...</a><br/></td></tr>
 <tr class="separator:af0a721bf4042ba266855bd73da684844"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1a8ebec490ba1301f818bd1c5f1f3fa"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceuser__input.html#ab1a8ebec490ba1301f818bd1c5f1f3fa">K_pos</a> = 3.42E-6</td></tr>
+<tr class="separator:ab1a8ebec490ba1301f818bd1c5f1f3fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64d0c5854299798787675bc91586023c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceuser__input.html#a64d0c5854299798787675bc91586023c">K_neg</a> = 6.48E-7</td></tr>
+<tr class="separator:a64d0c5854299798787675bc91586023c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5b015cc7d0bda453c6163023448db72"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceuser__input.html#aa5b015cc7d0bda453c6163023448db72">cmax_pos_sim</a> = 63104.00</td></tr>
+<tr class="separator:aa5b015cc7d0bda453c6163023448db72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7633a5e9c70aabfe6992e4fe521a1f9"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceuser__input.html#ab7633a5e9c70aabfe6992e4fe521a1f9">cmax_neg_sim</a> = 33133.00</td></tr>
+<tr class="separator:ab7633a5e9c70aabfe6992e4fe521a1f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bacef25baf63731923fbef674af4e9d"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceuser__input.html#a5bacef25baf63731923fbef674af4e9d">plot_params_pos</a> = [<a class="el" href="namespaceuser__input.html#ab1a8ebec490ba1301f818bd1c5f1f3fa">K_pos</a>,a,<a class="el" href="namespaceuser__input.html#aa5b015cc7d0bda453c6163023448db72">cmax_pos_sim</a>,L]</td></tr>
+<tr class="memdesc:a5bacef25baf63731923fbef674af4e9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">END SET VALUES #########.  <a href="#a5bacef25baf63731923fbef674af4e9d">More...</a><br/></td></tr>
+<tr class="separator:a5bacef25baf63731923fbef674af4e9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Set up user inputs to SPM solver and execute solver. </p>
+<div class="textblock"><p>Sets up the user inputs and executes the solver. </p>
+<p>This file contains all input parameters for the solver and can be changed by the user. This file and all tunebale parameters are broken down in full detail in the user tutorial (see Tutorial.ipynb).</p>
+<p>The following options can be controlled by editing this file:</p>
+<ul>
+<li>Outputting stdout to a file.</li>
+<li>Changing the name of this user input file.</li>
+<li>Set the values for the following input parameters:<ul>
+<li>tsteps</li>
+<li>dt</li>
+<li>c0</li>
+<li>D</li>
+<li>R</li>
+<li>a</li>
+<li>L</li>
+<li>iapp</li>
+<li>iapp_label</li>
+</ul>
+</li>
+<li>These parameters can either take default values or be entered manually.</li>
+<li>For iapp there are additional options for setting constant or stepwise current and reading in values from a csv file.</li>
+</ul>
+<p>The user does not need to edit anything past #END SET INPUT PARAMETER VALUES</p>
+<p>The rest of the file calls various functions to:</p>
+<ul>
+<li>Check that the filename and parameters are valid</li>
+<li>Write the parameters to the file</li>
+<li>Call the solver and plotter. </li>
+</ul>
 </div><h2 class="groupheader">Variable Documentation</h2>
+<a class="anchor" id="ab7633a5e9c70aabfe6992e4fe521a1f9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float cmax_neg_sim = 33133.00</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="user__input_8py_source.html#l00062">62</a> of file <a class="el" href="user__input_8py_source.html">user_input.py</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa5b015cc7d0bda453c6163023448db72"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float cmax_pos_sim = 63104.00</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="user__input_8py_source.html#l00061">61</a> of file <a class="el" href="user__input_8py_source.html">user_input.py</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="af0a721bf4042ba266855bd73da684844"></a>
 <div class="memitem">
 <div class="memproto">
@@ -137,23 +204,65 @@ Variables</h2></td></tr>
 
 <p>SET VALUES #########. </p>
 
-<p>Definition at line <a class="el" href="user__input_8py_source.html#l00046">46</a> of file <a class="el" href="user__input_8py_source.html">user_input.py</a>.</p>
+<p>Definition at line <a class="el" href="user__input_8py_source.html#l00052">52</a> of file <a class="el" href="user__input_8py_source.html">user_input.py</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a3f0eac40d15827c89da9b17cc74564dc"></a>
+<a class="anchor" id="a64d0c5854299798787675bc91586023c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def solver_input_filename = 'user_input'</td>
+          <td class="memname">float K_neg = 6.48E-7</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set filename of output file containing user input parameters. </p>
+<p>Definition at line <a class="el" href="user__input_8py_source.html#l00059">59</a> of file <a class="el" href="user__input_8py_source.html">user_input.py</a>.</p>
 
-<p>Definition at line <a class="el" href="user__input_8py_source.html#l00014">14</a> of file <a class="el" href="user__input_8py_source.html">user_input.py</a>.</p>
+</div>
+</div>
+<a class="anchor" id="ab1a8ebec490ba1301f818bd1c5f1f3fa"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float K_pos = 3.42E-6</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="user__input_8py_source.html#l00058">58</a> of file <a class="el" href="user__input_8py_source.html">user_input.py</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5bacef25baf63731923fbef674af4e9d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">list plot_params_pos = [<a class="el" href="namespaceuser__input.html#ab1a8ebec490ba1301f818bd1c5f1f3fa">K_pos</a>,a,<a class="el" href="namespaceuser__input.html#aa5b015cc7d0bda453c6163023448db72">cmax_pos_sim</a>,L]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>END SET VALUES #########. </p>
+
+<p>Definition at line <a class="el" href="user__input_8py_source.html#l00085">85</a> of file <a class="el" href="user__input_8py_source.html">user_input.py</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a92a75cd7aa57960ca65957a1baa06d77"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string solver_input_filename = 'user_input'</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="user__input_8py_source.html#l00039">39</a> of file <a class="el" href="user__input_8py_source.html">user_input.py</a>.</p>
 
 </div>
 </div>

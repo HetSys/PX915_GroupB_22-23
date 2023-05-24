@@ -1,0 +1,169 @@
+\hypertarget{namespaceuser__input__parallel__simulation}{\section{user\-\_\-input\-\_\-parallel\-\_\-simulation Namespace Reference}
+\label{namespaceuser__input__parallel__simulation}\index{user\-\_\-input\-\_\-parallel\-\_\-simulation@{user\-\_\-input\-\_\-parallel\-\_\-simulation}}
+}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+string \hyperlink{namespaceuser__input__parallel__simulation_ac0647ad8713153cc6b448750dbeb1b15}{output\-\_\-filename} = 'current\-\_\-step'
+\begin{DoxyCompactList}\small\item\em Uncomment to print stdout to file sys.\-stdout = open('test.\-txt', 'w') \end{DoxyCompactList}\item 
+string \hyperlink{namespaceuser__input__parallel__simulation_a6d9f4e281307eca8be6bad984ed9786d}{electrode} = 'positive'
+\item 
+float \hyperlink{namespaceuser__input__parallel__simulation_aa3407022b348cd058d9808eed482ab4a}{c0} = 30000.\-0
+\begin{DoxyCompactList}\small\item\em Import default values from \href{https://doi.org/10.1149/1945-7111/ab9050}{\tt https\-://doi.\-org/10.\-1149/1945-\/7111/ab9050} Use \hyperlink{namespaceuser__input__mod_acef497295190e3914f7cd93da2708856}{U\-I.\-set\-\_\-defaults\-\_\-pos()} for positive electrode and ...\-\_\-neg() for negative electrode. \end{DoxyCompactList}\item 
+float \hyperlink{namespaceuser__input__parallel__simulation_a778e38aa889751afffa2dea6b803e67a}{dt} = 1.\-0
+\item 
+float \hyperlink{namespaceuser__input__parallel__simulation_ab1a8ebec490ba1301f818bd1c5f1f3fa}{K\-\_\-pos} = 3.\-42\-E-\/6
+\item 
+float \hyperlink{namespaceuser__input__parallel__simulation_a64d0c5854299798787675bc91586023c}{K\-\_\-neg} = 6.\-48\-E-\/7
+\item 
+float \hyperlink{namespaceuser__input__parallel__simulation_aa5b015cc7d0bda453c6163023448db72}{cmax\-\_\-pos\-\_\-sim} = 63104.\-00
+\item 
+float \hyperlink{namespaceuser__input__parallel__simulation_ab7633a5e9c70aabfe6992e4fe521a1f9}{cmax\-\_\-neg\-\_\-sim} = 33133.\-00
+\item 
+int \hyperlink{namespaceuser__input__parallel__simulation_ad7c4c17cf720ee538e27c02ab356ed6b}{nprocs} = 5
+\begin{DoxyCompactList}\small\item\em Check parameters are valid \#\#\#\#\#\#. \end{DoxyCompactList}\item 
+int \hyperlink{namespaceuser__input__parallel__simulation_aa2414080b021dbb9b56eeaeedec0ffa2}{nsteps} = 5
+\item 
+list \hyperlink{namespaceuser__input__parallel__simulation_a216022bdba987f127b6cc081ee78e2bd}{currents} = \mbox{[}20.\-0 for i in range(\hyperlink{namespaceuser__input__parallel__simulation_aa2414080b021dbb9b56eeaeedec0ffa2}{nsteps})\mbox{]}
+\item 
+list \hyperlink{namespaceuser__input__parallel__simulation_a377a515511d37e8c7ac5501847d6485d}{start\-\_\-times} = \mbox{[}2150.\-0$\ast$i for i in range(\hyperlink{namespaceuser__input__parallel__simulation_aa2414080b021dbb9b56eeaeedec0ffa2}{nsteps})\mbox{]}
+\item 
+list \hyperlink{namespaceuser__input__parallel__simulation_a5a6deb885420d2b81e210e580767b1c1}{run\-\_\-times} = \mbox{[}150.\-0 for i in range(\hyperlink{namespaceuser__input__parallel__simulation_aa2414080b021dbb9b56eeaeedec0ffa2}{nsteps})\mbox{]}
+\item 
+list \hyperlink{namespaceuser__input__parallel__simulation_ae584b229c7b1ea3d8330e6038884ffd3}{wait\-\_\-times} = \mbox{[}2000.\-0 for i in range(\hyperlink{namespaceuser__input__parallel__simulation_aa2414080b021dbb9b56eeaeedec0ffa2}{nsteps})\mbox{]}
+\item 
+list \hyperlink{namespaceuser__input__parallel__simulation_ad4a342a882e80fb0b1b0a80df4b9321b}{params} = \mbox{[}\hyperlink{namespaceuser__input__parallel__simulation_a778e38aa889751afffa2dea6b803e67a}{dt}, \hyperlink{namespaceuser__input__parallel__simulation_aa3407022b348cd058d9808eed482ab4a}{c0}, D, R, a, L,electrode\-\_\-charge\mbox{]}
+\item 
+list \hyperlink{namespaceuser__input__parallel__simulation_a0861e0e85d9d6139e0cc3cc1cc4fa692}{plot\-\_\-params\-\_\-neg} = \mbox{[}\hyperlink{namespaceuser__input__parallel__simulation_a64d0c5854299798787675bc91586023c}{K\-\_\-neg},a,\hyperlink{namespaceuser__input__parallel__simulation_ab7633a5e9c70aabfe6992e4fe521a1f9}{cmax\-\_\-neg\-\_\-sim},L\mbox{]}
+\begin{DoxyCompactList}\small\item\em Call the function to perform the parallel solve. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Variable Documentation}
+\hypertarget{namespaceuser__input__parallel__simulation_aa3407022b348cd058d9808eed482ab4a}{\index{user\-\_\-input\-\_\-parallel\-\_\-simulation@{user\-\_\-input\-\_\-parallel\-\_\-simulation}!c0@{c0}}
+\index{c0@{c0}!user_input_parallel_simulation@{user\-\_\-input\-\_\-parallel\-\_\-simulation}}
+\subsubsection[{c0}]{\setlength{\rightskip}{0pt plus 5cm}float c0 = 30000.\-0}}\label{namespaceuser__input__parallel__simulation_aa3407022b348cd058d9808eed482ab4a}
+
+
+Import default values from \href{https://doi.org/10.1149/1945-7111/ab9050}{\tt https\-://doi.\-org/10.\-1149/1945-\/7111/ab9050} Use \hyperlink{namespaceuser__input__mod_acef497295190e3914f7cd93da2708856}{U\-I.\-set\-\_\-defaults\-\_\-pos()} for positive electrode and ...\-\_\-neg() for negative electrode. 
+
+Set values \#\#\#\#\#\# 
+
+Definition at line 44 of file user\-\_\-input\-\_\-parallel\-\_\-simulation.\-py.
+
+\hypertarget{namespaceuser__input__parallel__simulation_ab7633a5e9c70aabfe6992e4fe521a1f9}{\index{user\-\_\-input\-\_\-parallel\-\_\-simulation@{user\-\_\-input\-\_\-parallel\-\_\-simulation}!cmax\-\_\-neg\-\_\-sim@{cmax\-\_\-neg\-\_\-sim}}
+\index{cmax\-\_\-neg\-\_\-sim@{cmax\-\_\-neg\-\_\-sim}!user_input_parallel_simulation@{user\-\_\-input\-\_\-parallel\-\_\-simulation}}
+\subsubsection[{cmax\-\_\-neg\-\_\-sim}]{\setlength{\rightskip}{0pt plus 5cm}float cmax\-\_\-neg\-\_\-sim = 33133.\-00}}\label{namespaceuser__input__parallel__simulation_ab7633a5e9c70aabfe6992e4fe521a1f9}
+
+
+Definition at line 51 of file user\-\_\-input\-\_\-parallel\-\_\-simulation.\-py.
+
+\hypertarget{namespaceuser__input__parallel__simulation_aa5b015cc7d0bda453c6163023448db72}{\index{user\-\_\-input\-\_\-parallel\-\_\-simulation@{user\-\_\-input\-\_\-parallel\-\_\-simulation}!cmax\-\_\-pos\-\_\-sim@{cmax\-\_\-pos\-\_\-sim}}
+\index{cmax\-\_\-pos\-\_\-sim@{cmax\-\_\-pos\-\_\-sim}!user_input_parallel_simulation@{user\-\_\-input\-\_\-parallel\-\_\-simulation}}
+\subsubsection[{cmax\-\_\-pos\-\_\-sim}]{\setlength{\rightskip}{0pt plus 5cm}float cmax\-\_\-pos\-\_\-sim = 63104.\-00}}\label{namespaceuser__input__parallel__simulation_aa5b015cc7d0bda453c6163023448db72}
+
+
+Definition at line 50 of file user\-\_\-input\-\_\-parallel\-\_\-simulation.\-py.
+
+\hypertarget{namespaceuser__input__parallel__simulation_a216022bdba987f127b6cc081ee78e2bd}{\index{user\-\_\-input\-\_\-parallel\-\_\-simulation@{user\-\_\-input\-\_\-parallel\-\_\-simulation}!currents@{currents}}
+\index{currents@{currents}!user_input_parallel_simulation@{user\-\_\-input\-\_\-parallel\-\_\-simulation}}
+\subsubsection[{currents}]{\setlength{\rightskip}{0pt plus 5cm}list currents = \mbox{[}20.\-0 for i in range({\bf nsteps})\mbox{]}}}\label{namespaceuser__input__parallel__simulation_a216022bdba987f127b6cc081ee78e2bd}
+
+
+Definition at line 66 of file user\-\_\-input\-\_\-parallel\-\_\-simulation.\-py.
+
+\hypertarget{namespaceuser__input__parallel__simulation_a778e38aa889751afffa2dea6b803e67a}{\index{user\-\_\-input\-\_\-parallel\-\_\-simulation@{user\-\_\-input\-\_\-parallel\-\_\-simulation}!dt@{dt}}
+\index{dt@{dt}!user_input_parallel_simulation@{user\-\_\-input\-\_\-parallel\-\_\-simulation}}
+\subsubsection[{dt}]{\setlength{\rightskip}{0pt plus 5cm}float dt = 1.\-0}}\label{namespaceuser__input__parallel__simulation_a778e38aa889751afffa2dea6b803e67a}
+
+
+Definition at line 45 of file user\-\_\-input\-\_\-parallel\-\_\-simulation.\-py.
+
+\hypertarget{namespaceuser__input__parallel__simulation_a6d9f4e281307eca8be6bad984ed9786d}{\index{user\-\_\-input\-\_\-parallel\-\_\-simulation@{user\-\_\-input\-\_\-parallel\-\_\-simulation}!electrode@{electrode}}
+\index{electrode@{electrode}!user_input_parallel_simulation@{user\-\_\-input\-\_\-parallel\-\_\-simulation}}
+\subsubsection[{electrode}]{\setlength{\rightskip}{0pt plus 5cm}string electrode = 'positive'}}\label{namespaceuser__input__parallel__simulation_a6d9f4e281307eca8be6bad984ed9786d}
+
+
+Definition at line 36 of file user\-\_\-input\-\_\-parallel\-\_\-simulation.\-py.
+
+\hypertarget{namespaceuser__input__parallel__simulation_a64d0c5854299798787675bc91586023c}{\index{user\-\_\-input\-\_\-parallel\-\_\-simulation@{user\-\_\-input\-\_\-parallel\-\_\-simulation}!K\-\_\-neg@{K\-\_\-neg}}
+\index{K\-\_\-neg@{K\-\_\-neg}!user_input_parallel_simulation@{user\-\_\-input\-\_\-parallel\-\_\-simulation}}
+\subsubsection[{K\-\_\-neg}]{\setlength{\rightskip}{0pt plus 5cm}float K\-\_\-neg = 6.\-48\-E-\/7}}\label{namespaceuser__input__parallel__simulation_a64d0c5854299798787675bc91586023c}
+
+
+Definition at line 48 of file user\-\_\-input\-\_\-parallel\-\_\-simulation.\-py.
+
+\hypertarget{namespaceuser__input__parallel__simulation_ab1a8ebec490ba1301f818bd1c5f1f3fa}{\index{user\-\_\-input\-\_\-parallel\-\_\-simulation@{user\-\_\-input\-\_\-parallel\-\_\-simulation}!K\-\_\-pos@{K\-\_\-pos}}
+\index{K\-\_\-pos@{K\-\_\-pos}!user_input_parallel_simulation@{user\-\_\-input\-\_\-parallel\-\_\-simulation}}
+\subsubsection[{K\-\_\-pos}]{\setlength{\rightskip}{0pt plus 5cm}float K\-\_\-pos = 3.\-42\-E-\/6}}\label{namespaceuser__input__parallel__simulation_ab1a8ebec490ba1301f818bd1c5f1f3fa}
+
+
+Definition at line 47 of file user\-\_\-input\-\_\-parallel\-\_\-simulation.\-py.
+
+\hypertarget{namespaceuser__input__parallel__simulation_ad7c4c17cf720ee538e27c02ab356ed6b}{\index{user\-\_\-input\-\_\-parallel\-\_\-simulation@{user\-\_\-input\-\_\-parallel\-\_\-simulation}!nprocs@{nprocs}}
+\index{nprocs@{nprocs}!user_input_parallel_simulation@{user\-\_\-input\-\_\-parallel\-\_\-simulation}}
+\subsubsection[{nprocs}]{\setlength{\rightskip}{0pt plus 5cm}int nprocs = 5}}\label{namespaceuser__input__parallel__simulation_ad7c4c17cf720ee538e27c02ab356ed6b}
+
+
+Check parameters are valid \#\#\#\#\#\#. 
+
+Manually set up applied current and parallelisation \#\#\#\#\#\# 
+
+Definition at line 60 of file user\-\_\-input\-\_\-parallel\-\_\-simulation.\-py.
+
+\hypertarget{namespaceuser__input__parallel__simulation_aa2414080b021dbb9b56eeaeedec0ffa2}{\index{user\-\_\-input\-\_\-parallel\-\_\-simulation@{user\-\_\-input\-\_\-parallel\-\_\-simulation}!nsteps@{nsteps}}
+\index{nsteps@{nsteps}!user_input_parallel_simulation@{user\-\_\-input\-\_\-parallel\-\_\-simulation}}
+\subsubsection[{nsteps}]{\setlength{\rightskip}{0pt plus 5cm}int nsteps = 5}}\label{namespaceuser__input__parallel__simulation_aa2414080b021dbb9b56eeaeedec0ffa2}
+
+
+Definition at line 63 of file user\-\_\-input\-\_\-parallel\-\_\-simulation.\-py.
+
+\hypertarget{namespaceuser__input__parallel__simulation_ac0647ad8713153cc6b448750dbeb1b15}{\index{user\-\_\-input\-\_\-parallel\-\_\-simulation@{user\-\_\-input\-\_\-parallel\-\_\-simulation}!output\-\_\-filename@{output\-\_\-filename}}
+\index{output\-\_\-filename@{output\-\_\-filename}!user_input_parallel_simulation@{user\-\_\-input\-\_\-parallel\-\_\-simulation}}
+\subsubsection[{output\-\_\-filename}]{\setlength{\rightskip}{0pt plus 5cm}string output\-\_\-filename = 'current\-\_\-step'}}\label{namespaceuser__input__parallel__simulation_ac0647ad8713153cc6b448750dbeb1b15}
+
+
+Uncomment to print stdout to file sys.\-stdout = open('test.\-txt', 'w') 
+
+Set filename to output user input parameters \#\#\#\#\#\# Set string for filename. Do not enter a file extension. Max characters = 50 
+
+Definition at line 35 of file user\-\_\-input\-\_\-parallel\-\_\-simulation.\-py.
+
+\hypertarget{namespaceuser__input__parallel__simulation_ad4a342a882e80fb0b1b0a80df4b9321b}{\index{user\-\_\-input\-\_\-parallel\-\_\-simulation@{user\-\_\-input\-\_\-parallel\-\_\-simulation}!params@{params}}
+\index{params@{params}!user_input_parallel_simulation@{user\-\_\-input\-\_\-parallel\-\_\-simulation}}
+\subsubsection[{params}]{\setlength{\rightskip}{0pt plus 5cm}list params = \mbox{[}{\bf dt}, {\bf c0}, D, R, a, L,electrode\-\_\-charge\mbox{]}}}\label{namespaceuser__input__parallel__simulation_ad4a342a882e80fb0b1b0a80df4b9321b}
+
+
+Definition at line 72 of file user\-\_\-input\-\_\-parallel\-\_\-simulation.\-py.
+
+\hypertarget{namespaceuser__input__parallel__simulation_a0861e0e85d9d6139e0cc3cc1cc4fa692}{\index{user\-\_\-input\-\_\-parallel\-\_\-simulation@{user\-\_\-input\-\_\-parallel\-\_\-simulation}!plot\-\_\-params\-\_\-neg@{plot\-\_\-params\-\_\-neg}}
+\index{plot\-\_\-params\-\_\-neg@{plot\-\_\-params\-\_\-neg}!user_input_parallel_simulation@{user\-\_\-input\-\_\-parallel\-\_\-simulation}}
+\subsubsection[{plot\-\_\-params\-\_\-neg}]{\setlength{\rightskip}{0pt plus 5cm}list plot\-\_\-params\-\_\-neg = \mbox{[}{\bf K\-\_\-neg},a,{\bf cmax\-\_\-neg\-\_\-sim},L\mbox{]}}}\label{namespaceuser__input__parallel__simulation_a0861e0e85d9d6139e0cc3cc1cc4fa692}
+
+
+Call the function to perform the parallel solve. 
+
+
+
+Definition at line 79 of file user\-\_\-input\-\_\-parallel\-\_\-simulation.\-py.
+
+\hypertarget{namespaceuser__input__parallel__simulation_a5a6deb885420d2b81e210e580767b1c1}{\index{user\-\_\-input\-\_\-parallel\-\_\-simulation@{user\-\_\-input\-\_\-parallel\-\_\-simulation}!run\-\_\-times@{run\-\_\-times}}
+\index{run\-\_\-times@{run\-\_\-times}!user_input_parallel_simulation@{user\-\_\-input\-\_\-parallel\-\_\-simulation}}
+\subsubsection[{run\-\_\-times}]{\setlength{\rightskip}{0pt plus 5cm}list run\-\_\-times = \mbox{[}150.\-0 for i in range({\bf nsteps})\mbox{]}}}\label{namespaceuser__input__parallel__simulation_a5a6deb885420d2b81e210e580767b1c1}
+
+
+Definition at line 68 of file user\-\_\-input\-\_\-parallel\-\_\-simulation.\-py.
+
+\hypertarget{namespaceuser__input__parallel__simulation_a377a515511d37e8c7ac5501847d6485d}{\index{user\-\_\-input\-\_\-parallel\-\_\-simulation@{user\-\_\-input\-\_\-parallel\-\_\-simulation}!start\-\_\-times@{start\-\_\-times}}
+\index{start\-\_\-times@{start\-\_\-times}!user_input_parallel_simulation@{user\-\_\-input\-\_\-parallel\-\_\-simulation}}
+\subsubsection[{start\-\_\-times}]{\setlength{\rightskip}{0pt plus 5cm}list start\-\_\-times = \mbox{[}2150.\-0$\ast$i for i in range({\bf nsteps})\mbox{]}}}\label{namespaceuser__input__parallel__simulation_a377a515511d37e8c7ac5501847d6485d}
+
+
+Definition at line 67 of file user\-\_\-input\-\_\-parallel\-\_\-simulation.\-py.
+
+\hypertarget{namespaceuser__input__parallel__simulation_ae584b229c7b1ea3d8330e6038884ffd3}{\index{user\-\_\-input\-\_\-parallel\-\_\-simulation@{user\-\_\-input\-\_\-parallel\-\_\-simulation}!wait\-\_\-times@{wait\-\_\-times}}
+\index{wait\-\_\-times@{wait\-\_\-times}!user_input_parallel_simulation@{user\-\_\-input\-\_\-parallel\-\_\-simulation}}
+\subsubsection[{wait\-\_\-times}]{\setlength{\rightskip}{0pt plus 5cm}list wait\-\_\-times = \mbox{[}2000.\-0 for i in range({\bf nsteps})\mbox{]}}}\label{namespaceuser__input__parallel__simulation_ae584b229c7b1ea3d8330e6038884ffd3}
+
+
+Definition at line 69 of file user\-\_\-input\-\_\-parallel\-\_\-simulation.\-py.
+

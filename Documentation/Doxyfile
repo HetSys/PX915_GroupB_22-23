@@ -412,7 +412,7 @@ EXTRACT_ALL            = YES
 # be included in the documentation.
 # The default value is: NO.
 
-EXTRACT_PRIVATE        = YES
+EXTRACT_PRIVATE        = NO
 
 # If the EXTRACT_PACKAGE tag is set to YES all members with package or internal
 # scope will be included in the documentation.
@@ -743,7 +743,7 @@ WARN_LOGFILE           = doxy-warns.log
 # spaces.
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = ../user_input.py
+INPUT                  = ../
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses
