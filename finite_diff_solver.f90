@@ -31,7 +31,7 @@ PROGRAM MAIN
 
     ! Read user inputs
     filename = read_command_line()
-    CALL set_inputs(filename, tstep_init, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge)
+    CALL set_inputs(filename, tstep_init, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage)
     
     !generate name of output file
     filename_length = LEN_TRIM(filename)
@@ -47,7 +47,6 @@ PROGRAM MAIN
     ALLOCATE(ipiv(n))
     ALLOCATE(A_copy(n,n))
     ALLOCATE(b(n))
-    ALLOCATE(cstorage(n, tsteps))
     ALLOCATE(Z(tsteps))
     
     !allocate time axis
@@ -62,7 +61,7 @@ PROGRAM MAIN
     
         
     Z = (-iapp)/(a_small*F*L*D)
-    cstorage(:,tstep_init) = c !set first entry in storage vector to initial concentration
+    !cstorage(:,tstep_init) = c !set first entry in storage vector to initial concentration
     !build A matrix for solver (constant over time)
     A = 0.0_REAL64
     !boundary condition
@@ -118,7 +117,7 @@ PROGRAM MAIN
         cstorage(:,tstep+1) = c
         time_axis(tstep+1) = dt*tstep
         
-        CALL write_checkpoint(tstep, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, filename, 20)
+        CALL write_checkpoint(tstep, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage, filename, 20)
         
     END DO
     

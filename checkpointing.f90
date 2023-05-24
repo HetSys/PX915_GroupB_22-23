@@ -10,7 +10,7 @@ MODULE checkpointing
 
     CONTAINS
 
-    SUBROUTINE write_checkpoint(tstep_in, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, filename, freq_in)
+    SUBROUTINE write_checkpoint(tstep_in, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage, filename, freq_in)
 
         ! Variables to write
         INTEGER, INTENT(IN) :: tstep_in ! Current timestep
@@ -25,6 +25,7 @@ MODULE checkpointing
         REAL(REAL64), INTENT(IN) :: L
         REAL(REAL64), DIMENSION(tsteps), INTENT(IN) :: iapp
         CHARACTER(len=*), INTENT(IN) :: electrode_charge
+        REAL(REAL64), DIMENSION(n, tsteps), INTENT(IN) :: cstorage
         ! Frequency variables
         INTEGER, INTENT(IN), OPTIONAL :: freq_in
         INTEGER :: freq ! desired frequency of checkpoints
@@ -33,9 +34,9 @@ MODULE checkpointing
         CHARACTER(len=*), INTENT(INOUT) :: filename
         CHARACTER(len=60) :: dir, checkpoint_name
         CHARACTER(len=120) :: filepath
-        INTEGER :: ncid, dimid_n, dimid_tsteps, dimids_parameter(1), status
+        INTEGER :: ncid, dimid_n, dimid_tsteps, dimids_parameter(1), dimids_cstorage(2), status
         INTEGER :: varid_tstep, varid_tsteps, varid_dt, varid_n, varid_c
-        INTEGER :: varid_D, varid_R, varid_a, varid_L, varid_iapp, varid_EC
+        INTEGER :: varid_D, varid_R, varid_a, varid_L, varid_iapp, varid_EC, varid_cstorage
         INTEGER :: filename_length, file_ext, file_test
         CHARACTER(len=10) :: tstep_str
 
@@ -79,7 +80,8 @@ MODULE checkpointing
             CALL check(status = nf90_def_dim(ncid, "n", n, dimid_n))
             CALL check(status = nf90_def_dim(ncid, "tsteps", tsteps, dimid_tsteps))
             CALL check(status = nf90_def_dim(ncid, "parameter", 1, dimids_parameter(1)))
-            
+            dimids_cstorage = (/dimid_n, dimid_tsteps/)
+
             ! Define variables
             CALL check(status = nf90_def_var(ncid, "tstep", NF90_INT, dimids_parameter, varid_tstep))
             CALL check(status = nf90_def_var(ncid, "tsteps", NF90_INT, dimids_parameter, varid_tsteps))
@@ -92,6 +94,7 @@ MODULE checkpointing
             CALL check(status = nf90_def_var(ncid, "L", NF90_DOUBLE, dimids_parameter, varid_L))
             CALL check(status = nf90_def_var(ncid, "iapp", NF90_DOUBLE, dimid_tsteps, varid_iapp))
             CALL check(status = nf90_def_var(ncid, "electrode_charge", NF90_CHAR, dimids_parameter, varid_EC))
+            CALL check(status = nf90_def_var(ncid, "cstorage", NF90_DOUBLE, dimids_cstorage, varid_cstorage))
             
             
             ! End define mode and switch to data mode
@@ -109,6 +112,7 @@ MODULE checkpointing
             CALL check(status = nf90_put_var(ncid, varid_L, L))
             CALL check(status = nf90_put_var(ncid, varid_iapp, iapp))           
             CALL check(status = nf90_put_var(ncid, varid_EC, electrode_charge))
+            CALL check(status = nf90_put_var(ncid, varid_cstorage, cstorage))
         
             
             ! Close the file
@@ -120,7 +124,7 @@ MODULE checkpointing
     END SUBROUTINE write_checkpoint
 
 
-    SUBROUTINE read_checkpoint(filename, tstep_init, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge)
+    SUBROUTINE read_checkpoint(filename, tstep_init, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage)
 
         SAVE
         !> @var character len=* filename
@@ -139,6 +143,7 @@ MODULE checkpointing
         REAL(REAL64), INTENT(OUT) :: L
         REAL(REAL64), DIMENSION(:), ALLOCATABLE, INTENT(OUT) :: iapp
         CHARACTER(len=*), INTENT(OUT) :: electrode_charge
+        REAL(REAL64), DIMENSION(:, :), ALLOCATABLE, INTENT(OUT) :: cstorage
 
         ! Execution variables
         INTEGER :: ncid, varid
@@ -166,6 +171,7 @@ MODULE checkpointing
         ! Read arrays
         ALLOCATE(c(n))
         ALLOCATE(iapp(tsteps))
+        ALLOCATE(cstorage(n, tsteps))
         ! Read c
         CALL check(nf90_inq_varid(ncid,'c',varid))
         CALL check(nf90_get_var(ncid, varid, c))
@@ -195,6 +201,10 @@ MODULE checkpointing
         CALL check(nf90_inq_varid(ncid,'electrode_charge',varid))
         CALL check(nf90_get_var(ncid, varid, electrode_charge))
 
+        !Read cstorage
+        CALL check(nf90_inq_varid(ncid,'cstorage',varid))
+        CALL check(nf90_get_var(ncid, varid, cstorage))
+
 
         ! Close the file
         CALL check(status = nf90_close(ncid))
@@ -203,7 +213,7 @@ MODULE checkpointing
     END SUBROUTINE read_checkpoint
 
 
-    SUBROUTINE set_inputs(filename, tstep_init, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge)
+    SUBROUTINE set_inputs(filename, tstep_init, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage)
 
         !> @var character len=* filename
         !! Name of input file.
@@ -254,6 +264,8 @@ MODULE checkpointing
         !! Label of electrode charge, 'p'=positive, 'n'=negative
         CHARACTER(len=1), INTENT(OUT) :: electrode_charge
 
+        REAL(REAL64), DIMENSION(:, :), ALLOCATABLE, INTENT(OUT) :: cstorage
+
 
         !> 1. Find index of '.' in filename to identify file extension
         parse_idx = INDEX(filename, ".") +1
@@ -266,10 +278,12 @@ MODULE checkpointing
                 CALL read_user_inputs(filename, tsteps, dt, n, c0, D, R, a_small, L, iapp, electrode_charge)
                 tstep_init = 1
                 ALLOCATE(c(n))
+                ALLOCATE(cstorage(n,tsteps))
                 c = c0 !set c to initial state
+                cstorage(:,tstep_init) = c
 
             CASE("nc")
-                CALL read_checkpoint(filename, tstep_init, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge)
+                CALL read_checkpoint(filename, tstep_init, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage)
 
             CASE DEFAULT
                 PRINT*, "Invalid file type passed to SPM solver."
