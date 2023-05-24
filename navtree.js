@@ -1,22 +1,37 @@
 var NAVTREE =
 [
   [ "SPAMS", "index.html", [
+    [ "SPAMS - Single PArticle Model Solver", "md__home_chem_msuvnj__p_x915__group_b_22-23__r_e_a_d_m_e.html", null ],
     [ "Modules", null, [
       [ "Modules List", "namespaces.html", "namespaces" ],
       [ "Module Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
+        [ "Functions/Subroutines", "namespacemembers_func.html", null ],
         [ "Variables", "namespacemembers_vars.html", null ]
       ] ]
     ] ],
+    [ "Data Types List", null, [
+      [ "Data Types List", "annotated.html", "annotated" ],
+      [ "Data Types", "classes.html", null ],
+      [ "Data Fields", "functions.html", [
+        [ "All", "functions.html", null ],
+        [ "Functions/Subroutines", "functions_func.html", null ]
+      ] ]
+    ] ],
     [ "Files", null, [
-      [ "File List", "files.html", "files" ]
+      [ "File List", "files.html", "files" ],
+      [ "File Members", "globals.html", [
+        [ "All", "globals.html", null ],
+        [ "Functions/Subroutines", "globals_func.html", null ],
+        [ "Variables", "globals_vars.html", null ]
+      ] ]
     ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"files.html"
+"annotated.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
