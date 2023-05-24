@@ -330,8 +330,8 @@ def full_battery_GITT_plots(filename_positive,filename_negative,start_times,pos_
     #build the full dataset from the deconstructed files
     total_tsteps=0
     for i,start_time in enumerate(start_times):
-        cstore_pos,tsteps,nodenum,R_pos,time_axis,dr,electrode_pos = read_output_file(filename_positive,step_num=i)
-        cstore_neg,tsteps,nodenum,R_neg,time_axis,dr,electrode_neg = read_output_file(filename_negative,step_num=i)
+        cstore_pos,tsteps,nodenum,R_pos,time_axis,dr_pos,electrode_pos = read_output_file(filename_positive,step_num=i)
+        cstore_neg,tsteps,nodenum,R_neg,time_axis,dr_neg,electrode_neg = read_output_file(filename_negative,step_num=i)
         i_app_data_pos = read_input_current(filename_positive,step_num=i)
         i_app_data_neg = read_input_current(filename_negative,step_num=i) #the current we apply to the cell is seen from the anode perspective
         time_axis = time_axis + start_time
@@ -363,9 +363,27 @@ def full_battery_GITT_plots(filename_positive,filename_negative,start_times,pos_
     full_voltage = pos_voltage-neg_voltage
     full_current = full_iapp_vals_neg
 
+    ###################Print lithium mass loss per step######################
 
+    [K_pos,a_pos,cmax_pos_sim,L_pos] = pos_params
+    [K_neg,a_neg,cmax_neg_sim,L_neg] = neg_params
+    e_act_pos = (a_pos*R_pos)/3
+    e_act_neg = (a_neg*R_neg)/3
+    li_frac_list = []
+    r_pos_axis = np.array([i*dr_pos for i in range(nodenum)])
+    r_neg_axis = np.array([i*dr_neg for i in range(nodenum)])
+    
+    #get denominator of expression from initial concentrations
+    li_avg_conc_pos = get_avg_li_conc(full_cstore_pos[0,:],r_pos_axis)
+    li_avg_conc_neg = get_avg_li_conc(full_cstore_neg[0,:],r_neg_axis)
+    c0_eact_L = li_avg_conc_pos*e_act_pos*L_pos + li_avg_conc_neg*e_act_neg*L_neg
 
+    #find fractional lithium mass loss per step and print
+    li_avg_conc_pos = get_avg_li_conc(full_cstore_pos[tsteps-1,:],r_pos_axis)
+    li_avg_conc_neg = get_avg_li_conc(full_cstore_neg[tsteps-1,:],r_neg_axis)
+    li_frac = (li_avg_conc_pos*e_act_pos*L_pos + li_avg_conc_neg*e_act_neg*L_neg)/c0_eact_L
 
+    print('Fraction of lithium mass lost per current block applied:',1-li_frac)
     #################generate animation###################
     tsteps = total_tsteps
     #build time step axis
@@ -379,9 +397,9 @@ def full_battery_GITT_plots(filename_positive,filename_negative,start_times,pos_
     #place the c storage values in to the values matrix.
     for i in range(nodenum):
         vals_pos[i,1:] = full_cstore_pos[:,i]
-        vals_pos[i,0] = i*dr
+        vals_pos[i,0] = i*dr_pos
         vals_neg[i,1:] = full_cstore_neg[:,i]
-        vals_neg[i,0] = i*dr
+        vals_neg[i,0] = i*dr_neg
         #structure of cstore: each row represents a single timestep, each column a single node
         #structure of vals: each column is a single timestep, each row is a single node
 
@@ -441,3 +459,20 @@ def full_battery_GITT_plots(filename_positive,filename_negative,start_times,pos_
     ani = FuncAnimation(fig, update, interval=animation_interval_time, frames=time_step_axis,blit=True)#plt.xlim([990,1000])
     	
     ani.save(filename = 'concentration_animation.gif', writer = 'pillow', fps = 30) 
+def get_avg_li_conc(c_vals,r_vals):
+    '''!@brief Gets the average concentration of lithium at a given timestep using trapezium rule inside the sphere.
+    !@details Uses the fact that the average concentration of lithium in a sphere at any timestep can be found from
+    $\frac{3}{R^{3}}\int_{0}^{R} c(r)r^{2}dr. Note, that this seems weird. It is weird. The reason this is necessary is because the concentration
+    values in the sphere are defined per active electrode volume, i.e e_act*L*A, not per sphere volume. Therefore, to calculate the lithium mass loss
+    in the whole system it is necessary to first find the concentration as if each sphere was uniformly filled (that is what this function does), and
+    then after that multiply this average concentration by the active electrode volume.
+    Take it up with whoever came up with the single particle model, not me.
+    !@param[in] c_vals: Array of concentration values covering the whole sphere radius, floats.
+    !@param[in] r_vals: Array of radius values that correspond the concentration values given in c_vals, floats.
+    '''#
+
+    integrand = c_vals*(r_vals**2)
+    #print(integrand)#
+    avg_conc = (3/(r_vals[-1]**3))*np.trapz(y=integrand,x=r_vals)
+    return avg_conc
+

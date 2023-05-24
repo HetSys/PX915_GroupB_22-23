@@ -404,6 +404,22 @@ def call_solver(filename):
 
 
 def get_GITT_initial_concs(currents,run_times, c0, R, a, L, electrode_charge):
+    '''@brief Calculation of the initial concentrations for each step in a multi-step parallelised GITT test.
+    @details Function computes a list of concentrations which give the initial flat concentrations for the initial step of a 
+    parallelised multi-step GITT test. The formula it uses to calculate these is:
+    C(T=t) = C_0 + \frac{i_app * t}{F*e_act * L}, where C_0 is C(T=0). Note that due to the definition of current being
+    positive for charging, it is important that the sign of the current vector be flipped when considering the positive electrode (cathode),
+    which will discharge during electrode charging.
+    @param[in] currents: a vector containing the values of current to apply at each current step, floats, must have the same length as
+    start_times, run_times, wait_times.
+    @param[in] run_times: a vector containing the run time of each current step, floats, must have the same length as 
+    start_times, currents, wait_times.
+    @param[in] c0: Initial concentration, float >= 0.
+    @param[in] R: Width of block, float > 0.
+    @param[in] a: Particle surface area per unit volume, float >= 0.
+    @param[in] L: Electrode thickness, float >= 0.
+    @param[in] electrode_charge: Electrode charge, single character 'p' or 'n'.
+    '''
     F = 96485.3321 #faraday constant
     #volume fraction of active material
     e_act = (a*R)/3
@@ -422,13 +438,12 @@ def get_GITT_initial_concs(currents,run_times, c0, R, a, L, electrode_charge):
 
 ### INITIALISE A FULL GITT TEST IN PARALLEL ####
 def GITT_half_cell(filename,nprocs,currents,start_times,run_times,wait_times,n,params):
-    '''!@brief Execution of SPM solver in parallel to run a GITT test over nprocs cores.
-    @details Execution of SPM solver in parallel to run a test experiment on a battery
+    '''!@brief Execution of SPM solver in parallel to run a GITT half cell test over nprocs cores.
+    @details Execution of SPM solver in parallel to run a test experiment on a half cell
     in the style of a galvanostatic intermittent titration technique (GITT), as described in 
     W. Weppner and R. A. Huggins 1977 J. Electrochem. Soc. 124 1569. Due to the equilibration time between each current
     step applied in this technique, it is possible to pre-compute the initial constant concentration in each of the single
     particles in the model by considering the amount of lithium removed in each current step.
-    Errors from execution are read in and further execution prevented if necessary.
     @param[in] filename: Name of user input file, no file extension. Note that a version of this file is created for 
     each current step applied in the GITT test.
     @param[in] nprocs: Number of processors to parallelise the current steps over. Note that the most processors
@@ -441,17 +456,19 @@ def GITT_half_cell(filename,nprocs,currents,start_times,run_times,wait_times,n,p
     start_times, currents, wait_times.
     @param[in] wait_times: a vector containing the run time of each current step, floats, must have the same length as 
     currents, start_times, run-times.
-    @param[in] params: A vector containing the parameters for the simulation: [dt, c0, D, R, a, L]
+    @param[in], n: The number of nodes to use in the simulation. Integer > 100
+    @param[in] params: A vector containing the parameters for the simulation: [dt, c0, D, R, a, L, electrode_charge]
         @param[in] dt: Timestep size, float > 0.
         @param[in] c0: Initial concentration, float >= 0.
         @param[in] D: Diffusion constant, float.
         @param[in] R: Width of block, float > 0.
         @param[in] a: Particle surface area per unit volume, float >= 0.
         @param[in] L: Electrode thickness, float >= 0.
+        @param[in] electrode_charge: Electrode charge, single character 'p' or 'n'
     '''
     #first, generate the arrays for initial concentration
     #unpack params
-    [dt, c0, D, R, a, L,electrode_charge] = params
+    [dt, c0, D, R, a, L, electrode_charge] = params
 
     initial_concs = get_GITT_initial_concs(currents,run_times, c0, R, a, L, electrode_charge)
     
@@ -482,6 +499,36 @@ def GITT_half_cell(filename,nprocs,currents,start_times,run_times,wait_times,n,p
             p.wait()
 
 def GITT_full_cell(filename_positive,filename_negative,nprocs,currents,start_times,run_times,wait_times,n,params_pos,params_neg):
+    '''!@brief Execution of SPM solver in parallel to run a GITT full cell test over nprocs cores.
+    @details Execution of SPM solver in parallel to run a test experiment on a full cell
+    in the style of a galvanostatic intermittent titration technique (GITT), as described in 
+    W. Weppner and R. A. Huggins 1977 J. Electrochem. Soc. 124 1569. Due to the equilibration time between each current
+    step applied in this technique, it is possible to pre-compute the initial constant concentration in each of the single
+    particles in the model by considering the amount of lithium removed or added in each current step.
+    @param[in] filename_positive: Name of user input file for the cathode, no file extension. Note that a version of this file is created for 
+    each current step applied in the GITT test.
+    @param[in] filename_negative: Name of user input file for the anode, no file extension. Note that a version of this file is created for 
+    each current step applied in the GITT test.
+    @param[in] nprocs: Number of processors to parallelise the current steps over. Note that the most processors
+    that can be parallelised over is = the number of current steps applied in the GITT test.
+    @param[in] currents: a vector containing the values of current to apply at each current step, floats, must have the same length as
+    start_times, run_times, wait_times.
+    @param[in] start_times: a vector containing the start times of each current step, floats, must have the same length as
+    currents, run_times, wait_times.
+    @param[in] run_times: a vector containing the run time of each current step, floats, must have the same length as 
+    start_times, currents, wait_times.
+    @param[in] wait_times: a vector containing the run time of each current step, floats, must have the same length as 
+    currents, start_times, run-times.
+    @param[in], n: The number of nodes to use in the simulation. Integer > 100
+    @param[in] params: A vector containing the parameters for the simulation: [dt, c0, D, R, a, L]
+        @param[in] dt: Timestep size, float > 0.
+        @param[in] c0: Initial concentration, float >= 0.
+        @param[in] D: Diffusion constant, float.
+        @param[in] R: Width of block, float > 0.
+        @param[in] a: Particle surface area per unit volume, float >= 0.
+        @param[in] L: Electrode thickness, float >= 0.
+        @param[in] electrode_charge: Electrode charge, single character 'p' or 'n'
+    '''
     #first, generate the arrays for initial concentration
     #unpack params
     [dt, c0_pos, D_pos, R_pos, a_pos, L_pos, electrode_charge_pos] = params_pos
@@ -513,6 +560,27 @@ def GITT_full_cell(filename_positive,filename_negative,nprocs,currents,start_tim
         cmnds.append(solver_call_line_pos)
         cmnds.append(solver_call_line_neg)
 
+
+    #now, we just need to launch a seperate instance of the solver for each process with each initial concentration and runtime
+    #code from: https://stackoverflow.com/questions/30686295/how-do-i-run-multiple-subprocesses-in-parallel-and-wait-for-them-to-finish-in-py
+    for j in range(max(int(len(cmnds)/nprocs), 1)):
+        #launch processes, distributing evenly between processors
+        procs = [subprocess.Popen(i, shell=True) for i in cmnds[j*nprocs: min((j+1)*nprocs, len(cmnds))]]
+        for p in procs:
+            #wait to ensure all done
+            p.wait()
+
+def full_battery_simulation(filename_positive,filename_negative,nprocs):
+
+
+    '''! 1. Set up solver call line, including file name.'''
+    filename_positive = filename_positive + '.txt'
+    filename_negative = filename_negative + '.txt'
+    solver_call_pos = './finite_diff_solver' + ' filename=' + filename_positive
+    solver_call_neg = './finite_diff_solver' + ' filename=' + filename_negative
+
+    cmnds = [solver_call_pos,solver_call_neg]
+    '''! 2. Call solver.'''
 
     #now, we just need to launch a seperate instance of the solver for each process with each initial concentration and runtime
     #code from: https://stackoverflow.com/questions/30686295/how-do-i-run-multiple-subprocesses-in-parallel-and-wait-for-them-to-finish-in-py
