@@ -10,14 +10,14 @@ from matplotlib.animation import FuncAnimation
 import netCDF4 as NC
 #Written so user can specify if is positive or negative electrode
 
-'''!function read_output_file: Reads in some data from user input and solver output using NetCDF'''
-'''!@var 2D array of floats cstore: Contains concentrations of Lithium over discretized time and space points.'''
-'''!@var int tsteps: Number of timesteps'''
-'''!@var int nodenum: Number of discrete spatial points'''
-'''!@var float R: radius of sphere in model (m).'''
-'''!@var 1D list of floats time_axis: Times associated with each timestep (s).'''
-'''!@var float dr: Space between the discrete spatial points (m).'''
-'''!@var str electrode: 'positive' or 'negative' - determines the nature of the electrode in this half SPM setup.'''
+'''!function read_output_file: Reads in some data from user input and solver output using NetCDF.
+@var 2D array of floats cstore: Contains concentrations of Lithium over discretized time and space points..
+@var int tsteps: Number of timesteps.
+@var int nodenum: Number of discrete spatial points.
+@var float R: radius of sphere in model (m).
+@var 1D list of floats time_axis: Times associated with each timestep (s).
+@var float dr: Space between the discrete spatial points (m).
+@var str electrode: 'positive' or 'negative' - determines the nature of the electrode in this half SPM setup.'''
 def read_output_file(filename,step_num=None):
     #Read in Concs from netcdf
     if step_num is not None:
@@ -44,8 +44,8 @@ def read_output_file(filename,step_num=None):
     return cstore,tsteps,nodenum,R,time_axis,dr,electrode
 
 
-'''!Function read_input_current: Reads in applied current data'''
-'''!@var 1D array of floats i_app_data: Array containing applied current density (A/m^2) at all discrete time points.'''
+'''!Function read_input_current: Reads in applied current data.
+@var 1D array of floats i_app_data: Array containing applied current density (A/m^2) at all discrete time points.'''
 def read_input_current(filename,step_num=None):
     if step_num is not None:
         filename = filename+str(step_num)
@@ -251,25 +251,25 @@ def gen_half_cell_voltage(edge_conc_vals,i_app_data,electrode,tsteps,pos_params=
     return np.array(volt_store)
 
 '''!Function voltage_current_plot: Calculates voltages at all time points, and saves plots of both concentration of Lithium at the
-outer edge of the sphere and voltage over time. This function has different settings determined by the value of electrode.'''
-'''!@var float F: Faraday constant (C/mol).'''
-'''!@var float R_g: Ideal gas constant (JK^-1mol^-1).'''
-'''!@var float T: Standard conditions for temperature (T).'''
-'''!@var float a: Surface area of particles (cm^2).'''
-'''!@var float K_pos: Reaction rate at positive electrodes (Am^-2(m^3mol^-1)^1.5).'''
-'''!@var float K_neg: Reaction rate at negative electrodes Am^-2(m^3mol^-1)^1.5.'''
-'''!@var float cmax_pos_sim: Positive electrode maximum concentration (molm^-3).'''
-'''!@var float cmax_neg_sim: Negative electrode maximum concentration (molm^-3).'''
-'''!@var float L_pos: Positive electrode thickness (m)'''
-'''!@var float L_neg: Negative electrode thickness (m)'''
-'''!Function j_function: Calculates a quantity that feeds into our voltage calculation for each temporal point.
-Takes c_R as an argument, which corresponds to the Lithium concentration (molm^-3) at the sphere edge at the specific time.'''
-'''!Function U_function_pos: OCV curve for positive electrode. Takes c_r as argument'''
-'''!Function U_function_neg: OCV curve for negative electrode. Takes c_r as argument'''
-'''!Function voltage_function: Calculates the voltage of the system at specific time points. Takes outputs of j_function (jay) and 
-U_function_pos/(neg) (U), as well as applied current (i_app) at that time as arguments.'''
-'''!@var 1D array edge_conc_vals: Contains the Lithium concentration at the edge of the sphere for all time steps.'''
-'''!@var list volt_store: contains voltages calculated for sequential timesteps.'''
+outer edge of the sphere and voltage over time. This function has different settings determined by the value of electrode.
+@var float F: Faraday constant (C/mol).
+@var float R_g: Ideal gas constant (JK^-1mol^-1).
+@var float T: Standard conditions for temperature (T).
+@var float a: Surface area of particles (cm^2).
+@var float K_pos: Reaction rate at positive electrodes (Am^-2(m^3mol^-1)^1.5).
+@var float K_neg: Reaction rate at negative electrodes Am^-2(m^3mol^-1)^1.5.
+@var float cmax_pos_sim: Positive electrode maximum concentration (molm^-3).
+@var float cmax_neg_sim: Negative electrode maximum concentration (molm^-3).
+@var float L_pos: Positive electrode thickness (m).
+@var float L_neg: Negative electrode thickness (m).
+Function j_function: Calculates a quantity that feeds into our voltage calculation for each temporal point.
+Takes c_R as an argument, which corresponds to the Lithium concentration (molm^-3) at the sphere edge at the specific time.
+Function U_function_pos: OCV curve for positive electrode. Takes c_r as argument.
+Function U_function_neg: OCV curve for negative electrode. Takes c_r as argument.
+Function voltage_function: Calculates the voltage of the system at specific time points. Takes outputs of j_function (jay) and 
+U_function_pos/(neg) (U), as well as applied current (i_app) at that time as arguments.
+@var 1D array edge_conc_vals: Contains the Lithium concentration at the edge of the sphere for all time steps.
+@var list volt_store: contains voltages calculated for sequential timesteps.'''
 def voltage_current_plot(electrode,cstore,time_axis,i_app_data,tsteps,pos_params=None,neg_params=None):
 
     #structure of cstore: each row represents a single timestep, each column a single node
