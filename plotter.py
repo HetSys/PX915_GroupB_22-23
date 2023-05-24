@@ -57,6 +57,7 @@ def read_input_current(filename,step_num=None):
     if step_num is not None:
         filename = filename+str(step_num)
 
+    # Check if input file was a checkpoint file or user parameter txt file by searching for '.' in filename
     checkpointing = len(filename.split('.'))
 
     if (checkpointing==1):
@@ -72,6 +73,7 @@ def read_input_current(filename,step_num=None):
         i_app_data = np.array(i_app_data, dtype = float)
 
     else:
+        # If checkpoint file, read iapp in using netcdf
         dat=NC.Dataset(filename, "r", format ="NETCDF")
         i_app_data=dat.variables['iapp'][:]
 

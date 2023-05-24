@@ -1,78 +1,100 @@
 '''!@package user_input_mod
-@brief Package containing functions to set up user input parameters and execute the solver.
-@details Options are provided to automatically generate applied current density iapp as constant and step functions, and to read iapp from a csv file.
-Options are provided to set default values of parameters from Chen et al. 2020, https://doi.org/10.1149/1945-7111/ab9050.
-Additional functions validate the types and values of input parameters, write the user input txt file, and execute the solver.
+@brief Package containing the functions needed to set up the user input parameters and execute the solver.
+@details Provides options for automatically generating applied current density 'iapp', as a constant or step function, and for reading iapp from a csv file.
+
+Provides the option to set the parameters to default values obtained from Chen et al. 2020, https://doi.org/10.1149/1945-7111/ab9050.
+
+Contains additional functions for validating the types and values of the input parameters, writing the user input txt file, and executing the solver.
 '''
 
 import subprocess
 import shlex
 import numpy as np
+import os
 
 ### CURRENT DENSITY SET UP ###
 def iapp_read_csv(filename):
-    '''!@brief Reads applied current density iapp from a csv file provided by user, 'filename'.
-    @param[in] filename: Name of csv file containing iapp as Time, Current density.
+    '''!@brief Reads in the applied current density 'iapp' from a csv file provided by user.
+
+    @param[in] filename Name of the csv file containing iapp as Time, Current density.
     @result iapp_arr: Array containing applied current density.
-    @result iapp_label: String containing description of iapp.
-    @result tsteps: Number of timesteps, found from length of iapp array.
+    @result iapp_label: String containing a description of iapp.
+    @result tsteps: Number of timesteps, found from the length of iapp array.
+
+    This function does the following:
+    1. Reads in the csv file.
+    2. Parses the file into array of lines.
+    3. Parses each line at comma.
+    4. Define tsteps and the iapp_label.
     '''
 
-    '''! 1. Read in csv file.'''
+    # Read in csv file
     with open(filename, 'r') as iapp_file:
         iapp_all = iapp_file.read()
     iapp_file.close()
 
-    '''! 2. Parse file into array of lines.'''
+    # Parse the file into array of lines
     iapp_lines = iapp_all.split("\n")
     nlines = len(iapp_lines) -1
 
-    '''! 3. Parse each line at comma.'''
+    # Parse each line at comma
     iapp_arr = np.zeros(nlines)
     for i in range(nlines):
         line = i+1
         iapp_arr[i] = iapp_lines[line].split(",")[1]
     
-    '''! 4. Define tsteps and iapp_label.'''
+    # Define tsteps and iapp_label
     tsteps = nlines
     iapp_label = 'file = ' + filename
 
     return iapp_arr, iapp_label, tsteps
     
 def iapp_constant_setup(tsteps, iapp):
-    '''!@brief Set up applied current density iapp as constant valued array of length tsteps.
-    @param[in] tsteps: Number of timesteps, length of array iapp.
-    @param[in] iapp: Constant value of iapp.
-    @result iapp_arr: Array containing applied current density.
-    @result iapp_label: String containing description of iapp.
+    '''!@brief Sets up the applied current density 'iapp' as a constant valued array of length tsteps.
+
+    @param[in] tsteps Number of timesteps, needs to be the length of the array iapp.
+    @param[in] iapp Constant value of iapp.
+    @result iapp_arr: An array containing applied current density.
+    @result iapp_label: String containing a description of iapp.
+
+    Function does the following:
+    1. Verifies that the current density, iapp, is a float.
+    2. Sets up an array.
     '''
 
-    '''! 1. Verify current density iapp is a float.'''
+    # Verify current density iapp is a float
     if (type(iapp)!=float):
         print('Constant applied current density must be a float/real value.')
         exit()
 
-    '''! 2. Set up array. '''
+    #Set up array
     iapp_label = 'Constant, ' + str(iapp)
     iapp_arr = np.ones(tsteps) *  iapp
 
     return iapp_arr, iapp_label
 
 def iapp_step_setup(tsteps, iapp_steps):
-    '''!@brief Set up applied current density iapp as stepped array of length tsteps.
-    @param[in] tsteps: Number of timesteps, length of array iapp.
-    @param[in] iapp_steps: 2D Array containing heights of steps and timesteps where step occurs, starting timestep 0. Timesteps must be integers.
-    @result iapp_arr: Array containing applied current density.
-    @result iapp_label: String containing description of iapp.
+    '''!@brief Sets up the applied current density 'iapp' as a stepped array of length tsteps.
+
+    @param[in] tsteps Number of timesteps, needs to be the length of the array iapp.
+    @param[in] iapp_steps 2D Array containing heights of the steps and the timesteps at which step occurs, starting at timestep 0. Timesteps must be integers.
+    @result iapp_arr: An array containing the applied current density.
+    @result iapp_label: A string describing the type for iapp.
+
+    Function does the following:
+    1. Sets up the label and initialises the array.
+    2. Verifies that timesteps are integers and current density values are floats.
+    3. Verifies that the first timestep is 0.
+    4. Sets up an array.
     '''
 
-    '''! 1. Set up label and initialise array.'''
+    # Set up label and initialise array
     iapp_label = 'Step function, ' + str(iapp_steps)
 
     iapp_arr = np.ones(tsteps)
     nsteps = len(iapp_steps)
 
-    '''! 2. Verify timesteps are integers, and current density are floats.'''
+    # Verify timesteps are integers, and current densitiy values are floats
     problem_timesteps = []
     timestep_err = False
     problem_vals = []
@@ -93,13 +115,13 @@ def iapp_step_setup(tsteps, iapp_steps):
     if (val_err or timestep_err):
         exit()
 
-    '''! 3. Verify first timestep is 0.'''
+    # Verify first timestep is 0
     if (iapp_steps[0][1]!=0):
         print('Initial applied current density must be at timestep 0.')
         exit()
         
 
-    '''! 4. Set up array.'''
+    # Set up array
     for i in range(nsteps):
         start = iapp_steps[i][1]
         if (i == nsteps-1):
@@ -116,8 +138,8 @@ def iapp_step_setup(tsteps, iapp_steps):
 ### DEFAULT PARAMETERS ###
 def set_defaults_pos():
     '''!@brief Returns default parameters for a positive electrode
-    @details Parameter values are taken from Chen et al. 2020, https://doi.org/10.1149/1945-7111/ab9050. 
-    Simulation is set up to run for 100 timesteps of size dt=0.1s, with n=1000 spatial nodes.
+    @details Gives the default parameter values, obtained from Chen et al. 2020, https://doi.org/10.1149/1945-7111/ab9050. 
+    The simulation is set up to run for 100 timesteps of size dt = 0.1s, with n = 1000 spatial nodes.
     Applied current density is set up as a constant current density of value 0.73mA m^2.
     '''
     # Label of positive electrode
@@ -151,8 +173,8 @@ def set_defaults_pos():
 
 def set_defaults_neg():
     '''!@brief Returns default parameters for a negative electrode
-    @details Parameter values are taken from Chen et al. 2020, https://doi.org/10.1149/1945-7111/ab9050. 
-    Simulation is set up to run for 100 timesteps of size dt=0.1s, with n=1000 spatial nodes.
+    @details Gives the default parameter values, obtained from Chen et al. 2020, https://doi.org/10.1149/1945-7111/ab9050. 
+    THe simulation is set up to run for 100 timesteps of size dt = 0.1s, with n = 1000 spatial nodes.
     Applied current density is set up as a constant current density of value 0.73mA m^2.
     '''
     # Label of negative electrode
@@ -189,19 +211,21 @@ def set_defaults_neg():
 
 ### PARAMETER VERIFICATION ###
 def verify_params(filename, tsteps, dt, n, c0, D, R, a, L, electrode_charge):
-    '''!@brief Verifies types and values of input parameters.
-    @details Verifies that parameters output filename, tsteps, dt, c0, D, R, a, and L have the correct type and valid values. 
-    If any are found to be invalid, an error is printed and the execution stopped.
-    @param[in] filename: Output filename, string, must have less than 50 chars. No file extension required.
-    @param[in] tsteps: Number of timesteps, integer > 0.
-    @param[in] dt: Timestep size, float > 0.
-    @param[in] n: Number of spatial nodes, integer, 100 =< n =< 4000.
-    @param[in] c0: Initial concentration, float >= 0.
-    @param[in] D: Diffusion constant, float.
-    @param[in] R: Width of block, float > 0.
-    @param[in] a: Particle surface area per unit volume, float >= 0.
-    @param[in] L: Electrode thickness, float >= 0.
-    @param[in] electrode_charge: Label of charge of electrode, string, 'p' for positive or 'n' for negative.
+    '''!@brief Verifies the types and values of the input parameters.
+
+    @details Verifies that output filename, tsteps, dt, c0, D, R, a, and L have the correct type and valid values. 
+    If any are found to be invalid, an error is printed and the execution will stop.
+
+    @param[in] filename  The name of the output file, this must be a string and have max 50 characters. No file extension is required.
+    @param[in] tsteps  Number of timesteps, must be an integer greater than 0.
+    @param[in] dt  Timestep size, must be a float greater than 0.
+    @param[in] n  Number of spatial nodes, must be an integer between 100 and 4000.
+    @param[in] c0  Initial concentration, must be a float greater than or equal to 0.
+    @param[in] D  Diffusion constant, must be a float.
+    @param[in] R  Radius of the sphere, must be a float greater than 0.
+    @param[in] a  Particle surface area per unit volume, must be a float greater than or equal to 0.
+    @param[in] L  Electrode thickness, must be a float greater than or equal to 0.
+    @param[in] electrode_charge  Labels charge of the electrode, must b a string, 'p' for positive or 'n' for negative.
     '''
 
     # Set var_error to True is any errors occur
@@ -297,12 +321,13 @@ def verify_params(filename, tsteps, dt, n, c0, D, R, a, L, electrode_charge):
     return
 
 def verify_iapp(iapp, iapp_label, tsteps):
-    '''!@brief Verifies types and values of applied current density array and label.
-    @details Verifies that parameters output iapp and iapp_label have the correct types, valid values, and correct lengths.
-    If any are found to be invalid, an error is printed and the execution stopped.
+    '''!@brief Verifies the types and values of the applied current density array and its label.
+
+    @details Verifies that the parameters output iapp and iapp_label have the correct types, valid values, and correct lengths.
+    If any are found to be invalid, an error is printed and the execution will stop.
     @param[in] iapp: Applied current density, 1D array of floats of length tsteps.
-    @param[in] iapp_label: Label of applied current density, string.
-    @param[in] tsteps: Number of timesteps, to check iapp has correct length.
+    @param[in] iapp_label: Labels the type of applied current density, must be a string.
+    @param[in] tsteps: Number of timesteps, in order to check iapp has the correct length.
     '''
 
     # set var_error to True is any errors occur
@@ -332,11 +357,17 @@ def verify_iapp(iapp, iapp_label, tsteps):
 
 ### WRITE TO FILE ###
 def write_to_file(filename, tsteps, dt, n, c0, D, R, a, L, iapp, iapp_label, electrode_charge):
-    '''!@brief Function writes user inputs to txt file.
-    @details Writes user inputs to txt file named 'filename'. 
-    Parameters are output in format 'parameter = value'.
-    tsteps, dt, c0, D, R, a, L, electrode_charge are output to top of file, followed by an asterix line (***).
-    iapp_label follows the asterix line, with iapp array following, written one element per line.
+    '''!@brief Writes user inputs to a txt file.
+
+    @details Writes the user inputs to a txt file named 'filename'. 
+    Parameters are output in the format 'parameter = value'.
+    tsteps, dt, c0, D, R, a, L, electrode_charge are output to the top of the file, followed by an asterix line (***).
+    iapp_label is output below the asterix line, with iapp array the following it, written one element per line.
+
+    The function works by:
+    1. Setting the file name.
+    2. Making a list of strings to write to the file.
+    3. Writing to the file.
     '''
 
     # The solver and plotting equations are built to work for the anode (negative electrode), that is 
@@ -347,10 +378,10 @@ def write_to_file(filename, tsteps, dt, n, c0, D, R, a, L, iapp, iapp_label, ele
     if electrode_charge == 'p':
         iapp = -iapp
     
-    '''! 1. Set file name.'''
+    # Set file name.'''
     filename = filename + '.txt'
 
-    '''! 2. Make list of strings to write to file.'''
+    # Make list of strings to write to file
     parameters = []
     parameters.append('tsteps = ' + str(tsteps) + '\n')
     parameters.append('dt = ' + str(dt) + '\n')
@@ -369,7 +400,7 @@ def write_to_file(filename, tsteps, dt, n, c0, D, R, a, L, iapp, iapp_label, ele
         parameters.append('\n')
         parameters.append(str(iapp[i]))
 
-    '''! 3. Write to file.'''
+    # Write to file
     with open(filename, 'w') as user_input:
         user_input.writelines(parameters)
     user_input.close()
@@ -380,30 +411,36 @@ def write_to_file(filename, tsteps, dt, n, c0, D, R, a, L, iapp, iapp_label, ele
 
 ### CALL SOLVER ###
 def call_solver(filename, checkpoint):
-    '''!@brief Execution of SPM solver.
-    @details SPM solver is called using the subprocess package.
+    '''!@brief Executes the SPM solver.
+
+    @details Calls the SPM solver using the subprocess package.
     The filename of the user input file is passed to the solver as a command line argument.
-    Errors from execution are read in and further execution prevented if necessary.
-    @param[in] filename: Name of file containing desired input, either a checkpoint file or user input file with no file extension.
+    Errors from the execution are read in and further execution prevented if necessary.
+    @param[in] filename: The name of the file containing the desired input, either a checkpoint file or user input file. No file extension is required.
     @param[in] checkpoint: Boolean indicating if a checkpoint file is used.
+
+    The function works by:
+    1. Validating whether the input file is a checkpoint file or user input file name.
+    2. Setting up the solver call line, including the file name.
+    3. Calling the solver.
     '''
 
-    '''! 1. Validate checkpoint file or user input file name.'''
-    # If using checkpoint, check input file is a netcdf file w/extension '.nc'
+    # 1. Validate checkpoint file or user input file name.
+    # If using checkpoint, check input file is a netcdf file with extension '.nc'
     file_extension = filename.split(".")
     if (checkpoint):
         if (len(file_extension)<2):
-            # Check .nc file entered
+            # Check filename has an extension.
             print("Invalid checkpoint file. Please enter a file with a '.nc' extension.")
             exit()
         elif (file_extension[-1]!='nc'):
-            # Check .nc file entered
+            # Check extension of file name is 'nc'.
             print("Invalid checkpoint file. Please enter a file with a '.nc' extension.")
             exit()
-        # elif (not os.path.isfile(filename)):
-        #     # Check .nc file exists
-        #     print("Checkpoint file not found:", filename)
-        #     exit()
+        elif (not os.path.isfile(filename)):
+            # Check .nc file exists
+            print("Checkpoint file not found:", filename)
+            exit()
         else:
             print("Checkpoint file passed as input file, calling solver...")
 
@@ -411,11 +448,11 @@ def call_solver(filename, checkpoint):
         filename = filename + '.txt'
         print("User input file generated, calling solver...")
 
-    '''! 2. Set up solver call line.'''
+    # 2. Set up solver call line.
     solver_call_line = './finite_diff_solver' + ' filename="' + filename + '"'
 
 
-    '''! 3. Call solver.'''
+    # 3. Call solver
     command_solver = shlex.split(solver_call_line)
     process_solver = subprocess.run(command_solver, stdout=subprocess.PIPE, universal_newlines=True)
     return_solver = process_solver.returncode
@@ -434,21 +471,25 @@ def call_solver(filename, checkpoint):
 
 
 def get_GITT_initial_concs(currents,run_times, c0, R, a, L, electrode_charge):
-    '''@brief Calculation of the initial concentrations for each step in a multi-step parallelised GITT test.
-    @details Function computes a list of concentrations which give the initial flat concentrations for the initial step of a 
-    parallelised multi-step GITT test. The formula it uses to calculate these is:
-    C(T=t) = C_0 + \frac{i_app * t}{F*e_act * L}, where C_0 is C(T=0). Note that due to the definition of current being
-    positive for charging, it is important that the sign of the current vector be flipped when considering the positive electrode (cathode),
-    which will discharge during electrode charging.
-    @param[in] currents: a vector containing the values of current to apply at each current step, floats, must have the same length as
+    '''@brief Calculates the initial concentrations for each step in a multi-step parallelised GITT test.
+
+    @details Computes initial flat concentrations for the initial step of a parallelised multi-step GITT test. 
+
+    The formula used for this calculation is:
+    C(T=t) = C_0 + \frac{i_app * t}{F*e_act * L}, where C_0 is C(T=0). 
+
+    As current is defined as positive for charging, the sign of the current vector must be flipped when considering
+    the positive electrode (cathode) which will discharge during charging.
+
+    @param[in] currents  A vector containing current values to apply at each current step, must be floats and have the same length as
     start_times, run_times, wait_times.
-    @param[in] run_times: a vector containing the run time of each current step, floats, must have the same length as 
+    @param[in] run_times  A vector containing the run time of each current step, must be floats and have the same length as 
     start_times, currents, wait_times.
-    @param[in] c0: Initial concentration, float >= 0.
-    @param[in] R: Width of block, float > 0.
-    @param[in] a: Particle surface area per unit volume, float >= 0.
-    @param[in] L: Electrode thickness, float >= 0.
-    @param[in] electrode_charge: Electrode charge, single character 'p' or 'n'.
+    @param[in] c0  Initial concentration, must be a float greater than or equal to 0.
+    @param[in] R  Radius of the sphere, must be a float greater than 0.
+    @param[in] a  Particle surface area per unit volume, must be a float greater than or equal to 0.
+    @param[in] L  Electrode thickness, must be a float greater than or equal to 0.
+    @param[in] electrode_charge  Electrode charge, mus be a single character 'p' or 'n'.
     '''
     F = 96485.3321 #faraday constant
     #volume fraction of active material
@@ -468,34 +509,32 @@ def get_GITT_initial_concs(currents,run_times, c0, R, a, L, electrode_charge):
 
 ### INITIALISE A FULL GITT TEST IN PARALLEL ####
 def GITT_half_cell(filename,nprocs,currents,start_times,run_times,wait_times,n,params):
-    '''!@brief Execution of SPM solver in parallel to run a GITT half cell test over nprocs cores.
-    @details Execution of SPM solver in parallel to run a test experiment on a half cell
-    in the style of a galvanostatic intermittent titration technique (GITT), as described in 
-    W. Weppner and R. A. Huggins 1977 J. Electrochem. Soc. 124 1569. Due to the equilibration time between each current
-    step applied in this technique, it is possible to pre-compute the initial constant concentration in each of the single
-    particles in the model by considering the amount of lithium removed in each current step.
-    @param[in] filename: Name of user input file, no file extension. Note that a version of this file is created for 
-    each current step applied in the GITT test.
-    @param[in] nprocs: Number of processors to parallelise the current steps over. Note that the most processors
-    that can be parallelised over is = the number of current steps applied in the GITT test.
-    @param[in] currents: a vector containing the values of current to apply at each current step, floats, must have the same length as
+
+    '''!@brief Executes the SPM solver in parallel to run a GITT half cell test over nprocs cores.
+
+    @details Executes the SPM solver in parallel to run a test experiment on a half cell using a galvanostatic intermittent titration technique (GITT), see 
+    W. Weppner and R. A. Huggins 1977 J. Electrochem. Soc. 124 1569. 
+    
+    Due to the equilibration time between each current step applied, it is possible to pre-compute initial constant concentration for each of the single
+    particles in the model by considering the amount of lithium removed in each step.
+    
+    Errors from execution are read in and further execution is prevented if necessary.
+
+    @param[in] filename  Name of user input file, no file extension. Note that a version of this file is created for each current step applied in the GITT test. 
+    @param[in] nprocs  Number of processors to parallelise current steps over.
+    Cannot parallelise over more processors than the number of steps applied in the GITT test.
+    @param[in] currents  A vector containing the values of current to apply at each step, must be floats and have the same length as
     start_times, run_times, wait_times.
-    @param[in] start_times: a vector containing the start times of each current step, floats, must have the same length as
+    @param[in] start_times  A vector containing the start times of each current step, must be floats and have the same length as
     currents, run_times, wait_times.
-    @param[in] run_times: a vector containing the run time of each current step, floats, must have the same length as 
+    @param[in] run_times  A vector containing the run time of each current step, must be floats and have the same length as 
     start_times, currents, wait_times.
-    @param[in] wait_times: a vector containing the run time of each current step, floats, must have the same length as 
+    @param[in] wait_times  A vector containing the wait time of each current step, must be floats and have the same length as 
     currents, start_times, run-times.
-    @param[in], n: The number of nodes to use in the simulation. Integer > 100
+    @param[in], n: The number of nodes to use in the simulation. Must be an integer greater than 100.
     @param[in] params: A vector containing the parameters for the simulation: [dt, c0, D, R, a, L, electrode_charge]
-        @param[in] dt: Timestep size, float > 0.
-        @param[in] c0: Initial concentration, float >= 0.
-        @param[in] D: Diffusion constant, float.
-        @param[in] R: Width of block, float > 0.
-        @param[in] a: Particle surface area per unit volume, float >= 0.
-        @param[in] L: Electrode thickness, float >= 0.
-        @param[in] electrode_charge: Electrode charge, single character 'p' or 'n'
     '''
+
     #first, generate the arrays for initial concentration
     #unpack params
     [dt, c0, D, R, a, L, electrode_charge] = params
@@ -529,36 +568,34 @@ def GITT_half_cell(filename,nprocs,currents,start_times,run_times,wait_times,n,p
             p.wait()
 
 def GITT_full_cell(filename_positive,filename_negative,nprocs,currents,start_times,run_times,wait_times,n,params_pos,params_neg):
-    '''!@brief Execution of SPM solver in parallel to run a GITT full cell test over nprocs cores.
-    @details Execution of SPM solver in parallel to run a test experiment on a full cell
-    in the style of a galvanostatic intermittent titration technique (GITT), as described in 
-    W. Weppner and R. A. Huggins 1977 J. Electrochem. Soc. 124 1569. Due to the equilibration time between each current
-    step applied in this technique, it is possible to pre-compute the initial constant concentration in each of the single
-    particles in the model by considering the amount of lithium removed or added in each current step.
-    @param[in] filename_positive: Name of user input file for the cathode, no file extension. Note that a version of this file is created for 
+    '''!@brief Executes the SPM solver in parallel to run a GITT full cell test over nprocs cores.
+
+    @details Executes the SPM solver in parallel to run a test experiment on a full cell using a galvanostatic intermittent titration technique (GITT), see 
+    W. Weppner and R. A. Huggins 1977 J. Electrochem. Soc. 124 1569. 
+    
+    Due to the equilibration time between each current step applied, it is possible to pre-compute initial constant concentration for each of the single
+    particles in the model by considering the amount of lithium removed in each step. 
+
+    @param[in] filename_positive  Name of user input file for the cathode, no file extension. Note that a version of this file is created for 
     each current step applied in the GITT test.
-    @param[in] filename_negative: Name of user input file for the anode, no file extension. Note that a version of this file is created for 
+    @param[in] filename_negative  Name of user input file for the anode, no file extension. Note that a version of this file is created for 
     each current step applied in the GITT test.
-    @param[in] nprocs: Number of processors to parallelise the current steps over. Note that the most processors
-    that can be parallelised over is = the number of current steps applied in the GITT test.
-    @param[in] currents: a vector containing the values of current to apply at each current step, floats, must have the same length as
+    @param[in] nprocs  Number of processors to parallelise current steps over.
+    Cannot parallelise over more processors than the number of steps applied in the GITT test.
+    @param[in] currents  A vector containing the values of current to apply at each step, must be floats and have the same length as
     start_times, run_times, wait_times.
-    @param[in] start_times: a vector containing the start times of each current step, floats, must have the same length as
+    @param[in] start_times  A vector containing the start times of each current step, must be floats and have the same length as
     currents, run_times, wait_times.
-    @param[in] run_times: a vector containing the run time of each current step, floats, must have the same length as 
+    @param[in] run_times  A vector containing the run time of each current step, must be floats and have the same length as 
     start_times, currents, wait_times.
-    @param[in] wait_times: a vector containing the run time of each current step, floats, must have the same length as 
+    @param[in] wait_times  A vector containing the wait time of each current step, must be floats and have the same length as 
     currents, start_times, run-times.
-    @param[in], n: The number of nodes to use in the simulation. Integer > 100
+    @param[in], n: The number of nodes to use in the simulation. Must be an integer greater than 100.
     @param[in] params: A vector containing the parameters for the simulation: [dt, c0, D, R, a, L]
-        @param[in] dt: Timestep size, float > 0.
-        @param[in] c0: Initial concentration, float >= 0.
-        @param[in] D: Diffusion constant, float.
-        @param[in] R: Width of block, float > 0.
-        @param[in] a: Particle surface area per unit volume, float >= 0.
-        @param[in] L: Electrode thickness, float >= 0.
-        @param[in] electrode_charge: Electrode charge, single character 'p' or 'n'
-    '''
+
+    The function works by:
+    1. Setting up the solver call line, including the file name.
+    2. Calling the solver.    '''
     #first, generate the arrays for initial concentration
     #unpack params
     [dt, c0_pos, D_pos, R_pos, a_pos, L_pos, electrode_charge_pos] = params_pos
@@ -603,14 +640,14 @@ def GITT_full_cell(filename_positive,filename_negative,nprocs,currents,start_tim
 def full_battery_simulation(filename_positive,filename_negative,nprocs):
 
 
-    '''! 1. Set up solver call line, including file name.'''
+    # Set up solver call line, including file name 
     filename_positive = filename_positive + '.txt'
     filename_negative = filename_negative + '.txt'
     solver_call_pos = './finite_diff_solver' + ' filename=' + filename_positive
     solver_call_neg = './finite_diff_solver' + ' filename=' + filename_negative
 
     cmnds = [solver_call_pos,solver_call_neg]
-    '''! 2. Call solver.'''
+    # Call solver
 
     #now, we just need to launch a seperate instance of the solver for each process with each initial concentration and runtime
     #code from: https://stackoverflow.com/questions/30686295/how-do-i-run-multiple-subprocesses-in-parallel-and-wait-for-them-to-finish-in-py

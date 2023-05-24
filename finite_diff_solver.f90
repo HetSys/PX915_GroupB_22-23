@@ -29,11 +29,12 @@ PROGRAM MAIN
     CHARACTER(len=5) :: file_extension
     INTEGER :: file_ext, file_test
 
-    ! Read user inputs
+    ! Read in user inputs
     filename = read_command_line()
     CALL set_inputs(filename, tstep_init, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage)
     
-    !generate name of output file
+    !generate name of output file as 'filename_output.nc'
+    !trim to remove preceeding directories and file extensions
     filename_length = LEN_TRIM(filename)
     file_test = INDEX(filename, '/') ! find '/' to remove preceeding directories
     DO WHILE (file_test/=0)
@@ -43,8 +44,8 @@ PROGRAM MAIN
     file_ext = INDEX(filename, '.') ! find '.' to remove file extension
     output_name = TRIM(ADJUSTL(filename(1:file_ext-1)))//'_output.nc'
 
-    ALLOCATE(A(n,n))
     ALLOCATE(ipiv(n))
+    ALLOCATE(A(n,n))
     ALLOCATE(A_copy(n,n))
     ALLOCATE(b(n))
     ALLOCATE(Z(tsteps))
@@ -59,7 +60,6 @@ PROGRAM MAIN
     
     b = 0.0_REAL64
     
-        
     Z = (-iapp)/(a_small*F*L*D)
     !cstorage(:,tstep_init) = c !set first entry in storage vector to initial concentration
     !build A matrix for solver (constant over time)
@@ -79,9 +79,6 @@ PROGRAM MAIN
     !edge of sphere (right edge)
     A(n,n-1) = 2.0_REAL64*k*dt
     A(n,n) = (1.0_REAL64) + ((D/(deltar**2))*dt)
-    !print*, 'a',A
-    
-
     A_copy = A    
 
     DO tstep = tstep_init,(tsteps-1) !we have the first state (j=1), and each loop finds the j+1th state, so we go to tsteps-1.
@@ -121,7 +118,6 @@ PROGRAM MAIN
         
     END DO
     
-    
 
     !write to output file
     OPEN(9,file='output.txt',form='formatted')
@@ -139,9 +135,9 @@ PROGRAM MAIN
     DEALLOCATE(c)
     DEALLOCATE(ipiv)
     DEALLOCATE(cstorage)
+    DEALLOCATE(iapp)
     DEALLOCATE(Z)
     DEALLOCATE(time_axis)
-    IF (file_extension=='txt') DEALLOCATE(iapp)
     
 END PROGRAM
 

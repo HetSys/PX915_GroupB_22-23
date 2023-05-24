@@ -37,12 +37,12 @@ import sys
 
 # Select input file: checkpoint file (True) or user input parameters (False).
 # Enter the filename of desired checkpoint file or the desired name of the file containing user input parameters.
-
 checkpoint = True
 if checkpoint == False:
     solver_input_filename = 'user_input'
 else:
     solver_input_filename = 'checkpoints_user_input/user_input_tstep_300.nc'
+
 
 
 
