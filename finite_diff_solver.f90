@@ -112,13 +112,15 @@ PROGRAM MAIN
         !END IF
         !add solution to storage vector
         cstorage(:,tstep+1) = c
-        time_axis(tstep+1) = dt*tstep
+        !time_axis(tstep+1) = dt*tstep
         
         CALL write_checkpoint(tstep, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage, filename, 20)
         
     END DO
     
-
+    DO tstep=1,(tsteps-1)
+      time_axis(tstep+1) = dt*tstep
+    END DO
     !write to output file
     OPEN(9,file='output.txt',form='formatted')
     DO i = 1,n

@@ -203,7 +203,7 @@ MODULE checkpointing
 
         !Read cstorage
         CALL check(nf90_inq_varid(ncid,'cstorage',varid))
-        CALL check(nf90_get_var(ncid, varid, cstorage))
+        CALL check(nf90_get_var(ncid, varid, cstorage))       
 
 
         ! Close the file
@@ -280,7 +280,7 @@ MODULE checkpointing
                 ALLOCATE(c(n))
                 ALLOCATE(cstorage(n,tsteps))
                 c = c0 !set c to initial state
-                cstorage(:,tstep_init) = c
+                cstorage(:,tstep_init) = c                
 
             CASE("nc")
                 CALL read_checkpoint(filename, tstep_init, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage)
