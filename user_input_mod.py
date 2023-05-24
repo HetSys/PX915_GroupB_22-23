@@ -625,3 +625,32 @@ def full_battery_simulation(filename_positive,filename_negative,nprocs):
         for p in procs:
             #wait to ensure all done
             p.wait()
+
+def optimise_parallelisim(n_procs,n_gitt_steps=1,full_battery=False):
+
+    #function which decides how many MKL_NUM_THREADS to use
+    # based on: total number of processors available (n_procs)
+    # number of nodes in each matrix inversion (node_num)
+    # number of steps in a gitt test if it's being run.
+
+    # essentially, compute n_gitt_steps*2(if full battery)
+    # look at this number. If it is <n_procs/4, use 4 thread, if it is
+    # n_procs/4< but <n_procs/2, use 2 thread, if it is >n_procs/2 use 1 thread
+
+    if full_battery == True:
+        multip = 2
+    else:
+        multip = 1
+
+    n_gitt_full_batt = multip*n_gitt_steps
+
+    if n_gitt_full_batt<=int(n_procs/4):
+        os.environ['MKL_NUM_THREADS']='4'
+        os.system('echo set MKL_NUM_THREADS to $MKL_NUM_THREADS')
+    elif (n_gitt_full_batt>int(n_procs/4) and n_gitt_full_batt<=int(n_procs/2)):
+        os.environ['MKL_NUM_THREADS']='2'
+        os.system('echo set MKL_NUM_THREADS to $MKL_NUM_THREADS')
+    else:
+        os.environ['MKL_NUM_THREADS']='1'
+        os.system('echo set MKL_NUM_THREADS to $MKL_NUM_THREADS')
+    
