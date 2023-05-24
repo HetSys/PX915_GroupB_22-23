@@ -10,6 +10,7 @@ Contains additional functions for validating the types and values of the input p
 import subprocess
 import shlex
 import numpy as np
+import os
 
 ### CURRENT DENSITY SET UP ###
 def iapp_read_csv(filename):
@@ -401,7 +402,7 @@ def write_to_file(filename, tsteps, dt, n, c0, D, R, a, L, iapp, iapp_label, ele
 
 
 ### CALL SOLVER ###
-def call_solver(filename):
+def call_solver(filename,nprocs=1):
     '''!@brief Executes the SPM solver.
 
     @details Calls the SPM solver using the subprocess package.
@@ -413,6 +414,8 @@ def call_solver(filename):
     1. Seting up the solver call line, including the file name.
     2. Calling the solver.
     '''
+    #optimise the number of threads used based on the number of processors provided
+    optimise_parallelism(nprocs)
 
     # Set up solver call line, including file name
     filename = filename + '.txt'
@@ -503,6 +506,10 @@ def GITT_half_cell(filename,nprocs,currents,start_times,run_times,wait_times,n,p
     @param[in] params: A vector containing the parameters for the simulation: [dt, c0, D, R, a, L, electrode_charge]
     '''
 
+    # Optimise the the number of threads based on both nprocs and the 
+    # Number of GITT steps
+    optimise_parallelism(nprocs,n_gitt_steps=len(currents))
+
     #first, generate the arrays for initial concentration
     #unpack params
     [dt, c0, D, R, a, L, electrode_charge] = params
@@ -564,6 +571,11 @@ def GITT_full_cell(filename_positive,filename_negative,nprocs,currents,start_tim
     The function works by:
     1. Setting up the solver call line, including the file name.
     2. Calling the solver.    '''
+
+    # Optimise the the number of threads based on both nprocs and the 
+    # Number of GITT steps
+    optimise_parallelism(nprocs,n_gitt_steps=len(currents),full_battery=True)
+
     #first, generate the arrays for initial concentration
     #unpack params
     [dt, c0_pos, D_pos, R_pos, a_pos, L_pos, electrode_charge_pos] = params_pos
@@ -605,8 +617,22 @@ def GITT_full_cell(filename_positive,filename_negative,nprocs,currents,start_tim
             #wait to ensure all done
             p.wait()
 
-def full_battery_simulation(filename_positive,filename_negative,nprocs):
+def full_battery_simulation(filename_positive,filename_negative,nprocs=1):
+    '''!@brief Executes the SPM solver.
 
+    @details Calls the SPM solver using the subprocess package for both the anode and cathode simultaneously
+    The filenames of the user input files for both the anode and cathode are passed to 
+    instances of the solver as command line arguments. Note that if 2 processors are supplied,
+    both the anode and cathode will run simultaneously.
+    @param[in] filename_positive: The name of the positive output file, this must be a string and have max 50 characters. No file extension is required.
+    @param[in] filename_negative: The name of the negative output file, this must be a string and have max 50 characters. No file extension is required.
+    
+    The function works by:
+    1. Seting up the solver call line, including the file name.
+    2. Calling the solver.
+    '''
+    # Optimise the the number of threads based on nprocs
+    optimise_parallelism(nprocs,full_battery=True)
 
     # Set up solver call line, including file name 
     filename_positive = filename_positive + '.txt'
@@ -625,3 +651,50 @@ def full_battery_simulation(filename_positive,filename_negative,nprocs):
         for p in procs:
             #wait to ensure all done
             p.wait()
+
+def optimise_parallelism(n_procs,n_gitt_steps=1,full_battery=False):
+    '''!@brief Decides the correct number of threads to use for a given simulation.
+
+    @details Given a user supplied number of processors, as well as further details about the simulation
+    (the number of current steps if it's a GITT test, if the simulation is a full cell or not), this function
+    decides on the optimum number of threads to use. It never picks a number of threads greater than 4,
+    as any larger than this and the communication overhead between threads during the matrix solve begins to dominate
+    and the computation time increases. This function therefore allows a balanced optimum parallelisation strategy.
+    @param[in] n_procs: The number of processors that the user is happy for the program to exploit. The program will exploit a number
+    of cores less than or equal to this number. Integer.
+    @param[in] n_gitt_steps: The number of GITT steps if the experiment being performed is a GITT test. 1 by default (in the case of 
+    the experiment not being a GITT test) integer.
+    @param[in] full_battery: Bool, True means that both sides of a battery are being simulated, whilst False means only one side.
+    
+    The function works by:
+    1. Deciding what number of threads is best to use given the type of simulation and input parameters, up to a maximum of 4.
+       Note that this is based off the principle that parallelisation over independent seperate instances of the solver is always better
+       than multithreading.
+    2. Setting the environment variable.
+    '''
+    #function which decides how many MKL_NUM_THREADS to use
+    # based on: total number of processors available (n_procs)
+    # number of nodes in each matrix inversion (node_num)
+    # number of steps in a gitt test if it's being run.
+
+    # essentially, compute n_gitt_steps*2(if full battery)
+    # look at this number. If it is <n_procs/4, use 4 thread, if it is
+    # n_procs/4< but <n_procs/2, use 2 thread, if it is >n_procs/2 use 1 thread
+
+    if full_battery == True:
+        multip = 2
+    else:
+        multip = 1
+
+    n_gitt_full_batt = multip*n_gitt_steps
+
+    if n_gitt_full_batt<=int(n_procs/4):
+        os.environ['MKL_NUM_THREADS']='4'
+        os.system('echo set MKL_NUM_THREADS to $MKL_NUM_THREADS')
+    elif (n_gitt_full_batt>int(n_procs/4) and n_gitt_full_batt<=int(n_procs/2)):
+        os.environ['MKL_NUM_THREADS']='2'
+        os.system('echo set MKL_NUM_THREADS to $MKL_NUM_THREADS')
+    else:
+        os.environ['MKL_NUM_THREADS']='1'
+        os.system('echo set MKL_NUM_THREADS to $MKL_NUM_THREADS')
+    
