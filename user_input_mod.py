@@ -8,6 +8,7 @@ Additional functions validate the types and values of input parameters, write th
 import subprocess
 import shlex
 import numpy as np
+import os
 
 ### CURRENT DENSITY SET UP ###
 def iapp_read_csv(filename):
@@ -389,21 +390,21 @@ def call_solver(filename, checkpoint):
     '''
 
     '''! 1. Validate checkpoint file or user input file name.'''
-    # If using checkpoint, check input file is a netcdf file w/extension '.nc'
+    # If using checkpoint, check input file is a netcdf file with extension '.nc'
     file_extension = filename.split(".")
     if (checkpoint):
         if (len(file_extension)<2):
-            # Check .nc file entered
+            # Check filename has an extension.
             print("Invalid checkpoint file. Please enter a file with a '.nc' extension.")
             exit()
         elif (file_extension[-1]!='nc'):
-            # Check .nc file entered
+            # Check extension of file name is 'nc'.
             print("Invalid checkpoint file. Please enter a file with a '.nc' extension.")
             exit()
-        # elif (not os.path.isfile(filename)):
-        #     # Check .nc file exists
-        #     print("Checkpoint file not found:", filename)
-        #     exit()
+        elif (not os.path.isfile(filename)):
+            # Check .nc file exists
+            print("Checkpoint file not found:", filename)
+            exit()
         else:
             print("Checkpoint file passed as input file, calling solver...")
 
