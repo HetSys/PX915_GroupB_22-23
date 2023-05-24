@@ -73,7 +73,6 @@ PROGRAM MAIN
     !edge of sphere (right edge)
     A(n,n-1) = 2.0_REAL64*k*dt
     A(n,n) = (1.0_REAL64) + ((D/(deltar**2))*dt)
-    !print*, 'a',A
     A_copy = A
 
     DO tstep = 1,(tsteps-1) !we have the first state (j=1), and each loop finds the j+1th state, so we go to tsteps-1.
