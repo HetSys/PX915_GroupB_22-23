@@ -25,12 +25,15 @@ PROGRAM MAIN
     REAL(REAL64) :: a_small, L !constants
     REAL(REAL64), PARAMETER :: F = 96485_REAL64 !Faraday constant
     CHARACTER(len=1) :: electrode_charge
-    CHARACTER(len=104) :: filename, output_name
+    CHARACTER(len=104) :: filename_txt, filename_nc, filename, output_name
     CHARACTER(len=5) :: file_extension
     INTEGER :: file_ext, file_test
 
     ! Read in user inputs
-    filename = read_command_line()
+    !filename = read_command_line()
+    CALL read_command_line_further(filename_txt, filename_nc)
+    print*, filename_txt, filename_nc
+    filename=filename_txt
     CALL set_inputs(filename, tstep_init, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage)
     
     !generate name of output file as 'filename_output.nc'
@@ -80,6 +83,7 @@ PROGRAM MAIN
     A(n,n-1) = 2.0_REAL64*k*dt
     A(n,n) = (1.0_REAL64) + ((D/(deltar**2))*dt)
     A_copy = A    
+    A_copy = A
 
     DO tstep = tstep_init,(tsteps-1) !we have the first state (j=1), and each loop finds the j+1th state, so we go to tsteps-1.
         !build solver
@@ -112,15 +116,13 @@ PROGRAM MAIN
         !END IF
         !add solution to storage vector
         cstorage(:,tstep+1) = c
-        !time_axis(tstep+1) = dt*tstep
+        time_axis(tstep+1) = dt*tstep
         
         CALL write_checkpoint(tstep, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage, filename, 20)
         
     END DO
     
-    DO tstep=1,(tsteps-1)
-      time_axis(tstep+1) = dt*tstep
-    END DO
+
     !write to output file
     OPEN(9,file='output.txt',form='formatted')
     DO i = 1,n
