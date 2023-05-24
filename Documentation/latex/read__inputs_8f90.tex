@@ -1,0 +1,75 @@
+\hypertarget{read__inputs_8f90}{\section{/home/chem/msuvnj/\-P\-X915\-\_\-\-Group\-B\-\_\-22-\/23/read\-\_\-inputs.f90 File Reference}
+\label{read__inputs_8f90}\index{/home/chem/msuvnj/\-P\-X915\-\_\-\-Group\-B\-\_\-22-\/23/read\-\_\-inputs.\-f90@{/home/chem/msuvnj/\-P\-X915\-\_\-\-Group\-B\-\_\-22-\/23/read\-\_\-inputs.\-f90}}
+}
+\subsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+module \hyperlink{classread__inputs}{read\-\_\-inputs}
+\begin{DoxyCompactList}\small\item\em Module to read user inputs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character(len=54) \hyperlink{read__inputs_8f90_ad493c45aa771d875f6b10e91b6345de6}{filename}
+\item 
+character(len=25) \hyperlink{read__inputs_8f90_adc3f146dd63dc3a68f4024d9527d2583}{val}
+\item 
+integer, intent(in) \hyperlink{read__inputs_8f90_a1e765e78c796c355d042ac4da36118f1}{line}
+\end{DoxyCompactItemize}
+
+
+\subsection{Variable Documentation}
+\hypertarget{read__inputs_8f90_ad493c45aa771d875f6b10e91b6345de6}{\index{read\-\_\-inputs.\-f90@{read\-\_\-inputs.\-f90}!filename@{filename}}
+\index{filename@{filename}!read_inputs.f90@{read\-\_\-inputs.\-f90}}
+\subsubsection[{filename}]{\setlength{\rightskip}{0pt plus 5cm}character(len=54) filename}}\label{read__inputs_8f90_ad493c45aa771d875f6b10e91b6345de6}
+If command line arguments are present, parse each into name and value. Then identify argument by name, and perform action based on value. If no arguments, or unrecognised argument, stop execution of code and print error. 
+
+Definition at line 40 of file read\-\_\-inputs.\-f90.
+
+\hypertarget{read__inputs_8f90_a1e765e78c796c355d042ac4da36118f1}{\index{read\-\_\-inputs.\-f90@{read\-\_\-inputs.\-f90}!line@{line}}
+\index{line@{line}!read_inputs.f90@{read\-\_\-inputs.\-f90}}
+\subsubsection[{line}]{\setlength{\rightskip}{0pt plus 5cm}integer, intent(in) line}}\label{read__inputs_8f90_a1e765e78c796c355d042ac4da36118f1}
+
+
+Definition at line 359 of file read\-\_\-inputs.\-f90.
+
+\hypertarget{read__inputs_8f90_adc3f146dd63dc3a68f4024d9527d2583}{\index{read\-\_\-inputs.\-f90@{read\-\_\-inputs.\-f90}!val@{val}}
+\index{val@{val}!read_inputs.f90@{read\-\_\-inputs.\-f90}}
+\subsubsection[{val}]{\setlength{\rightskip}{0pt plus 5cm}character(len=25) val}}\label{read__inputs_8f90_adc3f146dd63dc3a68f4024d9527d2583}
+
+\begin{DoxyEnumerate}
+\item Open input file.
+\item Initiate and label error process if parameter has incorrect type.
+\item Read in parameters until asterix line ($\ast$$\ast$$\ast$) found.
+\end{DoxyEnumerate}
+
+3.\-1. Read entire line into user\-\_\-input\-\_\-vars. (A) selects entire line, else splits at spaces and commas.
+
+3.\-2. Check if line is asterix line. Ends loop when true.
+
+3.\-3. Find index of parser character.
+
+3.\-4. Ensure line has correct format and can be parsed\-: parameter = value. Stop execution if cannot be parsed, and not asterix line.
+
+3.\-5. Parse line into name and val.
+
+3.\-6. Identify parameter and check validity. If type invalid, invalid\-\_\-param\-\_\-type called; prints error and stops execution. If value invalid, prints error and sets invalid\-\_\-param to true. Execution stopped after parsing all parameters. Checks for other invalid variables with correct parsing format; if true, prints error and stops execution.
+
+
+\begin{DoxyEnumerate}
+\item Check if any parameters are missing; has expected number been read.
+\item Exit if any parameters are invalid or missing.
+\item Read iapp label line.
+\item Read in iapp array.
+\end{DoxyEnumerate}
+
+7.\-1. Initiate and label error process if iapp has incorrect type.
+
+7.\-2. Loop through tsteps lines of file, reading into array iapp.
+
+
+\begin{DoxyEnumerate}
+\item Check no lines missed in file; is iapp in file longer than tsteps? If read is successful then iapp is too long in file. Prints error and stops execution. 
+\end{DoxyEnumerate}
+
+Definition at line 168 of file read\-\_\-inputs.\-f90.
+
