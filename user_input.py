@@ -1,7 +1,7 @@
 '''! 
 @brief Sets up the user inputs and executes the solver.
 @details This file contains all input parameters for the solver and can be changed by the user. 
-This file and all tunebale parameters are broken down in full detail in the user tutorial (see Tutorial.ipynb).
+This file and all tuneable parameters are broken down in full detail in the user tutorial (see Tutorial.ipynb).
 
 The following options can be controlled by editing this file:
 - Outputting stdout to a file.
@@ -9,6 +9,7 @@ The following options can be controlled by editing this file:
 - Set the values for the following input parameters:
     - tsteps
     - dt
+    - n
     - c0
     - D
     - R
@@ -33,7 +34,7 @@ import plotter
 import sys
 
 # The stdout (command line output) can be output to a file. Uncomment the line below to use this option.
-# sys.stdout = open('test.txt', 'w')
+# sys.stdout = open('stdout.txt', 'w')
 
 # Change the name of this of this file containing the user input parameters.
 solver_input_filename = 'user_input'
@@ -45,14 +46,6 @@ solver_input_filename = 'user_input'
 # Import default values
 tsteps, dt, n, c0, D, R, a, L, iapp, iapp_label, electrode_charge = UI.set_defaults_pos()
 
-
-# Read in applied current density from csv file
-
-'''!@private iapp_filename'''
-iapp_filename = 'WLTP_m10.csv'
-iapp, iapp_label, tsteps = UI.iapp_read_csv(iapp_filename)
-
-
 # Additional values important for visualisation
 
 K_pos = 3.42E-6   #  Am^-2(m^3mol^-1)^1.5
@@ -60,7 +53,6 @@ K_neg = 6.48E-7   #  Am^-2(m^3mol^-1)^1.5
 
 cmax_pos_sim = 63104.00   #  molm^-3 # m
 cmax_neg_sim = 33133.00   #  molm^-3 # m 
-
 
 ######### END SET VALUES #########
 
