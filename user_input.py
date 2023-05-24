@@ -48,11 +48,11 @@ tsteps, dt, n, c0, D, R, a, L, iapp, iapp_label, electrode_charge = UI.set_defau
 
 # Additional values important for visualisation
 
-K_pos = 3.42E-6   #  Am^-2(m^3mol^-1)^1.5
-K_neg = 6.48E-7   #  Am^-2(m^3mol^-1)^1.5
+K_pos = 3.42E-6   # Reaction rate at positive electrodes (Am^-2(m^3mol^-1)^1.5)
+K_neg = 6.48E-7   # Reaction rate at negative electrodes Am^-2(m^3mol^-1)^1.5)
 
-cmax_pos_sim = 63104.00   #  molm^-3 # m
-cmax_neg_sim = 33133.00   #  molm^-3 # m 
+cmax_pos_sim = 63104.00   # Positive electrode maximum concentration (molm^-3)
+cmax_neg_sim = 33133.00   # Negative electrode maximum concentration (molm^-3)
 
 ######### END SET VALUES #########
 

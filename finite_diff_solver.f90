@@ -1,5 +1,7 @@
 !NOTE - COMPILE THIS PROGRAM WITH THE FOLLOWING LINE
 !gfortran read_inputs.f90 nc_output.f90 finite_diff_solver.f90 -llapack -o finite_diff_solver
+
+!> @brief Crank-Nicolson finite differences solver
 PROGRAM MAIN
     USE ISO_FORTRAN_ENV
     USE read_inputs
