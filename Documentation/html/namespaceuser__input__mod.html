@@ -142,7 +142,7 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Package containing the functions needed to set up the user input parameters and execute the solver. </p>
 <p>Provides options for automatically generating applied current density 'iapp', as a constant or step function, and for reading iapp from a csv file.</p>
-<p>Provides the option to set the parameters to default values obtained from Chen et al. 2020, <a href="https://doi.org/10.1149/1945-7111/ab9050">https://doi.org/10.1149/1945-7111/ab9050</a>.</p>
+<p>Provides the option to set the parameters to default values obtained from <a class="el" href="citelist.html#CITEREF_Chen2020">[1]</a>.</p>
 <p>Contains additional functions for validating the types and values of the input parameters, writing the user input txt file, and executing the solver. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="a46d17f84312397e3da528ac3d00e44e9"></a>
@@ -395,8 +395,8 @@ start_times, currents, wait_times.
 </div><div class="memdoc">
 
 <p>Executes the SPM solver in parallel to run a GITT full cell test over nprocs cores. </p>
-<pre class="fragment">@details Executes the SPM solver in parallel to run a test experiment on a full cell using a galvanostatic intermittent titration technique (GITT), see 
-W. Weppner and R. A. Huggins 1977 J. Electrochem. Soc. 124 1569. 
+<pre class="fragment">@details Executes the SPM solver in parallel to run a test experiment on a full cell using a galvanostatic intermittent titration technique (GITT), 
+see \cite Weppner1977
 
 Due to the equilibration time between each current step applied, it is possible to pre-compute initial constant concentration for each of the single
 particles in the model by considering the amount of lithium removed in each step. 
@@ -489,8 +489,8 @@ The function works by:
 </div><div class="memdoc">
 
 <p>INITIALISE A FULL GITT TEST IN PARALLEL ####. </p>
-<p>Executes the SPM solver in parallel to run a GITT half cell test over nprocs cores. </p><pre class="fragment">@details Executes the SPM solver in parallel to run a test experiment on a half cell using a galvanostatic intermittent titration technique (GITT), see 
-W. Weppner and R. A. Huggins 1977 J. Electrochem. Soc. 124 1569. 
+<p>Executes the SPM solver in parallel to run a GITT half cell test over nprocs cores. </p><pre class="fragment">@details Executes the SPM solver in parallel to run a test experiment on a half cell using a galvanostatic intermittent titration technique (GITT), 
+see \cite Weppner1977
 
 Due to the equilibration time between each current step applied, it is possible to pre-compute initial constant concentration for each of the single
 particles in the model by considering the amount of lithium removed in each step.
@@ -699,7 +699,7 @@ The function works by:
 </div><div class="memdoc">
 
 <p>Returns default parameters for a negative electrode. </p>
-<p>Gives the default parameter values, obtained from Chen et al. 2020, <a href="https://doi.org/10.1149/1945-7111/ab9050">https://doi.org/10.1149/1945-7111/ab9050</a>. THe simulation is set up to run for 100 timesteps of size dt = 0.1s, with n = 1000 spatial nodes. Applied current density is set up as a constant current density of value 0.73mA m^2. </p>
+<p>Gives the default parameter values, obtained from <a class="el" href="citelist.html#CITEREF_Chen2020">[1]</a>. THe simulation is set up to run for 100 timesteps of size dt = 0.1s, with n = 1000 spatial nodes. Applied current density is set up as a constant current density of value 0.73mA m^2. </p>
 
 <p class="definition">Definition at line <a class="el" href="user__input__mod_8py_source.html#l00174">174</a> of file <a class="el" href="user__input__mod_8py_source.html">user_input_mod.py</a>.</p>
 
@@ -722,7 +722,7 @@ The function works by:
 
 <p>DEFAULT PARAMETERS ###. </p>
 <p>Returns default parameters for a positive electrode</p>
-<p>Gives the default parameter values, obtained from Chen et al. 2020, <a href="https://doi.org/10.1149/1945-7111/ab9050">https://doi.org/10.1149/1945-7111/ab9050</a>. The simulation is set up to run for 100 timesteps of size dt = 0.1s, with n = 1000 spatial nodes. Applied current density is set up as a constant current density of value 0.73mA m^2. </p>
+<p>Gives the default parameter values, obtained from <a class="el" href="citelist.html#CITEREF_Chen2020">[1]</a> The simulation is set up to run for 100 timesteps of size dt = 0.1s, with n = 1000 spatial nodes. Applied current density is set up as a constant current density of value 0.73mA m^2. </p>
 
 <p class="definition">Definition at line <a class="el" href="user__input__mod_8py_source.html#l00139">139</a> of file <a class="el" href="user__input__mod_8py_source.html">user_input_mod.py</a>.</p>
 

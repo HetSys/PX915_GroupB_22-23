@@ -50,15 +50,10 @@ var namespaces_dup =
     [ "read_inputs", "namespaceread__inputs.html", null ],
     [ "sensitivity_analysis", "namespacesensitivity__analysis.html", [
       [ "sensitivity_over_time", "namespacesensitivity__analysis.html#a3bbb34d8690f64a5c93e4cc3dec840d8", null ],
-      [ "update", "namespacesensitivity__analysis.html#a4382185d6a0fc4a32700a952c185e841", null ],
       [ "ani", "namespacesensitivity__analysis.html#a3822548af0ca38ff57751a03d00c1219", null ],
-      [ "ax", "namespacesensitivity__analysis.html#a8fa675eb2fcec5b95d9d21c670da7f30", null ],
-      [ "fig", "namespacesensitivity__analysis.html#a64aa603bc3c6c1587e7c6542452481ac", null ],
       [ "filename", "namespacesensitivity__analysis.html#a2ff994e16bf9521154de4cf659a3b689", null ],
       [ "fps", "namespacesensitivity__analysis.html#a681bb2c58cd55763494a71a1935b6de4", null ],
-      [ "scaled_sensitivities_matrix", "namespacesensitivity__analysis.html#aff97fb522682102cd43504ec022399f5", null ],
-      [ "writer", "namespacesensitivity__analysis.html#ab462494acb3894fee8e680bb0057d319", null ],
-      [ "x_labels", "namespacesensitivity__analysis.html#a3996585c5617328485ceb4ae6b83d1de", null ]
+      [ "writer", "namespacesensitivity__analysis.html#ab462494acb3894fee8e680bb0057d319", null ]
     ] ],
     [ "Uncertainty_Propagation", "namespace_uncertainty___propagation.html", [
       [ "in_out_easy_peasy", "namespace_uncertainty___propagation.html#a9a90f647e1a2ff553226cd4b8d2a1ea4", null ],

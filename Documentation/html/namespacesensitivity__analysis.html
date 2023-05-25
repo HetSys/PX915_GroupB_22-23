@@ -99,21 +99,12 @@ $(document).ready(function(){initNavTree('namespacesensitivity__analysis.html','
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a3bbb34d8690f64a5c93e4cc3dec840d8"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesensitivity__analysis.html#a3bbb34d8690f64a5c93e4cc3dec840d8">sensitivity_over_time</a> ()</td></tr>
+<tr class="memdesc:a3bbb34d8690f64a5c93e4cc3dec840d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrapper for the sensitivity analysis code.  <a href="namespacesensitivity__analysis.html#a3bbb34d8690f64a5c93e4cc3dec840d8">More...</a><br /></td></tr>
 <tr class="separator:a3bbb34d8690f64a5c93e4cc3dec840d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4382185d6a0fc4a32700a952c185e841"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesensitivity__analysis.html#a4382185d6a0fc4a32700a952c185e841">update</a> (frame)</td></tr>
-<tr class="separator:a4382185d6a0fc4a32700a952c185e841"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:aff97fb522682102cd43504ec022399f5"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesensitivity__analysis.html#aff97fb522682102cd43504ec022399f5">scaled_sensitivities_matrix</a> = <a class="el" href="namespacesensitivity__analysis.html#a3bbb34d8690f64a5c93e4cc3dec840d8">sensitivity_over_time</a>()</td></tr>
-<tr class="separator:aff97fb522682102cd43504ec022399f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64aa603bc3c6c1587e7c6542452481ac"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesensitivity__analysis.html#a64aa603bc3c6c1587e7c6542452481ac">fig</a></td></tr>
-<tr class="separator:a64aa603bc3c6c1587e7c6542452481ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8fa675eb2fcec5b95d9d21c670da7f30"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesensitivity__analysis.html#a8fa675eb2fcec5b95d9d21c670da7f30">ax</a></td></tr>
-<tr class="separator:a8fa675eb2fcec5b95d9d21c670da7f30"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3996585c5617328485ceb4ae6b83d1de"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesensitivity__analysis.html#a3996585c5617328485ceb4ae6b83d1de">x_labels</a> = ['<a class="el" href="read__inputs_8f90.html#a58bfeff0cdfb11fd416aa7e6a7fb87b0">c0</a>', 'D', 'R', 'a', 'L']</td></tr>
-<tr class="separator:a3996585c5617328485ceb4ae6b83d1de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3822548af0ca38ff57751a03d00c1219"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesensitivity__analysis.html#a3822548af0ca38ff57751a03d00c1219">ani</a> = FuncAnimation(<a class="el" href="namespacesensitivity__analysis.html#a64aa603bc3c6c1587e7c6542452481ac">fig</a>, <a class="el" href="namespacesensitivity__analysis.html#a4382185d6a0fc4a32700a952c185e841">update</a>, frames=len(<a class="el" href="namespacesensitivity__analysis.html#aff97fb522682102cd43504ec022399f5">scaled_sensitivities_matrix</a>), blit=True)</td></tr>
+<tr class="memitem:a3822548af0ca38ff57751a03d00c1219"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesensitivity__analysis.html#a3822548af0ca38ff57751a03d00c1219">ani</a> = FuncAnimation(fig, update, frames=len(scaled_sensitivities_matrix), blit=True)</td></tr>
 <tr class="separator:a3822548af0ca38ff57751a03d00c1219"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ff994e16bf9521154de4cf659a3b689"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesensitivity__analysis.html#a2ff994e16bf9521154de4cf659a3b689">filename</a></td></tr>
 <tr class="separator:a2ff994e16bf9521154de4cf659a3b689"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -142,27 +133,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Wrapper for the sensitivity analysis code. </p>
+
 <p class="definition">Definition at line <a class="el" href="sensitivity__analysis_8py_source.html#l00028">28</a> of file <a class="el" href="sensitivity__analysis_8py_source.html">sensitivity_analysis.py</a>.</p>
-
-</div>
-</div>
-<a id="a4382185d6a0fc4a32700a952c185e841"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4382185d6a0fc4a32700a952c185e841">&#9670;&nbsp;</a></span>update()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">def sensitivity_analysis.update </td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>frame</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="sensitivity__analysis_8py_source.html#l00288">288</a> of file <a class="el" href="sensitivity__analysis_8py_source.html">sensitivity_analysis.py</a>.</p>
 
 </div>
 </div>
@@ -174,44 +147,12 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">ani = FuncAnimation(<a class="el" href="namespacesensitivity__analysis.html#a64aa603bc3c6c1587e7c6542452481ac">fig</a>, <a class="el" href="namespacesensitivity__analysis.html#a4382185d6a0fc4a32700a952c185e841">update</a>, frames=len(<a class="el" href="namespacesensitivity__analysis.html#aff97fb522682102cd43504ec022399f5">scaled_sensitivities_matrix</a>), blit=True)</td>
+          <td class="memname">ani = FuncAnimation(fig, update, frames=len(scaled_sensitivities_matrix), blit=True)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sensitivity__analysis_8py_source.html#l00317">317</a> of file <a class="el" href="sensitivity__analysis_8py_source.html">sensitivity_analysis.py</a>.</p>
-
-</div>
-</div>
-<a id="a8fa675eb2fcec5b95d9d21c670da7f30"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8fa675eb2fcec5b95d9d21c670da7f30">&#9670;&nbsp;</a></span>ax</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">ax</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="sensitivity__analysis_8py_source.html#l00261">261</a> of file <a class="el" href="sensitivity__analysis_8py_source.html">sensitivity_analysis.py</a>.</p>
-
-</div>
-</div>
-<a id="a64aa603bc3c6c1587e7c6542452481ac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a64aa603bc3c6c1587e7c6542452481ac">&#9670;&nbsp;</a></span>fig</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">fig</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="sensitivity__analysis_8py_source.html#l00261">261</a> of file <a class="el" href="sensitivity__analysis_8py_source.html">sensitivity_analysis.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sensitivity__analysis_8py_source.html#l00324">324</a> of file <a class="el" href="sensitivity__analysis_8py_source.html">sensitivity_analysis.py</a>.</p>
 
 </div>
 </div>
@@ -227,7 +168,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sensitivity__analysis_8py_source.html#l00318">318</a> of file <a class="el" href="sensitivity__analysis_8py_source.html">sensitivity_analysis.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sensitivity__analysis_8py_source.html#l00325">325</a> of file <a class="el" href="sensitivity__analysis_8py_source.html">sensitivity_analysis.py</a>.</p>
 
 </div>
 </div>
@@ -243,23 +184,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sensitivity__analysis_8py_source.html#l00318">318</a> of file <a class="el" href="sensitivity__analysis_8py_source.html">sensitivity_analysis.py</a>.</p>
-
-</div>
-</div>
-<a id="aff97fb522682102cd43504ec022399f5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aff97fb522682102cd43504ec022399f5">&#9670;&nbsp;</a></span>scaled_sensitivities_matrix</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">def scaled_sensitivities_matrix = <a class="el" href="namespacesensitivity__analysis.html#a3bbb34d8690f64a5c93e4cc3dec840d8">sensitivity_over_time</a>()</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="sensitivity__analysis_8py_source.html#l00255">255</a> of file <a class="el" href="sensitivity__analysis_8py_source.html">sensitivity_analysis.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sensitivity__analysis_8py_source.html#l00325">325</a> of file <a class="el" href="sensitivity__analysis_8py_source.html">sensitivity_analysis.py</a>.</p>
 
 </div>
 </div>
@@ -275,23 +200,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sensitivity__analysis_8py_source.html#l00318">318</a> of file <a class="el" href="sensitivity__analysis_8py_source.html">sensitivity_analysis.py</a>.</p>
-
-</div>
-</div>
-<a id="a3996585c5617328485ceb4ae6b83d1de"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3996585c5617328485ceb4ae6b83d1de">&#9670;&nbsp;</a></span>x_labels</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">list x_labels = ['<a class="el" href="read__inputs_8f90.html#a58bfeff0cdfb11fd416aa7e6a7fb87b0">c0</a>', 'D', 'R', 'a', 'L']</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="sensitivity__analysis_8py_source.html#l00265">265</a> of file <a class="el" href="sensitivity__analysis_8py_source.html">sensitivity_analysis.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sensitivity__analysis_8py_source.html#l00325">325</a> of file <a class="el" href="sensitivity__analysis_8py_source.html">sensitivity_analysis.py</a>.</p>
 
 </div>
 </div>

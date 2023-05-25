@@ -33,15 +33,11 @@
 /home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:168: warning: documented symbol 'character' was not declared or defined.
 /home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:354: warning: documented symbol 'subroutine invalid_param_type' was not declared or defined.
 /home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:356: warning: documented symbol 'character' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/Documentation/math.md:30: warning: Found unknown command '\frac'
-/home/chem/msuvnj/PX915_GroupB_22-23/Documentation/math.md:30: warning: Found unknown command '\partial'
-/home/chem/msuvnj/PX915_GroupB_22-23/Documentation/math.md:30: warning: Found unknown command '\partial'
-/home/chem/msuvnj/PX915_GroupB_22-23/Documentation/math.md:30: warning: Found unknown command '\Bigg'
-/home/chem/msuvnj/PX915_GroupB_22-23/Documentation/math.md:30: warning: Found unknown command '\approx'
-/home/chem/msuvnj/PX915_GroupB_22-23/Documentation/math.md:30: warning: Found unknown command '\frac'
-/home/chem/msuvnj/PX915_GroupB_22-23/Documentation/math.md:30: warning: Found unknown command '\Delta'
-/home/chem/msuvnj/PX915_GroupB_22-23/Documentation/math.md:30: warning: Found unknown command '\iff'
-/home/chem/msuvnj/PX915_GroupB_22-23/Documentation/math.md:36: warning: Found unknown command '\textrm'
-/home/chem/msuvnj/PX915_GroupB_22-23/plotter.py:518: warning: Found unknown command '\frac'
-/home/chem/msuvnj/PX915_GroupB_22-23/plotter.py:518: warning: Found unknown command '\int_'
+/home/chem/msuvnj/PX915_GroupB_22-23/Documentation/math.md:7: warning: Found unknown command '\Delta'
+/home/chem/msuvnj/PX915_GroupB_22-23/Documentation/math.md:7: warning: Found unknown command '\Delta'
+/home/chem/msuvnj/PX915_GroupB_22-23/plotter.py:580: warning: Found unknown command '\frac'
+/home/chem/msuvnj/PX915_GroupB_22-23/plotter.py:580: warning: Found unknown command '\int_'
+/home/chem/msuvnj/PX915_GroupB_22-23/plotter.py:401: warning: argument 'interval_time' of command @param is not found in the argument list of plotter::plot_halfcell_GITT_result(filename, start_times, electrode, pos_params=None, neg_params=None, Animation=False, SaveFinalState=False, SparsifyAnimation=True, animation_interval_time=10)
+/home/chem/msuvnj/PX915_GroupB_22-23/plotter.py:355: warning: The following parameter of plotter.plot_halfcell_GITT_result(filename, start_times, electrode, pos_params=None, neg_params=None, Animation=False, SaveFinalState=False, SparsifyAnimation=True, animation_interval_time=10) is not documented:
+  parameter 'animation_interval_time'
 /home/chem/msuvnj/PX915_GroupB_22-23/user_input.py:23: warning: explicit link request to 'END' could not be resolved

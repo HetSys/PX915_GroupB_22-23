@@ -2,7 +2,7 @@
 @brief Package containing the functions needed to set up the user input parameters and execute the solver.
 @details Provides options for automatically generating applied current density 'iapp', as a constant or step function, and for reading iapp from a csv file.
 
-Provides the option to set the parameters to default values obtained from Chen et al. 2020, https://doi.org/10.1149/1945-7111/ab9050.
+Provides the option to set the parameters to default values obtained from \cite Chen2020.
 
 Contains additional functions for validating the types and values of the input parameters, writing the user input txt file, and executing the solver.
 '''
@@ -138,7 +138,7 @@ def iapp_step_setup(tsteps, iapp_steps):
 ### DEFAULT PARAMETERS ###
 def set_defaults_pos():
     '''!@brief Returns default parameters for a positive electrode
-    @details Gives the default parameter values, obtained from Chen et al. 2020, https://doi.org/10.1149/1945-7111/ab9050. 
+    @details Gives the default parameter values, obtained from \cite Chen2020
     The simulation is set up to run for 100 timesteps of size dt = 0.1s, with n = 1000 spatial nodes.
     Applied current density is set up as a constant current density of value 0.73mA m^2.
     '''
@@ -173,7 +173,7 @@ def set_defaults_pos():
 
 def set_defaults_neg():
     '''!@brief Returns default parameters for a negative electrode
-    @details Gives the default parameter values, obtained from Chen et al. 2020, https://doi.org/10.1149/1945-7111/ab9050. 
+    @details Gives the default parameter values, obtained from \cite Chen2020. 
     THe simulation is set up to run for 100 timesteps of size dt = 0.1s, with n = 1000 spatial nodes.
     Applied current density is set up as a constant current density of value 0.73mA m^2.
     '''
@@ -514,8 +514,8 @@ def GITT_half_cell(filename,nprocs,currents,start_times,run_times,wait_times,n,p
 
     '''!@brief Executes the SPM solver in parallel to run a GITT half cell test over nprocs cores.
 
-    @details Executes the SPM solver in parallel to run a test experiment on a half cell using a galvanostatic intermittent titration technique (GITT), see 
-    W. Weppner and R. A. Huggins 1977 J. Electrochem. Soc. 124 1569. 
+    @details Executes the SPM solver in parallel to run a test experiment on a half cell using a galvanostatic intermittent titration technique (GITT), 
+    see \cite Weppner1977
     
     Due to the equilibration time between each current step applied, it is possible to pre-compute initial constant concentration for each of the single
     particles in the model by considering the amount of lithium removed in each step.
@@ -576,8 +576,8 @@ def GITT_half_cell(filename,nprocs,currents,start_times,run_times,wait_times,n,p
 def GITT_full_cell(filename_positive,filename_negative,nprocs,currents,start_times,run_times,wait_times,n,params_pos,params_neg):
     '''!@brief Executes the SPM solver in parallel to run a GITT full cell test over nprocs cores.
 
-    @details Executes the SPM solver in parallel to run a test experiment on a full cell using a galvanostatic intermittent titration technique (GITT), see 
-    W. Weppner and R. A. Huggins 1977 J. Electrochem. Soc. 124 1569. 
+    @details Executes the SPM solver in parallel to run a test experiment on a full cell using a galvanostatic intermittent titration technique (GITT), 
+    see \cite Weppner1977
     
     Due to the equilibration time between each current step applied, it is possible to pre-compute initial constant concentration for each of the single
     particles in the model by considering the amount of lithium removed in each step. 

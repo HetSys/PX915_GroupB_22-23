@@ -89,31 +89,36 @@ $(document).ready(function(){initNavTree('mixed__parallel__strat__test_8py_sourc
 <div class="title">/home/chem/msuvnj/PX915_GroupB_22-23/mixed_parallel_strat_test.py</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="mixed__parallel__strat__test_8py.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="namespacemixed__parallel__strat__test.html">    1</a></span>&#160;<span class="keyword">import</span> unit_test</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">import</span> os</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">import</span> time</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">import</span> numpy <span class="keyword">as</span> np</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="namespacemixed__parallel__strat__test.html#a5988658cfed1fe31f3f5d46647695449">    7</a></span>&#160;num_cores = [1,2,4,8]</div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="namespacemixed__parallel__strat__test.html#aa960f02b9f7f22de9e3fbe916ffe62ac">    8</a></span>&#160;num_nodes = [2000]</div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="namespacemixed__parallel__strat__test.html#ac150111bafc331bafb353619452c5c5c">    9</a></span>&#160;times = np.zeros([len(num_cores),len(num_nodes)])</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordflow">for</span> i,n <span class="keywordflow">in</span> enumerate(num_nodes):</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordflow">for</span> j,core_num <span class="keywordflow">in</span> enumerate(num_cores):</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="namespacemixed__parallel__strat__test.html#a550769bbd4e7537ff90a656f5b0c23b2">   12</a></span>&#160;        start = time.time()</div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="namespacemixed__parallel__strat__test.html#a770f288d3048ff6cbee9faa0969fd6b0">   13</a></span>&#160;        <a class="code" href="namespaceunit__test.html#a622ddcb332e98398dc99f90f023285b7">unit_test.run_unit_test</a>(nodenum=n,dt=5.0,num_cores=core_num)</div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="namespacemixed__parallel__strat__test.html#afb358f48b1646c750fb9da6c6585be2b">   14</a></span>&#160;        end = time.time()</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        print(end-start)</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        times[j,i] = end-start</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(len(num_nodes)):</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="namespacemixed__parallel__strat__test.html#a22f45a3cb4f074e609f58ebaeef0ecf9">   19</a></span>&#160;    plt.plot(num_cores,times[:,i],label=str(num_nodes[i]))</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;plt.legend()</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;plt.xlabel(<span class="stringliteral">&#39;Number of cores given&#39;</span>)</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;plt.ylabel(<span class="stringliteral">&#39;runtime(s)&#39;</span>)</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;plt.title(<span class="stringliteral">&#39;Unit test runtime with different numbers of cores given&#39;</span>)</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;plt.savefig(<span class="stringliteral">&#39;RuntimeVSNumCores_mixed_strategy.png&#39;</span>)</div>
-<div class="ttc" id="anamespaceunit__test_html_a622ddcb332e98398dc99f90f023285b7"><div class="ttname"><a href="namespaceunit__test.html#a622ddcb332e98398dc99f90f023285b7">unit_test.run_unit_test</a></div><div class="ttdeci">def run_unit_test(nodenum=500, dt=1.0, num_cores=1)</div><div class="ttdef"><b>Definition:</b> <a href="unit__test_8py_source.html#l00007">unit_test.py:7</a></div></div>
+<a href="mixed__parallel__strat__test_8py.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="namespacemixed__parallel__strat__test.html">    1</a></span>&#160;<span class="stringliteral">&#39;&#39;&#39;!@brief Test the runtime of the unit test for different provided processes in the mixed parallel strategy.&#39;&#39;&#39;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">import</span> unit_test</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">import</span> os</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">import</span> time</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">import</span> numpy <span class="keyword">as</span> np</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">#set of different core nums to test</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="namespacemixed__parallel__strat__test.html#a5988658cfed1fe31f3f5d46647695449">    9</a></span>&#160;num_cores = [1,2,4,8]</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">#set of different node numbers to test</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="namespacemixed__parallel__strat__test.html#aa960f02b9f7f22de9e3fbe916ffe62ac">   11</a></span>&#160;num_nodes = [2000]</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="namespacemixed__parallel__strat__test.html#ac150111bafc331bafb353619452c5c5c">   12</a></span>&#160;times = np.zeros([len(num_cores),len(num_nodes)])</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordflow">for</span> i,n <span class="keywordflow">in</span> enumerate(num_nodes):</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordflow">for</span> j,core_num <span class="keywordflow">in</span> enumerate(num_cores):</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="namespacemixed__parallel__strat__test.html#a550769bbd4e7537ff90a656f5b0c23b2">   15</a></span>&#160;        start = time.time()</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="comment">#run the unit test with different numbers of provided cores</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="namespacemixed__parallel__strat__test.html#a770f288d3048ff6cbee9faa0969fd6b0">   17</a></span>&#160;        <a class="code" href="namespaceunit__test.html#a622ddcb332e98398dc99f90f023285b7">unit_test.run_unit_test</a>(nodenum=n,dt=5.0,num_cores=core_num)</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="namespacemixed__parallel__strat__test.html#afb358f48b1646c750fb9da6c6585be2b">   18</a></span>&#160;        end = time.time()</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        print(end-start)</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        times[j,i] = end-start</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">#plot results</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(len(num_nodes)):</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="namespacemixed__parallel__strat__test.html#a22f45a3cb4f074e609f58ebaeef0ecf9">   24</a></span>&#160;    plt.plot(num_cores,times[:,i],label=str(num_nodes[i]))</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;plt.legend()</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;plt.xlabel(<span class="stringliteral">&#39;Number of cores given&#39;</span>)</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;plt.ylabel(<span class="stringliteral">&#39;runtime(s)&#39;</span>)</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;plt.title(<span class="stringliteral">&#39;Unit test runtime with different numbers of cores given&#39;</span>)</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;plt.savefig(<span class="stringliteral">&#39;RuntimeVSNumCores_mixed_strategy.png&#39;</span>)</div>
+<div class="ttc" id="anamespaceunit__test_html_a622ddcb332e98398dc99f90f023285b7"><div class="ttname"><a href="namespaceunit__test.html#a622ddcb332e98398dc99f90f023285b7">unit_test.run_unit_test</a></div><div class="ttdeci">def run_unit_test(nodenum=500, dt=1.0, num_cores=1)</div><div class="ttdef"><b>Definition:</b> <a href="unit__test_8py_source.html#l00012">unit_test.py:12</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

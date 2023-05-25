@@ -9,21 +9,11 @@ First order sensitivity analysis.
 \begin{DoxyCompactItemize}
 \item 
 def \mbox{\hyperlink{namespacesensitivity__analysis_a3bbb34d8690f64a5c93e4cc3dec840d8}{sensitivity\+\_\+over\+\_\+time}} ()
-\item 
-def \mbox{\hyperlink{namespacesensitivity__analysis_a4382185d6a0fc4a32700a952c185e841}{update}} (frame)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Wrapper for the sensitivity analysis code. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-def \mbox{\hyperlink{namespacesensitivity__analysis_aff97fb522682102cd43504ec022399f5}{scaled\+\_\+sensitivities\+\_\+matrix}} = \mbox{\hyperlink{namespacesensitivity__analysis_a3bbb34d8690f64a5c93e4cc3dec840d8}{sensitivity\+\_\+over\+\_\+time}}()
-\item 
-\mbox{\hyperlink{namespacesensitivity__analysis_a64aa603bc3c6c1587e7c6542452481ac}{fig}}
-\item 
-\mbox{\hyperlink{namespacesensitivity__analysis_a8fa675eb2fcec5b95d9d21c670da7f30}{ax}}
-\item 
-list \mbox{\hyperlink{namespacesensitivity__analysis_a3996585c5617328485ceb4ae6b83d1de}{x\+\_\+labels}} = \mbox{[}\textquotesingle{}\mbox{\hyperlink{read__inputs_8f90_a58bfeff0cdfb11fd416aa7e6a7fb87b0}{c0}}\textquotesingle{}, \textquotesingle{}D\textquotesingle{}, \textquotesingle{}R\textquotesingle{}, \textquotesingle{}a\textquotesingle{}, \textquotesingle{}L\textquotesingle{}\mbox{]}
-\item 
-\mbox{\hyperlink{namespacesensitivity__analysis_a3822548af0ca38ff57751a03d00c1219}{ani}} = Func\+Animation(\mbox{\hyperlink{namespacesensitivity__analysis_a64aa603bc3c6c1587e7c6542452481ac}{fig}}, \mbox{\hyperlink{namespacesensitivity__analysis_a4382185d6a0fc4a32700a952c185e841}{update}}, frames=len(\mbox{\hyperlink{namespacesensitivity__analysis_aff97fb522682102cd43504ec022399f5}{scaled\+\_\+sensitivities\+\_\+matrix}}), blit=True)
+\mbox{\hyperlink{namespacesensitivity__analysis_a3822548af0ca38ff57751a03d00c1219}{ani}} = Func\+Animation(fig, update, frames=len(scaled\+\_\+sensitivities\+\_\+matrix), blit=True)
 \item 
 \mbox{\hyperlink{namespacesensitivity__analysis_a2ff994e16bf9521154de4cf659a3b689}{filename}}
 \item 
@@ -49,17 +39,11 @@ Credit to Dr. James Kermode for some functions recycled from PX914.
 
 
 
+Wrapper for the sensitivity analysis code. 
+
+
+
 Definition at line 28 of file sensitivity\+\_\+analysis.\+py.
-
-\mbox{\Hypertarget{namespacesensitivity__analysis_a4382185d6a0fc4a32700a952c185e841}\label{namespacesensitivity__analysis_a4382185d6a0fc4a32700a952c185e841}} 
-\index{sensitivity\_analysis@{sensitivity\_analysis}!update@{update}}
-\index{update@{update}!sensitivity\_analysis@{sensitivity\_analysis}}
-\doxysubsubsection{\texorpdfstring{update()}{update()}}
-{\footnotesize\ttfamily def sensitivity\+\_\+analysis.\+update (\begin{DoxyParamCaption}\item[{}]{frame }\end{DoxyParamCaption})}
-
-
-
-Definition at line 288 of file sensitivity\+\_\+analysis.\+py.
 
 
 
@@ -68,31 +52,11 @@ Definition at line 288 of file sensitivity\+\_\+analysis.\+py.
 \index{sensitivity\_analysis@{sensitivity\_analysis}!ani@{ani}}
 \index{ani@{ani}!sensitivity\_analysis@{sensitivity\_analysis}}
 \doxysubsubsection{\texorpdfstring{ani}{ani}}
-{\footnotesize\ttfamily ani = Func\+Animation(\mbox{\hyperlink{namespacesensitivity__analysis_a64aa603bc3c6c1587e7c6542452481ac}{fig}}, \mbox{\hyperlink{namespacesensitivity__analysis_a4382185d6a0fc4a32700a952c185e841}{update}}, frames=len(\mbox{\hyperlink{namespacesensitivity__analysis_aff97fb522682102cd43504ec022399f5}{scaled\+\_\+sensitivities\+\_\+matrix}}), blit=True)}
+{\footnotesize\ttfamily ani = Func\+Animation(fig, update, frames=len(scaled\+\_\+sensitivities\+\_\+matrix), blit=True)}
 
 
 
-Definition at line 317 of file sensitivity\+\_\+analysis.\+py.
-
-\mbox{\Hypertarget{namespacesensitivity__analysis_a8fa675eb2fcec5b95d9d21c670da7f30}\label{namespacesensitivity__analysis_a8fa675eb2fcec5b95d9d21c670da7f30}} 
-\index{sensitivity\_analysis@{sensitivity\_analysis}!ax@{ax}}
-\index{ax@{ax}!sensitivity\_analysis@{sensitivity\_analysis}}
-\doxysubsubsection{\texorpdfstring{ax}{ax}}
-{\footnotesize\ttfamily ax}
-
-
-
-Definition at line 261 of file sensitivity\+\_\+analysis.\+py.
-
-\mbox{\Hypertarget{namespacesensitivity__analysis_a64aa603bc3c6c1587e7c6542452481ac}\label{namespacesensitivity__analysis_a64aa603bc3c6c1587e7c6542452481ac}} 
-\index{sensitivity\_analysis@{sensitivity\_analysis}!fig@{fig}}
-\index{fig@{fig}!sensitivity\_analysis@{sensitivity\_analysis}}
-\doxysubsubsection{\texorpdfstring{fig}{fig}}
-{\footnotesize\ttfamily fig}
-
-
-
-Definition at line 261 of file sensitivity\+\_\+analysis.\+py.
+Definition at line 324 of file sensitivity\+\_\+analysis.\+py.
 
 \mbox{\Hypertarget{namespacesensitivity__analysis_a2ff994e16bf9521154de4cf659a3b689}\label{namespacesensitivity__analysis_a2ff994e16bf9521154de4cf659a3b689}} 
 \index{sensitivity\_analysis@{sensitivity\_analysis}!filename@{filename}}
@@ -102,7 +66,7 @@ Definition at line 261 of file sensitivity\+\_\+analysis.\+py.
 
 
 
-Definition at line 318 of file sensitivity\+\_\+analysis.\+py.
+Definition at line 325 of file sensitivity\+\_\+analysis.\+py.
 
 \mbox{\Hypertarget{namespacesensitivity__analysis_a681bb2c58cd55763494a71a1935b6de4}\label{namespacesensitivity__analysis_a681bb2c58cd55763494a71a1935b6de4}} 
 \index{sensitivity\_analysis@{sensitivity\_analysis}!fps@{fps}}
@@ -112,17 +76,7 @@ Definition at line 318 of file sensitivity\+\_\+analysis.\+py.
 
 
 
-Definition at line 318 of file sensitivity\+\_\+analysis.\+py.
-
-\mbox{\Hypertarget{namespacesensitivity__analysis_aff97fb522682102cd43504ec022399f5}\label{namespacesensitivity__analysis_aff97fb522682102cd43504ec022399f5}} 
-\index{sensitivity\_analysis@{sensitivity\_analysis}!scaled\_sensitivities\_matrix@{scaled\_sensitivities\_matrix}}
-\index{scaled\_sensitivities\_matrix@{scaled\_sensitivities\_matrix}!sensitivity\_analysis@{sensitivity\_analysis}}
-\doxysubsubsection{\texorpdfstring{scaled\_sensitivities\_matrix}{scaled\_sensitivities\_matrix}}
-{\footnotesize\ttfamily def scaled\+\_\+sensitivities\+\_\+matrix = \mbox{\hyperlink{namespacesensitivity__analysis_a3bbb34d8690f64a5c93e4cc3dec840d8}{sensitivity\+\_\+over\+\_\+time}}()}
-
-
-
-Definition at line 255 of file sensitivity\+\_\+analysis.\+py.
+Definition at line 325 of file sensitivity\+\_\+analysis.\+py.
 
 \mbox{\Hypertarget{namespacesensitivity__analysis_ab462494acb3894fee8e680bb0057d319}\label{namespacesensitivity__analysis_ab462494acb3894fee8e680bb0057d319}} 
 \index{sensitivity\_analysis@{sensitivity\_analysis}!writer@{writer}}
@@ -132,15 +86,5 @@ Definition at line 255 of file sensitivity\+\_\+analysis.\+py.
 
 
 
-Definition at line 318 of file sensitivity\+\_\+analysis.\+py.
-
-\mbox{\Hypertarget{namespacesensitivity__analysis_a3996585c5617328485ceb4ae6b83d1de}\label{namespacesensitivity__analysis_a3996585c5617328485ceb4ae6b83d1de}} 
-\index{sensitivity\_analysis@{sensitivity\_analysis}!x\_labels@{x\_labels}}
-\index{x\_labels@{x\_labels}!sensitivity\_analysis@{sensitivity\_analysis}}
-\doxysubsubsection{\texorpdfstring{x\_labels}{x\_labels}}
-{\footnotesize\ttfamily list x\+\_\+labels = \mbox{[}\textquotesingle{}\mbox{\hyperlink{read__inputs_8f90_a58bfeff0cdfb11fd416aa7e6a7fb87b0}{c0}}\textquotesingle{}, \textquotesingle{}D\textquotesingle{}, \textquotesingle{}R\textquotesingle{}, \textquotesingle{}a\textquotesingle{}, \textquotesingle{}L\textquotesingle{}\mbox{]}}
-
-
-
-Definition at line 265 of file sensitivity\+\_\+analysis.\+py.
+Definition at line 325 of file sensitivity\+\_\+analysis.\+py.
 

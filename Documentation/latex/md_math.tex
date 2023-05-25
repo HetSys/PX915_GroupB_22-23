@@ -1,5 +1,5 @@
 A half single particle model by Group B for the 2023 PX915 group project.\hypertarget{md_math_autotoc_md1}{}\doxysection{1 Mathematics and Algorithms}\label{md_math_autotoc_md1}
-A Crank-\/\+Nicolson semi-\/implicit finite difference scheme is used to approximate the partial differential equation (PDE) solution to obtain the concentration of lithium in the sphere, {\ttfamily \$c(i\+\_\+app, r)\$}, at each time step. This is accurate to second order both spatially and temporally, i.\+e. {\ttfamily \$\+O(\+Delta r$^\wedge$2)\$} \& {\ttfamily \$\+O(\+Delta t$^\wedge$2)\$}.
+A Crank-\/\+Nicolson semi-\/implicit finite difference scheme is used to approximate the partial differential equation (PDE) solution to obtain the concentration of lithium in the sphere, c(i\textsubscript{app}, r), at each time step. This is accurate to second order both spatially and temporally, i.\+e. (\$\textbackslash{}\+Delta\$ r\textsuperscript{2}) \& (\$\textbackslash{}\+Delta\$ r\textsuperscript{2})
 
 A key benefit of the Crank-\/\+Nicolson scheme is that it is unconditionally stable for the spherically symmetric diffusion equation (the PDE of interest), thus not restricting the user\textquotesingle{}s choice of step size spatially or temporally. Although, due to being second order, the accuracy may be impacted by a larger step size.
 
@@ -19,12 +19,12 @@ Generally\+:
 
 Boundary conditions are treated through the use of ghost nodes, which assign values for the function of interest to regions just beyond the domain of the problem in an attempt to approximate the first derivatives present in the Neumann boundary conditions specified. For example,
 
-\begin{quote}
-\$\mbox{[}\textbackslash{}frac\{\textbackslash{}partial c\}\{\textbackslash{}partial r\}\textbackslash{}\+Bigg$\vert$\+\_\+\{r=0\} \textbackslash{}approx \textbackslash{}frac\{c\+\_\+1 -\/ c\+\_\+\{-\/1\}\}\{2\textbackslash{}\+Delta r\} = 0 \textbackslash{}iff c\+\_\+1 = c\+\_\+\{-\/1\}.\mbox{]}\$ \end{quote}
+
+
 The accuracy of the scheme is such that it is equivalent to the interior solved points.
 
 Finally, a general initial condition is specified of the form
 
-\begin{quote}
-\$c = c\+\_\+0 \textbackslash{}textrm\{ at \} t=0.\$ \end{quote}
+
+
 The form of c\+\_\+0 is assumed to be constant in R. 
