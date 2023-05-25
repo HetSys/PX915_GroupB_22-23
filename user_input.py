@@ -1,5 +1,4 @@
-'''! 
-@brief Sets up the user inputs and executes the solver.
+'''! @brief Sets up the user inputs and executes the solver.
 @details This file contains all input parameters for the solver and can be changed by the user. 
 This file and all tuneable parameters are broken down in full detail in the user tutorial (see Tutorial.ipynb).
 
