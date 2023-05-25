@@ -1,43 +1,68 @@
-\hypertarget{user__input__parallel__simulation_8py}{\section{/home/chem/msuvnj/\-P\-X915\-\_\-\-Group\-B\-\_\-22-\/23/user\-\_\-input\-\_\-parallel\-\_\-simulation.py File Reference}
-\label{user__input__parallel__simulation_8py}\index{/home/chem/msuvnj/\-P\-X915\-\_\-\-Group\-B\-\_\-22-\/23/user\-\_\-input\-\_\-parallel\-\_\-simulation.\-py@{/home/chem/msuvnj/\-P\-X915\-\_\-\-Group\-B\-\_\-22-\/23/user\-\_\-input\-\_\-parallel\-\_\-simulation.\-py}}
-}
-\subsection*{Namespaces}
+\hypertarget{user__input__parallel__simulation_8py}{}\doxysection{/home/chem/msuvnj/\+PX915\+\_\+\+Group\+B\+\_\+22-\/23/user\+\_\+input\+\_\+parallel\+\_\+simulation.py File Reference}
+\label{user__input__parallel__simulation_8py}\index{/home/chem/msuvnj/PX915\_GroupB\_22-\/23/user\_input\_parallel\_simulation.py@{/home/chem/msuvnj/PX915\_GroupB\_22-\/23/user\_input\_parallel\_simulation.py}}
+\doxysubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{namespaceuser__input__parallel__simulation}{user\-\_\-input\-\_\-parallel\-\_\-simulation}
+ \mbox{\hyperlink{namespaceuser__input__parallel__simulation}{user\+\_\+input\+\_\+parallel\+\_\+simulation}}
+\begin{DoxyCompactList}\small\item\em a running script which exists to demonstrate how one uses the GITT function to run simulations in parallel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{namespaceuser__input__parallel__simulation_a5934d690c688edbd92210f38fe5855e7}{output\+\_\+filename}} = \textquotesingle{}current\+\_\+step\textquotesingle{}
+\item 
+string \mbox{\hyperlink{namespaceuser__input__parallel__simulation_ad2d57213b2f83f73d24b53130ef31916}{electrode}} = \textquotesingle{}positive\textquotesingle{}
+\item 
+\mbox{\hyperlink{namespaceuser__input__parallel__simulation_a63b973cf773a42a37d790d0a4bce8ddc}{tsteps}}
+\item 
+\mbox{\hyperlink{namespaceuser__input__parallel__simulation_a778e38aa889751afffa2dea6b803e67a}{dt}} = 1.\+0
+\item 
+\mbox{\hyperlink{namespaceuser__input__parallel__simulation_aeab71244afb687f16d8c4f5ee9d6ef0e}{n}}
+\item 
+\mbox{\hyperlink{namespaceuser__input__parallel__simulation_aa3407022b348cd058d9808eed482ab4a}{c0}} = 30000.\+0
+\item 
+\mbox{\hyperlink{namespaceuser__input__parallel__simulation_a350bfcb1e3cfb28ddff48ce525d4f139}{D}}
+\item 
+\mbox{\hyperlink{namespaceuser__input__parallel__simulation_acb95449a94688af33f6e9bb090cf2936}{R}}
+\item 
+\mbox{\hyperlink{namespaceuser__input__parallel__simulation_a4124bc0a9335c27f086f24ba207a4912}{a}}
+\item 
+\mbox{\hyperlink{namespaceuser__input__parallel__simulation_a67824ecf84f5816f07b74fa956bdbcd2}{L}}
+\item 
+\mbox{\hyperlink{namespaceuser__input__parallel__simulation_a75917accaa8fb18778186e284986cc0a}{iapp}}
+\item 
+\mbox{\hyperlink{namespaceuser__input__parallel__simulation_ac21892176e114258bd4e9d6e8d18187a}{iapp\+\_\+label}}
+\item 
+\mbox{\hyperlink{namespaceuser__input__parallel__simulation_a6950a02b90168932f3f287626dc79825}{electrode\+\_\+charge}}
+\item 
+float \mbox{\hyperlink{namespaceuser__input__parallel__simulation_ab1a8ebec490ba1301f818bd1c5f1f3fa}{K\+\_\+pos}} = 3.\+42E-\/6
+\item 
+float \mbox{\hyperlink{namespaceuser__input__parallel__simulation_a64d0c5854299798787675bc91586023c}{K\+\_\+neg}} = 6.\+48E-\/7
+\item 
+float \mbox{\hyperlink{namespaceuser__input__parallel__simulation_aa5b015cc7d0bda453c6163023448db72}{cmax\+\_\+pos\+\_\+sim}} = 63104.\+00
+\item 
+float \mbox{\hyperlink{namespaceuser__input__parallel__simulation_ab7633a5e9c70aabfe6992e4fe521a1f9}{cmax\+\_\+neg\+\_\+sim}} = 33133.\+00
+\item 
+int \mbox{\hyperlink{namespaceuser__input__parallel__simulation_ad7c4c17cf720ee538e27c02ab356ed6b}{nprocs}} = 5
+\item 
+int \mbox{\hyperlink{namespaceuser__input__parallel__simulation_aa2414080b021dbb9b56eeaeedec0ffa2}{nsteps}} = 5
+\item 
+list \mbox{\hyperlink{namespaceuser__input__parallel__simulation_a216022bdba987f127b6cc081ee78e2bd}{currents}} = \mbox{[}20.\+0 for \mbox{\hyperlink{read__inputs_8f90_aaea4baed8fd8b780f6938f0dc1fb0f72}{i}} in range(nsteps)\mbox{]}
+\item 
+list \mbox{\hyperlink{namespaceuser__input__parallel__simulation_a0954fbf3a78f4bdb8ab964be15c01b01}{start\+\_\+times}} = \mbox{[}2150.\+0$\ast$\mbox{\hyperlink{read__inputs_8f90_aaea4baed8fd8b780f6938f0dc1fb0f72}{i}} for \mbox{\hyperlink{read__inputs_8f90_aaea4baed8fd8b780f6938f0dc1fb0f72}{i}} in range(nsteps)\mbox{]}
+\item 
+list \mbox{\hyperlink{namespaceuser__input__parallel__simulation_a5a6deb885420d2b81e210e580767b1c1}{run\+\_\+times}} = \mbox{[}150.\+0 for \mbox{\hyperlink{read__inputs_8f90_aaea4baed8fd8b780f6938f0dc1fb0f72}{i}} in range(nsteps)\mbox{]}
+\item 
+list \mbox{\hyperlink{namespaceuser__input__parallel__simulation_ae584b229c7b1ea3d8330e6038884ffd3}{wait\+\_\+times}} = \mbox{[}2000.\+0 for \mbox{\hyperlink{read__inputs_8f90_aaea4baed8fd8b780f6938f0dc1fb0f72}{i}} in range(nsteps)\mbox{]}
+\item 
+list \mbox{\hyperlink{namespaceuser__input__parallel__simulation_ad4a342a882e80fb0b1b0a80df4b9321b}{params}} = \mbox{[}\mbox{\hyperlink{read__inputs_8f90_a10d68aa82fa620f29bc3adf5bde42bb9}{dt}}, \mbox{\hyperlink{read__inputs_8f90_a58bfeff0cdfb11fd416aa7e6a7fb87b0}{c0}}, D, R, a, L,\mbox{\hyperlink{read__inputs_8f90_aff6b764bcec5679997febf97860f09c4}{electrode\+\_\+charge}}\mbox{]}
+\item 
+list \mbox{\hyperlink{namespaceuser__input__parallel__simulation_a9850af56ec718d322d6277be29d14383}{plot\+\_\+params\+\_\+neg}} = \mbox{[}K\+\_\+neg,a,cmax\+\_\+neg\+\_\+sim,L\mbox{]}
+\item 
+\mbox{\hyperlink{namespaceuser__input__parallel__simulation_a02dfc31e8717e46c15df15c0756bb7e7}{neg\+\_\+params}}
+\item 
+\mbox{\hyperlink{namespaceuser__input__parallel__simulation_a657833f0c453f89346fd4916e1bbe550}{Animation}}
+\item 
+\mbox{\hyperlink{namespaceuser__input__parallel__simulation_a643a20c0c59588a0f741a6095e2025fd}{True}}
+\item 
+\mbox{\hyperlink{namespaceuser__input__parallel__simulation_acc27a1da570e84f9ca12e60f0e4c7451}{Sparsify\+Animation}}
 \end{DoxyCompactItemize}
-\subsection*{Variables}
-\begin{DoxyCompactItemize}
-\item 
-string \hyperlink{namespaceuser__input__parallel__simulation_ac0647ad8713153cc6b448750dbeb1b15}{output\-\_\-filename} = 'current\-\_\-step'
-\begin{DoxyCompactList}\small\item\em Uncomment to print stdout to file sys.\-stdout = open('test.\-txt', 'w') \end{DoxyCompactList}\item 
-string \hyperlink{namespaceuser__input__parallel__simulation_a6d9f4e281307eca8be6bad984ed9786d}{electrode} = 'positive'
-\item 
-float \hyperlink{namespaceuser__input__parallel__simulation_aa3407022b348cd058d9808eed482ab4a}{c0} = 30000.\-0
-\begin{DoxyCompactList}\small\item\em Import default values from \href{https://doi.org/10.1149/1945-7111/ab9050}{\tt https\-://doi.\-org/10.\-1149/1945-\/7111/ab9050} Use \hyperlink{namespaceuser__input__mod_acef497295190e3914f7cd93da2708856}{U\-I.\-set\-\_\-defaults\-\_\-pos()} for positive electrode and ...\-\_\-neg() for negative electrode. \end{DoxyCompactList}\item 
-float \hyperlink{namespaceuser__input__parallel__simulation_a778e38aa889751afffa2dea6b803e67a}{dt} = 1.\-0
-\item 
-float \hyperlink{namespaceuser__input__parallel__simulation_ab1a8ebec490ba1301f818bd1c5f1f3fa}{K\-\_\-pos} = 3.\-42\-E-\/6
-\item 
-float \hyperlink{namespaceuser__input__parallel__simulation_a64d0c5854299798787675bc91586023c}{K\-\_\-neg} = 6.\-48\-E-\/7
-\item 
-float \hyperlink{namespaceuser__input__parallel__simulation_aa5b015cc7d0bda453c6163023448db72}{cmax\-\_\-pos\-\_\-sim} = 63104.\-00
-\item 
-float \hyperlink{namespaceuser__input__parallel__simulation_ab7633a5e9c70aabfe6992e4fe521a1f9}{cmax\-\_\-neg\-\_\-sim} = 33133.\-00
-\item 
-int \hyperlink{namespaceuser__input__parallel__simulation_ad7c4c17cf720ee538e27c02ab356ed6b}{nprocs} = 5
-\begin{DoxyCompactList}\small\item\em Check parameters are valid \#\#\#\#\#\#. \end{DoxyCompactList}\item 
-int \hyperlink{namespaceuser__input__parallel__simulation_aa2414080b021dbb9b56eeaeedec0ffa2}{nsteps} = 5
-\item 
-list \hyperlink{namespaceuser__input__parallel__simulation_a216022bdba987f127b6cc081ee78e2bd}{currents} = \mbox{[}20.\-0 for i in range(nsteps)\mbox{]}
-\item 
-list \hyperlink{namespaceuser__input__parallel__simulation_a377a515511d37e8c7ac5501847d6485d}{start\-\_\-times} = \mbox{[}2150.\-0$\ast$i for i in range(nsteps)\mbox{]}
-\item 
-list \hyperlink{namespaceuser__input__parallel__simulation_a5a6deb885420d2b81e210e580767b1c1}{run\-\_\-times} = \mbox{[}150.\-0 for i in range(nsteps)\mbox{]}
-\item 
-list \hyperlink{namespaceuser__input__parallel__simulation_ae584b229c7b1ea3d8330e6038884ffd3}{wait\-\_\-times} = \mbox{[}2000.\-0 for i in range(nsteps)\mbox{]}
-\item 
-list \hyperlink{namespaceuser__input__parallel__simulation_ad4a342a882e80fb0b1b0a80df4b9321b}{params} = \mbox{[}dt, c0, D, R, a, L,electrode\-\_\-charge\mbox{]}
-\item 
-list \hyperlink{namespaceuser__input__parallel__simulation_a0861e0e85d9d6139e0cc3cc1cc4fa692}{plot\-\_\-params\-\_\-neg} = \mbox{[}K\-\_\-neg,a,cmax\-\_\-neg\-\_\-sim,L\mbox{]}
-\begin{DoxyCompactList}\small\item\em Call the function to perform the parallel solve. \end{DoxyCompactList}\end{DoxyCompactItemize}

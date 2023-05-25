@@ -1,75 +1,337 @@
-\hypertarget{read__inputs_8f90}{\section{/home/chem/msuvnj/\-P\-X915\-\_\-\-Group\-B\-\_\-22-\/23/read\-\_\-inputs.f90 File Reference}
-\label{read__inputs_8f90}\index{/home/chem/msuvnj/\-P\-X915\-\_\-\-Group\-B\-\_\-22-\/23/read\-\_\-inputs.\-f90@{/home/chem/msuvnj/\-P\-X915\-\_\-\-Group\-B\-\_\-22-\/23/read\-\_\-inputs.\-f90}}
-}
-\subsection*{Data Types}
+\hypertarget{read__inputs_8f90}{}\doxysection{/home/chem/msuvnj/\+PX915\+\_\+\+Group\+B\+\_\+22-\/23/read\+\_\+inputs.f90 File Reference}
+\label{read__inputs_8f90}\index{/home/chem/msuvnj/PX915\_GroupB\_22-\/23/read\_inputs.f90@{/home/chem/msuvnj/PX915\_GroupB\_22-\/23/read\_inputs.f90}}
+\doxysubsection*{Modules}
 \begin{DoxyCompactItemize}
 \item 
-module \hyperlink{classread__inputs}{read\-\_\-inputs}
+module \mbox{\hyperlink{namespaceread__inputs}{read\+\_\+inputs}}
 \begin{DoxyCompactList}\small\item\em Module to read user inputs. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Variables}
+\doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-character(len=54) \hyperlink{read__inputs_8f90_ad493c45aa771d875f6b10e91b6345de6}{filename}
+integer \mbox{\hyperlink{read__inputs_8f90_a84b968e20184197b2876efea63823611}{num\+\_\+args}}
 \item 
-character(len=25) \hyperlink{read__inputs_8f90_adc3f146dd63dc3a68f4024d9527d2583}{val}
+integer \mbox{\hyperlink{read__inputs_8f90_aaea4baed8fd8b780f6938f0dc1fb0f72}{i}}
 \item 
-integer, intent(in) \hyperlink{read__inputs_8f90_a1e765e78c796c355d042ac4da36118f1}{line}
+integer \mbox{\hyperlink{read__inputs_8f90_a4eb18b3fe3e53b45bf57e51ad39eb0a9}{parse\+\_\+idx}}
+\item 
+character(len=164) \mbox{\hyperlink{read__inputs_8f90_a8c3d116dcdb8cc118d88a8773789effb}{arg}}
+\item 
+character(len=60) \mbox{\hyperlink{read__inputs_8f90_a5fd18ed894920f26aaba02ed96ac3e84}{name}}
+\item 
+character(len=104) \mbox{\hyperlink{read__inputs_8f90_adc3f146dd63dc3a68f4024d9527d2583}{val}}
+\item 
+character(len=104) \mbox{\hyperlink{read__inputs_8f90_a0534a3ee620c0917cd9f0099559b2d52}{filename}}
+\item 
+integer, intent(out) \mbox{\hyperlink{read__inputs_8f90_a91662adda6b1bf216ff0a00a440591c4}{tsteps}}
+\item 
+real(real64), intent(out) \mbox{\hyperlink{read__inputs_8f90_a10d68aa82fa620f29bc3adf5bde42bb9}{dt}}
+\item 
+integer, intent(out) \mbox{\hyperlink{read__inputs_8f90_a128e58f73e38b052fe5ca4758e8469c3}{n}}
+\item 
+real(real64), intent(out) \mbox{\hyperlink{read__inputs_8f90_a58bfeff0cdfb11fd416aa7e6a7fb87b0}{c0}}
+\item 
+real(real64), intent(out) \mbox{\hyperlink{read__inputs_8f90_a8c2ae562c3f2ddc0493f7926a11c5633}{d}}
+\item 
+real(real64), intent(out) \mbox{\hyperlink{read__inputs_8f90_a0e57c65f2bcdb659ccdd0629b67fddf4}{r}}
+\item 
+real(real64), intent(out) \mbox{\hyperlink{read__inputs_8f90_af6718e6a5457dcb372422fe749829a56}{a\+\_\+small}}
+\item 
+real(real64), intent(out) \mbox{\hyperlink{read__inputs_8f90_afe5bf1e128419ba1d96fc3a0c0c80e56}{l}}
+\item 
+real(real64), dimension(\+:), intent(out), allocatable \mbox{\hyperlink{read__inputs_8f90_ae33281526fa7223a2ff7bc26ba50b6d9}{iapp}}
+\item 
+character(len=1), intent(out) \mbox{\hyperlink{read__inputs_8f90_aff6b764bcec5679997febf97860f09c4}{electrode\+\_\+charge}}
+\item 
+integer, parameter \mbox{\hyperlink{read__inputs_8f90_a842654491fa74b736a595b1977907137}{file\+\_\+id}} = 1
+\item 
+integer, parameter \mbox{\hyperlink{read__inputs_8f90_a84b436873ad6c974a2a606497303cb06}{n\+\_\+params\+\_\+expected}} = 9
+\item 
+integer \mbox{\hyperlink{read__inputs_8f90_a21519b92a5db4c06562fdd65b9cf1a40}{n\+\_\+params}} = 1
+\item 
+integer \mbox{\hyperlink{read__inputs_8f90_a592728bc8703dce794af50bc20f35189}{ios}}
+\item 
+logical \mbox{\hyperlink{read__inputs_8f90_a8ae0f5a4514e2fdaf511edb32c36cde3}{asterix}} = .FALSE.
+\item 
+logical \mbox{\hyperlink{read__inputs_8f90_af175c2d52e4b5b431130e3e8efaa29c0}{invalid\+\_\+param}} = .FALSE.
+\item 
+character(len=\mbox{\hyperlink{read__inputs_8f90_a84b436873ad6c974a2a606497303cb06}{n\+\_\+params\+\_\+expected}}) \mbox{\hyperlink{read__inputs_8f90_a21a268bca4c241f95b909aa5c2771f9c}{param\+\_\+read}}
+\item 
+character(len=30) \mbox{\hyperlink{read__inputs_8f90_af40c3ed4a3712b77832f6033c46ab099}{read\+\_\+temp}}
+\item 
+character(len=1), parameter \mbox{\hyperlink{read__inputs_8f90_a9dbc902e2dcc8ff82fd460ebe8a96dc6}{parser}} =\textquotesingle{}=\textquotesingle{}
+\item 
+integer, intent(in) \mbox{\hyperlink{read__inputs_8f90_a1e765e78c796c355d042ac4da36118f1}{line}}
 \end{DoxyCompactItemize}
 
 
-\subsection{Variable Documentation}
-\hypertarget{read__inputs_8f90_ad493c45aa771d875f6b10e91b6345de6}{\index{read\-\_\-inputs.\-f90@{read\-\_\-inputs.\-f90}!filename@{filename}}
-\index{filename@{filename}!read_inputs.f90@{read\-\_\-inputs.\-f90}}
-\subsubsection[{filename}]{\setlength{\rightskip}{0pt plus 5cm}character(len=54) filename}}\label{read__inputs_8f90_ad493c45aa771d875f6b10e91b6345de6}
-If command line arguments are present, parse each into name and value. Then identify argument by name, and perform action based on value. If no arguments, or unrecognised argument, stop execution of code and print error. 
-
-Definition at line 40 of file read\-\_\-inputs.\-f90.
-
-\hypertarget{read__inputs_8f90_a1e765e78c796c355d042ac4da36118f1}{\index{read\-\_\-inputs.\-f90@{read\-\_\-inputs.\-f90}!line@{line}}
-\index{line@{line}!read_inputs.f90@{read\-\_\-inputs.\-f90}}
-\subsubsection[{line}]{\setlength{\rightskip}{0pt plus 5cm}integer, intent(in) line}}\label{read__inputs_8f90_a1e765e78c796c355d042ac4da36118f1}
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{read__inputs_8f90_af6718e6a5457dcb372422fe749829a56}\label{read__inputs_8f90_af6718e6a5457dcb372422fe749829a56}} 
+\index{read\_inputs.f90@{read\_inputs.f90}!a\_small@{a\_small}}
+\index{a\_small@{a\_small}!read\_inputs.f90@{read\_inputs.f90}}
+\doxysubsubsection{\texorpdfstring{a\_small}{a\_small}}
+{\footnotesize\ttfamily real(real64), intent(out) a\+\_\+small}
 
 
-Definition at line 359 of file read\-\_\-inputs.\-f90.
 
-\hypertarget{read__inputs_8f90_adc3f146dd63dc3a68f4024d9527d2583}{\index{read\-\_\-inputs.\-f90@{read\-\_\-inputs.\-f90}!val@{val}}
-\index{val@{val}!read_inputs.f90@{read\-\_\-inputs.\-f90}}
-\subsubsection[{val}]{\setlength{\rightskip}{0pt plus 5cm}character(len=25) val}}\label{read__inputs_8f90_adc3f146dd63dc3a68f4024d9527d2583}
+Definition at line 112 of file read\+\_\+inputs.\+f90.
 
-\begin{DoxyEnumerate}
-\item Open input file.
-\item Initiate and label error process if parameter has incorrect type.
-\item Read in parameters until asterix line ($\ast$$\ast$$\ast$) found.
-\end{DoxyEnumerate}
-
-3.\-1. Read entire line into user\-\_\-input\-\_\-vars. (A) selects entire line, else splits at spaces and commas.
-
-3.\-2. Check if line is asterix line. Ends loop when true.
-
-3.\-3. Find index of parser character.
-
-3.\-4. Ensure line has correct format and can be parsed\-: parameter = value. Stop execution if cannot be parsed, and not asterix line.
-
-3.\-5. Parse line into name and val.
-
-3.\-6. Identify parameter and check validity. If type invalid, invalid\-\_\-param\-\_\-type called; prints error and stops execution. If value invalid, prints error and sets invalid\-\_\-param to true. Execution stopped after parsing all parameters. Checks for other invalid variables with correct parsing format; if true, prints error and stops execution.
+\mbox{\Hypertarget{read__inputs_8f90_a8c3d116dcdb8cc118d88a8773789effb}\label{read__inputs_8f90_a8c3d116dcdb8cc118d88a8773789effb}} 
+\index{read\_inputs.f90@{read\_inputs.f90}!arg@{arg}}
+\index{arg@{arg}!read\_inputs.f90@{read\_inputs.f90}}
+\doxysubsubsection{\texorpdfstring{arg}{arg}}
+{\footnotesize\ttfamily character(len=164) arg}
 
 
-\begin{DoxyEnumerate}
-\item Check if any parameters are missing; has expected number been read.
-\item Exit if any parameters are invalid or missing.
-\item Read iapp label line.
-\item Read in iapp array.
-\end{DoxyEnumerate}
 
-7.\-1. Initiate and label error process if iapp has incorrect type.
+Definition at line 31 of file read\+\_\+inputs.\+f90.
 
-7.\-2. Loop through tsteps lines of file, reading into array iapp.
+\mbox{\Hypertarget{read__inputs_8f90_a8ae0f5a4514e2fdaf511edb32c36cde3}\label{read__inputs_8f90_a8ae0f5a4514e2fdaf511edb32c36cde3}} 
+\index{read\_inputs.f90@{read\_inputs.f90}!asterix@{asterix}}
+\index{asterix@{asterix}!read\_inputs.f90@{read\_inputs.f90}}
+\doxysubsubsection{\texorpdfstring{asterix}{asterix}}
+{\footnotesize\ttfamily logical asterix = .FALSE.}
 
 
-\begin{DoxyEnumerate}
-\item Check no lines missed in file; is iapp in file longer than tsteps? If read is successful then iapp is too long in file. Prints error and stops execution. 
-\end{DoxyEnumerate}
 
-Definition at line 168 of file read\-\_\-inputs.\-f90.
+Definition at line 146 of file read\+\_\+inputs.\+f90.
+
+\mbox{\Hypertarget{read__inputs_8f90_a58bfeff0cdfb11fd416aa7e6a7fb87b0}\label{read__inputs_8f90_a58bfeff0cdfb11fd416aa7e6a7fb87b0}} 
+\index{read\_inputs.f90@{read\_inputs.f90}!c0@{c0}}
+\index{c0@{c0}!read\_inputs.f90@{read\_inputs.f90}}
+\doxysubsubsection{\texorpdfstring{c0}{c0}}
+{\footnotesize\ttfamily real(real64), intent(out) c0}
+
+
+
+Definition at line 103 of file read\+\_\+inputs.\+f90.
+
+\mbox{\Hypertarget{read__inputs_8f90_a8c2ae562c3f2ddc0493f7926a11c5633}\label{read__inputs_8f90_a8c2ae562c3f2ddc0493f7926a11c5633}} 
+\index{read\_inputs.f90@{read\_inputs.f90}!d@{d}}
+\index{d@{d}!read\_inputs.f90@{read\_inputs.f90}}
+\doxysubsubsection{\texorpdfstring{d}{d}}
+{\footnotesize\ttfamily real(real64), intent(out) d}
+
+
+
+Definition at line 106 of file read\+\_\+inputs.\+f90.
+
+\mbox{\Hypertarget{read__inputs_8f90_a10d68aa82fa620f29bc3adf5bde42bb9}\label{read__inputs_8f90_a10d68aa82fa620f29bc3adf5bde42bb9}} 
+\index{read\_inputs.f90@{read\_inputs.f90}!dt@{dt}}
+\index{dt@{dt}!read\_inputs.f90@{read\_inputs.f90}}
+\doxysubsubsection{\texorpdfstring{dt}{dt}}
+{\footnotesize\ttfamily real(real64), intent(out) dt}
+
+
+
+Definition at line 97 of file read\+\_\+inputs.\+f90.
+
+\mbox{\Hypertarget{read__inputs_8f90_aff6b764bcec5679997febf97860f09c4}\label{read__inputs_8f90_aff6b764bcec5679997febf97860f09c4}} 
+\index{read\_inputs.f90@{read\_inputs.f90}!electrode\_charge@{electrode\_charge}}
+\index{electrode\_charge@{electrode\_charge}!read\_inputs.f90@{read\_inputs.f90}}
+\doxysubsubsection{\texorpdfstring{electrode\_charge}{electrode\_charge}}
+{\footnotesize\ttfamily character(len=1), intent(out) electrode\+\_\+charge}
+
+
+
+Definition at line 122 of file read\+\_\+inputs.\+f90.
+
+\mbox{\Hypertarget{read__inputs_8f90_a842654491fa74b736a595b1977907137}\label{read__inputs_8f90_a842654491fa74b736a595b1977907137}} 
+\index{read\_inputs.f90@{read\_inputs.f90}!file\_id@{file\_id}}
+\index{file\_id@{file\_id}!read\_inputs.f90@{read\_inputs.f90}}
+\doxysubsubsection{\texorpdfstring{file\_id}{file\_id}}
+{\footnotesize\ttfamily integer, parameter file\+\_\+id = 1}
+
+
+
+Definition at line 130 of file read\+\_\+inputs.\+f90.
+
+\mbox{\Hypertarget{read__inputs_8f90_a0534a3ee620c0917cd9f0099559b2d52}\label{read__inputs_8f90_a0534a3ee620c0917cd9f0099559b2d52}} 
+\index{read\_inputs.f90@{read\_inputs.f90}!filename@{filename}}
+\index{filename@{filename}!read\_inputs.f90@{read\_inputs.f90}}
+\doxysubsubsection{\texorpdfstring{filename}{filename}}
+{\footnotesize\ttfamily character(len=$\ast$), intent(in) filename}
+
+
+
+Definition at line 40 of file read\+\_\+inputs.\+f90.
+
+\mbox{\Hypertarget{read__inputs_8f90_aaea4baed8fd8b780f6938f0dc1fb0f72}\label{read__inputs_8f90_aaea4baed8fd8b780f6938f0dc1fb0f72}} 
+\index{read\_inputs.f90@{read\_inputs.f90}!i@{i}}
+\index{i@{i}!read\_inputs.f90@{read\_inputs.f90}}
+\doxysubsubsection{\texorpdfstring{i}{i}}
+{\footnotesize\ttfamily integer i}
+
+
+
+Definition at line 25 of file read\+\_\+inputs.\+f90.
+
+\mbox{\Hypertarget{read__inputs_8f90_ae33281526fa7223a2ff7bc26ba50b6d9}\label{read__inputs_8f90_ae33281526fa7223a2ff7bc26ba50b6d9}} 
+\index{read\_inputs.f90@{read\_inputs.f90}!iapp@{iapp}}
+\index{iapp@{iapp}!read\_inputs.f90@{read\_inputs.f90}}
+\doxysubsubsection{\texorpdfstring{iapp}{iapp}}
+{\footnotesize\ttfamily real(real64), dimension(\+:), intent(out), allocatable iapp}
+
+
+
+Definition at line 119 of file read\+\_\+inputs.\+f90.
+
+\mbox{\Hypertarget{read__inputs_8f90_af175c2d52e4b5b431130e3e8efaa29c0}\label{read__inputs_8f90_af175c2d52e4b5b431130e3e8efaa29c0}} 
+\index{read\_inputs.f90@{read\_inputs.f90}!invalid\_param@{invalid\_param}}
+\index{invalid\_param@{invalid\_param}!read\_inputs.f90@{read\_inputs.f90}}
+\doxysubsubsection{\texorpdfstring{invalid\_param}{invalid\_param}}
+{\footnotesize\ttfamily logical invalid\+\_\+param = .FALSE.}
+
+
+
+Definition at line 149 of file read\+\_\+inputs.\+f90.
+
+\mbox{\Hypertarget{read__inputs_8f90_a592728bc8703dce794af50bc20f35189}\label{read__inputs_8f90_a592728bc8703dce794af50bc20f35189}} 
+\index{read\_inputs.f90@{read\_inputs.f90}!ios@{ios}}
+\index{ios@{ios}!read\_inputs.f90@{read\_inputs.f90}}
+\doxysubsubsection{\texorpdfstring{ios}{ios}}
+{\footnotesize\ttfamily integer ios}
+
+
+
+Definition at line 143 of file read\+\_\+inputs.\+f90.
+
+\mbox{\Hypertarget{read__inputs_8f90_afe5bf1e128419ba1d96fc3a0c0c80e56}\label{read__inputs_8f90_afe5bf1e128419ba1d96fc3a0c0c80e56}} 
+\index{read\_inputs.f90@{read\_inputs.f90}!l@{l}}
+\index{l@{l}!read\_inputs.f90@{read\_inputs.f90}}
+\doxysubsubsection{\texorpdfstring{l}{l}}
+{\footnotesize\ttfamily real(real64), intent(out) l}
+
+
+
+Definition at line 115 of file read\+\_\+inputs.\+f90.
+
+\mbox{\Hypertarget{read__inputs_8f90_a1e765e78c796c355d042ac4da36118f1}\label{read__inputs_8f90_a1e765e78c796c355d042ac4da36118f1}} 
+\index{read\_inputs.f90@{read\_inputs.f90}!line@{line}}
+\index{line@{line}!read\_inputs.f90@{read\_inputs.f90}}
+\doxysubsubsection{\texorpdfstring{line}{line}}
+{\footnotesize\ttfamily integer, intent(in) line}
+
+
+
+Definition at line 359 of file read\+\_\+inputs.\+f90.
+
+\mbox{\Hypertarget{read__inputs_8f90_a128e58f73e38b052fe5ca4758e8469c3}\label{read__inputs_8f90_a128e58f73e38b052fe5ca4758e8469c3}} 
+\index{read\_inputs.f90@{read\_inputs.f90}!n@{n}}
+\index{n@{n}!read\_inputs.f90@{read\_inputs.f90}}
+\doxysubsubsection{\texorpdfstring{n}{n}}
+{\footnotesize\ttfamily integer, intent(out) n}
+
+
+
+Definition at line 100 of file read\+\_\+inputs.\+f90.
+
+\mbox{\Hypertarget{read__inputs_8f90_a21519b92a5db4c06562fdd65b9cf1a40}\label{read__inputs_8f90_a21519b92a5db4c06562fdd65b9cf1a40}} 
+\index{read\_inputs.f90@{read\_inputs.f90}!n\_params@{n\_params}}
+\index{n\_params@{n\_params}!read\_inputs.f90@{read\_inputs.f90}}
+\doxysubsubsection{\texorpdfstring{n\_params}{n\_params}}
+{\footnotesize\ttfamily integer n\+\_\+params = 1}
+
+
+
+Definition at line 137 of file read\+\_\+inputs.\+f90.
+
+\mbox{\Hypertarget{read__inputs_8f90_a84b436873ad6c974a2a606497303cb06}\label{read__inputs_8f90_a84b436873ad6c974a2a606497303cb06}} 
+\index{read\_inputs.f90@{read\_inputs.f90}!n\_params\_expected@{n\_params\_expected}}
+\index{n\_params\_expected@{n\_params\_expected}!read\_inputs.f90@{read\_inputs.f90}}
+\doxysubsubsection{\texorpdfstring{n\_params\_expected}{n\_params\_expected}}
+{\footnotesize\ttfamily integer, parameter n\+\_\+params\+\_\+expected = 9}
+
+
+
+Definition at line 134 of file read\+\_\+inputs.\+f90.
+
+\mbox{\Hypertarget{read__inputs_8f90_a5fd18ed894920f26aaba02ed96ac3e84}\label{read__inputs_8f90_a5fd18ed894920f26aaba02ed96ac3e84}} 
+\index{read\_inputs.f90@{read\_inputs.f90}!name@{name}}
+\index{name@{name}!read\_inputs.f90@{read\_inputs.f90}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily character(len=25), intent(in) name}
+
+
+
+Definition at line 34 of file read\+\_\+inputs.\+f90.
+
+\mbox{\Hypertarget{read__inputs_8f90_a84b968e20184197b2876efea63823611}\label{read__inputs_8f90_a84b968e20184197b2876efea63823611}} 
+\index{read\_inputs.f90@{read\_inputs.f90}!num\_args@{num\_args}}
+\index{num\_args@{num\_args}!read\_inputs.f90@{read\_inputs.f90}}
+\doxysubsubsection{\texorpdfstring{num\_args}{num\_args}}
+{\footnotesize\ttfamily integer num\+\_\+args}
+
+
+
+Definition at line 22 of file read\+\_\+inputs.\+f90.
+
+\mbox{\Hypertarget{read__inputs_8f90_a21a268bca4c241f95b909aa5c2771f9c}\label{read__inputs_8f90_a21a268bca4c241f95b909aa5c2771f9c}} 
+\index{read\_inputs.f90@{read\_inputs.f90}!param\_read@{param\_read}}
+\index{param\_read@{param\_read}!read\_inputs.f90@{read\_inputs.f90}}
+\doxysubsubsection{\texorpdfstring{param\_read}{param\_read}}
+{\footnotesize\ttfamily character (len=\mbox{\hyperlink{read__inputs_8f90_a84b436873ad6c974a2a606497303cb06}{n\+\_\+params\+\_\+expected}}) param\+\_\+read}
+
+
+
+Definition at line 152 of file read\+\_\+inputs.\+f90.
+
+\mbox{\Hypertarget{read__inputs_8f90_a4eb18b3fe3e53b45bf57e51ad39eb0a9}\label{read__inputs_8f90_a4eb18b3fe3e53b45bf57e51ad39eb0a9}} 
+\index{read\_inputs.f90@{read\_inputs.f90}!parse\_idx@{parse\_idx}}
+\index{parse\_idx@{parse\_idx}!read\_inputs.f90@{read\_inputs.f90}}
+\doxysubsubsection{\texorpdfstring{parse\_idx}{parse\_idx}}
+{\footnotesize\ttfamily integer parse\+\_\+idx}
+
+
+
+Definition at line 28 of file read\+\_\+inputs.\+f90.
+
+\mbox{\Hypertarget{read__inputs_8f90_a9dbc902e2dcc8ff82fd460ebe8a96dc6}\label{read__inputs_8f90_a9dbc902e2dcc8ff82fd460ebe8a96dc6}} 
+\index{read\_inputs.f90@{read\_inputs.f90}!parser@{parser}}
+\index{parser@{parser}!read\_inputs.f90@{read\_inputs.f90}}
+\doxysubsubsection{\texorpdfstring{parser}{parser}}
+{\footnotesize\ttfamily character(len=1), parameter parser =\textquotesingle{}=\textquotesingle{}}
+
+
+
+Definition at line 159 of file read\+\_\+inputs.\+f90.
+
+\mbox{\Hypertarget{read__inputs_8f90_a0e57c65f2bcdb659ccdd0629b67fddf4}\label{read__inputs_8f90_a0e57c65f2bcdb659ccdd0629b67fddf4}} 
+\index{read\_inputs.f90@{read\_inputs.f90}!r@{r}}
+\index{r@{r}!read\_inputs.f90@{read\_inputs.f90}}
+\doxysubsubsection{\texorpdfstring{r}{r}}
+{\footnotesize\ttfamily real(real64), intent(out) r}
+
+
+
+Definition at line 109 of file read\+\_\+inputs.\+f90.
+
+\mbox{\Hypertarget{read__inputs_8f90_af40c3ed4a3712b77832f6033c46ab099}\label{read__inputs_8f90_af40c3ed4a3712b77832f6033c46ab099}} 
+\index{read\_inputs.f90@{read\_inputs.f90}!read\_temp@{read\_temp}}
+\index{read\_temp@{read\_temp}!read\_inputs.f90@{read\_inputs.f90}}
+\doxysubsubsection{\texorpdfstring{read\_temp}{read\_temp}}
+{\footnotesize\ttfamily character(len=30) read\+\_\+temp}
+
+
+
+Definition at line 156 of file read\+\_\+inputs.\+f90.
+
+\mbox{\Hypertarget{read__inputs_8f90_a91662adda6b1bf216ff0a00a440591c4}\label{read__inputs_8f90_a91662adda6b1bf216ff0a00a440591c4}} 
+\index{read\_inputs.f90@{read\_inputs.f90}!tsteps@{tsteps}}
+\index{tsteps@{tsteps}!read\_inputs.f90@{read\_inputs.f90}}
+\doxysubsubsection{\texorpdfstring{tsteps}{tsteps}}
+{\footnotesize\ttfamily integer, intent(out) tsteps}
+
+
+
+Definition at line 94 of file read\+\_\+inputs.\+f90.
+
+\mbox{\Hypertarget{read__inputs_8f90_adc3f146dd63dc3a68f4024d9527d2583}\label{read__inputs_8f90_adc3f146dd63dc3a68f4024d9527d2583}} 
+\index{read\_inputs.f90@{read\_inputs.f90}!val@{val}}
+\index{val@{val}!read\_inputs.f90@{read\_inputs.f90}}
+\doxysubsubsection{\texorpdfstring{val}{val}}
+{\footnotesize\ttfamily character(len=25) val}
+
+
+
+Definition at line 37 of file read\+\_\+inputs.\+f90.
 

@@ -1,196 +1,551 @@
-\hypertarget{namespaceuser__input__full__battery___g_i_t_t}{\section{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T Namespace Reference}
-\label{namespaceuser__input__full__battery___g_i_t_t}\index{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}}
-}
-\subsection*{Variables}
+\hypertarget{namespaceuser__input__full__battery___g_i_t_t}{}\doxysection{user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT Namespace Reference}
+\label{namespaceuser__input__full__battery___g_i_t_t}\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-string \hyperlink{namespaceuser__input__full__battery___g_i_t_t_aa07a082ed078c3321f15b79529277837}{output\-\_\-filename\-\_\-positive} = 'current\-\_\-step\-\_\-pos'
-\begin{DoxyCompactList}\small\item\em Uncomment to print stdout to file sys.\-stdout = open('test.\-txt', 'w') \end{DoxyCompactList}\item 
-string \hyperlink{namespaceuser__input__full__battery___g_i_t_t_a701d8142cb069e7737cab8445986caa3}{output\-\_\-filename\-\_\-negative} = 'current\-\_\-step\-\_\-neg'
+string \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a4b95c9f249d815d21456995ff23fa2c2}{output\+\_\+filename\+\_\+positive}} = \textquotesingle{}current\+\_\+step\+\_\+pos\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Uncomment to print stdout to file sys.\+stdout = open(\textquotesingle{}test.\+txt\textquotesingle{}, \textquotesingle{}w\textquotesingle{}) \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a0707f525915c982db43c07a90065498c}{output\+\_\+filename\+\_\+negative}} = \textquotesingle{}current\+\_\+step\+\_\+neg\textquotesingle{}
 \item 
-float \hyperlink{namespaceuser__input__full__battery___g_i_t_t_a5abfcbf596ddd1acc1de08c37cfde9c3}{c0\-\_\-pos} = 30000.\-0
-\begin{DoxyCompactList}\small\item\em Import default values from \href{https://doi.org/10.1149/1945-7111/ab9050}{\tt https\-://doi.\-org/10.\-1149/1945-\/7111/ab9050} Use \hyperlink{namespaceuser__input__mod_acef497295190e3914f7cd93da2708856}{U\-I.\-set\-\_\-defaults\-\_\-pos()} for positive electrode and ...\-\_\-neg() for negative electrode. \end{DoxyCompactList}\item 
-float \hyperlink{namespaceuser__input__full__battery___g_i_t_t_ad1f2e3ea1e8872b82ad0a3f8b86f0769}{c0\-\_\-neg} = 1.\-0
+\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a63b973cf773a42a37d790d0a4bce8ddc}{tsteps}}
+\begin{DoxyCompactList}\small\item\em Import default values from \href{https://doi.org/10.1149/1945-7111/ab9050}{\texttt{ https\+://doi.\+org/10.\+1149/1945-\/7111/ab9050}} Use \mbox{\hyperlink{namespaceuser__input__mod_aebe5c185d4c5b424c433665db6de9bfd}{UI.\+set\+\_\+defaults\+\_\+pos()}} for positive electrode and ...\+\_\+neg() for negative electrode. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a778e38aa889751afffa2dea6b803e67a}{dt}} = 1.\+0
 \item 
-float \hyperlink{namespaceuser__input__full__battery___g_i_t_t_a778e38aa889751afffa2dea6b803e67a}{dt} = 1.\-0
+\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a76f11d9a0a47b94f72c2d0e77fb32240}{n}} = 1000
 \item 
-float \hyperlink{namespaceuser__input__full__battery___g_i_t_t_ab1a8ebec490ba1301f818bd1c5f1f3fa}{K\-\_\-pos} = 3.\-42\-E-\/6
+\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a570288aed3d1eede9a0f7000e4f0b6cc}{c0}}
 \item 
-float \hyperlink{namespaceuser__input__full__battery___g_i_t_t_a64d0c5854299798787675bc91586023c}{K\-\_\-neg} = 6.\-48\-E-\/7
+\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a9fcd3b2119e5d75c8a9fe625dd1b5ffc}{D\+\_\+neg}}
 \item 
-float \hyperlink{namespaceuser__input__full__battery___g_i_t_t_aa5b015cc7d0bda453c6163023448db72}{cmax\-\_\-pos\-\_\-sim} = 63104.\-00
+\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_ac3cae4769661847dbd5ef4505bddc55a}{R\+\_\+neg}}
 \item 
-float \hyperlink{namespaceuser__input__full__battery___g_i_t_t_ab7633a5e9c70aabfe6992e4fe521a1f9}{cmax\-\_\-neg\-\_\-sim} = 33133.\-00
+\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a165cbe81be4e2bcd1eeba6d395178a8e}{a\+\_\+neg}}
 \item 
-int \hyperlink{namespaceuser__input__full__battery___g_i_t_t_ad7c4c17cf720ee538e27c02ab356ed6b}{nprocs} = 20
+\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_afa495db87be1b2e6f6400b6c4f9d2d5b}{L\+\_\+neg}}
+\item 
+\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a7a8fe217f5fca8ba33ec21ff714a7c0e}{iapp\+\_\+neg}}
+\item 
+\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_ae136a5a40418acc8c7ba8dcb90240bc7}{iapp\+\_\+label\+\_\+neg}}
+\item 
+\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a5e05c1d82b55a50809f5a035074dafc2}{electrode\+\_\+charge\+\_\+neg}}
+\item 
+\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_abbe757f0e0006636fc50b1eb877ce752}{D\+\_\+pos}}
+\item 
+\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_ae78aef723bc1b30ffa6c06e6a5f62f25}{R\+\_\+pos}}
+\item 
+\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a49ca85add7f55fe88898908de9a2d0fb}{a\+\_\+pos}}
+\item 
+\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_aa2e9ffa92368db59d7a9c060c0c0d365}{L\+\_\+pos}}
+\item 
+\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a3f20c0bc5d9a430591f37786d56712c9}{iapp\+\_\+pos}}
+\item 
+\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a31b7ae3f94f6bea80e522e956225fed2}{iapp\+\_\+label\+\_\+pos}}
+\item 
+\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a124b6c7f9ba01bbc5bb8713ca260110e}{electrode\+\_\+charge\+\_\+pos}}
+\item 
+float \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a5abfcbf596ddd1acc1de08c37cfde9c3}{c0\+\_\+pos}} = 30000.\+0
+\begin{DoxyCompactList}\small\item\em Set values \#\#\#\#\#\#. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_ad1f2e3ea1e8872b82ad0a3f8b86f0769}{c0\+\_\+neg}} = 1.\+0
+\item 
+float \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_ab1a8ebec490ba1301f818bd1c5f1f3fa}{K\+\_\+pos}} = 3.\+42E-\/6
+\item 
+float \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a64d0c5854299798787675bc91586023c}{K\+\_\+neg}} = 6.\+48E-\/7
+\item 
+float \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_aa5b015cc7d0bda453c6163023448db72}{cmax\+\_\+pos\+\_\+sim}} = 63104.\+00
+\item 
+float \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_ab7633a5e9c70aabfe6992e4fe521a1f9}{cmax\+\_\+neg\+\_\+sim}} = 33133.\+00
+\item 
+int \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_ad7c4c17cf720ee538e27c02ab356ed6b}{nprocs}} = 40
 \begin{DoxyCompactList}\small\item\em Check parameters are valid \#\#\#\#\#\#. \end{DoxyCompactList}\item 
-int \hyperlink{namespaceuser__input__full__battery___g_i_t_t_aa2414080b021dbb9b56eeaeedec0ffa2}{nsteps} = 10
+int \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_aa2414080b021dbb9b56eeaeedec0ffa2}{nsteps}} = 10
 \item 
-list \hyperlink{namespaceuser__input__full__battery___g_i_t_t_a216022bdba987f127b6cc081ee78e2bd}{currents} = \mbox{[}20.\-0 for i in range(\hyperlink{namespaceuser__input__full__battery___g_i_t_t_aa2414080b021dbb9b56eeaeedec0ffa2}{nsteps})\mbox{]}
+list \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a216022bdba987f127b6cc081ee78e2bd}{currents}} = \mbox{[}20.\+0 for \mbox{\hyperlink{read__inputs_8f90_aaea4baed8fd8b780f6938f0dc1fb0f72}{i}} in range(\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_aa2414080b021dbb9b56eeaeedec0ffa2}{nsteps}})\mbox{]}
 \item 
-list \hyperlink{namespaceuser__input__full__battery___g_i_t_t_a377a515511d37e8c7ac5501847d6485d}{start\-\_\-times} = \mbox{[}2150.\-0$\ast$i for i in range(\hyperlink{namespaceuser__input__full__battery___g_i_t_t_aa2414080b021dbb9b56eeaeedec0ffa2}{nsteps})\mbox{]}
+list \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a0954fbf3a78f4bdb8ab964be15c01b01}{start\+\_\+times}} = \mbox{[}2150.\+0$\ast$\mbox{\hyperlink{read__inputs_8f90_aaea4baed8fd8b780f6938f0dc1fb0f72}{i}} for \mbox{\hyperlink{read__inputs_8f90_aaea4baed8fd8b780f6938f0dc1fb0f72}{i}} in range(\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_aa2414080b021dbb9b56eeaeedec0ffa2}{nsteps}})\mbox{]}
 \item 
-list \hyperlink{namespaceuser__input__full__battery___g_i_t_t_a5a6deb885420d2b81e210e580767b1c1}{run\-\_\-times} = \mbox{[}150.\-0 for i in range(\hyperlink{namespaceuser__input__full__battery___g_i_t_t_aa2414080b021dbb9b56eeaeedec0ffa2}{nsteps})\mbox{]}
+list \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a5a6deb885420d2b81e210e580767b1c1}{run\+\_\+times}} = \mbox{[}150.\+0 for \mbox{\hyperlink{read__inputs_8f90_aaea4baed8fd8b780f6938f0dc1fb0f72}{i}} in range(\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_aa2414080b021dbb9b56eeaeedec0ffa2}{nsteps}})\mbox{]}
 \item 
-list \hyperlink{namespaceuser__input__full__battery___g_i_t_t_ae584b229c7b1ea3d8330e6038884ffd3}{wait\-\_\-times} = \mbox{[}2000.\-0 for i in range(\hyperlink{namespaceuser__input__full__battery___g_i_t_t_aa2414080b021dbb9b56eeaeedec0ffa2}{nsteps})\mbox{]}
+list \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_ae584b229c7b1ea3d8330e6038884ffd3}{wait\+\_\+times}} = \mbox{[}2000.\+0 for \mbox{\hyperlink{read__inputs_8f90_aaea4baed8fd8b780f6938f0dc1fb0f72}{i}} in range(\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_aa2414080b021dbb9b56eeaeedec0ffa2}{nsteps}})\mbox{]}
 \item 
-list \hyperlink{namespaceuser__input__full__battery___g_i_t_t_a51c49f845d3932a6a084187c90aab1ab}{params\-\_\-pos} = \mbox{[}\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a778e38aa889751afffa2dea6b803e67a}{dt}, \hyperlink{namespaceuser__input__full__battery___g_i_t_t_a5abfcbf596ddd1acc1de08c37cfde9c3}{c0\-\_\-pos}, D\-\_\-pos, R\-\_\-pos, a\-\_\-pos, L\-\_\-pos, electrode\-\_\-charge\-\_\-pos\mbox{]}
+list \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a51c49f845d3932a6a084187c90aab1ab}{params\+\_\+pos}} = \mbox{[}\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a778e38aa889751afffa2dea6b803e67a}{dt}}, \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a5abfcbf596ddd1acc1de08c37cfde9c3}{c0\+\_\+pos}}, \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_abbe757f0e0006636fc50b1eb877ce752}{D\+\_\+pos}}, \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_ae78aef723bc1b30ffa6c06e6a5f62f25}{R\+\_\+pos}}, \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a49ca85add7f55fe88898908de9a2d0fb}{a\+\_\+pos}}, \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_aa2e9ffa92368db59d7a9c060c0c0d365}{L\+\_\+pos}}, \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a124b6c7f9ba01bbc5bb8713ca260110e}{electrode\+\_\+charge\+\_\+pos}}\mbox{]}
 \item 
-list \hyperlink{namespaceuser__input__full__battery___g_i_t_t_a0bd2f9c022b04c151ac8c0ad19eadd67}{params\-\_\-neg} = \mbox{[}\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a778e38aa889751afffa2dea6b803e67a}{dt}, \hyperlink{namespaceuser__input__full__battery___g_i_t_t_ad1f2e3ea1e8872b82ad0a3f8b86f0769}{c0\-\_\-neg}, D\-\_\-neg, R\-\_\-neg, a\-\_\-neg, L\-\_\-neg, electrode\-\_\-charge\-\_\-neg\mbox{]}
+list \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a0bd2f9c022b04c151ac8c0ad19eadd67}{params\+\_\+neg}} = \mbox{[}\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a778e38aa889751afffa2dea6b803e67a}{dt}}, \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_ad1f2e3ea1e8872b82ad0a3f8b86f0769}{c0\+\_\+neg}}, \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a9fcd3b2119e5d75c8a9fe625dd1b5ffc}{D\+\_\+neg}}, \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_ac3cae4769661847dbd5ef4505bddc55a}{R\+\_\+neg}}, \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a165cbe81be4e2bcd1eeba6d395178a8e}{a\+\_\+neg}}, \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_afa495db87be1b2e6f6400b6c4f9d2d5b}{L\+\_\+neg}}, \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a5e05c1d82b55a50809f5a035074dafc2}{electrode\+\_\+charge\+\_\+neg}}\mbox{]}
 \item 
-list \hyperlink{namespaceuser__input__full__battery___g_i_t_t_a5bacef25baf63731923fbef674af4e9d}{plot\-\_\-params\-\_\-pos} = \mbox{[}\hyperlink{namespaceuser__input__full__battery___g_i_t_t_ab1a8ebec490ba1301f818bd1c5f1f3fa}{K\-\_\-pos},a\-\_\-pos,\hyperlink{namespaceuser__input__full__battery___g_i_t_t_aa5b015cc7d0bda453c6163023448db72}{cmax\-\_\-pos\-\_\-sim},L\-\_\-pos\mbox{]}
+list \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_acf0eee992bf47d45233f687e5045ea55}{plot\+\_\+params\+\_\+pos}} = \mbox{[}\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_ab1a8ebec490ba1301f818bd1c5f1f3fa}{K\+\_\+pos}},\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a49ca85add7f55fe88898908de9a2d0fb}{a\+\_\+pos}},\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_aa5b015cc7d0bda453c6163023448db72}{cmax\+\_\+pos\+\_\+sim}},\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_aa2e9ffa92368db59d7a9c060c0c0d365}{L\+\_\+pos}}\mbox{]}
 \begin{DoxyCompactList}\small\item\em Call the function to perform the full battery parallel solve. \end{DoxyCompactList}\item 
-list \hyperlink{namespaceuser__input__full__battery___g_i_t_t_a0861e0e85d9d6139e0cc3cc1cc4fa692}{plot\-\_\-params\-\_\-neg} = \mbox{[}\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a64d0c5854299798787675bc91586023c}{K\-\_\-neg},a\-\_\-neg,\hyperlink{namespaceuser__input__full__battery___g_i_t_t_ab7633a5e9c70aabfe6992e4fe521a1f9}{cmax\-\_\-neg\-\_\-sim},L\-\_\-neg\mbox{]}
+list \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a9850af56ec718d322d6277be29d14383}{plot\+\_\+params\+\_\+neg}} = \mbox{[}\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a64d0c5854299798787675bc91586023c}{K\+\_\+neg}},\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a165cbe81be4e2bcd1eeba6d395178a8e}{a\+\_\+neg}},\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_ab7633a5e9c70aabfe6992e4fe521a1f9}{cmax\+\_\+neg\+\_\+sim}},\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_afa495db87be1b2e6f6400b6c4f9d2d5b}{L\+\_\+neg}}\mbox{]}
+\item 
+\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a48c84606bc366845a0aaf284435fcdfb}{pos\+\_\+params}}
+\item 
+\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a02dfc31e8717e46c15df15c0756bb7e7}{neg\+\_\+params}}
+\item 
+\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_acc27a1da570e84f9ca12e60f0e4c7451}{Sparsify\+Animation}}
+\item 
+\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a643a20c0c59588a0f741a6095e2025fd}{True}}
+\item 
+\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_aa2349dff3a64d01cbffde81610ca491a}{animation\+\_\+interval\+\_\+time}}
 \end{DoxyCompactItemize}
 
 
-\subsection{Variable Documentation}
-\hypertarget{namespaceuser__input__full__battery___g_i_t_t_ad1f2e3ea1e8872b82ad0a3f8b86f0769}{\index{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}!c0\-\_\-neg@{c0\-\_\-neg}}
-\index{c0\-\_\-neg@{c0\-\_\-neg}!user_input_full_battery_GITT@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}}
-\subsubsection[{c0\-\_\-neg}]{\setlength{\rightskip}{0pt plus 5cm}float c0\-\_\-neg = 1.\-0}}\label{namespaceuser__input__full__battery___g_i_t_t_ad1f2e3ea1e8872b82ad0a3f8b86f0769}
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb} @brief Example script for a full battery model 
+
+@details This is a running script which exists to demonstrate how one uses the 
+GITT function to run simulations in parallel on a full battery.
+This simulation completes 10 current cycles on each electrode over 2 cores each - parallelising 
+perfectly over 40 cores.
+ 
+These simulations consist of applying a step function of current to a battery which turns on to a 
+fixed value for a given time interval, then back to 0, and then on again, etc. 
+
+The ascii art below indicates schematically how a current-time step looks during this experiment.
+
+ I
+ |______________               _____________
+ |              |              |              
+ |              |              |
+ |              |              |
+ |              |              |
+ |              |              |
+ |              |              |
+ |______________|______________|_____________t
+ 
+To run one of these simulations, one needs the following things:
+    - A vector containing the fixed values of current applied for each block of current
+    - A vector containing the start times of each current block
+    - A vector containing the duration of each current block\end{DoxyVerb}
+ 
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_a165cbe81be4e2bcd1eeba6d395178a8e}\label{namespaceuser__input__full__battery___g_i_t_t_a165cbe81be4e2bcd1eeba6d395178a8e}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!a\_neg@{a\_neg}}
+\index{a\_neg@{a\_neg}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{a\_neg}{a\_neg}}
+{\footnotesize\ttfamily a\+\_\+neg}
 
 
-Definition at line 46 of file user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T.\-py.
 
-\hypertarget{namespaceuser__input__full__battery___g_i_t_t_a5abfcbf596ddd1acc1de08c37cfde9c3}{\index{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}!c0\-\_\-pos@{c0\-\_\-pos}}
-\index{c0\-\_\-pos@{c0\-\_\-pos}!user_input_full_battery_GITT@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}}
-\subsubsection[{c0\-\_\-pos}]{\setlength{\rightskip}{0pt plus 5cm}float c0\-\_\-pos = 30000.\-0}}\label{namespaceuser__input__full__battery___g_i_t_t_a5abfcbf596ddd1acc1de08c37cfde9c3}
+Definition at line 43 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
 
-
-Import default values from \href{https://doi.org/10.1149/1945-7111/ab9050}{\tt https\-://doi.\-org/10.\-1149/1945-\/7111/ab9050} Use \hyperlink{namespaceuser__input__mod_acef497295190e3914f7cd93da2708856}{U\-I.\-set\-\_\-defaults\-\_\-pos()} for positive electrode and ...\-\_\-neg() for negative electrode. 
-
-Set values \#\#\#\#\#\# 
-
-Definition at line 45 of file user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T.\-py.
-
-\hypertarget{namespaceuser__input__full__battery___g_i_t_t_ab7633a5e9c70aabfe6992e4fe521a1f9}{\index{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}!cmax\-\_\-neg\-\_\-sim@{cmax\-\_\-neg\-\_\-sim}}
-\index{cmax\-\_\-neg\-\_\-sim@{cmax\-\_\-neg\-\_\-sim}!user_input_full_battery_GITT@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}}
-\subsubsection[{cmax\-\_\-neg\-\_\-sim}]{\setlength{\rightskip}{0pt plus 5cm}float cmax\-\_\-neg\-\_\-sim = 33133.\-00}}\label{namespaceuser__input__full__battery___g_i_t_t_ab7633a5e9c70aabfe6992e4fe521a1f9}
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_a49ca85add7f55fe88898908de9a2d0fb}\label{namespaceuser__input__full__battery___g_i_t_t_a49ca85add7f55fe88898908de9a2d0fb}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!a\_pos@{a\_pos}}
+\index{a\_pos@{a\_pos}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{a\_pos}{a\_pos}}
+{\footnotesize\ttfamily a\+\_\+pos}
 
 
-Definition at line 54 of file user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T.\-py.
 
-\hypertarget{namespaceuser__input__full__battery___g_i_t_t_aa5b015cc7d0bda453c6163023448db72}{\index{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}!cmax\-\_\-pos\-\_\-sim@{cmax\-\_\-pos\-\_\-sim}}
-\index{cmax\-\_\-pos\-\_\-sim@{cmax\-\_\-pos\-\_\-sim}!user_input_full_battery_GITT@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}}
-\subsubsection[{cmax\-\_\-pos\-\_\-sim}]{\setlength{\rightskip}{0pt plus 5cm}float cmax\-\_\-pos\-\_\-sim = 63104.\-00}}\label{namespaceuser__input__full__battery___g_i_t_t_aa5b015cc7d0bda453c6163023448db72}
+Definition at line 44 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
 
-
-Definition at line 53 of file user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T.\-py.
-
-\hypertarget{namespaceuser__input__full__battery___g_i_t_t_a216022bdba987f127b6cc081ee78e2bd}{\index{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}!currents@{currents}}
-\index{currents@{currents}!user_input_full_battery_GITT@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}}
-\subsubsection[{currents}]{\setlength{\rightskip}{0pt plus 5cm}list currents = \mbox{[}20.\-0 for i in range({\bf nsteps})\mbox{]}}}\label{namespaceuser__input__full__battery___g_i_t_t_a216022bdba987f127b6cc081ee78e2bd}
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_aa2349dff3a64d01cbffde81610ca491a}\label{namespaceuser__input__full__battery___g_i_t_t_aa2349dff3a64d01cbffde81610ca491a}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!animation\_interval\_time@{animation\_interval\_time}}
+\index{animation\_interval\_time@{animation\_interval\_time}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{animation\_interval\_time}{animation\_interval\_time}}
+{\footnotesize\ttfamily animation\+\_\+interval\+\_\+time}
 
 
-Definition at line 69 of file user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T.\-py.
 
-\hypertarget{namespaceuser__input__full__battery___g_i_t_t_a778e38aa889751afffa2dea6b803e67a}{\index{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}!dt@{dt}}
-\index{dt@{dt}!user_input_full_battery_GITT@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}}
-\subsubsection[{dt}]{\setlength{\rightskip}{0pt plus 5cm}float dt = 1.\-0}}\label{namespaceuser__input__full__battery___g_i_t_t_a778e38aa889751afffa2dea6b803e67a}
+Definition at line 89 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
 
-
-Definition at line 47 of file user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T.\-py.
-
-\hypertarget{namespaceuser__input__full__battery___g_i_t_t_a64d0c5854299798787675bc91586023c}{\index{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}!K\-\_\-neg@{K\-\_\-neg}}
-\index{K\-\_\-neg@{K\-\_\-neg}!user_input_full_battery_GITT@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}}
-\subsubsection[{K\-\_\-neg}]{\setlength{\rightskip}{0pt plus 5cm}float K\-\_\-neg = 6.\-48\-E-\/7}}\label{namespaceuser__input__full__battery___g_i_t_t_a64d0c5854299798787675bc91586023c}
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_a570288aed3d1eede9a0f7000e4f0b6cc}\label{namespaceuser__input__full__battery___g_i_t_t_a570288aed3d1eede9a0f7000e4f0b6cc}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!c0@{c0}}
+\index{c0@{c0}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{c0}{c0}}
+{\footnotesize\ttfamily c0}
 
 
-Definition at line 51 of file user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T.\-py.
 
-\hypertarget{namespaceuser__input__full__battery___g_i_t_t_ab1a8ebec490ba1301f818bd1c5f1f3fa}{\index{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}!K\-\_\-pos@{K\-\_\-pos}}
-\index{K\-\_\-pos@{K\-\_\-pos}!user_input_full_battery_GITT@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}}
-\subsubsection[{K\-\_\-pos}]{\setlength{\rightskip}{0pt plus 5cm}float K\-\_\-pos = 3.\-42\-E-\/6}}\label{namespaceuser__input__full__battery___g_i_t_t_ab1a8ebec490ba1301f818bd1c5f1f3fa}
+Definition at line 43 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_ad1f2e3ea1e8872b82ad0a3f8b86f0769}\label{namespaceuser__input__full__battery___g_i_t_t_ad1f2e3ea1e8872b82ad0a3f8b86f0769}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!c0\_neg@{c0\_neg}}
+\index{c0\_neg@{c0\_neg}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{c0\_neg}{c0\_neg}}
+{\footnotesize\ttfamily float c0\+\_\+neg = 1.\+0}
 
 
-Definition at line 50 of file user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T.\-py.
 
-\hypertarget{namespaceuser__input__full__battery___g_i_t_t_ad7c4c17cf720ee538e27c02ab356ed6b}{\index{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}!nprocs@{nprocs}}
-\index{nprocs@{nprocs}!user_input_full_battery_GITT@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}}
-\subsubsection[{nprocs}]{\setlength{\rightskip}{0pt plus 5cm}int nprocs = 20}}\label{namespaceuser__input__full__battery___g_i_t_t_ad7c4c17cf720ee538e27c02ab356ed6b}
+Definition at line 48 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_a5abfcbf596ddd1acc1de08c37cfde9c3}\label{namespaceuser__input__full__battery___g_i_t_t_a5abfcbf596ddd1acc1de08c37cfde9c3}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!c0\_pos@{c0\_pos}}
+\index{c0\_pos@{c0\_pos}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{c0\_pos}{c0\_pos}}
+{\footnotesize\ttfamily float c0\+\_\+pos = 30000.\+0}
+
+
+
+Set values \#\#\#\#\#\#. 
+
+
+
+Definition at line 47 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_ab7633a5e9c70aabfe6992e4fe521a1f9}\label{namespaceuser__input__full__battery___g_i_t_t_ab7633a5e9c70aabfe6992e4fe521a1f9}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!cmax\_neg\_sim@{cmax\_neg\_sim}}
+\index{cmax\_neg\_sim@{cmax\_neg\_sim}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{cmax\_neg\_sim}{cmax\_neg\_sim}}
+{\footnotesize\ttfamily float cmax\+\_\+neg\+\_\+sim = 33133.\+00}
+
+
+
+Definition at line 56 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_aa5b015cc7d0bda453c6163023448db72}\label{namespaceuser__input__full__battery___g_i_t_t_aa5b015cc7d0bda453c6163023448db72}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!cmax\_pos\_sim@{cmax\_pos\_sim}}
+\index{cmax\_pos\_sim@{cmax\_pos\_sim}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{cmax\_pos\_sim}{cmax\_pos\_sim}}
+{\footnotesize\ttfamily float cmax\+\_\+pos\+\_\+sim = 63104.\+00}
+
+
+
+Definition at line 55 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_a216022bdba987f127b6cc081ee78e2bd}\label{namespaceuser__input__full__battery___g_i_t_t_a216022bdba987f127b6cc081ee78e2bd}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!currents@{currents}}
+\index{currents@{currents}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{currents}{currents}}
+{\footnotesize\ttfamily list currents = \mbox{[}20.\+0 for \mbox{\hyperlink{read__inputs_8f90_aaea4baed8fd8b780f6938f0dc1fb0f72}{i}} in range(\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_aa2414080b021dbb9b56eeaeedec0ffa2}{nsteps}})\mbox{]}}
+
+
+
+Definition at line 72 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_a9fcd3b2119e5d75c8a9fe625dd1b5ffc}\label{namespaceuser__input__full__battery___g_i_t_t_a9fcd3b2119e5d75c8a9fe625dd1b5ffc}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!D\_neg@{D\_neg}}
+\index{D\_neg@{D\_neg}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{D\_neg}{D\_neg}}
+{\footnotesize\ttfamily D\+\_\+neg}
+
+
+
+Definition at line 43 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_abbe757f0e0006636fc50b1eb877ce752}\label{namespaceuser__input__full__battery___g_i_t_t_abbe757f0e0006636fc50b1eb877ce752}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!D\_pos@{D\_pos}}
+\index{D\_pos@{D\_pos}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{D\_pos}{D\_pos}}
+{\footnotesize\ttfamily D\+\_\+pos}
+
+
+
+Definition at line 44 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_a778e38aa889751afffa2dea6b803e67a}\label{namespaceuser__input__full__battery___g_i_t_t_a778e38aa889751afffa2dea6b803e67a}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!dt@{dt}}
+\index{dt@{dt}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{dt}{dt}}
+{\footnotesize\ttfamily float dt = 1.\+0}
+
+
+
+Definition at line 43 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_a5e05c1d82b55a50809f5a035074dafc2}\label{namespaceuser__input__full__battery___g_i_t_t_a5e05c1d82b55a50809f5a035074dafc2}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!electrode\_charge\_neg@{electrode\_charge\_neg}}
+\index{electrode\_charge\_neg@{electrode\_charge\_neg}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{electrode\_charge\_neg}{electrode\_charge\_neg}}
+{\footnotesize\ttfamily electrode\+\_\+charge\+\_\+neg}
+
+
+
+Definition at line 43 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_a124b6c7f9ba01bbc5bb8713ca260110e}\label{namespaceuser__input__full__battery___g_i_t_t_a124b6c7f9ba01bbc5bb8713ca260110e}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!electrode\_charge\_pos@{electrode\_charge\_pos}}
+\index{electrode\_charge\_pos@{electrode\_charge\_pos}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{electrode\_charge\_pos}{electrode\_charge\_pos}}
+{\footnotesize\ttfamily electrode\+\_\+charge\+\_\+pos}
+
+
+
+Definition at line 44 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_ae136a5a40418acc8c7ba8dcb90240bc7}\label{namespaceuser__input__full__battery___g_i_t_t_ae136a5a40418acc8c7ba8dcb90240bc7}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!iapp\_label\_neg@{iapp\_label\_neg}}
+\index{iapp\_label\_neg@{iapp\_label\_neg}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{iapp\_label\_neg}{iapp\_label\_neg}}
+{\footnotesize\ttfamily iapp\+\_\+label\+\_\+neg}
+
+
+
+Definition at line 43 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_a31b7ae3f94f6bea80e522e956225fed2}\label{namespaceuser__input__full__battery___g_i_t_t_a31b7ae3f94f6bea80e522e956225fed2}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!iapp\_label\_pos@{iapp\_label\_pos}}
+\index{iapp\_label\_pos@{iapp\_label\_pos}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{iapp\_label\_pos}{iapp\_label\_pos}}
+{\footnotesize\ttfamily iapp\+\_\+label\+\_\+pos}
+
+
+
+Definition at line 44 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_a7a8fe217f5fca8ba33ec21ff714a7c0e}\label{namespaceuser__input__full__battery___g_i_t_t_a7a8fe217f5fca8ba33ec21ff714a7c0e}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!iapp\_neg@{iapp\_neg}}
+\index{iapp\_neg@{iapp\_neg}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{iapp\_neg}{iapp\_neg}}
+{\footnotesize\ttfamily iapp\+\_\+neg}
+
+
+
+Definition at line 43 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_a3f20c0bc5d9a430591f37786d56712c9}\label{namespaceuser__input__full__battery___g_i_t_t_a3f20c0bc5d9a430591f37786d56712c9}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!iapp\_pos@{iapp\_pos}}
+\index{iapp\_pos@{iapp\_pos}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{iapp\_pos}{iapp\_pos}}
+{\footnotesize\ttfamily iapp\+\_\+pos}
+
+
+
+Definition at line 44 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_a64d0c5854299798787675bc91586023c}\label{namespaceuser__input__full__battery___g_i_t_t_a64d0c5854299798787675bc91586023c}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!K\_neg@{K\_neg}}
+\index{K\_neg@{K\_neg}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{K\_neg}{K\_neg}}
+{\footnotesize\ttfamily float K\+\_\+neg = 6.\+48E-\/7}
+
+
+
+Definition at line 53 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_ab1a8ebec490ba1301f818bd1c5f1f3fa}\label{namespaceuser__input__full__battery___g_i_t_t_ab1a8ebec490ba1301f818bd1c5f1f3fa}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!K\_pos@{K\_pos}}
+\index{K\_pos@{K\_pos}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{K\_pos}{K\_pos}}
+{\footnotesize\ttfamily float K\+\_\+pos = 3.\+42E-\/6}
+
+
+
+Definition at line 52 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_afa495db87be1b2e6f6400b6c4f9d2d5b}\label{namespaceuser__input__full__battery___g_i_t_t_afa495db87be1b2e6f6400b6c4f9d2d5b}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!L\_neg@{L\_neg}}
+\index{L\_neg@{L\_neg}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{L\_neg}{L\_neg}}
+{\footnotesize\ttfamily L\+\_\+neg}
+
+
+
+Definition at line 43 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_aa2e9ffa92368db59d7a9c060c0c0d365}\label{namespaceuser__input__full__battery___g_i_t_t_aa2e9ffa92368db59d7a9c060c0c0d365}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!L\_pos@{L\_pos}}
+\index{L\_pos@{L\_pos}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{L\_pos}{L\_pos}}
+{\footnotesize\ttfamily L\+\_\+pos}
+
+
+
+Definition at line 44 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_a76f11d9a0a47b94f72c2d0e77fb32240}\label{namespaceuser__input__full__battery___g_i_t_t_a76f11d9a0a47b94f72c2d0e77fb32240}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!n@{n}}
+\index{n@{n}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{n}{n}}
+{\footnotesize\ttfamily int n = 1000}
+
+
+
+Definition at line 43 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_a02dfc31e8717e46c15df15c0756bb7e7}\label{namespaceuser__input__full__battery___g_i_t_t_a02dfc31e8717e46c15df15c0756bb7e7}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!neg\_params@{neg\_params}}
+\index{neg\_params@{neg\_params}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{neg\_params}{neg\_params}}
+{\footnotesize\ttfamily neg\+\_\+params}
+
+
+
+Definition at line 89 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_ad7c4c17cf720ee538e27c02ab356ed6b}\label{namespaceuser__input__full__battery___g_i_t_t_ad7c4c17cf720ee538e27c02ab356ed6b}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!nprocs@{nprocs}}
+\index{nprocs@{nprocs}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{nprocs}{nprocs}}
+{\footnotesize\ttfamily int nprocs = 40}
+
 
 
 Check parameters are valid \#\#\#\#\#\#. 
 
 Manually set up applied current and parallelisation \#\#\#\#\#\# Number of parallel processors being utilised 
 
-Definition at line 63 of file user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T.\-py.
+Definition at line 66 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
 
-\hypertarget{namespaceuser__input__full__battery___g_i_t_t_aa2414080b021dbb9b56eeaeedec0ffa2}{\index{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}!nsteps@{nsteps}}
-\index{nsteps@{nsteps}!user_input_full_battery_GITT@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}}
-\subsubsection[{nsteps}]{\setlength{\rightskip}{0pt plus 5cm}int nsteps = 10}}\label{namespaceuser__input__full__battery___g_i_t_t_aa2414080b021dbb9b56eeaeedec0ffa2}
-
-
-Definition at line 66 of file user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T.\-py.
-
-\hypertarget{namespaceuser__input__full__battery___g_i_t_t_a701d8142cb069e7737cab8445986caa3}{\index{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}!output\-\_\-filename\-\_\-negative@{output\-\_\-filename\-\_\-negative}}
-\index{output\-\_\-filename\-\_\-negative@{output\-\_\-filename\-\_\-negative}!user_input_full_battery_GITT@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}}
-\subsubsection[{output\-\_\-filename\-\_\-negative}]{\setlength{\rightskip}{0pt plus 5cm}string output\-\_\-filename\-\_\-negative = 'current\-\_\-step\-\_\-neg'}}\label{namespaceuser__input__full__battery___g_i_t_t_a701d8142cb069e7737cab8445986caa3}
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_aa2414080b021dbb9b56eeaeedec0ffa2}\label{namespaceuser__input__full__battery___g_i_t_t_aa2414080b021dbb9b56eeaeedec0ffa2}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!nsteps@{nsteps}}
+\index{nsteps@{nsteps}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{nsteps}{nsteps}}
+{\footnotesize\ttfamily int nsteps = 10}
 
 
-Definition at line 37 of file user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T.\-py.
 
-\hypertarget{namespaceuser__input__full__battery___g_i_t_t_aa07a082ed078c3321f15b79529277837}{\index{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}!output\-\_\-filename\-\_\-positive@{output\-\_\-filename\-\_\-positive}}
-\index{output\-\_\-filename\-\_\-positive@{output\-\_\-filename\-\_\-positive}!user_input_full_battery_GITT@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}}
-\subsubsection[{output\-\_\-filename\-\_\-positive}]{\setlength{\rightskip}{0pt plus 5cm}string output\-\_\-filename\-\_\-positive = 'current\-\_\-step\-\_\-pos'}}\label{namespaceuser__input__full__battery___g_i_t_t_aa07a082ed078c3321f15b79529277837}
+Definition at line 69 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_a0707f525915c982db43c07a90065498c}\label{namespaceuser__input__full__battery___g_i_t_t_a0707f525915c982db43c07a90065498c}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!output\_filename\_negative@{output\_filename\_negative}}
+\index{output\_filename\_negative@{output\_filename\_negative}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{output\_filename\_negative}{output\_filename\_negative}}
+{\footnotesize\ttfamily output\+\_\+filename\+\_\+negative = \textquotesingle{}current\+\_\+step\+\_\+neg\textquotesingle{}}
 
 
-Uncomment to print stdout to file sys.\-stdout = open('test.\-txt', 'w') 
+
+Definition at line 39 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_a4b95c9f249d815d21456995ff23fa2c2}\label{namespaceuser__input__full__battery___g_i_t_t_a4b95c9f249d815d21456995ff23fa2c2}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!output\_filename\_positive@{output\_filename\_positive}}
+\index{output\_filename\_positive@{output\_filename\_positive}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{output\_filename\_positive}{output\_filename\_positive}}
+{\footnotesize\ttfamily output\+\_\+filename\+\_\+positive = \textquotesingle{}current\+\_\+step\+\_\+pos\textquotesingle{}}
+
+
+
+Uncomment to print stdout to file sys.\+stdout = open(\textquotesingle{}test.\+txt\textquotesingle{}, \textquotesingle{}w\textquotesingle{}) 
+
+Call the plotting function which plots the results of the GITT test with nstep steps.
 
 Set filename to output user input parameters \#\#\#\#\#\# Set string for filename. Do not enter a file extension. Max characters = 50 
 
-Definition at line 36 of file user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T.\-py.
+Definition at line 38 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
 
-\hypertarget{namespaceuser__input__full__battery___g_i_t_t_a0bd2f9c022b04c151ac8c0ad19eadd67}{\index{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}!params\-\_\-neg@{params\-\_\-neg}}
-\index{params\-\_\-neg@{params\-\_\-neg}!user_input_full_battery_GITT@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}}
-\subsubsection[{params\-\_\-neg}]{\setlength{\rightskip}{0pt plus 5cm}list params\-\_\-neg = \mbox{[}{\bf dt}, {\bf c0\-\_\-neg}, D\-\_\-neg, R\-\_\-neg, a\-\_\-neg, L\-\_\-neg, electrode\-\_\-charge\-\_\-neg\mbox{]}}}\label{namespaceuser__input__full__battery___g_i_t_t_a0bd2f9c022b04c151ac8c0ad19eadd67}
-
-
-Definition at line 76 of file user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T.\-py.
-
-\hypertarget{namespaceuser__input__full__battery___g_i_t_t_a51c49f845d3932a6a084187c90aab1ab}{\index{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}!params\-\_\-pos@{params\-\_\-pos}}
-\index{params\-\_\-pos@{params\-\_\-pos}!user_input_full_battery_GITT@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}}
-\subsubsection[{params\-\_\-pos}]{\setlength{\rightskip}{0pt plus 5cm}list params\-\_\-pos = \mbox{[}{\bf dt}, {\bf c0\-\_\-pos}, D\-\_\-pos, R\-\_\-pos, a\-\_\-pos, L\-\_\-pos, electrode\-\_\-charge\-\_\-pos\mbox{]}}}\label{namespaceuser__input__full__battery___g_i_t_t_a51c49f845d3932a6a084187c90aab1ab}
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_a0bd2f9c022b04c151ac8c0ad19eadd67}\label{namespaceuser__input__full__battery___g_i_t_t_a0bd2f9c022b04c151ac8c0ad19eadd67}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!params\_neg@{params\_neg}}
+\index{params\_neg@{params\_neg}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{params\_neg}{params\_neg}}
+{\footnotesize\ttfamily list params\+\_\+neg = \mbox{[}\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a778e38aa889751afffa2dea6b803e67a}{dt}}, \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_ad1f2e3ea1e8872b82ad0a3f8b86f0769}{c0\+\_\+neg}}, \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a9fcd3b2119e5d75c8a9fe625dd1b5ffc}{D\+\_\+neg}}, \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_ac3cae4769661847dbd5ef4505bddc55a}{R\+\_\+neg}}, \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a165cbe81be4e2bcd1eeba6d395178a8e}{a\+\_\+neg}}, \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_afa495db87be1b2e6f6400b6c4f9d2d5b}{L\+\_\+neg}}, \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a5e05c1d82b55a50809f5a035074dafc2}{electrode\+\_\+charge\+\_\+neg}}\mbox{]}}
 
 
-Definition at line 75 of file user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T.\-py.
 
-\hypertarget{namespaceuser__input__full__battery___g_i_t_t_a0861e0e85d9d6139e0cc3cc1cc4fa692}{\index{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}!plot\-\_\-params\-\_\-neg@{plot\-\_\-params\-\_\-neg}}
-\index{plot\-\_\-params\-\_\-neg@{plot\-\_\-params\-\_\-neg}!user_input_full_battery_GITT@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}}
-\subsubsection[{plot\-\_\-params\-\_\-neg}]{\setlength{\rightskip}{0pt plus 5cm}list plot\-\_\-params\-\_\-neg = \mbox{[}{\bf K\-\_\-neg},a\-\_\-neg,{\bf cmax\-\_\-neg\-\_\-sim},L\-\_\-neg\mbox{]}}}\label{namespaceuser__input__full__battery___g_i_t_t_a0861e0e85d9d6139e0cc3cc1cc4fa692}
+Definition at line 79 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_a51c49f845d3932a6a084187c90aab1ab}\label{namespaceuser__input__full__battery___g_i_t_t_a51c49f845d3932a6a084187c90aab1ab}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!params\_pos@{params\_pos}}
+\index{params\_pos@{params\_pos}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{params\_pos}{params\_pos}}
+{\footnotesize\ttfamily list params\+\_\+pos = \mbox{[}\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a778e38aa889751afffa2dea6b803e67a}{dt}}, \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a5abfcbf596ddd1acc1de08c37cfde9c3}{c0\+\_\+pos}}, \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_abbe757f0e0006636fc50b1eb877ce752}{D\+\_\+pos}}, \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_ae78aef723bc1b30ffa6c06e6a5f62f25}{R\+\_\+pos}}, \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a49ca85add7f55fe88898908de9a2d0fb}{a\+\_\+pos}}, \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_aa2e9ffa92368db59d7a9c060c0c0d365}{L\+\_\+pos}}, \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a124b6c7f9ba01bbc5bb8713ca260110e}{electrode\+\_\+charge\+\_\+pos}}\mbox{]}}
 
 
-Definition at line 83 of file user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T.\-py.
 
-\hypertarget{namespaceuser__input__full__battery___g_i_t_t_a5bacef25baf63731923fbef674af4e9d}{\index{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}!plot\-\_\-params\-\_\-pos@{plot\-\_\-params\-\_\-pos}}
-\index{plot\-\_\-params\-\_\-pos@{plot\-\_\-params\-\_\-pos}!user_input_full_battery_GITT@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}}
-\subsubsection[{plot\-\_\-params\-\_\-pos}]{\setlength{\rightskip}{0pt plus 5cm}list plot\-\_\-params\-\_\-pos = \mbox{[}{\bf K\-\_\-pos},a\-\_\-pos,{\bf cmax\-\_\-pos\-\_\-sim},L\-\_\-pos\mbox{]}}}\label{namespaceuser__input__full__battery___g_i_t_t_a5bacef25baf63731923fbef674af4e9d}
+Definition at line 78 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_a9850af56ec718d322d6277be29d14383}\label{namespaceuser__input__full__battery___g_i_t_t_a9850af56ec718d322d6277be29d14383}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!plot\_params\_neg@{plot\_params\_neg}}
+\index{plot\_params\_neg@{plot\_params\_neg}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{plot\_params\_neg}{plot\_params\_neg}}
+{\footnotesize\ttfamily plot\+\_\+params\+\_\+neg = \mbox{[}\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a64d0c5854299798787675bc91586023c}{K\+\_\+neg}},\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a165cbe81be4e2bcd1eeba6d395178a8e}{a\+\_\+neg}},\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_ab7633a5e9c70aabfe6992e4fe521a1f9}{cmax\+\_\+neg\+\_\+sim}},\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_afa495db87be1b2e6f6400b6c4f9d2d5b}{L\+\_\+neg}}\mbox{]}}
+
+
+
+Definition at line 86 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_acf0eee992bf47d45233f687e5045ea55}\label{namespaceuser__input__full__battery___g_i_t_t_acf0eee992bf47d45233f687e5045ea55}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!plot\_params\_pos@{plot\_params\_pos}}
+\index{plot\_params\_pos@{plot\_params\_pos}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{plot\_params\_pos}{plot\_params\_pos}}
+{\footnotesize\ttfamily plot\+\_\+params\+\_\+pos = \mbox{[}\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_ab1a8ebec490ba1301f818bd1c5f1f3fa}{K\+\_\+pos}},\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a49ca85add7f55fe88898908de9a2d0fb}{a\+\_\+pos}},\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_aa5b015cc7d0bda453c6163023448db72}{cmax\+\_\+pos\+\_\+sim}},\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_aa2e9ffa92368db59d7a9c060c0c0d365}{L\+\_\+pos}}\mbox{]}}
+
 
 
 Call the function to perform the full battery parallel solve. 
 
 
 
-Definition at line 82 of file user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T.\-py.
+Definition at line 85 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
 
-\hypertarget{namespaceuser__input__full__battery___g_i_t_t_a5a6deb885420d2b81e210e580767b1c1}{\index{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}!run\-\_\-times@{run\-\_\-times}}
-\index{run\-\_\-times@{run\-\_\-times}!user_input_full_battery_GITT@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}}
-\subsubsection[{run\-\_\-times}]{\setlength{\rightskip}{0pt plus 5cm}list run\-\_\-times = \mbox{[}150.\-0 for i in range({\bf nsteps})\mbox{]}}}\label{namespaceuser__input__full__battery___g_i_t_t_a5a6deb885420d2b81e210e580767b1c1}
-
-
-Definition at line 71 of file user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T.\-py.
-
-\hypertarget{namespaceuser__input__full__battery___g_i_t_t_a377a515511d37e8c7ac5501847d6485d}{\index{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}!start\-\_\-times@{start\-\_\-times}}
-\index{start\-\_\-times@{start\-\_\-times}!user_input_full_battery_GITT@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}}
-\subsubsection[{start\-\_\-times}]{\setlength{\rightskip}{0pt plus 5cm}list start\-\_\-times = \mbox{[}2150.\-0$\ast$i for i in range({\bf nsteps})\mbox{]}}}\label{namespaceuser__input__full__battery___g_i_t_t_a377a515511d37e8c7ac5501847d6485d}
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_a48c84606bc366845a0aaf284435fcdfb}\label{namespaceuser__input__full__battery___g_i_t_t_a48c84606bc366845a0aaf284435fcdfb}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!pos\_params@{pos\_params}}
+\index{pos\_params@{pos\_params}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{pos\_params}{pos\_params}}
+{\footnotesize\ttfamily pos\+\_\+params}
 
 
-Definition at line 70 of file user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T.\-py.
 
-\hypertarget{namespaceuser__input__full__battery___g_i_t_t_ae584b229c7b1ea3d8330e6038884ffd3}{\index{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}!wait\-\_\-times@{wait\-\_\-times}}
-\index{wait\-\_\-times@{wait\-\_\-times}!user_input_full_battery_GITT@{user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T}}
-\subsubsection[{wait\-\_\-times}]{\setlength{\rightskip}{0pt plus 5cm}list wait\-\_\-times = \mbox{[}2000.\-0 for i in range({\bf nsteps})\mbox{]}}}\label{namespaceuser__input__full__battery___g_i_t_t_ae584b229c7b1ea3d8330e6038884ffd3}
+Definition at line 89 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_ac3cae4769661847dbd5ef4505bddc55a}\label{namespaceuser__input__full__battery___g_i_t_t_ac3cae4769661847dbd5ef4505bddc55a}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!R\_neg@{R\_neg}}
+\index{R\_neg@{R\_neg}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{R\_neg}{R\_neg}}
+{\footnotesize\ttfamily R\+\_\+neg}
 
 
-Definition at line 72 of file user\-\_\-input\-\_\-full\-\_\-battery\-\_\-\-G\-I\-T\-T.\-py.
+
+Definition at line 43 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_ae78aef723bc1b30ffa6c06e6a5f62f25}\label{namespaceuser__input__full__battery___g_i_t_t_ae78aef723bc1b30ffa6c06e6a5f62f25}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!R\_pos@{R\_pos}}
+\index{R\_pos@{R\_pos}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{R\_pos}{R\_pos}}
+{\footnotesize\ttfamily R\+\_\+pos}
+
+
+
+Definition at line 44 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_a5a6deb885420d2b81e210e580767b1c1}\label{namespaceuser__input__full__battery___g_i_t_t_a5a6deb885420d2b81e210e580767b1c1}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!run\_times@{run\_times}}
+\index{run\_times@{run\_times}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{run\_times}{run\_times}}
+{\footnotesize\ttfamily list run\+\_\+times = \mbox{[}150.\+0 for \mbox{\hyperlink{read__inputs_8f90_aaea4baed8fd8b780f6938f0dc1fb0f72}{i}} in range(\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_aa2414080b021dbb9b56eeaeedec0ffa2}{nsteps}})\mbox{]}}
+
+
+
+Definition at line 74 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_acc27a1da570e84f9ca12e60f0e4c7451}\label{namespaceuser__input__full__battery___g_i_t_t_acc27a1da570e84f9ca12e60f0e4c7451}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!SparsifyAnimation@{SparsifyAnimation}}
+\index{SparsifyAnimation@{SparsifyAnimation}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{SparsifyAnimation}{SparsifyAnimation}}
+{\footnotesize\ttfamily Sparsify\+Animation}
+
+
+
+Definition at line 89 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_a0954fbf3a78f4bdb8ab964be15c01b01}\label{namespaceuser__input__full__battery___g_i_t_t_a0954fbf3a78f4bdb8ab964be15c01b01}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!start\_times@{start\_times}}
+\index{start\_times@{start\_times}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{start\_times}{start\_times}}
+{\footnotesize\ttfamily start\+\_\+times = \mbox{[}2150.\+0$\ast$\mbox{\hyperlink{read__inputs_8f90_aaea4baed8fd8b780f6938f0dc1fb0f72}{i}} for \mbox{\hyperlink{read__inputs_8f90_aaea4baed8fd8b780f6938f0dc1fb0f72}{i}} in range(\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_aa2414080b021dbb9b56eeaeedec0ffa2}{nsteps}})\mbox{]}}
+
+
+
+Definition at line 73 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_a643a20c0c59588a0f741a6095e2025fd}\label{namespaceuser__input__full__battery___g_i_t_t_a643a20c0c59588a0f741a6095e2025fd}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!True@{True}}
+\index{True@{True}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{True}{True}}
+{\footnotesize\ttfamily True}
+
+
+
+Definition at line 89 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_a63b973cf773a42a37d790d0a4bce8ddc}\label{namespaceuser__input__full__battery___g_i_t_t_a63b973cf773a42a37d790d0a4bce8ddc}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!tsteps@{tsteps}}
+\index{tsteps@{tsteps}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{tsteps}{tsteps}}
+{\footnotesize\ttfamily tsteps}
+
+
+
+Import default values from \href{https://doi.org/10.1149/1945-7111/ab9050}{\texttt{ https\+://doi.\+org/10.\+1149/1945-\/7111/ab9050}} Use \mbox{\hyperlink{namespaceuser__input__mod_aebe5c185d4c5b424c433665db6de9bfd}{UI.\+set\+\_\+defaults\+\_\+pos()}} for positive electrode and ...\+\_\+neg() for negative electrode. 
+
+
+
+Definition at line 43 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_ae584b229c7b1ea3d8330e6038884ffd3}\label{namespaceuser__input__full__battery___g_i_t_t_ae584b229c7b1ea3d8330e6038884ffd3}} 
+\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}!wait\_times@{wait\_times}}
+\index{wait\_times@{wait\_times}!user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+\doxysubsubsection{\texorpdfstring{wait\_times}{wait\_times}}
+{\footnotesize\ttfamily list wait\+\_\+times = \mbox{[}2000.\+0 for \mbox{\hyperlink{read__inputs_8f90_aaea4baed8fd8b780f6938f0dc1fb0f72}{i}} in range(\mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_aa2414080b021dbb9b56eeaeedec0ffa2}{nsteps}})\mbox{]}}
+
+
+
+Definition at line 75 of file user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT.\+py.
 

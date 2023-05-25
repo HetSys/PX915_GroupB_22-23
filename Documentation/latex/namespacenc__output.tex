@@ -1,0 +1,40 @@
+\hypertarget{namespacenc__output}{}\doxysection{nc\+\_\+output Module Reference}
+\label{namespacenc__output}\index{nc\_output@{nc\_output}}
+
+
+Writes results to a net\+CDF file.  
+
+
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine \mbox{\hyperlink{namespacenc__output_a8829be2bb8e37f66fcd981ec7cbc9355}{check}} (\mbox{\hyperlink{checkpointing_8f90_a3140a92074c48154c3e40bea6ec8677e}{status}})
+\item 
+subroutine \mbox{\hyperlink{namespacenc__output_a9eedc9f02c0f23976f76e83a9103bcad}{output\+\_\+cstorage}} (\mbox{\hyperlink{checkpointing_8f90_a887806f172f4989bf0d3c541f95fb5ed}{cstorage}}, \mbox{\hyperlink{read__inputs_8f90_a128e58f73e38b052fe5ca4758e8469c3}{n}}, \mbox{\hyperlink{read__inputs_8f90_a91662adda6b1bf216ff0a00a440591c4}{tsteps}}, R, time\+\_\+axis, \mbox{\hyperlink{read__inputs_8f90_aff6b764bcec5679997febf97860f09c4}{electrode\+\_\+charge}}, \mbox{\hyperlink{read__inputs_8f90_a0534a3ee620c0917cd9f0099559b2d52}{filename}})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Writes results to a net\+CDF file. 
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespacenc__output_a8829be2bb8e37f66fcd981ec7cbc9355}\label{namespacenc__output_a8829be2bb8e37f66fcd981ec7cbc9355}} 
+\index{nc\_output@{nc\_output}!check@{check}}
+\index{check@{check}!nc\_output@{nc\_output}}
+\doxysubsubsection{\texorpdfstring{check()}{check()}}
+{\footnotesize\ttfamily subroutine nc\+\_\+output\+::check (\begin{DoxyParamCaption}\item[{integer, intent(in)}]{status }\end{DoxyParamCaption})}
+
+
+
+Definition at line 9 of file nc\+\_\+output.\+f90.
+
+\mbox{\Hypertarget{namespacenc__output_a9eedc9f02c0f23976f76e83a9103bcad}\label{namespacenc__output_a9eedc9f02c0f23976f76e83a9103bcad}} 
+\index{nc\_output@{nc\_output}!output\_cstorage@{output\_cstorage}}
+\index{output\_cstorage@{output\_cstorage}!nc\_output@{nc\_output}}
+\doxysubsubsection{\texorpdfstring{output\_cstorage()}{output\_cstorage()}}
+{\footnotesize\ttfamily subroutine nc\+\_\+output\+::output\+\_\+cstorage (\begin{DoxyParamCaption}\item[{real(real64), dimension(\mbox{\hyperlink{read__inputs_8f90_a128e58f73e38b052fe5ca4758e8469c3}{n}}, \mbox{\hyperlink{read__inputs_8f90_a91662adda6b1bf216ff0a00a440591c4}{tsteps}}), intent(in)}]{cstorage,  }\item[{integer, intent(in)}]{n,  }\item[{integer, intent(in)}]{tsteps,  }\item[{real(real64), intent(in)}]{R,  }\item[{real(real64), dimension(\mbox{\hyperlink{read__inputs_8f90_a91662adda6b1bf216ff0a00a440591c4}{tsteps}}), intent(in)}]{time\+\_\+axis,  }\item[{character(len=$\ast$), intent(in)}]{electrode\+\_\+charge,  }\item[{character(len=$\ast$), intent(in)}]{filename }\end{DoxyParamCaption})}
+
+
+
+Definition at line 20 of file nc\+\_\+output.\+f90.
+

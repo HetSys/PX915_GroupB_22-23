@@ -28,16 +28,16 @@
             INTEGER :: parse_idx
             !> @var character len=60 arg
             !! String to contain command line read in.
-            CHARACTER(len=60) :: arg
+            CHARACTER(len=164) :: arg
             !> @var character len=60 name
             !! String to contain name of argument after parsing.
             CHARACTER(len=60) :: name
             !> @var character len=60 val
             !! String to contain value of argument after parsing.
-            CHARACTER(len=60) :: val
+            CHARACTER(len=104) :: val
             !> @var character len=54 filename
             !! Name of file containing user inputs. Result of function.
-            CHARACTER(len=54) :: filename 
+            CHARACTER(len=104) :: filename 
 
 
             num_args = COMMAND_ARGUMENT_COUNT()
@@ -388,7 +388,9 @@
 
             STOP 3
 
-        END SUBROUTINE
+        END SUBROUTINE invalid_param_type
+
+
 
 
     END MODULE read_inputs
