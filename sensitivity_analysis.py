@@ -113,7 +113,7 @@ def sensitivity_over_time():
         return dQ_dx
 
     def second_order_sensitivities(Q, variables, Q0, eps=1e-4):
-        '''!@brief 
+        '''!@brief Performs second order sensitivity analysis on the supplied QOI and variables.'''
         x0 = np.array([v.mean() for v in variables])
         dQ2_dx2 = np.zeros((len(x0), len(x0)))
 
@@ -163,6 +163,7 @@ def sensitivity_over_time():
     def plot_sensitivities(f, variables, variable_names,
                            Q0=None, dQ_dx=None, d2Q_dx2=None,
                            second_order=False, logscale=False):
+        '''!@brief Plots a simple figure that shows sensitivity of the QOI to the variables with respect to the desired order.''''
         fig = plt.figure()
         x0 = np.array([v.mean() for v in variables])
         sigma0 = np.array([v.std() for v in variables])
@@ -201,6 +202,7 @@ def sensitivity_over_time():
 
     #import scipy.stats as st
     def Uncert_Prop():
+        '''!@Uncertainty propagation function. Defines input distributions and propagates through the solver to see the effect on the QOI. '''
         # Setup distributions
         #c0, D, R, a, L
         c0 = st.norm(1000.0, 25.0)
