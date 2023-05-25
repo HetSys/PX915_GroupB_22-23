@@ -65,7 +65,7 @@ PROGRAM MAIN
     
     b = 0.0_REAL64
     
-    Z = (-iapp)/(a_small*F*L*D)
+    Z = (iapp)/(a_small*F*L*D)
     !build A matrix for solver (constant over time)
     A = 0.0_REAL64
     !boundary condition
