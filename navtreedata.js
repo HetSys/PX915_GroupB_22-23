@@ -26,7 +26,7 @@ var NAVTREE =
 [
   [ "SPAMS", "index.html", [
     [ "Introduction", "index.html#Intro", null ],
-    [ "Fraser Birks, Laura Cairns, Sebastian Dooley, Arielle Fitkin, Jake Eller, and Yu Lei", "index.html#Contributors", null ],
+    [ "Contributors", "index.html#Contributors", null ],
     [ "Maths and Theory", "md_math.html", [
       [ "1 Mathematics and Algorithms", "md_math.html#autotoc_md1", null ]
     ] ],
@@ -38,19 +38,9 @@ var NAVTREE =
     [ "Modules", "namespaces.html", [
       [ "Modules List", "namespaces.html", "namespaces_dup" ],
       [ "Module Members", "namespacemembers.html", [
-        [ "All", "namespacemembers.html", "namespacemembers_dup" ],
+        [ "All", "namespacemembers.html", null ],
         [ "Functions/Subroutines", "namespacemembers_func.html", null ],
         [ "Variables", "namespacemembers_vars.html", null ]
-      ] ]
-    ] ],
-    [ "Maths and Theory", "md_math.html", null ],
-    [ "Uncertainty Quantification", "md_uq.html", null ],
-    [ "Files", "files.html", [
-      [ "File List", "files.html", "files_dup" ],
-      [ "File Members", "globals.html", [
-        [ "All", "globals.html", null ],
-        [ "Functions/Subroutines", "globals_func.html", null ],
-        [ "Variables", "globals_vars.html", null ]
       ] ]
     ] ]
   ] ]
@@ -58,9 +48,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_m_k_l__threads__test_8py.html",
-"namespacemembers_m.html",
-"user__input__full__battery___g_i_t_t_8py.html#a7a8fe217f5fca8ba33ec21ff714a7c0e"
+"citelist.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
