@@ -35,7 +35,9 @@ import sys
 # The stdout (command line output) can be output to a file. Uncomment the line below to use this option.
 # sys.stdout = open('stdout.txt', 'w')
 
-# Change the name of this of this file containing the user input parameters.
+# Select input file: checkpoint file (True) or user input parameters (False).
+# Enter the filename of desired checkpoint file or the desired name of the file containing user input parameters.
+checkpoint = False
 solver_input_filename = 'user_input'
 
 
@@ -55,21 +57,24 @@ cmax_neg_sim = 33133.00   # Negative electrode maximum concentration (molm^-3)
 
 ######### END SET VALUES #########
 
-#Check parameters and filename are valid.
-#If set manually, tsteps must be validated before iapp is set up to ensure iapp has valid length.
 
-# Check parameters and output filename are valid
-UI.verify_params(solver_input_filename, tsteps, dt, n, c0, D, R, a, L, electrode_charge)
+# Check if using checkpointing or user defined input parameters
+if (not checkpoint):
+    #Check parameters and filename are valid
+    #If set manually, tsteps must be validated before iapp is set up to ensure iapp has valid length.
 
-#Check applied current density is valid 
-UI.verify_iapp(iapp, iapp_label, tsteps)
+    # Check parameters and output filename are valid
+    UI.verify_params(solver_input_filename, tsteps, dt, n, c0, D, R, a, L, electrode_charge)
 
 
-# Write parameters to file
-UI.write_to_file(solver_input_filename, tsteps, dt, n, c0, D, R, a, L, iapp, iapp_label, electrode_charge)
+    #Check applied current is valid 
+    UI.verify_iapp(iapp, iapp_label, tsteps)
+
+    # Write parameters to file
+    UI.write_to_file(solver_input_filename, tsteps, dt, n, c0, D, R, a, L, iapp, iapp_label, electrode_charge)
 
 # Call fortran solver
-UI.call_solver(solver_input_filename)
+UI.call_solver(solver_input_filename, checkpoint)
 
 
 # Build the vector of parameters that the plotter accepts
