@@ -55,7 +55,7 @@ def read_output_file(filename, step_num = None):
 def read_input_current(filename,step_num=None):
     '''!@brief Reads in the applied current.
     @param[in] filename  The name of the input file, this must be a string and have max 50 characters. No file extension is required.
-    @param[in] step_num  Specifies the step number to read for a parallel simulation (defualt = none for serial)
+    @param[in] step_num  Specifies the step number to read for a GITT simulation where there are multiple current steps (defualt = none for serial)
     '''
     if step_num is not None:
         filename = filename+str(step_num)
@@ -90,8 +90,10 @@ def animated_conc_plot(intervaltime,dr,tsteps,nodenum,cstore,time_axis,SaveFinal
     '''!@brief Saves animation of lithium concentration over time.
     @details Saves the animation 'concentration_animation.gif', that displays the evolution of lithium concentration over time.
     If passed the argument 'SaveFinalState = True', it saves an image 'final_state.png' of lithium concentration across the sphere at the final timestep.
+    If passed the argument 'SparsifyAnimation = True', it saves 1 in every 10 timesteps rather than every single one.
     '''
-    
+    print('Generating animation (concentration_animation.....)')
+
     # Time between frames in animation (ms)
     intervaltime  = 10
 
@@ -162,20 +164,23 @@ def animated_conc_plot(intervaltime,dr,tsteps,nodenum,cstore,time_axis,SaveFinal
 
 #DEFINE VOLTAGE FUNCTIONS:
 def gen_half_cell_voltage(edge_conc_vals,i_app_data,electrode,tsteps,pos_params=None,neg_params=None):
-    '''!@brief
-    @details At time = 0s, the output of j_function can be 0 if Li concentration at the sphere edge is 0.
-    This results in an error as V_function involves division by the output of j_function.
+    '''!@brief Generate the voltage against time profile for a half cell and return voltage.
+    @details. Return the voltage for a given applied current and edge concentration values for a given electrode.
+    If the concentration at the edge of the sphere at anytime goes below 0, computing the voltage
+    will not work. This is because negative concentration is unphysical. In this case, a ValueError will be returned.
+
 
     @param[in] edge_conc_vals   Lithium concentration at the sphere edge  for all time steps
-    @param[in] i_app_data
-    @param[in] electrode
-    @param[in] tsteps
-    @param[in] pos_params
-    @param[in] neg_params
+    @param[in] i_app_data       Vector of applied current density at each timestep
+    @param[in] electrode        Electrode type of the half cell
+    @param[in] tsteps           The number of timesteps in the simulation
+    @param[in] pos_params       [K, a, cmax, L] for the positive electrode, None if the positive is not needed
+    @param[in] neg_params       [K, a, cmax, L] for the negative electrode, None if the negative is not needed
     '''
     #pos and neg params have form [K,a,cmax,L]
-    ################  Voltage and Concentration Plot ##################
+    
 
+    ##############SET PARAMETERS TO THE ONES WE NEED FOR THE ELECTRODE##############
     if pos_params is not None:
         [K_pos,a_pos,cmax_pos_sim,L_pos] = pos_params
     else:
@@ -200,15 +205,14 @@ def gen_half_cell_voltage(edge_conc_vals,i_app_data,electrode,tsteps,pos_params=
     R_g =  8.314   # Ideal gas constant (JK^-1mol^-1)
     T = 298.15   # Standard conditions for temperature (T)
 
-    #Outputs
-    #j(c) for voltage calculation
-   # 
+
     def j_function(c_R,c_max,K):
         '''!@brief Calculates a quantity that feeds into the voltage calculation for each temporal point.
         @details Requires numpy library for sqrt
         @param[in] c_R   Concentration at the edge of the sphere
-        @param[in] c_max 
-        @param[in] K
+        @param[in] c_max Maximum concentration in the simulation
+        @param[in] K     User provided K value (Reaction Constant)
+        @result    j,    Used for computing voltage
         '''
         if c_R<0.0:
             print('Error, concentration should never be less than 0')
@@ -221,7 +225,7 @@ def gen_half_cell_voltage(edge_conc_vals,i_app_data,electrode,tsteps,pos_params=
     def U_function_pos(c_R):
         '''!@brief OCV curve for positive electrode.
         @param[in] c_R   Concentration at the edge of the sphere
-        @result u
+        @result u  Used for computing voltage
         '''
         x = c_R/cmax_pos_sim
         u = (-0.8090*x) + 4.4875 - (0.0428*np.tanh(18.5138*(x - 0.5542))) - (17.7326*np.tanh(15.7890*(x-0.3117))) + (17.5842*np.tanh(15.9308*(x - 0.3120)))  #positive electrode U
@@ -232,7 +236,7 @@ def gen_half_cell_voltage(edge_conc_vals,i_app_data,electrode,tsteps,pos_params=
     def U_function_neg(c_R):
         '''!@brief OCV curve for negative electrode
         @param[in] c_R   Concentration at the edge of the sphere
-        @result u 
+        @result u     Used for computing voltage
         '''
         x = c_R/cmax_neg_sim
         u = (1.9793*np.exp(-39.3631*x)) + 0.2482 - (0.0909*np.tanh(29.8538*(x-0.1234))) - (0.04478*np.tanh(14.9159*(x-0.2769))) - (0.0205*np.tanh(30.4444*(x-0.6103)))  #negative electrode U
@@ -254,11 +258,12 @@ def gen_half_cell_voltage(edge_conc_vals,i_app_data,electrode,tsteps,pos_params=
     def voltage_function(U,i_app,jay,L,a):
         '''!@brief Calculates voltage for given time steps.
         @details Calculates the voltage of the system at specific time points.
-        @param[in] U
-        @param[in] i_app
-        @param[in] jay
-        @param[in] L
-        @param[in] a   Surface area of particles (cm^2)
+        @param[in] U    U value, taken from OCV function above
+        @param[in] i_app  Applied current value
+        @param[in] jay    j value for electrode
+        @param[in] L     Electrode width
+        @param[in] a    Particle surface area per unit volume
+        @return v Voltage value
         '''
         v = U - ((2*R_g*T)/(F))*np.arcsinh((i_app)/(a*L*jay))
         return v
@@ -309,6 +314,8 @@ def gen_half_cell_voltage(edge_conc_vals,i_app_data,electrode,tsteps,pos_params=
 @var float cmax_neg_sim: Negative electrode maximum concentration (molm^-3)
 @var float L_pos: Positive electrode thickness (m).
 @var float L_neg: Negative electrode thickness (m).
+@var float a_pos: Positive particle surface area per unit volume (m^-1).
+@var float a_neg: Negative particle surface area per unit volume (m^-1).
 '''
 
 
@@ -317,14 +324,16 @@ def voltage_current_plot(electrode,cstore,time_axis,i_app_data,tsteps,pos_params
     @details Calculates the voltage at all time points and saves plots of both Li concentration at the
     sphere edge and voltage as a function of time. 
     This function has different settings determined by the value of electrode.
-    @param[in] electrode
-    @param[in] cstore
-    @param[in] time_axis
-    @param[in] i_app_data
-    @param[in] tsteps
-    @param[in] pos_params
-    @param[in] neg_params
+    @param[in] electrode    Charge on electrode
+    @param[in] cstore       The full matrix of concentration values (all nodes at all timesteps)
+    @param[in] time_axis    Axis containing all timestep values
+    @param[in] i_app_data   Full set of applied current density data
+    @param[in] tsteps       The number of timesteps
+    @param[in] pos_params   [K, a, cmax, L] for the positive electrode, None if the positive is not needed
+    @param[in] neg_params   [K, a, cmax, L] for the negative electrode, None if the negative is not needed
 '''
+
+    print('Generating voltage-time and current-time plot (Voltage Current Plot.png).....')
     #structure of cstore: each row represents a single timestep, each column a single node
     edge_conc_vals = cstore[:,-1]    #want the values of the edge node for all timesteps
     
@@ -338,20 +347,38 @@ def voltage_current_plot(electrode,cstore,time_axis,i_app_data,tsteps,pos_params
     axs[1].set_ylabel(r'Applied Current Density (A/m$^2$)', color = 'r')
     axs[1].plot(time_axis,i_app_data,'r--',label='current')
     axs[1].set_xlabel('Time (s)')
-    plt.savefig('Voltage Current Plot')
+    plt.savefig('Voltage Current Plot.png')
         
 
        
 def plot_halfcell_GITT_result(filename,start_times,electrode,pos_params=None,neg_params=None,Animation=False,SaveFinalState=False,SparsifyAnimation=True,animation_interval_time=10):
+    '''!@brief Generates the voltage current plot and optionally an animation for a half-cell GITT test.
+    @details Concatentates the output files generated by a GITT test and then produces a voltage-time and 
+    current-time plot and an animation seperately. 
+    @param[in] filename     The input filename for the simulation data, excluding any file extension. String.
+    @param[in] start_times  The list of start times for each current step in a GITT test. Array of floats
+    @param[in] electrode    The electrode type, either positive or negative, string.
+    @param[in] pos_params   [K, a, cmax, L] for the positive electrode, None if the positive is not needed
+    @param[in] neg_params   [K, a, cmax, L] for the negative electrode, None if the negative is not needed
+    @param[in] Animation    True to generate an animation of concentration in the sphere, False otherwise
+    @param[in] SaveFinalState True to save the final state of the animation as a seperate PNG
+    @param[in] SparsifyAnimation True to construct animation using 1 of every 10 timesteps
+    @param[in] interval_time    time between frames in animation(ms)
+    '''
 
-
+    ###########BUILD FULL DATASET FROM DISPARATE GITT TEST FILES###########
     running_tot_start_time = 0.0
     total_tsteps = 0
     #build the full dataset from the deconstructed files
     for i,start_time in enumerate(start_times):
+        #read each output file
         cstore,tsteps,nodenum,R,time_axis,dr,electrode = read_output_file(filename,step_num=i)
+        #read each input file
         i_app_data = read_input_current(filename,step_num=i)
+        #shift time axis by each start time
         time_axis = time_axis + start_time
+
+        #build full cstore, time axis and iapp data from seperate files.
         if i == 0:
             full_cstore = cstore
             full_time_axis = time_axis
@@ -363,15 +390,24 @@ def plot_halfcell_GITT_result(filename,start_times,electrode,pos_params=None,neg
             
         total_tsteps += tsteps
         
-    #call the plotter
+    #call the plotter to get voltage time and current time plots
     voltage_current_plot(electrode,full_cstore,full_time_axis,full_iapp_vals,total_tsteps,pos_params=pos_params,neg_params=neg_params)
 
     if Animation:
-        #call the animator
+        #call the animator to generate animation
         animated_conc_plot(animation_interval_time,dr,total_tsteps,nodenum,full_cstore,full_time_axis,SaveFinalState=SaveFinalState,SparsifyAnimation=SparsifyAnimation)
 
 '''!Function gen_plots: Causes plots corresponding to voltage_current_plot and animated_conc_plot to be generated.'''
 def gen_plots(filename,pos_params=None,neg_params=None,animation_interval_time=10,SaveFinalState=True,SparsifyAnimation=False):
+    '''!@brief A function which can be called to generate both the voltage-time, current-time plots and the animation.
+    @details Calls the relevant functions to generate an animation plot and a voltage-time, current-time set of plots.
+    @param[in] filename     The input filename for the simulation data, excluding any file extension. String.
+    @param[in] pos_params   [K, a, cmax, L] for the positive electrode, None if the positive is not needed
+    @param[in] neg_params   [K, a, cmax, L] for the negative electrode, None if the negative is not needed
+    @param[in] animation_interval_time    time between frames in animation(ms)
+    @param[in] SaveFinalState True to save the final state of the animation as a seperate PNG
+    @param[in] SparsifyAnimation True to construct animation using 1 of every 10 timesteps
+    '''
     #generate all the plots that would previously have been generated from calling the plotting script
     cstore,tsteps,nodenum,R,time_axis,dr,electrode = read_output_file(filename)
     i_app_data = read_input_current(filename)
@@ -380,6 +416,21 @@ def gen_plots(filename,pos_params=None,neg_params=None,animation_interval_time=1
 
 
 def full_battery_GITT_plots(filename_positive,filename_negative,start_times,pos_params=None,neg_params=None,SparsifyAnimation=True,animation_interval_time=10):
+    '''@brief Build an animation of the concentrations, applied current with time and applied voltage with time
+    in a full battery GITT test.
+    @details Builds the full dataset from the different GITT test files. Generates the voltage for each timestep,
+    plots the full voltage-time, current-time and concentration of positive and negative electrode animations.
+    Also prints lithium mass loss in first step, to give an indication on how good the model is. Acceptable values for this
+    are =<10^-6 kg.
+    @param[in] filename_positive     The input positive filename for the simulation data, excluding any file extension. String.
+    @param[in] filename_negative     The input negative filename for the simulation data, excluding any file extension. String.
+    @param[in] start_times  The list of start times for each current step in a GITT test. Array of floats
+    @param[in] pos_params   [K, a, cmax, L] for the positive electrode
+    @param[in] neg_params   [K, a, cmax, L] for the negative electrode
+    @param[in] SparsifyAnimation True to construct animation using 1 of every 10 timesteps
+    @param[in] animation_interval_time    time between frames in animation(ms)
+    '''
+    
     #build the full dataset from the deconstructed files
     total_tsteps=0
     for i,start_time in enumerate(start_times):
@@ -409,11 +460,14 @@ def full_battery_GITT_plots(filename_positive,filename_negative,start_times,pos_
     edge_conc_vals_pos = full_cstore_pos[:,-1]    #want the values of the edge node for all timesteps
     edge_conc_vals_neg = full_cstore_neg[:,-1]
 
+    #generate the positive and negative half cell voltages
     pos_voltage = gen_half_cell_voltage(edge_conc_vals_pos,full_iapp_vals_pos,electrode_pos,total_tsteps,pos_params=pos_params,neg_params=neg_params)
     neg_voltage = gen_half_cell_voltage(edge_conc_vals_neg,full_iapp_vals_neg,electrode_neg,total_tsteps,pos_params=pos_params,neg_params=neg_params)
 
-    #get full voltage and current
+    #subtract to get full voltage and current
     full_voltage = pos_voltage-neg_voltage
+
+    #note that cell current is the same as the current seen from the perspective of the negative electrode
     full_current = full_iapp_vals_neg
 
     ###################Print lithium mass loss per step######################
@@ -436,7 +490,7 @@ def full_battery_GITT_plots(filename_positive,filename_negative,start_times,pos_
     li_avg_conc_neg = get_avg_li_conc(full_cstore_neg[tsteps-1,:],r_neg_axis)
     li_frac = (li_avg_conc_pos*e_act_pos*L_pos + li_avg_conc_neg*e_act_neg*L_neg)/c0_eact_L
 
-    print('Fraction of lithium mass lost per current block applied:',1-li_frac)
+    print('Fraction of lithium lost per current block applied:',1-li_frac)
     #################generate animation###################
     tsteps = total_tsteps
     #build time step axis
@@ -499,7 +553,10 @@ def full_battery_GITT_plots(filename_positive,filename_negative,start_times,pos_
 
     plt.tight_layout()
     def update(t):
+        #generate the animation for a given timestep
         #Set the data of each element of graphlines to the corresponding value of t passed to the function
+        #Updates the points on the voltage time and current time graphs
+        #and the full data in the concentration profiles.
         graphlines[0].set_data(t,full_voltage[t])
         graphlines[1].set_data(t,full_current[t])
         graphlines[2].set_data(vals_pos[:,0],vals_pos[:,t])
@@ -509,9 +566,13 @@ def full_battery_GITT_plots(filename_positive,filename_negative,start_times,pos_
         return graphlines
 
 
+
+    #generate and save animation
+    print('Generating animation.....')
     ani = FuncAnimation(fig, update, interval=animation_interval_time, frames=time_step_axis,blit=True)#plt.xlim([990,1000])
     	
-    ani.save(filename = 'concentration_animation.gif', writer = 'pillow', fps = 30) 
+    ani.save(filename = 'full_battery_gitt_animation.gif', writer = 'pillow', fps = 30) 
+
 def get_avg_li_conc(c_vals,r_vals):
     '''!@brief Gets the average concentration of lithium at a given timestep using trapezium rule inside the sphere.
     !@details Uses the fact that the average concentration of lithium in a sphere at any timestep can be found from
@@ -522,10 +583,9 @@ def get_avg_li_conc(c_vals,r_vals):
     Take it up with whoever came up with the single particle model, not me.
     !@param[in] c_vals: Array of concentration values covering the whole sphere radius, floats.
     !@param[in] r_vals: Array of radius values that correspond the concentration values given in c_vals, floats.
-    '''#
+    '''
 
     integrand = c_vals*(r_vals**2)
-    #print(integrand)#
     avg_conc = (3/(r_vals[-1]**3))*np.trapz(y=integrand,x=r_vals)
     return avg_conc
 

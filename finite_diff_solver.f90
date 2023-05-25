@@ -81,7 +81,7 @@ PROGRAM MAIN
     
     b = 0.0_REAL64
     
-    Z = (-iapp)/(a_small*F*L*D)
+    Z = (iapp)/(a_small*F*L*D)
     !build A matrix for solver (constant over time)
     A = 0.0_REAL64
     !boundary condition
@@ -124,10 +124,14 @@ PROGRAM MAIN
         c = b
         cstorage(:,tstep+1) = c
         
-        CALL write_checkpoint(tstep, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage, filename, 20)
+        !By default, writes checkpoints every 10% of total timesteps elapsed. Can add a specific
+        !number to the end of the function call to change how often checkpoints are written.
+        
+        CALL write_checkpoint(tstep, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage, filename)
         
     END DO
-    
+
+    PRINT*, 'Finished solver, writing data to output file(s).....'
     !write to output file
     OPEN(9,file='output.txt',form='formatted')
     DO i = 1,n
