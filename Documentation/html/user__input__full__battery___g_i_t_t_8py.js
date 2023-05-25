@@ -8,6 +8,7 @@ var user__input__full__battery___g_i_t_t_8py =
     [ "dt", "user__input__full__battery___g_i_t_t_8py.html#a778e38aa889751afffa2dea6b803e67a", null ],
     [ "K_neg", "user__input__full__battery___g_i_t_t_8py.html#a64d0c5854299798787675bc91586023c", null ],
     [ "K_pos", "user__input__full__battery___g_i_t_t_8py.html#ab1a8ebec490ba1301f818bd1c5f1f3fa", null ],
+    [ "n", "user__input__full__battery___g_i_t_t_8py.html#a76f11d9a0a47b94f72c2d0e77fb32240", null ],
     [ "nprocs", "user__input__full__battery___g_i_t_t_8py.html#ad7c4c17cf720ee538e27c02ab356ed6b", null ],
     [ "nsteps", "user__input__full__battery___g_i_t_t_8py.html#aa2414080b021dbb9b56eeaeedec0ffa2", null ],
     [ "output_filename_negative", "user__input__full__battery___g_i_t_t_8py.html#a701d8142cb069e7737cab8445986caa3", null ],

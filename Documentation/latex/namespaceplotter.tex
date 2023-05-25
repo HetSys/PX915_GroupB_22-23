@@ -1,26 +1,42 @@
 \hypertarget{namespaceplotter}{\section{plotter Namespace Reference}
 \label{namespaceplotter}\index{plotter@{plotter}}
 }
+
+
+Functions for visualisation of solver outputs.  
+
+
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 def \hyperlink{namespaceplotter_aae454e5e82b331fc3539380bf77085bb}{read\-\_\-output\-\_\-file}
-\item 
+\begin{DoxyCompactList}\small\item\em Reads in data from user input and solver output using Net\-C\-D\-F. \end{DoxyCompactList}\item 
 def \hyperlink{namespaceplotter_ac4584f2efde622b7fe9e2b77b97b3089}{read\-\_\-input\-\_\-current}
-\item 
+\begin{DoxyCompactList}\small\item\em Reads in the applied current. \end{DoxyCompactList}\item 
 def \hyperlink{namespaceplotter_a49b689df200e34e2e72d1e8b7122c34a}{animated\-\_\-conc\-\_\-plot}
-\item 
+\begin{DoxyCompactList}\small\item\em Saves animation of lithium concentration over time. \end{DoxyCompactList}\item 
 def \hyperlink{namespaceplotter_a716e2d183d061a11623adaf2dba72476}{gen\-\_\-half\-\_\-cell\-\_\-voltage}
 \item 
 def \hyperlink{namespaceplotter_a44edad80659cbc5874617eabd87609ba}{voltage\-\_\-current\-\_\-plot}
-\item 
+\begin{DoxyCompactList}\small\item\em Calculates voltages and plots as a function of time. \end{DoxyCompactList}\item 
 def \hyperlink{namespaceplotter_aa10bc6c7a1f0ea5ddf498ced8c1e08ee}{plot\-\_\-halfcell\-\_\-\-G\-I\-T\-T\-\_\-result}
 \item 
 def \hyperlink{namespaceplotter_aacce2143cb025e12026b3580467165ff}{gen\-\_\-plots}
 \item 
 def \hyperlink{namespaceplotter_ad575e508b7dec6d686b1ad23bd88c23e}{full\-\_\-battery\-\_\-\-G\-I\-T\-T\-\_\-plots}
-\end{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceplotter_a34948a1cfae887bb24a8ad480441a831}{get\-\_\-avg\-\_\-li\-\_\-conc}
+\begin{DoxyCompactList}\small\item\em Gets the average concentration of lithium at a given timestep using trapezium rule inside the sphere. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Functions for visualisation of solver outputs. (Plots are saved locally.)
+
+Contains functions that produce\-:
+\begin{DoxyItemize}
+\item An animation showing the concentration of lithium as a function of time and space. (There is an additional feature for saving the concentration profile at the end of the simulation as a png.)
+\item Plots of both voltage and applied current over time. 
+\end{DoxyItemize}
 
 \subsection{Function Documentation}
 \hypertarget{namespaceplotter_a49b689df200e34e2e72d1e8b7122c34a}{\index{plotter@{plotter}!animated\-\_\-conc\-\_\-plot@{animated\-\_\-conc\-\_\-plot}}
@@ -39,7 +55,11 @@ def \hyperlink{namespaceplotter_ad575e508b7dec6d686b1ad23bd88c23e}{full\-\_\-bat
 )}}\label{namespaceplotter_a49b689df200e34e2e72d1e8b7122c34a}
 
 
-Definition at line 68 of file plotter.\-py.
+Saves animation of lithium concentration over time. 
+
+Saves the animation 'concentration\-\_\-animation.\-gif', that displays the evolution of lithium concentration over time. If passed the argument 'Save\-Final\-State = True', it saves an image 'final\-\_\-state.\-png' of lithium concentration across the sphere at the final timestep. 
+
+Definition at line 72 of file plotter.\-py.
 
 \hypertarget{namespaceplotter_ad575e508b7dec6d686b1ad23bd88c23e}{\index{plotter@{plotter}!full\-\_\-battery\-\_\-\-G\-I\-T\-T\-\_\-plots@{full\-\_\-battery\-\_\-\-G\-I\-T\-T\-\_\-plots}}
 \index{full\-\_\-battery\-\_\-\-G\-I\-T\-T\-\_\-plots@{full\-\_\-battery\-\_\-\-G\-I\-T\-T\-\_\-plots}!plotter@{plotter}}
@@ -56,7 +76,7 @@ Definition at line 68 of file plotter.\-py.
 )}}\label{namespaceplotter_ad575e508b7dec6d686b1ad23bd88c23e}
 
 
-Definition at line 322 of file plotter.\-py.
+Definition at line 365 of file plotter.\-py.
 
 \hypertarget{namespaceplotter_a716e2d183d061a11623adaf2dba72476}{\index{plotter@{plotter}!gen\-\_\-half\-\_\-cell\-\_\-voltage@{gen\-\_\-half\-\_\-cell\-\_\-voltage}}
 \index{gen\-\_\-half\-\_\-cell\-\_\-voltage@{gen\-\_\-half\-\_\-cell\-\_\-voltage}!plotter@{plotter}}
@@ -70,9 +90,26 @@ Definition at line 322 of file plotter.\-py.
 \item[{}]{neg\-\_\-params = {\ttfamily None}}
 \end{DoxyParamCaption}
 )}}\label{namespaceplotter_a716e2d183d061a11623adaf2dba72476}
+At time = 0s, the output of j\-\_\-function can be 0 if Li concentration at the sphere edge is 0. This results in an error as V\-\_\-function involves division by the output of j\-\_\-function.
 
 
-Definition at line 126 of file plotter.\-py.
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em edge\-\_\-conc\-\_\-vals} & Lithium concentration at the sphere edge for all time steps \\
+\hline
+\mbox{\tt in}  & {\em i\-\_\-app\-\_\-data} & \\
+\hline
+\mbox{\tt in}  & {\em electrode} & \\
+\hline
+\mbox{\tt in}  & {\em tsteps} & \\
+\hline
+\mbox{\tt in}  & {\em pos\-\_\-params} & \\
+\hline
+\mbox{\tt in}  & {\em neg\-\_\-params} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 147 of file plotter.\-py.
 
 \hypertarget{namespaceplotter_aacce2143cb025e12026b3580467165ff}{\index{plotter@{plotter}!gen\-\_\-plots@{gen\-\_\-plots}}
 \index{gen\-\_\-plots@{gen\-\_\-plots}!plotter@{plotter}}
@@ -88,7 +125,32 @@ Definition at line 126 of file plotter.\-py.
 )}}\label{namespaceplotter_aacce2143cb025e12026b3580467165ff}
 
 
-Definition at line 314 of file plotter.\-py.
+Definition at line 357 of file plotter.\-py.
+
+\hypertarget{namespaceplotter_a34948a1cfae887bb24a8ad480441a831}{\index{plotter@{plotter}!get\-\_\-avg\-\_\-li\-\_\-conc@{get\-\_\-avg\-\_\-li\-\_\-conc}}
+\index{get\-\_\-avg\-\_\-li\-\_\-conc@{get\-\_\-avg\-\_\-li\-\_\-conc}!plotter@{plotter}}
+\subsubsection[{get\-\_\-avg\-\_\-li\-\_\-conc}]{\setlength{\rightskip}{0pt plus 5cm}def plotter.\-get\-\_\-avg\-\_\-li\-\_\-conc (
+\begin{DoxyParamCaption}
+\item[{}]{c\-\_\-vals, }
+\item[{}]{r\-\_\-vals}
+\end{DoxyParamCaption}
+)}}\label{namespaceplotter_a34948a1cfae887bb24a8ad480441a831}
+
+
+Gets the average concentration of lithium at a given timestep using trapezium rule inside the sphere. 
+
+!
+
+Uses the fact that the average concentration of lithium in a sphere at any timestep can be found from \$\{3\}\{R$^\wedge$\{3\}\}\{0\}$^\wedge$\{R\} c(r)r$^\wedge$\{2\}dr. Note, that this seems weird. It is weird. The reason this is necessary is because the concentration values in the sphere are defined per active electrode volume, i.\-e e\-\_\-act$\ast$\-L$\ast$\-A, not per sphere volume. Therefore, to calculate the lithium mass loss in the whole system it is necessary to first find the concentration as if each sphere was uniformly filled (that is what this function does), and then after that multiply this average concentration by the active electrode volume. Take it up with whoever came up with the single particle model, not me. !
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em c\-\_\-vals,\-:} & Array of concentration values covering the whole sphere radius, floats. !\\
+\hline
+\mbox{\tt in}  & {\em r\-\_\-vals,\-:} & Array of radius values that correspond the concentration values given in c\-\_\-vals, floats. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 498 of file plotter.\-py.
 
 \hypertarget{namespaceplotter_aa10bc6c7a1f0ea5ddf498ced8c1e08ee}{\index{plotter@{plotter}!plot\-\_\-halfcell\-\_\-\-G\-I\-T\-T\-\_\-result@{plot\-\_\-halfcell\-\_\-\-G\-I\-T\-T\-\_\-result}}
 \index{plot\-\_\-halfcell\-\_\-\-G\-I\-T\-T\-\_\-result@{plot\-\_\-halfcell\-\_\-\-G\-I\-T\-T\-\_\-result}!plotter@{plotter}}
@@ -107,7 +169,7 @@ Definition at line 314 of file plotter.\-py.
 )}}\label{namespaceplotter_aa10bc6c7a1f0ea5ddf498ced8c1e08ee}
 
 
-Definition at line 285 of file plotter.\-py.
+Definition at line 328 of file plotter.\-py.
 
 \hypertarget{namespaceplotter_ac4584f2efde622b7fe9e2b77b97b3089}{\index{plotter@{plotter}!read\-\_\-input\-\_\-current@{read\-\_\-input\-\_\-current}}
 \index{read\-\_\-input\-\_\-current@{read\-\_\-input\-\_\-current}!plotter@{plotter}}
@@ -119,7 +181,18 @@ Definition at line 285 of file plotter.\-py.
 )}}\label{namespaceplotter_ac4584f2efde622b7fe9e2b77b97b3089}
 
 
-Definition at line 43 of file plotter.\-py.
+Reads in the applied current. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & The name of the input file, this must be a string and have max 50 characters. No file extension is required. \\
+\hline
+\mbox{\tt in}  & {\em step\-\_\-num} & Specifies the step number to read for a parallel simulation (defualt = none for serial) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 49 of file plotter.\-py.
 
 \hypertarget{namespaceplotter_aae454e5e82b331fc3539380bf77085bb}{\index{plotter@{plotter}!read\-\_\-output\-\_\-file@{read\-\_\-output\-\_\-file}}
 \index{read\-\_\-output\-\_\-file@{read\-\_\-output\-\_\-file}!plotter@{plotter}}
@@ -131,7 +204,18 @@ Definition at line 43 of file plotter.\-py.
 )}}\label{namespaceplotter_aae454e5e82b331fc3539380bf77085bb}
 
 
-Definition at line 15 of file plotter.\-py.
+Reads in data from user input and solver output using Net\-C\-D\-F. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & The name of the input file, this must be a string and have max 50 characters. No file extension is required. \\
+\hline
+\mbox{\tt in}  & {\em step\-\_\-num} & Specifies the step number to read for a parallel simulation (defualt = none for serial) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 14 of file plotter.\-py.
 
 \hypertarget{namespaceplotter_a44edad80659cbc5874617eabd87609ba}{\index{plotter@{plotter}!voltage\-\_\-current\-\_\-plot@{voltage\-\_\-current\-\_\-plot}}
 \index{voltage\-\_\-current\-\_\-plot@{voltage\-\_\-current\-\_\-plot}!plotter@{plotter}}
@@ -148,5 +232,26 @@ Definition at line 15 of file plotter.\-py.
 )}}\label{namespaceplotter_a44edad80659cbc5874617eabd87609ba}
 
 
-Definition at line 266 of file plotter.\-py.
+Calculates voltages and plots as a function of time. 
+
+Calculates the voltage at all time points and saves plots of both Li concentration at the sphere edge and voltage as a function of time. This function has different settings determined by the value of electrode. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em electrode} & \\
+\hline
+\mbox{\tt in}  & {\em cstore} & \\
+\hline
+\mbox{\tt in}  & {\em time\-\_\-axis} & \\
+\hline
+\mbox{\tt in}  & {\em i\-\_\-app\-\_\-data} & \\
+\hline
+\mbox{\tt in}  & {\em tsteps} & \\
+\hline
+\mbox{\tt in}  & {\em pos\-\_\-params} & \\
+\hline
+\mbox{\tt in}  & {\em neg\-\_\-params} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 298 of file plotter.\-py.
 

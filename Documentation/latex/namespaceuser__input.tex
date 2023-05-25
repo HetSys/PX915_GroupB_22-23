@@ -11,10 +11,8 @@ Sets up the user inputs and executes the solver.
 \item 
 string \hyperlink{namespaceuser__input_a92a75cd7aa57960ca65957a1baa06d77}{solver\-\_\-input\-\_\-filename} = 'user\-\_\-input'
 \item 
-string \hyperlink{namespaceuser__input_af0a721bf4042ba266855bd73da684844}{iapp\-\_\-filename} = 'W\-L\-T\-P\-\_\-m10.\-csv'
-\begin{DoxyCompactList}\small\item\em S\-E\-T V\-A\-L\-U\-E\-S \#\#\#\#\#\#\#\#\#. \end{DoxyCompactList}\item 
 float \hyperlink{namespaceuser__input_ab1a8ebec490ba1301f818bd1c5f1f3fa}{K\-\_\-pos} = 3.\-42\-E-\/6
-\item 
+\begin{DoxyCompactList}\small\item\em S\-E\-T V\-A\-L\-U\-E\-S \#\#\#\#\#\#\#\#\#. \end{DoxyCompactList}\item 
 float \hyperlink{namespaceuser__input_a64d0c5854299798787675bc91586023c}{K\-\_\-neg} = 6.\-48\-E-\/7
 \item 
 float \hyperlink{namespaceuser__input_aa5b015cc7d0bda453c6163023448db72}{cmax\-\_\-pos\-\_\-sim} = 63104.\-00
@@ -26,16 +24,16 @@ list \hyperlink{namespaceuser__input_a5bacef25baf63731923fbef674af4e9d}{plot\-\_
 
 
 \subsection{Detailed Description}
-Sets up the user inputs and executes the solver. This file contains all input parameters for the solver and can be changed by the user. This file and all tunebale parameters are broken down in full detail in the user tutorial (see Tutorial.\-ipynb).
+Sets up the user inputs and executes the solver. This file contains all input parameters for the solver and can be changed by the user. This file and all tuneable parameters are broken down in full detail in the user tutorial (see Tutorial.\-ipynb).
 
 The following options can be controlled by editing this file\-:
 \begin{DoxyItemize}
 \item Outputting stdout to a file.
 \item Changing the name of this user input file.
 \item Set the values for the following input parameters\-:
-\begin{DoxyItemize}
 \item tsteps
 \item dt
+\item n
 \item c0
 \item D
 \item R
@@ -43,7 +41,6 @@ The following options can be controlled by editing this file\-:
 \item L
 \item iapp
 \item iapp\-\_\-label
-\end{DoxyItemize}
 \item These parameters can either take default values or be entered manually.
 \item For iapp there are additional options for setting constant or stepwise current and reading in values from a csv file.
 \end{DoxyItemize}
@@ -63,39 +60,32 @@ The rest of the file calls various functions to\-:
 \subsubsection[{cmax\-\_\-neg\-\_\-sim}]{\setlength{\rightskip}{0pt plus 5cm}float cmax\-\_\-neg\-\_\-sim = 33133.\-00}}\label{namespaceuser__input_ab7633a5e9c70aabfe6992e4fe521a1f9}
 
 
-Definition at line 62 of file user\-\_\-input.\-py.
+Definition at line 55 of file user\-\_\-input.\-py.
 
 \hypertarget{namespaceuser__input_aa5b015cc7d0bda453c6163023448db72}{\index{user\-\_\-input@{user\-\_\-input}!cmax\-\_\-pos\-\_\-sim@{cmax\-\_\-pos\-\_\-sim}}
 \index{cmax\-\_\-pos\-\_\-sim@{cmax\-\_\-pos\-\_\-sim}!user_input@{user\-\_\-input}}
 \subsubsection[{cmax\-\_\-pos\-\_\-sim}]{\setlength{\rightskip}{0pt plus 5cm}float cmax\-\_\-pos\-\_\-sim = 63104.\-00}}\label{namespaceuser__input_aa5b015cc7d0bda453c6163023448db72}
 
 
-Definition at line 61 of file user\-\_\-input.\-py.
-
-\hypertarget{namespaceuser__input_af0a721bf4042ba266855bd73da684844}{\index{user\-\_\-input@{user\-\_\-input}!iapp\-\_\-filename@{iapp\-\_\-filename}}
-\index{iapp\-\_\-filename@{iapp\-\_\-filename}!user_input@{user\-\_\-input}}
-\subsubsection[{iapp\-\_\-filename}]{\setlength{\rightskip}{0pt plus 5cm}string iapp\-\_\-filename = 'W\-L\-T\-P\-\_\-m10.\-csv'}}\label{namespaceuser__input_af0a721bf4042ba266855bd73da684844}
-
-
-S\-E\-T V\-A\-L\-U\-E\-S \#\#\#\#\#\#\#\#\#. 
-
-
-
-Definition at line 52 of file user\-\_\-input.\-py.
+Definition at line 54 of file user\-\_\-input.\-py.
 
 \hypertarget{namespaceuser__input_a64d0c5854299798787675bc91586023c}{\index{user\-\_\-input@{user\-\_\-input}!K\-\_\-neg@{K\-\_\-neg}}
 \index{K\-\_\-neg@{K\-\_\-neg}!user_input@{user\-\_\-input}}
 \subsubsection[{K\-\_\-neg}]{\setlength{\rightskip}{0pt plus 5cm}float K\-\_\-neg = 6.\-48\-E-\/7}}\label{namespaceuser__input_a64d0c5854299798787675bc91586023c}
 
 
-Definition at line 59 of file user\-\_\-input.\-py.
+Definition at line 52 of file user\-\_\-input.\-py.
 
 \hypertarget{namespaceuser__input_ab1a8ebec490ba1301f818bd1c5f1f3fa}{\index{user\-\_\-input@{user\-\_\-input}!K\-\_\-pos@{K\-\_\-pos}}
 \index{K\-\_\-pos@{K\-\_\-pos}!user_input@{user\-\_\-input}}
 \subsubsection[{K\-\_\-pos}]{\setlength{\rightskip}{0pt plus 5cm}float K\-\_\-pos = 3.\-42\-E-\/6}}\label{namespaceuser__input_ab1a8ebec490ba1301f818bd1c5f1f3fa}
 
 
-Definition at line 58 of file user\-\_\-input.\-py.
+S\-E\-T V\-A\-L\-U\-E\-S \#\#\#\#\#\#\#\#\#. 
+
+
+
+Definition at line 51 of file user\-\_\-input.\-py.
 
 \hypertarget{namespaceuser__input_a5bacef25baf63731923fbef674af4e9d}{\index{user\-\_\-input@{user\-\_\-input}!plot\-\_\-params\-\_\-pos@{plot\-\_\-params\-\_\-pos}}
 \index{plot\-\_\-params\-\_\-pos@{plot\-\_\-params\-\_\-pos}!user_input@{user\-\_\-input}}
@@ -106,12 +96,12 @@ E\-N\-D S\-E\-T V\-A\-L\-U\-E\-S \#\#\#\#\#\#\#\#\#.
 
 
 
-Definition at line 85 of file user\-\_\-input.\-py.
+Definition at line 77 of file user\-\_\-input.\-py.
 
 \hypertarget{namespaceuser__input_a92a75cd7aa57960ca65957a1baa06d77}{\index{user\-\_\-input@{user\-\_\-input}!solver\-\_\-input\-\_\-filename@{solver\-\_\-input\-\_\-filename}}
 \index{solver\-\_\-input\-\_\-filename@{solver\-\_\-input\-\_\-filename}!user_input@{user\-\_\-input}}
 \subsubsection[{solver\-\_\-input\-\_\-filename}]{\setlength{\rightskip}{0pt plus 5cm}string solver\-\_\-input\-\_\-filename = 'user\-\_\-input'}}\label{namespaceuser__input_a92a75cd7aa57960ca65957a1baa06d77}
 
 
-Definition at line 39 of file user\-\_\-input.\-py.
+Definition at line 40 of file user\-\_\-input.\-py.
 

@@ -8,7 +8,6 @@
 /home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:92: warning: documented symbol `subroutine read_user_inputs' was not declared or defined.
 /home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:95: warning: documented symbol `integer tsteps' was not declared or defined.
 /home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:98: warning: documented symbol `real' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:101: warning: documented symbol `integer n' was not declared or defined.
 /home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:104: warning: documented symbol `real' was not declared or defined.
 /home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:107: warning: documented symbol `real' was not declared or defined.
 /home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:110: warning: documented symbol `real' was not declared or defined.
@@ -31,12 +30,19 @@
 /home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:166: warning: documented symbol `character' was not declared or defined.
 /home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:354: warning: documented symbol `subroutine invalid_param_type' was not declared or defined.
 /home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:357: warning: documented symbol `character' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/user_input.py:24: warning: explicit link request to 'END' could not be resolved
-/home/chem/msuvnj/PX915_GroupB_22-23/user_input_mod.py:425: warning: argument 'dt' of command @param is not found in the argument list of user_input_mod::GITT_half_cell(filename,nprocs,currents,start_times,run_times,wait_times,n,params)
-/home/chem/msuvnj/PX915_GroupB_22-23/user_input_mod.py:425: warning: argument 'c0' of command @param is not found in the argument list of user_input_mod::GITT_half_cell(filename,nprocs,currents,start_times,run_times,wait_times,n,params)
-/home/chem/msuvnj/PX915_GroupB_22-23/user_input_mod.py:425: warning: argument 'D' of command @param is not found in the argument list of user_input_mod::GITT_half_cell(filename,nprocs,currents,start_times,run_times,wait_times,n,params)
-/home/chem/msuvnj/PX915_GroupB_22-23/user_input_mod.py:425: warning: argument 'R' of command @param is not found in the argument list of user_input_mod::GITT_half_cell(filename,nprocs,currents,start_times,run_times,wait_times,n,params)
-/home/chem/msuvnj/PX915_GroupB_22-23/user_input_mod.py:425: warning: argument 'a' of command @param is not found in the argument list of user_input_mod::GITT_half_cell(filename,nprocs,currents,start_times,run_times,wait_times,n,params)
-/home/chem/msuvnj/PX915_GroupB_22-23/user_input_mod.py:425: warning: argument 'L' of command @param is not found in the argument list of user_input_mod::GITT_half_cell(filename,nprocs,currents,start_times,run_times,wait_times,n,params)
-/home/chem/msuvnj/PX915_GroupB_22-23/user_input_mod.py:425: warning: The following parameters of user_input_mod.GITT_half_cell(filename,nprocs,currents,start_times,run_times,wait_times,n,params) are not documented:
+/home/chem/msuvnj/PX915_GroupB_22-23/plotter.py:503: warning: Found unknown command `\frac'
+/home/chem/msuvnj/PX915_GroupB_22-23/plotter.py:503: warning: Found unknown command `\int_'
+/home/chem/msuvnj/PX915_GroupB_22-23/user_input.py:25: warning: explicit link request to 'END' could not be resolved
+/home/chem/msuvnj/PX915_GroupB_22-23/user_input_mod.py:406: warning: The following parameters of user_input_mod.call_solver(filename,nprocs=1) are not documented:
+  parameter 'nprocs'
+/home/chem/msuvnj/PX915_GroupB_22-23/user_input_mod.py:625: warning: The following parameters of user_input_mod.full_battery_simulation(filename_positive,filename_negative,nprocs=1) are not documented:
+  parameter 'nprocs'
+/home/chem/msuvnj/PX915_GroupB_22-23/user_input_mod.py:570: warning: expected whitespace after , command
+/home/chem/msuvnj/PX915_GroupB_22-23/user_input_mod.py:550: warning: argument 'params' of command @param is not found in the argument list of user_input_mod::GITT_full_cell(filename_positive,filename_negative,nprocs,currents,start_times,run_times,wait_times,n,params_pos,params_neg)
+/home/chem/msuvnj/PX915_GroupB_22-23/user_input_mod.py:550: warning: The following parameters of user_input_mod.GITT_full_cell(filename_positive,filename_negative,nprocs,currents,start_times,run_times,wait_times,n,params_pos,params_neg) are not documented:
+  parameter 'n'
+  parameter 'params_pos'
+  parameter 'params_neg'
+/home/chem/msuvnj/PX915_GroupB_22-23/user_input_mod.py:507: warning: expected whitespace after , command
+/home/chem/msuvnj/PX915_GroupB_22-23/user_input_mod.py:484: warning: The following parameters of user_input_mod.GITT_half_cell(filename,nprocs,currents,start_times,run_times,wait_times,n,params) are not documented:
   parameter 'n'

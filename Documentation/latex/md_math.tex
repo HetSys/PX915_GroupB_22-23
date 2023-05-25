@@ -1,0 +1,15 @@
+A half single particle model by Group B for the 2023 P\-X915 group project.
+
+\subsection*{1 Mathematics and Algorithms}
+
+A Crank-\/\-Nicolson semi-\/implicit finite difference scheme is used to obtain concentration of lithium in the sphere, c(iapp, r), at each time step by approximating the partial differential equation (P\-D\-E) solution.
+
+This is accurate to second order both spatially and temporally, i.\-e. O(∆r2) \& O(∆t2).
+
+S\-P\-A\-M\-S models the charging and discharging of a lithium ion battery using a Crank-\/\-Nicolson semi-\/implicit finite difference scheme to obtain the concentration of lithium in a sphere, {\bfseries c}(i$_{\mbox{app}}$ , {\bfseries r}), at each time step, and has the following features\-:
+\begin{DoxyItemize}
+\item Apply a constant, stepwise or custom current
+\item Options for parallelism
+\item Extend the model to a full battery
+\item First order sensitivty analysis 
+\end{DoxyItemize}

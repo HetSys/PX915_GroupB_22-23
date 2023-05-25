@@ -9,36 +9,16 @@
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-def \hyperlink{namespacesensitivity__analysis_abd9d4178caf8223b3e14f69ced11c7a4}{in\-\_\-out\-\_\-easy\-\_\-peasy}
+def \hyperlink{namespacesensitivity__analysis_af2cc12e0985692c076bd3f9af19ce1cc}{sensitivity\-\_\-over\-\_\-time}
 \item 
-def \hyperlink{namespacesensitivity__analysis_ac9b02f9b013b469537ee70ac8bbeffdb}{sensitivity\-\_\-analysis}
-\item 
-def \hyperlink{namespacesensitivity__analysis_aa89e4ea8c55579ee653b3c636d3ae27b}{first\-\_\-order\-\_\-sensitivities}
-\item 
-def \hyperlink{namespacesensitivity__analysis_a77cd6a629e8dbbe24ff9dc0c96d7c9ce}{second\-\_\-order\-\_\-sensitivities}
-\item 
-def \hyperlink{namespacesensitivity__analysis_aba2a46a57ce75c604746086079d33e20}{plot\-\_\-sensitivities}
-\item 
-def \hyperlink{namespacesensitivity__analysis_a8705d10a323431360a5db5ff5d1a2eb3}{Uncert\-\_\-\-Prop}
+def \hyperlink{namespacesensitivity__analysis_ad88a99a20fed62c353e325805c470fde}{update}
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-string \hyperlink{namespacesensitivity__analysis_a92a75cd7aa57960ca65957a1baa06d77}{solver\-\_\-input\-\_\-filename} = 'user\-\_\-input'
+tuple \hyperlink{namespacesensitivity__analysis_a20928fe8d0936c827cd7abe897bdc092}{scaled\-\_\-sensitivities\-\_\-matrix} = sensitivity\-\_\-over\-\_\-time()
 \item 
-float \hyperlink{namespacesensitivity__analysis_ab1a8ebec490ba1301f818bd1c5f1f3fa}{K\-\_\-pos} = 3.\-42\-E-\/6
-\begin{DoxyCompactList}\small\item\em S\-E\-T M\-E\-A\-N V\-A\-L\-U\-E\-S \#\#\#\#\#\#\#\#\#. \end{DoxyCompactList}\item 
-float \hyperlink{namespacesensitivity__analysis_a64d0c5854299798787675bc91586023c}{K\-\_\-neg} = 6.\-48\-E-\/7
+list \hyperlink{namespacesensitivity__analysis_a3996585c5617328485ceb4ae6b83d1de}{x\-\_\-labels} = \mbox{[}'c0', 'D', 'R', 'a', 'L'\mbox{]}
 \item 
-float \hyperlink{namespacesensitivity__analysis_aa5b015cc7d0bda453c6163023448db72}{cmax\-\_\-pos\-\_\-sim} = 63104.\-00
-\item 
-float \hyperlink{namespacesensitivity__analysis_ab7633a5e9c70aabfe6992e4fe521a1f9}{cmax\-\_\-neg\-\_\-sim} = 33133.\-00
-\item 
-string \hyperlink{namespacesensitivity__analysis_af0a721bf4042ba266855bd73da684844}{iapp\-\_\-filename} = 'W\-L\-T\-P\-\_\-m10.\-csv'
-\item 
-list \hyperlink{namespacesensitivity__analysis_af973d7a362a975c2c180328006f497d3}{initial\-\_\-params} = \mbox{[}$\,$\mbox{]}
-\begin{DoxyCompactList}\small\item\em E\-N\-D M\-E\-A\-N S\-E\-T V\-A\-L\-U\-E\-S \#\#\#\#\#\#\#\#\#. \end{DoxyCompactList}\item 
-tuple \hyperlink{namespacesensitivity__analysis_a86a476e68e0e599be4ea6b1ccb088d46}{param\-\_\-arr} = np.\-array(initial\-\_\-params)
-\item 
-tuple \hyperlink{namespacesensitivity__analysis_aa3b49cc44c40ee657d289412379593e5}{sensitivity\-\_\-result} = sensitivity\-\_\-analysis(param\-\_\-arr)
+tuple \hyperlink{namespacesensitivity__analysis_af942e116850e368f74b95e4cfbbec3b2}{ani} = Func\-Animation(fig, update, frames=len(scaled\-\_\-sensitivities\-\_\-matrix), blit=True)
 \end{DoxyCompactItemize}

@@ -21,6 +21,7 @@
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxy_aesthetic.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -49,6 +50,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Modules</span></a></li>
+      <li><a href="md_math.html"><span>Maths&#160;and&#160;Theory</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Types&#160;List</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -164,43 +166,44 @@ $(document).ready(function(){initNavTree('user__input__full__battery___g_i_t_t_8
 <div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="namespaceuser__input__full__battery___g_i_t_t.html#aa5b015cc7d0bda453c6163023448db72">   53</a></span>&#160;cmax_pos_sim = 63104.00 <span class="comment">#molm^-3 # m</span></div>
 <div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="namespaceuser__input__full__battery___g_i_t_t.html#ab7633a5e9c70aabfe6992e4fe521a1f9">   54</a></span>&#160;cmax_neg_sim = 33133.00 <span class="comment">#molm^-3 # m </span></div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">###### Check parameters are valid ######</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;UI.verify_params(output_filename_positive, tsteps, dt, n, c0_pos, D_pos, R_pos, a_pos, L_pos, electrode_charge_pos)</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;UI.verify_params(output_filename_negative, tsteps, dt, n, c0_neg, D_neg, R_neg, a_neg, L_neg, electrode_charge_neg)</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">###### Manually set up applied current and parallelisation ######</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment"># Number of parallel processors being utilised</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="namespaceuser__input__full__battery___g_i_t_t.html#ad7c4c17cf720ee538e27c02ab356ed6b">   63</a></span>&#160;nprocs = 20</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment"># Number of current blocks to apply</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="namespaceuser__input__full__battery___g_i_t_t.html#aa2414080b021dbb9b56eeaeedec0ffa2">   66</a></span>&#160;nsteps = 10</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment"># Set up the currents, start times, run times and wait times for each step</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="namespaceuser__input__full__battery___g_i_t_t.html#a216022bdba987f127b6cc081ee78e2bd">   69</a></span>&#160;currents = [20.0 <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(nsteps)] <span class="comment">#positive current corresponds to CHARGING the battery</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="namespaceuser__input__full__battery___g_i_t_t.html#a377a515511d37e8c7ac5501847d6485d">   70</a></span>&#160;start_times = [2150.0*i <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(nsteps)]</div>
-<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="namespaceuser__input__full__battery___g_i_t_t.html#a5a6deb885420d2b81e210e580767b1c1">   71</a></span>&#160;run_times = [150.0 <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(nsteps)]</div>
-<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="namespaceuser__input__full__battery___g_i_t_t.html#ae584b229c7b1ea3d8330e6038884ffd3">   72</a></span>&#160;wait_times = [2000.0 <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(nsteps)]</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment"># Build the vector of parameters that the solver accepts</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="namespaceuser__input__full__battery___g_i_t_t.html#a51c49f845d3932a6a084187c90aab1ab">   75</a></span>&#160;params_pos = [dt, c0_pos, D_pos, R_pos, a_pos, L_pos, electrode_charge_pos]</div>
-<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="namespaceuser__input__full__battery___g_i_t_t.html#a0bd2f9c022b04c151ac8c0ad19eadd67">   76</a></span>&#160;params_neg = [dt, c0_neg, D_neg, R_neg, a_neg, L_neg, electrode_charge_neg]</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">###### Call the function to perform the full battery parallel solve</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;UI.GITT_full_cell(output_filename_positive,output_filename_negative,nprocs,currents,start_times,run_times,wait_times,n,params_pos,params_neg)</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment"># Build the vector of parameters that the plotter accepts</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="namespaceuser__input__full__battery___g_i_t_t.html#a5bacef25baf63731923fbef674af4e9d">   82</a></span>&#160;plot_params_pos = [K_pos,a_pos,cmax_pos_sim,L_pos]</div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="namespaceuser__input__full__battery___g_i_t_t.html#a0861e0e85d9d6139e0cc3cc1cc4fa692">   83</a></span>&#160;plot_params_neg = [K_neg,a_neg,cmax_neg_sim,L_neg]</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">###### Call the plotting function which plots the results of the GITT test with nstep steps</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<a class="code" href="namespaceplotter.html#ad575e508b7dec6d686b1ad23bd88c23e">plotter.full_battery_GITT_plots</a>(output_filename_positive,output_filename_negative,start_times,pos_params=plot_params_pos,neg_params=plot_params_neg,SparsifyAnimation=<span class="keyword">True</span>,animation_interval_time=10)</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">##### also call the standalone plotting function with a single file</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">#plotter.gen_plots(output_filename+&#39;0&#39;,electrode,SparsifyAnimation=True)</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="namespaceuser__input__full__battery___g_i_t_t.html#a76f11d9a0a47b94f72c2d0e77fb32240">   56</a></span>&#160;n = 1000 <span class="comment">#set number of nodes to 100</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">###### Check parameters are valid ######</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;UI.verify_params(output_filename_positive, tsteps, dt, n, c0_pos, D_pos, R_pos, a_pos, L_pos, electrode_charge_pos)</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;UI.verify_params(output_filename_negative, tsteps, dt, n, c0_neg, D_neg, R_neg, a_neg, L_neg, electrode_charge_neg)</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">###### Manually set up applied current and parallelisation ######</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment"># Number of parallel processors being utilised</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="namespaceuser__input__full__battery___g_i_t_t.html#ad7c4c17cf720ee538e27c02ab356ed6b">   64</a></span>&#160;nprocs = 40</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment"># Number of current blocks to apply</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="namespaceuser__input__full__battery___g_i_t_t.html#aa2414080b021dbb9b56eeaeedec0ffa2">   67</a></span>&#160;nsteps = 10</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment"># Set up the currents, start times, run times and wait times for each step</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="namespaceuser__input__full__battery___g_i_t_t.html#a216022bdba987f127b6cc081ee78e2bd">   70</a></span>&#160;currents = [20.0 <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(nsteps)] <span class="comment">#positive current corresponds to CHARGING the battery</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="namespaceuser__input__full__battery___g_i_t_t.html#a377a515511d37e8c7ac5501847d6485d">   71</a></span>&#160;start_times = [2150.0*i <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(nsteps)]</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="namespaceuser__input__full__battery___g_i_t_t.html#a5a6deb885420d2b81e210e580767b1c1">   72</a></span>&#160;run_times = [150.0 <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(nsteps)]</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="namespaceuser__input__full__battery___g_i_t_t.html#ae584b229c7b1ea3d8330e6038884ffd3">   73</a></span>&#160;wait_times = [2000.0 <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(nsteps)]</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment"># Build the vector of parameters that the solver accepts</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="namespaceuser__input__full__battery___g_i_t_t.html#a51c49f845d3932a6a084187c90aab1ab">   76</a></span>&#160;params_pos = [dt, c0_pos, D_pos, R_pos, a_pos, L_pos, electrode_charge_pos]</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="namespaceuser__input__full__battery___g_i_t_t.html#a0bd2f9c022b04c151ac8c0ad19eadd67">   77</a></span>&#160;params_neg = [dt, c0_neg, D_neg, R_neg, a_neg, L_neg, electrode_charge_neg]</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">###### Call the function to perform the full battery parallel solve</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;UI.GITT_full_cell(output_filename_positive,output_filename_negative,nprocs,currents,start_times,run_times,wait_times,n,params_pos,params_neg)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment"># Build the vector of parameters that the plotter accepts</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="namespaceuser__input__full__battery___g_i_t_t.html#a5bacef25baf63731923fbef674af4e9d">   83</a></span>&#160;plot_params_pos = [K_pos,a_pos,cmax_pos_sim,L_pos]</div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="namespaceuser__input__full__battery___g_i_t_t.html#a0861e0e85d9d6139e0cc3cc1cc4fa692">   84</a></span>&#160;plot_params_neg = [K_neg,a_neg,cmax_neg_sim,L_neg]</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">###### Call the plotting function which plots the results of the GITT test with nstep steps</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<a class="code" href="namespaceplotter.html#ad575e508b7dec6d686b1ad23bd88c23e">plotter.full_battery_GITT_plots</a>(output_filename_positive,output_filename_negative,start_times,pos_params=plot_params_pos,neg_params=plot_params_neg,SparsifyAnimation=<span class="keyword">True</span>,animation_interval_time=10)</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">##### also call the standalone plotting function with a single file</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">#plotter.gen_plots(output_filename+&#39;0&#39;,electrode,SparsifyAnimation=True)</span></div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
-<div class="ttc" id="namespaceplotter_html_ad575e508b7dec6d686b1ad23bd88c23e"><div class="ttname"><a href="namespaceplotter.html#ad575e508b7dec6d686b1ad23bd88c23e">plotter.full_battery_GITT_plots</a></div><div class="ttdeci">def full_battery_GITT_plots</div><div class="ttdef"><b>Definition:</b> <a href="plotter_8py_source.html#l00322">plotter.py:322</a></div></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="ttc" id="namespaceplotter_html_ad575e508b7dec6d686b1ad23bd88c23e"><div class="ttname"><a href="namespaceplotter.html#ad575e508b7dec6d686b1ad23bd88c23e">plotter.full_battery_GITT_plots</a></div><div class="ttdeci">def full_battery_GITT_plots</div><div class="ttdef"><b>Definition:</b> <a href="plotter_8py_source.html#l00365">plotter.py:365</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
