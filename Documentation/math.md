@@ -28,26 +28,19 @@ $$
 
 - The consistency and stability of the Crank-Nicolson scheme means it satisfies the Lax equivalence theorem, which states that a numerical method is convergent if and only if it is both consistent and stable.
 
-- Specific Equation:
-
-```math
+- Specific Equation: $$
 \frac{c_i^{j+1} - c_i^j}{\Delta t} = \frac{D}{2r_i^2} \Bigg[ \left(r_i^2 \frac{c_{i+1}^{j+1} - 2c_i^{j+1} + c_{i-1}^{j+1}}{\Delta r^2} + r_i^2 \frac{c_{i+1}^j - 2c_i^j + c_{i-1}^j}{\Delta r^2}\right) + r_i \left(\frac{c_{i+1}^{j+1} - c_{i-1}^{j+1}}{2\Delta r} + \frac{c_{i+1}^{j} - c_{i-1}^{j}}{2\Delta r} \right) \Bigg]
+$$
 
-Generally:
-
+- Generally: $$ 
 \frac{u_i^{j+1} - u_i^j}{\Delta t} = \frac{1}{2} \left[ F^{j+1}_i(u,r,t,\frac{\partial u}{\partial r},\frac{\partial ^2 u}{\partial r^2}) + F^j_i(u,r,t,\frac{\partial u}{\partial r},\frac{\partial ^2 u}{\partial r^2}) \right].
-
+$$
 This is an average of standard forward and backward Euler methods.
 
-    Boundary conditions will be treated through the use of ghost nodes, which assign values for the function of interest to regions just beyond the domain of the problem in an attempt to approximate the first derivatives present in the Neumann boundary conditions specified. For example,
+- Boundary conditions will be treated through the use of ghost nodes, which assign values for the function of interest to regions just beyond the domain of the problem in an attempt to approximate the first derivatives present in the Neumann boundary conditions specified. For example, $$ \frac{\partial c}{\partial r}\Bigg|_{r=0} \approx \frac{c_1 - c_{-1}}{2\Delta r} = 0 \iff c_1 = c_{-1}. $$
 
-\frac{\partial c}{\partial r}\Bigg|_{r=0} \approx \frac{c_1 - c_{-1}}{2\Delta r} = 0 \iff c_1 = c_{-1}.
+- The accuracy of the scheme will be chosen such that it is equivalent to the interior solved points.
 
-The accuracy of the scheme will be chosen such that it is equivalent to the interior solved points.
+- Finally, a general initial condition is specified of the form $$ c = c_0 \textrm{ at } t=0. $$
 
-    Finally, a general initial condition is specified of the form
-    
-    
-    c = c_0 \textrm{ at } t=0.
-
-The form of c_0 is assumed to be constant in R.
+- The form of c_0 is assumed to be constant in R.
