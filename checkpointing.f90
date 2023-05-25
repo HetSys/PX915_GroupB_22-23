@@ -10,27 +10,58 @@ MODULE checkpointing
 
     CONTAINS
 
-    SUBROUTINE write_checkpoint(tstep_in, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage, filename, freq_in)
+    !>@brief Write checkpoint file 
+    !!@details Writes netCDF checkpoint file every 'freq_in' timesteps.
+    !!Checkpoint file contains all user input parameters and concentration up to current timestep.
+    SUBROUTINE write_checkpoint(tstep, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage, filename, freq_in)
 
         ! Variables to write
-        INTEGER, INTENT(IN) :: tstep_in ! Current timestep
-        INTEGER :: tstep
-        INTEGER, INTENT(IN) :: tsteps ! Total timesteps
+        !> @var integer tstep_in
+        !! Current timestep.
+        INTEGER, INTENT(IN) :: tstep
+        !> @var integer tsteps
+        !! Number of timesteps (dimensionless)
+        INTEGER, INTENT(IN) :: tsteps
+        !> @var real dt
+        !! Time step size (s)
         REAL(REAL64), INTENT(IN) :: dt
+        !> @var integer n
+        !! Number of spatial nodes (dimensionless)
         INTEGER, INTENT(IN) :: n 
-        REAL(REAL64), DIMENSION(n), INTENT(IN) :: c ! Conc at current timestep
+        !> @var real array c
+        !! Concentration at current timestep (mol m^-3)
+        REAL(REAL64), DIMENSION(n), INTENT(IN) :: c
+        !> @var real D
+        !! Diffusion coefficient (m^2 s^-1)
         REAL(REAL64), INTENT(IN) :: D
+        !> @var real R
+        !! Total width of block (m)
         REAL(REAL64), INTENT(IN) :: R
+        !> @var real a_small
+        !! Particle surface area per unit volume (m^-1), Constant in r=R boundary condit
         REAL(REAL64), INTENT(IN) :: a_small
+        !> @var real L
+        !! Electrode thickness (m), Constant in r=R boundary condit
         REAL(REAL64), INTENT(IN) :: L
+        !> @var real array iapp
+        !! Applied current density (A m^-2), length tsteps
         REAL(REAL64), DIMENSION(tsteps), INTENT(IN) :: iapp
+        !> @var chararacter len=1 electrode_charge
+        !! Label of electrode charge, 'p'=positive, 'n'=negative
         CHARACTER(len=*), INTENT(IN) :: electrode_charge
+        !> @var real 2D array cstorage
+        !! 2D array containing the concentration profile at each timestep
         REAL(REAL64), DIMENSION(n, tsteps), INTENT(IN) :: cstorage
+
         ! Frequency variables
+        !> @var optional integer freq_in
+        !! Number of timesteps at which to write checkpoints. Default = 20.
         INTEGER, INTENT(IN), OPTIONAL :: freq_in
         INTEGER :: freq ! desired frequency of checkpoints
         INTEGER :: freq_remainder
         ! Execution variables
+        !> @var character len=* filename
+        !! Name of user input file. Used to determine name of checkpoint file.
         CHARACTER(len=*), INTENT(INOUT) :: filename
         CHARACTER(len=60) :: dir, checkpoint_name
         CHARACTER(len=120) :: filepath
@@ -40,12 +71,11 @@ MODULE checkpointing
         INTEGER :: filename_length, file_ext, file_test
         CHARACTER(len=10) :: tstep_str
 
-        tstep = tstep_in + 1
         ! Determine if checkpoint desired at this timestep
         IF(PRESENT(freq_in)) THEN
             freq = freq_in
         ELSE
-            freq = 10
+            freq = 20
         END IF
     
         ! Using integer arithmetic, find remainder of tstep/freq
@@ -71,8 +101,7 @@ MODULE checkpointing
             checkpoint_name = filename(1:file_ext-1)//"_tstep_"//TRIM(ADJUSTL(tstep_str))//".nc"
             filepath = TRIM(ADJUSTL(dir))//TRIM(ADJUSTL(checkpoint_name))
             
-
-
+            ! Write checkpoint file
             ! Create NetCDF file
             CALL check(nf90_create(filepath, NF90_CLOBBER, ncid))
         
@@ -132,17 +161,41 @@ MODULE checkpointing
         CHARACTER(len=*), INTENT(IN) :: filename
 
         ! Variables to read
-        INTEGER, INTENT(OUT) :: tstep_init ! Last timestep
-        INTEGER, INTENT(OUT) :: tsteps ! Total timesteps
+        !> @var integer tstep_init
+        !! Timestep of checkpoint file, used as initial timestep for solver.
+        INTEGER, INTENT(OUT) :: tstep_init
+        !> @var integer tsteps
+        !! Number of timesteps (dimensionless)
+        INTEGER, INTENT(OUT) :: tsteps
+        !> @var real dt
+        !! Time step size (s)
         REAL(REAL64), INTENT(OUT) :: dt
+        !> @var integer n
+        !! Number of spatial nodes (dimensionless)
         INTEGER, INTENT(OUT) :: n 
-        REAL(REAL64), DIMENSION(:), ALLOCATABLE, INTENT(OUT) :: c ! Conc at last timestep
+        !> @var real array c
+        !! Concentration at timestep of checkpoint file (mol m^-3)
+        REAL(REAL64), DIMENSION(:), ALLOCATABLE, INTENT(OUT) :: c
+        !> @var real D
+        !! Diffusion coefficient (m^2 s^-1)
         REAL(REAL64), INTENT(OUT) :: D
+        !> @var real R
+        !! Total width of block (m)
         REAL(REAL64), INTENT(OUT) :: R
+        !> @var real a_small
+        !! Particle surface area per unit volume (m^-1), Constant in r=R boundary condit
         REAL(REAL64), INTENT(OUT) :: a_small
+        !> @var real L
+        !! Electrode thickness (m), Constant in r=R boundary condit
         REAL(REAL64), INTENT(OUT) :: L
+        !> @var real array iapp
+        !! Applied current density (A m^-2), length tsteps
         REAL(REAL64), DIMENSION(:), ALLOCATABLE, INTENT(OUT) :: iapp
+        !> @var chararacter len=1 electrode_charge
+        !! Label of electrode charge, 'p'=positive, 'n'=negative
         CHARACTER(len=*), INTENT(OUT) :: electrode_charge
+        !> @var real 2D array cstorage
+        !! 2D array containing the concentration profile at each timestep
         REAL(REAL64), DIMENSION(:, :), ALLOCATABLE, INTENT(OUT) :: cstorage
 
         ! Execution variables
@@ -208,7 +261,6 @@ MODULE checkpointing
 
         ! Close the file
         CALL check(status = nf90_close(ncid))
-        ! PRINT *, "Success reading checkpoint file, "//filename
 
     END SUBROUTINE read_checkpoint
 
@@ -267,11 +319,11 @@ MODULE checkpointing
         REAL(REAL64), DIMENSION(:, :), ALLOCATABLE, INTENT(OUT) :: cstorage
 
 
-        !> 1. Find index of '.' in filename to identify file extension
+        ! Find index of '.' in filename to identify file extension
         parse_idx = INDEX(filename, ".") +1
         file_extension = filename(parse_idx:)
         
-        !> 2. Choose input reader based on file extension.
+        ! Choose input reader based on file extension.
         SELECT CASE(file_extension)
 
             CASE("txt")
