@@ -60,7 +60,7 @@ cat nohup.out
 
 Developer documentation is available at https://hetsys.github.io/PX915_GroupB_22-23/.
 
-![logo](https://github.com/HetSys/PX915_GroupB_22-23/assets/120459567/6e1da60c-726c-427d-a9f4-b0177e454a26)
+![logo](https://github.com/HetSys/PX915_GroupB_22-23/assets/120459567/fcbb90ff-6db3-4084-b57f-d210537dcd41)
 
 ## Contributors 
 Fraser Birks, Laura Cairns, Sebastian Dooley, Arielle Fitkin, Jake Eller, and Yu Lei
