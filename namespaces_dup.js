@@ -1,6 +1,10 @@
 var namespaces_dup =
 [
-    [ "checkpointing", "namespacecheckpointing.html", null ],
+    [ "checkpointing", "namespacecheckpointing.html", [
+      [ "read_checkpoint", "namespacecheckpointing.html#a0ac9809d2e7912796cf5ee89c27db698", null ],
+      [ "set_inputs", "namespacecheckpointing.html#a15e571681bb6fc535800104d25749775", null ],
+      [ "write_checkpoint", "namespacecheckpointing.html#a81eabe340be8bc60edd1ba044c85eb87", null ]
+    ] ],
     [ "convergence_test", "namespaceconvergence__test.html", [
       [ "run_dt_convergence", "namespaceconvergence__test.html#ae835f30dfb3114da8a7e72ad67039cc3", null ],
       [ "run_node_convergence", "namespaceconvergence__test.html#a66c69462f9946100e97acbf037eaa7aa", null ]
@@ -42,7 +46,11 @@ var namespaces_dup =
       [ "read_output_file", "namespaceplotter.html#a99e9bf1e00cf92bad976ff897baaac01", null ],
       [ "voltage_current_plot", "namespaceplotter.html#acaa26bb6da59a5c0f3eb331bf8489d48", null ]
     ] ],
-    [ "read_inputs", "namespaceread__inputs.html", null ],
+    [ "read_inputs", "namespaceread__inputs.html", [
+      [ "invalid_param_type", "namespaceread__inputs.html#a45422a720b310faf4723c620a5f03029", null ],
+      [ "read_command_line", "namespaceread__inputs.html#a752aec220521a4fcad028ccb055ee54e", null ],
+      [ "read_user_inputs", "namespaceread__inputs.html#a6e4573220372dc042df9b6544c8da8ce", null ]
+    ] ],
     [ "sensitivity_analysis", "namespacesensitivity__analysis.html", [
       [ "sensitivity_over_time", "namespacesensitivity__analysis.html#a3bbb34d8690f64a5c93e4cc3dec840d8", null ],
       [ "ani", "namespacesensitivity__analysis.html#a3822548af0ca38ff57751a03d00c1219", null ],

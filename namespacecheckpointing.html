@@ -85,6 +85,8 @@ $(document).ready(function(){initNavTree('namespacecheckpointing.html',''); init
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Functions/Subroutines</a>  </div>
   <div class="headertitle">
 <div class="title">checkpointing Module Reference</div>  </div>
 </div><!--header-->
@@ -92,10 +94,379 @@ $(document).ready(function(){initNavTree('namespacecheckpointing.html',''); init
 
 <p>Module to read and write checkpoint files.  
 <a href="namespacecheckpointing.html#details">More...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions/Subroutines</h2></td></tr>
+<tr class="memitem:a81eabe340be8bc60edd1ba044c85eb87"><td class="memItemLeft" align="right" valign="top">subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecheckpointing.html#a81eabe340be8bc60edd1ba044c85eb87">write_checkpoint</a> (tstep, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage, filename, freq_in)</td></tr>
+<tr class="memdesc:a81eabe340be8bc60edd1ba044c85eb87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write checkpoint file (netCDF)  <a href="namespacecheckpointing.html#a81eabe340be8bc60edd1ba044c85eb87">More...</a><br /></td></tr>
+<tr class="separator:a81eabe340be8bc60edd1ba044c85eb87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ac9809d2e7912796cf5ee89c27db698"><td class="memItemLeft" align="right" valign="top">subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecheckpointing.html#a0ac9809d2e7912796cf5ee89c27db698">read_checkpoint</a> (filename, tstep_init, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage)</td></tr>
+<tr class="memdesc:a0ac9809d2e7912796cf5ee89c27db698"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads in checkpoint file (netCDF).  <a href="namespacecheckpointing.html#a0ac9809d2e7912796cf5ee89c27db698">More...</a><br /></td></tr>
+<tr class="separator:a0ac9809d2e7912796cf5ee89c27db698"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15e571681bb6fc535800104d25749775"><td class="memItemLeft" align="right" valign="top">subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecheckpointing.html#a15e571681bb6fc535800104d25749775">set_inputs</a> (filename, tstep_init, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage)</td></tr>
+<tr class="memdesc:a15e571681bb6fc535800104d25749775"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads and selects user input file type: standard or checkpoint file.  <a href="namespacecheckpointing.html#a15e571681bb6fc535800104d25749775">More...</a><br /></td></tr>
+<tr class="separator:a15e571681bb6fc535800104d25749775"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Module to read and write checkpoint files. </p>
 <p>Module contains functions that write checkpoint files and read them in as user input. </p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function/Subroutine Documentation</h2>
+<a id="a0ac9809d2e7912796cf5ee89c27db698"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ac9809d2e7912796cf5ee89c27db698">&#9670;&nbsp;</a></span>read_checkpoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">subroutine checkpointing::read_checkpoint </td>
+          <td>(</td>
+          <td class="paramtype">character(len=*), intent(in)&#160;</td>
+          <td class="paramname"><em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">integer, intent(out)&#160;</td>
+          <td class="paramname"><em>tstep_init</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">integer, intent(out)&#160;</td>
+          <td class="paramname"><em>tsteps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(real64), intent(out)&#160;</td>
+          <td class="paramname"><em>dt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">integer, intent(out)&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(real64), dimension(:), intent(out), allocatable&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(real64), intent(out)&#160;</td>
+          <td class="paramname"><em>D</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(real64), intent(out)&#160;</td>
+          <td class="paramname"><em>R</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(real64), intent(out)&#160;</td>
+          <td class="paramname"><em>a_small</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(real64), intent(out)&#160;</td>
+          <td class="paramname"><em>L</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(real64), dimension(:), intent(out), allocatable&#160;</td>
+          <td class="paramname"><em>iapp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">character(len=*), intent(out)&#160;</td>
+          <td class="paramname"><em>electrode_charge</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(real64), dimension(:, :), intent(out), allocatable&#160;</td>
+          <td class="paramname"><em>cstorage</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reads in checkpoint file (netCDF). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">filename</td><td>Name of user input file. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">tstep_init</td><td>Timestep of checkpoint file, used as initial timestep for solver. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">tsteps</td><td>Number of timesteps </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">dt</td><td>Time step size (s) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">n</td><td>Number of spatial nodes </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">c</td><td>Concentration at timestep of checkpoint file (mol m^-3) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">D</td><td>Diffusion constant (m^2 s^-1) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">R</td><td>Radius of simulation sphere (m) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">a_small</td><td>Particle surface area per unit volume (m^-1) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">L</td><td>Electrode thickness (m) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">iapp</td><td>Applied current density (A m^-2) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">electrode_charge</td><td>Electrode charge, 'p'=positive, 'n'=negative </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">cstorage</td><td>2D array containing the concentration profile at each timestep </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="checkpointing_8f90_source.html#l00156">156</a> of file <a class="el" href="checkpointing_8f90_source.html">checkpointing.f90</a>.</p>
+
+</div>
+</div>
+<a id="a15e571681bb6fc535800104d25749775"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15e571681bb6fc535800104d25749775">&#9670;&nbsp;</a></span>set_inputs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">subroutine checkpointing::set_inputs </td>
+          <td>(</td>
+          <td class="paramtype">character(len=*), intent(in)&#160;</td>
+          <td class="paramname"><em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">integer, intent(out)&#160;</td>
+          <td class="paramname"><em>tstep_init</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">integer, intent(out)&#160;</td>
+          <td class="paramname"><em>tsteps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(real64), intent(out)&#160;</td>
+          <td class="paramname"><em>dt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">integer, intent(out)&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(real64), dimension(:), intent(out), allocatable&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(real64), intent(out)&#160;</td>
+          <td class="paramname"><em>D</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(real64), intent(out)&#160;</td>
+          <td class="paramname"><em>R</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(real64), intent(out)&#160;</td>
+          <td class="paramname"><em>a_small</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(real64), intent(out)&#160;</td>
+          <td class="paramname"><em>L</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(real64), dimension(:), intent(out), allocatable&#160;</td>
+          <td class="paramname"><em>iapp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">character(len=1), intent(out)&#160;</td>
+          <td class="paramname"><em>electrode_charge</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(real64), dimension(:, :), intent(out), allocatable&#160;</td>
+          <td class="paramname"><em>cstorage</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reads and selects user input file type: standard or checkpoint file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">filename</td><td>Name of user input file. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">tstep_init</td><td>Timestep of checkpoint file, used as initial timestep for solver. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">tsteps</td><td>Number of timesteps </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">dt</td><td>Time step size (s) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">n</td><td>Number of spatial nodes </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">c</td><td>Concentration at timestep of checkpoint file (mol m^-3) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">D</td><td>Diffusion constant (m^2 s^-1) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">R</td><td>Radius of simulation sphere (m) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">a_small</td><td>Particle surface area per unit volume (m^-1) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">L</td><td>Electrode thickness (m) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">iapp</td><td>Applied current density (A m^-2) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">electrode_charge</td><td>Electrode charge, 'p'=positive, 'n'=negative </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">cstorage</td><td>2D array containing the concentration profile at each timestep </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="checkpointing_8f90_source.html#l00256">256</a> of file <a class="el" href="checkpointing_8f90_source.html">checkpointing.f90</a>.</p>
+
+</div>
+</div>
+<a id="a81eabe340be8bc60edd1ba044c85eb87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81eabe340be8bc60edd1ba044c85eb87">&#9670;&nbsp;</a></span>write_checkpoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">subroutine checkpointing::write_checkpoint </td>
+          <td>(</td>
+          <td class="paramtype">integer, intent(in)&#160;</td>
+          <td class="paramname"><em>tstep</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">integer, intent(in)&#160;</td>
+          <td class="paramname"><em>tsteps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(real64), intent(in)&#160;</td>
+          <td class="paramname"><em>dt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">integer, intent(in)&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(real64), dimension(n), intent(in)&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(real64), intent(in)&#160;</td>
+          <td class="paramname"><em>D</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(real64), intent(in)&#160;</td>
+          <td class="paramname"><em>R</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(real64), intent(in)&#160;</td>
+          <td class="paramname"><em>a_small</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(real64), intent(in)&#160;</td>
+          <td class="paramname"><em>L</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(real64), dimension(tsteps), intent(in)&#160;</td>
+          <td class="paramname"><em>iapp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">character(len=*), intent(in)&#160;</td>
+          <td class="paramname"><em>electrode_charge</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(real64), dimension(n, tsteps), intent(in)&#160;</td>
+          <td class="paramname"><em>cstorage</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">character(len=*), intent(inout)&#160;</td>
+          <td class="paramname"><em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">integer, intent(in), optional&#160;</td>
+          <td class="paramname"><em>freq_in</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write checkpoint file (netCDF) </p>
+<p>Writes netCDF checkpoint file every 'freq_in' timesteps. Checkpoint file contains all user input parameters and concentration up to current timestep. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">tstep</td><td>Current timestep </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">tsteps</td><td>Number of timesteps </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dt</td><td>Time step size (s) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>Number of spatial nodes </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>Concentration at current timestep (mol m^-3) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">D</td><td>Diffusion constant (m^2 s^-1) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">R</td><td>Radius of simulation sphere (m) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">a_small</td><td>Particle surface area per unit volume (m^-1) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">L</td><td>Electrode thickness (m) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">iapp</td><td>Applied current density (A m^-2) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">electrode_charge</td><td>Electrode charge, 'p'=positive, 'n'=negative </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">cstorage</td><td>2D array containing the concentration profile at each timestep </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">filename</td><td>Name of user input file. Used to determin name of checkpoint file </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">freq_in</td><td>Optional, interval of timesteps at which to write checkpoints. Default = tsteps/10. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="checkpointing_8f90_source.html#l00030">30</a> of file <a class="el" href="checkpointing_8f90_source.html">checkpointing.f90</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
