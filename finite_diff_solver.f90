@@ -10,7 +10,7 @@
 !>   -  Uncertainty quantification
 !>
 !> \section Contributors 
-Fraser Birks, Laura Cairns, Sebastian Dooley, Arielle Fitkin, Jake Eller, and Yu Lei
+!> Fraser Birks, Laura Cairns, Sebastian Dooley, Arielle Fitkin, Jake Eller, and Yu Lei
 !>
 !> HetSys CDT, University of Warwick
 
