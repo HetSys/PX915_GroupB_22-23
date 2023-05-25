@@ -10,58 +10,44 @@ MODULE checkpointing
 
     CONTAINS
 
-    !>@brief Write checkpoint file 
+    !>@brief Write checkpoint file (netCDF)
     !!@details Writes netCDF checkpoint file every 'freq_in' timesteps.
     !!Checkpoint file contains all user input parameters and concentration up to current timestep.
+    !! @param[in] tstep: Current timestep
+    !! @param[in] tsteps: Number of timesteps
+    !! @param[in] dt: Time step size (s)
+    !! @param[in] n: Number of spatial nodes
+    !! @param[in] c: Concentration at current timestep (mol m^-3)
+    !! @param[in] D: Diffusion constant (m^2 s^-1)
+    !! @param[in] R: Radius of simulation sphere (m)
+    !! @param[in] a_small: Particle surface area per unit volume (m^-1)
+    !! @param[in] L: Electrode thickness (m)
+    !! @param[in] iapp: Applied current density (A m^-2)
+    !! @param[in] electrode_charge: Electrode charge, 'p'=positive, 'n'=negative
+    !! @param[in] cstorage: 2D array containing the concentration profile at each timestep
+    !! @param[in] filename: Name of user input file. Used to determin name of checkpoint file
+    !! @param[in] freq_in: Optional, interval of timesteps at which to write checkpoints. Default = tsteps/10.
     SUBROUTINE write_checkpoint(tstep, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage, filename, freq_in)
 
         ! Variables to write
-        !> @var integer tstep_in
-        !! Current timestep.
         INTEGER, INTENT(IN) :: tstep
-        !> @var integer tsteps
-        !! Number of timesteps (dimensionless)
         INTEGER, INTENT(IN) :: tsteps
-        !> @var real dt
-        !! Time step size (s)
         REAL(REAL64), INTENT(IN) :: dt
-        !> @var integer n
-        !! Number of spatial nodes (dimensionless)
         INTEGER, INTENT(IN) :: n 
-        !> @var real array c
-        !! Concentration at current timestep (mol m^-3)
         REAL(REAL64), DIMENSION(n), INTENT(IN) :: c
-        !> @var real D
-        !! Diffusion coefficient (m^2 s^-1)
         REAL(REAL64), INTENT(IN) :: D
-        !> @var real R
-        !! Total width of block (m)
         REAL(REAL64), INTENT(IN) :: R
-        !> @var real a_small
-        !! Particle surface area per unit volume (m^-1), Constant in r=R boundary condit
         REAL(REAL64), INTENT(IN) :: a_small
-        !> @var real L
-        !! Electrode thickness (m), Constant in r=R boundary condit
         REAL(REAL64), INTENT(IN) :: L
-        !> @var real array iapp
-        !! Applied current density (A m^-2), length tsteps
         REAL(REAL64), DIMENSION(tsteps), INTENT(IN) :: iapp
-        !> @var chararacter len=1 electrode_charge
-        !! Label of electrode charge, 'p'=positive, 'n'=negative
         CHARACTER(len=*), INTENT(IN) :: electrode_charge
-        !> @var real 2D array cstorage
-        !! 2D array containing the concentration profile at each timestep
         REAL(REAL64), DIMENSION(n, tsteps), INTENT(IN) :: cstorage
 
         ! Frequency variables
-        !> @var optional integer freq_in
-        !! Number of timesteps at which to write checkpoints. Default = 20.
         INTEGER, INTENT(IN), OPTIONAL :: freq_in
         INTEGER :: freq ! desired frequency of checkpoints
         INTEGER :: freq_remainder
         ! Execution variables
-        !> @var character len=* filename
-        !! Name of user input file. Used to determine name of checkpoint file.
         CHARACTER(len=*), INTENT(INOUT) :: filename
         CHARACTER(len=60) :: dir, checkpoint_name
         CHARACTER(len=120) :: filepath
@@ -153,49 +139,38 @@ MODULE checkpointing
     END SUBROUTINE write_checkpoint
 
 
+    !> @brief Reads in checkpoint file (netCDF).
+    !! @param[in] filename: Name of user input file.
+    !! @param[out] tstep_init: Timestep of checkpoint file, used as initial timestep for solver.
+    !! @param[out] tsteps: Number of timesteps
+    !! @param[out] dt: Time step size (s)
+    !! @param[out] n: Number of spatial nodes
+    !! @param[out] c: Concentration at timestep of checkpoint file (mol m^-3)
+    !! @param[out] D: Diffusion constant (m^2 s^-1)
+    !! @param[out] R: Radius of simulation sphere (m)
+    !! @param[out] a_small: Particle surface area per unit volume (m^-1)
+    !! @param[out] L: Electrode thickness (m)
+    !! @param[out] iapp: Applied current density (A m^-2)
+    !! @param[out] electrode_charge: Electrode charge, 'p'=positive, 'n'=negative
+    !! @param[out] cstorage: 2D array containing the concentration profile at each timestep
     SUBROUTINE read_checkpoint(filename, tstep_init, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage)
 
         SAVE
-        !> @var character len=* filename
-        !! Name of input file.
+
         CHARACTER(len=*), INTENT(IN) :: filename
 
         ! Variables to read
-        !> @var integer tstep_init
-        !! Timestep of checkpoint file, used as initial timestep for solver.
         INTEGER, INTENT(OUT) :: tstep_init
-        !> @var integer tsteps
-        !! Number of timesteps (dimensionless)
         INTEGER, INTENT(OUT) :: tsteps
-        !> @var real dt
-        !! Time step size (s)
         REAL(REAL64), INTENT(OUT) :: dt
-        !> @var integer n
-        !! Number of spatial nodes (dimensionless)
         INTEGER, INTENT(OUT) :: n 
-        !> @var real array c
-        !! Concentration at timestep of checkpoint file (mol m^-3)
         REAL(REAL64), DIMENSION(:), ALLOCATABLE, INTENT(OUT) :: c
-        !> @var real D
-        !! Diffusion coefficient (m^2 s^-1)
         REAL(REAL64), INTENT(OUT) :: D
-        !> @var real R
-        !! Total width of block (m)
         REAL(REAL64), INTENT(OUT) :: R
-        !> @var real a_small
-        !! Particle surface area per unit volume (m^-1), Constant in r=R boundary condit
         REAL(REAL64), INTENT(OUT) :: a_small
-        !> @var real L
-        !! Electrode thickness (m), Constant in r=R boundary condit
         REAL(REAL64), INTENT(OUT) :: L
-        !> @var real array iapp
-        !! Applied current density (A m^-2), length tsteps
         REAL(REAL64), DIMENSION(:), ALLOCATABLE, INTENT(OUT) :: iapp
-        !> @var chararacter len=1 electrode_charge
-        !! Label of electrode charge, 'p'=positive, 'n'=negative
         CHARACTER(len=*), INTENT(OUT) :: electrode_charge
-        !> @var real 2D array cstorage
-        !! 2D array containing the concentration profile at each timestep
         REAL(REAL64), DIMENSION(:, :), ALLOCATABLE, INTENT(OUT) :: cstorage
 
         ! Execution variables
@@ -264,58 +239,42 @@ MODULE checkpointing
 
     END SUBROUTINE read_checkpoint
 
-
+    !> @brief Reads and selects user input file type: standard or checkpoint file.
+    !! @param[in] filename: Name of user input file.
+    !! @param[out] tstep_init: Timestep of checkpoint file, used as initial timestep for solver.
+    !! @param[out] tsteps: Number of timesteps
+    !! @param[out] dt: Time step size (s)
+    !! @param[out] n: Number of spatial nodes
+    !! @param[out] c: Concentration at timestep of checkpoint file (mol m^-3)
+    !! @param[out] D: Diffusion constant (m^2 s^-1)
+    !! @param[out] R: Radius of simulation sphere (m)
+    !! @param[out] a_small: Particle surface area per unit volume (m^-1)
+    !! @param[out] L: Electrode thickness (m)
+    !! @param[out] iapp: Applied current density (A m^-2)
+    !! @param[out] electrode_charge: Electrode charge, 'p'=positive, 'n'=negative
+    !! @param[out] cstorage: 2D array containing the concentration profile at each timestep
     SUBROUTINE set_inputs(filename, tstep_init, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage)
 
-        !> @var character len=* filename
-        !! Name of input file.
+        ! Name of input file.
         CHARACTER(len=*), INTENT(IN) :: filename
-        !> @var character len=5 file_extension
-        !! Parsed file extension to choose checkpoint file or user input parameters
+        ! Parsed file extension to choose checkpoint file or user input parameters
         CHARACTER(len=5) :: file_extension
-        !> @var integer parse_idx
         !! Index of parser in string
         INTEGER :: parse_idx
 
         ! Parameters
-        !> @var integer tstep_init
-        !! Timestep of checkpoint file
         INTEGER, INTENT(OUT) :: tstep_init
-        !> @var integer tsteps
-        !! Number of timesteps (dimensionless)
         INTEGER, INTENT(OUT) :: tsteps
-        !> @var real dt
-        !! Time step size (s)
         REAL(REAL64), INTENT(OUT) :: dt
-        !> @var integer n
-        !! Number of spatial nodes (dimensionless)
         INTEGER, INTENT(OUT) :: n
-        !> @var allocatable real array c
-        !! Initial concentration (mol m^-3)
         REAL(REAL64), DIMENSION(:), ALLOCATABLE, INTENT(OUT) :: c ! Conc at timestep of checkpoint tstep_init
-        !> @var real c0
-        !! Initial concentration (mol m^-3)
-        REAL(REAL64) :: c0
-        !> @var real D
-        !! Diffusion coefficient (m^2 s^-1)
+        REAL(REAL64) :: c0 ! Initial concentration (mol m^-3)
         REAL(REAL64), INTENT(OUT) :: D
-        !> @var real R
-        !! Total width of block (m)
         REAL(REAL64), INTENT(OUT) :: R 
-        !> @var real a_small
-        !! Particle surface area per unit volume (m^-1), Constant in r=R boundary condit
         REAL(REAL64), INTENT(OUT) :: a_small
-        !> @var real L
-        !! Electrode thickness (m), Constant in r=R boundary condit
         REAL(REAL64), INTENT(OUT) :: L
-        !> @var allocatable real array iapp
-        !! Applied current density (A m^-2)
-        !! Will be length tsteps
         REAL(REAL64), DIMENSION(:), ALLOCATABLE, INTENT(OUT) :: iapp
-        !> @var chararacter len=1 electrode_charge
-        !! Label of electrode charge, 'p'=positive, 'n'=negative
         CHARACTER(len=1), INTENT(OUT) :: electrode_charge
-
         REAL(REAL64), DIMENSION(:, :), ALLOCATABLE, INTENT(OUT) :: cstorage
 
 
