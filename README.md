@@ -25,7 +25,7 @@ Prior to installing the program or accessing the tutorial, you will need to ensu
 - netCDF4
 - matplotlib
 
-For an scrtp managed system the following procedure will ensure correct dependendcies are installed:
+For an scrtp managed system the following procedure will ensure correct dependencies are installed:
 
 ```bash
 module purge; module load intel/2017.4.196-GCC-6.4.0-2.28  impi/2017.3.196 imkl/2017.3.196 netCDF-Fortran/4.4.4 GCC/10.2.0 Python/3.8.6
