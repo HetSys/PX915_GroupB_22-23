@@ -1,14 +1,14 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-'''
-This file performs uncertainty propagation.
 
-It applies normal distributions to parameter inputs and produces a 5 subplot
+'''! @brief Performs uncertainty propagation
+
+@details Applies normal distributions to parameter inputs and produces a 5 subplot
 figure that shows the posterior distribution of the voltage curve.
 Each subplot shows the effect of altering one parameter and keeping the others
 constant at mean values of input distributions.
 
 '''
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
 import user_input_mod as UI
 import plotter
