@@ -30,6 +30,7 @@ import pandas as pd
 # Outputs - V(t)
 
 def in_out_easy_peasy(parameter_np_array):
+    '''!@brief Simplification of the solver that allows for input parameters to be supplied and only the QOI to be returned. '''
     output_filename_positive = 'user_input_pos'
     output_filename_negative = 'user_input_neg'
 

@@ -26,11 +26,13 @@ import pandas as pd
 
 #Holder function for code
 def sensitivity_over_time():
+    '''!@brief Wrapper for the sensitivity analysis code'''
     # Function that takes parameters for sensitivity analysis only
     # and returns the QOI
     # Notably - this QOI is a scalar for each time step and so the holder
     # function is used to alter the time.
     def in_out_easy_peasy(parameter_np_array):
+        '''!@brief Simplification of the solver that allows for input parameters to be supplied and only the QOI to be returned. '''
         solver_input_filename = 'user_input'
         output_filename_positive = 'user_input_pos'
         output_filename_negative = 'user_input_neg'
@@ -101,6 +103,7 @@ def sensitivity_over_time():
         return full_voltage[idx]
     
     def first_order_sensitivities(Q, variables, Q0, eps=1e-6):
+        '''!@brief Performs first order sensitivity analysis on the supplied QOI and variables.'''
         x0 = np.array([v.mean() for v in variables])
         dQ_dx = np.zeros(len(x0))
         for i, xi in enumerate(x0):
@@ -111,6 +114,7 @@ def sensitivity_over_time():
         return dQ_dx
 
     def second_order_sensitivities(Q, variables, Q0, eps=1e-4):
+        '''!@brief Performs second order sensitivity analysis on the supplied QOI and variables.'''
         x0 = np.array([v.mean() for v in variables])
         dQ2_dx2 = np.zeros((len(x0), len(x0)))
 
@@ -160,6 +164,7 @@ def sensitivity_over_time():
     def plot_sensitivities(f, variables, variable_names,
                            Q0=None, dQ_dx=None, d2Q_dx2=None,
                            second_order=False, logscale=False):
+        '''!@brief Plots a simple figure that shows sensitivity of the QOI to the variables with respect to the desired order.''''
         fig = plt.figure()
         x0 = np.array([v.mean() for v in variables])
         sigma0 = np.array([v.std() for v in variables])
@@ -198,6 +203,7 @@ def sensitivity_over_time():
 
     #import scipy.stats as st
     def Uncert_Prop():
+        '''!@brief Uncertainty propagation function. Defines input distributions and propagates through the solver to see the effect on the QOI. '''
         # Setup distributions
         #c0, D, R, a, L
         c0 = st.norm(1000.0, 25.0)
@@ -286,6 +292,7 @@ ax.set_title('Absolute Scaled Sensitivities Over Time')
 
 # Update function called for each frame
 def update(frame):
+    '''!@brief Updates frames of animation.
     # Clear the previous plot
     ax.cla()
 
