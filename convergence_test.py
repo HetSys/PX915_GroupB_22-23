@@ -1,4 +1,4 @@
-'''!@brief Test convergence for dt and number of nodes'''
+'''!@brief Test convergence of final voltage and lithium mass loss of unit test with dt and number of nodes'''
 import numpy as np
 import unit_test
 import matplotlib.pyplot as plt
