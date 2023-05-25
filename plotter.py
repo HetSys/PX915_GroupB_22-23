@@ -20,6 +20,12 @@ def read_output_file(filename, step_num = None):
     #Read in Concs from netcdf
     if step_num is not None:
         filename = filename+str(step_num)
+    
+    '''!Parse filename'''
+    filename_temp = filename.split('.') # Remove file extension
+    filename = filename_temp[0]
+    filename_temp = filename.split('/') # Remove directories
+    filename = filename_temp[-1]
     filename = filename + '_output.nc'
 
     # Read in NetCDF output file
@@ -53,18 +59,29 @@ def read_input_current(filename,step_num=None):
     '''
     if step_num is not None:
         filename = filename+str(step_num)
-    filename = filename + '.txt'
 
-    with open(filename, 'r') as iapp_vals:
-        lines = iapp_vals.readlines()
+    # Check if input file was a checkpoint file or user parameter txt file by searching for '.' in filename
+    checkpointing = len(filename.split('.'))
 
-        # Array of applied current density (A/m^2) at all time points
-        i_app_data = []
-        for i, current in enumerate(lines):
-            if i >=11:
-                i_app_data.append(current.strip())
+    if (checkpointing==1):
+        filename = filename + '.txt'
 
-    i_app_data = np.array(i_app_data, dtype = float)
+        with open(filename, 'r') as iapp_vals:
+            lines = iapp_vals.readlines()
+
+            # Array of applied current density (A/m^2) at all time points
+            i_app_data = []
+            for i, current in enumerate(lines):
+                if i >=11:
+                    i_app_data.append(current.strip())
+
+        i_app_data = np.array(i_app_data, dtype = float)
+
+    else:
+        # If checkpoint file, read iapp in using netcdf
+        dat=NC.Dataset(filename, "r", format ="NETCDF")
+        i_app_data=dat.variables['iapp'][:]
+
     return i_app_data
 
 

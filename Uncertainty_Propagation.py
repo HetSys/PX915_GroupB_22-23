@@ -183,8 +183,9 @@ plt.suptitle("Voltage curves affected by uncertain input parameters")
 for i in range(num_samples):
     params = np.array([c0_samples[i], fixed_D, fixed_R, fixed_a, fixed_L])
     voltage_curves = in_out_easy_peasy(params)
-axs[0].plot(time, voltage_curves.T, 'b-', alpha=0.1)
+    axs[0].plot(time, voltage_curves.T, 'b-', alpha=0.1)
 axs[0].set_title('Varying c0')
+axs[0].set_xlabel('c0')
 
 # Subplot 2: Varying D
 for i in range(num_samples):
@@ -192,6 +193,7 @@ for i in range(num_samples):
     voltage_curves = in_out_easy_peasy(params)
     axs[1].plot(time, voltage_curves.T, 'b-', alpha=0.1)
 axs[1].set_title('Varying D')
+axs[1].set_xlabel('D')
 
 # Subplot 3: Varying R
 for i in range(num_samples):
@@ -199,6 +201,7 @@ for i in range(num_samples):
     voltage_curves = in_out_easy_peasy(params)
     axs[2].plot(time, voltage_curves.T, 'b-', alpha=0.1)
 axs[2].set_title('Varying R')
+axs[2].set_xlabel('R')
 
 # Subplot 4: Varying a
 for i in range(num_samples):
@@ -206,6 +209,7 @@ for i in range(num_samples):
     voltage_curves = in_out_easy_peasy(params)
     axs[3].plot(time, voltage_curves.T, 'b-', alpha=0.1)
 axs[3].set_title('Varying a')
+axs[3].set_xlabel('a')
 
 # Subplot 5: Varying L
 for i in range(num_samples):
@@ -213,7 +217,9 @@ for i in range(num_samples):
     voltage_curves = in_out_easy_peasy(params)
     axs[4].plot(time, voltage_curves.T, 'b-', alpha=0.1)
 axs[4].set_title('Varying L')
+axs[4].set_xlabel('L')
 
+fig.supylabel('Voltage, V(t)')
 plt.tight_layout()
 
 fig.savefig('UQ.png')
