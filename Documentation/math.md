@@ -36,12 +36,12 @@ $$
 
 - Generally:
 <!-- end of the list -->
-> \frac{u_i^{j+1} - u_i^j}{\Delta t} = \frac{1}{2} \left[ F^{j+1}_i(u,r,t,\frac{\partial u}{\partial r},\frac{\partial ^2 u}{\partial r^2}) + F^j_i(u,r,t,\frac{\partial u}{\partial r},\frac{\partial ^2 u}{\partial r^2}) \right].
+> $\frac{u_i^{j+1} - u_i^j}{\Delta t} = \frac{1}{2} \left[ F^{j+1}_i(u,r,t,\frac{\partial u}{\partial r},\frac{\partial ^2 u}{\partial r^2}) + F^j_i(u,r,t,\frac{\partial u}{\partial r},\frac{\partial ^2 u}{\partial r^2}) \right].$
 
 This is an average of standard forward and backward Euler methods.
 
 - Boundary conditions will be treated through the use of ghost nodes, which assign values for the function of interest to regions just beyond the domain of the problem in an attempt to approximate the first derivatives present in the Neumann boundary conditions specified. For example, 
-> \frac{\partial c}{\partial r}\Bigg|_{r=0} \approx \frac{c_1 - c_{-1}}{2\Delta r} = 0 \iff c_1 = c_{-1}.
+> $\frac{\partial c}{\partial r}\Bigg|_{r=0} \approx \frac{c_1 - c_{-1}}{2\Delta r} = 0 \iff c_1 = c_{-1}.$
 
 The accuracy of the scheme will be chosen such that it is equivalent to the interior solved points.
 
