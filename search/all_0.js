@@ -13,7 +13,6 @@ var searchData=
   ['animation_5finterval_5ftime_10',['animation_interval_time',['../namespaceuser__input__full__battery___g_i_t_t.html#aa2349dff3a64d01cbffde81610ca491a',1,'user_input_full_battery_GITT']]],
   ['arg_11',['arg',['../read__inputs_8f90.html#a8c3d116dcdb8cc118d88a8773789effb',1,'read_inputs.f90']]],
   ['asterix_12',['asterix',['../read__inputs_8f90.html#a8ae0f5a4514e2fdaf511edb32c36cde3',1,'read_inputs.f90']]],
-  ['ax_13',['ax',['../namespacesensitivity__analysis.html#a8fa675eb2fcec5b95d9d21c670da7f30',1,'sensitivity_analysis']]],
-  ['axs_14',['axs',['../namespace_uncertainty___propagation.html#a5b5398ce3cb5c9b60d8bb20a94dc945b',1,'Uncertainty_Propagation']]],
-  ['axss_15',['axss',['../namespace_uncertainty___propagation.html#a1a775c4bedfa9a3e415bf941b44b230f',1,'Uncertainty_Propagation']]]
+  ['axs_13',['axs',['../namespace_uncertainty___propagation.html#a5b5398ce3cb5c9b60d8bb20a94dc945b',1,'Uncertainty_Propagation']]],
+  ['axss_14',['axss',['../namespace_uncertainty___propagation.html#a1a775c4bedfa9a3e415bf941b44b230f',1,'Uncertainty_Propagation']]]
 ];

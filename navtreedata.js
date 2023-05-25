@@ -26,7 +26,7 @@ var NAVTREE =
 [
   [ "SPAMS", "index.html", [
     [ "Introduction", "index.html#Intro", null ],
-    [ "Contributors", "index.html#Contributors", null ],
+    [ "Fraser Birks, Laura Cairns, Sebastian Dooley, Arielle Fitkin, Jake Eller, and Yu Lei", "index.html#Contributors", null ],
     [ "Maths and Theory", "md_math.html", [
       [ "1 Mathematics and Algorithms", "md_math.html#autotoc_md1", null ]
     ] ],
@@ -34,6 +34,7 @@ var NAVTREE =
       [ "Sensitivity Analysis", "md_uq.html#autotoc_md3", null ],
       [ "Uncertainty Propagation", "md_uq.html#autotoc_md4", null ]
     ] ],
+    [ "Bibliography", "citelist.html", null ],
     [ "Modules", "namespaces.html", [
       [ "Modules List", "namespaces.html", "namespaces_dup" ],
       [ "Module Members", "namespacemembers.html", [
@@ -58,8 +59,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_m_k_l__threads__test_8py.html",
-"namespacemembers_n.html",
-"user__input__full__battery___g_i_t_t_8py.html#a51c49f845d3932a6a084187c90aab1ab"
+"namespacemembers_m.html",
+"user__input__full__battery___g_i_t_t_8py.html#a7a8fe217f5fca8ba33ec21ff714a7c0e"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

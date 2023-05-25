@@ -1,12 +1,19 @@
 var searchData=
 [
-  ['edge_5fconc_5fvals_5fneg_53',['edge_conc_vals_neg',['../namespace_uncertainty___propagation.html#a2bc46e884cf4657287dfb916121522b0',1,'Uncertainty_Propagation']]],
-  ['edge_5fconc_5fvals_5fpos_54',['edge_conc_vals_pos',['../namespace_uncertainty___propagation.html#a1c905cc451a3f94f775d58c3faa18ba7',1,'Uncertainty_Propagation']]],
-  ['electrode_55',['electrode',['../namespaceuser__input__parallel__simulation.html#ad2d57213b2f83f73d24b53130ef31916',1,'user_input_parallel_simulation']]],
-  ['electrode_5fcharge_56',['electrode_charge',['../checkpointing_8f90.html#aff6b764bcec5679997febf97860f09c4',1,'electrode_charge():&#160;checkpointing.f90'],['../read__inputs_8f90.html#aff6b764bcec5679997febf97860f09c4',1,'electrode_charge():&#160;read_inputs.f90'],['../namespaceuser__input.html#a6950a02b90168932f3f287626dc79825',1,'user_input.electrode_charge()'],['../namespaceuser__input__parallel__simulation.html#a6950a02b90168932f3f287626dc79825',1,'user_input_parallel_simulation.electrode_charge()']]],
-  ['electrode_5fcharge_5fneg_57',['electrode_charge_neg',['../namespaceuser__input__full__battery___g_i_t_t.html#a5e05c1d82b55a50809f5a035074dafc2',1,'user_input_full_battery_GITT']]],
-  ['electrode_5fcharge_5fpos_58',['electrode_charge_pos',['../namespaceuser__input__full__battery___g_i_t_t.html#a124b6c7f9ba01bbc5bb8713ca260110e',1,'user_input_full_battery_GITT']]],
-  ['electrode_5fneg_59',['electrode_neg',['../namespace_uncertainty___propagation.html#a5b5a705768405551143015d47be1373e',1,'Uncertainty_Propagation']]],
-  ['electrode_5fpos_60',['electrode_pos',['../namespace_uncertainty___propagation.html#a8c463370627cdf6a6c26d45794c99a4d',1,'Uncertainty_Propagation']]],
-  ['end_61',['end',['../namespacemixed__parallel__strat__test.html#afb358f48b1646c750fb9da6c6585be2b',1,'mixed_parallel_strat_test.end()'],['../namespace_m_k_l__threads__test.html#afb358f48b1646c750fb9da6c6585be2b',1,'MKL_threads_test.end()']]]
+  ['d_37',['d',['../read__inputs_8f90.html#a8c2ae562c3f2ddc0493f7926a11c5633',1,'read_inputs.f90']]],
+  ['d_38',['D',['../namespaceuser__input.html#a350bfcb1e3cfb28ddff48ce525d4f139',1,'user_input.D()'],['../namespaceuser__input__parallel__simulation.html#a350bfcb1e3cfb28ddff48ce525d4f139',1,'user_input_parallel_simulation.D()']]],
+  ['d_39',['d',['../checkpointing_8f90.html#a8c2ae562c3f2ddc0493f7926a11c5633',1,'checkpointing.f90']]],
+  ['d_5fdist_40',['D_dist',['../namespace_uncertainty___propagation.html#a9d691b1915b06a02616ebd93fe4691af',1,'Uncertainty_Propagation']]],
+  ['d_5fneg_41',['D_neg',['../namespaceuser__input__full__battery___g_i_t_t.html#a9fcd3b2119e5d75c8a9fe625dd1b5ffc',1,'user_input_full_battery_GITT']]],
+  ['d_5fpos_42',['D_pos',['../namespaceuser__input__full__battery___g_i_t_t.html#abbe757f0e0006636fc50b1eb877ce752',1,'user_input_full_battery_GITT']]],
+  ['d_5fsamples_43',['D_samples',['../namespace_uncertainty___propagation.html#a78426f62613dc31f33d159ca2e7d8588',1,'Uncertainty_Propagation']]],
+  ['dimid_5fn_44',['dimid_n',['../checkpointing_8f90.html#a51a4b4b59551cb4281475764115b877d',1,'checkpointing.f90']]],
+  ['dimid_5ftsteps_45',['dimid_tsteps',['../checkpointing_8f90.html#a6ce0e2b1f109ff03ebca788ed13f7e1a',1,'checkpointing.f90']]],
+  ['dimids_5fcstorage_46',['dimids_cstorage',['../checkpointing_8f90.html#ac0e74d25da1d6f32a76e7997514e456b',1,'checkpointing.f90']]],
+  ['dimids_5fparameter_47',['dimids_parameter',['../checkpointing_8f90.html#a0fe5e7a0ee9aa5b3bcba60e5e1fd35d3',1,'checkpointing.f90']]],
+  ['dir_48',['dir',['../checkpointing_8f90.html#a834ac8f7e37269361d818352ba624be9',1,'checkpointing.f90']]],
+  ['dr_5fneg_49',['dr_neg',['../namespace_uncertainty___propagation.html#adcc0d438773d2e3a76a551d42de8c179',1,'Uncertainty_Propagation']]],
+  ['dr_5fpos_50',['dr_pos',['../namespace_uncertainty___propagation.html#afa626808d80c14874a65be7fa2556d61',1,'Uncertainty_Propagation']]],
+  ['dt_51',['dt',['../checkpointing_8f90.html#a10d68aa82fa620f29bc3adf5bde42bb9',1,'dt():&#160;checkpointing.f90'],['../namespaceconvergence__test.html#a770f288d3048ff6cbee9faa0969fd6b0',1,'convergence_test.dt()'],['../namespacemixed__parallel__strat__test.html#a770f288d3048ff6cbee9faa0969fd6b0',1,'mixed_parallel_strat_test.dt()'],['../namespace_m_k_l__threads__test.html#a770f288d3048ff6cbee9faa0969fd6b0',1,'MKL_threads_test.dt()'],['../read__inputs_8f90.html#a10d68aa82fa620f29bc3adf5bde42bb9',1,'dt():&#160;read_inputs.f90'],['../namespace_uncertainty___propagation.html#a770f288d3048ff6cbee9faa0969fd6b0',1,'Uncertainty_Propagation.dt()'],['../namespaceuser__input.html#a770f288d3048ff6cbee9faa0969fd6b0',1,'user_input.dt()'],['../namespaceuser__input__full__battery___g_i_t_t.html#a778e38aa889751afffa2dea6b803e67a',1,'user_input_full_battery_GITT.dt()'],['../namespaceuser__input__parallel__simulation.html#a778e38aa889751afffa2dea6b803e67a',1,'user_input_parallel_simulation.dt()']]],
+  ['dt_5fvals_52',['dt_vals',['../namespaceconvergence__test.html#a01bf350668845d335856a01897f52f08',1,'convergence_test']]]
 ];

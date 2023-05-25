@@ -107,13 +107,16 @@ Functions</h2></td></tr>
 <tr class="memdesc:a8684a9ff7118c9f9d3738b3ac05b9bee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves animation of lithium concentration over time.  <a href="namespaceplotter.html#a8684a9ff7118c9f9d3738b3ac05b9bee">More...</a><br /></td></tr>
 <tr class="separator:a8684a9ff7118c9f9d3738b3ac05b9bee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abdeddaa82135d546bcc8a0ef6da6e646"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceplotter.html#abdeddaa82135d546bcc8a0ef6da6e646">gen_half_cell_voltage</a> (edge_conc_vals, i_app_data, electrode, <a class="el" href="read__inputs_8f90.html#a91662adda6b1bf216ff0a00a440591c4">tsteps</a>, pos_params=None, neg_params=None)</td></tr>
+<tr class="memdesc:abdeddaa82135d546bcc8a0ef6da6e646"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the voltage against time profile for a half cell and return voltage.  <a href="namespaceplotter.html#abdeddaa82135d546bcc8a0ef6da6e646">More...</a><br /></td></tr>
 <tr class="separator:abdeddaa82135d546bcc8a0ef6da6e646"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acaa26bb6da59a5c0f3eb331bf8489d48"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceplotter.html#acaa26bb6da59a5c0f3eb331bf8489d48">voltage_current_plot</a> (electrode, cstore, time_axis, i_app_data, <a class="el" href="read__inputs_8f90.html#a91662adda6b1bf216ff0a00a440591c4">tsteps</a>, pos_params=None, neg_params=None)</td></tr>
 <tr class="memdesc:acaa26bb6da59a5c0f3eb331bf8489d48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates voltages and plots as a function of time.  <a href="namespaceplotter.html#acaa26bb6da59a5c0f3eb331bf8489d48">More...</a><br /></td></tr>
 <tr class="separator:acaa26bb6da59a5c0f3eb331bf8489d48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ba5ad5850aaae088990b1591fd18de0"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceplotter.html#a6ba5ad5850aaae088990b1591fd18de0">plot_halfcell_GITT_result</a> (<a class="el" href="read__inputs_8f90.html#a0534a3ee620c0917cd9f0099559b2d52">filename</a>, start_times, electrode, pos_params=None, neg_params=None, Animation=False, SaveFinalState=False, SparsifyAnimation=True, animation_interval_time=10)</td></tr>
+<tr class="memdesc:a6ba5ad5850aaae088990b1591fd18de0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the voltage current plot and optionally an animation for a half-cell GITT test.  <a href="namespaceplotter.html#a6ba5ad5850aaae088990b1591fd18de0">More...</a><br /></td></tr>
 <tr class="separator:a6ba5ad5850aaae088990b1591fd18de0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab570e83fac2f6c031469637da428b6ce"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceplotter.html#ab570e83fac2f6c031469637da428b6ce">gen_plots</a> (<a class="el" href="read__inputs_8f90.html#a0534a3ee620c0917cd9f0099559b2d52">filename</a>, pos_params=None, neg_params=None, animation_interval_time=10, SaveFinalState=True, SparsifyAnimation=False)</td></tr>
+<tr class="memdesc:ab570e83fac2f6c031469637da428b6ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function which can be called to generate both the voltage-time, current-time plots and the animation.  <a href="namespaceplotter.html#ab570e83fac2f6c031469637da428b6ce">More...</a><br /></td></tr>
 <tr class="separator:ab570e83fac2f6c031469637da428b6ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2a7cbdd038b105291cb92196a4efe1f"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceplotter.html#ad2a7cbdd038b105291cb92196a4efe1f">full_battery_GITT_plots</a> (filename_positive, filename_negative, start_times, pos_params=None, neg_params=None, SparsifyAnimation=True, animation_interval_time=10)</td></tr>
 <tr class="separator:ad2a7cbdd038b105291cb92196a4efe1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -192,7 +195,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Saves animation of lithium concentration over time. </p>
-<p>Saves the animation 'concentration_animation.gif', that displays the evolution of lithium concentration over time. If passed the argument 'SaveFinalState = True', it saves an image 'final_state.png' of lithium concentration across the sphere at the final timestep. </p>
+<p>Saves the animation 'concentration_animation.gif', that displays the evolution of lithium concentration over time. If passed the argument 'SaveFinalState = True', it saves an image 'final_state.png' of lithium concentration across the sphere at the final timestep. If passed the argument 'SparsifyAnimation = True', it saves 1 in every 10 timesteps rather than every single one. </p>
 
 <p class="definition">Definition at line <a class="el" href="plotter_8py_source.html#l00089">89</a> of file <a class="el" href="plotter_8py_source.html">plotter.py</a>.</p>
 
@@ -253,8 +256,21 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="plotter_8py_source.html#l00382">382</a> of file <a class="el" href="plotter_8py_source.html">plotter.py</a>.</p>
+<pre class="fragment">@brief Build an animation of the concentrations, applied current with time and applied voltage with time
+in a full battery GITT test.
+@details Builds the full dataset from the different GITT test files. Generates the voltage for each timestep,
+plots the full voltage-time, current-time and concentration of positive and negative electrode animations.
+Also prints lithium mass loss in first step, to give an indication on how good the model is. Acceptable values for this
+are =&lt;10^-6 kg.
+@param[in] filename_positive     The input positive filename for the simulation data, excluding any file extension. String.
+@param[in] filename_negative     The input negative filename for the simulation data, excluding any file extension. String.
+@param[in] start_times  The list of start times for each current step in a GITT test. Array of floats
+@param[in] pos_params   [K, a, cmax, L] for the positive electrode
+@param[in] neg_params   [K, a, cmax, L] for the negative electrode
+@param[in] SparsifyAnimation True to construct animation using 1 of every 10 timesteps
+@param[in] animation_interval_time    time between frames in animation(ms)
+</pre> 
+<p class="definition">Definition at line <a class="el" href="plotter_8py_source.html#l00419">419</a> of file <a class="el" href="plotter_8py_source.html">plotter.py</a>.</p>
 
 </div>
 </div>
@@ -307,20 +323,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>At time = 0s, the output of j_function can be 0 if Li concentration at the sphere edge is 0. This results in an error as V_function involves division by the output of j_function.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">edge_conc_vals</td><td>Lithium concentration at the sphere edge for all time steps </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">i_app_data</td><td></td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">electrode</td><td></td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">tsteps</td><td></td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">pos_params</td><td></td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">neg_params</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
 
-<p class="definition">Definition at line <a class="el" href="plotter_8py_source.html#l00164">164</a> of file <a class="el" href="plotter_8py_source.html">plotter.py</a>.</p>
+<p>Generate the voltage against time profile for a half cell and return voltage. </p>
+<p>. Return the voltage for a given applied current and edge concentration values for a given electrode. If the concentration at the edge of the sphere at anytime goes below 0, computing the voltage will not work. This is because negative concentration is unphysical. In this case, a ValueError will be returned.</p>
+<pre class="fragment">@param[in] edge_conc_vals   Lithium concentration at the sphere edge  for all time steps
+@param[in] i_app_data       Vector of applied current density at each timestep
+@param[in] electrode        Electrode type of the half cell
+@param[in] tsteps           The number of timesteps in the simulation
+@param[in] pos_params       [K, a, cmax, L] for the positive electrode, None if the positive is not needed
+@param[in] neg_params       [K, a, cmax, L] for the negative electrode, None if the negative is not needed
+</pre> 
+<p class="definition">Definition at line <a class="el" href="plotter_8py_source.html#l00166">166</a> of file <a class="el" href="plotter_8py_source.html">plotter.py</a>.</p>
 
 </div>
 </div>
@@ -374,7 +387,20 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="plotter_8py_source.html#l00374">374</a> of file <a class="el" href="plotter_8py_source.html">plotter.py</a>.</p>
+<p>A function which can be called to generate both the voltage-time, current-time plots and the animation. </p>
+<p>Calls the relevant functions to generate an animation plot and a voltage-time, current-time set of plots. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">filename</td><td>The input filename for the simulation data, excluding any file extension. String. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pos_params</td><td>[K, a, cmax, L] for the positive electrode, None if the positive is not needed </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">neg_params</td><td>[K, a, cmax, L] for the negative electrode, None if the negative is not needed </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">animation_interval_time</td><td>time between frames in animation(ms) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">SaveFinalState</td><td>True to save the final state of the animation as a seperate PNG </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">SparsifyAnimation</td><td>True to construct animation using 1 of every 10 timesteps </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="plotter_8py_source.html#l00402">402</a> of file <a class="el" href="plotter_8py_source.html">plotter.py</a>.</p>
 
 </div>
 </div>
@@ -414,7 +440,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="plotter_8py_source.html#l00515">515</a> of file <a class="el" href="plotter_8py_source.html">plotter.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="plotter_8py_source.html#l00577">577</a> of file <a class="el" href="plotter_8py_source.html">plotter.py</a>.</p>
 
 </div>
 </div>
@@ -486,7 +512,23 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="plotter_8py_source.html#l00345">345</a> of file <a class="el" href="plotter_8py_source.html">plotter.py</a>.</p>
+<p>Generates the voltage current plot and optionally an animation for a half-cell GITT test. </p>
+<p>Concatentates the output files generated by a GITT test and then produces a voltage-time and current-time plot and an animation seperately. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">filename</td><td>The input filename for the simulation data, excluding any file extension. String. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">start_times</td><td>The list of start times for each current step in a GITT test. Array of floats </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">electrode</td><td>The electrode type, either positive or negative, string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pos_params</td><td>[K, a, cmax, L] for the positive electrode, None if the positive is not needed </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">neg_params</td><td>[K, a, cmax, L] for the negative electrode, None if the negative is not needed </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Animation</td><td>True to generate an animation of concentration in the sphere, False otherwise </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">SaveFinalState</td><td>True to save the final state of the animation as a seperate PNG </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">SparsifyAnimation</td><td>True to construct animation using 1 of every 10 timesteps </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">interval_time</td><td>time between frames in animation(ms) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="plotter_8py_source.html#l00355">355</a> of file <a class="el" href="plotter_8py_source.html">plotter.py</a>.</p>
 
 </div>
 </div>
@@ -520,7 +562,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">filename</td><td>The name of the input file, this must be a string and have max 50 characters. No file extension is required. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">step_num</td><td>Specifies the step number to read for a parallel simulation (defualt = none for serial) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">step_num</td><td>Specifies the step number to read for a GITT simulation where there are multiple current steps (defualt = none for serial) </td></tr>
   </table>
   </dd>
 </dl>
@@ -627,18 +669,18 @@ Functions</h2></td></tr>
 <p>Calculates voltages and plots as a function of time. </p>
 <p>Calculates the voltage at all time points and saves plots of both Li concentration at the sphere edge and voltage as a function of time. This function has different settings determined by the value of electrode. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">electrode</td><td></td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">cstore</td><td></td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">time_axis</td><td></td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">i_app_data</td><td></td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">tsteps</td><td></td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">pos_params</td><td></td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">neg_params</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">electrode</td><td>Charge on electrode </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">cstore</td><td>The full matrix of concentration values (all nodes at all timesteps) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">time_axis</td><td>Axis containing all timestep values </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">i_app_data</td><td>Full set of applied current density data </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">tsteps</td><td>The number of timesteps </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pos_params</td><td>[K, a, cmax, L] for the positive electrode, None if the positive is not needed </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">neg_params</td><td>[K, a, cmax, L] for the negative electrode, None if the negative is not needed </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="plotter_8py_source.html#l00315">315</a> of file <a class="el" href="plotter_8py_source.html">plotter.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="plotter_8py_source.html#l00322">322</a> of file <a class="el" href="plotter_8py_source.html">plotter.py</a>.</p>
 
 </div>
 </div>

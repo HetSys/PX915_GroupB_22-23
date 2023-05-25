@@ -1,17 +1,18 @@
 var searchData=
 [
-  ['r_165',['r',['../checkpointing_8f90.html#a0e57c65f2bcdb659ccdd0629b67fddf4',1,'r():&#160;checkpointing.f90'],['../read__inputs_8f90.html#a0e57c65f2bcdb659ccdd0629b67fddf4',1,'r():&#160;read_inputs.f90']]],
-  ['r_166',['R',['../namespaceuser__input.html#acb95449a94688af33f6e9bb090cf2936',1,'user_input.R()'],['../namespaceuser__input__parallel__simulation.html#acb95449a94688af33f6e9bb090cf2936',1,'user_input_parallel_simulation.R()']]],
-  ['r_5fdist_167',['R_dist',['../namespace_uncertainty___propagation.html#afd4b0764925e5abed3f9b2bdf6b1187a',1,'Uncertainty_Propagation']]],
-  ['r_5fneg_168',['R_neg',['../namespace_uncertainty___propagation.html#ac3cae4769661847dbd5ef4505bddc55a',1,'Uncertainty_Propagation.R_neg()'],['../namespaceuser__input__full__battery___g_i_t_t.html#ac3cae4769661847dbd5ef4505bddc55a',1,'user_input_full_battery_GITT.R_neg()']]],
-  ['r_5fpos_169',['R_pos',['../namespace_uncertainty___propagation.html#ae78aef723bc1b30ffa6c06e6a5f62f25',1,'Uncertainty_Propagation.R_pos()'],['../namespaceuser__input__full__battery___g_i_t_t.html#ae78aef723bc1b30ffa6c06e6a5f62f25',1,'user_input_full_battery_GITT.R_pos()']]],
-  ['r_5fsamples_170',['R_samples',['../namespace_uncertainty___propagation.html#abfacaa65abb098492fc925bc19ce2c7f',1,'Uncertainty_Propagation']]],
-  ['read_5finput_5fcurrent_171',['read_input_current',['../namespaceplotter.html#a63a629338be191d4e5120f8330c48839',1,'plotter']]],
-  ['read_5finputs_172',['read_inputs',['../namespaceread__inputs.html',1,'']]],
-  ['read_5finputs_2ef90_173',['read_inputs.f90',['../read__inputs_8f90.html',1,'']]],
-  ['read_5foutput_5ffile_174',['read_output_file',['../namespaceplotter.html#a99e9bf1e00cf92bad976ff897baaac01',1,'plotter']]],
-  ['read_5ftemp_175',['read_temp',['../read__inputs_8f90.html#af40c3ed4a3712b77832f6033c46ab099',1,'read_inputs.f90']]],
-  ['resol_176',['resol',['../namespace_uncertainty___propagation.html#a4737e7c4408908bc86898057096fd8bf',1,'Uncertainty_Propagation']]],
-  ['run_5ftimes_177',['run_times',['../namespaceuser__input__full__battery___g_i_t_t.html#a5a6deb885420d2b81e210e580767b1c1',1,'user_input_full_battery_GITT.run_times()'],['../namespaceuser__input__parallel__simulation.html#a5a6deb885420d2b81e210e580767b1c1',1,'user_input_parallel_simulation.run_times()']]],
-  ['run_5funit_5ftest_178',['run_unit_test',['../namespaceunit__test.html#a622ddcb332e98398dc99f90f023285b7',1,'unit_test']]]
+  ['param_5fread_150',['param_read',['../read__inputs_8f90.html#a21a268bca4c241f95b909aa5c2771f9c',1,'read_inputs.f90']]],
+  ['parameters_151',['parameters',['../namespace_uncertainty___propagation.html#ad827090038061f4a04a789ab61df8c1d',1,'Uncertainty_Propagation']]],
+  ['params_152',['params',['../namespace_uncertainty___propagation.html#a41000f175dc0115080e2a682cc06dbe9',1,'Uncertainty_Propagation.params()'],['../namespaceuser__input__parallel__simulation.html#ad4a342a882e80fb0b1b0a80df4b9321b',1,'user_input_parallel_simulation.params()']]],
+  ['params_5fneg_153',['params_neg',['../namespaceuser__input__full__battery___g_i_t_t.html#a0bd2f9c022b04c151ac8c0ad19eadd67',1,'user_input_full_battery_GITT']]],
+  ['params_5fpos_154',['params_pos',['../namespaceuser__input__full__battery___g_i_t_t.html#a51c49f845d3932a6a084187c90aab1ab',1,'user_input_full_battery_GITT']]],
+  ['parse_5fidx_155',['parse_idx',['../checkpointing_8f90.html#a4eb18b3fe3e53b45bf57e51ad39eb0a9',1,'parse_idx():&#160;checkpointing.f90'],['../read__inputs_8f90.html#a4eb18b3fe3e53b45bf57e51ad39eb0a9',1,'parse_idx():&#160;read_inputs.f90']]],
+  ['parser_156',['parser',['../read__inputs_8f90.html#a9dbc902e2dcc8ff82fd460ebe8a96dc6',1,'read_inputs.f90']]],
+  ['plot_5fhalfcell_5fgitt_5fresult_157',['plot_halfcell_GITT_result',['../namespaceplotter.html#a6ba5ad5850aaae088990b1591fd18de0',1,'plotter']]],
+  ['plot_5fparams_5fneg_158',['plot_params_neg',['../namespaceuser__input__full__battery___g_i_t_t.html#a9850af56ec718d322d6277be29d14383',1,'user_input_full_battery_GITT.plot_params_neg()'],['../namespaceuser__input__parallel__simulation.html#a9850af56ec718d322d6277be29d14383',1,'user_input_parallel_simulation.plot_params_neg()']]],
+  ['plot_5fparams_5fpos_159',['plot_params_pos',['../namespaceuser__input.html#a5bacef25baf63731923fbef674af4e9d',1,'user_input.plot_params_pos()'],['../namespaceuser__input__full__battery___g_i_t_t.html#acf0eee992bf47d45233f687e5045ea55',1,'user_input_full_battery_GITT.plot_params_pos()']]],
+  ['plotter_160',['plotter',['../namespaceplotter.html',1,'']]],
+  ['plotter_2epy_161',['plotter.py',['../plotter_8py.html',1,'']]],
+  ['pos_5fparams_162',['pos_params',['../namespaceuser__input.html#a48c84606bc366845a0aaf284435fcdfb',1,'user_input.pos_params()'],['../namespaceuser__input__full__battery___g_i_t_t.html#a48c84606bc366845a0aaf284435fcdfb',1,'user_input_full_battery_GITT.pos_params()']]],
+  ['pos_5fvoltage_163',['pos_voltage',['../namespace_uncertainty___propagation.html#a67d1ae20d28e81cd71bc6ac081c39f4f',1,'Uncertainty_Propagation']]],
+  ['posparams_164',['posparams',['../namespace_uncertainty___propagation.html#a073ee030b3fea2b1f15194fee942060b',1,'Uncertainty_Propagation']]]
 ];
