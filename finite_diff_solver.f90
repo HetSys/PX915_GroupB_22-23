@@ -52,10 +52,13 @@ PROGRAM MAIN
     ALLOCATE(b(n))
     ALLOCATE(Z(tsteps))
     
-    !allocate time axis
+    !allocate time axis and set up
     ALLOCATE(time_axis(tsteps))
     !first state is at t=0
     time_axis(1) = 0.0_REAL64
+    DO tstep=1,(tsteps-1)
+      time_axis(tstep+1) = dt*tstep
+    END DO
 
     deltar = R/(REAL(n,kind=REAL64)-1.0_REAL64)
     k = -D/(2.0_REAL64*(deltar**2)) !k is just a shortcut holding -D/(2(dr^2))
@@ -63,7 +66,6 @@ PROGRAM MAIN
     b = 0.0_REAL64
     
     Z = (-iapp)/(a_small*F*L*D)
-    !cstorage(:,tstep_init) = c !set first entry in storage vector to initial concentration
     !build A matrix for solver (constant over time)
     A = 0.0_REAL64
     !boundary condition
@@ -104,16 +106,12 @@ PROGRAM MAIN
         CALL dgesv(n,1,A,n,ipiv,b,n,info)
         A = A_copy !dgesv affects matrix A
         c = b
-
         cstorage(:,tstep+1) = c
         
         CALL write_checkpoint(tstep, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage, filename, 20)
         
     END DO
     
-    DO tstep=1,(tsteps-1)
-      time_axis(tstep+1) = dt*tstep
-    END DO
     !write to output file
     OPEN(9,file='output.txt',form='formatted')
     DO i = 1,n

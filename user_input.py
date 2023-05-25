@@ -37,9 +37,8 @@ import sys
 
 # Select input file: checkpoint file (True) or user input parameters (False).
 # Enter the filename of desired checkpoint file or the desired name of the file containing user input parameters.
-checkpoint = True
+checkpoint = False
 solver_input_filename = 'user_input'
-
 
 
 ######### SET VALUES #########
