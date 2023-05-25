@@ -26,12 +26,13 @@ import pandas as pd
 
 #Holder function for code
 def sensitivity_over_time():
-    '''!@brief '''
+    '''!@brief Wrapper for the sensitivity analysis code'''
     # Function that takes parameters for sensitivity analysis only
     # and returns the QOI
     # Notably - this QOI is a scalar for each time step and so the holder
     # function is used to alter the time.
     def in_out_easy_peasy(parameter_np_array):
+        '''!@brief Simplification of the solver that allows for input parameters to be supplied and only the QOI to be returned. '''
         solver_input_filename = 'user_input'
         output_filename_positive = 'user_input_pos'
         output_filename_negative = 'user_input_neg'
@@ -202,7 +203,7 @@ def sensitivity_over_time():
 
     #import scipy.stats as st
     def Uncert_Prop():
-        '''!@Uncertainty propagation function. Defines input distributions and propagates through the solver to see the effect on the QOI. '''
+        '''!@brief Uncertainty propagation function. Defines input distributions and propagates through the solver to see the effect on the QOI. '''
         # Setup distributions
         #c0, D, R, a, L
         c0 = st.norm(1000.0, 25.0)
@@ -291,6 +292,7 @@ ax.set_title('Absolute Scaled Sensitivities Over Time')
 
 # Update function called for each frame
 def update(frame):
+    '''!@brief Updates frames of animation.
     # Clear the previous plot
     ax.cla()
 
