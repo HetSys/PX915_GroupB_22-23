@@ -112,7 +112,7 @@ L_dist = st.norm(75.6e-6, 5.0e-6)
 ###############################################################################
 
 # Specify the number of Monte Carlo samples
-num_samples = 100
+num_samples = 40
 
 # Generate random samples from the parameter distributions
 c0_samples = c0_dist.rvs(num_samples)
