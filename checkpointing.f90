@@ -347,7 +347,8 @@ MODULE checkpointing
 
     END SUBROUTINE set_inputs
 
-    SUBROUTINE set_inputs_further(filename_txt,filename_nc, tstep_init, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage)
+    SUBROUTINE set_inputs_further(filename_txt,filename_nc, tstep_init, tsteps, dt, n, c, D, R, a_small, L, iapp,&
+        & electrode_charge, cstorage)
 
         !> @var character len=* filename
         !! Name of input file.
@@ -431,7 +432,8 @@ MODULE checkpointing
         SELECT CASE(file_extension)                
 
             CASE("nc")
-                CALL read_checkpoint(filename_nc, tstep_init, tsteps_o, dt, n, c, D, R, a_small, L, iapp_o, electrode_charge, cstorage_o)
+                CALL read_checkpoint(filename_nc, tstep_init, tsteps_o, dt, n, c, D, R, a_small, L, iapp_o,&
+                & electrode_charge, cstorage_o)
                 cstorage(:,1:tsteps_o)=cstorage_o
 
             CASE DEFAULT

@@ -54,7 +54,8 @@ PROGRAM MAIN
     IF (filename_nc=='default.nc') then
         CALL set_inputs(filename_txt, tstep_init, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage)
     ELSE
-        CALL set_inputs_further(filename_txt,filename_nc, tstep_init, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage)
+        CALL set_inputs_further(filename_txt,filename_nc, tstep_init, tsteps, dt, n, c, D, R, a_small, L, iapp, &
+        &electrode_charge, cstorage)
     END IF
     filename=filename_txt
     !generate name of output file as 'filename_output.nc'
@@ -137,7 +138,7 @@ PROGRAM MAIN
         CALL write_checkpoint(tstep, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage, filename)
         
     END DO
-    
+
     PRINT*, 'Finished solver, writing data to output file(s).....'
 
     CALL output_cstorage(cstorage, n, tsteps, R, time_axis, electrode_charge, tstep, dt, c, D, a_small, L, iapp, output_name)
