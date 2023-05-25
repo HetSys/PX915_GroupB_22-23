@@ -1,3 +1,4 @@
+'''!@brief Test convergence for dt and number of nodes'''
 import numpy as np
 import unit_test
 import matplotlib.pyplot as plt

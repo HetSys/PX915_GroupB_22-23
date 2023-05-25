@@ -1,4 +1,4 @@
-'''! @brief Writes results to a netCDF file'''
+!> @brief Writes results to a netCDF file
 MODULE nc_output
   USE netcdf
   USE ISO_FORTRAN_ENV
