@@ -1,0 +1,565 @@
+\hypertarget{checkpointing_8f90}{}\doxysection{/home/chem/msuvnj/\+PX915\+\_\+\+Group\+B\+\_\+22-\/23/checkpointing.f90 File Reference}
+\label{checkpointing_8f90}\index{/home/chem/msuvnj/PX915\_GroupB\_22-\/23/checkpointing.f90@{/home/chem/msuvnj/PX915\_GroupB\_22-\/23/checkpointing.f90}}
+\doxysubsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+module \mbox{\hyperlink{namespacecheckpointing}{checkpointing}}
+\begin{DoxyCompactList}\small\item\em Module to read and write checkpoint files. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+integer, intent(in) \mbox{\hyperlink{checkpointing_8f90_aed9d8e789db31d2d46ae1146113e455a}{tstep}}
+\item 
+integer, intent(in) \mbox{\hyperlink{checkpointing_8f90_a91662adda6b1bf216ff0a00a440591c4}{tsteps}}
+\item 
+real(real64), intent(in) \mbox{\hyperlink{checkpointing_8f90_a10d68aa82fa620f29bc3adf5bde42bb9}{dt}}
+\item 
+integer, intent(in) \mbox{\hyperlink{checkpointing_8f90_a128e58f73e38b052fe5ca4758e8469c3}{n}}
+\item 
+real(real64), dimension(\mbox{\hyperlink{read__inputs_8f90_a128e58f73e38b052fe5ca4758e8469c3}{n}}), intent(in) \mbox{\hyperlink{checkpointing_8f90_ac6d93af1fe1b6d8dc044e7ac4b5926fa}{c}}
+\item 
+real(real64), intent(in) \mbox{\hyperlink{checkpointing_8f90_a8c2ae562c3f2ddc0493f7926a11c5633}{d}}
+\item 
+real(real64), intent(in) \mbox{\hyperlink{checkpointing_8f90_a0e57c65f2bcdb659ccdd0629b67fddf4}{r}}
+\item 
+real(real64), intent(in) \mbox{\hyperlink{checkpointing_8f90_af6718e6a5457dcb372422fe749829a56}{a\+\_\+small}}
+\item 
+real(real64), intent(in) \mbox{\hyperlink{checkpointing_8f90_afe5bf1e128419ba1d96fc3a0c0c80e56}{l}}
+\item 
+real(real64), dimension(\mbox{\hyperlink{read__inputs_8f90_a91662adda6b1bf216ff0a00a440591c4}{tsteps}}), intent(in) \mbox{\hyperlink{checkpointing_8f90_ae33281526fa7223a2ff7bc26ba50b6d9}{iapp}}
+\item 
+character(len= $\ast$), intent(in) \mbox{\hyperlink{checkpointing_8f90_aff6b764bcec5679997febf97860f09c4}{electrode\+\_\+charge}}
+\item 
+real(real64), dimension(\mbox{\hyperlink{read__inputs_8f90_a128e58f73e38b052fe5ca4758e8469c3}{n}}, \mbox{\hyperlink{read__inputs_8f90_a91662adda6b1bf216ff0a00a440591c4}{tsteps}}), intent(in) \mbox{\hyperlink{checkpointing_8f90_a887806f172f4989bf0d3c541f95fb5ed}{cstorage}}
+\item 
+integer, intent(in), optional \mbox{\hyperlink{checkpointing_8f90_a5865738f4321c545a0f4071419def924}{freq\+\_\+in}}
+\item 
+integer \mbox{\hyperlink{checkpointing_8f90_a32ad339111394406790da49b36c61fbd}{freq}}
+\item 
+integer \mbox{\hyperlink{checkpointing_8f90_a72b3208614b12f36354d6b568fdc3fef}{freq\+\_\+remainder}}
+\item 
+character(len= $\ast$), intent(inout) \mbox{\hyperlink{checkpointing_8f90_a0534a3ee620c0917cd9f0099559b2d52}{filename}}
+\item 
+character(len=60) \mbox{\hyperlink{checkpointing_8f90_a834ac8f7e37269361d818352ba624be9}{dir}}
+\item 
+character(len=60) \mbox{\hyperlink{checkpointing_8f90_a408ba2b4201f170fdbd9ec23912e6cf1}{checkpoint\+\_\+name}}
+\item 
+character(len=120) \mbox{\hyperlink{checkpointing_8f90_a757f3e934d37f58d4f852c433e76025d}{filepath}}
+\item 
+integer \mbox{\hyperlink{checkpointing_8f90_a8aee7ef824e0b5887384003bfd4f65fc}{ncid}}
+\item 
+integer \mbox{\hyperlink{checkpointing_8f90_a51a4b4b59551cb4281475764115b877d}{dimid\+\_\+n}}
+\item 
+integer \mbox{\hyperlink{checkpointing_8f90_a6ce0e2b1f109ff03ebca788ed13f7e1a}{dimid\+\_\+tsteps}}
+\item 
+integer, dimension(1) \mbox{\hyperlink{checkpointing_8f90_a0fe5e7a0ee9aa5b3bcba60e5e1fd35d3}{dimids\+\_\+parameter}}
+\item 
+integer, dimension(2) \mbox{\hyperlink{checkpointing_8f90_ac0e74d25da1d6f32a76e7997514e456b}{dimids\+\_\+cstorage}}
+\item 
+integer \mbox{\hyperlink{checkpointing_8f90_a3140a92074c48154c3e40bea6ec8677e}{status}}
+\item 
+integer \mbox{\hyperlink{checkpointing_8f90_a0a5f387206ddbe7ebc7455a511b3574d}{varid\+\_\+tstep}}
+\item 
+integer \mbox{\hyperlink{checkpointing_8f90_ab732c131946654f7855ac2a7b399150c}{varid\+\_\+tsteps}}
+\item 
+integer \mbox{\hyperlink{checkpointing_8f90_ab1a14439c0679aa9288f8447396030ee}{varid\+\_\+dt}}
+\item 
+integer \mbox{\hyperlink{checkpointing_8f90_a587cb0396637d0b1bbfee9a8f175a934}{varid\+\_\+n}}
+\item 
+integer \mbox{\hyperlink{checkpointing_8f90_afbba609305ea3ed26dfd5bb1ba438359}{varid\+\_\+c}}
+\item 
+integer \mbox{\hyperlink{checkpointing_8f90_a7779f60e04fa4a7be19cf19e2c219f2c}{varid\+\_\+d}}
+\item 
+integer \mbox{\hyperlink{checkpointing_8f90_a3a5a947999278e8330a64069aa2fa205}{varid\+\_\+r}}
+\item 
+integer \mbox{\hyperlink{checkpointing_8f90_a730ffba5df793ae9b14435d0c9167a2c}{varid\+\_\+a}}
+\item 
+integer \mbox{\hyperlink{checkpointing_8f90_a4c8e3fd2984c3726c8d2278c76387d70}{varid\+\_\+l}}
+\item 
+integer \mbox{\hyperlink{checkpointing_8f90_a97a8f042313311c23e5e9fb983c7716d}{varid\+\_\+iapp}}
+\item 
+integer \mbox{\hyperlink{checkpointing_8f90_a29331d2745de8c55abb97a666d385767}{varid\+\_\+ec}}
+\item 
+integer \mbox{\hyperlink{checkpointing_8f90_a12c03b1691b1976fde8eeeb7be5ea183}{varid\+\_\+cstorage}}
+\item 
+integer \mbox{\hyperlink{checkpointing_8f90_a4c7a34f16c282eade20fb3404d5da6aa}{filename\+\_\+length}}
+\item 
+integer \mbox{\hyperlink{checkpointing_8f90_a66b82ff960b22c9df11c8b3e563267e8}{file\+\_\+ext}}
+\item 
+integer \mbox{\hyperlink{checkpointing_8f90_a8d54ca94465899866fe9afabb51bd3e2}{file\+\_\+test}}
+\item 
+character(len=10) \mbox{\hyperlink{checkpointing_8f90_a2c5fa437e48be5769ad69fbb825b174e}{tstep\+\_\+str}}
+\item 
+integer, intent(out) \mbox{\hyperlink{checkpointing_8f90_af9b62cdd8930dc4de7685902f925553d}{tstep\+\_\+init}}
+\item 
+integer \mbox{\hyperlink{checkpointing_8f90_a943633007898165f7447754fce05918f}{varid}}
+\item 
+character(len=5) \mbox{\hyperlink{checkpointing_8f90_a0ee2d151ac950a295b0cf583a127ce65}{file\+\_\+extension}}
+\item 
+integer \mbox{\hyperlink{checkpointing_8f90_a4eb18b3fe3e53b45bf57e51ad39eb0a9}{parse\+\_\+idx}}
+\item 
+real(real64) \mbox{\hyperlink{checkpointing_8f90_a0e5559a0b38bc59d29a86eb05c7e1c98}{c0}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{checkpointing_8f90_af6718e6a5457dcb372422fe749829a56}\label{checkpointing_8f90_af6718e6a5457dcb372422fe749829a56}} 
+\index{checkpointing.f90@{checkpointing.f90}!a\_small@{a\_small}}
+\index{a\_small@{a\_small}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{a\_small}{a\_small}}
+{\footnotesize\ttfamily real(real64), intent(out) a\+\_\+small}
+
+
+
+Definition at line 42 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_ac6d93af1fe1b6d8dc044e7ac4b5926fa}\label{checkpointing_8f90_ac6d93af1fe1b6d8dc044e7ac4b5926fa}} 
+\index{checkpointing.f90@{checkpointing.f90}!c@{c}}
+\index{c@{c}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{c}{c}}
+{\footnotesize\ttfamily real(real64), dimension(\+:), intent(out), allocatable c}
+
+
+
+Definition at line 33 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a0e5559a0b38bc59d29a86eb05c7e1c98}\label{checkpointing_8f90_a0e5559a0b38bc59d29a86eb05c7e1c98}} 
+\index{checkpointing.f90@{checkpointing.f90}!c0@{c0}}
+\index{c0@{c0}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{c0}{c0}}
+{\footnotesize\ttfamily real(real64) c0}
+
+
+
+Definition at line 298 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a408ba2b4201f170fdbd9ec23912e6cf1}\label{checkpointing_8f90_a408ba2b4201f170fdbd9ec23912e6cf1}} 
+\index{checkpointing.f90@{checkpointing.f90}!checkpoint\_name@{checkpoint\_name}}
+\index{checkpoint\_name@{checkpoint\_name}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{checkpoint\_name}{checkpoint\_name}}
+{\footnotesize\ttfamily character(len=60) checkpoint\+\_\+name}
+
+
+
+Definition at line 66 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a887806f172f4989bf0d3c541f95fb5ed}\label{checkpointing_8f90_a887806f172f4989bf0d3c541f95fb5ed}} 
+\index{checkpointing.f90@{checkpointing.f90}!cstorage@{cstorage}}
+\index{cstorage@{cstorage}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{cstorage}{cstorage}}
+{\footnotesize\ttfamily real(real64), dimension(\+:, \+:), intent(out), allocatable cstorage}
+
+
+
+Definition at line 54 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a8c2ae562c3f2ddc0493f7926a11c5633}\label{checkpointing_8f90_a8c2ae562c3f2ddc0493f7926a11c5633}} 
+\index{checkpointing.f90@{checkpointing.f90}!d@{d}}
+\index{d@{d}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{d}{d}}
+{\footnotesize\ttfamily real(real64), intent(out) d}
+
+
+
+Definition at line 36 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a51a4b4b59551cb4281475764115b877d}\label{checkpointing_8f90_a51a4b4b59551cb4281475764115b877d}} 
+\index{checkpointing.f90@{checkpointing.f90}!dimid\_n@{dimid\_n}}
+\index{dimid\_n@{dimid\_n}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{dimid\_n}{dimid\_n}}
+{\footnotesize\ttfamily integer dimid\+\_\+n}
+
+
+
+Definition at line 68 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a6ce0e2b1f109ff03ebca788ed13f7e1a}\label{checkpointing_8f90_a6ce0e2b1f109ff03ebca788ed13f7e1a}} 
+\index{checkpointing.f90@{checkpointing.f90}!dimid\_tsteps@{dimid\_tsteps}}
+\index{dimid\_tsteps@{dimid\_tsteps}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{dimid\_tsteps}{dimid\_tsteps}}
+{\footnotesize\ttfamily integer dimid\+\_\+tsteps}
+
+
+
+Definition at line 68 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_ac0e74d25da1d6f32a76e7997514e456b}\label{checkpointing_8f90_ac0e74d25da1d6f32a76e7997514e456b}} 
+\index{checkpointing.f90@{checkpointing.f90}!dimids\_cstorage@{dimids\_cstorage}}
+\index{dimids\_cstorage@{dimids\_cstorage}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{dimids\_cstorage}{dimids\_cstorage}}
+{\footnotesize\ttfamily integer, dimension(2) dimids\+\_\+cstorage}
+
+
+
+Definition at line 68 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a0fe5e7a0ee9aa5b3bcba60e5e1fd35d3}\label{checkpointing_8f90_a0fe5e7a0ee9aa5b3bcba60e5e1fd35d3}} 
+\index{checkpointing.f90@{checkpointing.f90}!dimids\_parameter@{dimids\_parameter}}
+\index{dimids\_parameter@{dimids\_parameter}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{dimids\_parameter}{dimids\_parameter}}
+{\footnotesize\ttfamily integer, dimension(1) dimids\+\_\+parameter}
+
+
+
+Definition at line 68 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a834ac8f7e37269361d818352ba624be9}\label{checkpointing_8f90_a834ac8f7e37269361d818352ba624be9}} 
+\index{checkpointing.f90@{checkpointing.f90}!dir@{dir}}
+\index{dir@{dir}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{dir}{dir}}
+{\footnotesize\ttfamily character(len=60) dir}
+
+
+
+Definition at line 66 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a10d68aa82fa620f29bc3adf5bde42bb9}\label{checkpointing_8f90_a10d68aa82fa620f29bc3adf5bde42bb9}} 
+\index{checkpointing.f90@{checkpointing.f90}!dt@{dt}}
+\index{dt@{dt}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{dt}{dt}}
+{\footnotesize\ttfamily real(real64), intent(out) dt}
+
+
+
+Definition at line 27 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_aff6b764bcec5679997febf97860f09c4}\label{checkpointing_8f90_aff6b764bcec5679997febf97860f09c4}} 
+\index{checkpointing.f90@{checkpointing.f90}!electrode\_charge@{electrode\_charge}}
+\index{electrode\_charge@{electrode\_charge}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{electrode\_charge}{electrode\_charge}}
+{\footnotesize\ttfamily character(len=1), intent(out) electrode\+\_\+charge}
+
+
+
+Definition at line 51 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a66b82ff960b22c9df11c8b3e563267e8}\label{checkpointing_8f90_a66b82ff960b22c9df11c8b3e563267e8}} 
+\index{checkpointing.f90@{checkpointing.f90}!file\_ext@{file\_ext}}
+\index{file\_ext@{file\_ext}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{file\_ext}{file\_ext}}
+{\footnotesize\ttfamily integer file\+\_\+ext}
+
+
+
+Definition at line 71 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a0ee2d151ac950a295b0cf583a127ce65}\label{checkpointing_8f90_a0ee2d151ac950a295b0cf583a127ce65}} 
+\index{checkpointing.f90@{checkpointing.f90}!file\_extension@{file\_extension}}
+\index{file\_extension@{file\_extension}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{file\_extension}{file\_extension}}
+{\footnotesize\ttfamily character(len=5) file\+\_\+extension}
+
+
+
+Definition at line 275 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a8d54ca94465899866fe9afabb51bd3e2}\label{checkpointing_8f90_a8d54ca94465899866fe9afabb51bd3e2}} 
+\index{checkpointing.f90@{checkpointing.f90}!file\_test@{file\_test}}
+\index{file\_test@{file\_test}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{file\_test}{file\_test}}
+{\footnotesize\ttfamily integer file\+\_\+test}
+
+
+
+Definition at line 71 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a0534a3ee620c0917cd9f0099559b2d52}\label{checkpointing_8f90_a0534a3ee620c0917cd9f0099559b2d52}} 
+\index{checkpointing.f90@{checkpointing.f90}!filename@{filename}}
+\index{filename@{filename}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{filename}{filename}}
+{\footnotesize\ttfamily character(len=$\ast$), intent(in) filename}
+
+
+
+Definition at line 65 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a4c7a34f16c282eade20fb3404d5da6aa}\label{checkpointing_8f90_a4c7a34f16c282eade20fb3404d5da6aa}} 
+\index{checkpointing.f90@{checkpointing.f90}!filename\_length@{filename\_length}}
+\index{filename\_length@{filename\_length}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{filename\_length}{filename\_length}}
+{\footnotesize\ttfamily integer filename\+\_\+length}
+
+
+
+Definition at line 71 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a757f3e934d37f58d4f852c433e76025d}\label{checkpointing_8f90_a757f3e934d37f58d4f852c433e76025d}} 
+\index{checkpointing.f90@{checkpointing.f90}!filepath@{filepath}}
+\index{filepath@{filepath}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{filepath}{filepath}}
+{\footnotesize\ttfamily character(len=120) filepath}
+
+
+
+Definition at line 67 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a32ad339111394406790da49b36c61fbd}\label{checkpointing_8f90_a32ad339111394406790da49b36c61fbd}} 
+\index{checkpointing.f90@{checkpointing.f90}!freq@{freq}}
+\index{freq@{freq}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{freq}{freq}}
+{\footnotesize\ttfamily integer freq}
+
+
+
+Definition at line 60 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a5865738f4321c545a0f4071419def924}\label{checkpointing_8f90_a5865738f4321c545a0f4071419def924}} 
+\index{checkpointing.f90@{checkpointing.f90}!freq\_in@{freq\_in}}
+\index{freq\_in@{freq\_in}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{freq\_in}{freq\_in}}
+{\footnotesize\ttfamily integer, intent(in), optional freq\+\_\+in}
+
+
+
+Definition at line 59 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a72b3208614b12f36354d6b568fdc3fef}\label{checkpointing_8f90_a72b3208614b12f36354d6b568fdc3fef}} 
+\index{checkpointing.f90@{checkpointing.f90}!freq\_remainder@{freq\_remainder}}
+\index{freq\_remainder@{freq\_remainder}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{freq\_remainder}{freq\_remainder}}
+{\footnotesize\ttfamily integer freq\+\_\+remainder}
+
+
+
+Definition at line 61 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_ae33281526fa7223a2ff7bc26ba50b6d9}\label{checkpointing_8f90_ae33281526fa7223a2ff7bc26ba50b6d9}} 
+\index{checkpointing.f90@{checkpointing.f90}!iapp@{iapp}}
+\index{iapp@{iapp}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{iapp}{iapp}}
+{\footnotesize\ttfamily real(real64), dimension(\+:), intent(out), allocatable iapp}
+
+
+
+Definition at line 48 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_afe5bf1e128419ba1d96fc3a0c0c80e56}\label{checkpointing_8f90_afe5bf1e128419ba1d96fc3a0c0c80e56}} 
+\index{checkpointing.f90@{checkpointing.f90}!l@{l}}
+\index{l@{l}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{l}{l}}
+{\footnotesize\ttfamily real(real64), intent(out) l}
+
+
+
+Definition at line 45 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a128e58f73e38b052fe5ca4758e8469c3}\label{checkpointing_8f90_a128e58f73e38b052fe5ca4758e8469c3}} 
+\index{checkpointing.f90@{checkpointing.f90}!n@{n}}
+\index{n@{n}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{n}{n}}
+{\footnotesize\ttfamily integer, intent(out) n}
+
+
+
+Definition at line 30 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a8aee7ef824e0b5887384003bfd4f65fc}\label{checkpointing_8f90_a8aee7ef824e0b5887384003bfd4f65fc}} 
+\index{checkpointing.f90@{checkpointing.f90}!ncid@{ncid}}
+\index{ncid@{ncid}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{ncid}{ncid}}
+{\footnotesize\ttfamily integer ncid}
+
+
+
+Definition at line 68 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a4eb18b3fe3e53b45bf57e51ad39eb0a9}\label{checkpointing_8f90_a4eb18b3fe3e53b45bf57e51ad39eb0a9}} 
+\index{checkpointing.f90@{checkpointing.f90}!parse\_idx@{parse\_idx}}
+\index{parse\_idx@{parse\_idx}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{parse\_idx}{parse\_idx}}
+{\footnotesize\ttfamily integer parse\+\_\+idx}
+
+
+
+Definition at line 278 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a0e57c65f2bcdb659ccdd0629b67fddf4}\label{checkpointing_8f90_a0e57c65f2bcdb659ccdd0629b67fddf4}} 
+\index{checkpointing.f90@{checkpointing.f90}!r@{r}}
+\index{r@{r}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{r}{r}}
+{\footnotesize\ttfamily real(real64), intent(out) r}
+
+
+
+Definition at line 39 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a3140a92074c48154c3e40bea6ec8677e}\label{checkpointing_8f90_a3140a92074c48154c3e40bea6ec8677e}} 
+\index{checkpointing.f90@{checkpointing.f90}!status@{status}}
+\index{status@{status}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{status}{status}}
+{\footnotesize\ttfamily integer status}
+
+
+
+Definition at line 68 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_aed9d8e789db31d2d46ae1146113e455a}\label{checkpointing_8f90_aed9d8e789db31d2d46ae1146113e455a}} 
+\index{checkpointing.f90@{checkpointing.f90}!tstep@{tstep}}
+\index{tstep@{tstep}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{tstep}{tstep}}
+{\footnotesize\ttfamily integer, intent(in) tstep}
+
+
+
+Definition at line 21 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_af9b62cdd8930dc4de7685902f925553d}\label{checkpointing_8f90_af9b62cdd8930dc4de7685902f925553d}} 
+\index{checkpointing.f90@{checkpointing.f90}!tstep\_init@{tstep\_init}}
+\index{tstep\_init@{tstep\_init}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{tstep\_init}{tstep\_init}}
+{\footnotesize\ttfamily integer, intent(out) tstep\+\_\+init}
+
+
+
+Definition at line 166 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a2c5fa437e48be5769ad69fbb825b174e}\label{checkpointing_8f90_a2c5fa437e48be5769ad69fbb825b174e}} 
+\index{checkpointing.f90@{checkpointing.f90}!tstep\_str@{tstep\_str}}
+\index{tstep\_str@{tstep\_str}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{tstep\_str}{tstep\_str}}
+{\footnotesize\ttfamily character(len=10) tstep\+\_\+str}
+
+
+
+Definition at line 72 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a91662adda6b1bf216ff0a00a440591c4}\label{checkpointing_8f90_a91662adda6b1bf216ff0a00a440591c4}} 
+\index{checkpointing.f90@{checkpointing.f90}!tsteps@{tsteps}}
+\index{tsteps@{tsteps}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{tsteps}{tsteps}}
+{\footnotesize\ttfamily integer, intent(out) tsteps}
+
+
+
+Definition at line 24 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a943633007898165f7447754fce05918f}\label{checkpointing_8f90_a943633007898165f7447754fce05918f}} 
+\index{checkpointing.f90@{checkpointing.f90}!varid@{varid}}
+\index{varid@{varid}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{varid}{varid}}
+{\footnotesize\ttfamily integer varid}
+
+
+
+Definition at line 202 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a730ffba5df793ae9b14435d0c9167a2c}\label{checkpointing_8f90_a730ffba5df793ae9b14435d0c9167a2c}} 
+\index{checkpointing.f90@{checkpointing.f90}!varid\_a@{varid\_a}}
+\index{varid\_a@{varid\_a}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{varid\_a}{varid\_a}}
+{\footnotesize\ttfamily integer varid\+\_\+a}
+
+
+
+Definition at line 70 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_afbba609305ea3ed26dfd5bb1ba438359}\label{checkpointing_8f90_afbba609305ea3ed26dfd5bb1ba438359}} 
+\index{checkpointing.f90@{checkpointing.f90}!varid\_c@{varid\_c}}
+\index{varid\_c@{varid\_c}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{varid\_c}{varid\_c}}
+{\footnotesize\ttfamily integer varid\+\_\+c}
+
+
+
+Definition at line 69 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a12c03b1691b1976fde8eeeb7be5ea183}\label{checkpointing_8f90_a12c03b1691b1976fde8eeeb7be5ea183}} 
+\index{checkpointing.f90@{checkpointing.f90}!varid\_cstorage@{varid\_cstorage}}
+\index{varid\_cstorage@{varid\_cstorage}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{varid\_cstorage}{varid\_cstorage}}
+{\footnotesize\ttfamily integer varid\+\_\+cstorage}
+
+
+
+Definition at line 70 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a7779f60e04fa4a7be19cf19e2c219f2c}\label{checkpointing_8f90_a7779f60e04fa4a7be19cf19e2c219f2c}} 
+\index{checkpointing.f90@{checkpointing.f90}!varid\_d@{varid\_d}}
+\index{varid\_d@{varid\_d}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{varid\_d}{varid\_d}}
+{\footnotesize\ttfamily integer varid\+\_\+d}
+
+
+
+Definition at line 70 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_ab1a14439c0679aa9288f8447396030ee}\label{checkpointing_8f90_ab1a14439c0679aa9288f8447396030ee}} 
+\index{checkpointing.f90@{checkpointing.f90}!varid\_dt@{varid\_dt}}
+\index{varid\_dt@{varid\_dt}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{varid\_dt}{varid\_dt}}
+{\footnotesize\ttfamily integer varid\+\_\+dt}
+
+
+
+Definition at line 69 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a29331d2745de8c55abb97a666d385767}\label{checkpointing_8f90_a29331d2745de8c55abb97a666d385767}} 
+\index{checkpointing.f90@{checkpointing.f90}!varid\_ec@{varid\_ec}}
+\index{varid\_ec@{varid\_ec}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{varid\_ec}{varid\_ec}}
+{\footnotesize\ttfamily integer varid\+\_\+ec}
+
+
+
+Definition at line 70 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a97a8f042313311c23e5e9fb983c7716d}\label{checkpointing_8f90_a97a8f042313311c23e5e9fb983c7716d}} 
+\index{checkpointing.f90@{checkpointing.f90}!varid\_iapp@{varid\_iapp}}
+\index{varid\_iapp@{varid\_iapp}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{varid\_iapp}{varid\_iapp}}
+{\footnotesize\ttfamily integer varid\+\_\+iapp}
+
+
+
+Definition at line 70 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a4c8e3fd2984c3726c8d2278c76387d70}\label{checkpointing_8f90_a4c8e3fd2984c3726c8d2278c76387d70}} 
+\index{checkpointing.f90@{checkpointing.f90}!varid\_l@{varid\_l}}
+\index{varid\_l@{varid\_l}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{varid\_l}{varid\_l}}
+{\footnotesize\ttfamily integer varid\+\_\+l}
+
+
+
+Definition at line 70 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a587cb0396637d0b1bbfee9a8f175a934}\label{checkpointing_8f90_a587cb0396637d0b1bbfee9a8f175a934}} 
+\index{checkpointing.f90@{checkpointing.f90}!varid\_n@{varid\_n}}
+\index{varid\_n@{varid\_n}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{varid\_n}{varid\_n}}
+{\footnotesize\ttfamily integer varid\+\_\+n}
+
+
+
+Definition at line 69 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a3a5a947999278e8330a64069aa2fa205}\label{checkpointing_8f90_a3a5a947999278e8330a64069aa2fa205}} 
+\index{checkpointing.f90@{checkpointing.f90}!varid\_r@{varid\_r}}
+\index{varid\_r@{varid\_r}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{varid\_r}{varid\_r}}
+{\footnotesize\ttfamily integer varid\+\_\+r}
+
+
+
+Definition at line 70 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_a0a5f387206ddbe7ebc7455a511b3574d}\label{checkpointing_8f90_a0a5f387206ddbe7ebc7455a511b3574d}} 
+\index{checkpointing.f90@{checkpointing.f90}!varid\_tstep@{varid\_tstep}}
+\index{varid\_tstep@{varid\_tstep}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{varid\_tstep}{varid\_tstep}}
+{\footnotesize\ttfamily integer varid\+\_\+tstep}
+
+
+
+Definition at line 69 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{checkpointing_8f90_ab732c131946654f7855ac2a7b399150c}\label{checkpointing_8f90_ab732c131946654f7855ac2a7b399150c}} 
+\index{checkpointing.f90@{checkpointing.f90}!varid\_tsteps@{varid\_tsteps}}
+\index{varid\_tsteps@{varid\_tsteps}!checkpointing.f90@{checkpointing.f90}}
+\doxysubsubsection{\texorpdfstring{varid\_tsteps}{varid\_tsteps}}
+{\footnotesize\ttfamily integer varid\+\_\+tsteps}
+
+
+
+Definition at line 69 of file checkpointing.\+f90.
+

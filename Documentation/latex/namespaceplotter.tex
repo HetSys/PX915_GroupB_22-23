@@ -1,152 +1,263 @@
-\hypertarget{namespaceplotter}{\section{plotter Namespace Reference}
+\hypertarget{namespaceplotter}{}\doxysection{plotter Namespace Reference}
 \label{namespaceplotter}\index{plotter@{plotter}}
-}
-\subsection*{Functions}
+
+
+Functions for visualisation of solver outputs.  
+
+
+\doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-def \hyperlink{namespaceplotter_aae454e5e82b331fc3539380bf77085bb}{read\-\_\-output\-\_\-file}
+def \mbox{\hyperlink{namespaceplotter_a99e9bf1e00cf92bad976ff897baaac01}{read\+\_\+output\+\_\+file}} (\mbox{\hyperlink{read__inputs_8f90_a0534a3ee620c0917cd9f0099559b2d52}{filename}}, step\+\_\+num=None)
+\begin{DoxyCompactList}\small\item\em Reads in data from user input and solver output using Net\+CDF. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespaceplotter_a63a629338be191d4e5120f8330c48839}{read\+\_\+input\+\_\+current}} (\mbox{\hyperlink{read__inputs_8f90_a0534a3ee620c0917cd9f0099559b2d52}{filename}}, step\+\_\+num=None)
+\begin{DoxyCompactList}\small\item\em Reads in the applied current. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespaceplotter_a8684a9ff7118c9f9d3738b3ac05b9bee}{animated\+\_\+conc\+\_\+plot}} (intervaltime, dr, \mbox{\hyperlink{read__inputs_8f90_a91662adda6b1bf216ff0a00a440591c4}{tsteps}}, nodenum, cstore, time\+\_\+axis, Save\+Final\+State=False, Sparsify\+Animation=False)
+\begin{DoxyCompactList}\small\item\em Saves animation of lithium concentration over time. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespaceplotter_abdeddaa82135d546bcc8a0ef6da6e646}{gen\+\_\+half\+\_\+cell\+\_\+voltage}} (edge\+\_\+conc\+\_\+vals, i\+\_\+app\+\_\+data, electrode, \mbox{\hyperlink{read__inputs_8f90_a91662adda6b1bf216ff0a00a440591c4}{tsteps}}, pos\+\_\+params=None, neg\+\_\+params=None)
+\begin{DoxyCompactList}\small\item\em Generate the voltage against time profile for a half cell and return voltage. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespaceplotter_acaa26bb6da59a5c0f3eb331bf8489d48}{voltage\+\_\+current\+\_\+plot}} (electrode, cstore, time\+\_\+axis, i\+\_\+app\+\_\+data, \mbox{\hyperlink{read__inputs_8f90_a91662adda6b1bf216ff0a00a440591c4}{tsteps}}, pos\+\_\+params=None, neg\+\_\+params=None)
+\begin{DoxyCompactList}\small\item\em Calculates voltages and plots as a function of time. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespaceplotter_a6ba5ad5850aaae088990b1591fd18de0}{plot\+\_\+halfcell\+\_\+\+GITT\+\_\+result}} (\mbox{\hyperlink{read__inputs_8f90_a0534a3ee620c0917cd9f0099559b2d52}{filename}}, start\+\_\+times, electrode, pos\+\_\+params=None, neg\+\_\+params=None, Animation=False, Save\+Final\+State=False, Sparsify\+Animation=True, animation\+\_\+interval\+\_\+time=10)
+\begin{DoxyCompactList}\small\item\em Generates the voltage current plot and optionally an animation for a half-\/cell GITT test. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespaceplotter_ab570e83fac2f6c031469637da428b6ce}{gen\+\_\+plots}} (\mbox{\hyperlink{read__inputs_8f90_a0534a3ee620c0917cd9f0099559b2d52}{filename}}, pos\+\_\+params=None, neg\+\_\+params=None, animation\+\_\+interval\+\_\+time=10, Save\+Final\+State=True, Sparsify\+Animation=False)
+\begin{DoxyCompactList}\small\item\em A function which can be called to generate both the voltage-\/time, current-\/time plots and the animation. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespaceplotter_ad2a7cbdd038b105291cb92196a4efe1f}{full\+\_\+battery\+\_\+\+GITT\+\_\+plots}} (filename\+\_\+positive, filename\+\_\+negative, start\+\_\+times, pos\+\_\+params=None, neg\+\_\+params=None, Sparsify\+Animation=True, animation\+\_\+interval\+\_\+time=10)
 \item 
-def \hyperlink{namespaceplotter_ac4584f2efde622b7fe9e2b77b97b3089}{read\-\_\-input\-\_\-current}
-\item 
-def \hyperlink{namespaceplotter_a49b689df200e34e2e72d1e8b7122c34a}{animated\-\_\-conc\-\_\-plot}
-\item 
-def \hyperlink{namespaceplotter_a716e2d183d061a11623adaf2dba72476}{gen\-\_\-half\-\_\-cell\-\_\-voltage}
-\item 
-def \hyperlink{namespaceplotter_a44edad80659cbc5874617eabd87609ba}{voltage\-\_\-current\-\_\-plot}
-\item 
-def \hyperlink{namespaceplotter_aa10bc6c7a1f0ea5ddf498ced8c1e08ee}{plot\-\_\-halfcell\-\_\-\-G\-I\-T\-T\-\_\-result}
-\item 
-def \hyperlink{namespaceplotter_aacce2143cb025e12026b3580467165ff}{gen\-\_\-plots}
-\item 
-def \hyperlink{namespaceplotter_ad575e508b7dec6d686b1ad23bd88c23e}{full\-\_\-battery\-\_\-\-G\-I\-T\-T\-\_\-plots}
-\end{DoxyCompactItemize}
+def \mbox{\hyperlink{namespaceplotter_a69c0cff77616377cf0e7214d93b19e34}{get\+\_\+avg\+\_\+li\+\_\+conc}} (c\+\_\+vals, r\+\_\+vals)
+\begin{DoxyCompactList}\small\item\em Gets the average concentration of lithium at a given timestep using trapezium rule inside the sphere. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\subsection{Function Documentation}
-\hypertarget{namespaceplotter_a49b689df200e34e2e72d1e8b7122c34a}{\index{plotter@{plotter}!animated\-\_\-conc\-\_\-plot@{animated\-\_\-conc\-\_\-plot}}
-\index{animated\-\_\-conc\-\_\-plot@{animated\-\_\-conc\-\_\-plot}!plotter@{plotter}}
-\subsubsection[{animated\-\_\-conc\-\_\-plot}]{\setlength{\rightskip}{0pt plus 5cm}def plotter.\-animated\-\_\-conc\-\_\-plot (
-\begin{DoxyParamCaption}
-\item[{}]{intervaltime, }
-\item[{}]{dr, }
-\item[{}]{tsteps, }
-\item[{}]{nodenum, }
-\item[{}]{cstore, }
-\item[{}]{time\-\_\-axis, }
-\item[{}]{Save\-Final\-State = {\ttfamily False}, }
-\item[{}]{Sparsify\-Animation = {\ttfamily False}}
-\end{DoxyParamCaption}
-)}}\label{namespaceplotter_a49b689df200e34e2e72d1e8b7122c34a}
+\doxysubsection{Detailed Description}
+Functions for visualisation of solver outputs. 
+
+(Plots are saved locally.)
+
+Contains functions that produce\+:
+\begin{DoxyItemize}
+\item An animation showing the concentration of lithium as a function of time and space. (There is an additional feature for saving the concentration profile at the end of the simulation as a png.)
+\item Plots of both voltage and applied current over time. 
+\end{DoxyItemize}
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespaceplotter_a8684a9ff7118c9f9d3738b3ac05b9bee}\label{namespaceplotter_a8684a9ff7118c9f9d3738b3ac05b9bee}} 
+\index{plotter@{plotter}!animated\_conc\_plot@{animated\_conc\_plot}}
+\index{animated\_conc\_plot@{animated\_conc\_plot}!plotter@{plotter}}
+\doxysubsubsection{\texorpdfstring{animated\_conc\_plot()}{animated\_conc\_plot()}}
+{\footnotesize\ttfamily def plotter.\+animated\+\_\+conc\+\_\+plot (\begin{DoxyParamCaption}\item[{}]{intervaltime,  }\item[{}]{dr,  }\item[{}]{tsteps,  }\item[{}]{nodenum,  }\item[{}]{cstore,  }\item[{}]{time\+\_\+axis,  }\item[{}]{Save\+Final\+State = {\ttfamily False},  }\item[{}]{Sparsify\+Animation = {\ttfamily False} }\end{DoxyParamCaption})}
 
 
-Definition at line 68 of file plotter.\-py.
 
-\hypertarget{namespaceplotter_ad575e508b7dec6d686b1ad23bd88c23e}{\index{plotter@{plotter}!full\-\_\-battery\-\_\-\-G\-I\-T\-T\-\_\-plots@{full\-\_\-battery\-\_\-\-G\-I\-T\-T\-\_\-plots}}
-\index{full\-\_\-battery\-\_\-\-G\-I\-T\-T\-\_\-plots@{full\-\_\-battery\-\_\-\-G\-I\-T\-T\-\_\-plots}!plotter@{plotter}}
-\subsubsection[{full\-\_\-battery\-\_\-\-G\-I\-T\-T\-\_\-plots}]{\setlength{\rightskip}{0pt plus 5cm}def plotter.\-full\-\_\-battery\-\_\-\-G\-I\-T\-T\-\_\-plots (
-\begin{DoxyParamCaption}
-\item[{}]{filename\-\_\-positive, }
-\item[{}]{filename\-\_\-negative, }
-\item[{}]{start\-\_\-times, }
-\item[{}]{pos\-\_\-params = {\ttfamily None}, }
-\item[{}]{neg\-\_\-params = {\ttfamily None}, }
-\item[{}]{Sparsify\-Animation = {\ttfamily True}, }
-\item[{}]{animation\-\_\-interval\-\_\-time = {\ttfamily 10}}
-\end{DoxyParamCaption}
-)}}\label{namespaceplotter_ad575e508b7dec6d686b1ad23bd88c23e}
+Saves animation of lithium concentration over time. 
 
+Saves the animation \textquotesingle{}concentration\+\_\+animation.\+gif\textquotesingle{}, that displays the evolution of lithium concentration over time. If passed the argument \textquotesingle{}Save\+Final\+State = True\textquotesingle{}, it saves an image \textquotesingle{}final\+\_\+state.\+png\textquotesingle{} of lithium concentration across the sphere at the final timestep. If passed the argument \textquotesingle{}Sparsify\+Animation = True\textquotesingle{}, it saves 1 in every 10 timesteps rather than every single one. 
 
-Definition at line 322 of file plotter.\-py.
+Definition at line 89 of file plotter.\+py.
 
-\hypertarget{namespaceplotter_a716e2d183d061a11623adaf2dba72476}{\index{plotter@{plotter}!gen\-\_\-half\-\_\-cell\-\_\-voltage@{gen\-\_\-half\-\_\-cell\-\_\-voltage}}
-\index{gen\-\_\-half\-\_\-cell\-\_\-voltage@{gen\-\_\-half\-\_\-cell\-\_\-voltage}!plotter@{plotter}}
-\subsubsection[{gen\-\_\-half\-\_\-cell\-\_\-voltage}]{\setlength{\rightskip}{0pt plus 5cm}def plotter.\-gen\-\_\-half\-\_\-cell\-\_\-voltage (
-\begin{DoxyParamCaption}
-\item[{}]{edge\-\_\-conc\-\_\-vals, }
-\item[{}]{i\-\_\-app\-\_\-data, }
-\item[{}]{electrode, }
-\item[{}]{tsteps, }
-\item[{}]{pos\-\_\-params = {\ttfamily None}, }
-\item[{}]{neg\-\_\-params = {\ttfamily None}}
-\end{DoxyParamCaption}
-)}}\label{namespaceplotter_a716e2d183d061a11623adaf2dba72476}
+\mbox{\Hypertarget{namespaceplotter_ad2a7cbdd038b105291cb92196a4efe1f}\label{namespaceplotter_ad2a7cbdd038b105291cb92196a4efe1f}} 
+\index{plotter@{plotter}!full\_battery\_GITT\_plots@{full\_battery\_GITT\_plots}}
+\index{full\_battery\_GITT\_plots@{full\_battery\_GITT\_plots}!plotter@{plotter}}
+\doxysubsubsection{\texorpdfstring{full\_battery\_GITT\_plots()}{full\_battery\_GITT\_plots()}}
+{\footnotesize\ttfamily def plotter.\+full\+\_\+battery\+\_\+\+GITT\+\_\+plots (\begin{DoxyParamCaption}\item[{}]{filename\+\_\+positive,  }\item[{}]{filename\+\_\+negative,  }\item[{}]{start\+\_\+times,  }\item[{}]{pos\+\_\+params = {\ttfamily None},  }\item[{}]{neg\+\_\+params = {\ttfamily None},  }\item[{}]{Sparsify\+Animation = {\ttfamily True},  }\item[{}]{animation\+\_\+interval\+\_\+time = {\ttfamily 10} }\end{DoxyParamCaption})}
 
+\begin{DoxyVerb}@brief Build an animation of the concentrations, applied current with time and applied voltage with time
+in a full battery GITT test.
+@details Builds the full dataset from the different GITT test files. Generates the voltage for each timestep,
+plots the full voltage-time, current-time and concentration of positive and negative electrode animations.
+Also prints lithium mass loss in first step, to give an indication on how good the model is. Acceptable values for this
+are =<10^-6 kg.
+@param[in] filename_positive     The input positive filename for the simulation data, excluding any file extension. String.
+@param[in] filename_negative     The input negative filename for the simulation data, excluding any file extension. String.
+@param[in] start_times  The list of start times for each current step in a GITT test. Array of floats
+@param[in] pos_params   [K, a, cmax, L] for the positive electrode
+@param[in] neg_params   [K, a, cmax, L] for the negative electrode
+@param[in] SparsifyAnimation True to construct animation using 1 of every 10 timesteps
+@param[in] animation_interval_time    time between frames in animation(ms)
+\end{DoxyVerb}
+ 
 
-Definition at line 126 of file plotter.\-py.
+Definition at line 419 of file plotter.\+py.
 
-\hypertarget{namespaceplotter_aacce2143cb025e12026b3580467165ff}{\index{plotter@{plotter}!gen\-\_\-plots@{gen\-\_\-plots}}
-\index{gen\-\_\-plots@{gen\-\_\-plots}!plotter@{plotter}}
-\subsubsection[{gen\-\_\-plots}]{\setlength{\rightskip}{0pt plus 5cm}def plotter.\-gen\-\_\-plots (
-\begin{DoxyParamCaption}
-\item[{}]{filename, }
-\item[{}]{pos\-\_\-params = {\ttfamily None}, }
-\item[{}]{neg\-\_\-params = {\ttfamily None}, }
-\item[{}]{animation\-\_\-interval\-\_\-time = {\ttfamily 10}, }
-\item[{}]{Save\-Final\-State = {\ttfamily True}, }
-\item[{}]{Sparsify\-Animation = {\ttfamily False}}
-\end{DoxyParamCaption}
-)}}\label{namespaceplotter_aacce2143cb025e12026b3580467165ff}
+\mbox{\Hypertarget{namespaceplotter_abdeddaa82135d546bcc8a0ef6da6e646}\label{namespaceplotter_abdeddaa82135d546bcc8a0ef6da6e646}} 
+\index{plotter@{plotter}!gen\_half\_cell\_voltage@{gen\_half\_cell\_voltage}}
+\index{gen\_half\_cell\_voltage@{gen\_half\_cell\_voltage}!plotter@{plotter}}
+\doxysubsubsection{\texorpdfstring{gen\_half\_cell\_voltage()}{gen\_half\_cell\_voltage()}}
+{\footnotesize\ttfamily def plotter.\+gen\+\_\+half\+\_\+cell\+\_\+voltage (\begin{DoxyParamCaption}\item[{}]{edge\+\_\+conc\+\_\+vals,  }\item[{}]{i\+\_\+app\+\_\+data,  }\item[{}]{electrode,  }\item[{}]{tsteps,  }\item[{}]{pos\+\_\+params = {\ttfamily None},  }\item[{}]{neg\+\_\+params = {\ttfamily None} }\end{DoxyParamCaption})}
 
 
-Definition at line 314 of file plotter.\-py.
 
-\hypertarget{namespaceplotter_aa10bc6c7a1f0ea5ddf498ced8c1e08ee}{\index{plotter@{plotter}!plot\-\_\-halfcell\-\_\-\-G\-I\-T\-T\-\_\-result@{plot\-\_\-halfcell\-\_\-\-G\-I\-T\-T\-\_\-result}}
-\index{plot\-\_\-halfcell\-\_\-\-G\-I\-T\-T\-\_\-result@{plot\-\_\-halfcell\-\_\-\-G\-I\-T\-T\-\_\-result}!plotter@{plotter}}
-\subsubsection[{plot\-\_\-halfcell\-\_\-\-G\-I\-T\-T\-\_\-result}]{\setlength{\rightskip}{0pt plus 5cm}def plotter.\-plot\-\_\-halfcell\-\_\-\-G\-I\-T\-T\-\_\-result (
-\begin{DoxyParamCaption}
-\item[{}]{filename, }
-\item[{}]{start\-\_\-times, }
-\item[{}]{electrode, }
-\item[{}]{pos\-\_\-params = {\ttfamily None}, }
-\item[{}]{neg\-\_\-params = {\ttfamily None}, }
-\item[{}]{Animation = {\ttfamily False}, }
-\item[{}]{Save\-Final\-State = {\ttfamily False}, }
-\item[{}]{Sparsify\-Animation = {\ttfamily True}, }
-\item[{}]{animation\-\_\-interval\-\_\-time = {\ttfamily 10}}
-\end{DoxyParamCaption}
-)}}\label{namespaceplotter_aa10bc6c7a1f0ea5ddf498ced8c1e08ee}
+Generate the voltage against time profile for a half cell and return voltage. 
 
+. Return the voltage for a given applied current and edge concentration values for a given electrode. If the concentration at the edge of the sphere at anytime goes below 0, computing the voltage will not work. This is because negative concentration is unphysical. In this case, a Value\+Error will be returned.
 
-Definition at line 285 of file plotter.\-py.
+\begin{DoxyVerb}@param[in] edge_conc_vals   Lithium concentration at the sphere edge  for all time steps
+@param[in] i_app_data       Vector of applied current density at each timestep
+@param[in] electrode        Electrode type of the half cell
+@param[in] tsteps           The number of timesteps in the simulation
+@param[in] pos_params       [K, a, cmax, L] for the positive electrode, None if the positive is not needed
+@param[in] neg_params       [K, a, cmax, L] for the negative electrode, None if the negative is not needed
+\end{DoxyVerb}
+ 
 
-\hypertarget{namespaceplotter_ac4584f2efde622b7fe9e2b77b97b3089}{\index{plotter@{plotter}!read\-\_\-input\-\_\-current@{read\-\_\-input\-\_\-current}}
-\index{read\-\_\-input\-\_\-current@{read\-\_\-input\-\_\-current}!plotter@{plotter}}
-\subsubsection[{read\-\_\-input\-\_\-current}]{\setlength{\rightskip}{0pt plus 5cm}def plotter.\-read\-\_\-input\-\_\-current (
-\begin{DoxyParamCaption}
-\item[{}]{filename, }
-\item[{}]{step\-\_\-num = {\ttfamily None}}
-\end{DoxyParamCaption}
-)}}\label{namespaceplotter_ac4584f2efde622b7fe9e2b77b97b3089}
+Definition at line 166 of file plotter.\+py.
+
+\mbox{\Hypertarget{namespaceplotter_ab570e83fac2f6c031469637da428b6ce}\label{namespaceplotter_ab570e83fac2f6c031469637da428b6ce}} 
+\index{plotter@{plotter}!gen\_plots@{gen\_plots}}
+\index{gen\_plots@{gen\_plots}!plotter@{plotter}}
+\doxysubsubsection{\texorpdfstring{gen\_plots()}{gen\_plots()}}
+{\footnotesize\ttfamily def plotter.\+gen\+\_\+plots (\begin{DoxyParamCaption}\item[{}]{filename,  }\item[{}]{pos\+\_\+params = {\ttfamily None},  }\item[{}]{neg\+\_\+params = {\ttfamily None},  }\item[{}]{animation\+\_\+interval\+\_\+time = {\ttfamily 10},  }\item[{}]{Save\+Final\+State = {\ttfamily True},  }\item[{}]{Sparsify\+Animation = {\ttfamily False} }\end{DoxyParamCaption})}
 
 
-Definition at line 43 of file plotter.\-py.
 
-\hypertarget{namespaceplotter_aae454e5e82b331fc3539380bf77085bb}{\index{plotter@{plotter}!read\-\_\-output\-\_\-file@{read\-\_\-output\-\_\-file}}
-\index{read\-\_\-output\-\_\-file@{read\-\_\-output\-\_\-file}!plotter@{plotter}}
-\subsubsection[{read\-\_\-output\-\_\-file}]{\setlength{\rightskip}{0pt plus 5cm}def plotter.\-read\-\_\-output\-\_\-file (
-\begin{DoxyParamCaption}
-\item[{}]{filename, }
-\item[{}]{step\-\_\-num = {\ttfamily None}}
-\end{DoxyParamCaption}
-)}}\label{namespaceplotter_aae454e5e82b331fc3539380bf77085bb}
+A function which can be called to generate both the voltage-\/time, current-\/time plots and the animation. 
 
-
-Definition at line 15 of file plotter.\-py.
-
-\hypertarget{namespaceplotter_a44edad80659cbc5874617eabd87609ba}{\index{plotter@{plotter}!voltage\-\_\-current\-\_\-plot@{voltage\-\_\-current\-\_\-plot}}
-\index{voltage\-\_\-current\-\_\-plot@{voltage\-\_\-current\-\_\-plot}!plotter@{plotter}}
-\subsubsection[{voltage\-\_\-current\-\_\-plot}]{\setlength{\rightskip}{0pt plus 5cm}def plotter.\-voltage\-\_\-current\-\_\-plot (
-\begin{DoxyParamCaption}
-\item[{}]{electrode, }
-\item[{}]{cstore, }
-\item[{}]{time\-\_\-axis, }
-\item[{}]{i\-\_\-app\-\_\-data, }
-\item[{}]{tsteps, }
-\item[{}]{pos\-\_\-params = {\ttfamily None}, }
-\item[{}]{neg\-\_\-params = {\ttfamily None}}
-\end{DoxyParamCaption}
-)}}\label{namespaceplotter_a44edad80659cbc5874617eabd87609ba}
+Calls the relevant functions to generate an animation plot and a voltage-\/time, current-\/time set of plots. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em filename} & The input filename for the simulation data, excluding any file extension. String. \\
+\hline
+\mbox{\texttt{ in}}  & {\em pos\+\_\+params} & \mbox{[}K, a, cmax, L\mbox{]} for the positive electrode, None if the positive is not needed \\
+\hline
+\mbox{\texttt{ in}}  & {\em neg\+\_\+params} & \mbox{[}K, a, cmax, L\mbox{]} for the negative electrode, None if the negative is not needed \\
+\hline
+\mbox{\texttt{ in}}  & {\em animation\+\_\+interval\+\_\+time} & time between frames in animation(ms) \\
+\hline
+\mbox{\texttt{ in}}  & {\em Save\+Final\+State} & True to save the final state of the animation as a seperate PNG \\
+\hline
+\mbox{\texttt{ in}}  & {\em Sparsify\+Animation} & True to construct animation using 1 of every 10 timesteps \\
+\hline
+\end{DoxyParams}
 
 
-Definition at line 266 of file plotter.\-py.
+Definition at line 402 of file plotter.\+py.
+
+\mbox{\Hypertarget{namespaceplotter_a69c0cff77616377cf0e7214d93b19e34}\label{namespaceplotter_a69c0cff77616377cf0e7214d93b19e34}} 
+\index{plotter@{plotter}!get\_avg\_li\_conc@{get\_avg\_li\_conc}}
+\index{get\_avg\_li\_conc@{get\_avg\_li\_conc}!plotter@{plotter}}
+\doxysubsubsection{\texorpdfstring{get\_avg\_li\_conc()}{get\_avg\_li\_conc()}}
+{\footnotesize\ttfamily def plotter.\+get\+\_\+avg\+\_\+li\+\_\+conc (\begin{DoxyParamCaption}\item[{}]{c\+\_\+vals,  }\item[{}]{r\+\_\+vals }\end{DoxyParamCaption})}
+
+
+
+Gets the average concentration of lithium at a given timestep using trapezium rule inside the sphere. 
+
+!
+
+Uses the fact that the average concentration of lithium in a sphere at any timestep can be found from \$\textbackslash{}frac\{3\}\{R$^\wedge$\{3\}\}\textbackslash{}int\+\_\+\{0\}$^\wedge$\{R\} c(r)r$^\wedge$\{2\}dr. Note, that this seems weird. It is weird. The reason this is necessary is because the concentration values in the sphere are defined per active electrode volume, i.\+e e\+\_\+act$\ast$\+L$\ast$A, not per sphere volume. Therefore, to calculate the lithium mass loss in the whole system it is necessary to first find the concentration as if each sphere was uniformly filled (that is what this function does), and then after that multiply this average concentration by the active electrode volume. Take it up with whoever came up with the single particle model, not me. !
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em c\+\_\+vals} & Array of concentration values covering the whole sphere radius, floats. !\\
+\hline
+\mbox{\texttt{ in}}  & {\em r\+\_\+vals} & Array of radius values that correspond the concentration values given in c\+\_\+vals, floats. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 577 of file plotter.\+py.
+
+\mbox{\Hypertarget{namespaceplotter_a6ba5ad5850aaae088990b1591fd18de0}\label{namespaceplotter_a6ba5ad5850aaae088990b1591fd18de0}} 
+\index{plotter@{plotter}!plot\_halfcell\_GITT\_result@{plot\_halfcell\_GITT\_result}}
+\index{plot\_halfcell\_GITT\_result@{plot\_halfcell\_GITT\_result}!plotter@{plotter}}
+\doxysubsubsection{\texorpdfstring{plot\_halfcell\_GITT\_result()}{plot\_halfcell\_GITT\_result()}}
+{\footnotesize\ttfamily def plotter.\+plot\+\_\+halfcell\+\_\+\+GITT\+\_\+result (\begin{DoxyParamCaption}\item[{}]{filename,  }\item[{}]{start\+\_\+times,  }\item[{}]{electrode,  }\item[{}]{pos\+\_\+params = {\ttfamily None},  }\item[{}]{neg\+\_\+params = {\ttfamily None},  }\item[{}]{Animation = {\ttfamily False},  }\item[{}]{Save\+Final\+State = {\ttfamily False},  }\item[{}]{Sparsify\+Animation = {\ttfamily True},  }\item[{}]{animation\+\_\+interval\+\_\+time = {\ttfamily 10} }\end{DoxyParamCaption})}
+
+
+
+Generates the voltage current plot and optionally an animation for a half-\/cell GITT test. 
+
+Concatentates the output files generated by a GITT test and then produces a voltage-\/time and current-\/time plot and an animation seperately. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em filename} & The input filename for the simulation data, excluding any file extension. String. \\
+\hline
+\mbox{\texttt{ in}}  & {\em start\+\_\+times} & The list of start times for each current step in a GITT test. Array of floats \\
+\hline
+\mbox{\texttt{ in}}  & {\em electrode} & The electrode type, either positive or negative, string. \\
+\hline
+\mbox{\texttt{ in}}  & {\em pos\+\_\+params} & \mbox{[}K, a, cmax, L\mbox{]} for the positive electrode, None if the positive is not needed \\
+\hline
+\mbox{\texttt{ in}}  & {\em neg\+\_\+params} & \mbox{[}K, a, cmax, L\mbox{]} for the negative electrode, None if the negative is not needed \\
+\hline
+\mbox{\texttt{ in}}  & {\em Animation} & True to generate an animation of concentration in the sphere, False otherwise \\
+\hline
+\mbox{\texttt{ in}}  & {\em Save\+Final\+State} & True to save the final state of the animation as a seperate PNG \\
+\hline
+\mbox{\texttt{ in}}  & {\em Sparsify\+Animation} & True to construct animation using 1 of every 10 timesteps \\
+\hline
+\mbox{\texttt{ in}}  & {\em interval\+\_\+time} & time between frames in animation(ms) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 355 of file plotter.\+py.
+
+\mbox{\Hypertarget{namespaceplotter_a63a629338be191d4e5120f8330c48839}\label{namespaceplotter_a63a629338be191d4e5120f8330c48839}} 
+\index{plotter@{plotter}!read\_input\_current@{read\_input\_current}}
+\index{read\_input\_current@{read\_input\_current}!plotter@{plotter}}
+\doxysubsubsection{\texorpdfstring{read\_input\_current()}{read\_input\_current()}}
+{\footnotesize\ttfamily def plotter.\+read\+\_\+input\+\_\+current (\begin{DoxyParamCaption}\item[{}]{filename,  }\item[{}]{step\+\_\+num = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Reads in the applied current. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em filename} & The name of the input file, this must be a string and have max 50 characters. No file extension is required. \\
+\hline
+\mbox{\texttt{ in}}  & {\em step\+\_\+num} & Specifies the step number to read for a GITT simulation where there are multiple current steps (defualt = none for serial) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 55 of file plotter.\+py.
+
+\mbox{\Hypertarget{namespaceplotter_a99e9bf1e00cf92bad976ff897baaac01}\label{namespaceplotter_a99e9bf1e00cf92bad976ff897baaac01}} 
+\index{plotter@{plotter}!read\_output\_file@{read\_output\_file}}
+\index{read\_output\_file@{read\_output\_file}!plotter@{plotter}}
+\doxysubsubsection{\texorpdfstring{read\_output\_file()}{read\_output\_file()}}
+{\footnotesize\ttfamily def plotter.\+read\+\_\+output\+\_\+file (\begin{DoxyParamCaption}\item[{}]{filename,  }\item[{}]{step\+\_\+num = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Reads in data from user input and solver output using Net\+CDF. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em filename} & The name of the input file, this must be a string and have max 50 characters. No file extension is required. \\
+\hline
+\mbox{\texttt{ in}}  & {\em step\+\_\+num} & Specifies the step number to read for a parallel simulation (defualt = none for serial) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 14 of file plotter.\+py.
+
+\mbox{\Hypertarget{namespaceplotter_acaa26bb6da59a5c0f3eb331bf8489d48}\label{namespaceplotter_acaa26bb6da59a5c0f3eb331bf8489d48}} 
+\index{plotter@{plotter}!voltage\_current\_plot@{voltage\_current\_plot}}
+\index{voltage\_current\_plot@{voltage\_current\_plot}!plotter@{plotter}}
+\doxysubsubsection{\texorpdfstring{voltage\_current\_plot()}{voltage\_current\_plot()}}
+{\footnotesize\ttfamily def plotter.\+voltage\+\_\+current\+\_\+plot (\begin{DoxyParamCaption}\item[{}]{electrode,  }\item[{}]{cstore,  }\item[{}]{time\+\_\+axis,  }\item[{}]{i\+\_\+app\+\_\+data,  }\item[{}]{tsteps,  }\item[{}]{pos\+\_\+params = {\ttfamily None},  }\item[{}]{neg\+\_\+params = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Calculates voltages and plots as a function of time. 
+
+Calculates the voltage at all time points and saves plots of both Li concentration at the sphere edge and voltage as a function of time. This function has different settings determined by the value of electrode. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em electrode} & Charge on electrode \\
+\hline
+\mbox{\texttt{ in}}  & {\em cstore} & The full matrix of concentration values (all nodes at all timesteps) \\
+\hline
+\mbox{\texttt{ in}}  & {\em time\+\_\+axis} & Axis containing all timestep values \\
+\hline
+\mbox{\texttt{ in}}  & {\em i\+\_\+app\+\_\+data} & Full set of applied current density data \\
+\hline
+\mbox{\texttt{ in}}  & {\em tsteps} & The number of timesteps \\
+\hline
+\mbox{\texttt{ in}}  & {\em pos\+\_\+params} & \mbox{[}K, a, cmax, L\mbox{]} for the positive electrode, None if the positive is not needed \\
+\hline
+\mbox{\texttt{ in}}  & {\em neg\+\_\+params} & \mbox{[}K, a, cmax, L\mbox{]} for the negative electrode, None if the negative is not needed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 322 of file plotter.\+py.
 

@@ -1,32 +1,34 @@
+''' @brief Example script for a full battery model 
+
+@details This is a running script which exists to demonstrate how one uses the 
+GITT function to run simulations in parallel on a full battery.
+This simulation completes 10 current cycles on each electrode over 2 cores each - parallelising 
+perfectly over 40 cores.
+ 
+These simulations consist of applying a step function of current to a battery which turns on to a 
+fixed value for a given time interval, then back to 0, and then on again, etc. 
+
+The ascii art below indicates schematically how a current-time step looks during this experiment.
+
+ I
+ |______________               _____________
+ |              |              |              
+ |              |              |
+ |              |              |
+ |              |              |
+ |              |              |
+ |              |              |
+ |______________|______________|_____________t
+ 
+To run one of these simulations, one needs the following things:
+    - A vector containing the fixed values of current applied for each block of current
+    - A vector containing the start times of each current block
+    - A vector containing the duration of each current block
+ '''
+
 import user_input_mod as UI
 import plotter 
 import sys
-
-# This is a running script which exists to demonstrate how one uses the 
-# GITT function to run simulations in parallel on a full battery.
-# This simulation completes 10 current cycles on each electrode over 2 cores each - parallelising perfectly over 40 cores.
-
-# These simulations consist of applying a step function of current to a battery
-# which turns on to a fixed value for a given time interval, then back to 0,
-# and then on again, etc. The ascii art below indicates schematically how a current-time
-# looks during this experiment.
-
-#I
-# |______________               _____________
-# |              |              |              
-# |              |              |
-# |              |              |
-# |              |              |
-# |              |              |
-# |              |              |
-# |______________|______________|_____________t
-# 
-#
-# To run one of these simulations, one needs the following things:
-#   - A vector containing the fixed values of current applied for each block of current
-#   - A vector containing the start times of each current block
-#   - A vector containing the duration of each current block
-
 
 ###### Uncomment to print stdout to file
 # sys.stdout = open('test.txt', 'w')
@@ -53,7 +55,7 @@ K_neg = 6.48E-7 #Am^-2(m^3mol^-1)^1.5
 cmax_pos_sim = 63104.00 #molm^-3 # m
 cmax_neg_sim = 33133.00 #molm^-3 # m 
 
-n = 200 #set number of nodes to 100
+n = 200 #set number of nodes to
 
 ###### Check parameters are valid ######
 UI.verify_params(output_filename_positive, tsteps, dt, n, c0_pos, D_pos, R_pos, a_pos, L_pos, electrode_charge_pos)
@@ -61,7 +63,7 @@ UI.verify_params(output_filename_negative, tsteps, dt, n, c0_neg, D_neg, R_neg, 
 
 ###### Manually set up applied current and parallelisation ######
 # Number of parallel processors being utilised
-nprocs = 20
+nprocs = 40
 
 # Number of current blocks to apply
 nsteps = 10

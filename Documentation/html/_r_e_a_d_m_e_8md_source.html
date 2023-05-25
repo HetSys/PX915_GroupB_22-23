@@ -21,6 +21,7 @@
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxy_aesthetic.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -113,63 +114,72 @@ $(document).ready(function(){initNavTree('_r_e_a_d_m_e_8md.html','');});
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;A half single particle model by Group B <span class="keywordflow">for</span> the 2023 PX915 group project.</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;SPAMS models the charging and discharging of a lithium ion battery <span class="keyword">using</span> a Crank-Nicolson semi-implicit finite difference scheme to obtain the</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;concentration of lithium in a sphere, **c**(i&lt;sub&gt;app&lt;/sub&gt;, **r**), at each time step. </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;## Dependencies</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;Prior to installing the program or accessing the tutorial, you will need to ensure you have the following installed:</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;- intel/2017.4.196-GCC-6.4.0-2.28</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;- impi/2017.3.196 imkl/2017.3.196</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;- imkl/2017.3.196</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;- netCDF-Fortran/4.4.4</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;- GCC/10.2.0</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;- Python/3.8.6</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;- numpy</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;- netCDF4</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;- matplotlib</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;For an scrtp managed system the following procedure will ensure correct dependendcies are installed:</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;```bash</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;module purge; module load intel/2017.4.196-GCC-6.4.0-2.28  impi/2017.3.196 imkl/2017.3.196 netCDF-Fortran/4.4.4 GCC/10.2.0 Python/3.8.6</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;pip3 install numpy netCDF4 Matplotlib</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;```</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;## Installation</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;To install SPAMS, navigate to the directory in your file system where you would like to download it, and use the following command:</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;```bash</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;git clone https:<span class="comment">//github.com/HetSys/PX915_GroupB_22-23</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;## Program Features</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;SPAMS models the charging and discharging of a lithium ion battery <span class="keyword">using</span> a Crank-Nicolson semi-implicit finite difference scheme to obtain the</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;concentration of lithium in a sphere, **c**(i&lt;sub&gt;app&lt;/sub&gt;, **r**), at each <a class="code" href="namespace_uncertainty___propagation.html#a429c35172fbcb8b1788bead147e4719b">time</a> step, and has the following features:</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;* Apply a constant, stepwise or custom current</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;* Options <span class="keywordflow">for</span> parallelism</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;* Extend the model to a full battery </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;* First order sensitivty analysis</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;## Dependencies</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;Prior to installing the program or accessing the tutorial, you will need to ensure you have the following installed:</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;- intel/2017.4.196-GCC-6.4.0-2.28</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;- impi/2017.3.196 imkl/2017.3.196</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;- imkl/2017.3.196</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;- netCDF-Fortran/4.4.4</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;- GCC/10.2.0</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;- Python/3.8.6</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;- numpy</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;- netCDF4</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;- matplotlib</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;For an scrtp managed system the following procedure will ensure correct dependendcies are installed:</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;```bash</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;module purge; module load intel/2017.4.196-GCC-6.4.0-2.28  impi/2017.3.196 imkl/2017.3.196 netCDF-Fortran/4.4.4 GCC/10.2.0 Python/3.8.6</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;pip3 install numpy netCDF4 Matplotlib</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;```</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;## Program Features</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;Very <span class="keywordtype">short</span> summary of what program can <span class="keywordflow">do</span>...</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;## Running the program</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">## Installation</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor"></span>To install SPAMS, navigate to the directory in your file system where you would like to download it, and use the following command:</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;```bash</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;git clone https:<span class="comment">//github.com/HetSys/PX915_GroupB_22-23</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;```</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;Run <a class="code" href="read__inputs_8f90.html#a1e765e78c796c355d042ac4da36118f1">line</a>: ```python3 user_input.py```</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;## Accessing the user documentation</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;A full tutorial <span class="keywordflow">for</span> basic usage of the program is provided in Jupyter notebook format.</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;* The notebook can been found in the Documentation folder (called <span class="stringliteral">&#39;Tutorial.ipynb)</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="stringliteral">* The notebook can be viewed here in github as a markdown file.</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="stringliteral">* Alternatively, the notebook can be loaded from the terminal by navigating to the Documentation directory and using the command:</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="stringliteral">```bash</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="stringliteral">nohup jupyter notebook Tutorial.ipynb</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="stringliteral">```</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="stringliteral">## Developer documentation</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="stringliteral">Developer documentation is available at https://hetsys.github.io/PX915_GroupB_22-23/.</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="stringliteral">![logo](https://github.com/HetSys/PX915_GroupB_22-23/assets/120459567/6e1da60c-726c-427d-a9f4-b0177e454a26)</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="stringliteral">`</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="stringliteral">## Contributors </span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="stringliteral">Fraser Birks, Laura Cairns, Sebastian Dooley, Arielle Fitkin, Jake Eller, and Yu Lei</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="stringliteral">HetSys CDT, University of Warwick</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">## Running the program</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;Run <a class="code" href="read__inputs_8f90.html#a1e765e78c796c355d042ac4da36118f1">line</a>: ```python3 user_input.py```</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">## Accessing the user tutorial</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;A full tutorial <span class="keywordflow">for</span> basic usage of the program is provided in Jupyter notebook format.</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;* The notebook can been found in the <a class="code" href="finite__diff__solver_8f90.html#a8ec2266d83cd6c0b762cbcbc92c0af3d">main</a> directory and is called <span class="stringliteral">&#39;Tutorial.ipynb&#39;</span>.</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;* The notebook can be viewed here in github as a markdown file.</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;* To run the notebook, load it from the terminal by navigating to the <a class="code" href="finite__diff__solver_8f90.html#a8ec2266d83cd6c0b762cbcbc92c0af3d">main</a> program directory and <span class="keyword">using</span> the command:</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;```bash</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;nohup jupyter notebook Tutorial.ipynb</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;```</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;* You should then be able to find the notebook url <span class="keyword">using</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;```bash</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;cat nohup.out</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;```</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">## Developer documentation</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;Developer documentation is available at https:<span class="comment">//hetsys.github.io/PX915_GroupB_22-23/.</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;![logo](https:<span class="comment">//github.com/HetSys/PX915_GroupB_22-23/assets/120459567/6e1da60c-726c-427d-a9f4-b0177e454a26)</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">## Contributors </span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor"></span>Fraser Birks, Laura Cairns, Sebastian Dooley, Arielle Fitkin, Jake Eller, and Yu Lei</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;HetSys CDT, University of Warwick</div>
+<div class="ttc" id="namespace_uncertainty___propagation_html_a429c35172fbcb8b1788bead147e4719b"><div class="ttname"><a href="namespace_uncertainty___propagation.html#a429c35172fbcb8b1788bead147e4719b">Uncertainty_Propagation.time</a></div><div class="ttdeci">tuple time</div><div class="ttdoc">_, _, tsteps = UI.iapp_read_csv(iapp_filename) </div><div class="ttdef"><b>Definition:</b> <a href="_uncertainty___propagation_8py_source.html#l00168">Uncertainty_Propagation.py:168</a></div></div>
+<div class="ttc" id="finite__diff__solver_8f90_html_a8ec2266d83cd6c0b762cbcbc92c0af3d"><div class="ttname"><a href="finite__diff__solver_8f90.html#a8ec2266d83cd6c0b762cbcbc92c0af3d">main</a></div><div class="ttdeci">program main</div><div class="ttdoc">Crank-Nicolson finite differences solver. </div><div class="ttdef"><b>Definition:</b> <a href="finite__diff__solver_8f90_source.html#l00011">finite_diff_solver.f90:11</a></div></div>
 <div class="ttc" id="read__inputs_8f90_html_a1e765e78c796c355d042ac4da36118f1"><div class="ttname"><a href="read__inputs_8f90.html#a1e765e78c796c355d042ac4da36118f1">line</a></div><div class="ttdeci">integer, intent(in) line</div><div class="ttdef"><b>Definition:</b> <a href="read__inputs_8f90_source.html#l00359">read_inputs.f90:359</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

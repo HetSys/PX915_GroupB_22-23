@@ -62,7 +62,9 @@ tsteps, dt, n, c0, D, R, a, L, iapp, iapp_label, electrode_charge = UI.set_defau
 
 '''!Set parameters.'''
 
-c0 = 30000.0
+#A positive current means that this is a charging simulation, meaning the negative electrode (anode) will gain concentration,
+# so start it low
+c0 = 1.0
 dt = 1.0
 
 K_pos = 3.42E-6 #Am^-2(m^3mol^-1)^1.5

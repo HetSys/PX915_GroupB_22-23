@@ -1,10 +1,15 @@
+'''!@brief Function that runs a unit test with a provided number of nodes, a provided timestep and a provided number of cores.
+The unit test is just a full battery simulation with the default (Chen 2020) parameters, where a gradually ramping current is applied for an amount of time
+followed by a period of rest.'''
+
+
 import numpy as np
 import user_input_mod as UI
 import plotter
 import sys
 
 
-def run_unit_test(nodenum=500,dt=1.0):
+def run_unit_test(nodenum=500,dt=1.0,num_cores=1):
     # unit test which provides a gradually increasing amount of current
     # on a full cell for 500 seconds and then rests for 2000 seconds
     # returns the lithium mass loss as a percentage between the start
@@ -44,7 +49,7 @@ def run_unit_test(nodenum=500,dt=1.0):
     nprocs = 40 #maximum number of processors you wish solver to use
     
     print('Input file written, calling solver.....')
-    UI.full_battery_simulation(output_filename_positive,output_filename_negative,nprocs=40)
+    UI.full_battery_simulation(output_filename_positive,output_filename_negative,nprocs=num_cores)
 
     print('Solver finished, extracting final Voltage and Li mass loss')
     
