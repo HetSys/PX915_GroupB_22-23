@@ -1,12 +1,16 @@
+'''!@brief Test the runtime of the unit test for different numbers of threads.'''
+
 import unit_test
 import os
 import time
 import numpy as np
 import matplotlib.pyplot as plt
 
+#define the thread numbers that need testing
 num_threads = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,20]
 num_nodes = [100,500,1000,2000]
 times = np.zeros([19,4])
+#get times for different thread nums
 for i,n in enumerate(num_nodes):
     for j,thread_num in enumerate(num_threads):
         os.environ['MKL_NUM_THREADS']=str(thread_num)
@@ -18,6 +22,7 @@ for i,n in enumerate(num_nodes):
         print(end-start)
         times[j,i] = end-start
 
+#plot results
 for i in range(4):
     plt.plot(num_threads,times[:,i],label=str(num_nodes[i]))
 plt.legend()
