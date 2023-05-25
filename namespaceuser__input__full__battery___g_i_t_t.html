@@ -21,6 +21,7 @@
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxy_aesthetic.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -49,6 +50,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="namespaces.html"><span>Modules</span></a></li>
+      <li><a href="md_math.html"><span>Maths&#160;and&#160;Theory</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Types&#160;List</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -134,7 +136,9 @@ Variables</h2></td></tr>
 <tr class="separator:aa5b015cc7d0bda453c6163023448db72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab7633a5e9c70aabfe6992e4fe521a1f9"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceuser__input__full__battery___g_i_t_t.html#ab7633a5e9c70aabfe6992e4fe521a1f9">cmax_neg_sim</a> = 33133.00</td></tr>
 <tr class="separator:ab7633a5e9c70aabfe6992e4fe521a1f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad7c4c17cf720ee538e27c02ab356ed6b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceuser__input__full__battery___g_i_t_t.html#ad7c4c17cf720ee538e27c02ab356ed6b">nprocs</a> = 20</td></tr>
+<tr class="memitem:a76f11d9a0a47b94f72c2d0e77fb32240"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceuser__input__full__battery___g_i_t_t.html#a76f11d9a0a47b94f72c2d0e77fb32240">n</a> = 1000</td></tr>
+<tr class="separator:a76f11d9a0a47b94f72c2d0e77fb32240"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7c4c17cf720ee538e27c02ab356ed6b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceuser__input__full__battery___g_i_t_t.html#ad7c4c17cf720ee538e27c02ab356ed6b">nprocs</a> = 40</td></tr>
 <tr class="memdesc:ad7c4c17cf720ee538e27c02ab356ed6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check parameters are valid ######.  <a href="#ad7c4c17cf720ee538e27c02ab356ed6b">More...</a><br/></td></tr>
 <tr class="separator:ad7c4c17cf720ee538e27c02ab356ed6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2414080b021dbb9b56eeaeedec0ffa2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceuser__input__full__battery___g_i_t_t.html#aa2414080b021dbb9b56eeaeedec0ffa2">nsteps</a> = 10</td></tr>
@@ -227,7 +231,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html#l00069">69</a> of file <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html">user_input_full_battery_GITT.py</a>.</p>
+<p>Definition at line <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html#l00070">70</a> of file <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html">user_input_full_battery_GITT.py</a>.</p>
 
 </div>
 </div>
@@ -273,12 +277,26 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a76f11d9a0a47b94f72c2d0e77fb32240"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int n = 1000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html#l00056">56</a> of file <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html">user_input_full_battery_GITT.py</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="ad7c4c17cf720ee538e27c02ab356ed6b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int nprocs = 20</td>
+          <td class="memname">int nprocs = 40</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -286,7 +304,7 @@ Variables</h2></td></tr>
 <p>Check parameters are valid ######. </p>
 <p>Manually set up applied current and parallelisation ###### Number of parallel processors being utilised </p>
 
-<p>Definition at line <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html#l00063">63</a> of file <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html">user_input_full_battery_GITT.py</a>.</p>
+<p>Definition at line <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html#l00064">64</a> of file <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html">user_input_full_battery_GITT.py</a>.</p>
 
 </div>
 </div>
@@ -300,7 +318,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html#l00066">66</a> of file <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html">user_input_full_battery_GITT.py</a>.</p>
+<p>Definition at line <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html#l00067">67</a> of file <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html">user_input_full_battery_GITT.py</a>.</p>
 
 </div>
 </div>
@@ -345,7 +363,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html#l00076">76</a> of file <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html">user_input_full_battery_GITT.py</a>.</p>
+<p>Definition at line <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html#l00077">77</a> of file <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html">user_input_full_battery_GITT.py</a>.</p>
 
 </div>
 </div>
@@ -359,7 +377,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html#l00075">75</a> of file <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html">user_input_full_battery_GITT.py</a>.</p>
+<p>Definition at line <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html#l00076">76</a> of file <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html">user_input_full_battery_GITT.py</a>.</p>
 
 </div>
 </div>
@@ -373,7 +391,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html#l00083">83</a> of file <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html">user_input_full_battery_GITT.py</a>.</p>
+<p>Definition at line <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html#l00084">84</a> of file <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html">user_input_full_battery_GITT.py</a>.</p>
 
 </div>
 </div>
@@ -389,7 +407,7 @@ Variables</h2></td></tr>
 
 <p>Call the function to perform the full battery parallel solve. </p>
 
-<p>Definition at line <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html#l00082">82</a> of file <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html">user_input_full_battery_GITT.py</a>.</p>
+<p>Definition at line <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html#l00083">83</a> of file <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html">user_input_full_battery_GITT.py</a>.</p>
 
 </div>
 </div>
@@ -403,7 +421,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html#l00071">71</a> of file <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html">user_input_full_battery_GITT.py</a>.</p>
+<p>Definition at line <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html#l00072">72</a> of file <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html">user_input_full_battery_GITT.py</a>.</p>
 
 </div>
 </div>
@@ -417,7 +435,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html#l00070">70</a> of file <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html">user_input_full_battery_GITT.py</a>.</p>
+<p>Definition at line <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html#l00071">71</a> of file <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html">user_input_full_battery_GITT.py</a>.</p>
 
 </div>
 </div>
@@ -431,7 +449,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html#l00072">72</a> of file <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html">user_input_full_battery_GITT.py</a>.</p>
+<p>Definition at line <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html#l00073">73</a> of file <a class="el" href="user__input__full__battery___g_i_t_t_8py_source.html">user_input_full_battery_GITT.py</a>.</p>
 
 </div>
 </div>

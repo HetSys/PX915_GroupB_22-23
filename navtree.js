@@ -1,7 +1,10 @@
 var NAVTREE =
 [
   [ "SPAMS", "index.html", [
-    [ "SPAMS - Single PArticle Model Solver", "md__home_chem_msuvnj__p_x915__group_b_22-23__r_e_a_d_m_e.html", null ],
+    [ "Introduction", "index.html#Intro", null ],
+    [ "Contributors", "index.html#Contributors", null ],
+    [ "Maths and Theory", "md_math.html", null ],
+    [ "Bibliographic References", "citelist.html", null ],
     [ "Modules", null, [
       [ "Modules List", "namespaces.html", "namespaces" ],
       [ "Module Members", "namespacemembers.html", [
@@ -10,6 +13,7 @@ var NAVTREE =
         [ "Variables", "namespacemembers_vars.html", null ]
       ] ]
     ] ],
+    [ "Maths and Theory", "md_math.html", null ],
     [ "Data Types List", null, [
       [ "Data Types List", "annotated.html", "annotated" ],
       [ "Data Types", "classes.html", null ],
@@ -31,7 +35,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"annotated.html"
+"_m_k_l__threads__test_8py.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

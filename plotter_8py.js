@@ -4,6 +4,7 @@ var plotter_8py =
     [ "full_battery_GITT_plots", "plotter_8py.html#ad575e508b7dec6d686b1ad23bd88c23e", null ],
     [ "gen_half_cell_voltage", "plotter_8py.html#a716e2d183d061a11623adaf2dba72476", null ],
     [ "gen_plots", "plotter_8py.html#aacce2143cb025e12026b3580467165ff", null ],
+    [ "get_avg_li_conc", "plotter_8py.html#a34948a1cfae887bb24a8ad480441a831", null ],
     [ "plot_halfcell_GITT_result", "plotter_8py.html#aa10bc6c7a1f0ea5ddf498ced8c1e08ee", null ],
     [ "read_input_current", "plotter_8py.html#ac4584f2efde622b7fe9e2b77b97b3089", null ],
     [ "read_output_file", "plotter_8py.html#aae454e5e82b331fc3539380bf77085bb", null ],

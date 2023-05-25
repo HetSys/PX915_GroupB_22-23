@@ -21,6 +21,7 @@
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxy_aesthetic.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -49,6 +50,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Modules</span></a></li>
+      <li><a href="md_math.html"><span>Maths&#160;and&#160;Theory</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Types&#160;List</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -118,7 +120,7 @@ $(document).ready(function(){initNavTree('user__input__mod_8py.html','');});
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespaceuser__input__mod"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceuser__input__mod.html">user_input_mod</a></td></tr>
-<tr class="memdesc:namespaceuser__input__mod"><td class="mdescLeft">&#160;</td><td class="mdescRight">Package containing functions to set up user input parameters and execute the solver. <br/></td></tr>
+<tr class="memdesc:namespaceuser__input__mod"><td class="mdescLeft">&#160;</td><td class="mdescRight">Package containing the functions needed to set up the user input parameters and execute the solver. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -127,10 +129,10 @@ Functions</h2></td></tr>
 <tr class="memdesc:a369d3751a2635edf6aca47c76e32a379"><td class="mdescLeft">&#160;</td><td class="mdescRight">CURRENT DENSITY SET UP ###.  <a href="#a369d3751a2635edf6aca47c76e32a379">More...</a><br/></td></tr>
 <tr class="separator:a369d3751a2635edf6aca47c76e32a379"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab782193387e8c3992d11b979bda4ddb7"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceuser__input__mod.html#ab782193387e8c3992d11b979bda4ddb7">iapp_constant_setup</a></td></tr>
-<tr class="memdesc:ab782193387e8c3992d11b979bda4ddb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set up applied current density iapp as constant valued array of length tsteps.  <a href="#ab782193387e8c3992d11b979bda4ddb7">More...</a><br/></td></tr>
+<tr class="memdesc:ab782193387e8c3992d11b979bda4ddb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up the applied current density 'iapp' as a constant valued array of length tsteps.  <a href="#ab782193387e8c3992d11b979bda4ddb7">More...</a><br/></td></tr>
 <tr class="separator:ab782193387e8c3992d11b979bda4ddb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2511b60d779c810e395c24628cc22f6c"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceuser__input__mod.html#a2511b60d779c810e395c24628cc22f6c">iapp_step_setup</a></td></tr>
-<tr class="memdesc:a2511b60d779c810e395c24628cc22f6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set up applied current density iapp as stepped array of length tsteps.  <a href="#a2511b60d779c810e395c24628cc22f6c">More...</a><br/></td></tr>
+<tr class="memdesc:a2511b60d779c810e395c24628cc22f6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up the applied current density 'iapp' as a stepped array of length tsteps.  <a href="#a2511b60d779c810e395c24628cc22f6c">More...</a><br/></td></tr>
 <tr class="separator:a2511b60d779c810e395c24628cc22f6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acef497295190e3914f7cd93da2708856"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceuser__input__mod.html#acef497295190e3914f7cd93da2708856">set_defaults_pos</a></td></tr>
 <tr class="memdesc:acef497295190e3914f7cd93da2708856"><td class="mdescLeft">&#160;</td><td class="mdescRight">DEFAULT PARAMETERS ###.  <a href="#acef497295190e3914f7cd93da2708856">More...</a><br/></td></tr>
@@ -142,7 +144,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:a155b516c3ff05c1003e11caef128738f"><td class="mdescLeft">&#160;</td><td class="mdescRight">PARAMETER VERIFICATION ###.  <a href="#a155b516c3ff05c1003e11caef128738f">More...</a><br/></td></tr>
 <tr class="separator:a155b516c3ff05c1003e11caef128738f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2382852ed7b2a4b8d19529c4ab0ac7e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceuser__input__mod.html#aa2382852ed7b2a4b8d19529c4ab0ac7e">verify_iapp</a></td></tr>
-<tr class="memdesc:aa2382852ed7b2a4b8d19529c4ab0ac7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifies types and values of applied current density array and label.  <a href="#aa2382852ed7b2a4b8d19529c4ab0ac7e">More...</a><br/></td></tr>
+<tr class="memdesc:aa2382852ed7b2a4b8d19529c4ab0ac7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifies the types and values of the applied current density array and its label.  <a href="#aa2382852ed7b2a4b8d19529c4ab0ac7e">More...</a><br/></td></tr>
 <tr class="separator:aa2382852ed7b2a4b8d19529c4ab0ac7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23ddc1955874f5e5e2639522e3f4d276"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceuser__input__mod.html#a23ddc1955874f5e5e2639522e3f4d276">write_to_file</a></td></tr>
 <tr class="memdesc:a23ddc1955874f5e5e2639522e3f4d276"><td class="mdescLeft">&#160;</td><td class="mdescRight">WRITE TO FILE ###.  <a href="#a23ddc1955874f5e5e2639522e3f4d276">More...</a><br/></td></tr>
@@ -156,7 +158,14 @@ Functions</h2></td></tr>
 <tr class="memdesc:acf625a02cf11d1ac11c4230e21f9987b"><td class="mdescLeft">&#160;</td><td class="mdescRight">INITIALISE A FULL GITT TEST IN PARALLEL ####.  <a href="#acf625a02cf11d1ac11c4230e21f9987b">More...</a><br/></td></tr>
 <tr class="separator:acf625a02cf11d1ac11c4230e21f9987b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e6e143a3b61689997f8b3036df0b5c6"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceuser__input__mod.html#a5e6e143a3b61689997f8b3036df0b5c6">GITT_full_cell</a></td></tr>
+<tr class="memdesc:a5e6e143a3b61689997f8b3036df0b5c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes the SPM solver in parallel to run a GITT full cell test over nprocs cores.  <a href="#a5e6e143a3b61689997f8b3036df0b5c6">More...</a><br/></td></tr>
 <tr class="separator:a5e6e143a3b61689997f8b3036df0b5c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0adc52acc50861e6830ca5917c8a49c"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceuser__input__mod.html#ae0adc52acc50861e6830ca5917c8a49c">full_battery_simulation</a></td></tr>
+<tr class="memdesc:ae0adc52acc50861e6830ca5917c8a49c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes the SPM solver.  <a href="#ae0adc52acc50861e6830ca5917c8a49c">More...</a><br/></td></tr>
+<tr class="separator:ae0adc52acc50861e6830ca5917c8a49c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea01ecd06e7c99fb37057ed6ca6651ae"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceuser__input__mod.html#aea01ecd06e7c99fb37057ed6ca6651ae">optimise_parallelism</a></td></tr>
+<tr class="memdesc:aea01ecd06e7c99fb37057ed6ca6651ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decides the correct number of threads to use for a given simulation.  <a href="#aea01ecd06e7c99fb37057ed6ca6651ae">More...</a><br/></td></tr>
+<tr class="separator:aea01ecd06e7c99fb37057ed6ca6651ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->
