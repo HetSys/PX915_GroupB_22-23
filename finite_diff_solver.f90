@@ -1,3 +1,19 @@
+!> \mainpage
+!> A single particle model (SPM) by Group B for the 2023 PX915 group project.
+!> \section Intro Introduction
+!> SPAMS models the charging and discharging of a lithium ion battery using a Crank-Nicolson semi-implicit finite
+!> difference scheme to obtain the concentration of lithium in a sphere, c(iapp, r), at each time step, and includes the following features:
+!>
+!>   -  Apply a constant, stepwise or custom current
+!>   -  Options for parallelism
+!>   -  Extend the model to a full battery
+!>   -  Uncertainty quantification
+!>
+!> \section Contributors Fraser Birks, Laura Cairns, Sebastian Dooley, Arielle Fitkin, Jake Eller, and Yu Lei
+!>
+!> HetSys CDT, University of Warwick
+
+
 !NOTE - COMPILE THIS PROGRAM WITH THE FOLLOWING LINE
 !gfortran read_inputs.f90 nc_output.f90 finite_diff_solver.f90 -llapack -o finite_diff_solver
 

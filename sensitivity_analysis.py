@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 '''! @brief First order sensitivity analysis.
 @details A python file that is used to produce first order sensitivity analysis
@@ -8,6 +6,8 @@ Running the file outputs a sensitivity gif.
 Credit to Dr. James Kermode for some functions recycled from PX914.
 
 '''
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
 import user_input_mod as UI
 import plotter
