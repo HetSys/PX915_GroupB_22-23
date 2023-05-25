@@ -75,7 +75,7 @@ MODULE checkpointing
         IF(PRESENT(freq_in)) THEN
             freq = freq_in
         ELSE
-            freq = 20
+            freq = tsteps/10
         END IF
     
         ! Using integer arithmetic, find remainder of tstep/freq
