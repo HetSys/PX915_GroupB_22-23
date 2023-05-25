@@ -1,31 +1,30 @@
 A half single particle model by Group B for the 2023 PX915 group project.\hypertarget{md_math_autotoc_md1}{}\doxysection{1 Mathematics and Algorithms}\label{md_math_autotoc_md1}
-A Crank-\/\+Nicolson semi-\/implicit finite difference scheme is used to obtain concentration of lithium in the sphere, c(iapp, r), at each time step by approximating the partial differential equation (PDE) solution.
+A Crank-\/\+Nicolson semi-\/implicit finite difference scheme is used to approximate the partial differential equation (PDE) solution to obtain the concentration of lithium in the sphere, {\ttfamily \$c(i\+\_\+app, r)\$}, at each time step. This is accurate to second order both spatially and temporally, i.\+e. {\ttfamily \$\+O(\+Delta r$^\wedge$2)\$} \& {\ttfamily \$\+O(\+Delta t$^\wedge$2)\$}.
 
-This is accurate to second order both spatially and temporally, i.\+e. \$O(\textbackslash{}\+Delta r$^\wedge$2)\$ \& \$O(\textbackslash{}\+Delta t$^\wedge$2)\$.
+A key benefit of the Crank-\/\+Nicolson scheme is that it is unconditionally stable for the spherically symmetric diffusion equation (the PDE of interest), thus not restricting the user\textquotesingle{}s choice of step size spatially or temporally. Although, due to being second order, the accuracy may be impacted by a larger step size.
 
-\$\$ \textbackslash{}frac\{c\+\_\+i$^\wedge$\{j+1\} -\/ c\+\_\+i$^\wedge$j\}\{\textbackslash{}\+Delta t\} = \textbackslash{}frac\{D\}\{2r\+\_\+i$^\wedge$2\} \textbackslash{}\+Bigg\mbox{[} \textbackslash{}left(r\+\_\+i$^\wedge$2 \textbackslash{}frac\{c\+\_\+\{i+1\}$^\wedge$\{j+1\} -\/ 2c\+\_\+i$^\wedge$\{j+1\} + c\+\_\+\{i-\/1\}$^\wedge$\{j+1\}\}\{\textbackslash{}\+Delta r$^\wedge$2\} + r\+\_\+i$^\wedge$2 \textbackslash{}frac\{c\+\_\+\{i+1\}$^\wedge$j -\/ 2c\+\_\+i$^\wedge$j + c\+\_\+\{i-\/1\}$^\wedge$j\}\{\textbackslash{}\+Delta r$^\wedge$2\}\textbackslash{}right) + \textbackslash{}nonumber \textbackslash{} r\+\_\+i \textbackslash{}left(\textbackslash{}frac\{c\+\_\+\{i+1\}$^\wedge$\{j+1\} -\/ c\+\_\+\{i-\/1\}$^\wedge$\{j+1\}\}\{2\textbackslash{}\+Delta r\} + \textbackslash{}frac\{c\+\_\+\{i+1\}$^\wedge$\{j\} -\/ c\+\_\+\{i-\/1\}$^\wedge$\{j\}\}\{2\textbackslash{}\+Delta r\} \textbackslash{}right) \textbackslash{}\+Bigg\mbox{]} \$\$
+The implicit nature of the Crank-\/\+Nicolson scheme makes it ideal for numerically approximating solutions to both stiff and highly nonlinear diffusion problems, providing the user a strong base from which to update this solution framework.
 
-\doxysubparagraph*{}
+Additionally, the Crank-\/\+Nicolson scheme is consistent meaning that \textquotesingle{}the error of the numerical method converges to zero as the grid spacing, or time step, reduces to zero from above, under certain regularity conditions on the solution.\textquotesingle{}
 
+The consistency and stability of the Crank-\/\+Nicolson scheme means it satisfies the Lax equivalence theorem, which states that a numerical method is convergent if and only if it is both consistent and stable.
 
-\begin{DoxyItemize}
-\item A Crank-\/\+Nicolson semi-\/implicit finite difference scheme will be used to approximate the partial differential equation (PDE) solution to obtain the concentration of lithium in the sphere, {\ttfamily c(i\+\_\+app, r)}, at each time step. This is accurate to second order both spatially and temporally, i.\+e. {\ttfamily O(\+Delta r$^\wedge$2)} \& {\ttfamily O(\+Delta t$^\wedge$2)}.
-\item A key benefit of the Crank-\/\+Nicolson scheme is that it is unconditionally stable for the spherically symmetric diffusion equation (the PDE of interest), thus not restricting the user\textquotesingle{}s choice of step size spatially or temporally. Although, due to being second order, the accuracy may be impacted by a larger step size.
-\item The implicit nature of the Crank-\/\+Nicolson scheme makes it ideal for numerically approximating solutions to both stiff and highly nonlinear diffusion problems, providing the user a strong base from which to update this solution framework.
-\item Additionally, the Crank-\/\+Nicolson scheme is consistent meaning that \textquotesingle{}the error of the numerical method converges to zero as the grid spacing, or time step, reduces to zero from above, under certain regularity conditions on the solution.\textquotesingle{}
-\item The consistency and stability of the Crank-\/\+Nicolson scheme means it satisfies the Lax equivalence theorem, which states that a numerical method is convergent if and only if it is both consistent and stable.
-\item Specific Equation\+: \begin{quote}
-\`{}\`{}\`{}math \textbackslash{}frac\{c\+\_\+i$^\wedge$\{j+1\} -\/ c\+\_\+i$^\wedge$j\}\{\textbackslash{}\+Delta t\} = \textbackslash{}frac\{D\}\{2r\+\_\+i$^\wedge$2\} \textbackslash{}left\mbox{[} \textbackslash{}left(r\+\_\+i$^\wedge$2 \textbackslash{}frac\{c\+\_\+\{i+1\}$^\wedge$\{j+1\} -\/ 2c\+\_\+i$^\wedge$\{j+1\} + c\+\_\+\{i-\/1\}$^\wedge$\{j+1\}\}\{\textbackslash{}\+Delta r$^\wedge$2\} + r\+\_\+i$^\wedge$2 \textbackslash{}frac\{c\+\_\+\{i+1\}$^\wedge$j -\/ 2c\+\_\+i$^\wedge$j + c\+\_\+\{i-\/1\}$^\wedge$j\}\{\textbackslash{}\+Delta r$^\wedge$2\}\textbackslash{}right) + r\+\_\+i \textbackslash{}left( \textbackslash{}frac\{c\+\_\+\{i+1\}$^\wedge$\{j+1\} -\/ c\+\_\+\{i-\/1\}$^\wedge$\{j+1\}\}\{2\textbackslash{}\+Delta r\} + \textbackslash{}frac\{c\+\_\+\{i+1\}$^\wedge$\{j\} -\/ c\+\_\+\{i-\/1\}$^\wedge$\{j\}\}\{2\textbackslash{}\+Delta r\} \textbackslash{}right) \textbackslash{}right\mbox{]} \end{quote}
-
-\item Generally\+: \`{}\`{}\`{}math \textbackslash{}frac\{u\+\_\+i$^\wedge$\{j+1\} -\/ u\+\_\+i$^\wedge$j\}\{\textbackslash{}\+Delta t\} = \textbackslash{}frac\{1\}\{2\} \textbackslash{}left\mbox{[} F$^\wedge$\{j+1\}\+\_\+i(u,r,t,\textbackslash{}frac\{\textbackslash{}partial u\}\{\textbackslash{}partial r\},\textbackslash{}frac\{\textbackslash{}partial $^\wedge$2 u\}\{\textbackslash{}partial r$^\wedge$2\}) + F$^\wedge$j\+\_\+i(u,r,t,\textbackslash{}frac\{\textbackslash{}partial u\}\{\textbackslash{}partial r\},\textbackslash{}frac\{\textbackslash{}partial $^\wedge$2 u\}\{\textbackslash{}partial r$^\wedge$2\}) \textbackslash{}right\mbox{]}.
-\end{DoxyItemize}
-
-This is an average of standard forward and backward Euler methods.
+Specific Equation\+:
 
 
-\begin{DoxyItemize}
-\item Boundary conditions will be treated through the use of ghost nodes, which assign values for the function of interest to regions just beyond the domain of the problem in an attempt to approximate the first derivatives present in the Neumann boundary conditions specified. For example, \$\$ \textbackslash{}frac\{\textbackslash{}partial c\}\{\textbackslash{}partial r\}\textbackslash{}\+Bigg$\vert$\+\_\+\{r=0\} \textbackslash{}approx \textbackslash{}frac\{c\+\_\+1 -\/ c\+\_\+\{-\/1\}\}\{2\textbackslash{}\+Delta r\} = 0 \textbackslash{}iff c\+\_\+1 = c\+\_\+\{-\/1\}. \$\$
-\item The accuracy of the scheme will be chosen such that it is equivalent to the interior solved points.
-\item Finally, a general initial condition is specified of the form \$\$ c = c\+\_\+0 \textbackslash{}textrm\{ at \} t=0. \$\$
-\item The form of c\+\_\+0 is assumed to be constant in R. 
-\end{DoxyItemize}
+
+Generally\+:
+
+ This is an average of standard forward and backward Euler methods.
+
+Boundary conditions are treated through the use of ghost nodes, which assign values for the function of interest to regions just beyond the domain of the problem in an attempt to approximate the first derivatives present in the Neumann boundary conditions specified. For example,
+
+\begin{quote}
+\$\mbox{[}\textbackslash{}frac\{\textbackslash{}partial c\}\{\textbackslash{}partial r\}\textbackslash{}\+Bigg$\vert$\+\_\+\{r=0\} \textbackslash{}approx \textbackslash{}frac\{c\+\_\+1 -\/ c\+\_\+\{-\/1\}\}\{2\textbackslash{}\+Delta r\} = 0 \textbackslash{}iff c\+\_\+1 = c\+\_\+\{-\/1\}.\mbox{]}\$ \end{quote}
+The accuracy of the scheme is such that it is equivalent to the interior solved points.
+
+Finally, a general initial condition is specified of the form
+
+\begin{quote}
+\$c = c\+\_\+0 \textbackslash{}textrm\{ at \} t=0.\$ \end{quote}
+The form of c\+\_\+0 is assumed to be constant in R. 

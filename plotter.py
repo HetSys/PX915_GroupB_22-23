@@ -347,6 +347,7 @@ def voltage_current_plot(electrode,cstore,time_axis,i_app_data,tsteps,pos_params
     axs[1].set_ylabel(r'Applied Current Density (A/m$^2$)', color = 'r')
     axs[1].plot(time_axis,i_app_data,'r--',label='current')
     axs[1].set_xlabel('Time (s)')
+    plt.tight_layout()
     plt.savefig('Voltage Current Plot.png')
         
 
