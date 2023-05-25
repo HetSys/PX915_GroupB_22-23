@@ -21,6 +21,7 @@
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxy_aesthetic.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -49,6 +50,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Modules</span></a></li>
+      <li><a href="md_math.html"><span>Maths&#160;and&#160;Theory</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Types&#160;List</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -118,17 +120,16 @@ $(document).ready(function(){initNavTree('user__input__parallel__simulation_8py.
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespaceuser__input__parallel__simulation"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceuser__input__parallel__simulation.html">user_input_parallel_simulation</a></td></tr>
+<tr class="memdesc:namespaceuser__input__parallel__simulation"><td class="mdescLeft">&#160;</td><td class="mdescRight">a running script which exists to demonstrate how one uses the GITT function to run simulations in parallel. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:ac0647ad8713153cc6b448750dbeb1b15"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceuser__input__parallel__simulation.html#ac0647ad8713153cc6b448750dbeb1b15">output_filename</a> = 'current_step'</td></tr>
-<tr class="memdesc:ac0647ad8713153cc6b448750dbeb1b15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uncomment to print stdout to file sys.stdout = open('test.txt', 'w')  <a href="#ac0647ad8713153cc6b448750dbeb1b15">More...</a><br/></td></tr>
 <tr class="separator:ac0647ad8713153cc6b448750dbeb1b15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d9f4e281307eca8be6bad984ed9786d"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceuser__input__parallel__simulation.html#a6d9f4e281307eca8be6bad984ed9786d">electrode</a> = 'positive'</td></tr>
 <tr class="separator:a6d9f4e281307eca8be6bad984ed9786d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3407022b348cd058d9808eed482ab4a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceuser__input__parallel__simulation.html#aa3407022b348cd058d9808eed482ab4a">c0</a> = 30000.0</td></tr>
-<tr class="memdesc:aa3407022b348cd058d9808eed482ab4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Import default values from <a href="https://doi.org/10.1149/1945-7111/ab9050">https://doi.org/10.1149/1945-7111/ab9050</a> Use <a class="el" href="namespaceuser__input__mod.html#acef497295190e3914f7cd93da2708856" title="DEFAULT PARAMETERS ###. ">UI.set_defaults_pos()</a> for positive electrode and ..._neg() for negative electrode.  <a href="#aa3407022b348cd058d9808eed482ab4a">More...</a><br/></td></tr>
 <tr class="separator:aa3407022b348cd058d9808eed482ab4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a778e38aa889751afffa2dea6b803e67a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceuser__input__parallel__simulation.html#a778e38aa889751afffa2dea6b803e67a">dt</a> = 1.0</td></tr>
 <tr class="separator:a778e38aa889751afffa2dea6b803e67a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -141,7 +142,6 @@ Variables</h2></td></tr>
 <tr class="memitem:ab7633a5e9c70aabfe6992e4fe521a1f9"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceuser__input__parallel__simulation.html#ab7633a5e9c70aabfe6992e4fe521a1f9">cmax_neg_sim</a> = 33133.00</td></tr>
 <tr class="separator:ab7633a5e9c70aabfe6992e4fe521a1f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7c4c17cf720ee538e27c02ab356ed6b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceuser__input__parallel__simulation.html#ad7c4c17cf720ee538e27c02ab356ed6b">nprocs</a> = 5</td></tr>
-<tr class="memdesc:ad7c4c17cf720ee538e27c02ab356ed6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check parameters are valid ######.  <a href="#ad7c4c17cf720ee538e27c02ab356ed6b">More...</a><br/></td></tr>
 <tr class="separator:ad7c4c17cf720ee538e27c02ab356ed6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2414080b021dbb9b56eeaeedec0ffa2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceuser__input__parallel__simulation.html#aa2414080b021dbb9b56eeaeedec0ffa2">nsteps</a> = 5</td></tr>
 <tr class="separator:aa2414080b021dbb9b56eeaeedec0ffa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -156,7 +156,6 @@ Variables</h2></td></tr>
 <tr class="memitem:ad4a342a882e80fb0b1b0a80df4b9321b"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceuser__input__parallel__simulation.html#ad4a342a882e80fb0b1b0a80df4b9321b">params</a> = [dt, c0, D, R, a, L,electrode_charge]</td></tr>
 <tr class="separator:ad4a342a882e80fb0b1b0a80df4b9321b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0861e0e85d9d6139e0cc3cc1cc4fa692"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceuser__input__parallel__simulation.html#a0861e0e85d9d6139e0cc3cc1cc4fa692">plot_params_neg</a> = [K_neg,a,cmax_neg_sim,L]</td></tr>
-<tr class="memdesc:a0861e0e85d9d6139e0cc3cc1cc4fa692"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call the function to perform the parallel solve.  <a href="#a0861e0e85d9d6139e0cc3cc1cc4fa692">More...</a><br/></td></tr>
 <tr class="separator:a0861e0e85d9d6139e0cc3cc1cc4fa692"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->

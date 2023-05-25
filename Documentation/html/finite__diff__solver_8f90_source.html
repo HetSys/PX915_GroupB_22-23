@@ -21,6 +21,7 @@
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxy_aesthetic.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -49,6 +50,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Modules</span></a></li>
+      <li><a href="md_math.html"><span>Maths&#160;and&#160;Theory</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Types&#160;List</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -111,173 +113,174 @@ $(document).ready(function(){initNavTree('finite__diff__solver_8f90_source.html'
 <div class="contents">
 <a href="finite__diff__solver_8f90.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">!NOTE - COMPILE THIS PROGRAM WITH THE FOLLOWING LINE</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">!gfortran read_inputs.f90 nc_output.f90 finite_diff_solver.f90 -llapack -o finite_diff_solver</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno"><a class="line" href="finite__diff__solver_8f90.html#a8ec2266d83cd6c0b762cbcbc92c0af3d">    3</a></span>&#160;<span class="keyword">PROGRAM</span> <a class="code" href="finite__diff__solver_8f90.html#a8ec2266d83cd6c0b762cbcbc92c0af3d">main</a></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    <span class="keywordtype">USE </span>iso_fortran_env</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    <span class="keywordtype">USE </span><a class="code" href="classread__inputs.html">read_inputs</a></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="keywordtype">USE </span><a class="code" href="classnc__output.html">nc_output</a></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keywordtype">IMPLICIT NONE</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keywordtype">INTEGER</span> :: n <span class="comment">!node number</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordtype">INTEGER</span> :: info, i, tstep, filename_length</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordtype">INTEGER</span>, <span class="keywordtype">DIMENSION(:)</span>, <span class="keywordtype">ALLOCATABLE</span> :: ipiv</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordtype">INTEGER</span> :: tsteps <span class="comment">! user input</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">REAL(REAL64)</span>, <span class="keywordtype">DIMENSION(:,:)</span>, <span class="keywordtype">ALLOCATABLE</span> :: a <span class="comment">!solver matrix</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">REAL(REAL64)</span>, <span class="keywordtype">DIMENSION(:,:)</span>, <span class="keywordtype">ALLOCATABLE</span> :: a_copy <span class="comment">!copy of solver matrix</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">REAL(REAL64)</span>, <span class="keywordtype">DIMENSION(:)</span>, <span class="keywordtype">ALLOCATABLE</span> :: c,b <span class="comment">!c vector for solving </span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">REAL(REAL64)</span>, <span class="keywordtype">DIMENSION(:,:)</span>, <span class="keywordtype">ALLOCATABLE</span> :: cstorage</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">REAL(REAL64)</span> :: c0 <span class="comment">!initial c value</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">REAL(REAL64)</span> :: dt <span class="comment">!finite diff t</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">REAL(REAL64)</span> :: deltar <span class="comment">!dist between nodes (finite diff r)</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">REAL(REAL64)</span> :: d <span class="comment">!diffusion coef</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">REAL(REAL64)</span> :: r <span class="comment">!total width of block</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">REAL(REAL64)</span> :: k <span class="comment">!D*dt/(dr**2)</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">REAL(REAL64)</span> :: ireal <span class="comment">!real version of i for loop</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">REAL(REAL64)</span>, <span class="keywordtype">DIMENSION(:)</span>, <span class="keywordtype">ALLOCATABLE</span> :: iapp, z, time_axis <span class="comment">!applied current, in general a function of t, time_axis</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">REAL(REAL64)</span> :: a_small, l <span class="comment">!constants</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">REAL(REAL64)</span>, <span class="keywordtype">PARAMETER</span> :: f = 96485_real64 <span class="comment">!Faraday constant</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">CHARACTER(len=1)</span> :: electrode_charge</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">CHARACTER(len=54)</span> :: <a class="code" href="read__inputs_8f90.html#ad493c45aa771d875f6b10e91b6345de6">filename</a>, output_name</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="comment">! Read in user inputs</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="read__inputs_8f90.html#ad493c45aa771d875f6b10e91b6345de6">filename</a> = read_command_line()</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    CALL read_user_inputs(<a class="code" href="read__inputs_8f90.html#ad493c45aa771d875f6b10e91b6345de6">filename</a>, tsteps, dt, n, c0, d, r, a_small, l, iapp, electrode_charge)</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="comment">!generate name of output file</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    filename_length = len_trim(<a class="code" href="read__inputs_8f90.html#ad493c45aa771d875f6b10e91b6345de6">filename</a>)</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    output_name = <a class="code" href="read__inputs_8f90.html#ad493c45aa771d875f6b10e91b6345de6">filename</a>(1:filename_length-4)//<span class="stringliteral">&#39;_output.nc&#39;</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">ALLOCATE</span>(ipiv(n))</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">ALLOCATE</span>(a(n,n))</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">ALLOCATE</span>(a_copy(n,n))</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">ALLOCATE</span>(b(n))</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">ALLOCATE</span>(c(n))</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">ALLOCATE</span>(cstorage(n, tsteps))</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">ALLOCATE</span>(z(tsteps))</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="comment">!allocate time axis</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">ALLOCATE</span>(time_axis(tsteps))</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="comment">!first state is at t=0</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    time_axis(1) = 0.0_real64</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    deltar = r/(<span class="keywordtype">REAL</span>(n,kind=real64)-1.0_real64)</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    k = -d/(2.0_real64*(deltar**2)) <span class="comment">!k is just a shortcut holding -D/(2(dr^2))</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    c = c0 <span class="comment">!set c to initial state</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    b = 0.0_real64</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    z = (iapp)/(a_small*f*l*d)</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    cstorage(:,1) = c0 <span class="comment">!set first entry in storage vector to initial concentration</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="comment">!build A matrix for solver (constant over time)</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    a = 0.0_real64</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="comment">!boundary condition</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="comment">!centre of sphere (left edge)</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    a(1,1) = 1.0_real64 - 2.0_real64*k*dt</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    a(1,2) = 2.0_real64*k*dt</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="comment">!Interior</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">DO</span> i = 2,n-1 <span class="comment">!iterate through matrix, building each component </span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        ireal = <span class="keywordtype">real(i-1,kind=REAL64)</span> <span class="comment">!(i-1) instead of i, due to r_1 = 0.0 (indexing from 1)</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        a(i,i-1) = k*dt*(1.0_real64 - (1.0_real64/ireal))</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        a(i,i) = 1.0_real64 - (2.0_real64*k*dt)</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        a(i,i+1) = k*dt*(1.0_real64 + (1.0_real64/ireal))</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">END DO</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="comment">!boundary condition</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment">!edge of sphere (right edge)</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    a(n,n-1) = 2.0_real64*k*dt</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    a(n,n) = (1.0_real64) + ((d/(deltar**2))*dt)</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="comment">!print*, &#39;a&#39;,A</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    a_copy = a</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">DO</span> tstep = 1,(tsteps-1) <span class="comment">!we have the first state (j=1), and each loop finds the j+1th state, so we go to tsteps-1.</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="comment">!build solver</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="comment">!boundary condition</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="comment">!centre of sphere (left edge)</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        b(1) = (d/(deltar**2))*(c(2) - c(1))*dt + (c(1))</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordflow">DO</span> i = 2,n-1 <span class="comment">!iterate through matrix, building each component </span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            ireal = <span class="keywordtype">real</span>(i-1,kind=real64)</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            b(i) = (d/2.0_real64)*((c(i+1)-2*c(i)+c(i-1))/(deltar**2))*dt+&amp;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            ((d/(ireal*deltar))*((c(i+1)-c(i-1))/(2*deltar)))*dt + c(i)</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">END DO</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="comment">!boundary condition</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="comment">!edge of sphere (right edge)</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        b(n) = ((d/r)*(z(tstep+1) + z(tstep)))*dt+((d*z(tstep+1))/deltar)*dt &amp;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        +(d/2.0_real64)*dt*(((2.0_real64*z(tstep)*deltar)+(2.0_real64*c(n-1))-(2.0_real64*c(n)))/(deltar**2)) + c(n)</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="comment">!print*, &#39;c&#39;,c</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="comment">!implicit scheme</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        CALL dgesv(n,1,a,n,ipiv,b,n,info)</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="comment">!print*, &#39;a&#39;,A</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        a = a_copy <span class="comment">!dgesv affects matrix A</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="comment">!print*, &#39;a&#39;,A</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        c = b</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="comment">!IF(info/=0) THEN</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="comment">!    PRINT*,&#39;Inversion Failed&#39;</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="comment">!ELSE</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="comment">!    PRINT*, &#39;Successful Inversion&#39;</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="comment">!END IF</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="comment">!add solution to storage vector</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        cstorage(:,tstep+1) = c</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        time_axis(tstep+1) = dt*tstep</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordflow">END DO</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="comment">!write to output file</span></div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keyword">OPEN</span>(9,file=<span class="stringliteral">&#39;output.txt&#39;</span>,form=<span class="stringliteral">&#39;formatted&#39;</span>)</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">DO</span> i = 1,n</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keyword">write</span> (9,*) i, cstorage(i,:)</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="comment">!print*, i, cstorage(i,:)</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordflow">END DO</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keyword">CLOSE</span>(9)</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    CALL <a class="code" href="classnc__output.html#a670043c03d59806dd491402f3b863ca4">output_cstorage</a>(cstorage, n, tsteps, r, time_axis, electrode_charge, output_name)</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keyword">DEALLOCATE</span>(a)</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keyword">DEALLOCATE</span>(a_copy)</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keyword">DEALLOCATE</span>(b)</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keyword">DEALLOCATE</span>(c)</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keyword">DEALLOCATE</span>(ipiv)</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keyword">DEALLOCATE</span>(cstorage)</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keyword">DEALLOCATE</span>(iapp)</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keyword">DEALLOCATE</span>(z)</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keyword">DEALLOCATE</span>(time_axis)</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    </div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="keyword">END PROGRAM</span></div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="comment">!Suggested changes:</span></div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="comment">!Write to output file at each time step - saves memory requirements if small timestep</span></div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="comment">!Wouldn&#39;t need a matrix to store values.</span></div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="comment">!Probably less efficient.</span></div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="comment">!Simplify edge of sphere equation using d2c/dr2 = 0, due to substitution of equation dc/dr = Z(t) =&gt; d2c/dr2 = 0.</span></div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="comment">!Likely won&#39;t use this change - including term allows for consideration of non-zero d2c/dr2, i.e. numerical errors.</span></div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="finite__diff__solver_8f90.html#a8ec2266d83cd6c0b762cbcbc92c0af3d">   15</a></span>&#160;<span class="keyword">PROGRAM</span> <a class="code" href="finite__diff__solver_8f90.html#a8ec2266d83cd6c0b762cbcbc92c0af3d">main</a></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">USE </span>iso_fortran_env</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">USE </span><a class="code" href="classread__inputs.html">read_inputs</a></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">USE </span><a class="code" href="classnc__output.html">nc_output</a></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">IMPLICIT NONE</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">INTEGER</span> :: n <span class="comment">!node number</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">INTEGER</span> :: info, i, tstep, filename_length</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">INTEGER</span>, <span class="keywordtype">DIMENSION(:)</span>, <span class="keywordtype">ALLOCATABLE</span> :: ipiv</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">INTEGER</span> :: tsteps <span class="comment">! user input</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">REAL(REAL64)</span>, <span class="keywordtype">DIMENSION(:,:)</span>, <span class="keywordtype">ALLOCATABLE</span> :: a <span class="comment">!solver matrix</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">REAL(REAL64)</span>, <span class="keywordtype">DIMENSION(:,:)</span>, <span class="keywordtype">ALLOCATABLE</span> :: a_copy <span class="comment">!copy of solver matrix</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">REAL(REAL64)</span>, <span class="keywordtype">DIMENSION(:)</span>, <span class="keywordtype">ALLOCATABLE</span> :: c,b <span class="comment">!c vector for solving </span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">REAL(REAL64)</span>, <span class="keywordtype">DIMENSION(:,:)</span>, <span class="keywordtype">ALLOCATABLE</span> :: cstorage</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">REAL(REAL64)</span> :: c0 <span class="comment">!initial c value</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">REAL(REAL64)</span> :: dt <span class="comment">!finite diff t</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">REAL(REAL64)</span> :: deltar <span class="comment">!dist between nodes (finite diff r)</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">REAL(REAL64)</span> :: d <span class="comment">!diffusion coef</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">REAL(REAL64)</span> :: r <span class="comment">!total width of block</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">REAL(REAL64)</span> :: k <span class="comment">!D*dt/(dr**2)</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">REAL(REAL64)</span> :: ireal <span class="comment">!real version of i for loop</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">REAL(REAL64)</span>, <span class="keywordtype">DIMENSION(:)</span>, <span class="keywordtype">ALLOCATABLE</span> :: iapp, z, time_axis <span class="comment">!applied current, in general a function of t, time_axis</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">REAL(REAL64)</span> :: a_small, l <span class="comment">!constants</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">REAL(REAL64)</span>, <span class="keywordtype">PARAMETER</span> :: f = 96485_real64 <span class="comment">!Faraday constant</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">CHARACTER(len=1)</span> :: electrode_charge</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">CHARACTER(len=54)</span> :: <a class="code" href="read__inputs_8f90.html#ad493c45aa771d875f6b10e91b6345de6">filename</a>, output_name</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">! Read in user inputs</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="read__inputs_8f90.html#ad493c45aa771d875f6b10e91b6345de6">filename</a> = read_command_line()</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    CALL read_user_inputs(<a class="code" href="read__inputs_8f90.html#ad493c45aa771d875f6b10e91b6345de6">filename</a>, tsteps, dt, n, c0, d, r, a_small, l, iapp, electrode_charge)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="comment">!generate name of output file</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    filename_length = len_trim(<a class="code" href="read__inputs_8f90.html#ad493c45aa771d875f6b10e91b6345de6">filename</a>)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    output_name = <a class="code" href="read__inputs_8f90.html#ad493c45aa771d875f6b10e91b6345de6">filename</a>(1:filename_length-4)//<span class="stringliteral">&#39;_output.nc&#39;</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">ALLOCATE</span>(ipiv(n))</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">ALLOCATE</span>(a(n,n))</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">ALLOCATE</span>(a_copy(n,n))</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">ALLOCATE</span>(b(n))</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">ALLOCATE</span>(c(n))</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">ALLOCATE</span>(cstorage(n, tsteps))</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">ALLOCATE</span>(z(tsteps))</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="comment">!allocate time axis</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">ALLOCATE</span>(time_axis(tsteps))</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="comment">!first state is at t=0</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    time_axis(1) = 0.0_real64</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    deltar = r/(<span class="keywordtype">REAL</span>(n,kind=real64)-1.0_real64)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    k = -d/(2.0_real64*(deltar**2)) <span class="comment">!k is just a shortcut holding -D/(2(dr^2))</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    c = c0 <span class="comment">!set c to initial state</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    b = 0.0_real64</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    z = (iapp)/(a_small*f*l*d)</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    cstorage(:,1) = c0 <span class="comment">!set first entry in storage vector to initial concentration</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="comment">!build A matrix for solver (constant over time)</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    a = 0.0_real64</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment">!boundary condition</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="comment">!centre of sphere (left edge)</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    a(1,1) = 1.0_real64 - 2.0_real64*k*dt</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    a(1,2) = 2.0_real64*k*dt</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="comment">!Interior</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordflow">DO</span> i = 2,n-1 <span class="comment">!iterate through matrix, building each component </span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        ireal = <span class="keywordtype">real(i-1,kind=REAL64)</span> <span class="comment">!(i-1) instead of i, due to r_1 = 0.0 (indexing from 1)</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        a(i,i-1) = k*dt*(1.0_real64 - (1.0_real64/ireal))</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        a(i,i) = 1.0_real64 - (2.0_real64*k*dt)</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        a(i,i+1) = k*dt*(1.0_real64 + (1.0_real64/ireal))</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">END DO</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="comment">!boundary condition</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="comment">!edge of sphere (right edge)</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    a(n,n-1) = 2.0_real64*k*dt</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    a(n,n) = (1.0_real64) + ((d/(deltar**2))*dt)</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    a_copy = a</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordflow">DO</span> tstep = 1,(tsteps-1) <span class="comment">!we have the first state (j=1), and each loop finds the j+1th state, so we go to tsteps-1.</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="comment">!build solver</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="comment">!boundary condition</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="comment">!centre of sphere (left edge)</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        b(1) = (d/(deltar**2))*(c(2) - c(1))*dt + (c(1))</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordflow">DO</span> i = 2,n-1 <span class="comment">!iterate through matrix, building each component </span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            ireal = <span class="keywordtype">real</span>(i-1,kind=real64)</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            b(i) = (d/2.0_real64)*((c(i+1)-2*c(i)+c(i-1))/(deltar**2))*dt+&amp;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            ((d/(ireal*deltar))*((c(i+1)-c(i-1))/(2*deltar)))*dt + c(i)</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordflow">END DO</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="comment">!boundary condition</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="comment">!edge of sphere (right edge)</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        b(n) = ((d/r)*(z(tstep+1) + z(tstep)))*dt+((d*z(tstep+1))/deltar)*dt &amp;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        +(d/2.0_real64)*dt*(((2.0_real64*z(tstep)*deltar)+(2.0_real64*c(n-1))-(2.0_real64*c(n)))/(deltar**2)) + c(n)</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="comment">!print*, &#39;c&#39;,c</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="comment">!implicit scheme</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        CALL dgesv(n,1,a,n,ipiv,b,n,info)</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="comment">!print*, &#39;a&#39;,A</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        a = a_copy <span class="comment">!dgesv affects matrix A</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="comment">!print*, &#39;a&#39;,A</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        c = b</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="comment">!IF(info/=0) THEN</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="comment">!    PRINT*,&#39;Inversion Failed&#39;</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="comment">!ELSE</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="comment">!    PRINT*, &#39;Successful Inversion&#39;</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="comment">!END IF</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="comment">!add solution to storage vector</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        cstorage(:,tstep+1) = c</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        time_axis(tstep+1) = dt*tstep</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordflow">END DO</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="comment">!write to output file</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keyword">OPEN</span>(9,file=<span class="stringliteral">&#39;output.txt&#39;</span>,form=<span class="stringliteral">&#39;formatted&#39;</span>)</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordflow">DO</span> i = 1,n</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keyword">write</span> (9,*) i, cstorage(i,:)</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="comment">!print*, i, cstorage(i,:)</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keywordflow">END DO</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keyword">CLOSE</span>(9)</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    CALL <a class="code" href="classnc__output.html#a670043c03d59806dd491402f3b863ca4">output_cstorage</a>(cstorage, n, tsteps, r, time_axis, electrode_charge, output_name)</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keyword">DEALLOCATE</span>(a)</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keyword">DEALLOCATE</span>(a_copy)</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="keyword">DEALLOCATE</span>(b)</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keyword">DEALLOCATE</span>(c)</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keyword">DEALLOCATE</span>(ipiv)</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="keyword">DEALLOCATE</span>(cstorage)</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="keyword">DEALLOCATE</span>(iapp)</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keyword">DEALLOCATE</span>(z)</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keyword">DEALLOCATE</span>(time_axis)</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="keyword">END PROGRAM</span></div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment">!Change log:</span></div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="comment">!Line 23 (original):</span></div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment">!deltar = R/(REAL(n,kind=REAL64)-1.0_REAL64)</span></div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">!instead of</span></div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment">!deltar = R/REAL(n,kind=REAL64)</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="comment">!We have n nodes, so divide by (n-1)</span></div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="comment">!Lines 39-48 (original):</span></div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="comment">!Discretisation/Mesh is constant over simulation</span></div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="comment">!Intialise matrix A moved outside of time loop and kept constant</span></div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="comment">!Also re-ordered relating to memory storage</span></div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="comment">!Notably - dgesv affects the matrix A, so a copy is required to store the values.</span></div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="comment">!Still stops unnecessary extra computation - but now at the cost of memory.</span></div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="comment">!ireal = real(i-1,kind=REAL64)</span></div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="comment">!instead of</span></div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment">!ireal = real(i,kind=REAL64)</span></div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment">!Multiplied underlying equations through by dt for stability</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="comment">!Suggested changes:</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment">!Write to output file at each time step - saves memory requirements if small timestep</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">!Wouldn&#39;t need a matrix to store values.</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment">!Probably less efficient.</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="comment">!Simplify edge of sphere equation using d2c/dr2 = 0, due to substitution of equation dc/dr = Z(t) =&gt; d2c/dr2 = 0.</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="comment">!Likely won&#39;t use this change - including term allows for consideration of non-zero d2c/dr2, i.e. numerical errors.</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="comment">!Change log:</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="comment">!Line 23 (original):</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="comment">!deltar = R/(REAL(n,kind=REAL64)-1.0_REAL64)</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="comment">!instead of</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="comment">!deltar = R/REAL(n,kind=REAL64)</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment">!We have n nodes, so divide by (n-1)</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="comment">!Lines 39-48 (original):</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="comment">!Discretisation/Mesh is constant over simulation</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="comment">!Intialise matrix A moved outside of time loop and kept constant</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="comment">!Also re-ordered relating to memory storage</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="comment">!Notably - dgesv affects the matrix A, so a copy is required to store the values.</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="comment">!Still stops unnecessary extra computation - but now at the cost of memory.</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="comment">!ireal = real(i-1,kind=REAL64)</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="comment">!instead of</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="comment">!ireal = real(i,kind=REAL64)</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="comment">!Multiplied underlying equations through by dt for stability</span></div>
 <div class="ttc" id="classnc__output_html"><div class="ttname"><a href="classnc__output.html">nc_output</a></div><div class="ttdef"><b>Definition:</b> <a href="nc__output_8f90_source.html#l00001">nc_output.f90:1</a></div></div>
 <div class="ttc" id="classread__inputs_html"><div class="ttname"><a href="classread__inputs.html">read_inputs</a></div><div class="ttdoc">Module to read user inputs. </div><div class="ttdef"><b>Definition:</b> <a href="read__inputs_8f90_source.html#l00003">read_inputs.f90:3</a></div></div>
 <div class="ttc" id="classnc__output_html_a670043c03d59806dd491402f3b863ca4"><div class="ttname"><a href="classnc__output.html#a670043c03d59806dd491402f3b863ca4">nc_output::output_cstorage</a></div><div class="ttdeci">subroutine output_cstorage(cstorage, n, tsteps, R, time_axis, electrode_charge, filename)</div><div class="ttdef"><b>Definition:</b> <a href="nc__output_8f90_source.html#l00019">nc_output.f90:19</a></div></div>
-<div class="ttc" id="finite__diff__solver_8f90_html_a8ec2266d83cd6c0b762cbcbc92c0af3d"><div class="ttname"><a href="finite__diff__solver_8f90.html#a8ec2266d83cd6c0b762cbcbc92c0af3d">main</a></div><div class="ttdeci">program main</div><div class="ttdef"><b>Definition:</b> <a href="finite__diff__solver_8f90_source.html#l00003">finite_diff_solver.f90:3</a></div></div>
+<div class="ttc" id="finite__diff__solver_8f90_html_a8ec2266d83cd6c0b762cbcbc92c0af3d"><div class="ttname"><a href="finite__diff__solver_8f90.html#a8ec2266d83cd6c0b762cbcbc92c0af3d">main</a></div><div class="ttdeci">program main</div><div class="ttdoc">Crank-Nicolson finite differences solver. </div><div class="ttdef"><b>Definition:</b> <a href="finite__diff__solver_8f90_source.html#l00015">finite_diff_solver.f90:15</a></div></div>
 <div class="ttc" id="read__inputs_8f90_html_ad493c45aa771d875f6b10e91b6345de6"><div class="ttname"><a href="read__inputs_8f90.html#ad493c45aa771d875f6b10e91b6345de6">filename</a></div><div class="ttdeci">character(len=54) filename</div><div class="ttdef"><b>Definition:</b> <a href="read__inputs_8f90_source.html#l00040">read_inputs.f90:40</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

@@ -1,8 +1,8 @@
-'''! @brief Functions allowing the visualization of data generated using solver outputs. Plots are saved locally.
-@details Allowed plots include:
-- an animation of lithium concentrations as a function of time and space
-- a plot showing the concentration of lithium at the sphere edge and the voltage at all timesteps.
-
+'''! @brief Functions for visualisation of solver outputs. (Plots are saved locally.)
+@details Contains functions that produce:
+- An animation showing the concentration of lithium as a function of time and space. 
+(There is an additional feature for saving the concentration profile at the end of the simulation as a png.)
+- Plots of both voltage and applied current over time.
 '''
 import matplotlib.pyplot as plt
 import numpy as np
@@ -10,15 +10,13 @@ from matplotlib.animation import FuncAnimation
 import netCDF4 as NC
 #Written so user can specify if is positive or negative electrode
 
-'''!function read_output_file: Reads in some data from user input and solver output using NetCDF.
-@var 2D array of floats cstore: Contains concentrations of Lithium over discretized time and space points..
-@var int tsteps: Number of timesteps.
-@var int nodenum: Number of discrete spatial points.
-@var float R: radius of sphere in model (m).
-@var 1D list of floats time_axis: Times associated with each timestep (s).
-@var float dr: Space between the discrete spatial points (m).
-@var str electrode: 'positive' or 'negative' - determines the nature of the electrode in this half SPM setup.'''
-def read_output_file(filename,step_num=None):
+
+def read_output_file(filename, step_num = None):
+    '''!@brief Reads in data from user input and solver output using NetCDF.
+    @param[in] filename  The name of the input file, this must be a string and have max 50 characters. No file extension is required.
+    @param[in] step_num  Specifies the step number to read for a parallel simulation (defualt = none for serial)
+    '''
+
     #Read in Concs from netcdf
     if step_num is not None:
         filename = filename+str(step_num)
@@ -29,16 +27,18 @@ def read_output_file(filename,step_num=None):
     filename_temp = filename.split('/') # Remove directories
     filename = filename_temp[-1]
     filename = filename + '_output.nc'
-    
-    '''!Read in NetCDF output file'''
+
+    # Read in NetCDF output file
     dat=NC.Dataset(filename, "r", format ="NETCDF")
-    cstore = dat.variables['cstorage'][:]
-    '''!Read in Constants'''
-    tsteps=dat.variables['tsteps'][0] 
-    nodenum=dat.variables['node_num'][0] 
-    R=dat.variables['R'][0] 
-    time_axis = dat.variables['time_axis'][:]
-    dr = R/(nodenum-1)
+    cstore = dat.variables['cstorage'][:]   # concentrations of Li over discretized time and space
+
+    # Read in Constants
+    tsteps=dat.variables['tsteps'][0]   # Number of timesteps.
+    nodenum=dat.variables['node_num'][0]   # Number of discrete spatial points
+    R=dat.variables['R'][0]   # Radius of sphere in model (m)
+    time_axis = dat.variables['time_axis'][:]   # Times associated with each timestep (s)
+    dr = R/(nodenum-1)   # Space between the discrete spatial points (m)
+
     electrode_read = dat.variables['electrode_charge'][0] 
     electrode_temp = np.ma.getdata(electrode_read)
     electrode_temp = electrode_temp.tolist()
@@ -51,9 +51,12 @@ def read_output_file(filename,step_num=None):
     return cstore,tsteps,nodenum,R,time_axis,dr,electrode
 
 
-'''!Function read_input_current: Reads in applied current data.
-@var 1D array of floats i_app_data: Array containing applied current density (A/m^2) at all discrete time points.'''
+
 def read_input_current(filename,step_num=None):
+    '''!@brief Reads in the applied current.
+    @param[in] filename  The name of the input file, this must be a string and have max 50 characters. No file extension is required.
+    @param[in] step_num  Specifies the step number to read for a parallel simulation (defualt = none for serial)
+    '''
     if step_num is not None:
         filename = filename+str(step_num)
 
@@ -65,6 +68,8 @@ def read_input_current(filename,step_num=None):
 
         with open(filename, 'r') as iapp_vals:
             lines = iapp_vals.readlines()
+
+            # Array of applied current density (A/m^2) at all time points
             i_app_data = []
             for i, current in enumerate(lines):
                 if i >=11:
@@ -79,28 +84,28 @@ def read_input_current(filename,step_num=None):
 
     return i_app_data
 
-'''Function animated_conc_plot: Saves animation (concentration_animation.gif) displaying the evolution of lithium concentration over time, across the sphere.
-If passed arg 'SaveFinalState=True', saves image (final_state.png) of plot showing Lithium concentration across the sphere at the final timestep.
-@var int intervaltime: Time between frames in animation (ms).
-@var list time_step_axis: A list of consecutive numbers from 1-(tsteps-1) - used to specify the number of iterable frames to be rendered in the animation.
-@var 2D array of floats vals: Contains both positions of nodes (m) and Lithium concentrations (molm^-3) at these spatial points at the specified points in time.
-The first column contains the positions, and subsequent columns contain the concentrations at these spatial points at specific points in time.
-@var list of strings timestep_list: list containing strings of numbers representing the time of subsequent timesteps rounded to 1 d.p. - used to evolve time in title.
-@var float c_max: Maximum concentration at electrode.
-Function update: Define an update function for the animation. This is what is called each frame to update the graph. As blitting is set to on (it has to be to use 
-reasonable computing power). This function needs to return a single array containing the objects to animate with new data set. Function takes as an input argument the 
-timestep it is being called at.'''
+
+
 def animated_conc_plot(intervaltime,dr,tsteps,nodenum,cstore,time_axis,SaveFinalState=False,SparsifyAnimation=False):
+    '''!@brief Saves animation of lithium concentration over time.
+    @details Saves the animation 'concentration_animation.gif', that displays the evolution of lithium concentration over time.
+    If passed the argument 'SaveFinalState = True', it saves an image 'final_state.png' of lithium concentration across the sphere at the final timestep.
+    '''
+    
+    # Time between frames in animation (ms)
     intervaltime  = 10
 
-    #build time step axis
+    #build time step axis - a list of consecutive numbers from 1-(tsteps-1) 
+    # specifies number of iterable frames to render in animation
     if SparsifyAnimation:
         time_step_axis = [i*10 for i in range(1,int(tsteps/10))]
     else:
         time_step_axis = [i for i in range(1,tsteps)]
+
+        # positions of nodes (m) and Li concentrations (molm^-3) at these positions for specified points in time
     vals = np.zeros([nodenum,tsteps+1])
 
-    #place the c storage values in to the values matrix.
+    #place the c storage values in to the valuthiumes matrix.
     for i in range(nodenum):
         vals[i,1:] = cstore[:,i]
         vals[i,0] = i*dr
@@ -129,10 +134,18 @@ def animated_conc_plot(intervaltime,dr,tsteps,nodenum,cstore,time_axis,SaveFinal
     #Create a list which holds both the things we wish to animate
     graphlines = [graph]
 
-    r_time_axis = [round(i,2) for i in time_axis]
+    r_time_axis = [round(i,2) for i in time_axis]   #
     timestep_list = [str(i) for i in r_time_axis]   #Create list of strings of timestep times.
 
+
+
     def update(t):
+        '''!@brief Define an update function for the animation. 
+        @details This function is called for each frame to update the graph. As blitting is set to on (it has to be to use 
+        reasonable computing power). 
+        Returns a single array containing objects to animate with new data set.
+        @param[in] t  The timestep at which the function is being called.
+        '''
         #Set the data of each element of graphlines to the corresponding value of t passed to the function
         graphlines[0].set_data(vals[:,0],vals[:,t])
         ax1.set_title('Concentration Profile, Time : ' + timestep_list[t-1]+'s')
@@ -149,7 +162,17 @@ def animated_conc_plot(intervaltime,dr,tsteps,nodenum,cstore,time_axis,SaveFinal
 
 #DEFINE VOLTAGE FUNCTIONS:
 def gen_half_cell_voltage(edge_conc_vals,i_app_data,electrode,tsteps,pos_params=None,neg_params=None):
+    '''!@brief
+    @details At time = 0s, the output of j_function can be 0 if Li concentration at the sphere edge is 0.
+    This results in an error as V_function involves division by the output of j_function.
 
+    @param[in] edge_conc_vals   Lithium concentration at the sphere edge  for all time steps
+    @param[in] i_app_data
+    @param[in] electrode
+    @param[in] tsteps
+    @param[in] pos_params
+    @param[in] neg_params
+    '''
     #pos and neg params have form [K,a,cmax,L]
     ################  Voltage and Concentration Plot ##################
 
@@ -172,42 +195,45 @@ def gen_half_cell_voltage(edge_conc_vals,i_app_data,electrode,tsteps,pos_params=
         cmax_neg_sim = 0.0
         L_neg = 0.0
     
-    
-    '''!At time = 0s, it is possible for the output of j_function to be zero if Lithium concentration at sphere edge is zero. This results in an error as V_function
-    involves division by the output of j_function.'''
-
     #### Constants ####
-    F = 96485 #C/mol
-    R_g =  8.314 # J K-1 mol-1
-    T = 298.15 # K
+    F = 96485   # Faraday constant (C/mol)
+    R_g =  8.314   # Ideal gas constant (JK^-1mol^-1)
+    T = 298.15   # Standard conditions for temperature (T)
 
-
-    #This is the j(c) function from our model, used to calculate the voltage
-    #Inputs
-    #Concentration at edge of sphere - c_R
-    #c_max constant - c_max
-    #Constants - F, K
     #Outputs
     #j(c) for voltage calculation
-    #Notes
-    #Requires numpy library for sqrt
+   # 
     def j_function(c_R,c_max,K):
+        '''!@brief Calculates a quantity that feeds into the voltage calculation for each temporal point.
+        @details Requires numpy library for sqrt
+        @param[in] c_R   Concentration at the edge of the sphere
+        @param[in] c_max 
+        @param[in] K
+        '''
         if c_R<0.0:
             print('Error, concentration should never be less than 0')
             raise ValueError
         ratio = (c_R / c_max)
         return F * K * np.sqrt(np.abs(ratio * (1 - ratio)))
 
-    #Inputs
-    #Concentration at edge of sphere - c_R
 
 
     def U_function_pos(c_R):
+        '''!@brief OCV curve for positive electrode.
+        @param[in] c_R   Concentration at the edge of the sphere
+        @result u
+        '''
         x = c_R/cmax_pos_sim
         u = (-0.8090*x) + 4.4875 - (0.0428*np.tanh(18.5138*(x - 0.5542))) - (17.7326*np.tanh(15.7890*(x-0.3117))) + (17.5842*np.tanh(15.9308*(x - 0.3120)))  #positive electrode U
         return u
 
+
+
     def U_function_neg(c_R):
+        '''!@brief OCV curve for negative electrode
+        @param[in] c_R   Concentration at the edge of the sphere
+        @result u 
+        '''
         x = c_R/cmax_neg_sim
         u = (1.9793*np.exp(-39.3631*x)) + 0.2482 - (0.0909*np.tanh(29.8538*(x-0.1234))) - (0.04478*np.tanh(14.9159*(x-0.2769))) - (0.0205*np.tanh(30.4444*(x-0.6103)))  #negative electrode U
         return u
@@ -226,6 +252,14 @@ def gen_half_cell_voltage(edge_conc_vals,i_app_data,electrode,tsteps,pos_params=
     #Requires numpy for arcsinh function
     #Requires custom i_app(t) function
     def voltage_function(U,i_app,jay,L,a):
+        '''!@brief Calculates voltage for given time steps.
+        @details Calculates the voltage of the system at specific time points.
+        @param[in] U
+        @param[in] i_app
+        @param[in] jay
+        @param[in] L
+        @param[in] a   Surface area of particles (cm^2)
+        '''
         v = U - ((2*R_g*T)/(F))*np.arcsinh((i_app)/(a*L*jay))
         return v
             
@@ -243,7 +277,7 @@ def gen_half_cell_voltage(edge_conc_vals,i_app_data,electrode,tsteps,pos_params=
         print('Electrode not recognised!')
         raise ValueError
     
-
+    # voltages calculated for sequential timesteps
     volt_store = []
 
     for i in range(tsteps):
@@ -268,28 +302,29 @@ def gen_half_cell_voltage(edge_conc_vals,i_app_data,electrode,tsteps,pos_params=
 
     return np.array(volt_store)
 
-'''!Function voltage_current_plot: Calculates voltages at all time points, and saves plots of both concentration of Lithium at the
-outer edge of the sphere and voltage over time. This function has different settings determined by the value of electrode.
-@var float F: Faraday constant (C/mol).
-@var float R_g: Ideal gas constant (JK^-1mol^-1).
-@var float T: Standard conditions for temperature (T).
-@var float a: Surface area of particles (cm^2).
-@var float K_pos: Reaction rate at positive electrodes (Am^-2(m^3mol^-1)^1.5).
-@var float K_neg: Reaction rate at negative electrodes Am^-2(m^3mol^-1)^1.5.
-@var float cmax_pos_sim: Positive electrode maximum concentration (molm^-3).
-@var float cmax_neg_sim: Negative electrode maximum concentration (molm^-3).
+'''
+@var float K_pos: Reaction rate at positive electrodes (Am^-2(m^3mol^-1)^1.5)
+@var float K_neg: Reaction rate at negative electrodes Am^-2(m^3mol^-1)^1.5)
+@var float cmax_pos_sim: Positive electrode maximum concentration (molm^-3)
+@var float cmax_neg_sim: Negative electrode maximum concentration (molm^-3)
 @var float L_pos: Positive electrode thickness (m).
 @var float L_neg: Negative electrode thickness (m).
-Function j_function: Calculates a quantity that feeds into our voltage calculation for each temporal point.
-Takes c_R as an argument, which corresponds to the Lithium concentration (molm^-3) at the sphere edge at the specific time.
-Function U_function_pos: OCV curve for positive electrode. Takes c_r as argument.
-Function U_function_neg: OCV curve for negative electrode. Takes c_r as argument.
-Function voltage_function: Calculates the voltage of the system at specific time points. Takes outputs of j_function (jay) and 
-U_function_pos/(neg) (U), as well as applied current (i_app) at that time as arguments.
-@var 1D array edge_conc_vals: Contains the Lithium concentration at the edge of the sphere for all time steps.
-@var list volt_store: contains voltages calculated for sequential timesteps.'''
-def voltage_current_plot(electrode,cstore,time_axis,i_app_data,tsteps,pos_params=None,neg_params=None):
+'''
 
+
+def voltage_current_plot(electrode,cstore,time_axis,i_app_data,tsteps,pos_params=None,neg_params=None):
+    '''!@brief Calculates voltages and plots as a function of time
+    @details Calculates the voltage at all time points and saves plots of both Li concentration at the
+    sphere edge and voltage as a function of time. 
+    This function has different settings determined by the value of electrode.
+    @param[in] electrode
+    @param[in] cstore
+    @param[in] time_axis
+    @param[in] i_app_data
+    @param[in] tsteps
+    @param[in] pos_params
+    @param[in] neg_params
+'''
     #structure of cstore: each row represents a single timestep, each column a single node
     edge_conc_vals = cstore[:,-1]    #want the values of the edge node for all timesteps
     

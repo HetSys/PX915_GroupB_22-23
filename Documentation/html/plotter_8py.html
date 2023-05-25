@@ -21,6 +21,7 @@
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxy_aesthetic.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -49,6 +50,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Modules</span></a></li>
+      <li><a href="md_math.html"><span>Maths&#160;and&#160;Theory</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Types&#160;List</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -118,19 +120,24 @@ $(document).ready(function(){initNavTree('plotter_8py.html','');});
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespaceplotter"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceplotter.html">plotter</a></td></tr>
+<tr class="memdesc:namespaceplotter"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functions for visualisation of solver outputs. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:aae454e5e82b331fc3539380bf77085bb"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceplotter.html#aae454e5e82b331fc3539380bf77085bb">read_output_file</a></td></tr>
+<tr class="memdesc:aae454e5e82b331fc3539380bf77085bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads in data from user input and solver output using NetCDF.  <a href="#aae454e5e82b331fc3539380bf77085bb">More...</a><br/></td></tr>
 <tr class="separator:aae454e5e82b331fc3539380bf77085bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac4584f2efde622b7fe9e2b77b97b3089"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceplotter.html#ac4584f2efde622b7fe9e2b77b97b3089">read_input_current</a></td></tr>
+<tr class="memdesc:ac4584f2efde622b7fe9e2b77b97b3089"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads in the applied current.  <a href="#ac4584f2efde622b7fe9e2b77b97b3089">More...</a><br/></td></tr>
 <tr class="separator:ac4584f2efde622b7fe9e2b77b97b3089"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49b689df200e34e2e72d1e8b7122c34a"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceplotter.html#a49b689df200e34e2e72d1e8b7122c34a">animated_conc_plot</a></td></tr>
+<tr class="memdesc:a49b689df200e34e2e72d1e8b7122c34a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves animation of lithium concentration over time.  <a href="#a49b689df200e34e2e72d1e8b7122c34a">More...</a><br/></td></tr>
 <tr class="separator:a49b689df200e34e2e72d1e8b7122c34a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a716e2d183d061a11623adaf2dba72476"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceplotter.html#a716e2d183d061a11623adaf2dba72476">gen_half_cell_voltage</a></td></tr>
 <tr class="separator:a716e2d183d061a11623adaf2dba72476"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a44edad80659cbc5874617eabd87609ba"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceplotter.html#a44edad80659cbc5874617eabd87609ba">voltage_current_plot</a></td></tr>
+<tr class="memdesc:a44edad80659cbc5874617eabd87609ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates voltages and plots as a function of time.  <a href="#a44edad80659cbc5874617eabd87609ba">More...</a><br/></td></tr>
 <tr class="separator:a44edad80659cbc5874617eabd87609ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa10bc6c7a1f0ea5ddf498ced8c1e08ee"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceplotter.html#aa10bc6c7a1f0ea5ddf498ced8c1e08ee">plot_halfcell_GITT_result</a></td></tr>
 <tr class="separator:aa10bc6c7a1f0ea5ddf498ced8c1e08ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -138,6 +145,9 @@ Functions</h2></td></tr>
 <tr class="separator:aacce2143cb025e12026b3580467165ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad575e508b7dec6d686b1ad23bd88c23e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceplotter.html#ad575e508b7dec6d686b1ad23bd88c23e">full_battery_GITT_plots</a></td></tr>
 <tr class="separator:ad575e508b7dec6d686b1ad23bd88c23e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34948a1cfae887bb24a8ad480441a831"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceplotter.html#a34948a1cfae887bb24a8ad480441a831">get_avg_li_conc</a></td></tr>
+<tr class="memdesc:a34948a1cfae887bb24a8ad480441a831"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the average concentration of lithium at a given timestep using trapezium rule inside the sphere.  <a href="#a34948a1cfae887bb24a8ad480441a831">More...</a><br/></td></tr>
+<tr class="separator:a34948a1cfae887bb24a8ad480441a831"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->

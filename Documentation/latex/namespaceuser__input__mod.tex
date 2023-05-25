@@ -3,7 +3,7 @@
 }
 
 
-Package containing functions to set up user input parameters and execute the solver.  
+Package containing the functions needed to set up the user input parameters and execute the solver.  
 
 
 \subsection*{Functions}
@@ -12,9 +12,9 @@ Package containing functions to set up user input parameters and execute the sol
 def \hyperlink{namespaceuser__input__mod_a369d3751a2635edf6aca47c76e32a379}{iapp\-\_\-read\-\_\-csv}
 \begin{DoxyCompactList}\small\item\em C\-U\-R\-R\-E\-N\-T D\-E\-N\-S\-I\-T\-Y S\-E\-T U\-P \#\#\#. \end{DoxyCompactList}\item 
 def \hyperlink{namespaceuser__input__mod_ab782193387e8c3992d11b979bda4ddb7}{iapp\-\_\-constant\-\_\-setup}
-\begin{DoxyCompactList}\small\item\em Set up applied current density iapp as constant valued array of length tsteps. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets up the applied current density 'iapp' as a constant valued array of length tsteps. \end{DoxyCompactList}\item 
 def \hyperlink{namespaceuser__input__mod_a2511b60d779c810e395c24628cc22f6c}{iapp\-\_\-step\-\_\-setup}
-\begin{DoxyCompactList}\small\item\em Set up applied current density iapp as stepped array of length tsteps. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets up the applied current density 'iapp' as a stepped array of length tsteps. \end{DoxyCompactList}\item 
 def \hyperlink{namespaceuser__input__mod_acef497295190e3914f7cd93da2708856}{set\-\_\-defaults\-\_\-pos}
 \begin{DoxyCompactList}\small\item\em D\-E\-F\-A\-U\-L\-T P\-A\-R\-A\-M\-E\-T\-E\-R\-S \#\#\#. \end{DoxyCompactList}\item 
 def \hyperlink{namespaceuser__input__mod_ad783135a051fdfddaadb06394ff84a73}{set\-\_\-defaults\-\_\-neg}
@@ -22,7 +22,7 @@ def \hyperlink{namespaceuser__input__mod_ad783135a051fdfddaadb06394ff84a73}{set\
 def \hyperlink{namespaceuser__input__mod_a155b516c3ff05c1003e11caef128738f}{verify\-\_\-params}
 \begin{DoxyCompactList}\small\item\em P\-A\-R\-A\-M\-E\-T\-E\-R V\-E\-R\-I\-F\-I\-C\-A\-T\-I\-O\-N \#\#\#. \end{DoxyCompactList}\item 
 def \hyperlink{namespaceuser__input__mod_aa2382852ed7b2a4b8d19529c4ab0ac7e}{verify\-\_\-iapp}
-\begin{DoxyCompactList}\small\item\em Verifies types and values of applied current density array and label. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Verifies the types and values of the applied current density array and its label. \end{DoxyCompactList}\item 
 def \hyperlink{namespaceuser__input__mod_a23ddc1955874f5e5e2639522e3f4d276}{write\-\_\-to\-\_\-file}
 \begin{DoxyCompactList}\small\item\em W\-R\-I\-T\-E T\-O F\-I\-L\-E \#\#\#. \end{DoxyCompactList}\item 
 def \hyperlink{namespaceuser__input__mod_a839dc51641b24f79bf86be76eb2d6fbd}{call\-\_\-solver}
@@ -32,34 +32,75 @@ def \hyperlink{namespaceuser__input__mod_a4118861403235a2f22445738a0914fa5}{get\
 def \hyperlink{namespaceuser__input__mod_acf625a02cf11d1ac11c4230e21f9987b}{G\-I\-T\-T\-\_\-half\-\_\-cell}
 \begin{DoxyCompactList}\small\item\em I\-N\-I\-T\-I\-A\-L\-I\-S\-E A F\-U\-L\-L G\-I\-T\-T T\-E\-S\-T I\-N P\-A\-R\-A\-L\-L\-E\-L \#\#\#\#. \end{DoxyCompactList}\item 
 def \hyperlink{namespaceuser__input__mod_a5e6e143a3b61689997f8b3036df0b5c6}{G\-I\-T\-T\-\_\-full\-\_\-cell}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Executes the S\-P\-M solver in parallel to run a G\-I\-T\-T full cell test over nprocs cores. \end{DoxyCompactList}\item 
+def \hyperlink{namespaceuser__input__mod_ae0adc52acc50861e6830ca5917c8a49c}{full\-\_\-battery\-\_\-simulation}
+\begin{DoxyCompactList}\small\item\em Executes the S\-P\-M solver. \end{DoxyCompactList}\item 
+def \hyperlink{namespaceuser__input__mod_aea01ecd06e7c99fb37057ed6ca6651ae}{optimise\-\_\-parallelism}
+\begin{DoxyCompactList}\small\item\em Decides the correct number of threads to use for a given simulation. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Package containing functions to set up user input parameters and execute the solver. Options are provided to automatically generate applied current density iapp as constant and step functions, and to read iapp from a csv file. Options are provided to set default values of parameters from Chen et al. 2020, \href{https://doi.org/10.1149/1945-7111/ab9050}{\tt https\-://doi.\-org/10.\-1149/1945-\/7111/ab9050}. Additional functions validate the types and values of input parameters, write the user input txt file, and execute the solver. 
+Package containing the functions needed to set up the user input parameters and execute the solver. Provides options for automatically generating applied current density 'iapp', as a constant or step function, and for reading iapp from a csv file.
+
+Provides the option to set the parameters to default values obtained from Chen et al. 2020, \href{https://doi.org/10.1149/1945-7111/ab9050}{\tt https\-://doi.\-org/10.\-1149/1945-\/7111/ab9050}.
+
+Contains additional functions for validating the types and values of the input parameters, writing the user input txt file, and executing the solver. 
 
 \subsection{Function Documentation}
 \hypertarget{namespaceuser__input__mod_a839dc51641b24f79bf86be76eb2d6fbd}{\index{user\-\_\-input\-\_\-mod@{user\-\_\-input\-\_\-mod}!call\-\_\-solver@{call\-\_\-solver}}
 \index{call\-\_\-solver@{call\-\_\-solver}!user_input_mod@{user\-\_\-input\-\_\-mod}}
 \subsubsection[{call\-\_\-solver}]{\setlength{\rightskip}{0pt plus 5cm}def user\-\_\-input\-\_\-mod.\-call\-\_\-solver (
 \begin{DoxyParamCaption}
-\item[{}]{filename}
+\item[{}]{filename, }
+\item[{}]{nprocs = {\ttfamily 1}}
 \end{DoxyParamCaption}
 )}}\label{namespaceuser__input__mod_a839dc51641b24f79bf86be76eb2d6fbd}
 
 
 C\-A\-L\-L S\-O\-L\-V\-E\-R \#\#\#. 
 
-Execution of S\-P\-M solver.
+Executes the S\-P\-M solver.
 
-S\-P\-M solver is called using the subprocess package. The filename of the user input file is passed to the solver as a command line argument. Errors from execution are read in and further execution prevented if necessary. 
+Calls the S\-P\-M solver using the subprocess package. The filename of the user input file is passed to the solver as a command line argument. Errors from the execution are read in and further execution is prevented if necessary. 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em filename,\-:} & Name of user input file, no file extension. 1. Set up solver call line, including file name. \\
+\mbox{\tt in}  & {\em filename,\-:} & The name of the output file, this must be a string and have max 50 characters. No file extension is required.\\
 \hline
 \end{DoxyParams}
+The function works by\-:
+\begin{DoxyEnumerate}
+\item Seting up the solver call line, including the file name.
+\item Calling the solver. 
+\end{DoxyEnumerate}
+
+Definition at line 405 of file user\-\_\-input\-\_\-mod.\-py.
+
+\hypertarget{namespaceuser__input__mod_ae0adc52acc50861e6830ca5917c8a49c}{\index{user\-\_\-input\-\_\-mod@{user\-\_\-input\-\_\-mod}!full\-\_\-battery\-\_\-simulation@{full\-\_\-battery\-\_\-simulation}}
+\index{full\-\_\-battery\-\_\-simulation@{full\-\_\-battery\-\_\-simulation}!user_input_mod@{user\-\_\-input\-\_\-mod}}
+\subsubsection[{full\-\_\-battery\-\_\-simulation}]{\setlength{\rightskip}{0pt plus 5cm}def user\-\_\-input\-\_\-mod.\-full\-\_\-battery\-\_\-simulation (
+\begin{DoxyParamCaption}
+\item[{}]{filename\-\_\-positive, }
+\item[{}]{filename\-\_\-negative, }
+\item[{}]{nprocs = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)}}\label{namespaceuser__input__mod_ae0adc52acc50861e6830ca5917c8a49c}
 
 
-Definition at line 374 of file user\-\_\-input\-\_\-mod.\-py.
+Executes the S\-P\-M solver. 
+
+Calls the S\-P\-M solver using the subprocess package for both the anode and cathode simultaneously The filenames of the user input files for both the anode and cathode are passed to instances of the solver as command line arguments. Note that if 2 processors are supplied, both the anode and cathode will run simultaneously. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename\-\_\-positive,\-:} & The name of the positive output file, this must be a string and have max 50 characters. No file extension is required. \\
+\hline
+\mbox{\tt in}  & {\em filename\-\_\-negative,\-:} & The name of the negative output file, this must be a string and have max 50 characters. No file extension is required.\\
+\hline
+\end{DoxyParams}
+The function works by\-:
+\begin{DoxyEnumerate}
+\item Seting up the solver call line, including the file name.
+\item Calling the solver. 
+\end{DoxyEnumerate}
+
+Definition at line 620 of file user\-\_\-input\-\_\-mod.\-py.
 
 \hypertarget{namespaceuser__input__mod_a4118861403235a2f22445738a0914fa5}{\index{user\-\_\-input\-\_\-mod@{user\-\_\-input\-\_\-mod}!get\-\_\-\-G\-I\-T\-T\-\_\-initial\-\_\-concs@{get\-\_\-\-G\-I\-T\-T\-\_\-initial\-\_\-concs}}
 \index{get\-\_\-\-G\-I\-T\-T\-\_\-initial\-\_\-concs@{get\-\_\-\-G\-I\-T\-T\-\_\-initial\-\_\-concs}!user_input_mod@{user\-\_\-input\-\_\-mod}}
@@ -74,9 +115,29 @@ Definition at line 374 of file user\-\_\-input\-\_\-mod.\-py.
 \item[{}]{electrode\-\_\-charge}
 \end{DoxyParamCaption}
 )}}\label{namespaceuser__input__mod_a4118861403235a2f22445738a0914fa5}
+\begin{DoxyVerb}@brief Calculates the initial concentrations for each step in a multi-step parallelised GITT test.
 
+@details Computes initial flat concentrations for the initial step of a parallelised multi-step GITT test. 
 
-Definition at line 406 of file user\-\_\-input\-\_\-mod.\-py.
+The formula used for this calculation is:
+C(T=t) = C_0 + \frac{i_app * t}{F*e_act * L}, where C_0 is C(T=0). 
+
+As current is defined as positive for charging, the sign of the current vector must be flipped when considering
+the positive electrode (cathode) which will discharge during charging.
+
+@param[in] currents  A vector containing current values to apply at each current step, must be floats and have the same length as
+start_times, run_times, wait_times.
+@param[in] run_times  A vector containing the run time of each current step, must be floats and have the same length as 
+start_times, currents, wait_times.
+@param[in] c0  Initial concentration, must be a float greater than or equal to 0.
+@param[in] R  Radius of the sphere, must be a float greater than 0.
+@param[in] a  Particle surface area per unit volume, must be a float greater than or equal to 0.
+@param[in] L  Electrode thickness, must be a float greater than or equal to 0.
+@param[in] electrode_charge  Electrode charge, mus be a single character 'p' or 'n'.
+\end{DoxyVerb}
+ 
+
+Definition at line 444 of file user\-\_\-input\-\_\-mod.\-py.
 
 \hypertarget{namespaceuser__input__mod_a5e6e143a3b61689997f8b3036df0b5c6}{\index{user\-\_\-input\-\_\-mod@{user\-\_\-input\-\_\-mod}!G\-I\-T\-T\-\_\-full\-\_\-cell@{G\-I\-T\-T\-\_\-full\-\_\-cell}}
 \index{G\-I\-T\-T\-\_\-full\-\_\-cell@{G\-I\-T\-T\-\_\-full\-\_\-cell}!user_input_mod@{user\-\_\-input\-\_\-mod}}
@@ -96,7 +157,40 @@ Definition at line 406 of file user\-\_\-input\-\_\-mod.\-py.
 )}}\label{namespaceuser__input__mod_a5e6e143a3b61689997f8b3036df0b5c6}
 
 
-Definition at line 484 of file user\-\_\-input\-\_\-mod.\-py.
+Executes the S\-P\-M solver in parallel to run a G\-I\-T\-T full cell test over nprocs cores. 
+
+Executes the S\-P\-M solver in parallel to run a test experiment on a full cell using a galvanostatic intermittent titration technique (G\-I\-T\-T), see W. Weppner and R. A. Huggins 1977 J. Electrochem. Soc. 124 1569.
+
+Due to the equilibration time between each current step applied, it is possible to pre-\/compute initial constant concentration for each of the single particles in the model by considering the amount of lithium removed in each step.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename\-\_\-positive} & Name of user input file for the cathode, no file extension. Note that a version of this file is created for each current step applied in the G\-I\-T\-T test. \\
+\hline
+\mbox{\tt in}  & {\em filename\-\_\-negative} & Name of user input file for the anode, no file extension. Note that a version of this file is created for each current step applied in the G\-I\-T\-T test. \\
+\hline
+\mbox{\tt in}  & {\em nprocs} & Number of processors to parallelise current steps over. Cannot parallelise over more processors than the number of steps applied in the G\-I\-T\-T test. \\
+\hline
+\mbox{\tt in}  & {\em currents} & A vector containing the values of current to apply at each step, must be floats and have the same length as start\-\_\-times, run\-\_\-times, wait\-\_\-times. \\
+\hline
+\mbox{\tt in}  & {\em start\-\_\-times} & A vector containing the start times of each current step, must be floats and have the same length as currents, run\-\_\-times, wait\-\_\-times. \\
+\hline
+\mbox{\tt in}  & {\em run\-\_\-times} & A vector containing the run time of each current step, must be floats and have the same length as start\-\_\-times, currents, wait\-\_\-times. \\
+\hline
+\mbox{\tt in}  & {\em wait\-\_\-times} & A vector containing the wait time of each current step, must be floats and have the same length as currents, start\-\_\-times, run-\/times. \\
+\hline
+\mbox{\tt in}  & {\em } & n\-: The number of nodes to use in the simulation. Must be an integer greater than 100. \\
+\hline
+\mbox{\tt in}  & {\em params,\-:} & A vector containing the parameters for the simulation\-: \mbox{[}dt, c0, D, R, a, L\mbox{]}\\
+\hline
+\end{DoxyParams}
+The function works by\-:
+\begin{DoxyEnumerate}
+\item Setting up the solver call line, including the file name.
+\item Calling the solver. 
+\end{DoxyEnumerate}
+
+Definition at line 545 of file user\-\_\-input\-\_\-mod.\-py.
 
 \hypertarget{namespaceuser__input__mod_acf625a02cf11d1ac11c4230e21f9987b}{\index{user\-\_\-input\-\_\-mod@{user\-\_\-input\-\_\-mod}!G\-I\-T\-T\-\_\-half\-\_\-cell@{G\-I\-T\-T\-\_\-half\-\_\-cell}}
 \index{G\-I\-T\-T\-\_\-half\-\_\-cell@{G\-I\-T\-T\-\_\-half\-\_\-cell}!user_input_mod@{user\-\_\-input\-\_\-mod}}
@@ -116,40 +210,36 @@ Definition at line 484 of file user\-\_\-input\-\_\-mod.\-py.
 
 I\-N\-I\-T\-I\-A\-L\-I\-S\-E A F\-U\-L\-L G\-I\-T\-T T\-E\-S\-T I\-N P\-A\-R\-A\-L\-L\-E\-L \#\#\#\#. 
 
-Execution of S\-P\-M solver in parallel to run a G\-I\-T\-T test over nprocs cores.
+Executes the S\-P\-M solver in parallel to run a G\-I\-T\-T half cell test over nprocs cores.
 
-Execution of S\-P\-M solver in parallel to run a test experiment on a battery in the style of a galvanostatic intermittent titration technique (G\-I\-T\-T), as described in W. Weppner and R. A. Huggins 1977 J. Electrochem. Soc. 124 1569. Due to the equilibration time between each current step applied in this technique, it is possible to pre-\/compute the initial constant concentration in each of the single particles in the model by considering the amount of lithium removed in each current step. Errors from execution are read in and further execution prevented if necessary. 
+Executes the S\-P\-M solver in parallel to run a test experiment on a half cell using a galvanostatic intermittent titration technique (G\-I\-T\-T), see W. Weppner and R. A. Huggins 1977 J. Electrochem. Soc. 124 1569.
+
+Due to the equilibration time between each current step applied, it is possible to pre-\/compute initial constant concentration for each of the single particles in the model by considering the amount of lithium removed in each step.
+
+Errors from execution are read in and further execution is prevented if necessary.
+
+
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em filename,\-:} & Name of user input file, no file extension. Note that a version of this file is created for each current step applied in the G\-I\-T\-T test. \\
+\mbox{\tt in}  & {\em filename} & Name of user input file, no file extension. Note that a version of this file is created for each current step applied in the G\-I\-T\-T test. \\
 \hline
-\mbox{\tt in}  & {\em nprocs,\-:} & Number of processors to parallelise the current steps over. Note that the most processors that can be parallelised over is = the number of current steps applied in the G\-I\-T\-T test. \\
+\mbox{\tt in}  & {\em nprocs} & Number of processors to parallelise current steps over. Cannot parallelise over more processors than the number of steps applied in the G\-I\-T\-T test. \\
 \hline
-\mbox{\tt in}  & {\em currents,\-:} & a vector containing the values of current to apply at each current step, floats, must have the same length as start\-\_\-times, run\-\_\-times, wait\-\_\-times. \\
+\mbox{\tt in}  & {\em currents} & A vector containing the values of current to apply at each step, must be floats and have the same length as start\-\_\-times, run\-\_\-times, wait\-\_\-times. \\
 \hline
-\mbox{\tt in}  & {\em start\-\_\-times,\-:} & a vector containing the start times of each current step, floats, must have the same length as currents, run\-\_\-times, wait\-\_\-times. \\
+\mbox{\tt in}  & {\em start\-\_\-times} & A vector containing the start times of each current step, must be floats and have the same length as currents, run\-\_\-times, wait\-\_\-times. \\
 \hline
-\mbox{\tt in}  & {\em run\-\_\-times,\-:} & a vector containing the run time of each current step, floats, must have the same length as start\-\_\-times, currents, wait\-\_\-times. \\
+\mbox{\tt in}  & {\em run\-\_\-times} & A vector containing the run time of each current step, must be floats and have the same length as start\-\_\-times, currents, wait\-\_\-times. \\
 \hline
-\mbox{\tt in}  & {\em wait\-\_\-times,\-:} & a vector containing the run time of each current step, floats, must have the same length as currents, start\-\_\-times, run-\/times. \\
+\mbox{\tt in}  & {\em wait\-\_\-times} & A vector containing the wait time of each current step, must be floats and have the same length as currents, start\-\_\-times, run-\/times. \\
 \hline
-\mbox{\tt in}  & {\em params,\-:} & A vector containing the parameters for the simulation\-: \mbox{[}dt, c0, D, R, a, L\mbox{]} \\
+\mbox{\tt in}  & {\em } & n\-: The number of nodes to use in the simulation. Must be an integer greater than 100. \\
 \hline
-\mbox{\tt in}  & {\em dt,\-:} & Timestep size, float $>$ 0. \\
-\hline
-\mbox{\tt in}  & {\em c0,\-:} & Initial concentration, float $>$= 0. \\
-\hline
-\mbox{\tt in}  & {\em D,\-:} & Diffusion constant, float. \\
-\hline
-\mbox{\tt in}  & {\em R,\-:} & Width of block, float $>$ 0. \\
-\hline
-\mbox{\tt in}  & {\em a,\-:} & Particle surface area per unit volume, float $>$= 0. \\
-\hline
-\mbox{\tt in}  & {\em L,\-:} & Electrode thickness, float $>$= 0. \\
+\mbox{\tt in}  & {\em params,\-:} & A vector containing the parameters for the simulation\-: \mbox{[}dt, c0, D, R, a, L, electrode\-\_\-charge\mbox{]} \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line 424 of file user\-\_\-input\-\_\-mod.\-py.
+Definition at line 482 of file user\-\_\-input\-\_\-mod.\-py.
 
 \hypertarget{namespaceuser__input__mod_ab782193387e8c3992d11b979bda4ddb7}{\index{user\-\_\-input\-\_\-mod@{user\-\_\-input\-\_\-mod}!iapp\-\_\-constant\-\_\-setup@{iapp\-\_\-constant\-\_\-setup}}
 \index{iapp\-\_\-constant\-\_\-setup@{iapp\-\_\-constant\-\_\-setup}!user_input_mod@{user\-\_\-input\-\_\-mod}}
@@ -161,23 +251,27 @@ Definition at line 424 of file user\-\_\-input\-\_\-mod.\-py.
 )}}\label{namespaceuser__input__mod_ab782193387e8c3992d11b979bda4ddb7}
 
 
-Set up applied current density iapp as constant valued array of length tsteps. 
+Sets up the applied current density 'iapp' as a constant valued array of length tsteps. 
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em tsteps,\-:} & Number of timesteps, length of array iapp. \\
+\mbox{\tt in}  & {\em tsteps} & Number of timesteps, needs to be the length of the array iapp. \\
 \hline
-\mbox{\tt in}  & {\em iapp,\-:} & Constant value of iapp. \\
+\mbox{\tt in}  & {\em iapp} & Constant value of iapp. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-iapp\-\_\-arr\-: Array containing applied current density. 
+iapp\-\_\-arr\-: An array containing applied current density. 
 
-iapp\-\_\-label\-: String containing description of iapp. 1. Verify current density iapp is a float. 
+iapp\-\_\-label\-: String containing a description of iapp.
 \end{DoxyReturn}
+Function does the following\-:
+\begin{DoxyEnumerate}
+\item Verifies that the current density, iapp, is a float.
+\item Sets up an array. 
+\end{DoxyEnumerate}
 
-
-Definition at line 42 of file user\-\_\-input\-\_\-mod.\-py.
+Definition at line 52 of file user\-\_\-input\-\_\-mod.\-py.
 
 \hypertarget{namespaceuser__input__mod_a369d3751a2635edf6aca47c76e32a379}{\index{user\-\_\-input\-\_\-mod@{user\-\_\-input\-\_\-mod}!iapp\-\_\-read\-\_\-csv@{iapp\-\_\-read\-\_\-csv}}
 \index{iapp\-\_\-read\-\_\-csv@{iapp\-\_\-read\-\_\-csv}!user_input_mod@{user\-\_\-input\-\_\-mod}}
@@ -190,21 +284,29 @@ Definition at line 42 of file user\-\_\-input\-\_\-mod.\-py.
 
 C\-U\-R\-R\-E\-N\-T D\-E\-N\-S\-I\-T\-Y S\-E\-T U\-P \#\#\#. 
 
-Reads applied current density iapp from a csv file provided by user, 'filename'. 
+Reads in the applied current density 'iapp' from a csv file provided by user.
+
+
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em filename,\-:} & Name of csv file containing iapp as Time, Current density. \\
+\mbox{\tt in}  & {\em filename} & Name of the csv file containing iapp as Time, Current density. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 iapp\-\_\-arr\-: Array containing applied current density. 
 
-iapp\-\_\-label\-: String containing description of iapp. 
+iapp\-\_\-label\-: String containing a description of iapp. 
 
-tsteps\-: Number of timesteps, found from length of iapp array. 1. Read in csv file. 
+tsteps\-: Number of timesteps, found from the length of iapp array.
 \end{DoxyReturn}
+This function does the following\-:
+\begin{DoxyEnumerate}
+\item Reads in the csv file.
+\item Parses the file into array of lines.
+\item Parses each line at comma.
+\item Define tsteps and the iapp\-\_\-label. 
+\end{DoxyEnumerate}
 
-
-Definition at line 13 of file user\-\_\-input\-\_\-mod.\-py.
+Definition at line 16 of file user\-\_\-input\-\_\-mod.\-py.
 
 \hypertarget{namespaceuser__input__mod_a2511b60d779c810e395c24628cc22f6c}{\index{user\-\_\-input\-\_\-mod@{user\-\_\-input\-\_\-mod}!iapp\-\_\-step\-\_\-setup@{iapp\-\_\-step\-\_\-setup}}
 \index{iapp\-\_\-step\-\_\-setup@{iapp\-\_\-step\-\_\-setup}!user_input_mod@{user\-\_\-input\-\_\-mod}}
@@ -216,23 +318,59 @@ Definition at line 13 of file user\-\_\-input\-\_\-mod.\-py.
 )}}\label{namespaceuser__input__mod_a2511b60d779c810e395c24628cc22f6c}
 
 
-Set up applied current density iapp as stepped array of length tsteps. 
+Sets up the applied current density 'iapp' as a stepped array of length tsteps. 
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em tsteps,\-:} & Number of timesteps, length of array iapp. \\
+\mbox{\tt in}  & {\em tsteps} & Number of timesteps, needs to be the length of the array iapp. \\
 \hline
-\mbox{\tt in}  & {\em iapp\-\_\-steps,\-:} & 2\-D Array containing heights of steps and timesteps where step occurs, starting timestep 0. Timesteps must be integers. \\
+\mbox{\tt in}  & {\em iapp\-\_\-steps} & 2\-D Array containing heights of the steps and the timesteps at which step occurs, starting at timestep 0. Timesteps must be integers. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-iapp\-\_\-arr\-: Array containing applied current density. 
+iapp\-\_\-arr\-: An array containing the applied current density. 
 
-iapp\-\_\-label\-: String containing description of iapp. 1. Set up label and initialise array. 
+iapp\-\_\-label\-: A string describing the type for iapp.
 \end{DoxyReturn}
+Function does the following\-:
+\begin{DoxyEnumerate}
+\item Sets up the label and initialises the array.
+\item Verifies that timesteps are integers and current density values are floats.
+\item Verifies that the first timestep is 0.
+\item Sets up an array. 
+\end{DoxyEnumerate}
+
+Definition at line 76 of file user\-\_\-input\-\_\-mod.\-py.
+
+\hypertarget{namespaceuser__input__mod_aea01ecd06e7c99fb37057ed6ca6651ae}{\index{user\-\_\-input\-\_\-mod@{user\-\_\-input\-\_\-mod}!optimise\-\_\-parallelism@{optimise\-\_\-parallelism}}
+\index{optimise\-\_\-parallelism@{optimise\-\_\-parallelism}!user_input_mod@{user\-\_\-input\-\_\-mod}}
+\subsubsection[{optimise\-\_\-parallelism}]{\setlength{\rightskip}{0pt plus 5cm}def user\-\_\-input\-\_\-mod.\-optimise\-\_\-parallelism (
+\begin{DoxyParamCaption}
+\item[{}]{n\-\_\-procs, }
+\item[{}]{n\-\_\-gitt\-\_\-steps = {\ttfamily 1}, }
+\item[{}]{full\-\_\-battery = {\ttfamily False}}
+\end{DoxyParamCaption}
+)}}\label{namespaceuser__input__mod_aea01ecd06e7c99fb37057ed6ca6651ae}
 
 
-Definition at line 61 of file user\-\_\-input\-\_\-mod.\-py.
+Decides the correct number of threads to use for a given simulation. 
+
+Given a user supplied number of processors, as well as further details about the simulation (the number of current steps if it's a G\-I\-T\-T test, if the simulation is a full cell or not), this function decides on the optimum number of threads to use. It never picks a number of threads greater than 4, as any larger than this and the communication overhead between threads during the matrix solve begins to dominate and the computation time increases. This function therefore allows a balanced optimum parallelisation strategy. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em n\-\_\-procs,\-:} & The number of processors that the user is happy for the program to exploit. The program will exploit a number of cores less than or equal to this number. Integer. \\
+\hline
+\mbox{\tt in}  & {\em n\-\_\-gitt\-\_\-steps,\-:} & The number of G\-I\-T\-T steps if the experiment being performed is a G\-I\-T\-T test. 1 by default (in the case of the experiment not being a G\-I\-T\-T test) integer. \\
+\hline
+\mbox{\tt in}  & {\em full\-\_\-battery,\-:} & Bool, True means that both sides of a battery are being simulated, whilst False means only one side.\\
+\hline
+\end{DoxyParams}
+The function works by\-:
+\begin{DoxyEnumerate}
+\item Deciding what number of threads is best to use given the type of simulation and input parameters, up to a maximum of 4. Note that this is based off the principle that parallelisation over independent seperate instances of the solver is always better than multithreading.
+\item Setting the environment variable. 
+\end{DoxyEnumerate}
+
+Definition at line 655 of file user\-\_\-input\-\_\-mod.\-py.
 
 \hypertarget{namespaceuser__input__mod_ad783135a051fdfddaadb06394ff84a73}{\index{user\-\_\-input\-\_\-mod@{user\-\_\-input\-\_\-mod}!set\-\_\-defaults\-\_\-neg@{set\-\_\-defaults\-\_\-neg}}
 \index{set\-\_\-defaults\-\_\-neg@{set\-\_\-defaults\-\_\-neg}!user_input_mod@{user\-\_\-input\-\_\-mod}}
@@ -245,9 +383,9 @@ Definition at line 61 of file user\-\_\-input\-\_\-mod.\-py.
 
 Returns default parameters for a negative electrode. 
 
-Parameter values are taken from Chen et al. 2020, \href{https://doi.org/10.1149/1945-7111/ab9050}{\tt https\-://doi.\-org/10.\-1149/1945-\/7111/ab9050}. Simulation is set up to run for 100 timesteps of size dt=0.\-1s, with n=1000 spatial nodes. Applied current density is set up as a constant current density of value 0.\-73m\-A m$^\wedge$2. 
+Gives the default parameter values, obtained from from \cite{Chen2020} T\-He simulation is set up to run for 100 timesteps of size dt = 0.\-1s, with n = 1000 spatial nodes. Applied current density is set up as a constant current density of value 0.\-73m\-A m$^\wedge$2. 
 
-Definition at line 152 of file user\-\_\-input\-\_\-mod.\-py.
+Definition at line 174 of file user\-\_\-input\-\_\-mod.\-py.
 
 \hypertarget{namespaceuser__input__mod_acef497295190e3914f7cd93da2708856}{\index{user\-\_\-input\-\_\-mod@{user\-\_\-input\-\_\-mod}!set\-\_\-defaults\-\_\-pos@{set\-\_\-defaults\-\_\-pos}}
 \index{set\-\_\-defaults\-\_\-pos@{set\-\_\-defaults\-\_\-pos}!user_input_mod@{user\-\_\-input\-\_\-mod}}
@@ -262,9 +400,9 @@ D\-E\-F\-A\-U\-L\-T P\-A\-R\-A\-M\-E\-T\-E\-R\-S \#\#\#.
 
 Returns default parameters for a positive electrode
 
-Parameter values are taken from Chen et al. 2020, \href{https://doi.org/10.1149/1945-7111/ab9050}{\tt https\-://doi.\-org/10.\-1149/1945-\/7111/ab9050}. Simulation is set up to run for 100 timesteps of size dt=0.\-1s, with n=1000 spatial nodes. Applied current density is set up as a constant current density of value 0.\-73m\-A m$^\wedge$2. 
+Gives the default parameter values, obtained from Chen et al. 2020, \href{https://doi.org/10.1149/1945-7111/ab9050}{\tt https\-://doi.\-org/10.\-1149/1945-\/7111/ab9050}. The simulation is set up to run for 100 timesteps of size dt = 0.\-1s, with n = 1000 spatial nodes. Applied current density is set up as a constant current density of value 0.\-73m\-A m$^\wedge$2. 
 
-Definition at line 117 of file user\-\_\-input\-\_\-mod.\-py.
+Definition at line 139 of file user\-\_\-input\-\_\-mod.\-py.
 
 \hypertarget{namespaceuser__input__mod_aa2382852ed7b2a4b8d19529c4ab0ac7e}{\index{user\-\_\-input\-\_\-mod@{user\-\_\-input\-\_\-mod}!verify\-\_\-iapp@{verify\-\_\-iapp}}
 \index{verify\-\_\-iapp@{verify\-\_\-iapp}!user_input_mod@{user\-\_\-input\-\_\-mod}}
@@ -277,20 +415,20 @@ Definition at line 117 of file user\-\_\-input\-\_\-mod.\-py.
 )}}\label{namespaceuser__input__mod_aa2382852ed7b2a4b8d19529c4ab0ac7e}
 
 
-Verifies types and values of applied current density array and label. 
+Verifies the types and values of the applied current density array and its label. 
 
-Verifies that parameters output iapp and iapp\-\_\-label have the correct types, valid values, and correct lengths. If any are found to be invalid, an error is printed and the execution stopped. 
+Verifies that the parameters output iapp and iapp\-\_\-label have the correct types, valid values, and correct lengths. If any are found to be invalid, an error is printed and the execution will stop. 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em iapp,\-:} & Applied current density, 1\-D array of floats of length tsteps. \\
 \hline
-\mbox{\tt in}  & {\em iapp\-\_\-label,\-:} & Label of applied current density, string. \\
+\mbox{\tt in}  & {\em iapp\-\_\-label,\-:} & Labels the type of applied current density, must be a string. \\
 \hline
-\mbox{\tt in}  & {\em tsteps,\-:} & Number of timesteps, to check iapp has correct length. \\
+\mbox{\tt in}  & {\em tsteps,\-:} & Number of timesteps, in order to check iapp has the correct length. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line 291 of file user\-\_\-input\-\_\-mod.\-py.
+Definition at line 315 of file user\-\_\-input\-\_\-mod.\-py.
 
 \hypertarget{namespaceuser__input__mod_a155b516c3ff05c1003e11caef128738f}{\index{user\-\_\-input\-\_\-mod@{user\-\_\-input\-\_\-mod}!verify\-\_\-params@{verify\-\_\-params}}
 \index{verify\-\_\-params@{verify\-\_\-params}!user_input_mod@{user\-\_\-input\-\_\-mod}}
@@ -312,34 +450,36 @@ Definition at line 291 of file user\-\_\-input\-\_\-mod.\-py.
 
 P\-A\-R\-A\-M\-E\-T\-E\-R V\-E\-R\-I\-F\-I\-C\-A\-T\-I\-O\-N \#\#\#. 
 
-Verifies types and values of input parameters.
+Verifies the types and values of the input parameters.
 
-Verifies that parameters output filename, tsteps, dt, c0, D, R, a, and L have the correct type and valid values. If any are found to be invalid, an error is printed and the execution stopped. 
+Verifies that output filename, tsteps, dt, c0, D, R, a, and L have the correct type and valid values. If any are found to be invalid, an error is printed and the execution will stop.
+
+
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em filename,\-:} & Output filename, string, must have less than 50 chars. No file extension required. \\
+\mbox{\tt in}  & {\em filename} & The name of the output file, this must be a string and have max 50 characters. No file extension is required. \\
 \hline
-\mbox{\tt in}  & {\em tsteps,\-:} & Number of timesteps, integer $>$ 0. \\
+\mbox{\tt in}  & {\em tsteps} & Number of timesteps, must be an integer greater than 0. \\
 \hline
-\mbox{\tt in}  & {\em dt,\-:} & Timestep size, float $>$ 0. \\
+\mbox{\tt in}  & {\em dt} & Timestep size, must be a float greater than 0. \\
 \hline
-\mbox{\tt in}  & {\em n,\-:} & Number of spatial nodes, integer, 100 =$<$ n =$<$ 4000. \\
+\mbox{\tt in}  & {\em n} & Number of spatial nodes, must be an integer between 100 and 4000. \\
 \hline
-\mbox{\tt in}  & {\em c0,\-:} & Initial concentration, float $>$= 0. \\
+\mbox{\tt in}  & {\em c0} & Initial concentration, must be a float greater than or equal to 0. \\
 \hline
-\mbox{\tt in}  & {\em D,\-:} & Diffusion constant, float. \\
+\mbox{\tt in}  & {\em D} & Diffusion constant, must be a float. \\
 \hline
-\mbox{\tt in}  & {\em R,\-:} & Width of block, float $>$ 0. \\
+\mbox{\tt in}  & {\em R} & Radius of the sphere, must be a float greater than 0. \\
 \hline
-\mbox{\tt in}  & {\em a,\-:} & Particle surface area per unit volume, float $>$= 0. \\
+\mbox{\tt in}  & {\em a} & Particle surface area per unit volume, must be a float greater than or equal to 0. \\
 \hline
-\mbox{\tt in}  & {\em L,\-:} & Electrode thickness, float $>$= 0. \\
+\mbox{\tt in}  & {\em L} & Electrode thickness, must be a float greater than or equal to 0. \\
 \hline
-\mbox{\tt in}  & {\em electrode\-\_\-charge,\-:} & Label of charge of electrode, string, 'p' for positive or 'n' for negative. \\
+\mbox{\tt in}  & {\em electrode\-\_\-charge} & Labels charge of the electrode, must b a string, 'p' for positive or 'n' for negative. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line 191 of file user\-\_\-input\-\_\-mod.\-py.
+Definition at line 213 of file user\-\_\-input\-\_\-mod.\-py.
 
 \hypertarget{namespaceuser__input__mod_a23ddc1955874f5e5e2639522e3f4d276}{\index{user\-\_\-input\-\_\-mod@{user\-\_\-input\-\_\-mod}!write\-\_\-to\-\_\-file@{write\-\_\-to\-\_\-file}}
 \index{write\-\_\-to\-\_\-file@{write\-\_\-to\-\_\-file}!user_input_mod@{user\-\_\-input\-\_\-mod}}
@@ -363,9 +503,16 @@ Definition at line 191 of file user\-\_\-input\-\_\-mod.\-py.
 
 W\-R\-I\-T\-E T\-O F\-I\-L\-E \#\#\#. 
 
-Function writes user inputs to txt file.
+Writes user inputs to a txt file.
 
-Writes user inputs to txt file named 'filename'. Parameters are output in format 'parameter = value'. tsteps, dt, c0, D, R, a, L, electrode\-\_\-charge are output to top of file, followed by an asterix line ($\ast$$\ast$$\ast$). iapp\-\_\-label follows the asterix line, with iapp array following, written one element per line. 
+Writes the user inputs to a txt file named 'filename'. Parameters are output in the format 'parameter = value'. tsteps, dt, c0, D, R, a, L, electrode\-\_\-charge are output to the top of the file, followed by an asterix line ($\ast$$\ast$$\ast$). iapp\-\_\-label is output below the asterix line, with iapp array the following it, written one element per line.
 
-Definition at line 326 of file user\-\_\-input\-\_\-mod.\-py.
+The function works by\-:
+\begin{DoxyEnumerate}
+\item Setting the file name.
+\item Making a list of strings to write to the file.
+\item Writing to the file. 
+\end{DoxyEnumerate}
+
+Definition at line 351 of file user\-\_\-input\-\_\-mod.\-py.
 

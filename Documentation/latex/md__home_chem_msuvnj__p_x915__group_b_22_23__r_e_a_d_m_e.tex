@@ -1,0 +1,62 @@
+A half single particle model by Group B for the 2023 PX915 group project.\hypertarget{md__home_chem_msuvnj__p_x915__group_b_22_23__r_e_a_d_m_e_autotoc_md1}{}\doxysection{Program Features}\label{md__home_chem_msuvnj__p_x915__group_b_22_23__r_e_a_d_m_e_autotoc_md1}
+SPAMS models the charging and discharging of a lithium ion battery using a Crank-\/\+Nicolson semi-\/implicit finite difference scheme to obtain the concentration of lithium in a sphere, {\bfseries{c}}(i\textsubscript{app}, {\bfseries{r}}), at each time step, and has the following features\+:
+\begin{DoxyItemize}
+\item Apply a constant, stepwise or custom current
+\item Options for parallelism
+\item Extend the model to a full battery
+\item First order sensitivty analysis
+\end{DoxyItemize}\hypertarget{md__home_chem_msuvnj__p_x915__group_b_22_23__r_e_a_d_m_e_autotoc_md2}{}\doxysection{Dependencies}\label{md__home_chem_msuvnj__p_x915__group_b_22_23__r_e_a_d_m_e_autotoc_md2}
+Prior to installing the program or accessing the tutorial, you will need to ensure you have the following installed\+:
+
+
+\begin{DoxyItemize}
+\item intel/2017.\+4.\+196-\/\+GCC-\/6.\+4.\+0-\/2.\+28
+\item impi/2017.\+3.\+196 imkl/2017.\+3.\+196
+\item imkl/2017.\+3.\+196
+\item net\+CDF-\/\+Fortran/4.\+4.\+4
+\item GCC/10.\+2.\+0
+\item Python/3.\+8.\+6
+\item numpy
+\item net\+CDF4
+\item matplotlib
+\end{DoxyItemize}
+
+For an scrtp managed system the following procedure will ensure correct dependendcies are installed\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module purge; module load intel/2017.4.196-\/GCC-\/6.4.0-\/2.28  impi/2017.3.196 imkl/2017.3.196 netCDF-\/Fortran/4.4.4 GCC/10.2.0 Python/3.8.6}
+\DoxyCodeLine{pip3 install numpy netCDF4 Matplotlib}
+
+\end{DoxyCode}
+\hypertarget{md__home_chem_msuvnj__p_x915__group_b_22_23__r_e_a_d_m_e_autotoc_md3}{}\doxysection{Installation}\label{md__home_chem_msuvnj__p_x915__group_b_22_23__r_e_a_d_m_e_autotoc_md3}
+To install SPAMS, navigate to the directory in your file system where you would like to download it, and use the following command\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git clone https://github.com/HetSys/PX915\_GroupB\_22-\/23}
+
+\end{DoxyCode}
+\hypertarget{md__home_chem_msuvnj__p_x915__group_b_22_23__r_e_a_d_m_e_autotoc_md4}{}\doxysection{Running the program}\label{md__home_chem_msuvnj__p_x915__group_b_22_23__r_e_a_d_m_e_autotoc_md4}
+Run line\+: {\ttfamily python3 \mbox{\hyperlink{user__input_8py}{user\+\_\+input.\+py}}}\hypertarget{md__home_chem_msuvnj__p_x915__group_b_22_23__r_e_a_d_m_e_autotoc_md5}{}\doxysection{Accessing the user tutorial}\label{md__home_chem_msuvnj__p_x915__group_b_22_23__r_e_a_d_m_e_autotoc_md5}
+A full tutorial for basic usage of the program is provided in Jupyter notebook format.
+\begin{DoxyItemize}
+\item The notebook can been found in the main directory and is called \textquotesingle{}Tutorial.\+ipynb\textquotesingle{}.
+\item The notebook can be viewed here in github as a markdown file.
+\item To run the notebook, load it from the terminal by navigating to the main program directory and using the command\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{nohup jupyter notebook Tutorial.ipynb}
+
+\end{DoxyCode}
+
+\item You should then be able to find the notebook url using 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cat nohup.out}
+
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{md__home_chem_msuvnj__p_x915__group_b_22_23__r_e_a_d_m_e_autotoc_md6}{}\doxysection{Developer documentation}\label{md__home_chem_msuvnj__p_x915__group_b_22_23__r_e_a_d_m_e_autotoc_md6}
+Developer documentation is available at \href{https://hetsys.github.io/PX915_GroupB_22-23/}{\texttt{ https\+://hetsys.\+github.\+io/\+PX915\+\_\+\+Group\+B\+\_\+22-\/23/}}.
+
+\hypertarget{md__home_chem_msuvnj__p_x915__group_b_22_23__r_e_a_d_m_e_autotoc_md7}{}\doxysection{Contributors}\label{md__home_chem_msuvnj__p_x915__group_b_22_23__r_e_a_d_m_e_autotoc_md7}
+Fraser Birks, Laura Cairns, Sebastian Dooley, Arielle Fitkin, Jake Eller, and Yu Lei
+
+Het\+Sys CDT, University of Warwick 

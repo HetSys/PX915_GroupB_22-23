@@ -53,7 +53,7 @@ K_neg = 6.48E-7 #Am^-2(m^3mol^-1)^1.5
 cmax_pos_sim = 63104.00 #molm^-3 # m
 cmax_neg_sim = 33133.00 #molm^-3 # m 
 
-n = 200 #set number of nodes to 100
+n = 1000 #set number of nodes to 100
 
 ###### Check parameters are valid ######
 UI.verify_params(output_filename_positive, tsteps, dt, n, c0_pos, D_pos, R_pos, a_pos, L_pos, electrode_charge_pos)
@@ -61,7 +61,7 @@ UI.verify_params(output_filename_negative, tsteps, dt, n, c0_neg, D_neg, R_neg, 
 
 ###### Manually set up applied current and parallelisation ######
 # Number of parallel processors being utilised
-nprocs = 20
+nprocs = 40
 
 # Number of current blocks to apply
 nsteps = 10

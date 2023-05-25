@@ -1,7 +1,6 @@
-'''! 
-@brief Sets up the user inputs and executes the solver.
+'''! @brief Sets up the user inputs and executes the solver.
 @details This file contains all input parameters for the solver and can be changed by the user. 
-This file and all tunebale parameters are broken down in full detail in the user tutorial (see Tutorial.ipynb).
+This file and all tuneable parameters are broken down in full detail in the user tutorial (see Tutorial.ipynb).
 
 The following options can be controlled by editing this file:
 - Outputting stdout to a file.
@@ -9,6 +8,7 @@ The following options can be controlled by editing this file:
 - Set the values for the following input parameters:
     - tsteps
     - dt
+    - n
     - c0
     - D
     - R
@@ -38,11 +38,7 @@ import sys
 # Select input file: checkpoint file (True) or user input parameters (False).
 # Enter the filename of desired checkpoint file or the desired name of the file containing user input parameters.
 checkpoint = True
-if checkpoint == False:
-    solver_input_filename = 'user_input'
-else:
-    solver_input_filename = 'checkpoints_user_input/user_input_tstep_300.nc'
-
+solver_input_filename = 'user_input'
 
 
 
@@ -52,21 +48,13 @@ else:
 # Import default values
 tsteps, dt, n, c0, D, R, a, L, iapp, iapp_label, electrode_charge = UI.set_defaults_pos()
 
-
-# Read in applied current density from csv file
-'''!@private iapp_filename'''
-iapp_filename = 'WLTP_m10.csv'
-iapp, iapp_label, tsteps = UI.iapp_read_csv(iapp_filename)
-
-
 # Additional values important for visualisation
 
-K_pos = 3.42E-6   #  Am^-2(m^3mol^-1)^1.5
-K_neg = 6.48E-7   #  Am^-2(m^3mol^-1)^1.5
+K_pos = 3.42E-6   # Reaction rate at positive electrodes (Am^-2(m^3mol^-1)^1.5)
+K_neg = 6.48E-7   # Reaction rate at negative electrodes Am^-2(m^3mol^-1)^1.5)
 
-cmax_pos_sim = 63104.00   #  molm^-3 # m
-cmax_neg_sim = 33133.00   #  molm^-3 # m 
-
+cmax_pos_sim = 63104.00   # Positive electrode maximum concentration (molm^-3)
+cmax_neg_sim = 33133.00   # Negative electrode maximum concentration (molm^-3)
 
 ######### END SET VALUES #########
 

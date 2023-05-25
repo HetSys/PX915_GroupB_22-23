@@ -21,6 +21,7 @@
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxy_aesthetic.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -49,6 +50,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="namespaces.html"><span>Modules</span></a></li>
+      <li><a href="md_math.html"><span>Maths&#160;and&#160;Theory</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Types&#160;List</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -111,18 +113,25 @@ $(document).ready(function(){initNavTree('namespaceplotter.html','');});
 <div class="title">plotter Namespace Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Functions for visualisation of solver outputs.  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:aae454e5e82b331fc3539380bf77085bb"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceplotter.html#aae454e5e82b331fc3539380bf77085bb">read_output_file</a></td></tr>
+<tr class="memdesc:aae454e5e82b331fc3539380bf77085bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads in data from user input and solver output using NetCDF.  <a href="#aae454e5e82b331fc3539380bf77085bb">More...</a><br/></td></tr>
 <tr class="separator:aae454e5e82b331fc3539380bf77085bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac4584f2efde622b7fe9e2b77b97b3089"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceplotter.html#ac4584f2efde622b7fe9e2b77b97b3089">read_input_current</a></td></tr>
+<tr class="memdesc:ac4584f2efde622b7fe9e2b77b97b3089"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads in the applied current.  <a href="#ac4584f2efde622b7fe9e2b77b97b3089">More...</a><br/></td></tr>
 <tr class="separator:ac4584f2efde622b7fe9e2b77b97b3089"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49b689df200e34e2e72d1e8b7122c34a"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceplotter.html#a49b689df200e34e2e72d1e8b7122c34a">animated_conc_plot</a></td></tr>
+<tr class="memdesc:a49b689df200e34e2e72d1e8b7122c34a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves animation of lithium concentration over time.  <a href="#a49b689df200e34e2e72d1e8b7122c34a">More...</a><br/></td></tr>
 <tr class="separator:a49b689df200e34e2e72d1e8b7122c34a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a716e2d183d061a11623adaf2dba72476"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceplotter.html#a716e2d183d061a11623adaf2dba72476">gen_half_cell_voltage</a></td></tr>
 <tr class="separator:a716e2d183d061a11623adaf2dba72476"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a44edad80659cbc5874617eabd87609ba"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceplotter.html#a44edad80659cbc5874617eabd87609ba">voltage_current_plot</a></td></tr>
+<tr class="memdesc:a44edad80659cbc5874617eabd87609ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates voltages and plots as a function of time.  <a href="#a44edad80659cbc5874617eabd87609ba">More...</a><br/></td></tr>
 <tr class="separator:a44edad80659cbc5874617eabd87609ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa10bc6c7a1f0ea5ddf498ced8c1e08ee"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceplotter.html#aa10bc6c7a1f0ea5ddf498ced8c1e08ee">plot_halfcell_GITT_result</a></td></tr>
 <tr class="separator:aa10bc6c7a1f0ea5ddf498ced8c1e08ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -130,8 +139,19 @@ Functions</h2></td></tr>
 <tr class="separator:aacce2143cb025e12026b3580467165ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad575e508b7dec6d686b1ad23bd88c23e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceplotter.html#ad575e508b7dec6d686b1ad23bd88c23e">full_battery_GITT_plots</a></td></tr>
 <tr class="separator:ad575e508b7dec6d686b1ad23bd88c23e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34948a1cfae887bb24a8ad480441a831"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceplotter.html#a34948a1cfae887bb24a8ad480441a831">get_avg_li_conc</a></td></tr>
+<tr class="memdesc:a34948a1cfae887bb24a8ad480441a831"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the average concentration of lithium at a given timestep using trapezium rule inside the sphere.  <a href="#a34948a1cfae887bb24a8ad480441a831">More...</a><br/></td></tr>
+<tr class="separator:a34948a1cfae887bb24a8ad480441a831"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Functions for visualisation of solver outputs. </p>
+<p>(Plots are saved locally.)</p>
+<p>Contains functions that produce:</p>
+<ul>
+<li>An animation showing the concentration of lithium as a function of time and space. (There is an additional feature for saving the concentration profile at the end of the simulation as a png.)</li>
+<li>Plots of both voltage and applied current over time. </li>
+</ul>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a49b689df200e34e2e72d1e8b7122c34a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -192,7 +212,10 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="plotter_8py_source.html#l00068">68</a> of file <a class="el" href="plotter_8py_source.html">plotter.py</a>.</p>
+<p>Saves animation of lithium concentration over time. </p>
+<p>Saves the animation 'concentration_animation.gif', that displays the evolution of lithium concentration over time. If passed the argument 'SaveFinalState = True', it saves an image 'final_state.png' of lithium concentration across the sphere at the final timestep. </p>
+
+<p>Definition at line <a class="el" href="plotter_8py_source.html#l00072">72</a> of file <a class="el" href="plotter_8py_source.html">plotter.py</a>.</p>
 
 </div>
 </div>
@@ -250,7 +273,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="plotter_8py_source.html#l00322">322</a> of file <a class="el" href="plotter_8py_source.html">plotter.py</a>.</p>
+<p>Definition at line <a class="el" href="plotter_8py_source.html#l00365">365</a> of file <a class="el" href="plotter_8py_source.html">plotter.py</a>.</p>
 
 </div>
 </div>
@@ -301,8 +324,20 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>At time = 0s, the output of j_function can be 0 if Li concentration at the sphere edge is 0. This results in an error as V_function involves division by the output of j_function.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">edge_conc_vals</td><td>Lithium concentration at the sphere edge for all time steps </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">i_app_data</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">electrode</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">tsteps</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pos_params</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">neg_params</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="plotter_8py_source.html#l00126">126</a> of file <a class="el" href="plotter_8py_source.html">plotter.py</a>.</p>
+<p>Definition at line <a class="el" href="plotter_8py_source.html#l00147">147</a> of file <a class="el" href="plotter_8py_source.html">plotter.py</a>.</p>
 
 </div>
 </div>
@@ -354,7 +389,46 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="plotter_8py_source.html#l00314">314</a> of file <a class="el" href="plotter_8py_source.html">plotter.py</a>.</p>
+<p>Definition at line <a class="el" href="plotter_8py_source.html#l00357">357</a> of file <a class="el" href="plotter_8py_source.html">plotter.py</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a34948a1cfae887bb24a8ad480441a831"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def plotter.get_avg_li_conc </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>c_vals</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>r_vals</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the average concentration of lithium at a given timestep using trapezium rule inside the sphere. </p>
+<p>!</p>
+<p>Uses the fact that the average concentration of lithium in a sphere at any timestep can be found from ${3}{R^{3}}{0}^{R} c(r)r^{2}dr. Note, that this seems weird. It is weird. The reason this is necessary is because the concentration values in the sphere are defined per active electrode volume, i.e e_act*L*A, not per sphere volume. Therefore, to calculate the lithium mass loss in the whole system it is necessary to first find the concentration as if each sphere was uniformly filled (that is what this function does), and then after that multiply this average concentration by the active electrode volume. Take it up with whoever came up with the single particle model, not me. !</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">c_vals,:</td><td>Array of concentration values covering the whole sphere radius, floats. !</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">r_vals,:</td><td>Array of radius values that correspond the concentration values given in c_vals, floats. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="plotter_8py_source.html#l00498">498</a> of file <a class="el" href="plotter_8py_source.html">plotter.py</a>.</p>
 
 </div>
 </div>
@@ -424,7 +498,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="plotter_8py_source.html#l00285">285</a> of file <a class="el" href="plotter_8py_source.html">plotter.py</a>.</p>
+<p>Definition at line <a class="el" href="plotter_8py_source.html#l00328">328</a> of file <a class="el" href="plotter_8py_source.html">plotter.py</a>.</p>
 
 </div>
 </div>
@@ -452,7 +526,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="plotter_8py_source.html#l00043">43</a> of file <a class="el" href="plotter_8py_source.html">plotter.py</a>.</p>
+<p>Reads in the applied current. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">filename</td><td>The name of the input file, this must be a string and have max 50 characters. No file extension is required. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">step_num</td><td>Specifies the step number to read for a parallel simulation (defualt = none for serial) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="plotter_8py_source.html#l00049">49</a> of file <a class="el" href="plotter_8py_source.html">plotter.py</a>.</p>
 
 </div>
 </div>
@@ -480,7 +563,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="plotter_8py_source.html#l00015">15</a> of file <a class="el" href="plotter_8py_source.html">plotter.py</a>.</p>
+<p>Reads in data from user input and solver output using NetCDF. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">filename</td><td>The name of the input file, this must be a string and have max 50 characters. No file extension is required. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">step_num</td><td>Specifies the step number to read for a parallel simulation (defualt = none for serial) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="plotter_8py_source.html#l00014">14</a> of file <a class="el" href="plotter_8py_source.html">plotter.py</a>.</p>
 
 </div>
 </div>
@@ -538,7 +630,22 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="plotter_8py_source.html#l00266">266</a> of file <a class="el" href="plotter_8py_source.html">plotter.py</a>.</p>
+<p>Calculates voltages and plots as a function of time. </p>
+<p>Calculates the voltage at all time points and saves plots of both Li concentration at the sphere edge and voltage as a function of time. This function has different settings determined by the value of electrode. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">electrode</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">cstore</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">time_axis</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">i_app_data</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">tsteps</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pos_params</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">neg_params</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="plotter_8py_source.html#l00298">298</a> of file <a class="el" href="plotter_8py_source.html">plotter.py</a>.</p>
 
 </div>
 </div>

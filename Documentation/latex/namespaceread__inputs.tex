@@ -1,0 +1,41 @@
+\hypertarget{namespaceread__inputs}{}\doxysection{read\+\_\+inputs Module Reference}
+\label{namespaceread__inputs}\index{read\_inputs@{read\_inputs}}
+
+
+Read user inputs. Module contains functions that read user inputs from file and command line.  
+
+
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+character(len=54) function \mbox{\hyperlink{namespaceread__inputs_af58382cf74aaa0b567c98ecc75eb5da5}{read\+\_\+command\+\_\+line}} ()
+\begin{DoxyCompactList}\small\item\em Read command line function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Read user inputs. Module contains functions that read user inputs from file and command line. 
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespaceread__inputs_af58382cf74aaa0b567c98ecc75eb5da5}\label{namespaceread__inputs_af58382cf74aaa0b567c98ecc75eb5da5}} 
+\index{read\_inputs@{read\_inputs}!read\_command\_line@{read\_command\_line}}
+\index{read\_command\_line@{read\_command\_line}!read\_inputs@{read\_inputs}}
+\doxysubsubsection{\texorpdfstring{read\_command\_line()}{read\_command\_line()}}
+{\footnotesize\ttfamily character(len=54) function read\+\_\+inputs\+::read\+\_\+command\+\_\+line}
+
+
+
+Read command line function. 
+
+Function\+:
+\begin{DoxyEnumerate}
+\item Reads in command line arguments.
+\item Parses each argument into \textquotesingle{}name\textquotesingle{} \textquotesingle{}=\textquotesingle{} \textquotesingle{}value\textquotesingle{}.
+\item Identifies argument called filename.
+\item Passes filename as result. \begin{DoxyReturn}{Returns}
+filename\+: Name of file containing user inputs. 
+\end{DoxyReturn}
+
+\end{DoxyEnumerate}
+
+Definition at line 19 of file read\+\_\+inputs.\+f90.
+

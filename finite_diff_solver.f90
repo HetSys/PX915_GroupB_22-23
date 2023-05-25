@@ -1,5 +1,7 @@
 !NOTE - COMPILE THIS PROGRAM WITH THE FOLLOWING LINE
 !gfortran read_inputs.f90 nc_output.f90 finite_diff_solver.f90 -llapack -o finite_diff_solver
+
+!> @brief Crank-Nicolson finite differences solver
 PROGRAM MAIN
     USE ISO_FORTRAN_ENV
     USE read_inputs
@@ -97,22 +99,13 @@ PROGRAM MAIN
         !edge of sphere (right edge)
         b(n) = ((D/R)*(Z(tstep+1) + Z(tstep)))*dt+((D*Z(tstep+1))/deltar)*dt &
         +(D/2.0_REAL64)*dt*(((2.0_REAL64*Z(tstep)*deltar)+(2.0_REAL64*c(N-1))-(2.0_REAL64*c(N)))/(deltar**2)) + c(n)
-        !print*, 'c',c
 
         !implicit scheme
         CALL dgesv(n,1,A,n,ipiv,b,n,info)
-        !print*, 'a',A
         A = A_copy !dgesv affects matrix A
-        !print*, 'a',A
         c = b
-        !IF(info/=0) THEN
-        !    PRINT*,'Inversion Failed'
-        !ELSE
-        !    PRINT*, 'Successful Inversion'
-        !END IF
-        !add solution to storage vector
+
         cstorage(:,tstep+1) = c
-        !time_axis(tstep+1) = dt*tstep
         
         CALL write_checkpoint(tstep, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage, filename, 20)
         
@@ -124,8 +117,7 @@ PROGRAM MAIN
     !write to output file
     OPEN(9,file='output.txt',form='formatted')
     DO i = 1,n
-        write (9,*) i, cstorage(i,:)
-        !print*, i, cstorage(i,:)
+        WRITE (9,*) i, cstorage(i,:)
     END DO
     CLOSE(9)
 
@@ -142,34 +134,3 @@ PROGRAM MAIN
     DEALLOCATE(time_axis)
     
 END PROGRAM
-
-
-!Suggested changes:
-
-!Write to output file at each time step - saves memory requirements if small timestep
-!Wouldn't need a matrix to store values.
-!Probably less efficient.
-
-!Simplify edge of sphere equation using d2c/dr2 = 0, due to substitution of equation dc/dr = Z(t) => d2c/dr2 = 0.
-!Likely won't use this change - including term allows for consideration of non-zero d2c/dr2, i.e. numerical errors.
-
-
-!Change log:
-
-!Line 23 (original):
-!deltar = R/(REAL(n,kind=REAL64)-1.0_REAL64)
-!instead of
-!deltar = R/REAL(n,kind=REAL64)
-!We have n nodes, so divide by (n-1)
-
-!Lines 39-48 (original):
-!Discretisation/Mesh is constant over simulation
-!Intialise matrix A moved outside of time loop and kept constant
-!Also re-ordered relating to memory storage
-!Notably - dgesv affects the matrix A, so a copy is required to store the values.
-!Still stops unnecessary extra computation - but now at the cost of memory.
-
-!ireal = real(i-1,kind=REAL64)
-!instead of
-!ireal = real(i,kind=REAL64)
-!Multiplied underlying equations through by dt for stability
