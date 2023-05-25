@@ -43,8 +43,8 @@ This is an average of standard forward and backward Euler methods.
 - Boundary conditions will be treated through the use of ghost nodes, which assign values for the function of interest to regions just beyond the domain of the problem in an attempt to approximate the first derivatives present in the Neumann boundary conditions specified. For example,
 
 <!-- end of the list -->
-```math
-> $$ \frac{\partial c}{\partial r}\Bigg|_{r=0} \approx \frac{c_1 - c_{-1}}{2\Delta r} = 0 \iff c_1 = c_{-1}. $$
+
+> $ \frac{\partial c}{\partial r}\Bigg|_{r=0} \approx \frac{c_1 - c_{-1}}{2\Delta r} = 0 \iff c_1 = c_{-1}. $
 
 The accuracy of the scheme will be chosen such that it is equivalent to the interior solved points.
 
