@@ -26,6 +26,7 @@ import pandas as pd
 
 #Holder function for code
 def sensitivity_over_time():
+    '''!@brief '''
     # Function that takes parameters for sensitivity analysis only
     # and returns the QOI
     # Notably - this QOI is a scalar for each time step and so the holder
@@ -101,6 +102,7 @@ def sensitivity_over_time():
         return full_voltage[idx]
     
     def first_order_sensitivities(Q, variables, Q0, eps=1e-6):
+        '''!@brief Performs first order sensitivity analysis on the supplied QOI and variables.'''
         x0 = np.array([v.mean() for v in variables])
         dQ_dx = np.zeros(len(x0))
         for i, xi in enumerate(x0):
@@ -111,6 +113,7 @@ def sensitivity_over_time():
         return dQ_dx
 
     def second_order_sensitivities(Q, variables, Q0, eps=1e-4):
+        '''!@brief 
         x0 = np.array([v.mean() for v in variables])
         dQ2_dx2 = np.zeros((len(x0), len(x0)))
 
