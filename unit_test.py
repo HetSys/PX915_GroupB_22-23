@@ -1,3 +1,8 @@
+'''!@brief Function that runs a unit test with a provided number of nodes, a provided timestep and a provided number of cores.
+The unit test is just a full battery simulation with the default (Chen 2020) parameters, where a gradually ramping current is applied for an amount of time
+followed by a period of rest.'''
+
+
 import numpy as np
 import user_input_mod as UI
 import plotter
