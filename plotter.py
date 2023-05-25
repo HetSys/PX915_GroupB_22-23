@@ -75,7 +75,8 @@ def animated_conc_plot(intervaltime,dr,tsteps,nodenum,cstore,time_axis,SaveFinal
     If passed the argument 'SaveFinalState = True', it saves an image 'final_state.png' of lithium concentration across the sphere at the final timestep.
     If passed the argument 'SparsifyAnimation = True', it saves 1 in every 10 timesteps rather than every single one.
     '''
-    
+    print('Generating animation (concentration_animation.....)')
+
     # Time between frames in animation (ms)
     intervaltime  = 10
 
@@ -314,6 +315,8 @@ def voltage_current_plot(electrode,cstore,time_axis,i_app_data,tsteps,pos_params
     @param[in] pos_params   [K, a, cmax, L] for the positive electrode, None if the positive is not needed
     @param[in] neg_params   [K, a, cmax, L] for the negative electrode, None if the negative is not needed
 '''
+
+    print('Generating voltage-time and current-time plot (Voltage Current Plot.png).....')
     #structure of cstore: each row represents a single timestep, each column a single node
     edge_conc_vals = cstore[:,-1]    #want the values of the edge node for all timesteps
     
@@ -327,7 +330,7 @@ def voltage_current_plot(electrode,cstore,time_axis,i_app_data,tsteps,pos_params
     axs[1].set_ylabel(r'Applied Current Density (A/m$^2$)', color = 'r')
     axs[1].plot(time_axis,i_app_data,'r--',label='current')
     axs[1].set_xlabel('Time (s)')
-    plt.savefig('Voltage Current Plot')
+    plt.savefig('Voltage Current Plot.png')
         
 
        
@@ -470,7 +473,7 @@ def full_battery_GITT_plots(filename_positive,filename_negative,start_times,pos_
     li_avg_conc_neg = get_avg_li_conc(full_cstore_neg[tsteps-1,:],r_neg_axis)
     li_frac = (li_avg_conc_pos*e_act_pos*L_pos + li_avg_conc_neg*e_act_neg*L_neg)/c0_eact_L
 
-    print('Fraction of lithium mass lost per current block applied:',1-li_frac)
+    print('Fraction of lithium lost per current block applied:',1-li_frac)
     #################generate animation###################
     tsteps = total_tsteps
     #build time step axis
@@ -548,9 +551,10 @@ def full_battery_GITT_plots(filename_positive,filename_negative,start_times,pos_
 
 
     #generate and save animation
+    print('Generating animation.....')
     ani = FuncAnimation(fig, update, interval=animation_interval_time, frames=time_step_axis,blit=True)#plt.xlim([990,1000])
     	
-    ani.save(filename = 'concentration_animation.gif', writer = 'pillow', fps = 30) 
+    ani.save(filename = 'full_battery_gitt_animation.gif', writer = 'pillow', fps = 30) 
 
 def get_avg_li_conc(c_vals,r_vals):
     '''!@brief Gets the average concentration of lithium at a given timestep using trapezium rule inside the sphere.
