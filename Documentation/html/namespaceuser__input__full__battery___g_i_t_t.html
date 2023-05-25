@@ -91,6 +91,9 @@ $(document).ready(function(){initNavTree('namespaceuser__input__full__battery___
 <div class="title">user_input_full_battery_GITT Namespace Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Example script for a full battery model.  
+<a href="namespaceuser__input__full__battery___g_i_t_t.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -183,32 +186,29 @@ Variables</h2></td></tr>
 <tr class="separator:aa2349dff3a64d01cbffde81610ca491a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><pre class="fragment"> @brief Example script for a full battery model 
-
-@details This is a running script which exists to demonstrate how one uses the 
-GITT function to run simulations in parallel on a full battery.
-This simulation completes 10 current cycles on each electrode over 2 cores each - parallelising 
-perfectly over 40 cores.
- 
-These simulations consist of applying a step function of current to a battery which turns on to a 
-fixed value for a given time interval, then back to 0, and then on again, etc. 
-
-The ascii art below indicates schematically how a current-time step looks during this experiment.
-
- I
- |______________               _____________
- |              |              |              
- |              |              |
- |              |              |
- |              |              |
- |              |              |
- |              |              |
- |______________|______________|_____________t
- 
-To run one of these simulations, one needs the following things:
-    - A vector containing the fixed values of current applied for each block of current
-    - A vector containing the start times of each current block
-    - A vector containing the duration of each current block</pre> </div><h2 class="groupheader">Variable Documentation</h2>
+<div class="textblock"><p>Example script for a full battery model. </p>
+<p>This is a running script which exists to demonstrate how one uses the GITT function to run simulations in parallel on a full battery. This simulation completes 10 current cycles on each electrode over 2 cores each - parallelising perfectly over 40 cores.</p>
+<p>These simulations consist of applying a step function of current to a battery which turns on to a fixed value for a given time interval, then back to 0, and then on again, etc.</p>
+<p>The ascii art below indicates schematically how a current-time step looks during this experiment.</p>
+<p>I |______________ _____________ </p><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone"></th><th class="markdownTableHeadNone"></th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"></td></tr>
+</table>
+<p>|______________|______________|_____________t</p>
+<p>To run one of these simulations, one needs the following things:</p><ul>
+<li>A vector containing the fixed values of current applied for each block of current</li>
+<li>A vector containing the start times of each current block</li>
+<li>A vector containing the duration of each current block </li>
+</ul>
+</div><h2 class="groupheader">Variable Documentation</h2>
 <a id="a165cbe81be4e2bcd1eeba6d395178a8e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a165cbe81be4e2bcd1eeba6d395178a8e">&#9670;&nbsp;</a></span>a_neg</h2>
 

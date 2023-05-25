@@ -9,7 +9,8 @@
 !>   -  Extend the model to a full battery
 !>   -  Uncertainty quantification
 !>
-!> \section Contributors Fraser Birks, Laura Cairns, Sebastian Dooley, Arielle Fitkin, Jake Eller, and Yu Lei
+!> \section Contributors 
+Fraser Birks, Laura Cairns, Sebastian Dooley, Arielle Fitkin, Jake Eller, and Yu Lei
 !>
 !> HetSys CDT, University of Warwick
 

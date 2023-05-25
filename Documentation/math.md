@@ -23,15 +23,4 @@ Generally:
 <img src="general_eq.png" >
 This is an average of standard forward and backward Euler methods.
 
-Boundary conditions are treated through the use of ghost nodes, which assign values for the function of interest to regions just beyond the domain of the problem in an attempt to approximate the first derivatives present in the Neumann boundary conditions specified. For example,
-
-<img src="eg_eq.png" >
-
-The accuracy of the scheme is such that it is equivalent to the interior solved points.
-
-Finally, a general initial condition is specified of the form
-
-<img src="c_eq.png" >
-
-The form of c_0 is assumed to be constant in R.
-
+Boundary conditions are treated through the use of ghost nodes, which assign values for the function of interest to regions just beyond the domain of the problem in an attempt to approximate the first derivatives present in the Neumann boundary conditions specified.

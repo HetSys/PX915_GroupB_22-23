@@ -2,13 +2,8 @@ var namespaces_dup =
 [
     [ "checkpointing", "namespacecheckpointing.html", null ],
     [ "convergence_test", "namespaceconvergence__test.html", [
-      [ "dt", "namespaceconvergence__test.html#a770f288d3048ff6cbee9faa0969fd6b0", null ],
-      [ "dt_vals", "namespaceconvergence__test.html#a01bf350668845d335856a01897f52f08", null ],
-      [ "final_mass_loss", "namespaceconvergence__test.html#a286581480f1ac2b891af448946570ab7", null ],
-      [ "final_voltage", "namespaceconvergence__test.html#af280c2b30ee28923780172f672744462", null ],
-      [ "mass_loss", "namespaceconvergence__test.html#a620ad3220b3d892047f36cbaf73119af", null ],
-      [ "nodenum", "namespaceconvergence__test.html#a27f4b26b09407d804f25d584d05660c2", null ],
-      [ "v", "namespaceconvergence__test.html#ac4055e3a20b6b3af3d10590ea446ef6c", null ]
+      [ "run_dt_convergence", "namespaceconvergence__test.html#ae835f30dfb3114da8a7e72ad67039cc3", null ],
+      [ "run_node_convergence", "namespaceconvergence__test.html#a66c69462f9946100e97acbf037eaa7aa", null ]
     ] ],
     [ "mixed_parallel_strat_test", "namespacemixed__parallel__strat__test.html", [
       [ "dt", "namespacemixed__parallel__strat__test.html#a770f288d3048ff6cbee9faa0969fd6b0", null ],

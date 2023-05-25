@@ -1,5 +1,10 @@
 \hypertarget{namespaceuser__input__full__battery___g_i_t_t}{}\doxysection{user\+\_\+input\+\_\+full\+\_\+battery\+\_\+\+GITT Namespace Reference}
 \label{namespaceuser__input__full__battery___g_i_t_t}\index{user\_input\_full\_battery\_GITT@{user\_input\_full\_battery\_GITT}}
+
+
+Example script for a full battery model.  
+
+
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -88,33 +93,37 @@ list \mbox{\hyperlink{namespaceuser__input__full__battery___g_i_t_t_a9850af56ec7
 
 
 \doxysubsection{Detailed Description}
-\begin{DoxyVerb} @brief Example script for a full battery model 
+Example script for a full battery model. 
 
-@details This is a running script which exists to demonstrate how one uses the 
-GITT function to run simulations in parallel on a full battery.
-This simulation completes 10 current cycles on each electrode over 2 cores each - parallelising 
-perfectly over 40 cores.
- 
-These simulations consist of applying a step function of current to a battery which turns on to a 
-fixed value for a given time interval, then back to 0, and then on again, etc. 
+This is a running script which exists to demonstrate how one uses the GITT function to run simulations in parallel on a full battery. This simulation completes 10 current cycles on each electrode over 2 cores each -\/ parallelising perfectly over 40 cores.
 
-The ascii art below indicates schematically how a current-time step looks during this experiment.
+These simulations consist of applying a step function of current to a battery which turns on to a fixed value for a given time interval, then back to 0, and then on again, etc.
 
- I
- |______________               _____________
- |              |              |              
- |              |              |
- |              |              |
- |              |              |
- |              |              |
- |              |              |
- |______________|______________|_____________t
- 
-To run one of these simulations, one needs the following things:
-    - A vector containing the fixed values of current applied for each block of current
-    - A vector containing the start times of each current block
-    - A vector containing the duration of each current block\end{DoxyVerb}
- 
+The ascii art below indicates schematically how a current-\/time step looks during this experiment.
+
+I $\vert$\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+ \+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+ \tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }\\\cline{1-2}
+\endhead
+&\\\cline{1-2}
+&\\\cline{1-2}
+&\\\cline{1-2}
+&\\\cline{1-2}
+\end{longtabu}
+$\vert$\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+$\vert$\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+$\vert$\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+t
+
+To run one of these simulations, one needs the following things\+:
+\begin{DoxyItemize}
+\item A vector containing the fixed values of current applied for each block of current
+\item A vector containing the start times of each current block
+\item A vector containing the duration of each current block 
+\end{DoxyItemize}
 
 \doxysubsection{Variable Documentation}
 \mbox{\Hypertarget{namespaceuser__input__full__battery___g_i_t_t_a165cbe81be4e2bcd1eeba6d395178a8e}\label{namespaceuser__input__full__battery___g_i_t_t_a165cbe81be4e2bcd1eeba6d395178a8e}} 
