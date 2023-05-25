@@ -25,23 +25,25 @@
 var NAVTREE =
 [
   [ "SPAMS", "index.html", [
-    [ "SPAMS - Single PArticle Model Solver", "md__home_chem_msuvnj__p_x915__group_b_22_23__r_e_a_d_m_e.html", [
-      [ "Program Features", "md__home_chem_msuvnj__p_x915__group_b_22_23__r_e_a_d_m_e.html#autotoc_md1", null ],
-      [ "Dependencies", "md__home_chem_msuvnj__p_x915__group_b_22_23__r_e_a_d_m_e.html#autotoc_md2", null ],
-      [ "Installation", "md__home_chem_msuvnj__p_x915__group_b_22_23__r_e_a_d_m_e.html#autotoc_md3", null ],
-      [ "Running the program", "md__home_chem_msuvnj__p_x915__group_b_22_23__r_e_a_d_m_e.html#autotoc_md4", null ],
-      [ "Accessing the user tutorial", "md__home_chem_msuvnj__p_x915__group_b_22_23__r_e_a_d_m_e.html#autotoc_md5", null ],
-      [ "Developer documentation", "md__home_chem_msuvnj__p_x915__group_b_22_23__r_e_a_d_m_e.html#autotoc_md6", null ],
-      [ "Contributors", "md__home_chem_msuvnj__p_x915__group_b_22_23__r_e_a_d_m_e.html#autotoc_md7", null ]
+    [ "Introduction", "index.html#Intro", null ],
+    [ "Contributors", "index.html#Contributors", null ],
+    [ "Maths and Theory", "md_math.html", [
+      [ "1 Mathematics and Algorithms", "md_math.html#autotoc_md1", null ]
+    ] ],
+    [ "Uncertainty Quantification", "md_uq.html", [
+      [ "Sensitivity Analysis", "md_uq.html#autotoc_md3", null ],
+      [ "Uncertainty Propagation", "md_uq.html#autotoc_md4", null ]
     ] ],
     [ "Modules", "namespaces.html", [
       [ "Modules List", "namespaces.html", "namespaces_dup" ],
       [ "Module Members", "namespacemembers.html", [
-        [ "All", "namespacemembers.html", null ],
+        [ "All", "namespacemembers.html", "namespacemembers_dup" ],
         [ "Functions/Subroutines", "namespacemembers_func.html", null ],
         [ "Variables", "namespacemembers_vars.html", null ]
       ] ]
     ] ],
+    [ "Maths and Theory", "md_math.html", null ],
+    [ "Uncertainty Quantification", "md_uq.html", null ],
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ],
       [ "File Members", "globals.html", [
@@ -55,8 +57,9 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"convergence__test_8py.html",
-"sensitivity__analysis_8py.html#ac5453487bf935d2377bb5514202925fd"
+"_m_k_l__threads__test_8py.html",
+"namespacemembers_n.html",
+"user__input__full__battery___g_i_t_t_8py.html#a51c49f845d3932a6a084187c90aab1ab"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

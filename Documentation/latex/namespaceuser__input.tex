@@ -1,36 +1,64 @@
-\hypertarget{namespaceuser__input}{\section{user\-\_\-input Namespace Reference}
-\label{namespaceuser__input}\index{user\-\_\-input@{user\-\_\-input}}
-}
+\hypertarget{namespaceuser__input}{}\doxysection{user\+\_\+input Namespace Reference}
+\label{namespaceuser__input}\index{user\_input@{user\_input}}
 
 
 Sets up the user inputs and executes the solver.  
 
 
-\subsection*{Variables}
+\doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-string \hyperlink{namespaceuser__input_a92a75cd7aa57960ca65957a1baa06d77}{solver\-\_\-input\-\_\-filename} = 'user\-\_\-input'
+bool \mbox{\hyperlink{namespaceuser__input_a0009973cf2cc0b4ce9c74a3b29415de4}{checkpoint}} = False
 \item 
-float \hyperlink{namespaceuser__input_ab1a8ebec490ba1301f818bd1c5f1f3fa}{K\-\_\-pos} = 3.\-42\-E-\/6
-\begin{DoxyCompactList}\small\item\em S\-E\-T V\-A\-L\-U\-E\-S \#\#\#\#\#\#\#\#\#. \end{DoxyCompactList}\item 
-float \hyperlink{namespaceuser__input_a64d0c5854299798787675bc91586023c}{K\-\_\-neg} = 6.\-48\-E-\/7
+string \mbox{\hyperlink{namespaceuser__input_a82164f84753b7152aa13b0b854ea9571}{solver\+\_\+input\+\_\+filename}} = \textquotesingle{}user\+\_\+input\textquotesingle{}
 \item 
-float \hyperlink{namespaceuser__input_aa5b015cc7d0bda453c6163023448db72}{cmax\-\_\-pos\-\_\-sim} = 63104.\-00
+\mbox{\hyperlink{namespaceuser__input_a63b973cf773a42a37d790d0a4bce8ddc}{tsteps}}
+\begin{DoxyCompactList}\small\item\em SET VALUES \#\#\#\#\#\#\#\#\#. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceuser__input_a770f288d3048ff6cbee9faa0969fd6b0}{dt}}
 \item 
-float \hyperlink{namespaceuser__input_ab7633a5e9c70aabfe6992e4fe521a1f9}{cmax\-\_\-neg\-\_\-sim} = 33133.\-00
+\mbox{\hyperlink{namespaceuser__input_aeab71244afb687f16d8c4f5ee9d6ef0e}{n}}
 \item 
-list \hyperlink{namespaceuser__input_a5bacef25baf63731923fbef674af4e9d}{plot\-\_\-params\-\_\-pos} = \mbox{[}\hyperlink{namespaceuser__input_ab1a8ebec490ba1301f818bd1c5f1f3fa}{K\-\_\-pos},a,\hyperlink{namespaceuser__input_aa5b015cc7d0bda453c6163023448db72}{cmax\-\_\-pos\-\_\-sim},L\mbox{]}
-\begin{DoxyCompactList}\small\item\em E\-N\-D S\-E\-T V\-A\-L\-U\-E\-S \#\#\#\#\#\#\#\#\#. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\mbox{\hyperlink{namespaceuser__input_a570288aed3d1eede9a0f7000e4f0b6cc}{c0}}
+\item 
+\mbox{\hyperlink{namespaceuser__input_a350bfcb1e3cfb28ddff48ce525d4f139}{D}}
+\item 
+\mbox{\hyperlink{namespaceuser__input_acb95449a94688af33f6e9bb090cf2936}{R}}
+\item 
+\mbox{\hyperlink{namespaceuser__input_a4124bc0a9335c27f086f24ba207a4912}{a}}
+\item 
+\mbox{\hyperlink{namespaceuser__input_a67824ecf84f5816f07b74fa956bdbcd2}{L}}
+\item 
+\mbox{\hyperlink{namespaceuser__input_a75917accaa8fb18778186e284986cc0a}{iapp}}
+\item 
+\mbox{\hyperlink{namespaceuser__input_ac21892176e114258bd4e9d6e8d18187a}{iapp\+\_\+label}}
+\item 
+\mbox{\hyperlink{namespaceuser__input_a6950a02b90168932f3f287626dc79825}{electrode\+\_\+charge}}
+\item 
+float \mbox{\hyperlink{namespaceuser__input_ab1a8ebec490ba1301f818bd1c5f1f3fa}{K\+\_\+pos}} = 3.\+42E-\/6
+\item 
+float \mbox{\hyperlink{namespaceuser__input_a64d0c5854299798787675bc91586023c}{K\+\_\+neg}} = 6.\+48E-\/7
+\item 
+float \mbox{\hyperlink{namespaceuser__input_aa5b015cc7d0bda453c6163023448db72}{cmax\+\_\+pos\+\_\+sim}} = 63104.\+00
+\item 
+float \mbox{\hyperlink{namespaceuser__input_ab7633a5e9c70aabfe6992e4fe521a1f9}{cmax\+\_\+neg\+\_\+sim}} = 33133.\+00
+\item 
+list \mbox{\hyperlink{namespaceuser__input_a5bacef25baf63731923fbef674af4e9d}{plot\+\_\+params\+\_\+pos}} = \mbox{[}\mbox{\hyperlink{namespaceuser__input_ab1a8ebec490ba1301f818bd1c5f1f3fa}{K\+\_\+pos}},\mbox{\hyperlink{namespaceuser__input_a4124bc0a9335c27f086f24ba207a4912}{a}},\mbox{\hyperlink{namespaceuser__input_aa5b015cc7d0bda453c6163023448db72}{cmax\+\_\+pos\+\_\+sim}},\mbox{\hyperlink{namespaceuser__input_a67824ecf84f5816f07b74fa956bdbcd2}{L}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em END SET VALUES \#\#\#\#\#\#\#\#\#. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceuser__input_a48c84606bc366845a0aaf284435fcdfb}{pos\+\_\+params}}
+\end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
-Sets up the user inputs and executes the solver. This file contains all input parameters for the solver and can be changed by the user. This file and all tuneable parameters are broken down in full detail in the user tutorial (see Tutorial.\-ipynb).
+\doxysubsection{Detailed Description}
+Sets up the user inputs and executes the solver. 
 
-The following options can be controlled by editing this file\-:
+This file contains all input parameters for the solver and can be changed by the user. This file and all tuneable parameters are broken down in full detail in the user tutorial (see Tutorial.\+ipynb).
+
+The following options can be controlled by editing this file\+:
 \begin{DoxyItemize}
 \item Outputting stdout to a file.
 \item Changing the name of this user input file.
-\item Set the values for the following input parameters\-:
+\item Set the values for the following input parameters\+:
+\begin{DoxyItemize}
 \item tsteps
 \item dt
 \item n
@@ -40,68 +68,217 @@ The following options can be controlled by editing this file\-:
 \item a
 \item L
 \item iapp
-\item iapp\-\_\-label
+\item iapp\+\_\+label
+\end{DoxyItemize}
 \item These parameters can either take default values or be entered manually.
 \item For iapp there are additional options for setting constant or stepwise current and reading in values from a csv file.
 \end{DoxyItemize}
 
-The user does not need to edit anything past \#\-E\-N\-D S\-E\-T I\-N\-P\-U\-T P\-A\-R\-A\-M\-E\-T\-E\-R V\-A\-L\-U\-E\-S
+The user does not need to edit anything past \#\+END SET INPUT PARAMETER VALUES
 
-The rest of the file calls various functions to\-:
+The rest of the file calls various functions to\+:
 \begin{DoxyItemize}
 \item Check that the filename and parameters are valid
 \item Write the parameters to the file
 \item Call the solver and plotter. 
 \end{DoxyItemize}
 
-\subsection{Variable Documentation}
-\hypertarget{namespaceuser__input_ab7633a5e9c70aabfe6992e4fe521a1f9}{\index{user\-\_\-input@{user\-\_\-input}!cmax\-\_\-neg\-\_\-sim@{cmax\-\_\-neg\-\_\-sim}}
-\index{cmax\-\_\-neg\-\_\-sim@{cmax\-\_\-neg\-\_\-sim}!user_input@{user\-\_\-input}}
-\subsubsection[{cmax\-\_\-neg\-\_\-sim}]{\setlength{\rightskip}{0pt plus 5cm}float cmax\-\_\-neg\-\_\-sim = 33133.\-00}}\label{namespaceuser__input_ab7633a5e9c70aabfe6992e4fe521a1f9}
-
-
-Definition at line 55 of file user\-\_\-input.\-py.
-
-\hypertarget{namespaceuser__input_aa5b015cc7d0bda453c6163023448db72}{\index{user\-\_\-input@{user\-\_\-input}!cmax\-\_\-pos\-\_\-sim@{cmax\-\_\-pos\-\_\-sim}}
-\index{cmax\-\_\-pos\-\_\-sim@{cmax\-\_\-pos\-\_\-sim}!user_input@{user\-\_\-input}}
-\subsubsection[{cmax\-\_\-pos\-\_\-sim}]{\setlength{\rightskip}{0pt plus 5cm}float cmax\-\_\-pos\-\_\-sim = 63104.\-00}}\label{namespaceuser__input_aa5b015cc7d0bda453c6163023448db72}
-
-
-Definition at line 54 of file user\-\_\-input.\-py.
-
-\hypertarget{namespaceuser__input_a64d0c5854299798787675bc91586023c}{\index{user\-\_\-input@{user\-\_\-input}!K\-\_\-neg@{K\-\_\-neg}}
-\index{K\-\_\-neg@{K\-\_\-neg}!user_input@{user\-\_\-input}}
-\subsubsection[{K\-\_\-neg}]{\setlength{\rightskip}{0pt plus 5cm}float K\-\_\-neg = 6.\-48\-E-\/7}}\label{namespaceuser__input_a64d0c5854299798787675bc91586023c}
-
-
-Definition at line 52 of file user\-\_\-input.\-py.
-
-\hypertarget{namespaceuser__input_ab1a8ebec490ba1301f818bd1c5f1f3fa}{\index{user\-\_\-input@{user\-\_\-input}!K\-\_\-pos@{K\-\_\-pos}}
-\index{K\-\_\-pos@{K\-\_\-pos}!user_input@{user\-\_\-input}}
-\subsubsection[{K\-\_\-pos}]{\setlength{\rightskip}{0pt plus 5cm}float K\-\_\-pos = 3.\-42\-E-\/6}}\label{namespaceuser__input_ab1a8ebec490ba1301f818bd1c5f1f3fa}
-
-
-S\-E\-T V\-A\-L\-U\-E\-S \#\#\#\#\#\#\#\#\#. 
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceuser__input_a4124bc0a9335c27f086f24ba207a4912}\label{namespaceuser__input_a4124bc0a9335c27f086f24ba207a4912}} 
+\index{user\_input@{user\_input}!a@{a}}
+\index{a@{a}!user\_input@{user\_input}}
+\doxysubsubsection{\texorpdfstring{a}{a}}
+{\footnotesize\ttfamily a}
 
 
 
-Definition at line 51 of file user\-\_\-input.\-py.
+Definition at line 48 of file user\+\_\+input.\+py.
 
-\hypertarget{namespaceuser__input_a5bacef25baf63731923fbef674af4e9d}{\index{user\-\_\-input@{user\-\_\-input}!plot\-\_\-params\-\_\-pos@{plot\-\_\-params\-\_\-pos}}
-\index{plot\-\_\-params\-\_\-pos@{plot\-\_\-params\-\_\-pos}!user_input@{user\-\_\-input}}
-\subsubsection[{plot\-\_\-params\-\_\-pos}]{\setlength{\rightskip}{0pt plus 5cm}list plot\-\_\-params\-\_\-pos = \mbox{[}{\bf K\-\_\-pos},a,{\bf cmax\-\_\-pos\-\_\-sim},L\mbox{]}}}\label{namespaceuser__input_a5bacef25baf63731923fbef674af4e9d}
-
-
-E\-N\-D S\-E\-T V\-A\-L\-U\-E\-S \#\#\#\#\#\#\#\#\#. 
-
+\mbox{\Hypertarget{namespaceuser__input_a570288aed3d1eede9a0f7000e4f0b6cc}\label{namespaceuser__input_a570288aed3d1eede9a0f7000e4f0b6cc}} 
+\index{user\_input@{user\_input}!c0@{c0}}
+\index{c0@{c0}!user\_input@{user\_input}}
+\doxysubsubsection{\texorpdfstring{c0}{c0}}
+{\footnotesize\ttfamily c0}
 
 
-Definition at line 77 of file user\-\_\-input.\-py.
 
-\hypertarget{namespaceuser__input_a92a75cd7aa57960ca65957a1baa06d77}{\index{user\-\_\-input@{user\-\_\-input}!solver\-\_\-input\-\_\-filename@{solver\-\_\-input\-\_\-filename}}
-\index{solver\-\_\-input\-\_\-filename@{solver\-\_\-input\-\_\-filename}!user_input@{user\-\_\-input}}
-\subsubsection[{solver\-\_\-input\-\_\-filename}]{\setlength{\rightskip}{0pt plus 5cm}string solver\-\_\-input\-\_\-filename = 'user\-\_\-input'}}\label{namespaceuser__input_a92a75cd7aa57960ca65957a1baa06d77}
+Definition at line 48 of file user\+\_\+input.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input_a0009973cf2cc0b4ce9c74a3b29415de4}\label{namespaceuser__input_a0009973cf2cc0b4ce9c74a3b29415de4}} 
+\index{user\_input@{user\_input}!checkpoint@{checkpoint}}
+\index{checkpoint@{checkpoint}!user\_input@{user\_input}}
+\doxysubsubsection{\texorpdfstring{checkpoint}{checkpoint}}
+{\footnotesize\ttfamily bool checkpoint = False}
 
 
-Definition at line 40 of file user\-\_\-input.\-py.
+
+Definition at line 40 of file user\+\_\+input.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input_ab7633a5e9c70aabfe6992e4fe521a1f9}\label{namespaceuser__input_ab7633a5e9c70aabfe6992e4fe521a1f9}} 
+\index{user\_input@{user\_input}!cmax\_neg\_sim@{cmax\_neg\_sim}}
+\index{cmax\_neg\_sim@{cmax\_neg\_sim}!user\_input@{user\_input}}
+\doxysubsubsection{\texorpdfstring{cmax\_neg\_sim}{cmax\_neg\_sim}}
+{\footnotesize\ttfamily float cmax\+\_\+neg\+\_\+sim = 33133.\+00}
+
+
+
+Definition at line 56 of file user\+\_\+input.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input_aa5b015cc7d0bda453c6163023448db72}\label{namespaceuser__input_aa5b015cc7d0bda453c6163023448db72}} 
+\index{user\_input@{user\_input}!cmax\_pos\_sim@{cmax\_pos\_sim}}
+\index{cmax\_pos\_sim@{cmax\_pos\_sim}!user\_input@{user\_input}}
+\doxysubsubsection{\texorpdfstring{cmax\_pos\_sim}{cmax\_pos\_sim}}
+{\footnotesize\ttfamily float cmax\+\_\+pos\+\_\+sim = 63104.\+00}
+
+
+
+Definition at line 55 of file user\+\_\+input.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input_a350bfcb1e3cfb28ddff48ce525d4f139}\label{namespaceuser__input_a350bfcb1e3cfb28ddff48ce525d4f139}} 
+\index{user\_input@{user\_input}!D@{D}}
+\index{D@{D}!user\_input@{user\_input}}
+\doxysubsubsection{\texorpdfstring{D}{D}}
+{\footnotesize\ttfamily D}
+
+
+
+Definition at line 48 of file user\+\_\+input.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input_a770f288d3048ff6cbee9faa0969fd6b0}\label{namespaceuser__input_a770f288d3048ff6cbee9faa0969fd6b0}} 
+\index{user\_input@{user\_input}!dt@{dt}}
+\index{dt@{dt}!user\_input@{user\_input}}
+\doxysubsubsection{\texorpdfstring{dt}{dt}}
+{\footnotesize\ttfamily dt}
+
+
+
+Definition at line 48 of file user\+\_\+input.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input_a6950a02b90168932f3f287626dc79825}\label{namespaceuser__input_a6950a02b90168932f3f287626dc79825}} 
+\index{user\_input@{user\_input}!electrode\_charge@{electrode\_charge}}
+\index{electrode\_charge@{electrode\_charge}!user\_input@{user\_input}}
+\doxysubsubsection{\texorpdfstring{electrode\_charge}{electrode\_charge}}
+{\footnotesize\ttfamily electrode\+\_\+charge}
+
+
+
+Definition at line 48 of file user\+\_\+input.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input_a75917accaa8fb18778186e284986cc0a}\label{namespaceuser__input_a75917accaa8fb18778186e284986cc0a}} 
+\index{user\_input@{user\_input}!iapp@{iapp}}
+\index{iapp@{iapp}!user\_input@{user\_input}}
+\doxysubsubsection{\texorpdfstring{iapp}{iapp}}
+{\footnotesize\ttfamily iapp}
+
+
+
+Definition at line 48 of file user\+\_\+input.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input_ac21892176e114258bd4e9d6e8d18187a}\label{namespaceuser__input_ac21892176e114258bd4e9d6e8d18187a}} 
+\index{user\_input@{user\_input}!iapp\_label@{iapp\_label}}
+\index{iapp\_label@{iapp\_label}!user\_input@{user\_input}}
+\doxysubsubsection{\texorpdfstring{iapp\_label}{iapp\_label}}
+{\footnotesize\ttfamily iapp\+\_\+label}
+
+
+
+Definition at line 48 of file user\+\_\+input.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input_a64d0c5854299798787675bc91586023c}\label{namespaceuser__input_a64d0c5854299798787675bc91586023c}} 
+\index{user\_input@{user\_input}!K\_neg@{K\_neg}}
+\index{K\_neg@{K\_neg}!user\_input@{user\_input}}
+\doxysubsubsection{\texorpdfstring{K\_neg}{K\_neg}}
+{\footnotesize\ttfamily float K\+\_\+neg = 6.\+48E-\/7}
+
+
+
+Definition at line 53 of file user\+\_\+input.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input_ab1a8ebec490ba1301f818bd1c5f1f3fa}\label{namespaceuser__input_ab1a8ebec490ba1301f818bd1c5f1f3fa}} 
+\index{user\_input@{user\_input}!K\_pos@{K\_pos}}
+\index{K\_pos@{K\_pos}!user\_input@{user\_input}}
+\doxysubsubsection{\texorpdfstring{K\_pos}{K\_pos}}
+{\footnotesize\ttfamily float K\+\_\+pos = 3.\+42E-\/6}
+
+
+
+Definition at line 52 of file user\+\_\+input.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input_a67824ecf84f5816f07b74fa956bdbcd2}\label{namespaceuser__input_a67824ecf84f5816f07b74fa956bdbcd2}} 
+\index{user\_input@{user\_input}!L@{L}}
+\index{L@{L}!user\_input@{user\_input}}
+\doxysubsubsection{\texorpdfstring{L}{L}}
+{\footnotesize\ttfamily L}
+
+
+
+Definition at line 48 of file user\+\_\+input.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input_aeab71244afb687f16d8c4f5ee9d6ef0e}\label{namespaceuser__input_aeab71244afb687f16d8c4f5ee9d6ef0e}} 
+\index{user\_input@{user\_input}!n@{n}}
+\index{n@{n}!user\_input@{user\_input}}
+\doxysubsubsection{\texorpdfstring{n}{n}}
+{\footnotesize\ttfamily n}
+
+
+
+Definition at line 48 of file user\+\_\+input.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input_a5bacef25baf63731923fbef674af4e9d}\label{namespaceuser__input_a5bacef25baf63731923fbef674af4e9d}} 
+\index{user\_input@{user\_input}!plot\_params\_pos@{plot\_params\_pos}}
+\index{plot\_params\_pos@{plot\_params\_pos}!user\_input@{user\_input}}
+\doxysubsubsection{\texorpdfstring{plot\_params\_pos}{plot\_params\_pos}}
+{\footnotesize\ttfamily list plot\+\_\+params\+\_\+pos = \mbox{[}\mbox{\hyperlink{namespaceuser__input_ab1a8ebec490ba1301f818bd1c5f1f3fa}{K\+\_\+pos}},\mbox{\hyperlink{namespaceuser__input_a4124bc0a9335c27f086f24ba207a4912}{a}},\mbox{\hyperlink{namespaceuser__input_aa5b015cc7d0bda453c6163023448db72}{cmax\+\_\+pos\+\_\+sim}},\mbox{\hyperlink{namespaceuser__input_a67824ecf84f5816f07b74fa956bdbcd2}{L}}\mbox{]}}
+
+
+
+END SET VALUES \#\#\#\#\#\#\#\#\#. 
+
+
+
+Definition at line 81 of file user\+\_\+input.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input_a48c84606bc366845a0aaf284435fcdfb}\label{namespaceuser__input_a48c84606bc366845a0aaf284435fcdfb}} 
+\index{user\_input@{user\_input}!pos\_params@{pos\_params}}
+\index{pos\_params@{pos\_params}!user\_input@{user\_input}}
+\doxysubsubsection{\texorpdfstring{pos\_params}{pos\_params}}
+{\footnotesize\ttfamily pos\+\_\+params}
+
+
+
+Definition at line 84 of file user\+\_\+input.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input_acb95449a94688af33f6e9bb090cf2936}\label{namespaceuser__input_acb95449a94688af33f6e9bb090cf2936}} 
+\index{user\_input@{user\_input}!R@{R}}
+\index{R@{R}!user\_input@{user\_input}}
+\doxysubsubsection{\texorpdfstring{R}{R}}
+{\footnotesize\ttfamily R}
+
+
+
+Definition at line 48 of file user\+\_\+input.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input_a82164f84753b7152aa13b0b854ea9571}\label{namespaceuser__input_a82164f84753b7152aa13b0b854ea9571}} 
+\index{user\_input@{user\_input}!solver\_input\_filename@{solver\_input\_filename}}
+\index{solver\_input\_filename@{solver\_input\_filename}!user\_input@{user\_input}}
+\doxysubsubsection{\texorpdfstring{solver\_input\_filename}{solver\_input\_filename}}
+{\footnotesize\ttfamily solver\+\_\+input\+\_\+filename = \textquotesingle{}user\+\_\+input\textquotesingle{}}
+
+
+
+Definition at line 41 of file user\+\_\+input.\+py.
+
+\mbox{\Hypertarget{namespaceuser__input_a63b973cf773a42a37d790d0a4bce8ddc}\label{namespaceuser__input_a63b973cf773a42a37d790d0a4bce8ddc}} 
+\index{user\_input@{user\_input}!tsteps@{tsteps}}
+\index{tsteps@{tsteps}!user\_input@{user\_input}}
+\doxysubsubsection{\texorpdfstring{tsteps}{tsteps}}
+{\footnotesize\ttfamily tsteps}
+
+
+
+SET VALUES \#\#\#\#\#\#\#\#\#. 
+
+
+
+Definition at line 48 of file user\+\_\+input.\+py.
 

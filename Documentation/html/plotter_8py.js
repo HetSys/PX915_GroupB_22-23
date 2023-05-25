@@ -1,12 +1,12 @@
 var plotter_8py =
 [
-    [ "animated_conc_plot", "plotter_8py.html#a49b689df200e34e2e72d1e8b7122c34a", null ],
-    [ "full_battery_GITT_plots", "plotter_8py.html#ad575e508b7dec6d686b1ad23bd88c23e", null ],
-    [ "gen_half_cell_voltage", "plotter_8py.html#a716e2d183d061a11623adaf2dba72476", null ],
-    [ "gen_plots", "plotter_8py.html#aacce2143cb025e12026b3580467165ff", null ],
-    [ "get_avg_li_conc", "plotter_8py.html#a34948a1cfae887bb24a8ad480441a831", null ],
-    [ "plot_halfcell_GITT_result", "plotter_8py.html#aa10bc6c7a1f0ea5ddf498ced8c1e08ee", null ],
-    [ "read_input_current", "plotter_8py.html#ac4584f2efde622b7fe9e2b77b97b3089", null ],
-    [ "read_output_file", "plotter_8py.html#aae454e5e82b331fc3539380bf77085bb", null ],
-    [ "voltage_current_plot", "plotter_8py.html#a44edad80659cbc5874617eabd87609ba", null ]
+    [ "animated_conc_plot", "plotter_8py.html#a8684a9ff7118c9f9d3738b3ac05b9bee", null ],
+    [ "full_battery_GITT_plots", "plotter_8py.html#ad2a7cbdd038b105291cb92196a4efe1f", null ],
+    [ "gen_half_cell_voltage", "plotter_8py.html#abdeddaa82135d546bcc8a0ef6da6e646", null ],
+    [ "gen_plots", "plotter_8py.html#ab570e83fac2f6c031469637da428b6ce", null ],
+    [ "get_avg_li_conc", "plotter_8py.html#a69c0cff77616377cf0e7214d93b19e34", null ],
+    [ "plot_halfcell_GITT_result", "plotter_8py.html#a6ba5ad5850aaae088990b1591fd18de0", null ],
+    [ "read_input_current", "plotter_8py.html#a63a629338be191d4e5120f8330c48839", null ],
+    [ "read_output_file", "plotter_8py.html#a99e9bf1e00cf92bad976ff897baaac01", null ],
+    [ "voltage_current_plot", "plotter_8py.html#acaa26bb6da59a5c0f3eb331bf8489d48", null ]
 ];

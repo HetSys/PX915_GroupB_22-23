@@ -1,7 +1,11 @@
 var searchData=
 [
-  ['sensitivity_5fresult_265',['sensitivity_result',['../namespacesensitivity__analysis.html#adfdd4f6454dd06db579e09d5084436f4',1,'sensitivity_analysis']]],
-  ['solver_5finput_5ffilename_266',['solver_input_filename',['../namespacesensitivity__analysis.html#a92a75cd7aa57960ca65957a1baa06d77',1,'sensitivity_analysis.solver_input_filename()'],['../namespaceuser__input.html#a82164f84753b7152aa13b0b854ea9571',1,'user_input.solver_input_filename()']]],
-  ['sparsifyanimation_267',['SparsifyAnimation',['../namespaceuser__input__full__battery___g_i_t_t.html#acc27a1da570e84f9ca12e60f0e4c7451',1,'user_input_full_battery_GITT.SparsifyAnimation()'],['../namespaceuser__input__parallel__simulation.html#acc27a1da570e84f9ca12e60f0e4c7451',1,'user_input_parallel_simulation.SparsifyAnimation()']]],
-  ['start_5ftimes_268',['start_times',['../namespaceuser__input__full__battery___g_i_t_t.html#a0954fbf3a78f4bdb8ab964be15c01b01',1,'user_input_full_battery_GITT.start_times()'],['../namespaceuser__input__parallel__simulation.html#a0954fbf3a78f4bdb8ab964be15c01b01',1,'user_input_parallel_simulation.start_times()']]]
+  ['scaled_5fsensitivities_5fmatrix_440',['scaled_sensitivities_matrix',['../namespacesensitivity__analysis.html#aff97fb522682102cd43504ec022399f5',1,'sensitivity_analysis']]],
+  ['sharex_441',['sharex',['../namespace_uncertainty___propagation.html#a4cb130baf64d572315eca86ce772b7c9',1,'Uncertainty_Propagation']]],
+  ['sharey_442',['sharey',['../namespace_uncertainty___propagation.html#a74807c6fe5f50a0e610d582bcc4f9819',1,'Uncertainty_Propagation']]],
+  ['solver_5finput_5ffilename_443',['solver_input_filename',['../namespaceuser__input.html#a82164f84753b7152aa13b0b854ea9571',1,'user_input']]],
+  ['sparsifyanimation_444',['SparsifyAnimation',['../namespaceuser__input__full__battery___g_i_t_t.html#acc27a1da570e84f9ca12e60f0e4c7451',1,'user_input_full_battery_GITT.SparsifyAnimation()'],['../namespaceuser__input__parallel__simulation.html#acc27a1da570e84f9ca12e60f0e4c7451',1,'user_input_parallel_simulation.SparsifyAnimation()']]],
+  ['start_445',['start',['../namespacemixed__parallel__strat__test.html#a550769bbd4e7537ff90a656f5b0c23b2',1,'mixed_parallel_strat_test.start()'],['../namespace_m_k_l__threads__test.html#a550769bbd4e7537ff90a656f5b0c23b2',1,'MKL_threads_test.start()']]],
+  ['start_5ftimes_446',['start_times',['../namespaceuser__input__full__battery___g_i_t_t.html#a0954fbf3a78f4bdb8ab964be15c01b01',1,'user_input_full_battery_GITT.start_times()'],['../namespaceuser__input__parallel__simulation.html#a0954fbf3a78f4bdb8ab964be15c01b01',1,'user_input_parallel_simulation.start_times()']]],
+  ['status_447',['status',['../checkpointing_8f90.html#a3140a92074c48154c3e40bea6ec8677e',1,'checkpointing.f90']]]
 ];
