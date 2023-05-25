@@ -108,7 +108,7 @@ PROGRAM MAIN
         c = b
         cstorage(:,tstep+1) = c
         
-        CALL write_checkpoint(tstep, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage, filename, 20)
+        CALL write_checkpoint(tstep, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage, filename)
         
     END DO
 
