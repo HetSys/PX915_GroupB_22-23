@@ -34,10 +34,8 @@ $$
 
 > $\frac{{c_i^{j+1} - c_i^j}}{{\Delta t}} = \frac{{D}}{{2r_i^2}} \left[ \left(r_i^2 \frac{{c_{i+1}^{j+1} - 2c_i^{j+1} + c_{i-1}^{j+1}}}{{\Delta r^2}} + r_i^2 \frac{{c_{i+1}^j - 2c_i^j + c_{i-1}^j}}{{\Delta r^2}}\right) + r_i \left( \frac{{c_{i+1}^{j+1} - c_{i-1}^{j+1}}}{{2\Delta r}} + \frac{{c_{i+1}^{j} - c_{i-1}^{j}}}{{2\Delta r}} \right) \right]$
 
-
-> ```math \frac{c_i^{j+1} - c_i^j}{\Delta t} = \frac{D}{2r_i^2} \left[ \left(r_i^2 \frac{c_{i+1}^{j+1} - 2c_i^{j+1} + c_{i-1}^{j+1}}{\Delta r^2} + r_i^2 \frac{c_{i+1}^j - 2c_i^j + c_{i-1}^j}{\Delta r^2}\right) + r_i \left( \frac{c_{i+1}^{j+1} - c_{i-1}^{j+1}}{2\Delta r} + \frac{c_{i+1}^{j} - c_{i-1}^{j}}{2\Delta r} \right) \right]
-
 - Generally:
+<!-- end of the list -->
 > \frac{u_i^{j+1} - u_i^j}{\Delta t} = \frac{1}{2} \left[ F^{j+1}_i(u,r,t,\frac{\partial u}{\partial r},\frac{\partial ^2 u}{\partial r^2}) + F^j_i(u,r,t,\frac{\partial u}{\partial r},\frac{\partial ^2 u}{\partial r^2}) \right].
 
 This is an average of standard forward and backward Euler methods.
@@ -47,8 +45,9 @@ This is an average of standard forward and backward Euler methods.
 
 The accuracy of the scheme will be chosen such that it is equivalent to the interior solved points.
 
-- Finally, a general initial condition is specified of the form 
-> c = c_0 \textrm{ at } t=0.
+- Finally, a general initial condition is specified of the form
+<!-- end of the list -->
+> $c = c_0 \textrm{ at } t=0.$
 
 The form of c_0 is assumed to be constant in R.
 
