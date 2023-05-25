@@ -29,9 +29,9 @@ $$
 - The consistency and stability of the Crank-Nicolson scheme means it satisfies the Lax equivalence theorem, which states that a numerical method is convergent if and only if it is both consistent and stable.
 
 - Specific Equation:
-\[
+$$
 \frac{{c_i^{j+1} - c_i^j}}{{\Delta t}} = \frac{{D}}{{2r_i^2}} \left[ \left(r_i^2 \frac{{c_{i+1}^{j+1} - 2c_i^{j+1} + c_{i-1}^{j+1}}}{{\Delta r^2}} + r_i^2 \frac{{c_{i+1}^j - 2c_i^j + c_{i-1}^j}}{{\Delta r^2}}\right) + r_i \left( \frac{{c_{i+1}^{j+1} - c_{i-1}^{j+1}}}{{2\Delta r}} + \frac{{c_{i+1}^{j} - c_{i-1}^{j}}}{{2\Delta r}} \right) \right]
-\]
+$$
 
 > ```math \frac{c_i^{j+1} - c_i^j}{\Delta t} = \frac{D}{2r_i^2} \left[ \left(r_i^2 \frac{c_{i+1}^{j+1} - 2c_i^{j+1} + c_{i-1}^{j+1}}{\Delta r^2} + r_i^2 \frac{c_{i+1}^j - 2c_i^j + c_{i-1}^j}{\Delta r^2}\right) + r_i \left( \frac{c_{i+1}^{j+1} - c_{i-1}^{j+1}}{2\Delta r} + \frac{c_{i+1}^{j} - c_{i-1}^{j}}{2\Delta r} \right) \right]
 
