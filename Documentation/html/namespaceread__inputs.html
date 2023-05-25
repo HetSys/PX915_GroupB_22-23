@@ -85,6 +85,8 @@ $(document).ready(function(){initNavTree('namespaceread__inputs.html',''); initR
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Functions/Subroutines</a>  </div>
   <div class="headertitle">
 <div class="title">read_inputs Module Reference</div>  </div>
 </div><!--header-->
@@ -92,10 +94,185 @@ $(document).ready(function(){initNavTree('namespaceread__inputs.html',''); initR
 
 <p>Module to read user inputs.  
 <a href="namespaceread__inputs.html#details">More...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions/Subroutines</h2></td></tr>
+<tr class="memitem:a752aec220521a4fcad028ccb055ee54e"><td class="memItemLeft" align="right" valign="top">character(len=104) function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceread__inputs.html#a752aec220521a4fcad028ccb055ee54e">read_command_line</a> ()</td></tr>
+<tr class="separator:a752aec220521a4fcad028ccb055ee54e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e4573220372dc042df9b6544c8da8ce"><td class="memItemLeft" align="right" valign="top">subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceread__inputs.html#a6e4573220372dc042df9b6544c8da8ce">read_user_inputs</a> (filename, tsteps, dt, n, c0, D, R, a_small, L, iapp, electrode_charge)</td></tr>
+<tr class="memdesc:a6e4573220372dc042df9b6544c8da8ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subroutine reads user inputs from txt file.  <a href="namespaceread__inputs.html#a6e4573220372dc042df9b6544c8da8ce">More...</a><br /></td></tr>
+<tr class="separator:a6e4573220372dc042df9b6544c8da8ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45422a720b310faf4723c620a5f03029"><td class="memItemLeft" align="right" valign="top">subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceread__inputs.html#a45422a720b310faf4723c620a5f03029">invalid_param_type</a> (name, line)</td></tr>
+<tr class="memdesc:a45422a720b310faf4723c620a5f03029"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invalid parameter error handling subroutine.  <a href="namespaceread__inputs.html#a45422a720b310faf4723c620a5f03029">More...</a><br /></td></tr>
+<tr class="separator:a45422a720b310faf4723c620a5f03029"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Module to read user inputs. </p>
 <p>Module contains functions that read user inputs from file and command line. </p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function/Subroutine Documentation</h2>
+<a id="a45422a720b310faf4723c620a5f03029"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45422a720b310faf4723c620a5f03029">&#9670;&nbsp;</a></span>invalid_param_type()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">subroutine read_inputs::invalid_param_type </td>
+          <td>(</td>
+          <td class="paramtype">character(len=25), intent(in)&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">integer, intent(in)&#160;</td>
+          <td class="paramname"><em>line</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Invalid parameter error handling subroutine. </p>
+<p>Subroutine to be called if an invalid parameter is read from file.</p><ol type="1">
+<li>Prints name of invalid parameter and line of user input file where this occurs.</li>
+<li>Prints reason parameter is invalid.</li>
+<li>Stops execution of solver. <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">name</td><td>Name of invalid parameter </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">line</td><td>Line in input file containing invalid parameter </td></tr>
+  </table>
+  </dd>
+</dl>
+</li>
+</ol>
+
+<p class="definition">Definition at line <a class="el" href="read__inputs_8f90_source.html#l00319">319</a> of file <a class="el" href="read__inputs_8f90_source.html">read_inputs.f90</a>.</p>
+
+</div>
+</div>
+<a id="a752aec220521a4fcad028ccb055ee54e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a752aec220521a4fcad028ccb055ee54e">&#9670;&nbsp;</a></span>read_command_line()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">character(len=104) function read_inputs::read_command_line</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="read__inputs_8f90_source.html#l00033">33</a> of file <a class="el" href="read__inputs_8f90_source.html">read_inputs.f90</a>.</p>
+
+</div>
+</div>
+<a id="a6e4573220372dc042df9b6544c8da8ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e4573220372dc042df9b6544c8da8ce">&#9670;&nbsp;</a></span>read_user_inputs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">subroutine read_inputs::read_user_inputs </td>
+          <td>(</td>
+          <td class="paramtype">character(len=*), intent(in)&#160;</td>
+          <td class="paramname"><em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">integer, intent(out)&#160;</td>
+          <td class="paramname"><em>tsteps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(real64), intent(out)&#160;</td>
+          <td class="paramname"><em>dt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">integer, intent(out)&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(real64), intent(out)&#160;</td>
+          <td class="paramname"><em>c0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(real64), intent(out)&#160;</td>
+          <td class="paramname"><em>D</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(real64), intent(out)&#160;</td>
+          <td class="paramname"><em>R</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(real64), intent(out)&#160;</td>
+          <td class="paramname"><em>a_small</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(real64), intent(out)&#160;</td>
+          <td class="paramname"><em>L</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(real64), dimension(:), intent(out), allocatable&#160;</td>
+          <td class="paramname"><em>iapp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">character(len=1), intent(out)&#160;</td>
+          <td class="paramname"><em>electrode_charge</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Subroutine reads user inputs from txt file. </p>
+<p>Subroutine reads txt file 'filename', parsing and returning input parameters. Txt file should contain parameters tsteps, dt, n, c0, D, R, a, L, and electrode_charge, in format 'parameter = value'. These parameters can be listed in any order above a line of asterixes ***. Below the asterix line should be iapp, with a label line followed by an array printed one element per line. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">filename</td><td>Name of user input file. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">tsteps</td><td>Number of timesteps </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">dt</td><td>Time step size (s) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">n</td><td>Number of spatial nodes </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">c0</td><td>Initial concentration (mol m^-3) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">D</td><td>Diffusion constant (m^2 s^-1) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">R</td><td>Radius of simulation sphere (m) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">a_small</td><td>Particle surface area per unit volume (m^-1) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">L</td><td>Electrode thickness (m) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">iapp</td><td>Applied current density (A m^-2) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">electrode_charge</td><td>Electrode charge, 'p'=positive, 'n'=negative </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="read__inputs_8f90_source.html#l00088">88</a> of file <a class="el" href="read__inputs_8f90_source.html">read_inputs.f90</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

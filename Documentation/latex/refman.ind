@@ -13,7 +13,7 @@
   \item {/home/chem/msuvnj/PX915\_GroupB\_22-\/23/mixed\_parallel\_strat\_test.py}, 
 		\hyperpage{73}
   \item {/home/chem/msuvnj/PX915\_GroupB\_22-\/23/nc\_output.f90}, 
-		\hyperpage{74}
+		\hyperpage{73}
   \item {/home/chem/msuvnj/PX915\_GroupB\_22-\/23/plotter.py}, 
 		\hyperpage{74}
   \item {/home/chem/msuvnj/PX915\_GroupB\_22-\/23/read\_inputs.f90}, 
@@ -34,21 +34,21 @@
   \indexspace
 
   \item {a}
-    \subitem {user\_input}, \hyperpage{38}
+    \subitem {user\_input}, \hyperpage{37}
     \subitem {user\_input\_parallel\_simulation}, \hyperpage{58}
   \item {a\_dist}
     \subitem {Uncertainty\_Propagation}, \hyperpage{26}
   \item {a\_neg}
     \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{42}
   \item {a\_pos}
-    \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{43}
+    \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{42}
   \item {a\_samples}
     \subitem {Uncertainty\_Propagation}, \hyperpage{26}
   \item {a\_small}
     \subitem {checkpointing.f90}, \hyperpage{64}
     \subitem {read\_inputs.f90}, \hyperpage{75}
   \item {alpha}
-    \subitem {Uncertainty\_Propagation}, \hyperpage{27}
+    \subitem {Uncertainty\_Propagation}, \hyperpage{26}
   \item {ani}
     \subitem {sensitivity\_analysis}, \hyperpage{23}
   \item {animated\_conc\_plot}
@@ -56,17 +56,15 @@
   \item {Animation}
     \subitem {user\_input\_parallel\_simulation}, \hyperpage{58}
   \item {animation\_interval\_time}
-    \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{43}
+    \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{42}
   \item {arg}
     \subitem {read\_inputs.f90}, \hyperpage{75}
   \item {asterix}
     \subitem {read\_inputs.f90}, \hyperpage{75}
-  \item {ax}
-    \subitem {sensitivity\_analysis}, \hyperpage{23}
   \item {axs}
-    \subitem {Uncertainty\_Propagation}, \hyperpage{27}
+    \subitem {Uncertainty\_Propagation}, \hyperpage{26}
   \item {axss}
-    \subitem {Uncertainty\_Propagation}, \hyperpage{27}
+    \subitem {Uncertainty\_Propagation}, \hyperpage{26}
 
   \indexspace
 
@@ -75,7 +73,7 @@
   \item {c0}
     \subitem {checkpointing.f90}, \hyperpage{64}
     \subitem {read\_inputs.f90}, \hyperpage{76}
-    \subitem {user\_input}, \hyperpage{38}
+    \subitem {user\_input}, \hyperpage{37}
     \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{43}
     \subitem {user\_input\_parallel\_simulation}, \hyperpage{58}
   \item {c0\_dist}
@@ -87,9 +85,9 @@
   \item {c0\_samples}
     \subitem {Uncertainty\_Propagation}, \hyperpage{27}
   \item {call\_solver}
-    \subitem {user\_input\_mod}, \hyperpage{51}
+    \subitem {user\_input\_mod}, \hyperpage{50}
   \item {check}
-    \subitem {nc\_output}, \hyperpage{17}
+    \subitem {nc\_output}, \hyperpage{16}
   \item {checkpoint}
     \subitem {user\_input}, \hyperpage{38}
   \item {checkpoint\_name}
@@ -148,38 +146,33 @@
     \subitem {user\_input\_parallel\_simulation}, \hyperpage{58}
   \item {cmax\_pos\_sim}
     \subitem {user\_input}, \hyperpage{38}
-    \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{44}
+    \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{43}
     \subitem {user\_input\_parallel\_simulation}, \hyperpage{59}
   \item {convergence\_test}, \hyperpage{11}
-    \subitem {dt}, \hyperpage{12}
-    \subitem {dt\_vals}, \hyperpage{12}
-    \subitem {final\_mass\_loss}, \hyperpage{12}
-    \subitem {final\_voltage}, \hyperpage{12}
-    \subitem {mass\_loss}, \hyperpage{12}
-    \subitem {nodenum}, \hyperpage{12}
-    \subitem {v}, \hyperpage{13}
+    \subitem {run\_dt\_convergence}, \hyperpage{11}
+    \subitem {run\_node\_convergence}, \hyperpage{12}
   \item {counter}
     \subitem {Uncertainty\_Propagation}, \hyperpage{27}
   \item {cstorage}
     \subitem {checkpointing.f90}, \hyperpage{65}
   \item {cstore\_neg}
-    \subitem {Uncertainty\_Propagation}, \hyperpage{28}
+    \subitem {Uncertainty\_Propagation}, \hyperpage{27}
   \item {cstore\_pos}
-    \subitem {Uncertainty\_Propagation}, \hyperpage{28}
+    \subitem {Uncertainty\_Propagation}, \hyperpage{27}
   \item {currents}
-    \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{44}
+    \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{43}
     \subitem {user\_input\_parallel\_simulation}, \hyperpage{59}
 
   \indexspace
 
   \item {D}
-    \subitem {user\_input}, \hyperpage{39}
+    \subitem {user\_input}, \hyperpage{38}
     \subitem {user\_input\_parallel\_simulation}, \hyperpage{59}
   \item {d}
     \subitem {checkpointing.f90}, \hyperpage{65}
     \subitem {read\_inputs.f90}, \hyperpage{76}
   \item {D\_dist}
-    \subitem {Uncertainty\_Propagation}, \hyperpage{28}
+    \subitem {Uncertainty\_Propagation}, \hyperpage{27}
   \item {D\_neg}
     \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{44}
   \item {D\_pos}
@@ -202,53 +195,49 @@
     \subitem {Uncertainty\_Propagation}, \hyperpage{28}
   \item {dt}
     \subitem {checkpointing.f90}, \hyperpage{66}
-    \subitem {convergence\_test}, \hyperpage{12}
-    \subitem {mixed\_parallel\_strat\_test}, \hyperpage{13}
-    \subitem {MKL\_threads\_test}, \hyperpage{15}
+    \subitem {mixed\_parallel\_strat\_test}, \hyperpage{12}
+    \subitem {MKL\_threads\_test}, \hyperpage{14}
     \subitem {read\_inputs.f90}, \hyperpage{76}
-    \subitem {Uncertainty\_Propagation}, \hyperpage{29}
-    \subitem {user\_input}, \hyperpage{39}
+    \subitem {Uncertainty\_Propagation}, \hyperpage{28}
+    \subitem {user\_input}, \hyperpage{38}
     \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{44}
     \subitem {user\_input\_parallel\_simulation}, \hyperpage{59}
-  \item {dt\_vals}
-    \subitem {convergence\_test}, \hyperpage{12}
 
   \indexspace
 
   \item {edge\_conc\_vals\_neg}
-    \subitem {Uncertainty\_Propagation}, \hyperpage{29}
+    \subitem {Uncertainty\_Propagation}, \hyperpage{28}
   \item {edge\_conc\_vals\_pos}
-    \subitem {Uncertainty\_Propagation}, \hyperpage{29}
+    \subitem {Uncertainty\_Propagation}, \hyperpage{28}
   \item {electrode}
     \subitem {user\_input\_parallel\_simulation}, \hyperpage{59}
   \item {electrode\_charge}
     \subitem {checkpointing.f90}, \hyperpage{66}
     \subitem {read\_inputs.f90}, \hyperpage{76}
-    \subitem {user\_input}, \hyperpage{39}
+    \subitem {user\_input}, \hyperpage{38}
     \subitem {user\_input\_parallel\_simulation}, \hyperpage{59}
   \item {electrode\_charge\_neg}
     \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{44}
   \item {electrode\_charge\_pos}
-    \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{45}
+    \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{44}
   \item {electrode\_neg}
     \subitem {Uncertainty\_Propagation}, \hyperpage{29}
   \item {electrode\_pos}
     \subitem {Uncertainty\_Propagation}, \hyperpage{29}
   \item {end}
-    \subitem {mixed\_parallel\_strat\_test}, \hyperpage{13}
-    \subitem {MKL\_threads\_test}, \hyperpage{15}
+    \subitem {mixed\_parallel\_strat\_test}, \hyperpage{12}
+    \subitem {MKL\_threads\_test}, \hyperpage{14}
 
   \indexspace
 
   \item {False}
     \subitem {Uncertainty\_Propagation}, \hyperpage{29}
   \item {fig}
-    \subitem {sensitivity\_analysis}, \hyperpage{23}
-    \subitem {Uncertainty\_Propagation}, \hyperpage{30}
+    \subitem {Uncertainty\_Propagation}, \hyperpage{29}
   \item {figg}
-    \subitem {Uncertainty\_Propagation}, \hyperpage{30}
+    \subitem {Uncertainty\_Propagation}, \hyperpage{29}
   \item {figsize}
-    \subitem {Uncertainty\_Propagation}, \hyperpage{30}
+    \subitem {Uncertainty\_Propagation}, \hyperpage{29}
   \item {file\_ext}
     \subitem {checkpointing.f90}, \hyperpage{66}
   \item {file\_extension}
@@ -265,10 +254,6 @@
     \subitem {checkpointing.f90}, \hyperpage{67}
   \item {filepath}
     \subitem {checkpointing.f90}, \hyperpage{67}
-  \item {final\_mass\_loss}
-    \subitem {convergence\_test}, \hyperpage{12}
-  \item {final\_voltage}
-    \subitem {convergence\_test}, \hyperpage{12}
   \item {finite\_diff\_solver.f90}
     \subitem {main}, \hyperpage{72}
   \item {fixed\_a}
@@ -278,9 +263,9 @@
   \item {fixed\_D}
     \subitem {Uncertainty\_Propagation}, \hyperpage{30}
   \item {fixed\_L}
-    \subitem {Uncertainty\_Propagation}, \hyperpage{31}
+    \subitem {Uncertainty\_Propagation}, \hyperpage{30}
   \item {fixed\_R}
-    \subitem {Uncertainty\_Propagation}, \hyperpage{31}
+    \subitem {Uncertainty\_Propagation}, \hyperpage{30}
   \item {fps}
     \subitem {sensitivity\_analysis}, \hyperpage{23}
   \item {freq}
@@ -294,12 +279,12 @@
   \item {full\_battery\_simulation}
     \subitem {user\_input\_mod}, \hyperpage{51}
   \item {full\_voltage}
-    \subitem {Uncertainty\_Propagation}, \hyperpage{31}
+    \subitem {Uncertainty\_Propagation}, \hyperpage{30}
 
   \indexspace
 
   \item {gen\_half\_cell\_voltage}
-    \subitem {plotter}, \hyperpage{19}
+    \subitem {plotter}, \hyperpage{18}
   \item {gen\_plots}
     \subitem {plotter}, \hyperpage{19}
   \item {get\_avg\_li\_conc}
@@ -331,7 +316,7 @@
     \subitem {user\_input}, \hyperpage{39}
     \subitem {user\_input\_parallel\_simulation}, \hyperpage{60}
   \item {iapp\_label\_neg}
-    \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{45}
+    \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{44}
   \item {iapp\_label\_pos}
     \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{45}
   \item {iapp\_neg}
@@ -343,7 +328,7 @@
   \item {iapp\_step\_setup}
     \subitem {user\_input\_mod}, \hyperpage{54}
   \item {in\_out\_easy\_peasy}
-    \subitem {Uncertainty\_Propagation}, \hyperpage{26}
+    \subitem {Uncertainty\_Propagation}, \hyperpage{25}
   \item {invalid\_param}
     \subitem {read\_inputs.f90}, \hyperpage{77}
   \item {ios}
@@ -356,26 +341,26 @@
     \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{45}
     \subitem {user\_input\_parallel\_simulation}, \hyperpage{60}
   \item {K\_pos}
-    \subitem {user\_input}, \hyperpage{40}
-    \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{46}
+    \subitem {user\_input}, \hyperpage{39}
+    \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{45}
     \subitem {user\_input\_parallel\_simulation}, \hyperpage{60}
 
   \indexspace
 
   \item {L}
-    \subitem {user\_input}, \hyperpage{40}
+    \subitem {user\_input}, \hyperpage{39}
     \subitem {user\_input\_parallel\_simulation}, \hyperpage{60}
   \item {l}
     \subitem {checkpointing.f90}, \hyperpage{68}
     \subitem {read\_inputs.f90}, \hyperpage{77}
   \item {L\_dist}
-    \subitem {Uncertainty\_Propagation}, \hyperpage{32}
+    \subitem {Uncertainty\_Propagation}, \hyperpage{31}
   \item {L\_neg}
-    \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{46}
+    \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{45}
   \item {L\_pos}
     \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{46}
   \item {L\_samples}
-    \subitem {Uncertainty\_Propagation}, \hyperpage{32}
+    \subitem {Uncertainty\_Propagation}, \hyperpage{31}
   \item {label}
     \subitem {mixed\_parallel\_strat\_test}, \hyperpage{13}
     \subitem {MKL\_threads\_test}, \hyperpage{15}
@@ -386,38 +371,36 @@
 
   \item {main}
     \subitem {finite\_diff\_solver.f90}, \hyperpage{72}
-  \item {mass\_loss}
-    \subitem {convergence\_test}, \hyperpage{12}
   \item {math.md}, \hyperpage{72}
-  \item {mixed\_parallel\_strat\_test}, \hyperpage{13}
-    \subitem {dt}, \hyperpage{13}
-    \subitem {end}, \hyperpage{13}
+  \item {mixed\_parallel\_strat\_test}, \hyperpage{12}
+    \subitem {dt}, \hyperpage{12}
+    \subitem {end}, \hyperpage{12}
     \subitem {label}, \hyperpage{13}
-    \subitem {n}, \hyperpage{14}
-    \subitem {nodenum}, \hyperpage{14}
-    \subitem {num\_cores}, \hyperpage{14}
-    \subitem {num\_nodes}, \hyperpage{14}
-    \subitem {start}, \hyperpage{14}
+    \subitem {n}, \hyperpage{13}
+    \subitem {nodenum}, \hyperpage{13}
+    \subitem {num\_cores}, \hyperpage{13}
+    \subitem {num\_nodes}, \hyperpage{13}
+    \subitem {start}, \hyperpage{13}
     \subitem {times}, \hyperpage{14}
-  \item {MKL\_threads\_test}, \hyperpage{15}
-    \subitem {dt}, \hyperpage{15}
-    \subitem {end}, \hyperpage{15}
+  \item {MKL\_threads\_test}, \hyperpage{14}
+    \subitem {dt}, \hyperpage{14}
+    \subitem {end}, \hyperpage{14}
     \subitem {label}, \hyperpage{15}
     \subitem {n}, \hyperpage{15}
-    \subitem {nodenum}, \hyperpage{16}
-    \subitem {num\_nodes}, \hyperpage{16}
-    \subitem {num\_threads}, \hyperpage{16}
-    \subitem {start}, \hyperpage{16}
+    \subitem {nodenum}, \hyperpage{15}
+    \subitem {num\_nodes}, \hyperpage{15}
+    \subitem {num\_threads}, \hyperpage{15}
+    \subitem {start}, \hyperpage{15}
     \subitem {times}, \hyperpage{16}
 
   \indexspace
 
   \item {n}
     \subitem {checkpointing.f90}, \hyperpage{68}
-    \subitem {mixed\_parallel\_strat\_test}, \hyperpage{14}
+    \subitem {mixed\_parallel\_strat\_test}, \hyperpage{13}
     \subitem {MKL\_threads\_test}, \hyperpage{15}
     \subitem {read\_inputs.f90}, \hyperpage{78}
-    \subitem {user\_input}, \hyperpage{40}
+    \subitem {user\_input}, \hyperpage{39}
     \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{46}
     \subitem {user\_input\_parallel\_simulation}, \hyperpage{60}
   \item {n\_params}
@@ -426,55 +409,54 @@
     \subitem {read\_inputs.f90}, \hyperpage{78}
   \item {name}
     \subitem {read\_inputs.f90}, \hyperpage{78}
-  \item {nc\_output}, \hyperpage{17}
-    \subitem {check}, \hyperpage{17}
-    \subitem {output\_cstorage}, \hyperpage{17}
+  \item {nc\_output}, \hyperpage{16}
+    \subitem {check}, \hyperpage{16}
+    \subitem {output\_cstorage}, \hyperpage{16}
   \item {ncid}
     \subitem {checkpointing.f90}, \hyperpage{68}
   \item {neg\_params}
     \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{46}
     \subitem {user\_input\_parallel\_simulation}, \hyperpage{61}
   \item {neg\_voltage}
-    \subitem {Uncertainty\_Propagation}, \hyperpage{32}
+    \subitem {Uncertainty\_Propagation}, \hyperpage{31}
   \item {negparams}
     \subitem {Uncertainty\_Propagation}, \hyperpage{32}
   \item {nodenum}
-    \subitem {convergence\_test}, \hyperpage{12}
-    \subitem {mixed\_parallel\_strat\_test}, \hyperpage{14}
-    \subitem {MKL\_threads\_test}, \hyperpage{16}
+    \subitem {mixed\_parallel\_strat\_test}, \hyperpage{13}
+    \subitem {MKL\_threads\_test}, \hyperpage{15}
     \subitem {Uncertainty\_Propagation}, \hyperpage{32}
   \item {nprocs}
     \subitem {Uncertainty\_Propagation}, \hyperpage{32}
     \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{46}
     \subitem {user\_input\_parallel\_simulation}, \hyperpage{61}
   \item {nsteps}
-    \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{47}
+    \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{46}
     \subitem {user\_input\_parallel\_simulation}, \hyperpage{61}
   \item {num\_args}
     \subitem {read\_inputs.f90}, \hyperpage{78}
   \item {num\_cores}
-    \subitem {mixed\_parallel\_strat\_test}, \hyperpage{14}
+    \subitem {mixed\_parallel\_strat\_test}, \hyperpage{13}
   \item {num\_nodes}
-    \subitem {mixed\_parallel\_strat\_test}, \hyperpage{14}
-    \subitem {MKL\_threads\_test}, \hyperpage{16}
+    \subitem {mixed\_parallel\_strat\_test}, \hyperpage{13}
+    \subitem {MKL\_threads\_test}, \hyperpage{15}
   \item {num\_samples}
-    \subitem {Uncertainty\_Propagation}, \hyperpage{33}
+    \subitem {Uncertainty\_Propagation}, \hyperpage{32}
   \item {num\_threads}
-    \subitem {MKL\_threads\_test}, \hyperpage{16}
+    \subitem {MKL\_threads\_test}, \hyperpage{15}
 
   \indexspace
 
   \item {optimise\_parallelism}
     \subitem {user\_input\_mod}, \hyperpage{54}
   \item {output\_cstorage}
-    \subitem {nc\_output}, \hyperpage{17}
+    \subitem {nc\_output}, \hyperpage{16}
   \item {output\_filename}
     \subitem {user\_input\_parallel\_simulation}, \hyperpage{61}
   \item {output\_filename\_negative}
-    \subitem {Uncertainty\_Propagation}, \hyperpage{33}
-    \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{47}
+    \subitem {Uncertainty\_Propagation}, \hyperpage{32}
+    \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{46}
   \item {output\_filename\_positive}
-    \subitem {Uncertainty\_Propagation}, \hyperpage{33}
+    \subitem {Uncertainty\_Propagation}, \hyperpage{32}
     \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{47}
 
   \indexspace
@@ -498,19 +480,19 @@
   \item {plot\_halfcell\_GITT\_result}
     \subitem {plotter}, \hyperpage{20}
   \item {plot\_params\_neg}
-    \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{48}
+    \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{47}
     \subitem {user\_input\_parallel\_simulation}, \hyperpage{61}
   \item {plot\_params\_pos}
     \subitem {user\_input}, \hyperpage{40}
-    \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{48}
+    \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{47}
   \item {plotter}, \hyperpage{17}
     \subitem {animated\_conc\_plot}, \hyperpage{18}
     \subitem {full\_battery\_GITT\_plots}, \hyperpage{18}
-    \subitem {gen\_half\_cell\_voltage}, \hyperpage{19}
+    \subitem {gen\_half\_cell\_voltage}, \hyperpage{18}
     \subitem {gen\_plots}, \hyperpage{19}
     \subitem {get\_avg\_li\_conc}, \hyperpage{19}
     \subitem {plot\_halfcell\_GITT\_result}, \hyperpage{20}
-    \subitem {read\_input\_current}, \hyperpage{20}
+    \subitem {read\_input\_current}, \hyperpage{21}
     \subitem {read\_output\_file}, \hyperpage{21}
     \subitem {voltage\_current\_plot}, \hyperpage{21}
   \item {pos\_params}
@@ -519,7 +501,7 @@
   \item {pos\_voltage}
     \subitem {Uncertainty\_Propagation}, \hyperpage{33}
   \item {posparams}
-    \subitem {Uncertainty\_Propagation}, \hyperpage{34}
+    \subitem {Uncertainty\_Propagation}, \hyperpage{33}
 
   \indexspace
 
@@ -530,9 +512,9 @@
     \subitem {checkpointing.f90}, \hyperpage{68}
     \subitem {read\_inputs.f90}, \hyperpage{79}
   \item {R\_dist}
-    \subitem {Uncertainty\_Propagation}, \hyperpage{34}
+    \subitem {Uncertainty\_Propagation}, \hyperpage{33}
   \item {R\_neg}
-    \subitem {Uncertainty\_Propagation}, \hyperpage{34}
+    \subitem {Uncertainty\_Propagation}, \hyperpage{33}
     \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{48}
   \item {R\_pos}
     \subitem {Uncertainty\_Propagation}, \hyperpage{34}
@@ -540,7 +522,7 @@
   \item {R\_samples}
     \subitem {Uncertainty\_Propagation}, \hyperpage{34}
   \item {read\_input\_current}
-    \subitem {plotter}, \hyperpage{20}
+    \subitem {plotter}, \hyperpage{21}
   \item {read\_inputs}, \hyperpage{22}
   \item {read\_inputs.f90}
     \subitem {a\_small}, \hyperpage{75}
@@ -576,6 +558,10 @@
     \subitem {read\_inputs.f90}, \hyperpage{79}
   \item {resol}
     \subitem {Uncertainty\_Propagation}, \hyperpage{34}
+  \item {run\_dt\_convergence}
+    \subitem {convergence\_test}, \hyperpage{11}
+  \item {run\_node\_convergence}
+    \subitem {convergence\_test}, \hyperpage{12}
   \item {run\_times}
     \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{48}
     \subitem {user\_input\_parallel\_simulation}, \hyperpage{62}
@@ -584,39 +570,32 @@
 
   \indexspace
 
-  \item {scaled\_sensitivities\_matrix}
-    \subitem {sensitivity\_analysis}, \hyperpage{24}
   \item {sensitivity\_analysis}, \hyperpage{22}
     \subitem {ani}, \hyperpage{23}
-    \subitem {ax}, \hyperpage{23}
-    \subitem {fig}, \hyperpage{23}
     \subitem {filename}, \hyperpage{23}
     \subitem {fps}, \hyperpage{23}
-    \subitem {scaled\_sensitivities\_matrix}, \hyperpage{24}
-    \subitem {sensitivity\_over\_time}, \hyperpage{22}
-    \subitem {update}, \hyperpage{23}
-    \subitem {writer}, \hyperpage{24}
-    \subitem {x\_labels}, \hyperpage{24}
+    \subitem {sensitivity\_over\_time}, \hyperpage{23}
+    \subitem {writer}, \hyperpage{23}
   \item {sensitivity\_over\_time}
-    \subitem {sensitivity\_analysis}, \hyperpage{22}
+    \subitem {sensitivity\_analysis}, \hyperpage{23}
   \item {set\_defaults\_neg}
     \subitem {user\_input\_mod}, \hyperpage{55}
   \item {set\_defaults\_pos}
     \subitem {user\_input\_mod}, \hyperpage{55}
   \item {sharex}
-    \subitem {Uncertainty\_Propagation}, \hyperpage{35}
+    \subitem {Uncertainty\_Propagation}, \hyperpage{34}
   \item {sharey}
-    \subitem {Uncertainty\_Propagation}, \hyperpage{35}
+    \subitem {Uncertainty\_Propagation}, \hyperpage{34}
   \item {solver\_input\_filename}
-    \subitem {user\_input}, \hyperpage{41}
+    \subitem {user\_input}, \hyperpage{40}
   \item {SparsifyAnimation}
-    \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{49}
+    \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{48}
     \subitem {user\_input\_parallel\_simulation}, \hyperpage{62}
   \item {start}
-    \subitem {mixed\_parallel\_strat\_test}, \hyperpage{14}
-    \subitem {MKL\_threads\_test}, \hyperpage{16}
+    \subitem {mixed\_parallel\_strat\_test}, \hyperpage{13}
+    \subitem {MKL\_threads\_test}, \hyperpage{15}
   \item {start\_times}
-    \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{49}
+    \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{48}
     \subitem {user\_input\_parallel\_simulation}, \hyperpage{62}
   \item {status}
     \subitem {checkpointing.f90}, \hyperpage{69}
@@ -624,7 +603,7 @@
   \indexspace
 
   \item {time}
-    \subitem {Uncertainty\_Propagation}, \hyperpage{35}
+    \subitem {Uncertainty\_Propagation}, \hyperpage{34}
   \item {time\_axis}
     \subitem {Uncertainty\_Propagation}, \hyperpage{35}
   \item {times}
@@ -644,7 +623,7 @@
     \subitem {checkpointing.f90}, \hyperpage{69}
     \subitem {read\_inputs.f90}, \hyperpage{79}
     \subitem {Uncertainty\_Propagation}, \hyperpage{35}
-    \subitem {user\_input}, \hyperpage{41}
+    \subitem {user\_input}, \hyperpage{40}
     \subitem {user\_input\_full\_battery\_GITT}, \hyperpage{49}
     \subitem {user\_input\_parallel\_simulation}, \hyperpage{62}
 
@@ -653,132 +632,130 @@
   \item {Uncertainty\_Propagation}, \hyperpage{24}
     \subitem {a\_dist}, \hyperpage{26}
     \subitem {a\_samples}, \hyperpage{26}
-    \subitem {alpha}, \hyperpage{27}
-    \subitem {axs}, \hyperpage{27}
-    \subitem {axss}, \hyperpage{27}
+    \subitem {alpha}, \hyperpage{26}
+    \subitem {axs}, \hyperpage{26}
+    \subitem {axss}, \hyperpage{26}
     \subitem {c0\_dist}, \hyperpage{27}
     \subitem {c0\_samples}, \hyperpage{27}
     \subitem {counter}, \hyperpage{27}
-    \subitem {cstore\_neg}, \hyperpage{28}
-    \subitem {cstore\_pos}, \hyperpage{28}
-    \subitem {D\_dist}, \hyperpage{28}
+    \subitem {cstore\_neg}, \hyperpage{27}
+    \subitem {cstore\_pos}, \hyperpage{27}
+    \subitem {D\_dist}, \hyperpage{27}
     \subitem {D\_samples}, \hyperpage{28}
     \subitem {dr\_neg}, \hyperpage{28}
     \subitem {dr\_pos}, \hyperpage{28}
-    \subitem {dt}, \hyperpage{29}
-    \subitem {edge\_conc\_vals\_neg}, \hyperpage{29}
-    \subitem {edge\_conc\_vals\_pos}, \hyperpage{29}
+    \subitem {dt}, \hyperpage{28}
+    \subitem {edge\_conc\_vals\_neg}, \hyperpage{28}
+    \subitem {edge\_conc\_vals\_pos}, \hyperpage{28}
     \subitem {electrode\_neg}, \hyperpage{29}
     \subitem {electrode\_pos}, \hyperpage{29}
     \subitem {False}, \hyperpage{29}
-    \subitem {fig}, \hyperpage{30}
-    \subitem {figg}, \hyperpage{30}
-    \subitem {figsize}, \hyperpage{30}
+    \subitem {fig}, \hyperpage{29}
+    \subitem {figg}, \hyperpage{29}
+    \subitem {figsize}, \hyperpage{29}
     \subitem {fixed\_a}, \hyperpage{30}
     \subitem {fixed\_c0}, \hyperpage{30}
     \subitem {fixed\_D}, \hyperpage{30}
-    \subitem {fixed\_L}, \hyperpage{31}
-    \subitem {fixed\_R}, \hyperpage{31}
-    \subitem {full\_voltage}, \hyperpage{31}
+    \subitem {fixed\_L}, \hyperpage{30}
+    \subitem {fixed\_R}, \hyperpage{30}
+    \subitem {full\_voltage}, \hyperpage{30}
     \subitem {i\_app\_data\_neg}, \hyperpage{31}
     \subitem {i\_app\_data\_pos}, \hyperpage{31}
     \subitem {iapp}, \hyperpage{31}
-    \subitem {in\_out\_easy\_peasy}, \hyperpage{26}
-    \subitem {L\_dist}, \hyperpage{32}
-    \subitem {L\_samples}, \hyperpage{32}
-    \subitem {neg\_voltage}, \hyperpage{32}
+    \subitem {in\_out\_easy\_peasy}, \hyperpage{25}
+    \subitem {L\_dist}, \hyperpage{31}
+    \subitem {L\_samples}, \hyperpage{31}
+    \subitem {neg\_voltage}, \hyperpage{31}
     \subitem {negparams}, \hyperpage{32}
     \subitem {nodenum}, \hyperpage{32}
     \subitem {nprocs}, \hyperpage{32}
-    \subitem {num\_samples}, \hyperpage{33}
-    \subitem {output\_filename\_negative}, \hyperpage{33}
-    \subitem {output\_filename\_positive}, \hyperpage{33}
+    \subitem {num\_samples}, \hyperpage{32}
+    \subitem {output\_filename\_negative}, \hyperpage{32}
+    \subitem {output\_filename\_positive}, \hyperpage{32}
     \subitem {parameters}, \hyperpage{33}
     \subitem {params}, \hyperpage{33}
     \subitem {pos\_voltage}, \hyperpage{33}
-    \subitem {posparams}, \hyperpage{34}
-    \subitem {R\_dist}, \hyperpage{34}
-    \subitem {R\_neg}, \hyperpage{34}
+    \subitem {posparams}, \hyperpage{33}
+    \subitem {R\_dist}, \hyperpage{33}
+    \subitem {R\_neg}, \hyperpage{33}
     \subitem {R\_pos}, \hyperpage{34}
     \subitem {R\_samples}, \hyperpage{34}
     \subitem {resol}, \hyperpage{34}
-    \subitem {sharex}, \hyperpage{35}
-    \subitem {sharey}, \hyperpage{35}
-    \subitem {time}, \hyperpage{35}
+    \subitem {sharex}, \hyperpage{34}
+    \subitem {sharey}, \hyperpage{34}
+    \subitem {time}, \hyperpage{34}
     \subitem {time\_axis}, \hyperpage{35}
     \subitem {True}, \hyperpage{35}
     \subitem {tsteps}, \hyperpage{35}
-    \subitem {voltage\_curves}, \hyperpage{36}
-    \subitem {x}, \hyperpage{36}
+    \subitem {voltage\_curves}, \hyperpage{35}
+    \subitem {x}, \hyperpage{35}
   \item {unit\_test}, \hyperpage{36}
     \subitem {run\_unit\_test}, \hyperpage{36}
-  \item {update}
-    \subitem {sensitivity\_analysis}, \hyperpage{23}
   \item {uq.md}, \hyperpage{72}
   \item {user\_input}, \hyperpage{36}
-    \subitem {a}, \hyperpage{38}
-    \subitem {c0}, \hyperpage{38}
+    \subitem {a}, \hyperpage{37}
+    \subitem {c0}, \hyperpage{37}
     \subitem {checkpoint}, \hyperpage{38}
     \subitem {cmax\_neg\_sim}, \hyperpage{38}
     \subitem {cmax\_pos\_sim}, \hyperpage{38}
-    \subitem {D}, \hyperpage{39}
-    \subitem {dt}, \hyperpage{39}
-    \subitem {electrode\_charge}, \hyperpage{39}
+    \subitem {D}, \hyperpage{38}
+    \subitem {dt}, \hyperpage{38}
+    \subitem {electrode\_charge}, \hyperpage{38}
     \subitem {iapp}, \hyperpage{39}
     \subitem {iapp\_label}, \hyperpage{39}
     \subitem {K\_neg}, \hyperpage{39}
-    \subitem {K\_pos}, \hyperpage{40}
-    \subitem {L}, \hyperpage{40}
-    \subitem {n}, \hyperpage{40}
+    \subitem {K\_pos}, \hyperpage{39}
+    \subitem {L}, \hyperpage{39}
+    \subitem {n}, \hyperpage{39}
     \subitem {plot\_params\_pos}, \hyperpage{40}
     \subitem {pos\_params}, \hyperpage{40}
     \subitem {R}, \hyperpage{40}
-    \subitem {solver\_input\_filename}, \hyperpage{41}
-    \subitem {tsteps}, \hyperpage{41}
+    \subitem {solver\_input\_filename}, \hyperpage{40}
+    \subitem {tsteps}, \hyperpage{40}
   \item {user\_input\_full\_battery\_GITT}, \hyperpage{41}
     \subitem {a\_neg}, \hyperpage{42}
-    \subitem {a\_pos}, \hyperpage{43}
-    \subitem {animation\_interval\_time}, \hyperpage{43}
+    \subitem {a\_pos}, \hyperpage{42}
+    \subitem {animation\_interval\_time}, \hyperpage{42}
     \subitem {c0}, \hyperpage{43}
     \subitem {c0\_neg}, \hyperpage{43}
     \subitem {c0\_pos}, \hyperpage{43}
     \subitem {cmax\_neg\_sim}, \hyperpage{43}
-    \subitem {cmax\_pos\_sim}, \hyperpage{44}
-    \subitem {currents}, \hyperpage{44}
+    \subitem {cmax\_pos\_sim}, \hyperpage{43}
+    \subitem {currents}, \hyperpage{43}
     \subitem {D\_neg}, \hyperpage{44}
     \subitem {D\_pos}, \hyperpage{44}
     \subitem {dt}, \hyperpage{44}
     \subitem {electrode\_charge\_neg}, \hyperpage{44}
-    \subitem {electrode\_charge\_pos}, \hyperpage{45}
-    \subitem {iapp\_label\_neg}, \hyperpage{45}
+    \subitem {electrode\_charge\_pos}, \hyperpage{44}
+    \subitem {iapp\_label\_neg}, \hyperpage{44}
     \subitem {iapp\_label\_pos}, \hyperpage{45}
     \subitem {iapp\_neg}, \hyperpage{45}
     \subitem {iapp\_pos}, \hyperpage{45}
     \subitem {K\_neg}, \hyperpage{45}
-    \subitem {K\_pos}, \hyperpage{46}
-    \subitem {L\_neg}, \hyperpage{46}
+    \subitem {K\_pos}, \hyperpage{45}
+    \subitem {L\_neg}, \hyperpage{45}
     \subitem {L\_pos}, \hyperpage{46}
     \subitem {n}, \hyperpage{46}
     \subitem {neg\_params}, \hyperpage{46}
     \subitem {nprocs}, \hyperpage{46}
-    \subitem {nsteps}, \hyperpage{47}
-    \subitem {output\_filename\_negative}, \hyperpage{47}
+    \subitem {nsteps}, \hyperpage{46}
+    \subitem {output\_filename\_negative}, \hyperpage{46}
     \subitem {output\_filename\_positive}, \hyperpage{47}
     \subitem {params\_neg}, \hyperpage{47}
     \subitem {params\_pos}, \hyperpage{47}
-    \subitem {plot\_params\_neg}, \hyperpage{48}
-    \subitem {plot\_params\_pos}, \hyperpage{48}
+    \subitem {plot\_params\_neg}, \hyperpage{47}
+    \subitem {plot\_params\_pos}, \hyperpage{47}
     \subitem {pos\_params}, \hyperpage{48}
     \subitem {R\_neg}, \hyperpage{48}
     \subitem {R\_pos}, \hyperpage{48}
     \subitem {run\_times}, \hyperpage{48}
-    \subitem {SparsifyAnimation}, \hyperpage{49}
-    \subitem {start\_times}, \hyperpage{49}
+    \subitem {SparsifyAnimation}, \hyperpage{48}
+    \subitem {start\_times}, \hyperpage{48}
     \subitem {True}, \hyperpage{49}
     \subitem {tsteps}, \hyperpage{49}
     \subitem {wait\_times}, \hyperpage{49}
-  \item {user\_input\_mod}, \hyperpage{50}
-    \subitem {call\_solver}, \hyperpage{51}
+  \item {user\_input\_mod}, \hyperpage{49}
+    \subitem {call\_solver}, \hyperpage{50}
     \subitem {full\_battery\_simulation}, \hyperpage{51}
     \subitem {get\_GITT\_initial\_concs}, \hyperpage{51}
     \subitem {GITT\_full\_cell}, \hyperpage{52}
@@ -825,8 +802,6 @@
 
   \indexspace
 
-  \item {v}
-    \subitem {convergence\_test}, \hyperpage{13}
   \item {val}
     \subitem {read\_inputs.f90}, \hyperpage{79}
   \item {varid}
@@ -862,7 +837,7 @@
   \item {voltage\_current\_plot}
     \subitem {plotter}, \hyperpage{21}
   \item {voltage\_curves}
-    \subitem {Uncertainty\_Propagation}, \hyperpage{36}
+    \subitem {Uncertainty\_Propagation}, \hyperpage{35}
 
   \indexspace
 
@@ -872,13 +847,11 @@
   \item {write\_to\_file}
     \subitem {user\_input\_mod}, \hyperpage{56}
   \item {writer}
-    \subitem {sensitivity\_analysis}, \hyperpage{24}
+    \subitem {sensitivity\_analysis}, \hyperpage{23}
 
   \indexspace
 
   \item {x}
-    \subitem {Uncertainty\_Propagation}, \hyperpage{36}
-  \item {x\_labels}
-    \subitem {sensitivity\_analysis}, \hyperpage{24}
+    \subitem {Uncertainty\_Propagation}, \hyperpage{35}
 
 \end{theindex}

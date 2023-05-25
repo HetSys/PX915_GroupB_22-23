@@ -5,9 +5,151 @@
 Module to read and write checkpoint files.  
 
 
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine \mbox{\hyperlink{namespacecheckpointing_a81eabe340be8bc60edd1ba044c85eb87}{write\+\_\+checkpoint}} (tstep, tsteps, dt, n, c, D, R, a\+\_\+small, L, iapp, electrode\+\_\+charge, cstorage, filename, freq\+\_\+in)
+\begin{DoxyCompactList}\small\item\em Write checkpoint file (net\+CDF) \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespacecheckpointing_a0ac9809d2e7912796cf5ee89c27db698}{read\+\_\+checkpoint}} (filename, tstep\+\_\+init, tsteps, dt, n, c, D, R, a\+\_\+small, L, iapp, electrode\+\_\+charge, cstorage)
+\begin{DoxyCompactList}\small\item\em Reads in checkpoint file (net\+CDF). \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespacecheckpointing_a15e571681bb6fc535800104d25749775}{set\+\_\+inputs}} (filename, tstep\+\_\+init, tsteps, dt, n, c, D, R, a\+\_\+small, L, iapp, electrode\+\_\+charge, cstorage)
+\begin{DoxyCompactList}\small\item\em Reads and selects user input file type\+: standard or checkpoint file. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Module to read and write checkpoint files. 
 
 Module contains functions that write checkpoint files and read them in as user input. 
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespacecheckpointing_a0ac9809d2e7912796cf5ee89c27db698}\label{namespacecheckpointing_a0ac9809d2e7912796cf5ee89c27db698}} 
+\index{checkpointing@{checkpointing}!read\_checkpoint@{read\_checkpoint}}
+\index{read\_checkpoint@{read\_checkpoint}!checkpointing@{checkpointing}}
+\doxysubsubsection{\texorpdfstring{read\_checkpoint()}{read\_checkpoint()}}
+{\footnotesize\ttfamily subroutine checkpointing\+::read\+\_\+checkpoint (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{filename,  }\item[{integer, intent(out)}]{tstep\+\_\+init,  }\item[{integer, intent(out)}]{tsteps,  }\item[{real(real64), intent(out)}]{dt,  }\item[{integer, intent(out)}]{n,  }\item[{real(real64), dimension(\+:), intent(out), allocatable}]{c,  }\item[{real(real64), intent(out)}]{D,  }\item[{real(real64), intent(out)}]{R,  }\item[{real(real64), intent(out)}]{a\+\_\+small,  }\item[{real(real64), intent(out)}]{L,  }\item[{real(real64), dimension(\+:), intent(out), allocatable}]{iapp,  }\item[{character(len=$\ast$), intent(out)}]{electrode\+\_\+charge,  }\item[{real(real64), dimension(\+:, \+:), intent(out), allocatable}]{cstorage }\end{DoxyParamCaption})}
+
+
+
+Reads in checkpoint file (net\+CDF). 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em filename} & Name of user input file. \\
+\hline
+\mbox{\texttt{ out}}  & {\em tstep\+\_\+init} & Timestep of checkpoint file, used as initial timestep for solver. \\
+\hline
+\mbox{\texttt{ out}}  & {\em tsteps} & Number of timesteps \\
+\hline
+\mbox{\texttt{ out}}  & {\em dt} & Time step size (s) \\
+\hline
+\mbox{\texttt{ out}}  & {\em n} & Number of spatial nodes \\
+\hline
+\mbox{\texttt{ out}}  & {\em c} & Concentration at timestep of checkpoint file (mol m$^\wedge$-\/3) \\
+\hline
+\mbox{\texttt{ out}}  & {\em D} & Diffusion constant (m$^\wedge$2 s$^\wedge$-\/1) \\
+\hline
+\mbox{\texttt{ out}}  & {\em R} & Radius of simulation sphere (m) \\
+\hline
+\mbox{\texttt{ out}}  & {\em a\+\_\+small} & Particle surface area per unit volume (m$^\wedge$-\/1) \\
+\hline
+\mbox{\texttt{ out}}  & {\em L} & Electrode thickness (m) \\
+\hline
+\mbox{\texttt{ out}}  & {\em iapp} & Applied current density (A m$^\wedge$-\/2) \\
+\hline
+\mbox{\texttt{ out}}  & {\em electrode\+\_\+charge} & Electrode charge, \textquotesingle{}p\textquotesingle{}=positive, \textquotesingle{}n\textquotesingle{}=negative \\
+\hline
+\mbox{\texttt{ out}}  & {\em cstorage} & 2D array containing the concentration profile at each timestep \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 156 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{namespacecheckpointing_a15e571681bb6fc535800104d25749775}\label{namespacecheckpointing_a15e571681bb6fc535800104d25749775}} 
+\index{checkpointing@{checkpointing}!set\_inputs@{set\_inputs}}
+\index{set\_inputs@{set\_inputs}!checkpointing@{checkpointing}}
+\doxysubsubsection{\texorpdfstring{set\_inputs()}{set\_inputs()}}
+{\footnotesize\ttfamily subroutine checkpointing\+::set\+\_\+inputs (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{filename,  }\item[{integer, intent(out)}]{tstep\+\_\+init,  }\item[{integer, intent(out)}]{tsteps,  }\item[{real(real64), intent(out)}]{dt,  }\item[{integer, intent(out)}]{n,  }\item[{real(real64), dimension(\+:), intent(out), allocatable}]{c,  }\item[{real(real64), intent(out)}]{D,  }\item[{real(real64), intent(out)}]{R,  }\item[{real(real64), intent(out)}]{a\+\_\+small,  }\item[{real(real64), intent(out)}]{L,  }\item[{real(real64), dimension(\+:), intent(out), allocatable}]{iapp,  }\item[{character(len=1), intent(out)}]{electrode\+\_\+charge,  }\item[{real(real64), dimension(\+:, \+:), intent(out), allocatable}]{cstorage }\end{DoxyParamCaption})}
+
+
+
+Reads and selects user input file type\+: standard or checkpoint file. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em filename} & Name of user input file. \\
+\hline
+\mbox{\texttt{ out}}  & {\em tstep\+\_\+init} & Timestep of checkpoint file, used as initial timestep for solver. \\
+\hline
+\mbox{\texttt{ out}}  & {\em tsteps} & Number of timesteps \\
+\hline
+\mbox{\texttt{ out}}  & {\em dt} & Time step size (s) \\
+\hline
+\mbox{\texttt{ out}}  & {\em n} & Number of spatial nodes \\
+\hline
+\mbox{\texttt{ out}}  & {\em c} & Concentration at timestep of checkpoint file (mol m$^\wedge$-\/3) \\
+\hline
+\mbox{\texttt{ out}}  & {\em D} & Diffusion constant (m$^\wedge$2 s$^\wedge$-\/1) \\
+\hline
+\mbox{\texttt{ out}}  & {\em R} & Radius of simulation sphere (m) \\
+\hline
+\mbox{\texttt{ out}}  & {\em a\+\_\+small} & Particle surface area per unit volume (m$^\wedge$-\/1) \\
+\hline
+\mbox{\texttt{ out}}  & {\em L} & Electrode thickness (m) \\
+\hline
+\mbox{\texttt{ out}}  & {\em iapp} & Applied current density (A m$^\wedge$-\/2) \\
+\hline
+\mbox{\texttt{ out}}  & {\em electrode\+\_\+charge} & Electrode charge, \textquotesingle{}p\textquotesingle{}=positive, \textquotesingle{}n\textquotesingle{}=negative \\
+\hline
+\mbox{\texttt{ out}}  & {\em cstorage} & 2D array containing the concentration profile at each timestep \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 256 of file checkpointing.\+f90.
+
+\mbox{\Hypertarget{namespacecheckpointing_a81eabe340be8bc60edd1ba044c85eb87}\label{namespacecheckpointing_a81eabe340be8bc60edd1ba044c85eb87}} 
+\index{checkpointing@{checkpointing}!write\_checkpoint@{write\_checkpoint}}
+\index{write\_checkpoint@{write\_checkpoint}!checkpointing@{checkpointing}}
+\doxysubsubsection{\texorpdfstring{write\_checkpoint()}{write\_checkpoint()}}
+{\footnotesize\ttfamily subroutine checkpointing\+::write\+\_\+checkpoint (\begin{DoxyParamCaption}\item[{integer, intent(in)}]{tstep,  }\item[{integer, intent(in)}]{tsteps,  }\item[{real(real64), intent(in)}]{dt,  }\item[{integer, intent(in)}]{n,  }\item[{real(real64), dimension(n), intent(in)}]{c,  }\item[{real(real64), intent(in)}]{D,  }\item[{real(real64), intent(in)}]{R,  }\item[{real(real64), intent(in)}]{a\+\_\+small,  }\item[{real(real64), intent(in)}]{L,  }\item[{real(real64), dimension(tsteps), intent(in)}]{iapp,  }\item[{character(len=$\ast$), intent(in)}]{electrode\+\_\+charge,  }\item[{real(real64), dimension(n, tsteps), intent(in)}]{cstorage,  }\item[{character(len=$\ast$), intent(inout)}]{filename,  }\item[{integer, intent(in), optional}]{freq\+\_\+in }\end{DoxyParamCaption})}
+
+
+
+Write checkpoint file (net\+CDF) 
+
+Writes net\+CDF checkpoint file every \textquotesingle{}freq\+\_\+in\textquotesingle{} timesteps. Checkpoint file contains all user input parameters and concentration up to current timestep. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em tstep} & Current timestep \\
+\hline
+\mbox{\texttt{ in}}  & {\em tsteps} & Number of timesteps \\
+\hline
+\mbox{\texttt{ in}}  & {\em dt} & Time step size (s) \\
+\hline
+\mbox{\texttt{ in}}  & {\em n} & Number of spatial nodes \\
+\hline
+\mbox{\texttt{ in}}  & {\em c} & Concentration at current timestep (mol m$^\wedge$-\/3) \\
+\hline
+\mbox{\texttt{ in}}  & {\em D} & Diffusion constant (m$^\wedge$2 s$^\wedge$-\/1) \\
+\hline
+\mbox{\texttt{ in}}  & {\em R} & Radius of simulation sphere (m) \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+\_\+small} & Particle surface area per unit volume (m$^\wedge$-\/1) \\
+\hline
+\mbox{\texttt{ in}}  & {\em L} & Electrode thickness (m) \\
+\hline
+\mbox{\texttt{ in}}  & {\em iapp} & Applied current density (A m$^\wedge$-\/2) \\
+\hline
+\mbox{\texttt{ in}}  & {\em electrode\+\_\+charge} & Electrode charge, \textquotesingle{}p\textquotesingle{}=positive, \textquotesingle{}n\textquotesingle{}=negative \\
+\hline
+\mbox{\texttt{ in}}  & {\em cstorage} & 2D array containing the concentration profile at each timestep \\
+\hline
+\mbox{\texttt{ in}}  & {\em filename} & Name of user input file. Used to determin name of checkpoint file \\
+\hline
+\mbox{\texttt{ in}}  & {\em freq\+\_\+in} & Optional, interval of timesteps at which to write checkpoints. Default = tsteps/10. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 30 of file checkpointing.\+f90.
+

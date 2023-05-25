@@ -5,9 +5,95 @@
 Module to read user inputs.  
 
 
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+character(len=104) function \mbox{\hyperlink{namespaceread__inputs_a752aec220521a4fcad028ccb055ee54e}{read\+\_\+command\+\_\+line}} ()
+\item 
+subroutine \mbox{\hyperlink{namespaceread__inputs_a6e4573220372dc042df9b6544c8da8ce}{read\+\_\+user\+\_\+inputs}} (filename, tsteps, dt, n, c0, D, R, a\+\_\+small, L, iapp, electrode\+\_\+charge)
+\begin{DoxyCompactList}\small\item\em Subroutine reads user inputs from txt file. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceread__inputs_a45422a720b310faf4723c620a5f03029}{invalid\+\_\+param\+\_\+type}} (name, line)
+\begin{DoxyCompactList}\small\item\em Invalid parameter error handling subroutine. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Module to read user inputs. 
 
 Module contains functions that read user inputs from file and command line. 
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespaceread__inputs_a45422a720b310faf4723c620a5f03029}\label{namespaceread__inputs_a45422a720b310faf4723c620a5f03029}} 
+\index{read\_inputs@{read\_inputs}!invalid\_param\_type@{invalid\_param\_type}}
+\index{invalid\_param\_type@{invalid\_param\_type}!read\_inputs@{read\_inputs}}
+\doxysubsubsection{\texorpdfstring{invalid\_param\_type()}{invalid\_param\_type()}}
+{\footnotesize\ttfamily subroutine read\+\_\+inputs\+::invalid\+\_\+param\+\_\+type (\begin{DoxyParamCaption}\item[{character(len=25), intent(in)}]{name,  }\item[{integer, intent(in)}]{line }\end{DoxyParamCaption})}
+
+
+
+Invalid parameter error handling subroutine. 
+
+Subroutine to be called if an invalid parameter is read from file.
+\begin{DoxyEnumerate}
+\item Prints name of invalid parameter and line of user input file where this occurs.
+\item Prints reason parameter is invalid.
+\item Stops execution of solver. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em name} & Name of invalid parameter \\
+\hline
+\mbox{\texttt{ in}}  & {\em line} & Line in input file containing invalid parameter \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyEnumerate}
+
+Definition at line 319 of file read\+\_\+inputs.\+f90.
+
+\mbox{\Hypertarget{namespaceread__inputs_a752aec220521a4fcad028ccb055ee54e}\label{namespaceread__inputs_a752aec220521a4fcad028ccb055ee54e}} 
+\index{read\_inputs@{read\_inputs}!read\_command\_line@{read\_command\_line}}
+\index{read\_command\_line@{read\_command\_line}!read\_inputs@{read\_inputs}}
+\doxysubsubsection{\texorpdfstring{read\_command\_line()}{read\_command\_line()}}
+{\footnotesize\ttfamily character(len=104) function read\+\_\+inputs\+::read\+\_\+command\+\_\+line}
+
+
+
+Definition at line 33 of file read\+\_\+inputs.\+f90.
+
+\mbox{\Hypertarget{namespaceread__inputs_a6e4573220372dc042df9b6544c8da8ce}\label{namespaceread__inputs_a6e4573220372dc042df9b6544c8da8ce}} 
+\index{read\_inputs@{read\_inputs}!read\_user\_inputs@{read\_user\_inputs}}
+\index{read\_user\_inputs@{read\_user\_inputs}!read\_inputs@{read\_inputs}}
+\doxysubsubsection{\texorpdfstring{read\_user\_inputs()}{read\_user\_inputs()}}
+{\footnotesize\ttfamily subroutine read\+\_\+inputs\+::read\+\_\+user\+\_\+inputs (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{filename,  }\item[{integer, intent(out)}]{tsteps,  }\item[{real(real64), intent(out)}]{dt,  }\item[{integer, intent(out)}]{n,  }\item[{real(real64), intent(out)}]{c0,  }\item[{real(real64), intent(out)}]{D,  }\item[{real(real64), intent(out)}]{R,  }\item[{real(real64), intent(out)}]{a\+\_\+small,  }\item[{real(real64), intent(out)}]{L,  }\item[{real(real64), dimension(\+:), intent(out), allocatable}]{iapp,  }\item[{character(len=1), intent(out)}]{electrode\+\_\+charge }\end{DoxyParamCaption})}
+
+
+
+Subroutine reads user inputs from txt file. 
+
+Subroutine reads txt file \textquotesingle{}filename\textquotesingle{}, parsing and returning input parameters. Txt file should contain parameters tsteps, dt, n, c0, D, R, a, L, and electrode\+\_\+charge, in format \textquotesingle{}parameter = value\textquotesingle{}. These parameters can be listed in any order above a line of asterixes $\ast$$\ast$$\ast$. Below the asterix line should be iapp, with a label line followed by an array printed one element per line. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em filename} & Name of user input file. \\
+\hline
+\mbox{\texttt{ out}}  & {\em tsteps} & Number of timesteps \\
+\hline
+\mbox{\texttt{ out}}  & {\em dt} & Time step size (s) \\
+\hline
+\mbox{\texttt{ out}}  & {\em n} & Number of spatial nodes \\
+\hline
+\mbox{\texttt{ out}}  & {\em c0} & Initial concentration (mol m$^\wedge$-\/3) \\
+\hline
+\mbox{\texttt{ out}}  & {\em D} & Diffusion constant (m$^\wedge$2 s$^\wedge$-\/1) \\
+\hline
+\mbox{\texttt{ out}}  & {\em R} & Radius of simulation sphere (m) \\
+\hline
+\mbox{\texttt{ out}}  & {\em a\+\_\+small} & Particle surface area per unit volume (m$^\wedge$-\/1) \\
+\hline
+\mbox{\texttt{ out}}  & {\em L} & Electrode thickness (m) \\
+\hline
+\mbox{\texttt{ out}}  & {\em iapp} & Applied current density (A m$^\wedge$-\/2) \\
+\hline
+\mbox{\texttt{ out}}  & {\em electrode\+\_\+charge} & Electrode charge, \textquotesingle{}p\textquotesingle{}=positive, \textquotesingle{}n\textquotesingle{}=negative \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 88 of file read\+\_\+inputs.\+f90.
+

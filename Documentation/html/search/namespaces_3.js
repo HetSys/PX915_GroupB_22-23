@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['plotter_238',['plotter',['../namespaceplotter.html',1,'']]]
+  ['plotter_189',['plotter',['../namespaceplotter.html',1,'']]]
 ];

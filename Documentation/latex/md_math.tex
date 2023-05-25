@@ -11,10 +11,20 @@ The consistency and stability of the Crank-\/\+Nicolson scheme means it satisfie
 
 Specific Equation\+:
 
+ 
+\begin{DoxyImageNoCaption}
+  \mbox{\includegraphics[width=\textwidth,height=\textheight/2,keepaspectratio=true]{specific_eq.png}}
+\end{DoxyImageNoCaption}
 
 
 Generally\+:
 
- This is an average of standard forward and backward Euler methods.
+ 
+\begin{DoxyImageNoCaption}
+  \mbox{\includegraphics[width=\textwidth,height=\textheight/2,keepaspectratio=true]{general_eq.png}}
+\end{DoxyImageNoCaption}
+
+
+This is an average of standard forward and backward Euler methods.
 
 Boundary conditions are treated through the use of ghost nodes, which assign values for the function of interest to regions just beyond the domain of the problem in an attempt to approximate the first derivatives present in the Neumann boundary conditions specified. 

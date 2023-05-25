@@ -1,41 +1,17 @@
 DoxygenLayout.xml:14: warning: Found closing tag 'tab' that does not match the opening tag 'navindex' at the same level
-/home/chem/msuvnj/PX915_GroupB_22-23/checkpointing.f90:19: warning: documented symbol 'subroutine write_checkpoint' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/checkpointing.f90:159: warning: documented symbol 'subroutine read_checkpoint' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/checkpointing.f90:161: warning: documented symbol 'character' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/checkpointing.f90:169: warning: documented symbol 'integer intent' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/checkpointing.f90:172: warning: documented symbol 'real' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/checkpointing.f90:175: warning: documented symbol 'integer intent' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/checkpointing.f90:178: warning: documented symbol 'real' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/checkpointing.f90:181: warning: documented symbol 'real' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/checkpointing.f90:184: warning: documented symbol 'real' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/checkpointing.f90:187: warning: documented symbol 'real' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/checkpointing.f90:190: warning: documented symbol 'real' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/checkpointing.f90:193: warning: documented symbol 'real' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/checkpointing.f90:196: warning: documented symbol 'character' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/checkpointing.f90:199: warning: documented symbol 'real' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/checkpointing.f90:270: warning: documented symbol 'subroutine set_inputs' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/checkpointing.f90:272: warning: documented symbol 'character' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/checkpointing.f90:283: warning: documented symbol 'integer intent' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/checkpointing.f90:286: warning: documented symbol 'integer intent' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/checkpointing.f90:289: warning: documented symbol 'real' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/checkpointing.f90:292: warning: documented symbol 'integer intent' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/checkpointing.f90:295: warning: documented symbol 'real' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/checkpointing.f90:301: warning: documented symbol 'real' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/checkpointing.f90:304: warning: documented symbol 'real' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/checkpointing.f90:307: warning: documented symbol 'real' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/checkpointing.f90:310: warning: documented symbol 'real' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/checkpointing.f90:314: warning: documented symbol 'real' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/checkpointing.f90:317: warning: documented symbol 'character' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/checkpointing.f90:319: warning: documented symbol 'real' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:20: warning: documented symbol 'function read_command_line' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:92: warning: documented symbol 'subroutine read_user_inputs' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:127: warning: documented symbol 'character' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:165: warning: documented symbol 'character' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:168: warning: documented symbol 'character' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:354: warning: documented symbol 'subroutine invalid_param_type' was not declared or defined.
-/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:356: warning: documented symbol 'character' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:19: warning: documented symbol 'integer num_args' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:21: warning: documented symbol 'integer i' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:23: warning: documented symbol 'integer parse_idx' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:25: warning: documented symbol 'character len arg' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:27: warning: documented symbol 'character len name' was not declared or defined.
+/home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90:29: warning: documented symbol 'character len val' was not declared or defined.
 /home/chem/msuvnj/PX915_GroupB_22-23/Documentation/math.md:7: warning: Found unknown command '\Delta'
 /home/chem/msuvnj/PX915_GroupB_22-23/Documentation/math.md:7: warning: Found unknown command '\Delta'
+/home/chem/msuvnj/PX915_GroupB_22-23/Documentation/math.md:20: warning: image file specific_eq.png is not found in IMAGE_PATH: assuming external image.
+/home/chem/msuvnj/PX915_GroupB_22-23/Documentation/math.md:25: warning: image file general_eq.png is not found in IMAGE_PATH: assuming external image.
+/home/chem/msuvnj/PX915_GroupB_22-23/Documentation/uq.md:10: warning: image file sens.png is not found in IMAGE_PATH: assuming external image.
+/home/chem/msuvnj/PX915_GroupB_22-23/Documentation/uq.md:17: warning: image file Input_Distributions.png is not found in IMAGE_PATH: assuming external image.
+/home/chem/msuvnj/PX915_GroupB_22-23/Documentation/uq.md:22: warning: image file UQ.png is not found in IMAGE_PATH: assuming external image.
 /home/chem/msuvnj/PX915_GroupB_22-23/plotter.py:580: warning: Found unknown command '\frac'
 /home/chem/msuvnj/PX915_GroupB_22-23/plotter.py:580: warning: Found unknown command '\int_'
 /home/chem/msuvnj/PX915_GroupB_22-23/plotter.py:401: warning: argument 'interval_time' of command @param is not found in the argument list of plotter::plot_halfcell_GITT_result(filename, start_times, electrode, pos_params=None, neg_params=None, Animation=False, SaveFinalState=False, SparsifyAnimation=True, animation_interval_time=10)

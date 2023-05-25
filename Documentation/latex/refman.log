@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2023.2.9)  25 MAY 2023 11:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2023.2.9)  25 MAY 2023 14:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -701,7 +701,7 @@ File: l3backend-pdfmode.def 2020-03-12 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count302
 \l__pdf_internal_box=\box114
 )
-(./refman.aux)
+No file refman.aux.
 \openout1 = `refman.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 149.
@@ -724,7 +724,7 @@ LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 149.
 LaTeX Font Info:    ... okay on input line 149.
 LaTeX Font Info:    Trying to load font information for T1+phv on input line 14
 9.
- (/opt/tex/texlive2020/texmf-dist/tex/latex/psnfss/t1phv.fd
+(/opt/tex/texlive2020/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 
 
@@ -823,13 +823,13 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 149.
 LaTeX Info: Redefining \pageref on input line 149.
 LaTeX Info: Redefining \nameref on input line 149.
- (./refman.out) (./refman.out)
 \@outlinefile=\write5
 \openout5 = `refman.out'.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-\Etoc@tf=\read4
+
+No file refman.toc.
 Package hyperref Info: Option `pageanchor' set `false' on input line 156.
 Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 156.
 
@@ -842,7 +842,6 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 6.29996pt on input line 161.
 LaTeX Font Info:    Trying to load font information for U+msa on input line 161
 .
-
 (/opt/tex/texlive2020/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
@@ -866,14 +865,6 @@ File: uwasy.fd 2020/01/19 v2.4 Wasy-2 symbol font definitions
 \tf@toc=\write6
 \openout6 = `refman.toc'.
 
-LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 8.99994pt on input line 169.
-LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 6.29996pt on input line 169.
- [1] [2] [3] [4]
-[5] [6] [7] [8] [9] [10
-
-]
 Package hyperref Info: Option `pageanchor' set `true' on input line 171.
 
 Chapter 1.
@@ -915,31 +906,178 @@ LaTeX Warning: Font shape declaration has incorrect series value `mc'.
 )
 LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
 (Font)              scaled to size 8.99994pt on input line 6.
-) [1
+)
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 8.99994pt on input line 176.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 6.29996pt on input line 176.
+ [1
+
 
 ] [2
 
 ]
 Chapter 2.
-(./md_math.tex
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 2.
-
- (/opt/tex/texlive2020/texmf-dist/tex/latex/psnfss/t1pcr.fd
-File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-))
-[3] [4
+(./md_math.tex <./specific_eq.png>
+<specific_eq.png, id=29, 1079.03125pt x 125.46875pt>
+File: specific_eq.png Graphic file (type png)
+<use specific_eq.png>
+Package pdftex.def Info: specific_eq.png  used on input line 16.
+(pdftex.def)             Requested size: 455.24812pt x 52.93582pt.
+ <./general_eq.png>
+<general_eq.png, id=32, 893.3375pt x 115.43124pt>
+File: general_eq.png Graphic file (type png)
+<use general_eq.png>
+Package pdftex.def Info: general_eq.png  used on input line 24.
+(pdftex.def)             Requested size: 455.25531pt x 58.82512pt.
+) [3] [4
 
 ]
 Chapter 3.
-(./md_uq.tex) [5] [6
-
-]
+(./md_uq.tex <./sens.png>
+<sens.png, id=46, 618.31pt x 467.7475pt>
+File: sens.png Graphic file (type png)
+<use sens.png>
+Package pdftex.def Info: sens.png  used on input line 6.
+(pdftex.def)             Requested size: 455.25905pt x 344.4005pt.
+ <./Input_Distributions.png>
+<Input_Distributions.png, id=48, 1505.625pt x 301.125pt>
+File: Input_Distributions.png Graphic file (type png)
+<use Input_Distributions.png>
+Package pdftex.def Info: Input_Distributions.png  used on input line 13.
+(pdftex.def)             Requested size: 455.25195pt x 91.05038pt.
+ [5] <./UQ.png>
+<UQ.png, id=60, 1505.625pt x 301.125pt>
+File: UQ.png Graphic file (type png)
+<use UQ.png>
+Package pdftex.def Info: UQ.png  used on input line 21.
+(pdftex.def)             Requested size: 455.25195pt x 91.05038pt.
+) [6]
 Chapter 4.
-(./namespaces.tex) [7] [8
+(./namespaces.tex
+
+LaTeX Warning: Reference `namespacecheckpointing' on page 7 undefined on input 
+line 3.
+
+
+LaTeX Warning: Reference `namespaceconvergence__test' on page 7 undefined on in
+put line 4.
+
+
+LaTeX Warning: Reference `namespacemixed__parallel__strat__test' on page 7 unde
+fined on input line 5.
+
+
+LaTeX Warning: Reference `namespace_m_k_l__threads__test' on page 7 undefined o
+n input line 6.
+
+
+LaTeX Warning: Reference `namespacenc__output' on page 7 undefined on input lin
+e 7.
+
+
+LaTeX Warning: Reference `namespaceplotter' on page 7 undefined on input line 8
+.
+
+
+LaTeX Warning: Reference `namespaceread__inputs' on page 7 undefined on input l
+ine 9.
+
+
+LaTeX Warning: Reference `namespacesensitivity__analysis' on page 7 undefined o
+n input line 10.
+
+
+LaTeX Warning: Reference `namespace_uncertainty___propagation' on page 7 undefi
+ned on input line 11.
+
+
+LaTeX Warning: Reference `namespaceunit__test' on page 7 undefined on input lin
+e 12.
+
+
+LaTeX Warning: Reference `namespaceuser__input' on page 7 undefined on input li
+ne 13.
+
+
+LaTeX Warning: Reference `namespaceuser__input__full__battery___g_i_t_t' on pag
+e 7 undefined on input line 14.
+
+
+LaTeX Warning: Reference `namespaceuser__input__mod' on page 7 undefined on inp
+ut line 15.
+
+
+LaTeX Warning: Reference `namespaceuser__input__parallel__simulation' on page 7
+ undefined on input line 16.
+
+) [7
+
+] [8
 
 ]
 Chapter 5.
-(./files.tex) [9] [10
+(./files.tex
+
+LaTeX Warning: Reference `checkpointing_8f90' on page 9 undefined on input line
+ 3.
+
+
+LaTeX Warning: Reference `convergence__test_8py' on page 9 undefined on input l
+ine 4.
+
+
+LaTeX Warning: Reference `finite__diff__solver_8f90' on page 9 undefined on inp
+ut line 5.
+
+
+LaTeX Warning: Reference `mixed__parallel__strat__test_8py' on page 9 undefined
+ on input line 6.
+
+
+LaTeX Warning: Reference `_m_k_l__threads__test_8py' on page 9 undefined on inp
+ut line 7.
+
+
+LaTeX Warning: Reference `nc__output_8f90' on page 9 undefined on input line 8.
+
+
+
+LaTeX Warning: Reference `plotter_8py' on page 9 undefined on input line 9.
+
+
+LaTeX Warning: Reference `read__inputs_8f90' on page 9 undefined on input line 
+10.
+
+
+LaTeX Warning: Reference `sensitivity__analysis_8py' on page 9 undefined on inp
+ut line 11.
+
+
+LaTeX Warning: Reference `_uncertainty___propagation_8py' on page 9 undefined o
+n input line 12.
+
+
+LaTeX Warning: Reference `unit__test_8py' on page 9 undefined on input line 13.
+
+
+
+LaTeX Warning: Reference `user__input_8py' on page 9 undefined on input line 14
+.
+
+
+LaTeX Warning: Reference `user__input__full__battery___g_i_t_t_8py' on page 9 u
+ndefined on input line 15.
+
+
+LaTeX Warning: Reference `user__input__mod_8py' on page 9 undefined on input li
+ne 16.
+
+
+LaTeX Warning: Reference `user__input__parallel__simulation_8py' on page 9 unde
+fined on input line 17.
+
+) [9] [10
 
 ]
 Chapter 6.
@@ -948,11 +1086,16 @@ LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 10.79993pt on input line 10.
 ) (./namespaceconvergence__test.tex
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 7.19995pt on input line 35.
- [11])
-(./namespacemixed__parallel__strat__test.tex [12] [13])
-(./namespace_m_k_l__threads__test.tex [14] [15]) (./namespacenc__output.tex
-[16]
+(Font)              scaled to size 7.19995pt on input line 25.
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 25
+.
+
+(/opt/tex/texlive2020/texmf-dist/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+))
+(./namespacemixed__parallel__strat__test.tex [11] [12])
+(./namespace_m_k_l__threads__test.tex [13] [14]) (./namespacenc__output.tex
+[15]
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <8> not available
 (Font)              Font shape `T1/pcr/m/sl' tried instead on input line 25.
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <7> not available
@@ -960,6 +1103,7 @@ LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <7> not available
 ) (./namespaceplotter.tex
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 8.09995pt on input line 12.
+ [16]
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
 (Font)              Font shape `T1/phv/m/sl' tried instead on input line 12.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
@@ -974,46 +1118,129 @@ Underfull \hbox (badness 1168) in paragraph at lines 15--16
 is, Save[]Final[]State=False,
  []
 
-[17] [18] [19]
-Underfull \hbox (badness 892) in paragraph at lines 116--117
+[17]
+Overfull \hbox (43.9562pt too wide) in paragraph at lines 63--63
+[]\T1/pcr/m/n/8 @brief Build an animation of the concentrations, applied curren
+t with time and applied voltage with time 
+ []
+
+
+Overfull \hbox (67.95622pt too wide) in paragraph at lines 65--65
+[]\T1/pcr/m/n/8 @details Builds the full dataset from the different GITT test f
+iles. Generates the voltage for each timestep,[] 
+ []
+
+
+Overfull \hbox (53.55621pt too wide) in paragraph at lines 66--66
+[]\T1/pcr/m/n/8 plots the full voltage-time, current-time and concentration of 
+positive and negative electrode animations.[] 
+ []
+
+
+Overfull \hbox (115.95625pt too wide) in paragraph at lines 67--67
+[]\T1/pcr/m/n/8 Also prints lithium mass loss in first step, to give an indicat
+ion on how good the model is. Acceptable values for this[] 
+ []
+
+
+Overfull \hbox (135.15627pt too wide) in paragraph at lines 69--69
+[]\T1/pcr/m/n/8 @param[in] filename_positive     The input positive filename fo
+r the simulation data, excluding any file extension. String.[] 
+ []
+
+
+Overfull \hbox (135.15627pt too wide) in paragraph at lines 70--70
+[]\T1/pcr/m/n/8 @param[in] filename_negative     The input negative filename fo
+r the simulation data, excluding any file extension. String.[] 
+ []
+
+
+Overfull \hbox (29.5562pt too wide) in paragraph at lines 71--71
+[]\T1/pcr/m/n/8 @param[in] start_times  The list of start times for each curren
+t step in a GITT test. Array of floats[] 
+ []
+
+[18]
+Overfull \hbox (53.55621pt too wide) in paragraph at lines 97--97
+[]\T1/pcr/m/n/8 @param[in] pos_params       [K, a, cmax, L] for the positive el
+ectrode, None if the positive is not needed[] 
+ []
+
+
+Overfull \hbox (53.55621pt too wide) in paragraph at lines 98--98
+[]\T1/pcr/m/n/8 @param[in] neg_params       [K, a, cmax, L] for the negative el
+ectrode, None if the negative is not needed[] 
+ []
+
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 6.1 on input line 128.
+
+[19]
+Underfull \hbox (badness 892) in paragraph at lines 145--146
 []\T1/phv/m/n/10 Uses the fact that the av-er-age con-cen-tra-tion of lithium i
 n a sphere at any timestep can be found from
  []
 
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 6.2 on input line 151.
+
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 6.3 on input line 186.
+
+
+Overfull \vbox (44.04227pt too high) has occurred while \output is active []
+
+
 [20]
-Overfull \vbox (33.90202pt too high) has occurred while \output is active []
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 6.4 on input line 207.
 
 
-[21]) (./namespaceread__inputs.tex) (./namespacesensitivity__analysis.tex
-[22] [23]
-LaTeX Font Info:    Trying to load font information for TS1+pcr on input line 1
-41.
- (/opt/tex/texlive2020/texmf-dist/tex/latex/psnfss/ts1pcr.fd
-File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
-))
-(./namespace_uncertainty___propagation.tex
+Package longtable Warning: Column widths have changed
+(longtable)                in table 6.5 on input line 228.
+
+[21]
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 6.6 on input line 259.
+
+) (./namespaceread__inputs.tex) (./namespacesensitivity__analysis.tex [22])
+(./namespace_uncertainty___propagation.tex [23]
 LaTeX Font Info:    Font shape `TS1/phv/m/it' in size <9> not available
 (Font)              Font shape `TS1/phv/m/sl' tried instead on input line 17.
 LaTeX Font Info:    Font shape `TS1/phv/m/sl' will be
 (Font)              scaled to size 8.09995pt on input line 17.
- [24] [25] [26] [27] [28] [29]
-[30] [31]
-Overfull \hbox (43.3377pt too wide) in paragraph at lines 517--518
+ [24] [25] [26] [27] [28]
+[29] [30]
+Overfull \hbox (43.3377pt too wide) in paragraph at lines 521--522
 \T1/pcr/m/n/8 neg[]_[]voltage = []([],[],[],[],neg[]
  []
 
-[32]
-Overfull \hbox (43.3377pt too wide) in paragraph at lines 615--616
+[31] [32]
+Overfull \hbox (43.3377pt too wide) in paragraph at lines 619--620
 \T1/pcr/m/n/8 pos[]_[]voltage = []([],[],[],[],pos[]
  []
 
-[33] [34] [35]) (./namespaceunit__test.tex) (./namespaceuser__input.tex
-[36] [37] [38] [39] [40]) (./namespaceuser__input__full__battery___g_i_t_t.tex
+[33] [34]) (./namespaceunit__test.tex [35]) (./namespaceuser__input.tex
+[36] [37] [38] [39]
+LaTeX Font Info:    Trying to load font information for TS1+pcr on input line 2
+65.
+ (/opt/tex/texlive2020/texmf-dist/tex/latex/psnfss/ts1pcr.fd
+File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
+)) (./namespaceuser__input__full__battery___g_i_t_t.tex
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <9> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 11.
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 16.
+ [40] [41] [42] [43]
+[44] [45] [46] [47] [48]) (./namespaceuser__input__mod.tex [49]
 
-[41] [42] [43] [44] [45] [46] [47] [48]) (./namespaceuser__input__mod.tex
-[49] [50]
+Package natbib Warning: Citation `Chen2020' on page 50 undefined on input line 
+46.
+
+[50]
 Overfull \hbox (250.35634pt too wide) in paragraph at lines 64--64
 []\T1/pcr/m/n/8 @param[in] filename: The name of the file containing the desire
 d input, either a checkpoint file or user input file. No file extension is requ
@@ -1046,7 +1273,7 @@ Overfull \hbox (15.15619pt too wide) in paragraph at lines 107--107
  multi-step parallelised GITT test. 
  []
 
-[51]
+
 Overfull \hbox (53.55621pt too wide) in paragraph at lines 109--109
 []\T1/pcr/m/n/8 @details Computes initial flat concentrations for the initial s
 tep of a parallelised multi-step GITT test.[] 
@@ -1058,7 +1285,7 @@ Overfull \hbox (77.55623pt too wide) in paragraph at lines 114--114
  current vector must be flipped when considering[] 
  []
 
-
+[51]
 Overfull \hbox (163.95628pt too wide) in paragraph at lines 117--117
 []\T1/pcr/m/n/8 @param[in] currents  A vector containing current values to appl
 y at each current step, must be floats and have the same length as[] 
@@ -1071,10 +1298,10 @@ current step, must be floats and have the same length as[]
  []
 
 
-Overfull \hbox (269.55635pt too wide) in paragraph at lines 141--141
+Overfull \hbox (250.35634pt too wide) in paragraph at lines 141--141
 []\T1/pcr/m/n/8 @details Executes the SPM solver in parallel to run a test expe
 riment on a full cell using a galvanostatic intermittent titration technique (G
-ITT), see 
+ITT), 
  []
 
 
@@ -1121,10 +1348,10 @@ h current step, must be floats and have the same length as[]
  []
 
 
-Overfull \hbox (269.55635pt too wide) in paragraph at lines 182--182
+Overfull \hbox (250.35634pt too wide) in paragraph at lines 182--182
 []\T1/pcr/m/n/8 @details Executes the SPM solver in parallel to run a test expe
 riment on a half cell using a galvanostatic intermittent titration technique (G
-ITT), see 
+ITT), 
  []
 
 
@@ -1239,16 +1466,12 @@ on over independent seperate instances of the solver is always better[]
  []
 
 
-Underfull \hbox (badness 1859) in paragraph at lines 322--323
-[]\T1/phv/m/n/10 Gives the de-fault pa-ram-e-ter val-ues, ob-tained from Chen e
-t al. 2020, [][] \T1/pcr/m/n/10 https[]://doi.[]org/10.[]
- []
+Package natbib Warning: Citation `Chen2020' on page 55 undefined on input line 
+322.
 
 
-Underfull \hbox (badness 1859) in paragraph at lines 338--339
-[]\T1/phv/m/n/10 Gives the de-fault pa-ram-e-ter val-ues, ob-tained from Chen e
-t al. 2020, [][] \T1/pcr/m/n/10 https[]://doi.[]org/10.[]
- []
+Package natbib Warning: Citation `Chen2020' on page 55 undefined on input line 
+338.
 
 
 Overfull \hbox (135.15627pt too wide) in paragraph at lines 352--352
@@ -1294,8 +1517,8 @@ Chapter 7.
 ] [64] [65] [66] [67] [68] [69] [70])
 (./convergence__test_8py.tex [71]) (./math_8md.tex) (./uq_8md.tex)
 (./finite__diff__solver_8f90.tex) (./mixed__parallel__strat__test_8py.tex
-[72]) (./_m_k_l__threads__test_8py.tex) (./nc__output_8f90.tex [73])
-(./plotter_8py.tex
+[72]) (./_m_k_l__threads__test_8py.tex) (./nc__output_8f90.tex)
+(./plotter_8py.tex [73]
 Underfull \hbox (badness 1168) in paragraph at lines 15--16
 []\T1/phv/m/n/10 def [] (in-ter-val-time, dr, [], node-num, cstore, time[]_[]ax
 is, Save[]Final[]State=False,
@@ -1306,93 +1529,44 @@ is, Save[]Final[]State=False,
 [80] [81]) (./unit__test_8py.tex) (./user__input_8py.tex [82])
 (./user__input__full__battery___g_i_t_t_8py.tex [83])
 (./user__input__mod_8py.tex [84]) (./user__input__parallel__simulation_8py.tex
-[85]) [86] (./refman.ind
-Overfull \hbox (41.22588pt too wide) in paragraph at lines 3--5
-[]\T1/phv/m/n/10 /home/chem/msuvnj/PX915_GroupB_22-23/MKL_threads_test.py,
- []
+[85]) [86]
+No file refman.bbl.
+No file refman.ind.
+
+Package natbib Warning: There were undefined citations.
 
 
-Overfull \hbox (67.59528pt too wide) in paragraph at lines 5--7
-[]\T1/phv/m/n/10 /home/chem/msuvnj/PX915_GroupB_22-23/Uncertainty_Propagation.p
-y,
- []
+Package longtable Warning: Table widths have changed. Rerun LaTeX.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 238.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 238.
+(./refman.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 238.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 238.
 
 
-Overfull \hbox (26.31316pt too wide) in paragraph at lines 7--9
-[]\T1/phv/m/n/10 /home/chem/msuvnj/PX915_GroupB_22-23/checkpointing.f90,
- []
+Package rerunfilecheck Warning: File `refman.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `refman.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  76CE2C8A277B8052F3E518138B4E83EF;66150.
+
+LaTeX Warning: There were undefined references.
 
 
-Overfull \hbox (38.82307pt too wide) in paragraph at lines 9--11
-[]\T1/phv/m/n/10 /home/chem/msuvnj/PX915_GroupB_22-23/convergence_test.py,
- []
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-
-Overfull \hbox (35.8169pt too wide) in paragraph at lines 11--13
-[]\T1/phv/m/n/10 /home/chem/msuvnj/PX915_GroupB_22-23/finite_diff_solver.f90,
- []
-
-
-Overfull \hbox (67.77539pt too wide) in paragraph at lines 13--15
-[]\T1/phv/m/n/10 /home/chem/msuvnj/PX915_GroupB_22-23/mixed_parallel_strat_test
-.py,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 17--19
-[]\T1/phv/m/n/10 /home/chem/msuvnj/PX915_GroupB_22-23/plotter.py,
- []
-
-
-Overfull \hbox (18.35724pt too wide) in paragraph at lines 19--21
-[]\T1/phv/m/n/10 /home/chem/msuvnj/PX915_GroupB_22-23/read_inputs.f90,
- []
-
-
-Overfull \hbox (44.57416pt too wide) in paragraph at lines 21--23
-[]\T1/phv/m/n/10 /home/chem/msuvnj/PX915_GroupB_22-23/sensitivity_analysis.py,
- []
-
-
-Overfull \hbox (83.92993pt too wide) in paragraph at lines 27--29
-[]\T1/phv/m/n/10 /home/chem/msuvnj/PX915_GroupB_22-23/user_input_full_battery_G
-ITT.py,
- []
-
-
-Overfull \hbox (32.7211pt too wide) in paragraph at lines 29--31
-[]\T1/phv/m/n/10 /home/chem/msuvnj/PX915_GroupB_22-23/user_input_mod.py,
- []
-
-
-Overfull \hbox (89.55498pt too wide) in paragraph at lines 31--33
-[]\T1/phv/m/n/10 /home/chem/msuvnj/PX915_GroupB_22-23/user_input_parallel_simul
-ation.py,
- []
-
-[87
-
-
-
-] [88] [89] [90] [91] [92] [93] [94
-
-])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 231.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 231.
- (./refman.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 231.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 231.
-Package rerunfilecheck Info: File `refman.out' has not changed.
-(rerunfilecheck)             Checksum: FE1CA3D10A9DE457C6A0823F39A617B5;67084.
  ) 
 Here is how much of TeX's memory you used:
- 18070 strings out of 480608
- 296049 string characters out of 5876120
- 626490 words of memory out of 5000000
- 32744 multiletter control sequences out of 15000+600000
- 591032 words of font info for 96 fonts, out of 8000000 for 9000
+ 17710 strings out of 480608
+ 287133 string characters out of 5876120
+ 531105 words of memory out of 5000000
+ 32408 multiletter control sequences out of 15000+600000
+ 592186 words of font info for 97 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,16n,96p,1201b,627s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,16n,96p,1201b,592s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/opt/tex/texlive2020/texmf-dist/fonts/enc/dvips/base/8r.enc}</opt/tex/texliv
 e2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></opt/tex/texlive2020
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></opt/tex/texlive2020/tex
@@ -1403,10 +1577,10 @@ rw/courier/ucrro8a.pfb></opt/tex/texlive2020/texmf-dist/fonts/type1/urw/helveti
 c/uhvb8a.pfb></opt/tex/texlive2020/texmf-dist/fonts/type1/urw/helvetic/uhvb8ac.
 pfb></opt/tex/texlive2020/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></opt/
 tex/texlive2020/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on refman.pdf (106 pages, 327503 bytes).
+Output written on refman.pdf (88 pages, 370415 bytes).
 PDF statistics:
- 4341 PDF objects out of 5155 (max. 8388607)
- 4181 compressed objects within 42 object streams
- 825 named destinations out of 1000 (max. 500000)
- 2857 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2154 PDF objects out of 2487 (max. 8388607)
+ 2023 compressed objects within 21 object streams
+ 801 named destinations out of 1000 (max. 500000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

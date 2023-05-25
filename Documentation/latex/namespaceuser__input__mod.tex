@@ -8,29 +8,29 @@ Package containing the functions needed to set up the user input parameters and 
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-def \mbox{\hyperlink{namespaceuser__input__mod_a434fe8a925dc89017691a670218d15a2}{iapp\+\_\+read\+\_\+csv}} (\mbox{\hyperlink{read__inputs_8f90_a0534a3ee620c0917cd9f0099559b2d52}{filename}})
+def \mbox{\hyperlink{namespaceuser__input__mod_a434fe8a925dc89017691a670218d15a2}{iapp\+\_\+read\+\_\+csv}} (filename)
 \begin{DoxyCompactList}\small\item\em CURRENT DENSITY SET UP \#\#\#. \end{DoxyCompactList}\item 
-def \mbox{\hyperlink{namespaceuser__input__mod_a89795c37e5945e82359b0f75b0613447}{iapp\+\_\+constant\+\_\+setup}} (\mbox{\hyperlink{read__inputs_8f90_a91662adda6b1bf216ff0a00a440591c4}{tsteps}}, \mbox{\hyperlink{read__inputs_8f90_ae33281526fa7223a2ff7bc26ba50b6d9}{iapp}})
+def \mbox{\hyperlink{namespaceuser__input__mod_a89795c37e5945e82359b0f75b0613447}{iapp\+\_\+constant\+\_\+setup}} (tsteps, iapp)
 \begin{DoxyCompactList}\small\item\em Sets up the applied current density \textquotesingle{}iapp\textquotesingle{} as a constant valued array of length tsteps. \end{DoxyCompactList}\item 
-def \mbox{\hyperlink{namespaceuser__input__mod_a699811de5e346fa321006c89a9ba2860}{iapp\+\_\+step\+\_\+setup}} (\mbox{\hyperlink{read__inputs_8f90_a91662adda6b1bf216ff0a00a440591c4}{tsteps}}, iapp\+\_\+steps)
+def \mbox{\hyperlink{namespaceuser__input__mod_a699811de5e346fa321006c89a9ba2860}{iapp\+\_\+step\+\_\+setup}} (tsteps, iapp\+\_\+steps)
 \begin{DoxyCompactList}\small\item\em Sets up the applied current density \textquotesingle{}iapp\textquotesingle{} as a stepped array of length tsteps. \end{DoxyCompactList}\item 
 def \mbox{\hyperlink{namespaceuser__input__mod_aebe5c185d4c5b424c433665db6de9bfd}{set\+\_\+defaults\+\_\+pos}} ()
 \begin{DoxyCompactList}\small\item\em DEFAULT PARAMETERS \#\#\#. \end{DoxyCompactList}\item 
 def \mbox{\hyperlink{namespaceuser__input__mod_aaaea3c731451ce7bdf4ed0b81a55f182}{set\+\_\+defaults\+\_\+neg}} ()
 \begin{DoxyCompactList}\small\item\em Returns default parameters for a negative electrode. \end{DoxyCompactList}\item 
-def \mbox{\hyperlink{namespaceuser__input__mod_aa59f87c9644060e0f4593ba2cc2e31ec}{verify\+\_\+params}} (\mbox{\hyperlink{read__inputs_8f90_a0534a3ee620c0917cd9f0099559b2d52}{filename}}, \mbox{\hyperlink{read__inputs_8f90_a91662adda6b1bf216ff0a00a440591c4}{tsteps}}, \mbox{\hyperlink{read__inputs_8f90_a10d68aa82fa620f29bc3adf5bde42bb9}{dt}}, \mbox{\hyperlink{read__inputs_8f90_a128e58f73e38b052fe5ca4758e8469c3}{n}}, \mbox{\hyperlink{read__inputs_8f90_a58bfeff0cdfb11fd416aa7e6a7fb87b0}{c0}}, D, R, a, L, \mbox{\hyperlink{read__inputs_8f90_aff6b764bcec5679997febf97860f09c4}{electrode\+\_\+charge}})
+def \mbox{\hyperlink{namespaceuser__input__mod_aa59f87c9644060e0f4593ba2cc2e31ec}{verify\+\_\+params}} (filename, tsteps, dt, n, c0, D, R, a, L, electrode\+\_\+charge)
 \begin{DoxyCompactList}\small\item\em PARAMETER VERIFICATION \#\#\#. \end{DoxyCompactList}\item 
-def \mbox{\hyperlink{namespaceuser__input__mod_a0e26d9f41295714f3c40286041e2a3d3}{verify\+\_\+iapp}} (\mbox{\hyperlink{read__inputs_8f90_ae33281526fa7223a2ff7bc26ba50b6d9}{iapp}}, iapp\+\_\+label, \mbox{\hyperlink{read__inputs_8f90_a91662adda6b1bf216ff0a00a440591c4}{tsteps}})
+def \mbox{\hyperlink{namespaceuser__input__mod_a0e26d9f41295714f3c40286041e2a3d3}{verify\+\_\+iapp}} (iapp, iapp\+\_\+label, tsteps)
 \begin{DoxyCompactList}\small\item\em Verifies the types and values of the applied current density array and its label. \end{DoxyCompactList}\item 
-def \mbox{\hyperlink{namespaceuser__input__mod_a3928eb204355d42eaf2cb7132c98be24}{write\+\_\+to\+\_\+file}} (\mbox{\hyperlink{read__inputs_8f90_a0534a3ee620c0917cd9f0099559b2d52}{filename}}, \mbox{\hyperlink{read__inputs_8f90_a91662adda6b1bf216ff0a00a440591c4}{tsteps}}, \mbox{\hyperlink{read__inputs_8f90_a10d68aa82fa620f29bc3adf5bde42bb9}{dt}}, \mbox{\hyperlink{read__inputs_8f90_a128e58f73e38b052fe5ca4758e8469c3}{n}}, \mbox{\hyperlink{read__inputs_8f90_a58bfeff0cdfb11fd416aa7e6a7fb87b0}{c0}}, D, R, a, L, \mbox{\hyperlink{read__inputs_8f90_ae33281526fa7223a2ff7bc26ba50b6d9}{iapp}}, iapp\+\_\+label, \mbox{\hyperlink{read__inputs_8f90_aff6b764bcec5679997febf97860f09c4}{electrode\+\_\+charge}})
+def \mbox{\hyperlink{namespaceuser__input__mod_a3928eb204355d42eaf2cb7132c98be24}{write\+\_\+to\+\_\+file}} (filename, tsteps, dt, n, c0, D, R, a, L, iapp, iapp\+\_\+label, electrode\+\_\+charge)
 \begin{DoxyCompactList}\small\item\em WRITE TO FILE \#\#\#. \end{DoxyCompactList}\item 
-def \mbox{\hyperlink{namespaceuser__input__mod_a46d17f84312397e3da528ac3d00e44e9}{call\+\_\+solver}} (\mbox{\hyperlink{read__inputs_8f90_a0534a3ee620c0917cd9f0099559b2d52}{filename}}, checkpoint, nprocs=1)
+def \mbox{\hyperlink{namespaceuser__input__mod_a46d17f84312397e3da528ac3d00e44e9}{call\+\_\+solver}} (filename, checkpoint, nprocs=1)
 \begin{DoxyCompactList}\small\item\em CALL SOLVER \#\#\#. \end{DoxyCompactList}\item 
-def \mbox{\hyperlink{namespaceuser__input__mod_ae9d232368693d625e32f1c675c268dd0}{get\+\_\+\+GITT\+\_\+initial\+\_\+concs}} (currents, run\+\_\+times, \mbox{\hyperlink{read__inputs_8f90_a58bfeff0cdfb11fd416aa7e6a7fb87b0}{c0}}, R, a, L, \mbox{\hyperlink{read__inputs_8f90_aff6b764bcec5679997febf97860f09c4}{electrode\+\_\+charge}})
+def \mbox{\hyperlink{namespaceuser__input__mod_ae9d232368693d625e32f1c675c268dd0}{get\+\_\+\+GITT\+\_\+initial\+\_\+concs}} (currents, run\+\_\+times, c0, R, a, L, electrode\+\_\+charge)
 \item 
-def \mbox{\hyperlink{namespaceuser__input__mod_a92224f7d0e5f7cc03a99f9a9475c783c}{GITT\+\_\+half\+\_\+cell}} (\mbox{\hyperlink{read__inputs_8f90_a0534a3ee620c0917cd9f0099559b2d52}{filename}}, nprocs, currents, start\+\_\+times, run\+\_\+times, wait\+\_\+times, \mbox{\hyperlink{read__inputs_8f90_a128e58f73e38b052fe5ca4758e8469c3}{n}}, params)
+def \mbox{\hyperlink{namespaceuser__input__mod_a92224f7d0e5f7cc03a99f9a9475c783c}{GITT\+\_\+half\+\_\+cell}} (filename, nprocs, currents, start\+\_\+times, run\+\_\+times, wait\+\_\+times, n, params)
 \begin{DoxyCompactList}\small\item\em INITIALISE A FULL GITT TEST IN PARALLEL \#\#\#\#. \end{DoxyCompactList}\item 
-def \mbox{\hyperlink{namespaceuser__input__mod_a82b9095d68d7e51f9cb3913e72ccfd99}{GITT\+\_\+full\+\_\+cell}} (filename\+\_\+positive, filename\+\_\+negative, nprocs, currents, start\+\_\+times, run\+\_\+times, wait\+\_\+times, \mbox{\hyperlink{read__inputs_8f90_a128e58f73e38b052fe5ca4758e8469c3}{n}}, params\+\_\+pos, params\+\_\+neg)
+def \mbox{\hyperlink{namespaceuser__input__mod_a82b9095d68d7e51f9cb3913e72ccfd99}{GITT\+\_\+full\+\_\+cell}} (filename\+\_\+positive, filename\+\_\+negative, nprocs, currents, start\+\_\+times, run\+\_\+times, wait\+\_\+times, n, params\+\_\+pos, params\+\_\+neg)
 \begin{DoxyCompactList}\small\item\em Executes the SPM solver in parallel to run a GITT full cell test over nprocs cores. \end{DoxyCompactList}\item 
 def \mbox{\hyperlink{namespaceuser__input__mod_aebc92a3cf81e1cecda5c649c21285b14}{full\+\_\+battery\+\_\+simulation}} (filename\+\_\+positive, filename\+\_\+negative, nprocs=1)
 \begin{DoxyCompactList}\small\item\em Executes the SPM solver. \end{DoxyCompactList}\item 

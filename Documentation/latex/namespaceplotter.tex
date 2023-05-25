@@ -8,19 +8,19 @@ Functions for visualisation of solver outputs.
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-def \mbox{\hyperlink{namespaceplotter_a99e9bf1e00cf92bad976ff897baaac01}{read\+\_\+output\+\_\+file}} (\mbox{\hyperlink{read__inputs_8f90_a0534a3ee620c0917cd9f0099559b2d52}{filename}}, step\+\_\+num=None)
+def \mbox{\hyperlink{namespaceplotter_a99e9bf1e00cf92bad976ff897baaac01}{read\+\_\+output\+\_\+file}} (filename, step\+\_\+num=None)
 \begin{DoxyCompactList}\small\item\em Reads in data from user input and solver output using Net\+CDF. \end{DoxyCompactList}\item 
-def \mbox{\hyperlink{namespaceplotter_a63a629338be191d4e5120f8330c48839}{read\+\_\+input\+\_\+current}} (\mbox{\hyperlink{read__inputs_8f90_a0534a3ee620c0917cd9f0099559b2d52}{filename}}, step\+\_\+num=None)
+def \mbox{\hyperlink{namespaceplotter_a63a629338be191d4e5120f8330c48839}{read\+\_\+input\+\_\+current}} (filename, step\+\_\+num=None)
 \begin{DoxyCompactList}\small\item\em Reads in the applied current. \end{DoxyCompactList}\item 
-def \mbox{\hyperlink{namespaceplotter_a8684a9ff7118c9f9d3738b3ac05b9bee}{animated\+\_\+conc\+\_\+plot}} (intervaltime, dr, \mbox{\hyperlink{read__inputs_8f90_a91662adda6b1bf216ff0a00a440591c4}{tsteps}}, nodenum, cstore, time\+\_\+axis, Save\+Final\+State=False, Sparsify\+Animation=False)
+def \mbox{\hyperlink{namespaceplotter_a8684a9ff7118c9f9d3738b3ac05b9bee}{animated\+\_\+conc\+\_\+plot}} (intervaltime, dr, tsteps, nodenum, cstore, time\+\_\+axis, Save\+Final\+State=False, Sparsify\+Animation=False)
 \begin{DoxyCompactList}\small\item\em Saves animation of lithium concentration over time. \end{DoxyCompactList}\item 
-def \mbox{\hyperlink{namespaceplotter_abdeddaa82135d546bcc8a0ef6da6e646}{gen\+\_\+half\+\_\+cell\+\_\+voltage}} (edge\+\_\+conc\+\_\+vals, i\+\_\+app\+\_\+data, electrode, \mbox{\hyperlink{read__inputs_8f90_a91662adda6b1bf216ff0a00a440591c4}{tsteps}}, pos\+\_\+params=None, neg\+\_\+params=None)
+def \mbox{\hyperlink{namespaceplotter_abdeddaa82135d546bcc8a0ef6da6e646}{gen\+\_\+half\+\_\+cell\+\_\+voltage}} (edge\+\_\+conc\+\_\+vals, i\+\_\+app\+\_\+data, electrode, tsteps, pos\+\_\+params=None, neg\+\_\+params=None)
 \begin{DoxyCompactList}\small\item\em Generate the voltage against time profile for a half cell and return voltage. \end{DoxyCompactList}\item 
-def \mbox{\hyperlink{namespaceplotter_acaa26bb6da59a5c0f3eb331bf8489d48}{voltage\+\_\+current\+\_\+plot}} (electrode, cstore, time\+\_\+axis, i\+\_\+app\+\_\+data, \mbox{\hyperlink{read__inputs_8f90_a91662adda6b1bf216ff0a00a440591c4}{tsteps}}, pos\+\_\+params=None, neg\+\_\+params=None)
+def \mbox{\hyperlink{namespaceplotter_acaa26bb6da59a5c0f3eb331bf8489d48}{voltage\+\_\+current\+\_\+plot}} (electrode, cstore, time\+\_\+axis, i\+\_\+app\+\_\+data, tsteps, pos\+\_\+params=None, neg\+\_\+params=None)
 \begin{DoxyCompactList}\small\item\em Calculates voltages and plots as a function of time. \end{DoxyCompactList}\item 
-def \mbox{\hyperlink{namespaceplotter_a6ba5ad5850aaae088990b1591fd18de0}{plot\+\_\+halfcell\+\_\+\+GITT\+\_\+result}} (\mbox{\hyperlink{read__inputs_8f90_a0534a3ee620c0917cd9f0099559b2d52}{filename}}, start\+\_\+times, electrode, pos\+\_\+params=None, neg\+\_\+params=None, Animation=False, Save\+Final\+State=False, Sparsify\+Animation=True, animation\+\_\+interval\+\_\+time=10)
+def \mbox{\hyperlink{namespaceplotter_a6ba5ad5850aaae088990b1591fd18de0}{plot\+\_\+halfcell\+\_\+\+GITT\+\_\+result}} (filename, start\+\_\+times, electrode, pos\+\_\+params=None, neg\+\_\+params=None, Animation=False, Save\+Final\+State=False, Sparsify\+Animation=True, animation\+\_\+interval\+\_\+time=10)
 \begin{DoxyCompactList}\small\item\em Generates the voltage current plot and optionally an animation for a half-\/cell GITT test. \end{DoxyCompactList}\item 
-def \mbox{\hyperlink{namespaceplotter_ab570e83fac2f6c031469637da428b6ce}{gen\+\_\+plots}} (\mbox{\hyperlink{read__inputs_8f90_a0534a3ee620c0917cd9f0099559b2d52}{filename}}, pos\+\_\+params=None, neg\+\_\+params=None, animation\+\_\+interval\+\_\+time=10, Save\+Final\+State=True, Sparsify\+Animation=False)
+def \mbox{\hyperlink{namespaceplotter_ab570e83fac2f6c031469637da428b6ce}{gen\+\_\+plots}} (filename, pos\+\_\+params=None, neg\+\_\+params=None, animation\+\_\+interval\+\_\+time=10, Save\+Final\+State=True, Sparsify\+Animation=False)
 \begin{DoxyCompactList}\small\item\em A function which can be called to generate both the voltage-\/time, current-\/time plots and the animation. \end{DoxyCompactList}\item 
 def \mbox{\hyperlink{namespaceplotter_ad2a7cbdd038b105291cb92196a4efe1f}{full\+\_\+battery\+\_\+\+GITT\+\_\+plots}} (filename\+\_\+positive, filename\+\_\+negative, start\+\_\+times, pos\+\_\+params=None, neg\+\_\+params=None, Sparsify\+Animation=True, animation\+\_\+interval\+\_\+time=10)
 \item 

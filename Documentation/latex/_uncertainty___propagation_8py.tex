@@ -13,7 +13,7 @@ def \mbox{\hyperlink{namespace_uncertainty___propagation_a9a90f647e1a2ff553226cd
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{namespace_uncertainty___propagation_a75917accaa8fb18778186e284986cc0a}{iapp}} = np.\+concatenate((np.\+array(\mbox{[}20.\+0 for \mbox{\hyperlink{read__inputs_8f90_aaea4baed8fd8b780f6938f0dc1fb0f72}{i}} in range(50)\mbox{]}),np.\+array(\mbox{[}0.\+0 for \mbox{\hyperlink{read__inputs_8f90_aaea4baed8fd8b780f6938f0dc1fb0f72}{i}} in range(50)\mbox{]})))
+\mbox{\hyperlink{namespace_uncertainty___propagation_a75917accaa8fb18778186e284986cc0a}{iapp}} = np.\+concatenate((np.\+array(\mbox{[}20.\+0 for i in range(50)\mbox{]}),np.\+array(\mbox{[}0.\+0 for i in range(50)\mbox{]})))
 \begin{DoxyCompactList}\small\item\em Read in applied current density from csv file iapp\+\_\+filename = \textquotesingle{}WLTP\+\_\+m10.\+csv\textquotesingle{} iapp, iapp\+\_\+label, tsteps = UI.\+iapp\+\_\+read\+\_\+csv(iapp\+\_\+filename) \end{DoxyCompactList}\item 
 \mbox{\hyperlink{namespace_uncertainty___propagation_ad827090038061f4a04a789ab61df8c1d}{parameters}} = parameter\+\_\+np\+\_\+array
 \begin{DoxyCompactList}\small\item\em END MEAN SET VALUES \#\#\#\#\#\#\#\#\#. \end{DoxyCompactList}\item 
@@ -57,9 +57,9 @@ list \mbox{\hyperlink{namespace_uncertainty___propagation_a073ee030b3fea2b1f1519
 \item 
 list \mbox{\hyperlink{namespace_uncertainty___propagation_ac8992e44d2fa887984bac92cc032cb5b}{negparams}} = \mbox{[}K\+\_\+neg,a\+\_\+neg,cmax\+\_\+neg\+\_\+sim,L\+\_\+neg\mbox{]}
 \item 
-\mbox{\hyperlink{namespace_uncertainty___propagation_a67d1ae20d28e81cd71bc6ac081c39f4f}{pos\+\_\+voltage}} = \mbox{\hyperlink{namespaceplotter_abdeddaa82135d546bcc8a0ef6da6e646}{plotter.\+gen\+\_\+half\+\_\+cell\+\_\+voltage}}(edge\+\_\+conc\+\_\+vals\+\_\+pos,i\+\_\+app\+\_\+data\+\_\+pos,electrode\+\_\+pos,\mbox{\hyperlink{read__inputs_8f90_a91662adda6b1bf216ff0a00a440591c4}{tsteps}},pos\+\_\+params=posparams)
+\mbox{\hyperlink{namespace_uncertainty___propagation_a67d1ae20d28e81cd71bc6ac081c39f4f}{pos\+\_\+voltage}} = \mbox{\hyperlink{namespaceplotter_abdeddaa82135d546bcc8a0ef6da6e646}{plotter.\+gen\+\_\+half\+\_\+cell\+\_\+voltage}}(edge\+\_\+conc\+\_\+vals\+\_\+pos,i\+\_\+app\+\_\+data\+\_\+pos,electrode\+\_\+pos,tsteps,pos\+\_\+params=posparams)
 \item 
-\mbox{\hyperlink{namespace_uncertainty___propagation_ae95af360ed52bcc19557d73634230ff8}{neg\+\_\+voltage}} = \mbox{\hyperlink{namespaceplotter_abdeddaa82135d546bcc8a0ef6da6e646}{plotter.\+gen\+\_\+half\+\_\+cell\+\_\+voltage}}(edge\+\_\+conc\+\_\+vals\+\_\+neg,i\+\_\+app\+\_\+data\+\_\+neg,electrode\+\_\+neg,\mbox{\hyperlink{read__inputs_8f90_a91662adda6b1bf216ff0a00a440591c4}{tsteps}},neg\+\_\+params=negparams)
+\mbox{\hyperlink{namespace_uncertainty___propagation_ae95af360ed52bcc19557d73634230ff8}{neg\+\_\+voltage}} = \mbox{\hyperlink{namespaceplotter_abdeddaa82135d546bcc8a0ef6da6e646}{plotter.\+gen\+\_\+half\+\_\+cell\+\_\+voltage}}(edge\+\_\+conc\+\_\+vals\+\_\+neg,i\+\_\+app\+\_\+data\+\_\+neg,electrode\+\_\+neg,tsteps,neg\+\_\+params=negparams)
 \item 
 \mbox{\hyperlink{namespace_uncertainty___propagation_a103c299bf7e3807650c8012aa93a5953}{full\+\_\+voltage}} = pos\+\_\+voltage-\/neg\+\_\+voltage
 \item 
@@ -99,9 +99,9 @@ int \mbox{\hyperlink{namespace_uncertainty___propagation_a617a47c70795bcff659815
 \item 
 \mbox{\hyperlink{namespace_uncertainty___propagation_a770f288d3048ff6cbee9faa0969fd6b0}{dt}}
 \item 
-\mbox{\hyperlink{namespace_uncertainty___propagation_a70c092a6aebace0b1ea406e14da78a40}{time}} = np.\+linspace(0.\+0,\mbox{\hyperlink{read__inputs_8f90_a10d68aa82fa620f29bc3adf5bde42bb9}{dt}}$\ast$(\mbox{\hyperlink{read__inputs_8f90_a91662adda6b1bf216ff0a00a440591c4}{tsteps}}-\/1.),\mbox{\hyperlink{read__inputs_8f90_a91662adda6b1bf216ff0a00a440591c4}{tsteps}})
+\mbox{\hyperlink{namespace_uncertainty___propagation_a70c092a6aebace0b1ea406e14da78a40}{time}} = np.\+linspace(0.\+0,dt$\ast$(tsteps-\/1.),tsteps)
 \begin{DoxyCompactList}\small\item\em \+\_\+, \+\_\+, tsteps = UI.\+iapp\+\_\+read\+\_\+csv(iapp\+\_\+filename) \end{DoxyCompactList}\item 
-\mbox{\hyperlink{namespace_uncertainty___propagation_a6c65cdf4e4596679422086edcee617d1}{voltage\+\_\+curves}} = np.\+zeros(\mbox{\hyperlink{read__inputs_8f90_a91662adda6b1bf216ff0a00a440591c4}{tsteps}})
+\mbox{\hyperlink{namespace_uncertainty___propagation_a6c65cdf4e4596679422086edcee617d1}{voltage\+\_\+curves}} = np.\+zeros(tsteps)
 \item 
 \mbox{\hyperlink{namespace_uncertainty___propagation_a64aa603bc3c6c1587e7c6542452481ac}{fig}}
 \begin{DoxyCompactList}\small\item\em UQ Plot \#. \end{DoxyCompactList}\item 
@@ -115,7 +115,7 @@ int \mbox{\hyperlink{namespace_uncertainty___propagation_a617a47c70795bcff659815
 \item 
 \mbox{\hyperlink{namespace_uncertainty___propagation_a74807c6fe5f50a0e610d582bcc4f9819}{sharey}}
 \item 
-\mbox{\hyperlink{namespace_uncertainty___propagation_a41000f175dc0115080e2a682cc06dbe9}{params}} = np.\+array(\mbox{[}c0\+\_\+samples\mbox{[}\mbox{\hyperlink{read__inputs_8f90_aaea4baed8fd8b780f6938f0dc1fb0f72}{i}}\mbox{]}, fixed\+\_\+D, fixed\+\_\+R, fixed\+\_\+a, fixed\+\_\+L\mbox{]})
+\mbox{\hyperlink{namespace_uncertainty___propagation_a41000f175dc0115080e2a682cc06dbe9}{params}} = np.\+array(\mbox{[}c0\+\_\+samples\mbox{[}i\mbox{]}, fixed\+\_\+D, fixed\+\_\+R, fixed\+\_\+a, fixed\+\_\+L\mbox{]})
 \item 
 \mbox{\hyperlink{namespace_uncertainty___propagation_a62197192f0fbf4e0675eb37be1c4c175}{alpha}}
 \item 
