@@ -108,6 +108,9 @@ PROGRAM MAIN
         c = b
         cstorage(:,tstep+1) = c
         
+        !By default, writes checkpoints every 10% of total timesteps elapsed. Can add a specific
+        !number to the end of the function call to change how often checkpoints are written.
+        
         CALL write_checkpoint(tstep, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage, filename)
         
     END DO
