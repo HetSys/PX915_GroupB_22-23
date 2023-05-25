@@ -43,10 +43,6 @@ Boundary conditions will be treated through the use of ghost nodes, which assign
 
 > $\[\frac{\partial c}{\partial r}\Bigg|_{r=0} \approx \frac{c_1 - c_{-1}}{2\Delta r} = 0 \iff c_1 = c_{-1}.\]$
 
-
-$\(\frac{\partial c}{\partial r}\Bigg|_{r=0} \approx \frac{c_1 - c_{-1}}{2\Delta r} = 0 \iff c_1 = c_{-1}.\)$
-
-
 The accuracy of the scheme will be chosen such that it is equivalent to the interior solved points.
 
 Finally, a general initial condition is specified of the form
