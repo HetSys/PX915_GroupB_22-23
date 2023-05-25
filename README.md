@@ -10,6 +10,7 @@ concentration of lithium in a sphere, **c**(i<sub>app</sub>, **r**), at each tim
 * Options for parallelism
 * Extend the model to a full battery 
 * First order sensitivty analysis
+* Uncertainty Propagation
 
 ## Dependencies
 Prior to installing the program or accessing the tutorial, you will need to ensure you have the following installed:
