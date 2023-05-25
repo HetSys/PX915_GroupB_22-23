@@ -1,29 +1,28 @@
-\hypertarget{plotter_8py}{\section{/home/chem/msuvnj/\-P\-X915\-\_\-\-Group\-B\-\_\-22-\/23/plotter.py File Reference}
-\label{plotter_8py}\index{/home/chem/msuvnj/\-P\-X915\-\_\-\-Group\-B\-\_\-22-\/23/plotter.\-py@{/home/chem/msuvnj/\-P\-X915\-\_\-\-Group\-B\-\_\-22-\/23/plotter.\-py}}
-}
-\subsection*{Namespaces}
+\hypertarget{plotter_8py}{}\doxysection{/home/chem/msuvnj/\+PX915\+\_\+\+Group\+B\+\_\+22-\/23/plotter.py File Reference}
+\label{plotter_8py}\index{/home/chem/msuvnj/PX915\_GroupB\_22-\/23/plotter.py@{/home/chem/msuvnj/PX915\_GroupB\_22-\/23/plotter.py}}
+\doxysubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{namespaceplotter}{plotter}
+ \mbox{\hyperlink{namespaceplotter}{plotter}}
 \begin{DoxyCompactList}\small\item\em Functions for visualisation of solver outputs. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Functions}
+\doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-def \hyperlink{namespaceplotter_aae454e5e82b331fc3539380bf77085bb}{read\-\_\-output\-\_\-file}
-\begin{DoxyCompactList}\small\item\em Reads in data from user input and solver output using Net\-C\-D\-F. \end{DoxyCompactList}\item 
-def \hyperlink{namespaceplotter_ac4584f2efde622b7fe9e2b77b97b3089}{read\-\_\-input\-\_\-current}
+def \mbox{\hyperlink{namespaceplotter_a99e9bf1e00cf92bad976ff897baaac01}{read\+\_\+output\+\_\+file}} (\mbox{\hyperlink{read__inputs_8f90_a0534a3ee620c0917cd9f0099559b2d52}{filename}}, step\+\_\+num=None)
+\begin{DoxyCompactList}\small\item\em Reads in data from user input and solver output using Net\+CDF. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespaceplotter_a63a629338be191d4e5120f8330c48839}{read\+\_\+input\+\_\+current}} (\mbox{\hyperlink{read__inputs_8f90_a0534a3ee620c0917cd9f0099559b2d52}{filename}}, step\+\_\+num=None)
 \begin{DoxyCompactList}\small\item\em Reads in the applied current. \end{DoxyCompactList}\item 
-def \hyperlink{namespaceplotter_a49b689df200e34e2e72d1e8b7122c34a}{animated\-\_\-conc\-\_\-plot}
+def \mbox{\hyperlink{namespaceplotter_a8684a9ff7118c9f9d3738b3ac05b9bee}{animated\+\_\+conc\+\_\+plot}} (intervaltime, dr, \mbox{\hyperlink{read__inputs_8f90_a91662adda6b1bf216ff0a00a440591c4}{tsteps}}, nodenum, cstore, time\+\_\+axis, Save\+Final\+State=False, Sparsify\+Animation=False)
 \begin{DoxyCompactList}\small\item\em Saves animation of lithium concentration over time. \end{DoxyCompactList}\item 
-def \hyperlink{namespaceplotter_a716e2d183d061a11623adaf2dba72476}{gen\-\_\-half\-\_\-cell\-\_\-voltage}
+def \mbox{\hyperlink{namespaceplotter_abdeddaa82135d546bcc8a0ef6da6e646}{gen\+\_\+half\+\_\+cell\+\_\+voltage}} (edge\+\_\+conc\+\_\+vals, i\+\_\+app\+\_\+data, electrode, \mbox{\hyperlink{read__inputs_8f90_a91662adda6b1bf216ff0a00a440591c4}{tsteps}}, pos\+\_\+params=None, neg\+\_\+params=None)
 \item 
-def \hyperlink{namespaceplotter_a44edad80659cbc5874617eabd87609ba}{voltage\-\_\-current\-\_\-plot}
+def \mbox{\hyperlink{namespaceplotter_acaa26bb6da59a5c0f3eb331bf8489d48}{voltage\+\_\+current\+\_\+plot}} (electrode, cstore, time\+\_\+axis, i\+\_\+app\+\_\+data, \mbox{\hyperlink{read__inputs_8f90_a91662adda6b1bf216ff0a00a440591c4}{tsteps}}, pos\+\_\+params=None, neg\+\_\+params=None)
 \begin{DoxyCompactList}\small\item\em Calculates voltages and plots as a function of time. \end{DoxyCompactList}\item 
-def \hyperlink{namespaceplotter_aa10bc6c7a1f0ea5ddf498ced8c1e08ee}{plot\-\_\-halfcell\-\_\-\-G\-I\-T\-T\-\_\-result}
+def \mbox{\hyperlink{namespaceplotter_a6ba5ad5850aaae088990b1591fd18de0}{plot\+\_\+halfcell\+\_\+\+GITT\+\_\+result}} (\mbox{\hyperlink{read__inputs_8f90_a0534a3ee620c0917cd9f0099559b2d52}{filename}}, start\+\_\+times, electrode, pos\+\_\+params=None, neg\+\_\+params=None, Animation=False, Save\+Final\+State=False, Sparsify\+Animation=True, animation\+\_\+interval\+\_\+time=10)
 \item 
-def \hyperlink{namespaceplotter_aacce2143cb025e12026b3580467165ff}{gen\-\_\-plots}
+def \mbox{\hyperlink{namespaceplotter_ab570e83fac2f6c031469637da428b6ce}{gen\+\_\+plots}} (\mbox{\hyperlink{read__inputs_8f90_a0534a3ee620c0917cd9f0099559b2d52}{filename}}, pos\+\_\+params=None, neg\+\_\+params=None, animation\+\_\+interval\+\_\+time=10, Save\+Final\+State=True, Sparsify\+Animation=False)
 \item 
-def \hyperlink{namespaceplotter_ad575e508b7dec6d686b1ad23bd88c23e}{full\-\_\-battery\-\_\-\-G\-I\-T\-T\-\_\-plots}
+def \mbox{\hyperlink{namespaceplotter_ad2a7cbdd038b105291cb92196a4efe1f}{full\+\_\+battery\+\_\+\+GITT\+\_\+plots}} (filename\+\_\+positive, filename\+\_\+negative, start\+\_\+times, pos\+\_\+params=None, neg\+\_\+params=None, Sparsify\+Animation=True, animation\+\_\+interval\+\_\+time=10)
 \item 
-def \hyperlink{namespaceplotter_a34948a1cfae887bb24a8ad480441a831}{get\-\_\-avg\-\_\-li\-\_\-conc}
+def \mbox{\hyperlink{namespaceplotter_a69c0cff77616377cf0e7214d93b19e34}{get\+\_\+avg\+\_\+li\+\_\+conc}} (c\+\_\+vals, r\+\_\+vals)
 \begin{DoxyCompactList}\small\item\em Gets the average concentration of lithium at a given timestep using trapezium rule inside the sphere. \end{DoxyCompactList}\end{DoxyCompactItemize}

@@ -1,84 +1,131 @@
-\hypertarget{_uncertainty___propagation_8py}{\section{/home/chem/msuvnj/\-P\-X915\-\_\-\-Group\-B\-\_\-22-\/23/\-Uncertainty\-\_\-\-Propagation.py File Reference}
-\label{_uncertainty___propagation_8py}\index{/home/chem/msuvnj/\-P\-X915\-\_\-\-Group\-B\-\_\-22-\/23/\-Uncertainty\-\_\-\-Propagation.\-py@{/home/chem/msuvnj/\-P\-X915\-\_\-\-Group\-B\-\_\-22-\/23/\-Uncertainty\-\_\-\-Propagation.\-py}}
-}
-\subsection*{Namespaces}
+\hypertarget{_uncertainty___propagation_8py}{}\doxysection{/home/chem/msuvnj/\+PX915\+\_\+\+Group\+B\+\_\+22-\/23/\+Uncertainty\+\_\+\+Propagation.py File Reference}
+\label{_uncertainty___propagation_8py}\index{/home/chem/msuvnj/PX915\_GroupB\_22-\/23/Uncertainty\_Propagation.py@{/home/chem/msuvnj/PX915\_GroupB\_22-\/23/Uncertainty\_Propagation.py}}
+\doxysubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{namespace_uncertainty___propagation}{Uncertainty\-\_\-\-Propagation}
+ \mbox{\hyperlink{namespace_uncertainty___propagation}{Uncertainty\+\_\+\+Propagation}}
+\begin{DoxyCompactList}\small\item\em Performs uncertainty propagation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespace_uncertainty___propagation_a9a90f647e1a2ff553226cd4b8d2a1ea4}{in\+\_\+out\+\_\+easy\+\_\+peasy}} (parameter\+\_\+np\+\_\+array)
 \end{DoxyCompactItemize}
-\subsection*{Functions}
+\doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-def \hyperlink{namespace_uncertainty___propagation_a31def17fb90ec47c42614324e19ea1b3}{in\-\_\-out\-\_\-easy\-\_\-peasy}
-\end{DoxyCompactItemize}
-\subsection*{Variables}
-\begin{DoxyCompactItemize}
-\item 
-tuple \hyperlink{namespace_uncertainty___propagation_a32f0308fa61c28532eb593947e7b3fe0}{iapp} = np.\-concatenate((np.\-array(\mbox{[}20.\-0 for i in range(50)\mbox{]}),np.\-array(\mbox{[}0.\-0 for i in range(50)\mbox{]})))
-\begin{DoxyCompactList}\small\item\em Read in applied current density from csv file iapp\-\_\-filename = 'W\-L\-T\-P\-\_\-m10.\-csv' iapp, iapp\-\_\-label, tsteps = U\-I.\-iapp\-\_\-read\-\_\-csv(iapp\-\_\-filename) \end{DoxyCompactList}\item 
-\hyperlink{namespace_uncertainty___propagation_ad827090038061f4a04a789ab61df8c1d}{parameters} = parameter\-\_\-np\-\_\-array
-\begin{DoxyCompactList}\small\item\em E\-N\-D M\-E\-A\-N S\-E\-T V\-A\-L\-U\-E\-S \#\#\#\#\#\#\#\#\#. \end{DoxyCompactList}\item 
-int \hyperlink{namespace_uncertainty___propagation_ad7c4c17cf720ee538e27c02ab356ed6b}{nprocs} = 40
+\mbox{\hyperlink{namespace_uncertainty___propagation_a75917accaa8fb18778186e284986cc0a}{iapp}} = np.\+concatenate((np.\+array(\mbox{[}20.\+0 for \mbox{\hyperlink{read__inputs_8f90_aaea4baed8fd8b780f6938f0dc1fb0f72}{i}} in range(50)\mbox{]}),np.\+array(\mbox{[}0.\+0 for \mbox{\hyperlink{read__inputs_8f90_aaea4baed8fd8b780f6938f0dc1fb0f72}{i}} in range(50)\mbox{]})))
+\begin{DoxyCompactList}\small\item\em Read in applied current density from csv file iapp\+\_\+filename = \textquotesingle{}WLTP\+\_\+m10.\+csv\textquotesingle{} iapp, iapp\+\_\+label, tsteps = UI.\+iapp\+\_\+read\+\_\+csv(iapp\+\_\+filename) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_ad827090038061f4a04a789ab61df8c1d}{parameters}} = parameter\+\_\+np\+\_\+array
+\begin{DoxyCompactList}\small\item\em END MEAN SET VALUES \#\#\#\#\#\#\#\#\#. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{namespace_uncertainty___propagation_a2011536b3d12a8ef0777724d3afac367}{nprocs}} = 40
 \begin{DoxyCompactList}\small\item\em Call the function to perform the full battery parallel solve. \end{DoxyCompactList}\item 
-tuple \hyperlink{namespace_uncertainty___propagation_aa34db849c2abe725ec1b080fb93b0249}{i\-\_\-app\-\_\-data\-\_\-pos} = \hyperlink{namespaceplotter_ac4584f2efde622b7fe9e2b77b97b3089}{plotter.\-read\-\_\-input\-\_\-current}(output\-\_\-filename\-\_\-positive)
-\begin{DoxyCompactList}\small\item\em Obtaining Q\-O\-I (Voltage) \#. \end{DoxyCompactList}\item 
-tuple \hyperlink{namespace_uncertainty___propagation_af0c0656dcb2e67c34296832b7bf7a499}{i\-\_\-app\-\_\-data\-\_\-neg} = \hyperlink{namespaceplotter_ac4584f2efde622b7fe9e2b77b97b3089}{plotter.\-read\-\_\-input\-\_\-current}(output\-\_\-filename\-\_\-negative)
+\mbox{\hyperlink{namespace_uncertainty___propagation_a4b95c9f249d815d21456995ff23fa2c2}{output\+\_\+filename\+\_\+positive}}
 \item 
-list \hyperlink{namespace_uncertainty___propagation_a2e425dd5abbd47ca217c22c04bb45c3e}{edge\-\_\-conc\-\_\-vals\-\_\-pos} = cstore\-\_\-pos\mbox{[}\-:,-\/1\mbox{]}
+\mbox{\hyperlink{namespace_uncertainty___propagation_a0707f525915c982db43c07a90065498c}{output\+\_\+filename\+\_\+negative}}
 \item 
-list \hyperlink{namespace_uncertainty___propagation_acb92094c722cb9231eae663f2d7563ca}{edge\-\_\-conc\-\_\-vals\-\_\-neg} = cstore\-\_\-neg\mbox{[}\-:,-\/1\mbox{]}
+\mbox{\hyperlink{namespace_uncertainty___propagation_ad22ef0c06e9e114d8017c8d6e58e2f4b}{cstore\+\_\+pos}}
+\begin{DoxyCompactList}\small\item\em Obtaining QOI (Voltage) \#. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a63b973cf773a42a37d790d0a4bce8ddc}{tsteps}}
 \item 
-list \hyperlink{namespace_uncertainty___propagation_a073ee030b3fea2b1f15194fee942060b}{posparams} = \mbox{[}K\-\_\-pos,parameters\mbox{[}3\mbox{]},cmax\-\_\-pos\-\_\-sim,parameters\mbox{[}4\mbox{]}\mbox{]}
+\mbox{\hyperlink{namespace_uncertainty___propagation_a27f4b26b09407d804f25d584d05660c2}{nodenum}}
 \item 
-list \hyperlink{namespace_uncertainty___propagation_ac8992e44d2fa887984bac92cc032cb5b}{negparams} = \mbox{[}K\-\_\-neg,a\-\_\-neg,cmax\-\_\-neg\-\_\-sim,L\-\_\-neg\mbox{]}
+\mbox{\hyperlink{namespace_uncertainty___propagation_ae78aef723bc1b30ffa6c06e6a5f62f25}{R\+\_\+pos}}
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_a7216b88d41d69db8e4728dc6e9951a87}{pos\-\_\-voltage} = \hyperlink{namespaceplotter_a716e2d183d061a11623adaf2dba72476}{plotter.\-gen\-\_\-half\-\_\-cell\-\_\-voltage}(edge\-\_\-conc\-\_\-vals\-\_\-pos,i\-\_\-app\-\_\-data\-\_\-pos,electrode\-\_\-pos,tsteps,pos\-\_\-params=posparams)
+\mbox{\hyperlink{namespace_uncertainty___propagation_acf5355c3a498788562f1b534c1da861a}{time\+\_\+axis}}
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_ac1c3b11f280ede1816fa37e269c8d420}{neg\-\_\-voltage} = \hyperlink{namespaceplotter_a716e2d183d061a11623adaf2dba72476}{plotter.\-gen\-\_\-half\-\_\-cell\-\_\-voltage}(edge\-\_\-conc\-\_\-vals\-\_\-neg,i\-\_\-app\-\_\-data\-\_\-neg,electrode\-\_\-neg,tsteps,neg\-\_\-params=negparams)
+\mbox{\hyperlink{namespace_uncertainty___propagation_afa626808d80c14874a65be7fa2556d61}{dr\+\_\+pos}}
 \item 
-\hyperlink{namespace_uncertainty___propagation_a103c299bf7e3807650c8012aa93a5953}{full\-\_\-voltage} = pos\-\_\-voltage-\/neg\-\_\-voltage
+\mbox{\hyperlink{namespace_uncertainty___propagation_a8c463370627cdf6a6c26d45794c99a4d}{electrode\+\_\+pos}}
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_a18b5ccb1547d2ff074b16380e64cac39}{c0\-\_\-dist} = st.\-norm(1000.\-0, 25.\-0)
+\mbox{\hyperlink{namespace_uncertainty___propagation_a4751fced6ce2855dcbc68f3d1f192ac2}{cstore\+\_\+neg}}
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_ac3cae4769661847dbd5ef4505bddc55a}{R\+\_\+neg}}
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_adcc0d438773d2e3a76a551d42de8c179}{dr\+\_\+neg}}
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a5b5a705768405551143015d47be1373e}{electrode\+\_\+neg}}
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_afa4c691b1226bbbf0823136334e80b8f}{i\+\_\+app\+\_\+data\+\_\+pos}} = \mbox{\hyperlink{namespaceplotter_a63a629338be191d4e5120f8330c48839}{plotter.\+read\+\_\+input\+\_\+current}}(output\+\_\+filename\+\_\+positive)
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_aca95298ea687ad2c595a4db63d852941}{i\+\_\+app\+\_\+data\+\_\+neg}} = \mbox{\hyperlink{namespaceplotter_a63a629338be191d4e5120f8330c48839}{plotter.\+read\+\_\+input\+\_\+current}}(output\+\_\+filename\+\_\+negative)
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a1c905cc451a3f94f775d58c3faa18ba7}{edge\+\_\+conc\+\_\+vals\+\_\+pos}} = cstore\+\_\+pos\mbox{[}\+:,-\/1\mbox{]}
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a2bc46e884cf4657287dfb916121522b0}{edge\+\_\+conc\+\_\+vals\+\_\+neg}} = cstore\+\_\+neg\mbox{[}\+:,-\/1\mbox{]}
+\item 
+list \mbox{\hyperlink{namespace_uncertainty___propagation_a073ee030b3fea2b1f15194fee942060b}{posparams}} = \mbox{[}K\+\_\+pos,parameters\mbox{[}3\mbox{]},cmax\+\_\+pos\+\_\+sim,parameters\mbox{[}4\mbox{]}\mbox{]}
+\item 
+list \mbox{\hyperlink{namespace_uncertainty___propagation_ac8992e44d2fa887984bac92cc032cb5b}{negparams}} = \mbox{[}K\+\_\+neg,a\+\_\+neg,cmax\+\_\+neg\+\_\+sim,L\+\_\+neg\mbox{]}
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a67d1ae20d28e81cd71bc6ac081c39f4f}{pos\+\_\+voltage}} = \mbox{\hyperlink{namespaceplotter_abdeddaa82135d546bcc8a0ef6da6e646}{plotter.\+gen\+\_\+half\+\_\+cell\+\_\+voltage}}(edge\+\_\+conc\+\_\+vals\+\_\+pos,i\+\_\+app\+\_\+data\+\_\+pos,electrode\+\_\+pos,\mbox{\hyperlink{read__inputs_8f90_a91662adda6b1bf216ff0a00a440591c4}{tsteps}},pos\+\_\+params=posparams)
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_ae95af360ed52bcc19557d73634230ff8}{neg\+\_\+voltage}} = \mbox{\hyperlink{namespaceplotter_abdeddaa82135d546bcc8a0ef6da6e646}{plotter.\+gen\+\_\+half\+\_\+cell\+\_\+voltage}}(edge\+\_\+conc\+\_\+vals\+\_\+neg,i\+\_\+app\+\_\+data\+\_\+neg,electrode\+\_\+neg,\mbox{\hyperlink{read__inputs_8f90_a91662adda6b1bf216ff0a00a440591c4}{tsteps}},neg\+\_\+params=negparams)
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a103c299bf7e3807650c8012aa93a5953}{full\+\_\+voltage}} = pos\+\_\+voltage-\/neg\+\_\+voltage
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a3c0933a290a9fb9036d59cc51bb417b3}{c0\+\_\+dist}} = st.\+norm(1000.\+0, 25.\+0)
 \begin{DoxyCompactList}\small\item\em Define the input parameter distributions \#. \end{DoxyCompactList}\item 
-tuple \hyperlink{namespace_uncertainty___propagation_a5896454d88496c6554718f56476236d0}{D\-\_\-dist} = st.\-norm(4.\-0e-\/15, 0.\-5e-\/15)
+\mbox{\hyperlink{namespace_uncertainty___propagation_a9d691b1915b06a02616ebd93fe4691af}{D\+\_\+dist}} = st.\+norm(4.\+0e-\/15, 0.\+5e-\/15)
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_ac07f0a77ab7492fb7046054192039280}{R\-\_\-dist} = st.\-norm(5.\-86e-\/6, 1.\-0e-\/6)
+\mbox{\hyperlink{namespace_uncertainty___propagation_afd4b0764925e5abed3f9b2bdf6b1187a}{R\+\_\+dist}} = st.\+norm(5.\+86e-\/6, 1.\+0e-\/6)
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_aa0934f3f87aa3b2cdbc3d6d8e648d5a3}{a\-\_\-dist} = st.\-norm(3.\-0$\ast$0.\-665/5.\-86e-\/6, 1.\-0e5)
+\mbox{\hyperlink{namespace_uncertainty___propagation_a6940a335ecde61efea24497c6bb232cb}{a\+\_\+dist}} = st.\+norm(3.\+0$\ast$0.\+665/5.\+86e-\/6, 1.\+0e5)
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_a9dd2d48c13873f64c963b96328631c78}{L\-\_\-dist} = st.\-norm(75.\-6e-\/6, 5.\-0e-\/6)
+\mbox{\hyperlink{namespace_uncertainty___propagation_afe8dbd0f6f5ecdb2743758a292e496a0}{L\+\_\+dist}} = st.\+norm(75.\+6e-\/6, 5.\+0e-\/6)
 \item 
-int \hyperlink{namespace_uncertainty___propagation_a32bff09a616cee12a2c61815a990152d}{num\-\_\-samples} = 100
+int \mbox{\hyperlink{namespace_uncertainty___propagation_a32bff09a616cee12a2c61815a990152d}{num\+\_\+samples}} = 100
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_ae2539890c28b90e3780f315d426c1ba6}{c0\-\_\-samples} = c0\-\_\-dist.\-rvs(num\-\_\-samples)
+\mbox{\hyperlink{namespace_uncertainty___propagation_a9248ff879062cce74f8151a2b1145558}{c0\+\_\+samples}} = c0\+\_\+dist.\+rvs(num\+\_\+samples)
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_a5b16e1d69bbcd5334cdddf537c3171d2}{D\-\_\-samples} = D\-\_\-dist.\-rvs(num\-\_\-samples)
+\mbox{\hyperlink{namespace_uncertainty___propagation_a78426f62613dc31f33d159ca2e7d8588}{D\+\_\+samples}} = D\+\_\+dist.\+rvs(num\+\_\+samples)
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_a48a93972bddd620b71755a37ec6f337b}{R\-\_\-samples} = R\-\_\-dist.\-rvs(num\-\_\-samples)
+\mbox{\hyperlink{namespace_uncertainty___propagation_abfacaa65abb098492fc925bc19ce2c7f}{R\+\_\+samples}} = R\+\_\+dist.\+rvs(num\+\_\+samples)
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_aa45ac5af3cf52071fc2bf7f9895e3cc1}{a\-\_\-samples} = a\-\_\-dist.\-rvs(num\-\_\-samples)
+\mbox{\hyperlink{namespace_uncertainty___propagation_abec6626556b2d1d205655d73cd0d9f6e}{a\+\_\+samples}} = a\+\_\+dist.\+rvs(num\+\_\+samples)
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_a506fed32170756c08599a57d9dde1788}{L\-\_\-samples} = L\-\_\-dist.\-rvs(num\-\_\-samples)
+\mbox{\hyperlink{namespace_uncertainty___propagation_a65b4b9a8e3dc99b5992ccbd2df2b3f41}{L\+\_\+samples}} = L\+\_\+dist.\+rvs(num\+\_\+samples)
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_a66aeb0f33c59c12b7b9eb6ea98f6dbee}{fixed\-\_\-c0} = c0\-\_\-dist.\-mean()
+\mbox{\hyperlink{namespace_uncertainty___propagation_a4dcfa07b07fe0423838462504dce01dd}{fixed\+\_\+c0}} = c0\+\_\+dist.\+mean()
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_ac8e1acccb8fb7e4ce7cfa77a304e936a}{fixed\-\_\-\-D} = D\-\_\-dist.\-mean()
+\mbox{\hyperlink{namespace_uncertainty___propagation_a01fe3867e3bed9f6942d7aadfc8a713f}{fixed\+\_\+D}} = D\+\_\+dist.\+mean()
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_a717d6bc98a4bbaa2fa30403b79e42b1e}{fixed\-\_\-\-R} = R\-\_\-dist.\-mean()
+\mbox{\hyperlink{namespace_uncertainty___propagation_a5dae0958c6184955560b85e6969b6c40}{fixed\+\_\+R}} = R\+\_\+dist.\+mean()
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_ade6c2eeacf12db0e1ea6a9a5c8379591}{fixed\-\_\-a} = a\-\_\-dist.\-mean()
+\mbox{\hyperlink{namespace_uncertainty___propagation_a52db6ae68be08327cfb3a23ba8f77731}{fixed\+\_\+a}} = a\+\_\+dist.\+mean()
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_adf3a46710b42fda247caf73278ffca4d}{fixed\-\_\-\-L} = L\-\_\-dist.\-mean()
+\mbox{\hyperlink{namespace_uncertainty___propagation_a69f4d94b5326ebf869f3973b8ac88273}{fixed\+\_\+L}} = L\+\_\+dist.\+mean()
 \item 
-int \hyperlink{namespace_uncertainty___propagation_a617a47c70795bcff659815ad0efd2266}{counter} = 0
+int \mbox{\hyperlink{namespace_uncertainty___propagation_a617a47c70795bcff659815ad0efd2266}{counter}} = 0
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_a429c35172fbcb8b1788bead147e4719b}{time} = np.\-linspace(0.\-0,dt$\ast$(tsteps-\/1.),tsteps)
-\begin{DoxyCompactList}\small\item\em \-\_\-, \-\_\-, tsteps = U\-I.\-iapp\-\_\-read\-\_\-csv(iapp\-\_\-filename) \end{DoxyCompactList}\item 
-tuple \hyperlink{namespace_uncertainty___propagation_ad561e9e5b642db23d892d0aaf51d02d6}{voltage\-\_\-curves} = np.\-zeros(tsteps)
+\mbox{\hyperlink{namespace_uncertainty___propagation_a770f288d3048ff6cbee9faa0969fd6b0}{dt}}
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_a347fcfb484b5d7bf36cc0b53a589be83}{params} = np.\-array(\mbox{[}c0\-\_\-samples\mbox{[}i\mbox{]}, fixed\-\_\-\-D, fixed\-\_\-\-R, fixed\-\_\-a, fixed\-\_\-\-L\mbox{]})
-\begin{DoxyCompactList}\small\item\em U\-Q Plot \#. \end{DoxyCompactList}\item 
-int \hyperlink{namespace_uncertainty___propagation_a4737e7c4408908bc86898057096fd8bf}{resol} = 1000
+\mbox{\hyperlink{namespace_uncertainty___propagation_a70c092a6aebace0b1ea406e14da78a40}{time}} = np.\+linspace(0.\+0,\mbox{\hyperlink{read__inputs_8f90_a10d68aa82fa620f29bc3adf5bde42bb9}{dt}}$\ast$(\mbox{\hyperlink{read__inputs_8f90_a91662adda6b1bf216ff0a00a440591c4}{tsteps}}-\/1.),\mbox{\hyperlink{read__inputs_8f90_a91662adda6b1bf216ff0a00a440591c4}{tsteps}})
+\begin{DoxyCompactList}\small\item\em \+\_\+, \+\_\+, tsteps = UI.\+iapp\+\_\+read\+\_\+csv(iapp\+\_\+filename) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a6c65cdf4e4596679422086edcee617d1}{voltage\+\_\+curves}} = np.\+zeros(\mbox{\hyperlink{read__inputs_8f90_a91662adda6b1bf216ff0a00a440591c4}{tsteps}})
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a64aa603bc3c6c1587e7c6542452481ac}{fig}}
+\begin{DoxyCompactList}\small\item\em UQ Plot \#. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a5b5398ce3cb5c9b60d8bb20a94dc945b}{axs}}
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a574732c04d57514f219fc914fdcb54e5}{figsize}}
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a4cb130baf64d572315eca86ce772b7c9}{sharex}}
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a643a20c0c59588a0f741a6095e2025fd}{True}}
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a74807c6fe5f50a0e610d582bcc4f9819}{sharey}}
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a41000f175dc0115080e2a682cc06dbe9}{params}} = np.\+array(\mbox{[}c0\+\_\+samples\mbox{[}\mbox{\hyperlink{read__inputs_8f90_aaea4baed8fd8b780f6938f0dc1fb0f72}{i}}\mbox{]}, fixed\+\_\+D, fixed\+\_\+R, fixed\+\_\+a, fixed\+\_\+L\mbox{]})
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a62197192f0fbf4e0675eb37be1c4c175}{alpha}}
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_ac22fa198f390de5d2a9ab06db1543abc}{figg}}
 \begin{DoxyCompactList}\small\item\em Input Distributions \#. \end{DoxyCompactList}\item 
-tuple \hyperlink{namespace_uncertainty___propagation_a7a74e6f2f6355f34b63513f77c839a9e}{x} = np.\-linspace(900, 1100, resol)
+\mbox{\hyperlink{namespace_uncertainty___propagation_a1a775c4bedfa9a3e415bf941b44b230f}{axss}}
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a36cde68b055f3f2ee671020af4ccf4e2}{False}}
+\item 
+int \mbox{\hyperlink{namespace_uncertainty___propagation_a4737e7c4408908bc86898057096fd8bf}{resol}} = 1000
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a9336ebf25087d91c818ee6e9ec29f8c1}{x}} = np.\+linspace(900, 1100, resol)
 \end{DoxyCompactItemize}

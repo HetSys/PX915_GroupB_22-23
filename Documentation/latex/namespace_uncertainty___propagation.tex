@@ -1,366 +1,764 @@
-\hypertarget{namespace_uncertainty___propagation}{\section{Uncertainty\-\_\-\-Propagation Namespace Reference}
-\label{namespace_uncertainty___propagation}\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}}
-}
-\subsection*{Functions}
+\hypertarget{namespace_uncertainty___propagation}{}\doxysection{Uncertainty\+\_\+\+Propagation Namespace Reference}
+\label{namespace_uncertainty___propagation}\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+
+
+Performs uncertainty propagation.  
+
+
+\doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-def \hyperlink{namespace_uncertainty___propagation_a31def17fb90ec47c42614324e19ea1b3}{in\-\_\-out\-\_\-easy\-\_\-peasy}
+def \mbox{\hyperlink{namespace_uncertainty___propagation_a9a90f647e1a2ff553226cd4b8d2a1ea4}{in\+\_\+out\+\_\+easy\+\_\+peasy}} (parameter\+\_\+np\+\_\+array)
 \end{DoxyCompactItemize}
-\subsection*{Variables}
+\doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_a32f0308fa61c28532eb593947e7b3fe0}{iapp} = np.\-concatenate((np.\-array(\mbox{[}20.\-0 for i in range(50)\mbox{]}),np.\-array(\mbox{[}0.\-0 for i in range(50)\mbox{]})))
-\begin{DoxyCompactList}\small\item\em Read in applied current density from csv file iapp\-\_\-filename = 'W\-L\-T\-P\-\_\-m10.\-csv' iapp, iapp\-\_\-label, tsteps = U\-I.\-iapp\-\_\-read\-\_\-csv(iapp\-\_\-filename) \end{DoxyCompactList}\item 
-\hyperlink{namespace_uncertainty___propagation_ad827090038061f4a04a789ab61df8c1d}{parameters} = parameter\-\_\-np\-\_\-array
-\begin{DoxyCompactList}\small\item\em E\-N\-D M\-E\-A\-N S\-E\-T V\-A\-L\-U\-E\-S \#\#\#\#\#\#\#\#\#. \end{DoxyCompactList}\item 
-int \hyperlink{namespace_uncertainty___propagation_ad7c4c17cf720ee538e27c02ab356ed6b}{nprocs} = 40
+\mbox{\hyperlink{namespace_uncertainty___propagation_a75917accaa8fb18778186e284986cc0a}{iapp}} = np.\+concatenate((np.\+array(\mbox{[}20.\+0 for \mbox{\hyperlink{read__inputs_8f90_aaea4baed8fd8b780f6938f0dc1fb0f72}{i}} in range(50)\mbox{]}),np.\+array(\mbox{[}0.\+0 for \mbox{\hyperlink{read__inputs_8f90_aaea4baed8fd8b780f6938f0dc1fb0f72}{i}} in range(50)\mbox{]})))
+\begin{DoxyCompactList}\small\item\em Read in applied current density from csv file iapp\+\_\+filename = \textquotesingle{}WLTP\+\_\+m10.\+csv\textquotesingle{} iapp, iapp\+\_\+label, tsteps = UI.\+iapp\+\_\+read\+\_\+csv(iapp\+\_\+filename) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_ad827090038061f4a04a789ab61df8c1d}{parameters}} = parameter\+\_\+np\+\_\+array
+\begin{DoxyCompactList}\small\item\em END MEAN SET VALUES \#\#\#\#\#\#\#\#\#. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{namespace_uncertainty___propagation_a2011536b3d12a8ef0777724d3afac367}{nprocs}} = 40
 \begin{DoxyCompactList}\small\item\em Call the function to perform the full battery parallel solve. \end{DoxyCompactList}\item 
-tuple \hyperlink{namespace_uncertainty___propagation_aa34db849c2abe725ec1b080fb93b0249}{i\-\_\-app\-\_\-data\-\_\-pos} = \hyperlink{namespaceplotter_ac4584f2efde622b7fe9e2b77b97b3089}{plotter.\-read\-\_\-input\-\_\-current}(output\-\_\-filename\-\_\-positive)
-\begin{DoxyCompactList}\small\item\em Obtaining Q\-O\-I (Voltage) \#. \end{DoxyCompactList}\item 
-tuple \hyperlink{namespace_uncertainty___propagation_af0c0656dcb2e67c34296832b7bf7a499}{i\-\_\-app\-\_\-data\-\_\-neg} = \hyperlink{namespaceplotter_ac4584f2efde622b7fe9e2b77b97b3089}{plotter.\-read\-\_\-input\-\_\-current}(output\-\_\-filename\-\_\-negative)
+\mbox{\hyperlink{namespace_uncertainty___propagation_a4b95c9f249d815d21456995ff23fa2c2}{output\+\_\+filename\+\_\+positive}}
 \item 
-list \hyperlink{namespace_uncertainty___propagation_a2e425dd5abbd47ca217c22c04bb45c3e}{edge\-\_\-conc\-\_\-vals\-\_\-pos} = cstore\-\_\-pos\mbox{[}\-:,-\/1\mbox{]}
+\mbox{\hyperlink{namespace_uncertainty___propagation_a0707f525915c982db43c07a90065498c}{output\+\_\+filename\+\_\+negative}}
 \item 
-list \hyperlink{namespace_uncertainty___propagation_acb92094c722cb9231eae663f2d7563ca}{edge\-\_\-conc\-\_\-vals\-\_\-neg} = cstore\-\_\-neg\mbox{[}\-:,-\/1\mbox{]}
+\mbox{\hyperlink{namespace_uncertainty___propagation_ad22ef0c06e9e114d8017c8d6e58e2f4b}{cstore\+\_\+pos}}
+\begin{DoxyCompactList}\small\item\em Obtaining QOI (Voltage) \#. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a63b973cf773a42a37d790d0a4bce8ddc}{tsteps}}
 \item 
-list \hyperlink{namespace_uncertainty___propagation_a073ee030b3fea2b1f15194fee942060b}{posparams} = \mbox{[}K\-\_\-pos,\hyperlink{namespace_uncertainty___propagation_ad827090038061f4a04a789ab61df8c1d}{parameters}\mbox{[}3\mbox{]},cmax\-\_\-pos\-\_\-sim,\hyperlink{namespace_uncertainty___propagation_ad827090038061f4a04a789ab61df8c1d}{parameters}\mbox{[}4\mbox{]}\mbox{]}
+\mbox{\hyperlink{namespace_uncertainty___propagation_a27f4b26b09407d804f25d584d05660c2}{nodenum}}
 \item 
-list \hyperlink{namespace_uncertainty___propagation_ac8992e44d2fa887984bac92cc032cb5b}{negparams} = \mbox{[}K\-\_\-neg,a\-\_\-neg,cmax\-\_\-neg\-\_\-sim,L\-\_\-neg\mbox{]}
+\mbox{\hyperlink{namespace_uncertainty___propagation_ae78aef723bc1b30ffa6c06e6a5f62f25}{R\+\_\+pos}}
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_a7216b88d41d69db8e4728dc6e9951a87}{pos\-\_\-voltage} = \hyperlink{namespaceplotter_a716e2d183d061a11623adaf2dba72476}{plotter.\-gen\-\_\-half\-\_\-cell\-\_\-voltage}(\hyperlink{namespace_uncertainty___propagation_a2e425dd5abbd47ca217c22c04bb45c3e}{edge\-\_\-conc\-\_\-vals\-\_\-pos},\hyperlink{namespace_uncertainty___propagation_aa34db849c2abe725ec1b080fb93b0249}{i\-\_\-app\-\_\-data\-\_\-pos},electrode\-\_\-pos,tsteps,pos\-\_\-params=\hyperlink{namespace_uncertainty___propagation_a073ee030b3fea2b1f15194fee942060b}{posparams})
+\mbox{\hyperlink{namespace_uncertainty___propagation_acf5355c3a498788562f1b534c1da861a}{time\+\_\+axis}}
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_ac1c3b11f280ede1816fa37e269c8d420}{neg\-\_\-voltage} = \hyperlink{namespaceplotter_a716e2d183d061a11623adaf2dba72476}{plotter.\-gen\-\_\-half\-\_\-cell\-\_\-voltage}(\hyperlink{namespace_uncertainty___propagation_acb92094c722cb9231eae663f2d7563ca}{edge\-\_\-conc\-\_\-vals\-\_\-neg},\hyperlink{namespace_uncertainty___propagation_af0c0656dcb2e67c34296832b7bf7a499}{i\-\_\-app\-\_\-data\-\_\-neg},electrode\-\_\-neg,tsteps,neg\-\_\-params=\hyperlink{namespace_uncertainty___propagation_ac8992e44d2fa887984bac92cc032cb5b}{negparams})
+\mbox{\hyperlink{namespace_uncertainty___propagation_afa626808d80c14874a65be7fa2556d61}{dr\+\_\+pos}}
 \item 
-\hyperlink{namespace_uncertainty___propagation_a103c299bf7e3807650c8012aa93a5953}{full\-\_\-voltage} = \hyperlink{namespace_uncertainty___propagation_a7216b88d41d69db8e4728dc6e9951a87}{pos\-\_\-voltage}-\/\hyperlink{namespace_uncertainty___propagation_ac1c3b11f280ede1816fa37e269c8d420}{neg\-\_\-voltage}
+\mbox{\hyperlink{namespace_uncertainty___propagation_a8c463370627cdf6a6c26d45794c99a4d}{electrode\+\_\+pos}}
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_a18b5ccb1547d2ff074b16380e64cac39}{c0\-\_\-dist} = st.\-norm(1000.\-0, 25.\-0)
+\mbox{\hyperlink{namespace_uncertainty___propagation_a4751fced6ce2855dcbc68f3d1f192ac2}{cstore\+\_\+neg}}
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_ac3cae4769661847dbd5ef4505bddc55a}{R\+\_\+neg}}
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_adcc0d438773d2e3a76a551d42de8c179}{dr\+\_\+neg}}
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a5b5a705768405551143015d47be1373e}{electrode\+\_\+neg}}
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_afa4c691b1226bbbf0823136334e80b8f}{i\+\_\+app\+\_\+data\+\_\+pos}} = \mbox{\hyperlink{namespaceplotter_a63a629338be191d4e5120f8330c48839}{plotter.\+read\+\_\+input\+\_\+current}}(\mbox{\hyperlink{namespace_uncertainty___propagation_a4b95c9f249d815d21456995ff23fa2c2}{output\+\_\+filename\+\_\+positive}})
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_aca95298ea687ad2c595a4db63d852941}{i\+\_\+app\+\_\+data\+\_\+neg}} = \mbox{\hyperlink{namespaceplotter_a63a629338be191d4e5120f8330c48839}{plotter.\+read\+\_\+input\+\_\+current}}(\mbox{\hyperlink{namespace_uncertainty___propagation_a0707f525915c982db43c07a90065498c}{output\+\_\+filename\+\_\+negative}})
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a1c905cc451a3f94f775d58c3faa18ba7}{edge\+\_\+conc\+\_\+vals\+\_\+pos}} = \mbox{\hyperlink{namespace_uncertainty___propagation_ad22ef0c06e9e114d8017c8d6e58e2f4b}{cstore\+\_\+pos}}\mbox{[}\+:,-\/1\mbox{]}
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a2bc46e884cf4657287dfb916121522b0}{edge\+\_\+conc\+\_\+vals\+\_\+neg}} = \mbox{\hyperlink{namespace_uncertainty___propagation_a4751fced6ce2855dcbc68f3d1f192ac2}{cstore\+\_\+neg}}\mbox{[}\+:,-\/1\mbox{]}
+\item 
+list \mbox{\hyperlink{namespace_uncertainty___propagation_a073ee030b3fea2b1f15194fee942060b}{posparams}} = \mbox{[}K\+\_\+pos,\mbox{\hyperlink{namespace_uncertainty___propagation_ad827090038061f4a04a789ab61df8c1d}{parameters}}\mbox{[}3\mbox{]},cmax\+\_\+pos\+\_\+sim,\mbox{\hyperlink{namespace_uncertainty___propagation_ad827090038061f4a04a789ab61df8c1d}{parameters}}\mbox{[}4\mbox{]}\mbox{]}
+\item 
+list \mbox{\hyperlink{namespace_uncertainty___propagation_ac8992e44d2fa887984bac92cc032cb5b}{negparams}} = \mbox{[}K\+\_\+neg,a\+\_\+neg,cmax\+\_\+neg\+\_\+sim,L\+\_\+neg\mbox{]}
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a67d1ae20d28e81cd71bc6ac081c39f4f}{pos\+\_\+voltage}} = \mbox{\hyperlink{namespaceplotter_abdeddaa82135d546bcc8a0ef6da6e646}{plotter.\+gen\+\_\+half\+\_\+cell\+\_\+voltage}}(\mbox{\hyperlink{namespace_uncertainty___propagation_a1c905cc451a3f94f775d58c3faa18ba7}{edge\+\_\+conc\+\_\+vals\+\_\+pos}},\mbox{\hyperlink{namespace_uncertainty___propagation_afa4c691b1226bbbf0823136334e80b8f}{i\+\_\+app\+\_\+data\+\_\+pos}},\mbox{\hyperlink{namespace_uncertainty___propagation_a8c463370627cdf6a6c26d45794c99a4d}{electrode\+\_\+pos}},\mbox{\hyperlink{namespace_uncertainty___propagation_a63b973cf773a42a37d790d0a4bce8ddc}{tsteps}},pos\+\_\+params=\mbox{\hyperlink{namespace_uncertainty___propagation_a073ee030b3fea2b1f15194fee942060b}{posparams}})
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_ae95af360ed52bcc19557d73634230ff8}{neg\+\_\+voltage}} = \mbox{\hyperlink{namespaceplotter_abdeddaa82135d546bcc8a0ef6da6e646}{plotter.\+gen\+\_\+half\+\_\+cell\+\_\+voltage}}(\mbox{\hyperlink{namespace_uncertainty___propagation_a2bc46e884cf4657287dfb916121522b0}{edge\+\_\+conc\+\_\+vals\+\_\+neg}},\mbox{\hyperlink{namespace_uncertainty___propagation_aca95298ea687ad2c595a4db63d852941}{i\+\_\+app\+\_\+data\+\_\+neg}},\mbox{\hyperlink{namespace_uncertainty___propagation_a5b5a705768405551143015d47be1373e}{electrode\+\_\+neg}},\mbox{\hyperlink{namespace_uncertainty___propagation_a63b973cf773a42a37d790d0a4bce8ddc}{tsteps}},neg\+\_\+params=\mbox{\hyperlink{namespace_uncertainty___propagation_ac8992e44d2fa887984bac92cc032cb5b}{negparams}})
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a103c299bf7e3807650c8012aa93a5953}{full\+\_\+voltage}} = \mbox{\hyperlink{namespace_uncertainty___propagation_a67d1ae20d28e81cd71bc6ac081c39f4f}{pos\+\_\+voltage}}-\/\mbox{\hyperlink{namespace_uncertainty___propagation_ae95af360ed52bcc19557d73634230ff8}{neg\+\_\+voltage}}
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a3c0933a290a9fb9036d59cc51bb417b3}{c0\+\_\+dist}} = st.\+norm(1000.\+0, 25.\+0)
 \begin{DoxyCompactList}\small\item\em Define the input parameter distributions \#. \end{DoxyCompactList}\item 
-tuple \hyperlink{namespace_uncertainty___propagation_a5896454d88496c6554718f56476236d0}{D\-\_\-dist} = st.\-norm(4.\-0e-\/15, 0.\-5e-\/15)
+\mbox{\hyperlink{namespace_uncertainty___propagation_a9d691b1915b06a02616ebd93fe4691af}{D\+\_\+dist}} = st.\+norm(4.\+0e-\/15, 0.\+5e-\/15)
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_ac07f0a77ab7492fb7046054192039280}{R\-\_\-dist} = st.\-norm(5.\-86e-\/6, 1.\-0e-\/6)
+\mbox{\hyperlink{namespace_uncertainty___propagation_afd4b0764925e5abed3f9b2bdf6b1187a}{R\+\_\+dist}} = st.\+norm(5.\+86e-\/6, 1.\+0e-\/6)
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_aa0934f3f87aa3b2cdbc3d6d8e648d5a3}{a\-\_\-dist} = st.\-norm(3.\-0$\ast$0.\-665/5.\-86e-\/6, 1.\-0e5)
+\mbox{\hyperlink{namespace_uncertainty___propagation_a6940a335ecde61efea24497c6bb232cb}{a\+\_\+dist}} = st.\+norm(3.\+0$\ast$0.\+665/5.\+86e-\/6, 1.\+0e5)
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_a9dd2d48c13873f64c963b96328631c78}{L\-\_\-dist} = st.\-norm(75.\-6e-\/6, 5.\-0e-\/6)
+\mbox{\hyperlink{namespace_uncertainty___propagation_afe8dbd0f6f5ecdb2743758a292e496a0}{L\+\_\+dist}} = st.\+norm(75.\+6e-\/6, 5.\+0e-\/6)
 \item 
-int \hyperlink{namespace_uncertainty___propagation_a32bff09a616cee12a2c61815a990152d}{num\-\_\-samples} = 100
+int \mbox{\hyperlink{namespace_uncertainty___propagation_a32bff09a616cee12a2c61815a990152d}{num\+\_\+samples}} = 100
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_ae2539890c28b90e3780f315d426c1ba6}{c0\-\_\-samples} = c0\-\_\-dist.\-rvs(\hyperlink{namespace_uncertainty___propagation_a32bff09a616cee12a2c61815a990152d}{num\-\_\-samples})
+\mbox{\hyperlink{namespace_uncertainty___propagation_a9248ff879062cce74f8151a2b1145558}{c0\+\_\+samples}} = c0\+\_\+dist.\+rvs(\mbox{\hyperlink{namespace_uncertainty___propagation_a32bff09a616cee12a2c61815a990152d}{num\+\_\+samples}})
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_a5b16e1d69bbcd5334cdddf537c3171d2}{D\-\_\-samples} = D\-\_\-dist.\-rvs(\hyperlink{namespace_uncertainty___propagation_a32bff09a616cee12a2c61815a990152d}{num\-\_\-samples})
+\mbox{\hyperlink{namespace_uncertainty___propagation_a78426f62613dc31f33d159ca2e7d8588}{D\+\_\+samples}} = D\+\_\+dist.\+rvs(\mbox{\hyperlink{namespace_uncertainty___propagation_a32bff09a616cee12a2c61815a990152d}{num\+\_\+samples}})
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_a48a93972bddd620b71755a37ec6f337b}{R\-\_\-samples} = R\-\_\-dist.\-rvs(\hyperlink{namespace_uncertainty___propagation_a32bff09a616cee12a2c61815a990152d}{num\-\_\-samples})
+\mbox{\hyperlink{namespace_uncertainty___propagation_abfacaa65abb098492fc925bc19ce2c7f}{R\+\_\+samples}} = R\+\_\+dist.\+rvs(\mbox{\hyperlink{namespace_uncertainty___propagation_a32bff09a616cee12a2c61815a990152d}{num\+\_\+samples}})
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_aa45ac5af3cf52071fc2bf7f9895e3cc1}{a\-\_\-samples} = a\-\_\-dist.\-rvs(\hyperlink{namespace_uncertainty___propagation_a32bff09a616cee12a2c61815a990152d}{num\-\_\-samples})
+\mbox{\hyperlink{namespace_uncertainty___propagation_abec6626556b2d1d205655d73cd0d9f6e}{a\+\_\+samples}} = a\+\_\+dist.\+rvs(\mbox{\hyperlink{namespace_uncertainty___propagation_a32bff09a616cee12a2c61815a990152d}{num\+\_\+samples}})
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_a506fed32170756c08599a57d9dde1788}{L\-\_\-samples} = L\-\_\-dist.\-rvs(\hyperlink{namespace_uncertainty___propagation_a32bff09a616cee12a2c61815a990152d}{num\-\_\-samples})
+\mbox{\hyperlink{namespace_uncertainty___propagation_a65b4b9a8e3dc99b5992ccbd2df2b3f41}{L\+\_\+samples}} = L\+\_\+dist.\+rvs(\mbox{\hyperlink{namespace_uncertainty___propagation_a32bff09a616cee12a2c61815a990152d}{num\+\_\+samples}})
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_a66aeb0f33c59c12b7b9eb6ea98f6dbee}{fixed\-\_\-c0} = c0\-\_\-dist.\-mean()
+\mbox{\hyperlink{namespace_uncertainty___propagation_a4dcfa07b07fe0423838462504dce01dd}{fixed\+\_\+c0}} = c0\+\_\+dist.\+mean()
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_ac8e1acccb8fb7e4ce7cfa77a304e936a}{fixed\-\_\-\-D} = D\-\_\-dist.\-mean()
+\mbox{\hyperlink{namespace_uncertainty___propagation_a01fe3867e3bed9f6942d7aadfc8a713f}{fixed\+\_\+D}} = D\+\_\+dist.\+mean()
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_a717d6bc98a4bbaa2fa30403b79e42b1e}{fixed\-\_\-\-R} = R\-\_\-dist.\-mean()
+\mbox{\hyperlink{namespace_uncertainty___propagation_a5dae0958c6184955560b85e6969b6c40}{fixed\+\_\+R}} = R\+\_\+dist.\+mean()
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_ade6c2eeacf12db0e1ea6a9a5c8379591}{fixed\-\_\-a} = a\-\_\-dist.\-mean()
+\mbox{\hyperlink{namespace_uncertainty___propagation_a52db6ae68be08327cfb3a23ba8f77731}{fixed\+\_\+a}} = a\+\_\+dist.\+mean()
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_adf3a46710b42fda247caf73278ffca4d}{fixed\-\_\-\-L} = L\-\_\-dist.\-mean()
+\mbox{\hyperlink{namespace_uncertainty___propagation_a69f4d94b5326ebf869f3973b8ac88273}{fixed\+\_\+L}} = L\+\_\+dist.\+mean()
 \item 
-int \hyperlink{namespace_uncertainty___propagation_a617a47c70795bcff659815ad0efd2266}{counter} = 0
+int \mbox{\hyperlink{namespace_uncertainty___propagation_a617a47c70795bcff659815ad0efd2266}{counter}} = 0
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_a429c35172fbcb8b1788bead147e4719b}{time} = np.\-linspace(0.\-0,dt$\ast$(tsteps-\/1.),tsteps)
-\begin{DoxyCompactList}\small\item\em \-\_\-, \-\_\-, tsteps = U\-I.\-iapp\-\_\-read\-\_\-csv(iapp\-\_\-filename) \end{DoxyCompactList}\item 
-tuple \hyperlink{namespace_uncertainty___propagation_ad561e9e5b642db23d892d0aaf51d02d6}{voltage\-\_\-curves} = np.\-zeros(tsteps)
+\mbox{\hyperlink{namespace_uncertainty___propagation_a770f288d3048ff6cbee9faa0969fd6b0}{dt}}
 \item 
-tuple \hyperlink{namespace_uncertainty___propagation_a347fcfb484b5d7bf36cc0b53a589be83}{params} = np.\-array(\mbox{[}\hyperlink{namespace_uncertainty___propagation_ae2539890c28b90e3780f315d426c1ba6}{c0\-\_\-samples}\mbox{[}i\mbox{]}, \hyperlink{namespace_uncertainty___propagation_ac8e1acccb8fb7e4ce7cfa77a304e936a}{fixed\-\_\-\-D}, \hyperlink{namespace_uncertainty___propagation_a717d6bc98a4bbaa2fa30403b79e42b1e}{fixed\-\_\-\-R}, \hyperlink{namespace_uncertainty___propagation_ade6c2eeacf12db0e1ea6a9a5c8379591}{fixed\-\_\-a}, \hyperlink{namespace_uncertainty___propagation_adf3a46710b42fda247caf73278ffca4d}{fixed\-\_\-\-L}\mbox{]})
-\begin{DoxyCompactList}\small\item\em U\-Q Plot \#. \end{DoxyCompactList}\item 
-int \hyperlink{namespace_uncertainty___propagation_a4737e7c4408908bc86898057096fd8bf}{resol} = 1000
+\mbox{\hyperlink{namespace_uncertainty___propagation_a70c092a6aebace0b1ea406e14da78a40}{time}} = np.\+linspace(0.\+0,\mbox{\hyperlink{namespace_uncertainty___propagation_a770f288d3048ff6cbee9faa0969fd6b0}{dt}}$\ast$(\mbox{\hyperlink{namespace_uncertainty___propagation_a63b973cf773a42a37d790d0a4bce8ddc}{tsteps}}-\/1.),\mbox{\hyperlink{namespace_uncertainty___propagation_a63b973cf773a42a37d790d0a4bce8ddc}{tsteps}})
+\begin{DoxyCompactList}\small\item\em \+\_\+, \+\_\+, tsteps = UI.\+iapp\+\_\+read\+\_\+csv(iapp\+\_\+filename) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a6c65cdf4e4596679422086edcee617d1}{voltage\+\_\+curves}} = np.\+zeros(\mbox{\hyperlink{namespace_uncertainty___propagation_a63b973cf773a42a37d790d0a4bce8ddc}{tsteps}})
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a64aa603bc3c6c1587e7c6542452481ac}{fig}}
+\begin{DoxyCompactList}\small\item\em UQ Plot \#. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a5b5398ce3cb5c9b60d8bb20a94dc945b}{axs}}
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a574732c04d57514f219fc914fdcb54e5}{figsize}}
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a4cb130baf64d572315eca86ce772b7c9}{sharex}}
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a643a20c0c59588a0f741a6095e2025fd}{True}}
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a74807c6fe5f50a0e610d582bcc4f9819}{sharey}}
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a41000f175dc0115080e2a682cc06dbe9}{params}} = np.\+array(\mbox{[}\mbox{\hyperlink{namespace_uncertainty___propagation_a9248ff879062cce74f8151a2b1145558}{c0\+\_\+samples}}\mbox{[}\mbox{\hyperlink{read__inputs_8f90_aaea4baed8fd8b780f6938f0dc1fb0f72}{i}}\mbox{]}, \mbox{\hyperlink{namespace_uncertainty___propagation_a01fe3867e3bed9f6942d7aadfc8a713f}{fixed\+\_\+D}}, \mbox{\hyperlink{namespace_uncertainty___propagation_a5dae0958c6184955560b85e6969b6c40}{fixed\+\_\+R}}, \mbox{\hyperlink{namespace_uncertainty___propagation_a52db6ae68be08327cfb3a23ba8f77731}{fixed\+\_\+a}}, \mbox{\hyperlink{namespace_uncertainty___propagation_a69f4d94b5326ebf869f3973b8ac88273}{fixed\+\_\+L}}\mbox{]})
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a62197192f0fbf4e0675eb37be1c4c175}{alpha}}
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_ac22fa198f390de5d2a9ab06db1543abc}{figg}}
 \begin{DoxyCompactList}\small\item\em Input Distributions \#. \end{DoxyCompactList}\item 
-tuple \hyperlink{namespace_uncertainty___propagation_a7a74e6f2f6355f34b63513f77c839a9e}{x} = np.\-linspace(900, 1100, \hyperlink{namespace_uncertainty___propagation_a4737e7c4408908bc86898057096fd8bf}{resol})
+\mbox{\hyperlink{namespace_uncertainty___propagation_a1a775c4bedfa9a3e415bf941b44b230f}{axss}}
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a36cde68b055f3f2ee671020af4ccf4e2}{False}}
+\item 
+int \mbox{\hyperlink{namespace_uncertainty___propagation_a4737e7c4408908bc86898057096fd8bf}{resol}} = 1000
+\item 
+\mbox{\hyperlink{namespace_uncertainty___propagation_a9336ebf25087d91c818ee6e9ec29f8c1}{x}} = np.\+linspace(900, 1100, \mbox{\hyperlink{namespace_uncertainty___propagation_a4737e7c4408908bc86898057096fd8bf}{resol}})
 \end{DoxyCompactItemize}
 
 
-\subsection{Function Documentation}
-\hypertarget{namespace_uncertainty___propagation_a31def17fb90ec47c42614324e19ea1b3}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!in\-\_\-out\-\_\-easy\-\_\-peasy@{in\-\_\-out\-\_\-easy\-\_\-peasy}}
-\index{in\-\_\-out\-\_\-easy\-\_\-peasy@{in\-\_\-out\-\_\-easy\-\_\-peasy}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{in\-\_\-out\-\_\-easy\-\_\-peasy}]{\setlength{\rightskip}{0pt plus 5cm}def Uncertainty\-\_\-\-Propagation.\-in\-\_\-out\-\_\-easy\-\_\-peasy (
-\begin{DoxyParamCaption}
-\item[{}]{parameter\-\_\-np\-\_\-array}
-\end{DoxyParamCaption}
-)}}\label{namespace_uncertainty___propagation_a31def17fb90ec47c42614324e19ea1b3}
+\doxysubsection{Detailed Description}
+Performs uncertainty propagation. 
+
+Applies normal distributions to parameter inputs and produces a 5 subplot figure that shows the posterior distribution of the voltage curve. Each subplot shows the effect of altering one parameter and keeping the others constant at mean values of input distributions. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a9a90f647e1a2ff553226cd4b8d2a1ea4}\label{namespace_uncertainty___propagation_a9a90f647e1a2ff553226cd4b8d2a1ea4}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!in\_out\_easy\_peasy@{in\_out\_easy\_peasy}}
+\index{in\_out\_easy\_peasy@{in\_out\_easy\_peasy}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{in\_out\_easy\_peasy()}{in\_out\_easy\_peasy()}}
+{\footnotesize\ttfamily def Uncertainty\+\_\+\+Propagation.\+in\+\_\+out\+\_\+easy\+\_\+peasy (\begin{DoxyParamCaption}\item[{}]{parameter\+\_\+np\+\_\+array }\end{DoxyParamCaption})}
 
 
-Definition at line 32 of file Uncertainty\-\_\-\-Propagation.\-py.
+
+Definition at line 32 of file Uncertainty\+\_\+\+Propagation.\+py.
 
 
 
-\subsection{Variable Documentation}
-\hypertarget{namespace_uncertainty___propagation_aa0934f3f87aa3b2cdbc3d6d8e648d5a3}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!a\-\_\-dist@{a\-\_\-dist}}
-\index{a\-\_\-dist@{a\-\_\-dist}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{a\-\_\-dist}]{\setlength{\rightskip}{0pt plus 5cm}tuple a\-\_\-dist = st.\-norm(3.\-0$\ast$0.\-665/5.\-86e-\/6, 1.\-0e5)}}\label{namespace_uncertainty___propagation_aa0934f3f87aa3b2cdbc3d6d8e648d5a3}
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a6940a335ecde61efea24497c6bb232cb}\label{namespace_uncertainty___propagation_a6940a335ecde61efea24497c6bb232cb}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!a\_dist@{a\_dist}}
+\index{a\_dist@{a\_dist}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{a\_dist}{a\_dist}}
+{\footnotesize\ttfamily a\+\_\+dist = st.\+norm(3.\+0$\ast$0.\+665/5.\+86e-\/6, 1.\+0e5)}
 
 
-Definition at line 109 of file Uncertainty\-\_\-\-Propagation.\-py.
 
-\hypertarget{namespace_uncertainty___propagation_aa45ac5af3cf52071fc2bf7f9895e3cc1}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!a\-\_\-samples@{a\-\_\-samples}}
-\index{a\-\_\-samples@{a\-\_\-samples}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{a\-\_\-samples}]{\setlength{\rightskip}{0pt plus 5cm}tuple a\-\_\-samples = a\-\_\-dist.\-rvs({\bf num\-\_\-samples})}}\label{namespace_uncertainty___propagation_aa45ac5af3cf52071fc2bf7f9895e3cc1}
+Definition at line 109 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_abec6626556b2d1d205655d73cd0d9f6e}\label{namespace_uncertainty___propagation_abec6626556b2d1d205655d73cd0d9f6e}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!a\_samples@{a\_samples}}
+\index{a\_samples@{a\_samples}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{a\_samples}{a\_samples}}
+{\footnotesize\ttfamily a\+\_\+samples = a\+\_\+dist.\+rvs(\mbox{\hyperlink{namespace_uncertainty___propagation_a32bff09a616cee12a2c61815a990152d}{num\+\_\+samples}})}
 
 
-Definition at line 121 of file Uncertainty\-\_\-\-Propagation.\-py.
 
-\hypertarget{namespace_uncertainty___propagation_a18b5ccb1547d2ff074b16380e64cac39}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!c0\-\_\-dist@{c0\-\_\-dist}}
-\index{c0\-\_\-dist@{c0\-\_\-dist}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{c0\-\_\-dist}]{\setlength{\rightskip}{0pt plus 5cm}tuple c0\-\_\-dist = st.\-norm(1000.\-0, 25.\-0)}}\label{namespace_uncertainty___propagation_a18b5ccb1547d2ff074b16380e64cac39}
+Definition at line 121 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a62197192f0fbf4e0675eb37be1c4c175}\label{namespace_uncertainty___propagation_a62197192f0fbf4e0675eb37be1c4c175}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!alpha@{alpha}}
+\index{alpha@{alpha}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{alpha}{alpha}}
+{\footnotesize\ttfamily alpha}
+
+
+
+Definition at line 186 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a5b5398ce3cb5c9b60d8bb20a94dc945b}\label{namespace_uncertainty___propagation_a5b5398ce3cb5c9b60d8bb20a94dc945b}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!axs@{axs}}
+\index{axs@{axs}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{axs}{axs}}
+{\footnotesize\ttfamily axs}
+
+
+
+Definition at line 178 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a1a775c4bedfa9a3e415bf941b44b230f}\label{namespace_uncertainty___propagation_a1a775c4bedfa9a3e415bf941b44b230f}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!axss@{axss}}
+\index{axss@{axss}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{axss}{axss}}
+{\footnotesize\ttfamily axss}
+
+
+
+Definition at line 232 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a3c0933a290a9fb9036d59cc51bb417b3}\label{namespace_uncertainty___propagation_a3c0933a290a9fb9036d59cc51bb417b3}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!c0\_dist@{c0\_dist}}
+\index{c0\_dist@{c0\_dist}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{c0\_dist}{c0\_dist}}
+{\footnotesize\ttfamily c0\+\_\+dist = st.\+norm(1000.\+0, 25.\+0)}
+
 
 
 Define the input parameter distributions \#. 
 
 
 
-Definition at line 106 of file Uncertainty\-\_\-\-Propagation.\-py.
+Definition at line 106 of file Uncertainty\+\_\+\+Propagation.\+py.
 
-\hypertarget{namespace_uncertainty___propagation_ae2539890c28b90e3780f315d426c1ba6}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!c0\-\_\-samples@{c0\-\_\-samples}}
-\index{c0\-\_\-samples@{c0\-\_\-samples}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{c0\-\_\-samples}]{\setlength{\rightskip}{0pt plus 5cm}tuple c0\-\_\-samples = c0\-\_\-dist.\-rvs({\bf num\-\_\-samples})}}\label{namespace_uncertainty___propagation_ae2539890c28b90e3780f315d426c1ba6}
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a9248ff879062cce74f8151a2b1145558}\label{namespace_uncertainty___propagation_a9248ff879062cce74f8151a2b1145558}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!c0\_samples@{c0\_samples}}
+\index{c0\_samples@{c0\_samples}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{c0\_samples}{c0\_samples}}
+{\footnotesize\ttfamily c0\+\_\+samples = c0\+\_\+dist.\+rvs(\mbox{\hyperlink{namespace_uncertainty___propagation_a32bff09a616cee12a2c61815a990152d}{num\+\_\+samples}})}
 
 
-Definition at line 118 of file Uncertainty\-\_\-\-Propagation.\-py.
 
-\hypertarget{namespace_uncertainty___propagation_a617a47c70795bcff659815ad0efd2266}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!counter@{counter}}
-\index{counter@{counter}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{counter}]{\setlength{\rightskip}{0pt plus 5cm}int counter = 0}}\label{namespace_uncertainty___propagation_a617a47c70795bcff659815ad0efd2266}
+Definition at line 118 of file Uncertainty\+\_\+\+Propagation.\+py.
 
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a617a47c70795bcff659815ad0efd2266}\label{namespace_uncertainty___propagation_a617a47c70795bcff659815ad0efd2266}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!counter@{counter}}
+\index{counter@{counter}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{counter}{counter}}
+{\footnotesize\ttfamily int counter = 0}
 
-Definition at line 132 of file Uncertainty\-\_\-\-Propagation.\-py.
 
-\hypertarget{namespace_uncertainty___propagation_a5896454d88496c6554718f56476236d0}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!D\-\_\-dist@{D\-\_\-dist}}
-\index{D\-\_\-dist@{D\-\_\-dist}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{D\-\_\-dist}]{\setlength{\rightskip}{0pt plus 5cm}tuple D\-\_\-dist = st.\-norm(4.\-0e-\/15, 0.\-5e-\/15)}}\label{namespace_uncertainty___propagation_a5896454d88496c6554718f56476236d0}
 
+Definition at line 132 of file Uncertainty\+\_\+\+Propagation.\+py.
 
-Definition at line 107 of file Uncertainty\-\_\-\-Propagation.\-py.
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a4751fced6ce2855dcbc68f3d1f192ac2}\label{namespace_uncertainty___propagation_a4751fced6ce2855dcbc68f3d1f192ac2}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!cstore\_neg@{cstore\_neg}}
+\index{cstore\_neg@{cstore\_neg}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{cstore\_neg}{cstore\_neg}}
+{\footnotesize\ttfamily cstore\+\_\+neg}
 
-\hypertarget{namespace_uncertainty___propagation_a5b16e1d69bbcd5334cdddf537c3171d2}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!D\-\_\-samples@{D\-\_\-samples}}
-\index{D\-\_\-samples@{D\-\_\-samples}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{D\-\_\-samples}]{\setlength{\rightskip}{0pt plus 5cm}tuple D\-\_\-samples = D\-\_\-dist.\-rvs({\bf num\-\_\-samples})}}\label{namespace_uncertainty___propagation_a5b16e1d69bbcd5334cdddf537c3171d2}
 
 
-Definition at line 119 of file Uncertainty\-\_\-\-Propagation.\-py.
+Definition at line 86 of file Uncertainty\+\_\+\+Propagation.\+py.
 
-\hypertarget{namespace_uncertainty___propagation_acb92094c722cb9231eae663f2d7563ca}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!edge\-\_\-conc\-\_\-vals\-\_\-neg@{edge\-\_\-conc\-\_\-vals\-\_\-neg}}
-\index{edge\-\_\-conc\-\_\-vals\-\_\-neg@{edge\-\_\-conc\-\_\-vals\-\_\-neg}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{edge\-\_\-conc\-\_\-vals\-\_\-neg}]{\setlength{\rightskip}{0pt plus 5cm}list edge\-\_\-conc\-\_\-vals\-\_\-neg = cstore\-\_\-neg\mbox{[}\-:,-\/1\mbox{]}}}\label{namespace_uncertainty___propagation_acb92094c722cb9231eae663f2d7563ca}
+\mbox{\Hypertarget{namespace_uncertainty___propagation_ad22ef0c06e9e114d8017c8d6e58e2f4b}\label{namespace_uncertainty___propagation_ad22ef0c06e9e114d8017c8d6e58e2f4b}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!cstore\_pos@{cstore\_pos}}
+\index{cstore\_pos@{cstore\_pos}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{cstore\_pos}{cstore\_pos}}
+{\footnotesize\ttfamily cstore\+\_\+pos}
 
 
-Definition at line 90 of file Uncertainty\-\_\-\-Propagation.\-py.
 
-\hypertarget{namespace_uncertainty___propagation_a2e425dd5abbd47ca217c22c04bb45c3e}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!edge\-\_\-conc\-\_\-vals\-\_\-pos@{edge\-\_\-conc\-\_\-vals\-\_\-pos}}
-\index{edge\-\_\-conc\-\_\-vals\-\_\-pos@{edge\-\_\-conc\-\_\-vals\-\_\-pos}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{edge\-\_\-conc\-\_\-vals\-\_\-pos}]{\setlength{\rightskip}{0pt plus 5cm}list edge\-\_\-conc\-\_\-vals\-\_\-pos = cstore\-\_\-pos\mbox{[}\-:,-\/1\mbox{]}}}\label{namespace_uncertainty___propagation_a2e425dd5abbd47ca217c22c04bb45c3e}
+Obtaining QOI (Voltage) \#. 
 
 
-Definition at line 89 of file Uncertainty\-\_\-\-Propagation.\-py.
 
-\hypertarget{namespace_uncertainty___propagation_ade6c2eeacf12db0e1ea6a9a5c8379591}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!fixed\-\_\-a@{fixed\-\_\-a}}
-\index{fixed\-\_\-a@{fixed\-\_\-a}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{fixed\-\_\-a}]{\setlength{\rightskip}{0pt plus 5cm}tuple fixed\-\_\-a = a\-\_\-dist.\-mean()}}\label{namespace_uncertainty___propagation_ade6c2eeacf12db0e1ea6a9a5c8379591}
+Definition at line 85 of file Uncertainty\+\_\+\+Propagation.\+py.
 
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a9d691b1915b06a02616ebd93fe4691af}\label{namespace_uncertainty___propagation_a9d691b1915b06a02616ebd93fe4691af}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!D\_dist@{D\_dist}}
+\index{D\_dist@{D\_dist}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{D\_dist}{D\_dist}}
+{\footnotesize\ttfamily D\+\_\+dist = st.\+norm(4.\+0e-\/15, 0.\+5e-\/15)}
 
-Definition at line 128 of file Uncertainty\-\_\-\-Propagation.\-py.
 
-\hypertarget{namespace_uncertainty___propagation_a66aeb0f33c59c12b7b9eb6ea98f6dbee}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!fixed\-\_\-c0@{fixed\-\_\-c0}}
-\index{fixed\-\_\-c0@{fixed\-\_\-c0}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{fixed\-\_\-c0}]{\setlength{\rightskip}{0pt plus 5cm}tuple fixed\-\_\-c0 = c0\-\_\-dist.\-mean()}}\label{namespace_uncertainty___propagation_a66aeb0f33c59c12b7b9eb6ea98f6dbee}
 
+Definition at line 107 of file Uncertainty\+\_\+\+Propagation.\+py.
 
-Definition at line 125 of file Uncertainty\-\_\-\-Propagation.\-py.
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a78426f62613dc31f33d159ca2e7d8588}\label{namespace_uncertainty___propagation_a78426f62613dc31f33d159ca2e7d8588}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!D\_samples@{D\_samples}}
+\index{D\_samples@{D\_samples}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{D\_samples}{D\_samples}}
+{\footnotesize\ttfamily D\+\_\+samples = D\+\_\+dist.\+rvs(\mbox{\hyperlink{namespace_uncertainty___propagation_a32bff09a616cee12a2c61815a990152d}{num\+\_\+samples}})}
 
-\hypertarget{namespace_uncertainty___propagation_ac8e1acccb8fb7e4ce7cfa77a304e936a}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!fixed\-\_\-\-D@{fixed\-\_\-\-D}}
-\index{fixed\-\_\-\-D@{fixed\-\_\-\-D}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{fixed\-\_\-\-D}]{\setlength{\rightskip}{0pt plus 5cm}tuple fixed\-\_\-\-D = D\-\_\-dist.\-mean()}}\label{namespace_uncertainty___propagation_ac8e1acccb8fb7e4ce7cfa77a304e936a}
 
 
-Definition at line 126 of file Uncertainty\-\_\-\-Propagation.\-py.
+Definition at line 119 of file Uncertainty\+\_\+\+Propagation.\+py.
 
-\hypertarget{namespace_uncertainty___propagation_adf3a46710b42fda247caf73278ffca4d}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!fixed\-\_\-\-L@{fixed\-\_\-\-L}}
-\index{fixed\-\_\-\-L@{fixed\-\_\-\-L}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{fixed\-\_\-\-L}]{\setlength{\rightskip}{0pt plus 5cm}tuple fixed\-\_\-\-L = L\-\_\-dist.\-mean()}}\label{namespace_uncertainty___propagation_adf3a46710b42fda247caf73278ffca4d}
+\mbox{\Hypertarget{namespace_uncertainty___propagation_adcc0d438773d2e3a76a551d42de8c179}\label{namespace_uncertainty___propagation_adcc0d438773d2e3a76a551d42de8c179}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!dr\_neg@{dr\_neg}}
+\index{dr\_neg@{dr\_neg}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{dr\_neg}{dr\_neg}}
+{\footnotesize\ttfamily dr\+\_\+neg}
 
 
-Definition at line 129 of file Uncertainty\-\_\-\-Propagation.\-py.
 
-\hypertarget{namespace_uncertainty___propagation_a717d6bc98a4bbaa2fa30403b79e42b1e}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!fixed\-\_\-\-R@{fixed\-\_\-\-R}}
-\index{fixed\-\_\-\-R@{fixed\-\_\-\-R}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{fixed\-\_\-\-R}]{\setlength{\rightskip}{0pt plus 5cm}tuple fixed\-\_\-\-R = R\-\_\-dist.\-mean()}}\label{namespace_uncertainty___propagation_a717d6bc98a4bbaa2fa30403b79e42b1e}
+Definition at line 86 of file Uncertainty\+\_\+\+Propagation.\+py.
 
+\mbox{\Hypertarget{namespace_uncertainty___propagation_afa626808d80c14874a65be7fa2556d61}\label{namespace_uncertainty___propagation_afa626808d80c14874a65be7fa2556d61}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!dr\_pos@{dr\_pos}}
+\index{dr\_pos@{dr\_pos}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{dr\_pos}{dr\_pos}}
+{\footnotesize\ttfamily dr\+\_\+pos}
 
-Definition at line 127 of file Uncertainty\-\_\-\-Propagation.\-py.
 
-\hypertarget{namespace_uncertainty___propagation_a103c299bf7e3807650c8012aa93a5953}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!full\-\_\-voltage@{full\-\_\-voltage}}
-\index{full\-\_\-voltage@{full\-\_\-voltage}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{full\-\_\-voltage}]{\setlength{\rightskip}{0pt plus 5cm}full\-\_\-voltage = {\bf pos\-\_\-voltage}-\/{\bf neg\-\_\-voltage}}}\label{namespace_uncertainty___propagation_a103c299bf7e3807650c8012aa93a5953}
 
+Definition at line 85 of file Uncertainty\+\_\+\+Propagation.\+py.
 
-Definition at line 98 of file Uncertainty\-\_\-\-Propagation.\-py.
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a770f288d3048ff6cbee9faa0969fd6b0}\label{namespace_uncertainty___propagation_a770f288d3048ff6cbee9faa0969fd6b0}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!dt@{dt}}
+\index{dt@{dt}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{dt}{dt}}
+{\footnotesize\ttfamily dt}
 
-\hypertarget{namespace_uncertainty___propagation_af0c0656dcb2e67c34296832b7bf7a499}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!i\-\_\-app\-\_\-data\-\_\-neg@{i\-\_\-app\-\_\-data\-\_\-neg}}
-\index{i\-\_\-app\-\_\-data\-\_\-neg@{i\-\_\-app\-\_\-data\-\_\-neg}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{i\-\_\-app\-\_\-data\-\_\-neg}]{\setlength{\rightskip}{0pt plus 5cm}tuple i\-\_\-app\-\_\-data\-\_\-neg = {\bf plotter.\-read\-\_\-input\-\_\-current}(output\-\_\-filename\-\_\-negative)}}\label{namespace_uncertainty___propagation_af0c0656dcb2e67c34296832b7bf7a499}
 
 
-Definition at line 88 of file Uncertainty\-\_\-\-Propagation.\-py.
+Definition at line 166 of file Uncertainty\+\_\+\+Propagation.\+py.
 
-\hypertarget{namespace_uncertainty___propagation_aa34db849c2abe725ec1b080fb93b0249}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!i\-\_\-app\-\_\-data\-\_\-pos@{i\-\_\-app\-\_\-data\-\_\-pos}}
-\index{i\-\_\-app\-\_\-data\-\_\-pos@{i\-\_\-app\-\_\-data\-\_\-pos}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{i\-\_\-app\-\_\-data\-\_\-pos}]{\setlength{\rightskip}{0pt plus 5cm}tuple i\-\_\-app\-\_\-data\-\_\-pos = {\bf plotter.\-read\-\_\-input\-\_\-current}(output\-\_\-filename\-\_\-positive)}}\label{namespace_uncertainty___propagation_aa34db849c2abe725ec1b080fb93b0249}
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a2bc46e884cf4657287dfb916121522b0}\label{namespace_uncertainty___propagation_a2bc46e884cf4657287dfb916121522b0}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!edge\_conc\_vals\_neg@{edge\_conc\_vals\_neg}}
+\index{edge\_conc\_vals\_neg@{edge\_conc\_vals\_neg}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{edge\_conc\_vals\_neg}{edge\_conc\_vals\_neg}}
+{\footnotesize\ttfamily edge\+\_\+conc\+\_\+vals\+\_\+neg = \mbox{\hyperlink{namespace_uncertainty___propagation_a4751fced6ce2855dcbc68f3d1f192ac2}{cstore\+\_\+neg}}\mbox{[}\+:,-\/1\mbox{]}}
 
 
-Obtaining Q\-O\-I (Voltage) \#. 
 
+Definition at line 90 of file Uncertainty\+\_\+\+Propagation.\+py.
 
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a1c905cc451a3f94f775d58c3faa18ba7}\label{namespace_uncertainty___propagation_a1c905cc451a3f94f775d58c3faa18ba7}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!edge\_conc\_vals\_pos@{edge\_conc\_vals\_pos}}
+\index{edge\_conc\_vals\_pos@{edge\_conc\_vals\_pos}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{edge\_conc\_vals\_pos}{edge\_conc\_vals\_pos}}
+{\footnotesize\ttfamily edge\+\_\+conc\+\_\+vals\+\_\+pos = \mbox{\hyperlink{namespace_uncertainty___propagation_ad22ef0c06e9e114d8017c8d6e58e2f4b}{cstore\+\_\+pos}}\mbox{[}\+:,-\/1\mbox{]}}
 
-Definition at line 87 of file Uncertainty\-\_\-\-Propagation.\-py.
 
-\hypertarget{namespace_uncertainty___propagation_a32f0308fa61c28532eb593947e7b3fe0}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!iapp@{iapp}}
-\index{iapp@{iapp}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{iapp}]{\setlength{\rightskip}{0pt plus 5cm}tuple iapp = np.\-concatenate((np.\-array(\mbox{[}20.\-0 for i in range(50)\mbox{]}),np.\-array(\mbox{[}0.\-0 for i in range(50)\mbox{]})))}}\label{namespace_uncertainty___propagation_a32f0308fa61c28532eb593947e7b3fe0}
 
+Definition at line 89 of file Uncertainty\+\_\+\+Propagation.\+py.
 
-Read in applied current density from csv file iapp\-\_\-filename = 'W\-L\-T\-P\-\_\-m10.\-csv' iapp, iapp\-\_\-label, tsteps = U\-I.\-iapp\-\_\-read\-\_\-csv(iapp\-\_\-filename) 
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a5b5a705768405551143015d47be1373e}\label{namespace_uncertainty___propagation_a5b5a705768405551143015d47be1373e}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!electrode\_neg@{electrode\_neg}}
+\index{electrode\_neg@{electrode\_neg}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{electrode\_neg}{electrode\_neg}}
+{\footnotesize\ttfamily electrode\+\_\+neg}
 
 
 
-Definition at line 53 of file Uncertainty\-\_\-\-Propagation.\-py.
+Definition at line 86 of file Uncertainty\+\_\+\+Propagation.\+py.
 
-\hypertarget{namespace_uncertainty___propagation_a9dd2d48c13873f64c963b96328631c78}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!L\-\_\-dist@{L\-\_\-dist}}
-\index{L\-\_\-dist@{L\-\_\-dist}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{L\-\_\-dist}]{\setlength{\rightskip}{0pt plus 5cm}tuple L\-\_\-dist = st.\-norm(75.\-6e-\/6, 5.\-0e-\/6)}}\label{namespace_uncertainty___propagation_a9dd2d48c13873f64c963b96328631c78}
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a8c463370627cdf6a6c26d45794c99a4d}\label{namespace_uncertainty___propagation_a8c463370627cdf6a6c26d45794c99a4d}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!electrode\_pos@{electrode\_pos}}
+\index{electrode\_pos@{electrode\_pos}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{electrode\_pos}{electrode\_pos}}
+{\footnotesize\ttfamily electrode\+\_\+pos}
 
 
-Definition at line 110 of file Uncertainty\-\_\-\-Propagation.\-py.
 
-\hypertarget{namespace_uncertainty___propagation_a506fed32170756c08599a57d9dde1788}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!L\-\_\-samples@{L\-\_\-samples}}
-\index{L\-\_\-samples@{L\-\_\-samples}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{L\-\_\-samples}]{\setlength{\rightskip}{0pt plus 5cm}tuple L\-\_\-samples = L\-\_\-dist.\-rvs({\bf num\-\_\-samples})}}\label{namespace_uncertainty___propagation_a506fed32170756c08599a57d9dde1788}
+Definition at line 85 of file Uncertainty\+\_\+\+Propagation.\+py.
 
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a36cde68b055f3f2ee671020af4ccf4e2}\label{namespace_uncertainty___propagation_a36cde68b055f3f2ee671020af4ccf4e2}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!False@{False}}
+\index{False@{False}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{False}{False}}
+{\footnotesize\ttfamily False}
 
-Definition at line 122 of file Uncertainty\-\_\-\-Propagation.\-py.
 
-\hypertarget{namespace_uncertainty___propagation_ac1c3b11f280ede1816fa37e269c8d420}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!neg\-\_\-voltage@{neg\-\_\-voltage}}
-\index{neg\-\_\-voltage@{neg\-\_\-voltage}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{neg\-\_\-voltage}]{\setlength{\rightskip}{0pt plus 5cm}tuple neg\-\_\-voltage = {\bf plotter.\-gen\-\_\-half\-\_\-cell\-\_\-voltage}({\bf edge\-\_\-conc\-\_\-vals\-\_\-neg},{\bf i\-\_\-app\-\_\-data\-\_\-neg},electrode\-\_\-neg,tsteps,neg\-\_\-params={\bf negparams})}}\label{namespace_uncertainty___propagation_ac1c3b11f280ede1816fa37e269c8d420}
 
+Definition at line 232 of file Uncertainty\+\_\+\+Propagation.\+py.
 
-Definition at line 97 of file Uncertainty\-\_\-\-Propagation.\-py.
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a64aa603bc3c6c1587e7c6542452481ac}\label{namespace_uncertainty___propagation_a64aa603bc3c6c1587e7c6542452481ac}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!fig@{fig}}
+\index{fig@{fig}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{fig}{fig}}
+{\footnotesize\ttfamily fig}
 
-\hypertarget{namespace_uncertainty___propagation_ac8992e44d2fa887984bac92cc032cb5b}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!negparams@{negparams}}
-\index{negparams@{negparams}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{negparams}]{\setlength{\rightskip}{0pt plus 5cm}list negparams = \mbox{[}K\-\_\-neg,a\-\_\-neg,cmax\-\_\-neg\-\_\-sim,L\-\_\-neg\mbox{]}}}\label{namespace_uncertainty___propagation_ac8992e44d2fa887984bac92cc032cb5b}
 
 
-Definition at line 94 of file Uncertainty\-\_\-\-Propagation.\-py.
+UQ Plot \#. 
 
-\hypertarget{namespace_uncertainty___propagation_ad7c4c17cf720ee538e27c02ab356ed6b}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!nprocs@{nprocs}}
-\index{nprocs@{nprocs}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{nprocs}]{\setlength{\rightskip}{0pt plus 5cm}int nprocs = 40}}\label{namespace_uncertainty___propagation_ad7c4c17cf720ee538e27c02ab356ed6b}
 
 
-Call the function to perform the full battery parallel solve. 
+Definition at line 178 of file Uncertainty\+\_\+\+Propagation.\+py.
 
+\mbox{\Hypertarget{namespace_uncertainty___propagation_ac22fa198f390de5d2a9ab06db1543abc}\label{namespace_uncertainty___propagation_ac22fa198f390de5d2a9ab06db1543abc}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!figg@{figg}}
+\index{figg@{figg}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{figg}{figg}}
+{\footnotesize\ttfamily figg}
 
-
-Definition at line 76 of file Uncertainty\-\_\-\-Propagation.\-py.
-
-\hypertarget{namespace_uncertainty___propagation_a32bff09a616cee12a2c61815a990152d}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!num\-\_\-samples@{num\-\_\-samples}}
-\index{num\-\_\-samples@{num\-\_\-samples}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{num\-\_\-samples}]{\setlength{\rightskip}{0pt plus 5cm}int num\-\_\-samples = 100}}\label{namespace_uncertainty___propagation_a32bff09a616cee12a2c61815a990152d}
-
-
-Definition at line 115 of file Uncertainty\-\_\-\-Propagation.\-py.
-
-\hypertarget{namespace_uncertainty___propagation_ad827090038061f4a04a789ab61df8c1d}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!parameters@{parameters}}
-\index{parameters@{parameters}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{parameters}]{\setlength{\rightskip}{0pt plus 5cm}parameters = parameter\-\_\-np\-\_\-array}}\label{namespace_uncertainty___propagation_ad827090038061f4a04a789ab61df8c1d}
-
-
-E\-N\-D M\-E\-A\-N S\-E\-T V\-A\-L\-U\-E\-S \#\#\#\#\#\#\#\#\#. 
-
-
-
-Definition at line 58 of file Uncertainty\-\_\-\-Propagation.\-py.
-
-\hypertarget{namespace_uncertainty___propagation_a347fcfb484b5d7bf36cc0b53a589be83}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!params@{params}}
-\index{params@{params}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{params}]{\setlength{\rightskip}{0pt plus 5cm}tuple params = np.\-array(\mbox{[}{\bf c0\-\_\-samples}\mbox{[}i\mbox{]}, {\bf fixed\-\_\-\-D}, {\bf fixed\-\_\-\-R}, {\bf fixed\-\_\-a}, {\bf fixed\-\_\-\-L}\mbox{]})}}\label{namespace_uncertainty___propagation_a347fcfb484b5d7bf36cc0b53a589be83}
-
-
-U\-Q Plot \#. 
-
-
-
-Definition at line 184 of file Uncertainty\-\_\-\-Propagation.\-py.
-
-\hypertarget{namespace_uncertainty___propagation_a7216b88d41d69db8e4728dc6e9951a87}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!pos\-\_\-voltage@{pos\-\_\-voltage}}
-\index{pos\-\_\-voltage@{pos\-\_\-voltage}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{pos\-\_\-voltage}]{\setlength{\rightskip}{0pt plus 5cm}tuple pos\-\_\-voltage = {\bf plotter.\-gen\-\_\-half\-\_\-cell\-\_\-voltage}({\bf edge\-\_\-conc\-\_\-vals\-\_\-pos},{\bf i\-\_\-app\-\_\-data\-\_\-pos},electrode\-\_\-pos,tsteps,pos\-\_\-params={\bf posparams})}}\label{namespace_uncertainty___propagation_a7216b88d41d69db8e4728dc6e9951a87}
-
-
-Definition at line 96 of file Uncertainty\-\_\-\-Propagation.\-py.
-
-\hypertarget{namespace_uncertainty___propagation_a073ee030b3fea2b1f15194fee942060b}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!posparams@{posparams}}
-\index{posparams@{posparams}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{posparams}]{\setlength{\rightskip}{0pt plus 5cm}list posparams = \mbox{[}K\-\_\-pos,{\bf parameters}\mbox{[}3\mbox{]},cmax\-\_\-pos\-\_\-sim,{\bf parameters}\mbox{[}4\mbox{]}\mbox{]}}}\label{namespace_uncertainty___propagation_a073ee030b3fea2b1f15194fee942060b}
-
-
-Definition at line 93 of file Uncertainty\-\_\-\-Propagation.\-py.
-
-\hypertarget{namespace_uncertainty___propagation_ac07f0a77ab7492fb7046054192039280}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!R\-\_\-dist@{R\-\_\-dist}}
-\index{R\-\_\-dist@{R\-\_\-dist}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{R\-\_\-dist}]{\setlength{\rightskip}{0pt plus 5cm}tuple R\-\_\-dist = st.\-norm(5.\-86e-\/6, 1.\-0e-\/6)}}\label{namespace_uncertainty___propagation_ac07f0a77ab7492fb7046054192039280}
-
-
-Definition at line 108 of file Uncertainty\-\_\-\-Propagation.\-py.
-
-\hypertarget{namespace_uncertainty___propagation_a48a93972bddd620b71755a37ec6f337b}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!R\-\_\-samples@{R\-\_\-samples}}
-\index{R\-\_\-samples@{R\-\_\-samples}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{R\-\_\-samples}]{\setlength{\rightskip}{0pt plus 5cm}tuple R\-\_\-samples = R\-\_\-dist.\-rvs({\bf num\-\_\-samples})}}\label{namespace_uncertainty___propagation_a48a93972bddd620b71755a37ec6f337b}
-
-
-Definition at line 120 of file Uncertainty\-\_\-\-Propagation.\-py.
-
-\hypertarget{namespace_uncertainty___propagation_a4737e7c4408908bc86898057096fd8bf}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!resol@{resol}}
-\index{resol@{resol}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{resol}]{\setlength{\rightskip}{0pt plus 5cm}int resol = 1000}}\label{namespace_uncertainty___propagation_a4737e7c4408908bc86898057096fd8bf}
 
 
 Input Distributions \#. 
 
 
 
-Definition at line 227 of file Uncertainty\-\_\-\-Propagation.\-py.
+Definition at line 232 of file Uncertainty\+\_\+\+Propagation.\+py.
 
-\hypertarget{namespace_uncertainty___propagation_a429c35172fbcb8b1788bead147e4719b}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!time@{time}}
-\index{time@{time}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{time}]{\setlength{\rightskip}{0pt plus 5cm}tuple time = np.\-linspace(0.\-0,dt$\ast$(tsteps-\/1.),tsteps)}}\label{namespace_uncertainty___propagation_a429c35172fbcb8b1788bead147e4719b}
-
-
-\-\_\-, \-\_\-, tsteps = U\-I.\-iapp\-\_\-read\-\_\-csv(iapp\-\_\-filename) 
-
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a574732c04d57514f219fc914fdcb54e5}\label{namespace_uncertainty___propagation_a574732c04d57514f219fc914fdcb54e5}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!figsize@{figsize}}
+\index{figsize@{figsize}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{figsize}{figsize}}
+{\footnotesize\ttfamily figsize}
 
 
-Definition at line 168 of file Uncertainty\-\_\-\-Propagation.\-py.
 
-\hypertarget{namespace_uncertainty___propagation_ad561e9e5b642db23d892d0aaf51d02d6}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!voltage\-\_\-curves@{voltage\-\_\-curves}}
-\index{voltage\-\_\-curves@{voltage\-\_\-curves}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{voltage\-\_\-curves}]{\setlength{\rightskip}{0pt plus 5cm}tuple voltage\-\_\-curves = np.\-zeros(tsteps)}}\label{namespace_uncertainty___propagation_ad561e9e5b642db23d892d0aaf51d02d6}
+Definition at line 178 of file Uncertainty\+\_\+\+Propagation.\+py.
 
-
-Definition at line 171 of file Uncertainty\-\_\-\-Propagation.\-py.
-
-\hypertarget{namespace_uncertainty___propagation_a7a74e6f2f6355f34b63513f77c839a9e}{\index{Uncertainty\-\_\-\-Propagation@{Uncertainty\-\_\-\-Propagation}!x@{x}}
-\index{x@{x}!Uncertainty_Propagation@{Uncertainty\-\_\-\-Propagation}}
-\subsubsection[{x}]{\setlength{\rightskip}{0pt plus 5cm}tuple x = np.\-linspace(900, 1100, {\bf resol})}}\label{namespace_uncertainty___propagation_a7a74e6f2f6355f34b63513f77c839a9e}
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a52db6ae68be08327cfb3a23ba8f77731}\label{namespace_uncertainty___propagation_a52db6ae68be08327cfb3a23ba8f77731}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!fixed\_a@{fixed\_a}}
+\index{fixed\_a@{fixed\_a}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{fixed\_a}{fixed\_a}}
+{\footnotesize\ttfamily fixed\+\_\+a = a\+\_\+dist.\+mean()}
 
 
-Definition at line 230 of file Uncertainty\-\_\-\-Propagation.\-py.
+
+Definition at line 128 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a4dcfa07b07fe0423838462504dce01dd}\label{namespace_uncertainty___propagation_a4dcfa07b07fe0423838462504dce01dd}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!fixed\_c0@{fixed\_c0}}
+\index{fixed\_c0@{fixed\_c0}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{fixed\_c0}{fixed\_c0}}
+{\footnotesize\ttfamily fixed\+\_\+c0 = c0\+\_\+dist.\+mean()}
+
+
+
+Definition at line 125 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a01fe3867e3bed9f6942d7aadfc8a713f}\label{namespace_uncertainty___propagation_a01fe3867e3bed9f6942d7aadfc8a713f}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!fixed\_D@{fixed\_D}}
+\index{fixed\_D@{fixed\_D}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{fixed\_D}{fixed\_D}}
+{\footnotesize\ttfamily fixed\+\_\+D = D\+\_\+dist.\+mean()}
+
+
+
+Definition at line 126 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a69f4d94b5326ebf869f3973b8ac88273}\label{namespace_uncertainty___propagation_a69f4d94b5326ebf869f3973b8ac88273}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!fixed\_L@{fixed\_L}}
+\index{fixed\_L@{fixed\_L}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{fixed\_L}{fixed\_L}}
+{\footnotesize\ttfamily fixed\+\_\+L = L\+\_\+dist.\+mean()}
+
+
+
+Definition at line 129 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a5dae0958c6184955560b85e6969b6c40}\label{namespace_uncertainty___propagation_a5dae0958c6184955560b85e6969b6c40}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!fixed\_R@{fixed\_R}}
+\index{fixed\_R@{fixed\_R}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{fixed\_R}{fixed\_R}}
+{\footnotesize\ttfamily fixed\+\_\+R = R\+\_\+dist.\+mean()}
+
+
+
+Definition at line 127 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a103c299bf7e3807650c8012aa93a5953}\label{namespace_uncertainty___propagation_a103c299bf7e3807650c8012aa93a5953}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!full\_voltage@{full\_voltage}}
+\index{full\_voltage@{full\_voltage}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{full\_voltage}{full\_voltage}}
+{\footnotesize\ttfamily full\+\_\+voltage = \mbox{\hyperlink{namespace_uncertainty___propagation_a67d1ae20d28e81cd71bc6ac081c39f4f}{pos\+\_\+voltage}}-\/\mbox{\hyperlink{namespace_uncertainty___propagation_ae95af360ed52bcc19557d73634230ff8}{neg\+\_\+voltage}}}
+
+
+
+Definition at line 98 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_aca95298ea687ad2c595a4db63d852941}\label{namespace_uncertainty___propagation_aca95298ea687ad2c595a4db63d852941}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!i\_app\_data\_neg@{i\_app\_data\_neg}}
+\index{i\_app\_data\_neg@{i\_app\_data\_neg}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{i\_app\_data\_neg}{i\_app\_data\_neg}}
+{\footnotesize\ttfamily i\+\_\+app\+\_\+data\+\_\+neg = \mbox{\hyperlink{namespaceplotter_a63a629338be191d4e5120f8330c48839}{plotter.\+read\+\_\+input\+\_\+current}}(\mbox{\hyperlink{namespace_uncertainty___propagation_a0707f525915c982db43c07a90065498c}{output\+\_\+filename\+\_\+negative}})}
+
+
+
+Definition at line 88 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_afa4c691b1226bbbf0823136334e80b8f}\label{namespace_uncertainty___propagation_afa4c691b1226bbbf0823136334e80b8f}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!i\_app\_data\_pos@{i\_app\_data\_pos}}
+\index{i\_app\_data\_pos@{i\_app\_data\_pos}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{i\_app\_data\_pos}{i\_app\_data\_pos}}
+{\footnotesize\ttfamily i\+\_\+app\+\_\+data\+\_\+pos = \mbox{\hyperlink{namespaceplotter_a63a629338be191d4e5120f8330c48839}{plotter.\+read\+\_\+input\+\_\+current}}(\mbox{\hyperlink{namespace_uncertainty___propagation_a4b95c9f249d815d21456995ff23fa2c2}{output\+\_\+filename\+\_\+positive}})}
+
+
+
+Definition at line 87 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a75917accaa8fb18778186e284986cc0a}\label{namespace_uncertainty___propagation_a75917accaa8fb18778186e284986cc0a}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!iapp@{iapp}}
+\index{iapp@{iapp}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{iapp}{iapp}}
+{\footnotesize\ttfamily iapp = np.\+concatenate((np.\+array(\mbox{[}20.\+0 for \mbox{\hyperlink{read__inputs_8f90_aaea4baed8fd8b780f6938f0dc1fb0f72}{i}} in range(50)\mbox{]}),np.\+array(\mbox{[}0.\+0 for \mbox{\hyperlink{read__inputs_8f90_aaea4baed8fd8b780f6938f0dc1fb0f72}{i}} in range(50)\mbox{]})))}
+
+
+
+Read in applied current density from csv file iapp\+\_\+filename = \textquotesingle{}WLTP\+\_\+m10.\+csv\textquotesingle{} iapp, iapp\+\_\+label, tsteps = UI.\+iapp\+\_\+read\+\_\+csv(iapp\+\_\+filename) 
+
+
+
+Definition at line 53 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_afe8dbd0f6f5ecdb2743758a292e496a0}\label{namespace_uncertainty___propagation_afe8dbd0f6f5ecdb2743758a292e496a0}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!L\_dist@{L\_dist}}
+\index{L\_dist@{L\_dist}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{L\_dist}{L\_dist}}
+{\footnotesize\ttfamily L\+\_\+dist = st.\+norm(75.\+6e-\/6, 5.\+0e-\/6)}
+
+
+
+Definition at line 110 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a65b4b9a8e3dc99b5992ccbd2df2b3f41}\label{namespace_uncertainty___propagation_a65b4b9a8e3dc99b5992ccbd2df2b3f41}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!L\_samples@{L\_samples}}
+\index{L\_samples@{L\_samples}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{L\_samples}{L\_samples}}
+{\footnotesize\ttfamily L\+\_\+samples = L\+\_\+dist.\+rvs(\mbox{\hyperlink{namespace_uncertainty___propagation_a32bff09a616cee12a2c61815a990152d}{num\+\_\+samples}})}
+
+
+
+Definition at line 122 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_ae95af360ed52bcc19557d73634230ff8}\label{namespace_uncertainty___propagation_ae95af360ed52bcc19557d73634230ff8}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!neg\_voltage@{neg\_voltage}}
+\index{neg\_voltage@{neg\_voltage}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{neg\_voltage}{neg\_voltage}}
+{\footnotesize\ttfamily neg\+\_\+voltage = \mbox{\hyperlink{namespaceplotter_abdeddaa82135d546bcc8a0ef6da6e646}{plotter.\+gen\+\_\+half\+\_\+cell\+\_\+voltage}}(\mbox{\hyperlink{namespace_uncertainty___propagation_a2bc46e884cf4657287dfb916121522b0}{edge\+\_\+conc\+\_\+vals\+\_\+neg}},\mbox{\hyperlink{namespace_uncertainty___propagation_aca95298ea687ad2c595a4db63d852941}{i\+\_\+app\+\_\+data\+\_\+neg}},\mbox{\hyperlink{namespace_uncertainty___propagation_a5b5a705768405551143015d47be1373e}{electrode\+\_\+neg}},\mbox{\hyperlink{namespace_uncertainty___propagation_a63b973cf773a42a37d790d0a4bce8ddc}{tsteps}},neg\+\_\+params=\mbox{\hyperlink{namespace_uncertainty___propagation_ac8992e44d2fa887984bac92cc032cb5b}{negparams}})}
+
+
+
+Definition at line 97 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_ac8992e44d2fa887984bac92cc032cb5b}\label{namespace_uncertainty___propagation_ac8992e44d2fa887984bac92cc032cb5b}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!negparams@{negparams}}
+\index{negparams@{negparams}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{negparams}{negparams}}
+{\footnotesize\ttfamily list negparams = \mbox{[}K\+\_\+neg,a\+\_\+neg,cmax\+\_\+neg\+\_\+sim,L\+\_\+neg\mbox{]}}
+
+
+
+Definition at line 94 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a27f4b26b09407d804f25d584d05660c2}\label{namespace_uncertainty___propagation_a27f4b26b09407d804f25d584d05660c2}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!nodenum@{nodenum}}
+\index{nodenum@{nodenum}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{nodenum}{nodenum}}
+{\footnotesize\ttfamily nodenum}
+
+
+
+Definition at line 85 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a2011536b3d12a8ef0777724d3afac367}\label{namespace_uncertainty___propagation_a2011536b3d12a8ef0777724d3afac367}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!nprocs@{nprocs}}
+\index{nprocs@{nprocs}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{nprocs}{nprocs}}
+{\footnotesize\ttfamily nprocs = 40}
+
+
+
+Call the function to perform the full battery parallel solve. 
+
+
+
+Definition at line 76 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a32bff09a616cee12a2c61815a990152d}\label{namespace_uncertainty___propagation_a32bff09a616cee12a2c61815a990152d}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!num\_samples@{num\_samples}}
+\index{num\_samples@{num\_samples}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{num\_samples}{num\_samples}}
+{\footnotesize\ttfamily int num\+\_\+samples = 100}
+
+
+
+Definition at line 115 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a0707f525915c982db43c07a90065498c}\label{namespace_uncertainty___propagation_a0707f525915c982db43c07a90065498c}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!output\_filename\_negative@{output\_filename\_negative}}
+\index{output\_filename\_negative@{output\_filename\_negative}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{output\_filename\_negative}{output\_filename\_negative}}
+{\footnotesize\ttfamily output\+\_\+filename\+\_\+negative}
+
+
+
+Definition at line 78 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a4b95c9f249d815d21456995ff23fa2c2}\label{namespace_uncertainty___propagation_a4b95c9f249d815d21456995ff23fa2c2}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!output\_filename\_positive@{output\_filename\_positive}}
+\index{output\_filename\_positive@{output\_filename\_positive}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{output\_filename\_positive}{output\_filename\_positive}}
+{\footnotesize\ttfamily output\+\_\+filename\+\_\+positive}
+
+
+
+Definition at line 78 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_ad827090038061f4a04a789ab61df8c1d}\label{namespace_uncertainty___propagation_ad827090038061f4a04a789ab61df8c1d}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!parameters@{parameters}}
+\index{parameters@{parameters}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{parameters}{parameters}}
+{\footnotesize\ttfamily parameters = parameter\+\_\+np\+\_\+array}
+
+
+
+END MEAN SET VALUES \#\#\#\#\#\#\#\#\#. 
+
+
+
+Definition at line 58 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a41000f175dc0115080e2a682cc06dbe9}\label{namespace_uncertainty___propagation_a41000f175dc0115080e2a682cc06dbe9}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!params@{params}}
+\index{params@{params}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{params}{params}}
+{\footnotesize\ttfamily params = np.\+array(\mbox{[}\mbox{\hyperlink{namespace_uncertainty___propagation_a9248ff879062cce74f8151a2b1145558}{c0\+\_\+samples}}\mbox{[}\mbox{\hyperlink{read__inputs_8f90_aaea4baed8fd8b780f6938f0dc1fb0f72}{i}}\mbox{]}, \mbox{\hyperlink{namespace_uncertainty___propagation_a01fe3867e3bed9f6942d7aadfc8a713f}{fixed\+\_\+D}}, \mbox{\hyperlink{namespace_uncertainty___propagation_a5dae0958c6184955560b85e6969b6c40}{fixed\+\_\+R}}, \mbox{\hyperlink{namespace_uncertainty___propagation_a52db6ae68be08327cfb3a23ba8f77731}{fixed\+\_\+a}}, \mbox{\hyperlink{namespace_uncertainty___propagation_a69f4d94b5326ebf869f3973b8ac88273}{fixed\+\_\+L}}\mbox{]})}
+
+
+
+Definition at line 184 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a67d1ae20d28e81cd71bc6ac081c39f4f}\label{namespace_uncertainty___propagation_a67d1ae20d28e81cd71bc6ac081c39f4f}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!pos\_voltage@{pos\_voltage}}
+\index{pos\_voltage@{pos\_voltage}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{pos\_voltage}{pos\_voltage}}
+{\footnotesize\ttfamily pos\+\_\+voltage = \mbox{\hyperlink{namespaceplotter_abdeddaa82135d546bcc8a0ef6da6e646}{plotter.\+gen\+\_\+half\+\_\+cell\+\_\+voltage}}(\mbox{\hyperlink{namespace_uncertainty___propagation_a1c905cc451a3f94f775d58c3faa18ba7}{edge\+\_\+conc\+\_\+vals\+\_\+pos}},\mbox{\hyperlink{namespace_uncertainty___propagation_afa4c691b1226bbbf0823136334e80b8f}{i\+\_\+app\+\_\+data\+\_\+pos}},\mbox{\hyperlink{namespace_uncertainty___propagation_a8c463370627cdf6a6c26d45794c99a4d}{electrode\+\_\+pos}},\mbox{\hyperlink{namespace_uncertainty___propagation_a63b973cf773a42a37d790d0a4bce8ddc}{tsteps}},pos\+\_\+params=\mbox{\hyperlink{namespace_uncertainty___propagation_a073ee030b3fea2b1f15194fee942060b}{posparams}})}
+
+
+
+Definition at line 96 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a073ee030b3fea2b1f15194fee942060b}\label{namespace_uncertainty___propagation_a073ee030b3fea2b1f15194fee942060b}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!posparams@{posparams}}
+\index{posparams@{posparams}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{posparams}{posparams}}
+{\footnotesize\ttfamily list posparams = \mbox{[}K\+\_\+pos,\mbox{\hyperlink{namespace_uncertainty___propagation_ad827090038061f4a04a789ab61df8c1d}{parameters}}\mbox{[}3\mbox{]},cmax\+\_\+pos\+\_\+sim,\mbox{\hyperlink{namespace_uncertainty___propagation_ad827090038061f4a04a789ab61df8c1d}{parameters}}\mbox{[}4\mbox{]}\mbox{]}}
+
+
+
+Definition at line 93 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_afd4b0764925e5abed3f9b2bdf6b1187a}\label{namespace_uncertainty___propagation_afd4b0764925e5abed3f9b2bdf6b1187a}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!R\_dist@{R\_dist}}
+\index{R\_dist@{R\_dist}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{R\_dist}{R\_dist}}
+{\footnotesize\ttfamily R\+\_\+dist = st.\+norm(5.\+86e-\/6, 1.\+0e-\/6)}
+
+
+
+Definition at line 108 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_ac3cae4769661847dbd5ef4505bddc55a}\label{namespace_uncertainty___propagation_ac3cae4769661847dbd5ef4505bddc55a}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!R\_neg@{R\_neg}}
+\index{R\_neg@{R\_neg}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{R\_neg}{R\_neg}}
+{\footnotesize\ttfamily R\+\_\+neg}
+
+
+
+Definition at line 86 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_ae78aef723bc1b30ffa6c06e6a5f62f25}\label{namespace_uncertainty___propagation_ae78aef723bc1b30ffa6c06e6a5f62f25}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!R\_pos@{R\_pos}}
+\index{R\_pos@{R\_pos}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{R\_pos}{R\_pos}}
+{\footnotesize\ttfamily R\+\_\+pos}
+
+
+
+Definition at line 85 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_abfacaa65abb098492fc925bc19ce2c7f}\label{namespace_uncertainty___propagation_abfacaa65abb098492fc925bc19ce2c7f}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!R\_samples@{R\_samples}}
+\index{R\_samples@{R\_samples}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{R\_samples}{R\_samples}}
+{\footnotesize\ttfamily R\+\_\+samples = R\+\_\+dist.\+rvs(\mbox{\hyperlink{namespace_uncertainty___propagation_a32bff09a616cee12a2c61815a990152d}{num\+\_\+samples}})}
+
+
+
+Definition at line 120 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a4737e7c4408908bc86898057096fd8bf}\label{namespace_uncertainty___propagation_a4737e7c4408908bc86898057096fd8bf}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!resol@{resol}}
+\index{resol@{resol}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{resol}{resol}}
+{\footnotesize\ttfamily int resol = 1000}
+
+
+
+Definition at line 233 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a4cb130baf64d572315eca86ce772b7c9}\label{namespace_uncertainty___propagation_a4cb130baf64d572315eca86ce772b7c9}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!sharex@{sharex}}
+\index{sharex@{sharex}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{sharex}{sharex}}
+{\footnotesize\ttfamily sharex}
+
+
+
+Definition at line 178 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a74807c6fe5f50a0e610d582bcc4f9819}\label{namespace_uncertainty___propagation_a74807c6fe5f50a0e610d582bcc4f9819}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!sharey@{sharey}}
+\index{sharey@{sharey}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{sharey}{sharey}}
+{\footnotesize\ttfamily sharey}
+
+
+
+Definition at line 178 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a70c092a6aebace0b1ea406e14da78a40}\label{namespace_uncertainty___propagation_a70c092a6aebace0b1ea406e14da78a40}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!time@{time}}
+\index{time@{time}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{time}{time}}
+{\footnotesize\ttfamily time = np.\+linspace(0.\+0,\mbox{\hyperlink{namespace_uncertainty___propagation_a770f288d3048ff6cbee9faa0969fd6b0}{dt}}$\ast$(\mbox{\hyperlink{namespace_uncertainty___propagation_a63b973cf773a42a37d790d0a4bce8ddc}{tsteps}}-\/1.),\mbox{\hyperlink{namespace_uncertainty___propagation_a63b973cf773a42a37d790d0a4bce8ddc}{tsteps}})}
+
+
+
+\+\_\+, \+\_\+, tsteps = UI.\+iapp\+\_\+read\+\_\+csv(iapp\+\_\+filename) 
+
+
+
+Definition at line 168 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_acf5355c3a498788562f1b534c1da861a}\label{namespace_uncertainty___propagation_acf5355c3a498788562f1b534c1da861a}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!time\_axis@{time\_axis}}
+\index{time\_axis@{time\_axis}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{time\_axis}{time\_axis}}
+{\footnotesize\ttfamily time\+\_\+axis}
+
+
+
+Definition at line 85 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a643a20c0c59588a0f741a6095e2025fd}\label{namespace_uncertainty___propagation_a643a20c0c59588a0f741a6095e2025fd}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!True@{True}}
+\index{True@{True}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{True}{True}}
+{\footnotesize\ttfamily True}
+
+
+
+Definition at line 178 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a63b973cf773a42a37d790d0a4bce8ddc}\label{namespace_uncertainty___propagation_a63b973cf773a42a37d790d0a4bce8ddc}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!tsteps@{tsteps}}
+\index{tsteps@{tsteps}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{tsteps}{tsteps}}
+{\footnotesize\ttfamily tsteps}
+
+
+
+Definition at line 85 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a6c65cdf4e4596679422086edcee617d1}\label{namespace_uncertainty___propagation_a6c65cdf4e4596679422086edcee617d1}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!voltage\_curves@{voltage\_curves}}
+\index{voltage\_curves@{voltage\_curves}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{voltage\_curves}{voltage\_curves}}
+{\footnotesize\ttfamily def voltage\+\_\+curves = np.\+zeros(\mbox{\hyperlink{namespace_uncertainty___propagation_a63b973cf773a42a37d790d0a4bce8ddc}{tsteps}})}
+
+
+
+Definition at line 171 of file Uncertainty\+\_\+\+Propagation.\+py.
+
+\mbox{\Hypertarget{namespace_uncertainty___propagation_a9336ebf25087d91c818ee6e9ec29f8c1}\label{namespace_uncertainty___propagation_a9336ebf25087d91c818ee6e9ec29f8c1}} 
+\index{Uncertainty\_Propagation@{Uncertainty\_Propagation}!x@{x}}
+\index{x@{x}!Uncertainty\_Propagation@{Uncertainty\_Propagation}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily x = np.\+linspace(900, 1100, \mbox{\hyperlink{namespace_uncertainty___propagation_a4737e7c4408908bc86898057096fd8bf}{resol}})}
+
+
+
+Definition at line 236 of file Uncertainty\+\_\+\+Propagation.\+py.
 
