@@ -153,48 +153,50 @@ $(document).ready(function(){initNavTree('user__input__parallel__simulation_8py_
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="stringliteral">&#39;&#39;&#39;!Set parameters.&#39;&#39;&#39;</span></div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;c0 = 30000.0</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;dt = 1.0</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="namespaceuser__input__parallel__simulation.html#ab1a8ebec490ba1301f818bd1c5f1f3fa">   68</a></span>&#160;K_pos = 3.42E-6 <span class="comment">#Am^-2(m^3mol^-1)^1.5</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="namespaceuser__input__parallel__simulation.html#a64d0c5854299798787675bc91586023c">   69</a></span>&#160;K_neg = 6.48E-7 <span class="comment">#Am^-2(m^3mol^-1)^1.5</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="namespaceuser__input__parallel__simulation.html#aa5b015cc7d0bda453c6163023448db72">   71</a></span>&#160;cmax_pos_sim = 63104.00 <span class="comment">#molm^-3 # m</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="namespaceuser__input__parallel__simulation.html#ab7633a5e9c70aabfe6992e4fe521a1f9">   72</a></span>&#160;cmax_neg_sim = 33133.00 <span class="comment">#molm^-3 # m </span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="stringliteral">&#39;&#39;&#39;!Check parameters are valid.&#39;&#39;&#39;</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;UI.verify_params(output_filename, tsteps, dt, n, c0, D, R, a, L, electrode_charge)</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="stringliteral">&#39;&#39;&#39;! Manually set up applied current and parallelisation&#39;&#39;&#39;</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">#A positive current means that this is a charging simulation, meaning the negative electrode (anode) will gain concentration,</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment"># so start it low</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;c0 = 1.0</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;dt = 1.0</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="namespaceuser__input__parallel__simulation.html#ab1a8ebec490ba1301f818bd1c5f1f3fa">   70</a></span>&#160;K_pos = 3.42E-6 <span class="comment">#Am^-2(m^3mol^-1)^1.5</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="namespaceuser__input__parallel__simulation.html#a64d0c5854299798787675bc91586023c">   71</a></span>&#160;K_neg = 6.48E-7 <span class="comment">#Am^-2(m^3mol^-1)^1.5</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="namespaceuser__input__parallel__simulation.html#aa5b015cc7d0bda453c6163023448db72">   73</a></span>&#160;cmax_pos_sim = 63104.00 <span class="comment">#molm^-3 # m</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="namespaceuser__input__parallel__simulation.html#ab7633a5e9c70aabfe6992e4fe521a1f9">   74</a></span>&#160;cmax_neg_sim = 33133.00 <span class="comment">#molm^-3 # m </span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="stringliteral">&#39;&#39;&#39;!Check parameters are valid.&#39;&#39;&#39;</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;UI.verify_params(output_filename, tsteps, dt, n, c0, D, R, a, L, electrode_charge)</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="namespaceuser__input__parallel__simulation.html#ad7c4c17cf720ee538e27c02ab356ed6b">   80</a></span>&#160;nprocs = 5</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="stringliteral">&#39;&#39;&#39;! Manually set up applied current and parallelisation&#39;&#39;&#39;</span></div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="namespaceuser__input__parallel__simulation.html#aa2414080b021dbb9b56eeaeedec0ffa2">   82</a></span>&#160;nsteps = 5</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="namespaceuser__input__parallel__simulation.html#ad7c4c17cf720ee538e27c02ab356ed6b">   82</a></span>&#160;nprocs = 5</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="stringliteral">&#39;&#39;&#39;! Set up the currents, start times, run times and wait times for each step.&#39;&#39;&#39;</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="namespaceuser__input__parallel__simulation.html#a216022bdba987f127b6cc081ee78e2bd">   85</a></span>&#160;currents = [20.0 <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(nsteps)]</div>
-<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="namespaceuser__input__parallel__simulation.html#a0954fbf3a78f4bdb8ab964be15c01b01">   86</a></span>&#160;start_times = [2150.0*i <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(nsteps)]</div>
-<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="namespaceuser__input__parallel__simulation.html#a5a6deb885420d2b81e210e580767b1c1">   87</a></span>&#160;run_times = [150.0 <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(nsteps)]</div>
-<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="namespaceuser__input__parallel__simulation.html#ae584b229c7b1ea3d8330e6038884ffd3">   88</a></span>&#160;wait_times = [2000.0 <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(nsteps)]</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="stringliteral">&#39;&#39;&#39;! Build the vector of parameters that the function accepts&#39;&#39;&#39;</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="namespaceuser__input__parallel__simulation.html#ad4a342a882e80fb0b1b0a80df4b9321b">   91</a></span>&#160;params = [dt, c0, D, R, a, L,electrode_charge]</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="stringliteral">&#39;&#39;&#39;!Call the function to perform the parallel solve.&#39;&#39;&#39;</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;UI.GITT_half_cell(output_filename,nprocs,currents,start_times,run_times,wait_times,n,params)</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="stringliteral">&#39;&#39;&#39;!Build the vector of parameters that the plotter accepts.&#39;&#39;&#39;</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="namespaceuser__input__parallel__simulation.html#a9850af56ec718d322d6277be29d14383">   98</a></span>&#160;plot_params_neg = [K_neg,a,cmax_neg_sim,L]</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="stringliteral">&#39;&#39;&#39;!Call the plotting function which plots the results of the GITT test with nstep steps.&#39;&#39;&#39;</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="namespaceuser__input__parallel__simulation.html#a657833f0c453f89346fd4916e1bbe550">  101</a></span>&#160;<a class="code" href="namespaceplotter.html#a6ba5ad5850aaae088990b1591fd18de0">plotter.plot_halfcell_GITT_result</a>(output_filename,start_times,electrode,neg_params=plot_params_neg,Animation=<span class="keyword">True</span>,SparsifyAnimation=<span class="keyword">True</span>)</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="stringliteral">&#39;&#39;&#39;!Uncomment to call the standalone plotting function with a single file.&#39;&#39;&#39;</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">#plotter.gen_plots(output_filename+&#39;0&#39;,electrode,SparsifyAnimation=True)</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="namespaceuser__input__parallel__simulation.html#aa2414080b021dbb9b56eeaeedec0ffa2">   84</a></span>&#160;nsteps = 5</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="stringliteral">&#39;&#39;&#39;! Set up the currents, start times, run times and wait times for each step.&#39;&#39;&#39;</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="namespaceuser__input__parallel__simulation.html#a216022bdba987f127b6cc081ee78e2bd">   87</a></span>&#160;currents = [20.0 <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(nsteps)]</div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="namespaceuser__input__parallel__simulation.html#a0954fbf3a78f4bdb8ab964be15c01b01">   88</a></span>&#160;start_times = [2150.0*i <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(nsteps)]</div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="namespaceuser__input__parallel__simulation.html#a5a6deb885420d2b81e210e580767b1c1">   89</a></span>&#160;run_times = [150.0 <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(nsteps)]</div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="namespaceuser__input__parallel__simulation.html#ae584b229c7b1ea3d8330e6038884ffd3">   90</a></span>&#160;wait_times = [2000.0 <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(nsteps)]</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="stringliteral">&#39;&#39;&#39;! Build the vector of parameters that the function accepts&#39;&#39;&#39;</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="namespaceuser__input__parallel__simulation.html#ad4a342a882e80fb0b1b0a80df4b9321b">   93</a></span>&#160;params = [dt, c0, D, R, a, L,electrode_charge]</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="stringliteral">&#39;&#39;&#39;!Call the function to perform the parallel solve.&#39;&#39;&#39;</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;UI.GITT_half_cell(output_filename,nprocs,currents,start_times,run_times,wait_times,n,params)</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="stringliteral">&#39;&#39;&#39;!Build the vector of parameters that the plotter accepts.&#39;&#39;&#39;</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="namespaceuser__input__parallel__simulation.html#a9850af56ec718d322d6277be29d14383">  100</a></span>&#160;plot_params_neg = [K_neg,a,cmax_neg_sim,L]</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="stringliteral">&#39;&#39;&#39;!Call the plotting function which plots the results of the GITT test with nstep steps.&#39;&#39;&#39;</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="namespaceuser__input__parallel__simulation.html#a657833f0c453f89346fd4916e1bbe550">  103</a></span>&#160;<a class="code" href="namespaceplotter.html#a6ba5ad5850aaae088990b1591fd18de0">plotter.plot_halfcell_GITT_result</a>(output_filename,start_times,electrode,neg_params=plot_params_neg,Animation=<span class="keyword">True</span>,SparsifyAnimation=<span class="keyword">True</span>)</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="stringliteral">&#39;&#39;&#39;!Uncomment to call the standalone plotting function with a single file.&#39;&#39;&#39;</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">#plotter.gen_plots(output_filename+&#39;0&#39;,electrode,SparsifyAnimation=True)</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
 <div class="ttc" id="anamespaceplotter_html_a6ba5ad5850aaae088990b1591fd18de0"><div class="ttname"><a href="namespaceplotter.html#a6ba5ad5850aaae088990b1591fd18de0">plotter.plot_halfcell_GITT_result</a></div><div class="ttdeci">def plot_halfcell_GITT_result(filename, start_times, electrode, pos_params=None, neg_params=None, Animation=False, SaveFinalState=False, SparsifyAnimation=True, animation_interval_time=10)</div><div class="ttdoc">Generates the voltage current plot and optionally an animation for a half-cell GITT test.</div><div class="ttdef"><b>Definition:</b> <a href="plotter_8py_source.html#l00355">plotter.py:355</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
