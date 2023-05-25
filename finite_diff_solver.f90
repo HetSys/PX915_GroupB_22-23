@@ -111,7 +111,8 @@ PROGRAM MAIN
         CALL write_checkpoint(tstep, tsteps, dt, n, c, D, R, a_small, L, iapp, electrode_charge, cstorage, filename, 20)
         
     END DO
-    
+
+    PRINT*, 'Finished solver, writing data to output file(s).....'
     !write to output file
     OPEN(9,file='output.txt',form='formatted')
     DO i = 1,n
