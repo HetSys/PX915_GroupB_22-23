@@ -134,7 +134,7 @@ $(document).ready(function(){initNavTree('checkpointing_8f90_source.html',''); i
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">IF</span>(<span class="keyword">PRESENT</span>(<a class="code" href="checkpointing_8f90.html#a5865738f4321c545a0f4071419def924">freq_in</a>)) <span class="keywordflow">THEN</span></div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <a class="code" href="checkpointing_8f90.html#a32ad339111394406790da49b36c61fbd">freq</a> = <a class="code" href="checkpointing_8f90.html#a5865738f4321c545a0f4071419def924">freq_in</a></div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">ELSE</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <a class="code" href="checkpointing_8f90.html#a32ad339111394406790da49b36c61fbd">freq</a> = 20</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <a class="code" href="checkpointing_8f90.html#a32ad339111394406790da49b36c61fbd">freq</a> = <a class="code" href="checkpointing_8f90.html#a91662adda6b1bf216ff0a00a440591c4">tsteps</a>/10</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keywordflow">        END IF</span></div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    </div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="comment">! Using integer arithmetic, find remainder of tstep/freq</span></div>
@@ -352,7 +352,7 @@ $(document).ready(function(){initNavTree('checkpointing_8f90_source.html',''); i
 <div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    </div>
 <div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        </div>
 <div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160; </div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;<span class="keyword">END MODULE </span>checkpointing</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;<span class="keyword">END MODULE </span><a class="code" href="namespacecheckpointing.html">checkpointing</a></div>
 <div class="ttc" id="acheckpointing_8f90_html_a0534a3ee620c0917cd9f0099559b2d52"><div class="ttname"><a href="checkpointing_8f90.html#a0534a3ee620c0917cd9f0099559b2d52">filename</a></div><div class="ttdeci">character(len= *), intent(inout) filename</div><div class="ttdef"><b>Definition:</b> <a href="checkpointing_8f90_source.html#l00065">checkpointing.f90:65</a></div></div>
 <div class="ttc" id="acheckpointing_8f90_html_a0a5f387206ddbe7ebc7455a511b3574d"><div class="ttname"><a href="checkpointing_8f90.html#a0a5f387206ddbe7ebc7455a511b3574d">varid_tstep</a></div><div class="ttdeci">integer varid_tstep</div><div class="ttdef"><b>Definition:</b> <a href="checkpointing_8f90_source.html#l00069">checkpointing.f90:69</a></div></div>
 <div class="ttc" id="acheckpointing_8f90_html_a0e5559a0b38bc59d29a86eb05c7e1c98"><div class="ttname"><a href="checkpointing_8f90.html#a0e5559a0b38bc59d29a86eb05c7e1c98">c0</a></div><div class="ttdeci">real(real64) c0</div><div class="ttdef"><b>Definition:</b> <a href="checkpointing_8f90_source.html#l00298">checkpointing.f90:298</a></div></div>

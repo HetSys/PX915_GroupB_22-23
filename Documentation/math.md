@@ -4,7 +4,7 @@ A half single particle model by Group B for the 2023 PX915 group project.
 
 ## 1 Mathematics and Algorithms
 
-A Crank-Nicolson semi-implicit finite difference scheme is used to approximate the partial differential equation (PDE) solution to obtain the concentration of lithium in the sphere, `$c(i_app, r)$`, at each time step. This is accurate to second order both spatially and temporally, i.e. <!-- end of the list --> `$O(Delta r^2)$` & `$O(Delta t^2)$`.
+A Crank-Nicolson semi-implicit finite difference scheme is used to approximate the partial differential equation (PDE) solution to obtain the concentration of lithium in the sphere, c(i<sub>app</sub>, r), at each time step. This is accurate to second order both spatially and temporally, i.e. ($\Delta$ r<sup>2</sup>) & ($\Delta$ r<sup>2</sup>)
 
 A key benefit of the Crank-Nicolson scheme is that it is unconditionally stable for the spherically symmetric diffusion equation (the PDE of interest), thus not restricting the user's choice of step size spatially or temporally. Although, due to being second order, the accuracy may be impacted by a larger step size.
 
@@ -16,27 +16,22 @@ The consistency and stability of the Crank-Nicolson scheme means it satisfies th
 
 Specific Equation:
 
-<!-- end of the list -->
-
-> $\frac{{c_i^{j+1} - c_i^j}}{{\Delta t}} = \frac{{D}}{{2r_i^2}} \left[ \left(r_i^2 \frac{{c_{i+1}^{j+1} - 2c_i^{j+1} + c_{i-1}^{j+1}}}{{\Delta r^2}} + r_i^2 \frac{{c_{i+1}^j - 2c_i^j + c_{i-1}^j}}{{\Delta r^2}}\right) + r_i \left( \frac{{c_{i+1}^{j+1} - c_{i-1}^{j+1}}}{{2\Delta r}} + \frac{{c_{i+1}^{j} - c_{i-1}^{j}}}{{2\Delta r}} \right) \right]$
+<img src="specific_eq.png" >
 
 Generally:
-<!-- end of the list -->
-> $\frac{u_i^{j+1} - u_i^j}{\Delta t} = \frac{1}{2} \left[ F^{j+1}_i(u,r,t,\frac{\partial u}{\partial r},\frac{\partial ^2 u}{\partial r^2}) + F^j_i(u,r,t,\frac{\partial u}{\partial r},\frac{\partial ^2 u}{\partial r^2}) \right].$
 
+<img src="general_eq.png" >
 This is an average of standard forward and backward Euler methods.
 
 Boundary conditions are treated through the use of ghost nodes, which assign values for the function of interest to regions just beyond the domain of the problem in an attempt to approximate the first derivatives present in the Neumann boundary conditions specified. For example,
 
-<!-- end of the list -->
-
-> $\[\frac{\partial c}{\partial r}\Bigg|_{r=0} \approx \frac{c_1 - c_{-1}}{2\Delta r} = 0 \iff c_1 = c_{-1}.\]$
+<img src="eg_eq.png" >
 
 The accuracy of the scheme is such that it is equivalent to the interior solved points.
 
 Finally, a general initial condition is specified of the form
-<!-- end of the list -->
-> $c = c_0 \textrm{ at } t=0.$
+
+<img src="c_eq.png" >
 
 The form of c_0 is assumed to be constant in R.
 
