@@ -20,7 +20,7 @@ $$
 
 - A Crank-Nicolson semi-implicit finite difference scheme will be used to approximate the partial differential equation (PDE) solution to obtain the concentration of lithium in the sphere, `c(i_app, r)`, at each time step. This is accurate to second order both spatially and temporally, i.e. `O(Delta r^2)` & `O(Delta t^2)`.
 
-- A key benefit of the Crank-Nicolson scheme is that it is unconditionally stable for the spherically symmetric diffusion equation (the PDE of interest), thus not restricting the user's choice of step size spatially or temporally. Although due to being second order, the accuracy may be impacted by a larger step size.
+- A key benefit of the Crank-Nicolson scheme is that it is unconditionally stable for the spherically symmetric diffusion equation (the PDE of interest), thus not restricting the user's choice of step size spatially or temporally. Although, due to being second order, the accuracy may be impacted by a larger step size.
 
 - The implicit nature of the Crank-Nicolson scheme makes it ideal for numerically approximating solutions to both stiff and highly nonlinear diffusion problems, providing the user a strong base from which to update this solution framework.
 
